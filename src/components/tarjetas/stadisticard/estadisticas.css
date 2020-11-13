@@ -1,0 +1,47 @@
+/* Tarjeta Estadisticas*/
+.container-estadistica{
+    margin-bottom: 20px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}   
+.container-winrate{
+    padding: 2% 0% 1% 3%;
+    display: flex;
+}
+
+@media (min-width: 771px) {   
+    .estadistic-position{
+        width: 100%;
+        padding: 0% 0% 0% 0%;
+        display: flex;
+        justify-content: center;
+    }
+    .font-wins{  
+        font-size: 20px !important;
+        font-weight: bold !important;
+        color: #000000 !important;
+    }
+    .font-stadistic-data{
+        font-size: 20px !important;
+        font-weight: bold !important;
+    }
+}
+  
+@media screen and (max-width: 770px) {     
+    .estadistic-position{
+        width: 100%;
+        padding: 0% 0% 0% 0%;
+        display: flex;
+        justify-content: center;
+    }
+    .font-wins{  
+        font-size: 15px !important;
+        font-weight: bold !important;
+        color: #000000 !important;
+    }
+    .font-stadistic-data{
+        font-size: 15px !important;
+        font-weight: bold !important;
+    }
+}

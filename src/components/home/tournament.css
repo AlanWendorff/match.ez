@@ -1,0 +1,56 @@
+.tournaments-position{
+    padding: 45px 0px 30px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 95%;
+    align-self: center;
+}
+
+@media (min-width: 634px) and (max-width: 3840px) {    
+    .tournament-size{
+        background-color: #ffffffb7;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 160px;
+        max-width: 300px;
+        padding: 3% 1% 2% 1%;
+        margin: 5%;
+    }
+    .tournament-logo-size{
+        max-width: 35%;
+    }
+    .tournament-name{
+        font-weight: bold;
+        font-size: 20px;
+        color: black;
+    }
+}
+  
+@media screen and (max-width: 633px) {    
+    .tournament-size{
+        background-color: #ffffffb7;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+        max-width: 150px;
+        padding: 3% 1% 2% 1%;
+        margin: 5% 5% 5% 5%;
+    }
+    .tournament-logo-size{
+        max-width: 55%;
+    }
+    .tournament-name{
+        font-weight: bold;
+        font-size: 15px;
+        color: black;
+    }
+}
+
