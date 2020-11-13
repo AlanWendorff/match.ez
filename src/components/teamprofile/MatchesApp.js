@@ -11,6 +11,18 @@ import ScoreTarjeta from '../tarjetas/scorecard/ScoreTarjeta';
 import { HeaderLogoContext } from '../context/HeaderLogoContext'
 import '../../styles/base.css';
 
+import ca_pattern from '../../pattern/ca_pattern.png';
+import fg_pattern from '../../pattern/fg_pattern.png';
+import generic_team_pattern from '../../pattern/generic_team_pattern.png';
+import isurus_pattern from '../../pattern/isurus_pattern.png';
+import kaster_pattern from '../../pattern/kaster_pattern.png';
+import malvinas_pattern from '../../pattern/malvinas_pattern.png';
+import mibr_pattern from '../../pattern/mibr_pattern.png';
+import river_pattern from '../../pattern/river_pattern.png';
+import np_pattern from '../../pattern/np_pattern.png';
+import sharks_pattern from '../../pattern/sharks_pattern.png';
+
+
 const MatchesApp = ({teamId}) => {
 
     const { data } = useContext(HeaderLogoContext);
@@ -20,10 +32,8 @@ const MatchesApp = ({teamId}) => {
     let matchWin   = 0;
     let urlTeamId = "";
     let classContainer = "parametros-container mosaico "
-    const backgroundStyle = {
-        backgroundColor: `${data.darkVibrant}`
-    };
-
+    let backgroundStyle;
+    
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [matches, guardarMatches]     = useState([]);
     const [crash, guardarStateCrash]    = useState(false);
@@ -33,52 +43,84 @@ const MatchesApp = ({teamId}) => {
 
     switch (teamId) {
         case 126709:  //9z
-            classContainer = classContainer + "kaster-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${kaster_pattern})`
+            };
             urlTeamId = teamId;
             break;
 
         case 125863:  //Isurus
-            classContainer = classContainer + "Isurus-mosaico";
-            urlTeamId = teamId;
-            break;
-
-        case 127524:  //Cream
-            classContainer = classContainer + "Cream-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${isurus_pattern})`
+            };
             urlTeamId = teamId;
             break;
 
         case 127882:  //malvinas
-            classContainer = classContainer + "Malvinas-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${malvinas_pattern})`
+            };
             urlTeamId = teamId;
             break;
 
         case 3260:  //sharks
-            classContainer = classContainer + "Sharks-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${sharks_pattern})`
+            };
             urlTeamId = teamId;
             break;    
     
         case 125779:  //FuriousGaming
-            classContainer = classContainer + "Furious-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${fg_pattern})`
+            };
             urlTeamId = teamId;
             break;  
 
         case 127246:  //CoscuArmy
-            classContainer = classContainer + "ca-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${ca_pattern})`
+            };
             urlTeamId = teamId;
             break; 
 
         case 127883:  //New Pampas
-            classContainer = classContainer + "NewPampas-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${np_pattern})`
+            };
             urlTeamId = teamId;
             break; 
 
         case 3250:  //mibr
-            classContainer = classContainer + "mibr-mosaico";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${mibr_pattern})`
+            };
             urlTeamId = teamId;
             break;
+
+        case 127693:  //River
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${river_pattern})`
+                
+            };
+            urlTeamId = teamId;
+            break; 
             
         default:
             classContainer = classContainer + "menu-background";
+            backgroundStyle = {
+                backgroundColor: `${data.darkVibrant}`,
+                backgroundImage: `url(${generic_team_pattern})`
+            };
             urlTeamId = teamId;
             break;
     }
@@ -169,17 +211,14 @@ const MatchesApp = ({teamId}) => {
                             scoreMatch={scoreMatch}
                             prevMatch={prevMatch}
                         />
-    
                         <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(2px 2px 20px ${data.lightVibrant})`}}/>
                         <Estadisticas
                             winRate={winRate}
                             winStrike={winStrike}
                         /> 
-    
                         <TarjetaInformativa
                             noMatches={noMatches}
                         />
-                    
                         <Footer/>
                     </div>
                 ); 
@@ -196,18 +235,15 @@ const MatchesApp = ({teamId}) => {
                             scoreMatch={scoreMatch}
                             prevMatch={prevMatch}
                         />
-    
                         <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}}/>
                         <Estadisticas
                             winRate={winRate}
                             winStrike={winStrike}
                         /> 
-    
                         <ListadoDeTarjetas
                             matches={matches}
                             teamId={teamId}
                         />
-
                         <Footer/>
                     </div>
                 );   

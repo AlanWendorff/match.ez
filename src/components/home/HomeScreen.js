@@ -14,11 +14,9 @@ const HomeScreen = () => {
     
     return (
         <div className="parametros-container menu-background" style={backStyle}>
-
             <div className="z-depth-5 gradient-menu menu-banner"> 
-                <img className="max-size-logo-header kaster-shadow" alt="Logo Team" src={csgoLogo}/>   
+                <img className="max-size-logo-header" alt="Logo Team" style={{filter: `drop-shadow(2px 2px 10px #ffffffb7)`}}  src={csgoLogo}/>   
             </div>
-
             <div className="tournaments-position">
                 <ListadoDeTorneos/>
             </div>
@@ -26,7 +24,6 @@ const HomeScreen = () => {
             <Footer/>   
         </div>
     );
-    
 }
 //<TarjetaInformativa/>
 export default HomeScreen;

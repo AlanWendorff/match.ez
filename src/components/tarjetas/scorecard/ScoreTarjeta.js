@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { useWindowSize } from '../../../utility/useWindowSize';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import csgoHeadshot from '../../../ImagenesVarias/csgoHeadshot.png';
 import csgoAsis from '../../../ImagenesVarias/csgoAsis.png';
@@ -9,17 +8,13 @@ import csgoDead from '../../../ImagenesVarias/csgoDead.png';
 import './tarjetaScore.css';
 
 const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
-
     const {teams} = scoreMatch;
-    let { width } = useWindowSize(); 
     const [hide, guardarHide] = useState([]);
     const [hideTitle, guardarHideTitle] = useState([]);
     const [active, guardarActive] = useState(false);
-
+    let screenWidth = window.innerWidth;
     let ultimoMatch = prevMatch[0];
-
     const {opponents} = ultimoMatch;
-    
     let TeamLogoA = "";
     let TeamLogoB = "";
     
@@ -59,9 +54,8 @@ const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
             guardarActive(true);
         };   
     };
-
     if (teams && teams.length > 0) {
-        if (width >= 771){
+        if (screenWidth >= 771){
             return ( 
                 <div className="container-tarjeta-score">  
                     <div className="text-align head-score-icons-kda-button-container z-depth-5">

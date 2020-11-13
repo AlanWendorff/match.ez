@@ -6,6 +6,8 @@ import coscuLogo from '../../LogoTeams/coscuLogo.png';
 import mibrLogo from '../../LogoTeams/mibr.png';
 import malvinasLogo from '../../LogoTeams/malvinasLogo.png';
 import fgLogo from '../../LogoTeams/fgLogo.png';
+import riverLogo from '../../LogoTeams/riverLogo.png';
+import newPampas from '../../LogoTeams/newPampas.png';
 
 
 const TeamsHome = () => (
@@ -27,6 +29,12 @@ const TeamsHome = () => (
         </Link>
         <Link to='coscu-army-cs-go' className="teams-size z-depth-5 real-button" title="Ver perfil de Coscu Army Esports">
             <img className="logo-team-menu" alt="Logo Team" src={coscuLogo}/>    
+        </Link>
+        <Link to='river-plate' className="teams-size z-depth-5 real-button" title="Ver perfil de River Plate Esports">
+            <img className="logo-team-menu" alt="Logo Team" src={riverLogo}/>    
+        </Link>
+        <Link to='new-pampas' className="teams-size z-depth-5 real-button" title="Ver perfil de New Pampas Esports">
+            <img className="logo-team-menu" alt="Logo Team" src={newPampas}/>    
         </Link>
     </div>
 );

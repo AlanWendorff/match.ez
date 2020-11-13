@@ -6,17 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import './styles/base.css';
 import './styles/efectos.css';
 
-import './styles/teamStyles/Furious.css';
-import './styles/teamStyles/Isurus.css';
-import './styles/teamStyles/Kaster.css';
-import './styles/teamStyles/River.css';
-import './styles/teamStyles/Sharks.css';
-import './styles/teamStyles/Cream.css';
-import './styles/teamStyles/Malvinas.css';
-import './styles/teamStyles/ca-wygers.css';
-import './styles/teamStyles/np.css';
-import './styles/teamStyles/mibr.css';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

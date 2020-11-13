@@ -42,40 +42,32 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         if(width === '100%' && matchesHoy.length > 0){
             return(
                 <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
-
                     <a href="/" title={`Click para volver a la página de inicio`}>  
-
                         <div className="z-depth-5 gradient-position cursor-pointer" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
                             <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
                         </div>
                     </a>
-
                     <div className="home-box">
                         <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
                     </div>
-
                     <ListadoDeTarjetasHoy
                         matchesHoy={matchesHoy}
                         data = {data}
                     />
-                    
                     <Footer/>
                 </div>
             );
         }else{
             return(
                 <div className="parametros-container menu-background">
-
                     <a href="/">
                         <div className="z-depth-5 gradient-position menu-banner cursor-pointer"> 
                             <img title={`Click para volver a la página de inicio`} className="max-size-logo-header kaster-shadow" alt="Logo Team" src={csgoLogo}/>   
                         </div>
                     </a>
-                    
                     <div className="home-box">
                         <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
                     </div>
-
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     /> 
@@ -86,17 +78,14 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     }else{
         return(
             <div className="parametros-container menu-background">
-
                 <a href="/">
                     <div className="z-depth-5 gradient-position menu-banner cursor-pointer"> 
                         <img title={`Click para volver a la página de inicio`} className="max-size-logo-header kaster-shadow" alt="Logo Team" src={csgoLogo}/>   
                     </div>
-                </a>
-                
+                </a>         
                 <div className="home-box">
                     <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
                 </div>
-
                 <Warning/> 
                 <Footer/>
             </div>
