@@ -7,11 +7,10 @@ import './menu.css';
 import './tournament.css';
 
 const HomeScreen = () => {
-
     const backStyle = {
         backgroundColor: '#7b0480'
     };
-    
+
     return (
         <div className="parametros-container menu-background" style={backStyle}>
             <div className="z-depth-5 gradient-menu menu-banner"> 

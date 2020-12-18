@@ -8,7 +8,7 @@ export const setTeamLogo = (opponents, teamId) =>{
     let ownLogo = "";
     let opponentSlug = "";
 
-    for (let i=0; i< opponents.length; i++){                        // get EVER the opponent team logo (pandascore object index of opponent logo team are irregular)
+    for (let i=0; i< opponents.length; i++){                        // get always the opponent team logo (pandascore object index of opponent logo team are irregular)
         if (opponents[i].opponent.id !== teamId){
             if(opponents[i].opponent.image_url === null){
                 opponentLogo = csgoLogoDefault;
@@ -31,5 +31,4 @@ export const setTeamLogo = (opponents, teamId) =>{
         ownName,
         opponentSlug
     };
-    
 }

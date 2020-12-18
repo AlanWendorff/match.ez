@@ -1,28 +1,37 @@
-.tournaments-position{
-    padding: 45px 0px 30px 0px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 95%;
-    align-self: center;
-}
-
-@media (min-width: 634px) and (max-width: 3840px) {    
+@media (min-width: 634px) {   
+    .tournaments-position{
+        padding: 45px 0px 30px 0px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 95%;
+        align-self: center;
+    } 
     .tournament-size{
         background-color: #ffffffb7;
         border-radius: 3px;
+        padding: 20px 0px;
+        height: 220px;
+        width: 300px;
+        margin: 10px;
+    }
+    .tournament-flex{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .tournament-canvas{
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
-        height: 160px;
-        max-width: 300px;
-        padding: 3% 1% 2% 1%;
-        margin: 5%;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 300px;
     }
     .tournament-logo-size{
-        max-width: 35%;
+        max-width: 110px;
     }
     .tournament-name{
         font-weight: bold;
@@ -31,21 +40,38 @@
     }
 }
   
-@media screen and (max-width: 633px) {    
-    .tournament-size{
-        background-color: #ffffffb7;
-        border-radius: 3px;
+@media screen and (max-width: 633px) {  
+    .tournaments-position{
+        padding: 10px 0px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 150px;
-        max-width: 150px;
-        padding: 3% 1% 2% 1%;
-        margin: 5% 5% 5% 5%;
+        width: 100%;
+    }  
+    .tournament-size{
+        background-color: #ffffffb7;
+        border-radius: 3px;
+        padding: 0px 20px;
+        height: 90px;
+        width: 90%;
+        margin: 10px;
+    }
+    .tournament-flex{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .tournament-canvas{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 85%;
     }
     .tournament-logo-size{
-        max-width: 55%;
+        max-width: 60px;
     }
     .tournament-name{
         font-weight: bold;

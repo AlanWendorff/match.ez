@@ -8,7 +8,13 @@ import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import ScoreTarjeta from '../tarjetas/scorecard/ScoreTarjeta';
-import { HeaderLogoContext } from '../context/HeaderLogoContext'
+import { HeaderLogoContext } from '../context/HeaderLogoContext';
+import {setTeamLogo} from '../../utility/SetTeamLogo';
+
+import { getPastMatch } from './getPastMatch';
+import { getNextMatches } from './getNextMatches';
+import { getPlayerScore } from './getPlayerScore';
+
 import '../../styles/base.css';
 
 import ca_pattern from '../../pattern/ca_pattern.png';
@@ -24,22 +30,23 @@ import sharks_pattern from '../../pattern/sharks_pattern.png';
 
 
 const MatchesApp = ({teamId}) => {
-
-    const { data } = useContext(HeaderLogoContext);
     const proxyUrl = `https://cors-anywhere.herokuapp.com/`;  
-    let winStrike = 0;
-    let winRate = 0;
-    let matchWin   = 0;
+    
     let urlTeamId = "";
     let classContainer = "parametros-container mosaico "
     let backgroundStyle;
-    
-    const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
-    const [matches, guardarMatches]     = useState([]);
-    const [crash, guardarStateCrash]    = useState(false);
-    const [noMatches, guardarNoMatches] = useState(false);
+
+    let winStrike = 0;
+    let winRate   = 0;
+    let matchWin  = 0;
+
+    const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
+    const [loaderprogress, guardarLoaderProgress]  = useState({width: '0%'});
     const [prevMatch, guardarPrevMatch] = useState([]);
+    const [matches, guardarMatches]     = useState([]);
     const [scoreMatch, guardarScoreMatch] = useState([]);
+    const [crash, guardarStateCrash]    = useState(false);
+    const [noMatches, guardarNoMatches] = useState(false);  
 
     switch (teamId) {
         case 126709:  //9z
@@ -126,57 +133,57 @@ const MatchesApp = ({teamId}) => {
     }
 
     useEffect(() => {  
-        const consultarAPI = async () => {                                                                                       //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
-            const urlUpcoming = `https://api.pandascore.co/csgo/matches?sort=begin_at&filter[finished]=false&filter[unscheduled]=false&filter[opponent_id]=${urlTeamId}&token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
-            const urlPast     = `https://api.pandascore.co/csgo/matches/past?filter[opponent_id]=${urlTeamId}&filter[finished]=true&token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
-            try {
-                const respuestaUpcoming = await fetch(proxyUrl + urlUpcoming);
-                const respuestaPast = await fetch(proxyUrl + urlPast);      
-                if (respuestaUpcoming.status !== 200 || respuestaPast.status !== 200){
-                    console.log("error");
+        //console.log("loop del effect");
+        (async () => {
+            if (prevMatch.length === 0) {
+                const {objPastMatch, badFetch} = await getPastMatch(proxyUrl, teamId);
+                //console.log("calling prev match");
+                if (objPastMatch) {
+                    guardarLoaderProgress({width: '30%'});
+                    guardarPrevMatch(objPastMatch);
+                    if(scoreMatch.length === 0){
+                        const {objPlayerScore, badFetch} = await getPlayerScore(proxyUrl, objPastMatch);
+                        //console.log("calling player score");
+                        if (objPlayerScore) {
+                            guardarLoaderProgress({width: '50%'});
+                            guardarScoreMatch(objPlayerScore);
+                            const ultimoMatch = objPastMatch[0];
+                            const {opponents} = ultimoMatch;
+                            const {ownLogo} = setTeamLogo(opponents, teamId);
+                            if (ownLogo !== '') {
+                                guardarLogo(ownLogo);
+                            } 
+                        }
+                        if (badFetch) {
+                            guardarStateCrash(true);
+                        }  
+                    };
+                }
+                if (badFetch) {
                     guardarStateCrash(true);
-                };
-                const objetoMatchesUpcoming = await respuestaUpcoming.json();
-                const objetoPrevMatch = await respuestaPast.json();
-                guardarLoaderProgress({width: '90%'});
-                guardarMatches(objetoMatchesUpcoming); 
-                guardarPrevMatch(objetoPrevMatch);
-            } catch (error) {
-                guardarStateCrash(true);      
-            };      
-        };
+                }
+            };
+            
+            if(!matches.length > 0){
+                const {objNextMatches, badFetch} = await getNextMatches(proxyUrl, urlTeamId);
+                //console.log("calling next match");
+                if (objNextMatches) {
+                    guardarLoaderProgress({width: '100%'});
+                    guardarMatches(objNextMatches);
+                    if(objNextMatches.length === 0){   
+                        guardarNoMatches(true);
+                    }
+                }
+                if (badFetch) {
+                    guardarStateCrash(true);
+                }
+            };
+        })()
 
-        if(!matches.length > 0){   
-            guardarLoaderProgress({width: '40%'});                    // validates the content of the request to stop the request 
-            consultarAPI(); 
-            if(matches.length === 0){   
-                guardarNoMatches(true);
-            }
-        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    const consultarScoreMatch = async () => { 
-        let prevmatchID = prevMatch[0].id                                     //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
-        const urlScoreMatch = `https://api.pandascore.co/csgo/matches/${prevmatchID}/players/stats?token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
-        try { 
-            const respuestaScoreMatch = await fetch(proxyUrl + urlScoreMatch);      
-            if (respuestaScoreMatch.status !== 200){
-                guardarStateCrash(true);
-            };
-            const objetoScoreMatch = await respuestaScoreMatch.json();
-            guardarScoreMatch(objetoScoreMatch); 
-            guardarLoaderProgress({width: '100%'});
-        } catch (error) {
-            guardarStateCrash(true);      
-        };      
-    };
-
     if(prevMatch.length !== 0){
-        if (scoreMatch.length === 0){
-            consultarScoreMatch();
-        };
-
         for(let i = 0; i < prevMatch.length; i++) {
             if(prevMatch[i].winner_id === teamId){
                 matchWin = matchWin + 1;
@@ -194,10 +201,10 @@ const MatchesApp = ({teamId}) => {
             }
         }    
     }
-      
+
     const {width} = loaderprogress;
     if (!crash){
-        if(width === '100%' && prevMatch.length > 0){
+        if(width === '100%' && prevMatch.length > 0 && paletestate === true){
             if (!matches.length > 0) {
                 return(
                     <div className={classContainer} style={backgroundStyle}>

@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCrosshairs, faSkullCrossbones, faPlus } from '@fortawesome/free-solid-svg-icons';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import csgoHeadshot from '../../../ImagenesVarias/csgoHeadshot.png';
-import csgoAsis from '../../../ImagenesVarias/csgoAsis.png';
-import csgoCrosshair from '../../../ImagenesVarias/csgoCrosshair.png';
-import csgoDead from '../../../ImagenesVarias/csgoDead.png';
 
 import './tarjetaScore.css';
-
 const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
     const {teams} = scoreMatch;
     const [hide, guardarHide] = useState([]);
@@ -54,18 +52,21 @@ const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
             guardarActive(true);
         };   
     };
+
     if (teams && teams.length > 0) {
         if (screenWidth >= 771){
             return ( 
                 <div className="container-tarjeta-score">  
-                    <div className="text-align head-score-icons-kda-button-container z-depth-5">
+                    <div className="head-score-icons-kda-button-container z-depth-5">
                         <a href="#/" className="waves-effect waves-light btn pulse red kda-button-size" onClick={() => hideShow()}><i className="material-icons right">chevron_right</i>K A M H</a>    
-                        <p className="margin-asis" style={hideTitle}>Estadísticas de los jugadores en la serie.</p>
+                        <p className="text-explain-game-stadistic" style={hideTitle}>Estadísticas de los jugadores en la serie.</p>
                         
-                        <img alt="Headshot icon" className="head-score-icons" style={hide} src={csgoCrosshair}/>
-                        <img alt="Headshot icon" className="head-score-icons margin-asis" style={hide} src={csgoAsis}/>
-                        <img alt="Headshot icon" className="head-score-icons margin-muertes" style={hide} src={csgoDead}/>
-                        <img alt="Headshot icon" className="head-score-icons margin-headshots" style={hide} src={csgoHeadshot}/>
+                        <div className="kda-icons" style={hide}>
+                            <FontAwesomeIcon className="color-text-black head-score-icons" style={hide} icon={faCrosshairs}/>
+                            <FontAwesomeIcon className="color-text-black head-score-icons" style={hide} icon={faPlus}/>
+                            <FontAwesomeIcon className="color-text-black head-score-icons" style={hide} icon={faSkullCrossbones}/>
+                            <img alt="Headshot icon" className="head-score-icons" style={hide} src={csgoHeadshot}/>
+                        </div>
                     </div>
                     <div className="col s12 m6 cursor-default">
                         <div className="card darken-1 background-tarjeta-score tamano-tarjeta-score" style={hide}>
@@ -140,7 +141,7 @@ const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
                     <div className="container-tarjeta-score">  
                         <div className="text-align head-score-icons-kda-button-container z-depth-5">
                             <a href="#/" className="waves-effect waves-light btn pulse red kda-button-size" onClick={() => hideShow()}><i className="material-icons right">chevron_right</i>K A M H</a>    
-                            <p className="margin-asis" style={hideTitle}>Estadísticas de los jugadores en la serie.</p>
+                            <p style={hideTitle}>Estadísticas de los jugadores en la serie.</p>
                         </div>
                         <div className="col s12 m6 cursor-default">
                             <div className="card darken-1 background-tarjeta-score tamano-tarjeta-score" style={hide}>

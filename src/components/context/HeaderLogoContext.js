@@ -1,4 +1,4 @@
-import React, { createContext, useState} from 'react';
+import React, { createContext, useState, useEffect} from 'react';
 import { usePalette } from 'react-palette'
 
 // creacion del context
@@ -9,12 +9,20 @@ const HeaderLogoProvider = (props) => {
 
     const proxyUrl = `https://cors-anywhere.herokuapp.com/`;
     const [logo, guardarLogo] = useState('');
+    const [paletestate, guardarPaleteCharged] = useState(false);
     const { data } = usePalette(proxyUrl + logo);
-    // eslint-disable-next-line
-    
+    const {darkMuted} = data;
+    useEffect(() => {
+        guardarPaleteCharged(false);
+        if (darkMuted !== undefined) {
+            guardarPaleteCharged(true);
+        }
+    }, [darkMuted, paletestate]);
+
     return(
         <HeaderLogoContext.Provider 
             value={{
+                paletestate,
                 logo,
                 data,
                 guardarLogo

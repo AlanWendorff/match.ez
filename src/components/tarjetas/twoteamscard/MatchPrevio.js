@@ -1,61 +1,85 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
 import Moment from 'moment';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
-import {changeCardTheme} from '../../../utility/PastMatchCardStyle';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setGameMode} from '../../../utility/SetGameMode';
 import './tarjetaMatchesCompletos.css';
+import './matchprevio.css';
 
 const MatchPrevio = ({prevMatch, teamId}) => {
 
     momentSpanishSetup();
-    let ultimoMatch = prevMatch[0];
+    const ultimoMatch = prevMatch[0];
 
     const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = ultimoMatch;
-    const {classTeamA, classPointA, classTeamB, classPointB} = changeCardTheme(winner_id, teamId);
-    const { guardarLogo, data } = useContext(HeaderLogoContext);
+    const { data } = useContext(HeaderLogoContext);
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
 
-    useEffect(() => {
-        if (ownLogo !== '') {
-            guardarLogo(ownLogo);
-        }  
-    }, [ownLogo, guardarLogo]);
     //eslint-disable-next-line
     return(
-        <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match"> 
+        <div className="card posicion-tarjeta size-prev-game container-gen-prev-game"> 
             <div className="card-image waves-effect waves-block waves-light">
-                <div className="card-image container-info cursor-default">
-                    <div className="container-label">
-                        <p className="label-teams" style={{color: data.vibrant}}>{name}</p>
+                <div className="card-image prev-game-content cursor-default">
+                    <div className="text-in-card">
+                        <p className="name-of-teams" style={{color: data.vibrant}}>{name}</p>
                     </div> 
-                    <div className="container-puntosYlogos">
-                        <Link to={`/${opponentSlug}`}>
-                            <div className={classTeamA}>                            
-                                <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-team-logo-prev-match" src={opponentLogo}/>
+
+                    <div className="prev-game-desktop">
+                        <div className="logos-and-gamewin">
+                            <Link to={`/${opponentSlug}`}>
+                                <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
+                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                                </div> 
+                            </Link>
+                            <div>
+                                <div className="game-win">
+                                    <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
+                                    <p>-</p>
+                                    <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>                           
+                                </div>  
+                            </div>
+                            <div className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>
+                                <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
                             </div> 
-                        </Link>
-                        <div>
-                            <div className="points">
-                                <p className={classPointA}>{A_point}</p>
-                                <p>-</p>
-                                <p className={classPointB}>{B_point}</p>                           
-                            </div>  
                         </div>
-                        <div className={classTeamB}>
-                            <img alt="b team" className="max-size-team-logo-prev-match" src={ownLogo}/>
+                        <div className="text-in-card">
+                            <p className="name-of-teams">{opponentName}</p> 
+                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
+                            <p className="name-of-teams">{ownName}</p>
                         </div> 
                     </div>
-                    <div className="container-label">
-                        <p className="label-teams">{opponentName}</p> 
-                        <p className="modalidad-past-match" style={{color: data.darkMuted}}>{modalidad}</p>
-                        <p className="label-teams">{ownName}</p>
-                    </div> 
+
+
+                    <div className="prev-game-mobile">
+                        <div className="row-team-name-gamewin">
+                            <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
+                                <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                            </div> 
+                            <p className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>{opponentName}</p> 
+                            <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
+                        </div>
+
+                        <div className="row-team-name-gamewin">
+                            <div className={winner_id === teamId? "match-winner outline-shade-black" : "match-loser outline-shade-black"}>                            
+                                <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                            </div> 
+                            <p className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>{ownName}</p>
+                            <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>
+                        </div>
+
+                        <div className="text-in-card">
+                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
+                        </div> 
+                    </div>
+                    
+
+
+
                 </div>            
             </div>
             <div className="card-content click-more-info activator cursor-pointer">

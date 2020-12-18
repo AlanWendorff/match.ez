@@ -2,9 +2,9 @@
 .warning{
     filter: drop-shadow(3px 3px 15px rgba(180, 0, 0, 0.863));
     max-width: 1000px !important;
-    min-width: 500px !important;
+    min-width: 200px !important;
     height: 600px !important;
-    padding: 2% 0% 10% 0%;
+    padding: 2% 2% 10% 2%;
     margin-bottom: 5%;
     align-self: center;
     text-align: center;

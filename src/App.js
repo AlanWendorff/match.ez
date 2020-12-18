@@ -3,6 +3,8 @@ import Layer from './Layer';
 import TournamentProvider from './components/context/TournamentContext';
 import PathProvider from './components/context/PathContext';
 import HeaderLogoProvider from './components/context/HeaderLogoContext';
+import LoaderProvider from './components/context/LoaderContext';
+
 const App = () => {  
   if(navigator.onLine !== true){
     alert('No Internet Connection');
@@ -10,9 +12,11 @@ const App = () => {
     return(
       <PathProvider>
         <HeaderLogoProvider>
-          <TournamentProvider>
-              <Layer/>
-          </TournamentProvider>
+          <LoaderProvider>
+            <TournamentProvider>
+                <Layer/>
+            </TournamentProvider>
+          </LoaderProvider>
         </HeaderLogoProvider>
       </PathProvider>
     );

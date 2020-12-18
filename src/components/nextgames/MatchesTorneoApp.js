@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { usePalette } from 'react-palette'
+import { getTournamentMatches } from './getTournamentMatches';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
@@ -8,38 +9,40 @@ import csgoLogo from '../../LogoTeams/csgoLogo.png';
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
 
+    const proxyUrl = `https://cors-anywhere.herokuapp.com/`;
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
+    const [noMatches, guardarNoMatches] = useState(false);  
+    const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
     const { data } = usePalette(`https://cors-anywhere.herokuapp.com/` + image_url);
+    const {darkMuted} = data;
 
     useEffect(() => { 
-        const consultarAPI = async () => {   
-            const proxyUrl = `https://cors-anywhere.herokuapp.com/`;    //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                                                         
-            const urlLiga  = `https://api.pandascore.co/csgo/matches?filter[league_id]=${tournamentId}&sort=begin_at&filter[status]=not_started,running&token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
-            try {
-                const respuestaLiga = await fetch(proxyUrl + urlLiga);       
-                if (respuestaLiga.status !== 200){
+        (async () => {
+            if (!matchesHoy.length > 0) {
+                const {objLiga, badFetch} = await getTournamentMatches(proxyUrl, tournamentId);
+                if (objLiga) {
+                    guardarLoaderProgress({width: '100%'});
+                    guardarMatchesHoy(objLiga);
+                    if(objLiga.length === 0){   
+                        guardarNoMatches(true);
+                    }
+                }
+                if (badFetch) {
                     guardarStateCrash(true);
-                };
-                const objetoLiga = await respuestaLiga.json();
-                guardarLoaderProgress({width: '100%'});
-                guardarMatchesHoy(objetoLiga); 
-
-            } catch (error) {
-                guardarStateCrash(true);      
-            };
-        };
-        
-        if(!matchesHoy.length > 0){                       // validates the content of the request to stop the request 
-            consultarAPI();
-            guardarLoaderProgress({width: '20%'});
-        };   
+                }
+            }
+        })()
+        if (darkMuted !== undefined) {
+            guardarPaleteCharged(true);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    },[darkMuted]);
+
     const {width} = loaderprogress;
     if (crash !== true){
-        if(width === '100%' && matchesHoy.length > 0){
+        if(width === '100%' && matchesHoy.length > 0 && paletestate === true){
             return(
                 <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
                     <a href="/" title={`Click para volver a la página de inicio`}>  

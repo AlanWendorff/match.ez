@@ -83,3 +83,7 @@
 .font-bold{
     font-weight: bold;
 }
+
+i.right{
+    margin-left: 0% !important;
+}
