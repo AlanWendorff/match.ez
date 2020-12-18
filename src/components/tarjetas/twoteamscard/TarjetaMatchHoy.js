@@ -6,16 +6,12 @@ import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setGameMode} from '../../../utility/SetGameMode';
-//import { TournamentContext } from '../../context/TournamentContext'
-//import { PathContext } from '../../context/PathContext';
-//import {setNewTeamPath} from '../../../utility/FirebaseSetNewTeamPath';
 
 import './tarjetaMatchesCompletos.css';
 
 const TarjetaMatchHoy = ({matchHoy, data}) => {
-    //const {database } = useContext(TournamentContext);
-    //const { paths } = useContext(PathContext);
-    const {opponents, league, begin_at, serie, number_of_games, tournament, status, live_url, name, results} = matchHoy; 
+    const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = matchHoy; 
+    console.log(matchHoy);
     momentSpanishSetup();
 
     let diaUsuario = new Date().getDate();
@@ -27,7 +23,6 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     let aTeamLogo = "";
     let bTeamLogo = "";
     let bTeamId = "";
-    //let aTeamId = "";
     let statusStream = "Streaming inactivo";
     let statusMatch = "¡Hoy " + Moment(begin_at).format('H:mm') + "hs!";
 
@@ -69,7 +64,6 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     }
 
     const {modalidad} = setGameMode(number_of_games);
-    //setNewTeamPath(aTeamSlug, aTeamId, bTeamSlug, bTeamId, database, paths);
 
     if (status === "running"){                                  // if the status is running the status stream change to "Stream in live!"
         statusStream = "Partido en vivo!";
@@ -84,9 +78,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                     <div className="col s12 m7 posicion-tarjeta">
                         <div className="card-image waves-effect waves-block waves-light">
                             <div className="card-image container-info cursor-default padding-top-8">
-    
                                 <div className="live-league-container">
-                                    <img alt="League Logo" className="league-size text-center mr" src={league.image_url}/>
                                     <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
                                 </div>
                                 
@@ -127,13 +119,13 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fecha: </span>
-                                        <span>{statusMatch}</span> 
+                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Empezó: </span>
+                                        <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                     </p>                  
                                 </div>
     
                                 <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container">
-                                    <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={live_url}> {statusStream} <span className="dot-indicator"></span></a>
+                                    <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={official_stream_url}> {statusStream} <span className="dot-indicator"></span></a>
                                 </div>
                             </div>              
                         </div>
@@ -147,11 +139,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         
                         <div className="card-image container-info cursor-default">
                             <div className="hoy-esquina-container">
-                                <div className="league-title">
-                                    <img alt="League Logo" className="league-size mr" src={league.image_url}/>
-                                    <p className="hoy-esquina">{league.name+" "+serie.full_name}</p>
-                                </div>
-                                
+                                <p className="hoy-esquina">{name}</p>
                                 <p className="hoy-esquina">{statusMatch}</p> 
                             </div>
         
@@ -193,11 +181,6 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
                             {league.name+" "+serie.full_name}
                         </p>
-
-                        <p className="text-align cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Partido:</span> 
-                            {name}
-                        </p>
         
                         <p className="text-align cursor-default font-size">
                             <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
@@ -215,11 +198,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                     <div className="card-image container-info cursor-default">
                         
                         <div className="hoy-esquina-container">
-                            <div className="league-title">
-                                <img alt="League Logo" className="league-size mr" src={league.image_url}/>
-                                <p className="labels-esquinas">{league.name+" "+serie.full_name}</p>
-                            </div>
-                             
+                            <p className="labels-esquinas">{name}</p>
                             <p className="labels-esquinas">{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
                         </div>
 
@@ -260,11 +239,6 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                     <p className="text-align cursor-default font-size">
                         <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
                         {league.name+" "+serie.full_name}
-                    </p>
-
-                    <p className="text-align cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Partido:</span> 
-                        {name}
                     </p>
     
                     <p className="text-align cursor-default font-size">

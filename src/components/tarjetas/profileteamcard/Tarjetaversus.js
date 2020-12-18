@@ -18,7 +18,7 @@ const Tarjetaversus = ({match, teamId}) => {
     const { data } = useContext(HeaderLogoContext);
     const { tournamentId, database } = useContext(TournamentContext);
     const { paths } = useContext(PathContext);
-    const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, live_url, results} = match; 
+    const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
     
     momentSpanishSetup();
 
@@ -116,13 +116,13 @@ const Tarjetaversus = ({match, teamId}) => {
                                 </p>
 
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Fecha: </span>
-                                    <span>¡Hoy  {Moment(begin_at).format('H:mm')}  hs!</span> 
+                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Empezó: </span>
+                                    <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                 </p>                  
                             </div>
 
                             <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container"> 
-                                <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={live_url}> {statusStream} <span className="dot-indicator"></span></a>
+                                <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={official_stream_url}> {statusStream} <span className="dot-indicator"></span></a>
                             </div>
                         </div>              
                     </div>
