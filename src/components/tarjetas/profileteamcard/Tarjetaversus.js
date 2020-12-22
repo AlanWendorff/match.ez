@@ -24,9 +24,9 @@ const Tarjetaversus = ({match, teamId}) => {
 
     let ownName = "";
     let ownLogo = "";
-    let opponentName = "";
+    let opponentName, bTeamName = "";
     let opponentSlug, bTeamSlug = "";
-    let opponentLogo = "";
+    let opponentLogo, bTeamLogo = "";
     let bTeamId = "";
     let hoy = "";
     let statusStream = "Streaming inactivo";
@@ -41,11 +41,15 @@ const Tarjetaversus = ({match, teamId}) => {
                 opponentLogo = csgoLogoDefault;
                 opponentSlug = opponents[i].opponent.slug;
                 bTeamId = opponents[i].opponent.id;
+                bTeamName = opponents[i].opponent.name;
+                bTeamLogo = opponentLogo;
             }else{
                 opponentLogo = opponents[i].opponent.image_url;
                 opponentSlug = opponents[i].opponent.slug;
                 opponentName = opponents[i].opponent.name;
                 bTeamId = opponents[i].opponent.id;
+                bTeamName = opponents[i].opponent.name;
+                bTeamLogo = opponents[i].opponent.image_url;
             }  
         }else{
             ownName = opponents[i].opponent.name;
@@ -61,7 +65,9 @@ const Tarjetaversus = ({match, teamId}) => {
     }
     bTeamSlug = opponentSlug;
     useEffect(() => {
-        setNewTeamPath(bTeamSlug, bTeamId, database, paths); 
+        if (opponentLogo !== toBeDefined) {
+            setNewTeamPath(bTeamSlug, bTeamId, bTeamName, bTeamLogo, database, paths); 
+        }
         setNewTournament(league, tournamentId, database);
     }, [bTeamSlug, bTeamId, database, paths, league, tournamentId]); 
     //eslint-disable-next-line

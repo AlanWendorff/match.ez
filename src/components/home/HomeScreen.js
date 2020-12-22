@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../footer/Footer';
 import TeamsHome from './TeamsHome';
 import ListadoDeTorneos from './ListadoDeTorneos';
+import Search from './searchTeam/Search';
 import csgoLogo from '../../LogoTeams/csgoLogo.png';
 import './menu.css';
 import './tournament.css';
@@ -20,6 +21,7 @@ const HomeScreen = () => {
                 <ListadoDeTorneos/>
             </div>
             <TeamsHome/>
+            <Search/>
             <Footer/>   
         </div>
     );

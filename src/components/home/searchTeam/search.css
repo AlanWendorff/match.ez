@@ -1,0 +1,34 @@
+.search-container{
+    width: 50%;
+    margin: 50px 0px;
+    padding: 20px 0px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffffb7;
+    border-radius: 3px;
+}
+
+.search-bar{
+    width: 80% !important;
+}
+
+.list-of-teams-container{
+    width: 70%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searched-team{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searched-team-img{
+    width: 20px;
+}

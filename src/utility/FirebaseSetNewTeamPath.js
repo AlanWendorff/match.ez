@@ -1,4 +1,4 @@
-export const setNewTeamPath = (bTeamSlug, bTeamId, database, paths) =>{
+export const setNewTeamPath = (bTeamSlug, bTeamId, bTeamName, bTeamLogo, database, paths) =>{
     //console.log(bTeamSlug, bTeamId);
     const objectToArray = Object.values(paths);
     const existingId = objectToArray.find(item => item.id === bTeamId);
@@ -7,7 +7,9 @@ export const setNewTeamPath = (bTeamSlug, bTeamId, database, paths) =>{
         database.ref().child('paths').push(
             {
                 "id" : bTeamId,
-                "path" : bTeamSlug
+                "path" : bTeamSlug,
+                "name" : bTeamName,
+                "img" : bTeamLogo
             }
         )
     }else{

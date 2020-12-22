@@ -35,30 +35,6 @@
     cursor: pointer !important;
 }
 
-@media (min-width: 771px) {   
-    .position-hr{
-        min-width: 550px;
-        margin: 2% 0% 3% 0%;
-        border-color: #ffffff;
-        align-self: center;
-    }
-    .font-size{
-        font-size: 17px;
-    }
-}
-  
-@media screen and (max-width: 770px) {     
-    .position-hr{
-        min-width: 300px;
-        margin: 2% 0% 3% 0%;
-        border-color: #ffffff;
-        align-self: center;
-    }
-    .font-size{
-        font-size: 12px;
-    }
-}
-
 .margin-content{
     margin-right: 5% !important;
 }
@@ -86,4 +62,28 @@
 
 i.right{
     margin-left: 0% !important;
+}
+
+@media (min-width: 771px) {   
+    .position-hr{
+        min-width: 550px;
+        margin: 2% 0% 3% 0%;
+        border-color: #ffffff;
+        align-self: center;
+    }
+    .font-size{
+        font-size: 17px;
+    }
+}
+  
+@media screen and (max-width: 770px) {     
+    .position-hr{
+        min-width: 300px;
+        margin: 2% 0% 3% 0%;
+        border-color: #ffffff;
+        align-self: center;
+    }
+    .font-size{
+        font-size: 12px;
+    }
 }
