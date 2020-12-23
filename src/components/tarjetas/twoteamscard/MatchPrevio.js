@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 import Moment from 'moment';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
@@ -25,15 +26,17 @@ const MatchPrevio = ({prevMatch, teamId}) => {
         <div className="card posicion-tarjeta size-prev-game container-gen-prev-game"> 
             <div className="card-image waves-effect waves-block waves-light">
                 <div className="card-image prev-game-content cursor-default">
-                    <div className="text-in-card">
-                        <p className="name-of-teams" style={{color: data.vibrant}}>{name}</p>
+                    <div className="prev-game-header-container">
+                        <p className="prev-game-header" style={{color: data.vibrant}}>{name}</p>
                     </div> 
 
                     <div className="prev-game-desktop">
                         <div className="logos-and-gamewin">
                             <Link to={`/${opponentSlug}`}>
                                 <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
+                                <LazyLoad offset={100} >
                                     <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                                </LazyLoad>
                                 </div> 
                             </Link>
                             <div>
@@ -44,7 +47,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                                 </div>  
                             </div>
                             <div className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>
-                                <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                                <LazyLoad offset={100} >
+                                    <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                                </LazyLoad>
                             </div> 
                         </div>
                         <div className="text-in-card">
@@ -58,7 +63,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                     <div className="prev-game-mobile">
                         <div className="row-team-name-gamewin">
                             <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
-                                <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                                <LazyLoad offset={100} >
+                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                                </LazyLoad>
                             </div> 
                             <p className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>{opponentName}</p> 
                             <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
@@ -66,7 +73,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
 
                         <div className="row-team-name-gamewin">
                             <div className={winner_id === teamId? "match-winner outline-shade-black" : "match-loser outline-shade-black"}>                            
-                                <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                                <LazyLoad offset={100} >
+                                    <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                                </LazyLoad>  
                             </div> 
                             <p className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>{ownName}</p>
                             <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>
@@ -76,10 +85,6 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                             <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
                         </div> 
                     </div>
-                    
-
-
-
                 </div>            
             </div>
             <div className="card-content click-more-info activator cursor-pointer">

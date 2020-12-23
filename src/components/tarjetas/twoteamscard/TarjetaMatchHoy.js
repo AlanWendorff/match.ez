@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 import Moment from 'moment';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
@@ -85,8 +86,11 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <div className="live-container-puntos-logos-upcoming">
     
                                     <Link to ={`/${aTeamSlug}`}>
-                                        <div className="team-canvas outline-shade-black">                            
+                                        <div className="team-canvas outline-shade-black"> 
+                                        <LazyLoad offset={100} >
                                             <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match" src={aTeamLogo}/>
+                                        </LazyLoad>                           
+                                            
                                         </div> 
                                     </Link>
     
@@ -100,7 +104,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                                     <Link to ={`/${bTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black">
+                                            <LazyLoad offset={100} >
                                             <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match" src={bTeamLogo}/>
+                                            </LazyLoad>            
                                         </div> 
                                     </Link>
                                 </div>
@@ -146,8 +152,10 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             <div className="container-puntosYlogos">
 
                                 <Link to={`/${aTeamSlug}`}>
-                                    <div className="team-canvas">                            
+                                    <div className="team-canvas">  
+                                        <LazyLoad offset={100} >
                                         <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match outline-shade-black" src={aTeamLogo}/>
+                                        </LazyLoad>                             
                                     </div>
                                 </Link>
         
@@ -157,7 +165,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to ={`/${bTeamSlug}`}>
                                     <div className="team-canvas">
+                                        <LazyLoad offset={100} >
                                         <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black" src={bTeamLogo}/>
+                                        </LazyLoad>  
                                     </div> 
                                 </Link>
                                     
@@ -205,8 +215,10 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                         <div className="container-puntosYlogos">
 
                             <Link to ={`/${aTeamSlug}`}>
-                                <div className="team-canvas">                            
+                                <div className="team-canvas">          
+                                    <LazyLoad offset={100} >
                                     <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match  outline-shade-black" src={aTeamLogo}/>
+                                    </LazyLoad>                    
                                 </div>
                             </Link>
        
@@ -216,7 +228,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to ={`/${bTeamSlug}`}>
                                 <div className="team-canvas">
+                                    <LazyLoad offset={100} >
                                     <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match  outline-shade-black" src={bTeamLogo}/>
+                                    </LazyLoad>  
                                 </div> 
                             </Link>
           

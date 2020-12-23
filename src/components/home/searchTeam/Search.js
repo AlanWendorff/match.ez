@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import FirebaseConfig from '../../../utility/FirebaseConfig';
-
+import LazyLoad from 'react-lazyload';
 import './search.css';
 
 const database = FirebaseConfig();
@@ -33,14 +33,16 @@ const Search = () => {
         <div className="search-container">
             <div className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()} }>
                 <i className="material-icons prefix">people_outline</i>
-                <input id="icon_prefix" type="text" className="validate"></input>
+                <input id="icon_prefix" type="text" className="validate" autocomplete="off"></input>
                 <label className="color-text-black" htmlFor="icon_prefix">Equipo:</label>
             </div>
             <div className="list-of-teams-container">
             {
                 equiposfiltrados.map(team => (
                     <Link className="searched-team" to={`/${team.path}`} title={`Ver el perfil de ${team.name}`} key={team.id}>
-                        <img className="searched-team-img" alt={team.name} src={team.img}/>
+                        <LazyLoad offset={100} >
+                            <img className="searched-team-img" alt={team.name} src={team.img}/>
+                        </LazyLoad>
                         <span className="font-bold color-text-black">{team.name}</span>
                     </Link> 
                 ))

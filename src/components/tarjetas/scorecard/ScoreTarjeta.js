@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrosshairs, faSkullCrossbones, faPlus } from '@fortawesome/free-solid-svg-icons';
+import LazyLoad from 'react-lazyload';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import csgoHeadshot from '../../../ImagenesVarias/csgoHeadshot.png';
 
@@ -74,10 +75,14 @@ const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
                                 <div>
                                     <div className="background-image-container">
                                         <div className="team-a-lienzo-background">
-                                            <img alt="a team" className="backgrounde-image-size" src={TeamLogoA}/>  
+                                            <LazyLoad offset={100} >
+                                                <img alt="a team" className="backgrounde-image-size" src={TeamLogoA}/>  
+                                            </LazyLoad> 
                                         </div>
                                         <div className="team-b-lienzo-background">
-                                            <img alt="b team" className="backgrounde-image-size" src={TeamLogoB}/>  
+                                            <LazyLoad offset={100} >
+                                                <img alt="b team" className="backgrounde-image-size" src={TeamLogoB}/> 
+                                            </LazyLoad>   
                                         </div>
                                     </div>
                                     <hr className="hr-score"/>

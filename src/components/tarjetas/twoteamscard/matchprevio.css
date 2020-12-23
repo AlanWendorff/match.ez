@@ -38,11 +38,12 @@
         flex-wrap: wrap;
     }
     .logos-and-gamewin{
-        padding: 2% 0% 0% 0%;
-        width: 100%;
+        padding: 2% 60px 0% 60px;
+        width: 630px;
         height: 187px;
+        justify-self: center;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
     }
     .game-win{
@@ -56,11 +57,32 @@
         margin-bottom: 0% !important;
     }
     .max-size-logo-prev-game{
-        max-width: 160px !important;
-        max-height: 187px !important;
+        max-width: 130px !important;
+        max-height: auto !important;
+        /*max-width: 160px !important;
+        max-height: 187px !important;*/
     }   
+    .text-in-card{
+        padding: 0px 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     .name-of-teams{
-        width: 40%;
+        margin: 2% 0% 2% 0% !important;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .prev-game-header-container{
+        padding: 0% 0% 0% 0%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .prev-game-header{
+        width: 100%;
         margin: 2% 0% 2% 0% !important;
         font-size: 15px;
         font-weight: bold;
@@ -77,13 +99,7 @@
     .point-B{
         padding-left: 5%;
     }
-    .text-in-card{
-        padding: 0% 0% 0% 0%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-    }
+    
 }
   
 @media screen and (max-width: 770px) {     

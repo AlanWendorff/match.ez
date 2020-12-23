@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import {HeaderLogoContext} from '../context/HeaderLogoContext';
+import LazyLoad from 'react-lazyload';
 import csgoLogo from '../../LogoTeams/csgoLogo.png';
 
 import './header.css';
@@ -17,15 +18,15 @@ const Header = () => {
         <div>
             <Link to="/" title={`Click para volver a la página de inicio`}>
                 <div className="z-depth-5 gradient-position cursor-pointer" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}>    
-                    <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Header Team Logo" src={logo}/>             
+                    <LazyLoad offset={100} >
+                        <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Header Team Logo" src={logo}/>             
+                    </LazyLoad>
                 </div> 
             </Link>
              
-
             <div className="home-box">
                 <Link to="/" className="btn-floating btn-large waves-effect waves-light red pulse zoom-element"><i className="material-icons">home</i></Link> 
             </div>
-
             
         </div>
     );

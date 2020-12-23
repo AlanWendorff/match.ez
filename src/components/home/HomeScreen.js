@@ -20,8 +20,8 @@ const HomeScreen = () => {
             <div className="tournaments-position">
                 <ListadoDeTorneos/>
             </div>
-            <TeamsHome/>
             <Search/>
+            <TeamsHome/>
             <Footer/>   
         </div>
     );
