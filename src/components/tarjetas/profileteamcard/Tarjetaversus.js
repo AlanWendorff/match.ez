@@ -69,7 +69,7 @@ const Tarjetaversus = ({match, teamId}) => {
             setNewTeamPath(bTeamSlug, bTeamId, bTeamName, bTeamLogo, database, paths); 
         }
         setNewTournament(league, tournamentId, database);
-    }, [bTeamSlug, bTeamId, database, paths, league, tournamentId]); 
+    }, [bTeamSlug, bTeamId, bTeamLogo, bTeamName, opponentLogo, database, paths, league, tournamentId]); 
     //eslint-disable-next-line
 
     if(status === 'running'){

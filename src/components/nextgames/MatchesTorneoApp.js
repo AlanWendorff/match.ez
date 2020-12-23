@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { usePalette } from 'react-palette'
 import { getTournamentMatches } from './getTournamentMatches';
+import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
@@ -39,10 +40,9 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[darkMuted]);
-
     const {width} = loaderprogress;
     if (crash !== true){
-        if(width === '100%' && matchesHoy.length > 0 && paletestate === true){
+        if(width === '100%' && paletestate === true){
             return(
                 <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
                     <a href="/" title={`Click para volver a la página de inicio`}>  
@@ -53,10 +53,16 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                     <div className="home-box">
                         <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
                     </div>
-                    <ListadoDeTarjetasHoy
-                        matchesHoy={matchesHoy}
-                        data = {data}
-                    />
+                    {noMatches?
+                        <TarjetaInformativa
+                            noMatches={noMatches}
+                        />
+                    :
+                        <ListadoDeTarjetasHoy
+                            matchesHoy={matchesHoy}
+                            data = {data}
+                        />
+                    }
                     <Footer/>
                 </div>
             );

@@ -1,7 +1,7 @@
 /*       MENU         */
 
 
-@media (min-width: 600px) and (max-width: 3840px) {    
+@media (min-width: 600px) {    
   .teams-position{
     padding: 30px 0px 30px 0px;
     display: flex;

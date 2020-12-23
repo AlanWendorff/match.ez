@@ -13,16 +13,21 @@ const Search = () => {
     useEffect(() => {
         database.ref('paths').on('value',(snap)=>{
             const arrayEquipos = Object.values(snap.val());
-            console.log(arrayEquipos);
             guardarEquipos(arrayEquipos);
         });
     }, []);
 
     const BuscarEquipos = () => {
-        let filtered = equipos.filter(team => team.path === 'astralis');
-        guardarEquiposFiltrados(filtered);
+        let input = document.getElementById('icon_prefix').value.toLowerCase();
+        let filteredTeams = []
+        equipos.map((equipo) => {
+            if ( equipo.name.toLowerCase().startsWith(input) && input !== "") {
+                filteredTeams.push(equipo);
+            }
+            return null;
+        })
+        guardarEquiposFiltrados(filteredTeams);
     }
-
 
     return ( 
         <div className="search-container">
@@ -34,8 +39,9 @@ const Search = () => {
             <div className="list-of-teams-container">
             {
                 equiposfiltrados.map(team => (
-                    <Link className="searched-team" to={`/${team.path}`} title={`Ver el perfil de ${team.path}`} key={team.id}>
-                        <span>{team.path}</span>
+                    <Link className="searched-team" to={`/${team.path}`} title={`Ver el perfil de ${team.name}`} key={team.id}>
+                        <img className="searched-team-img" alt={team.name} src={team.img}/>
+                        <span className="font-bold color-text-black">{team.name}</span>
                     </Link> 
                 ))
             }
@@ -43,5 +49,5 @@ const Search = () => {
         </div>
      );
 }
-//<img className="searched-team-img" src={team.img}/>
+
 export default Search;
