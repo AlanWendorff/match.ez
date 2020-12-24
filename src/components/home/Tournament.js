@@ -8,7 +8,7 @@ const Tournament = ({tournament}) => {
     return(
         <div className="tournament-flex"> 
             <LazyLoad offset={100} >
-                <img className="tournament-logo-size" alt={name} src={image_url}/>
+                <img className="tournament-logo-size animate__animated animate__fadeIn animate__fast" alt={name} src={image_url}/>
             </LazyLoad>
             <span className="tournament-name">{name}</span>
         </div>  

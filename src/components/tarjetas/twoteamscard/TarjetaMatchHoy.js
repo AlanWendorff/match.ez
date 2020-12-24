@@ -88,7 +88,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                     <Link to ={`/${aTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black"> 
                                         <LazyLoad offset={100} >
-                                            <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match" src={aTeamLogo}/>
+                                            <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={aTeamLogo}/>
                                         </LazyLoad>                           
                                             
                                         </div> 
@@ -105,7 +105,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                     <Link to ={`/${bTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black">
                                             <LazyLoad offset={100} >
-                                            <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match" src={bTeamLogo}/>
+                                            <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={bTeamLogo}/>
                                             </LazyLoad>            
                                         </div> 
                                     </Link>
@@ -154,7 +154,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <Link to={`/${aTeamSlug}`}>
                                     <div className="team-canvas">  
                                         <LazyLoad offset={100} >
-                                        <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match outline-shade-black" src={aTeamLogo}/>
+                                        <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={aTeamLogo}/>
                                         </LazyLoad>                             
                                     </div>
                                 </Link>
@@ -166,7 +166,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <Link to ={`/${bTeamSlug}`}>
                                     <div className="team-canvas">
                                         <LazyLoad offset={100} >
-                                        <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black" src={bTeamLogo}/>
+                                        <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={bTeamLogo}/>
                                         </LazyLoad>  
                                     </div> 
                                 </Link>
@@ -217,7 +217,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             <Link to ={`/${aTeamSlug}`}>
                                 <div className="team-canvas">          
                                     <LazyLoad offset={100} >
-                                    <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match  outline-shade-black" src={aTeamLogo}/>
+                                        <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={aTeamLogo}/>
                                     </LazyLoad>                    
                                 </div>
                             </Link>
@@ -229,7 +229,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             <Link to ={`/${bTeamSlug}`}>
                                 <div className="team-canvas">
                                     <LazyLoad offset={100} >
-                                    <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match  outline-shade-black" src={bTeamLogo}/>
+                                        <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={bTeamLogo}/>
                                     </LazyLoad>  
                                 </div> 
                             </Link>

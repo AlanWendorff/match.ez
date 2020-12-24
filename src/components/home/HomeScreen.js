@@ -42,10 +42,10 @@ const HomeScreen = () => {
     return (
         <div className="parametros-container menu-background" style={backStyle}>
             <div className="z-depth-5 gradient-menu menu-banner"> 
-                <img className="max-size-logo-header" alt="Logo Team" style={{filter: `drop-shadow(2px 2px 10px #ffffffb7)`}}  src={csgoLogo}/>   
+                <img className="max-size-logo-header animate__animated animate__fadeIn animate__fast" alt="Logo Team" style={{filter: `drop-shadow(2px 2px 10px #ffffffb7)`}}  src={csgoLogo}/>   
             </div>
             <div className="nav-bar-container">
-                <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><i className="material-icons prefix mr">people_outline</i>Equipos</a>
+                <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><i className="material-icons prefix mr">people</i>Equipos</a>
                 <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>Torneos</a>
             </div>
 
@@ -55,7 +55,7 @@ const HomeScreen = () => {
                     <TeamsHome/>
                 </Fragment>
             :
-                <div className="tournaments-position">
+                <div className="tournaments-position animate__animated animate__backInRight animate__faster">
                     <ListadoDeTorneos/>
                 </div>
             }

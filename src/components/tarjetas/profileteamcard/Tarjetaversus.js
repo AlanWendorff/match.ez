@@ -85,7 +85,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
                             <div className="live-league-container">
                                 <LazyLoad offset={100} >
-                                    <img alt="League Logo" className="league-size text-center mr" src={league.image_url}/>
+                                    <img alt="League Logo" className="league-size text-center mr animate__animated animate__fadeIn animate__fast" src={league.image_url}/>
                                 </LazyLoad>
                                 <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
                             </div>
@@ -95,7 +95,7 @@ const Tarjetaversus = ({match, teamId}) => {
                                 <Link to ={`/${opponentSlug}`}>
                                     <div className="team-canvas outline-shade-black"> 
                                         <LazyLoad offset={100} >
-                                            <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-team-logo-prev-match" src={opponentLogo}/>
+                                            <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={opponentLogo}/>
                                         </LazyLoad>                           
                                     </div> 
                                 </Link>
@@ -110,7 +110,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
                                 <div className="team-canvas outline-shade-black">
                                     <LazyLoad offset={100} >
-                                        <img alt="b team" className="max-size-team-logo-prev-match" src={ownLogo}/>
+                                        <img alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={ownLogo}/>
                                     </LazyLoad>   
                                 </div> 
                             </div>
@@ -150,7 +150,7 @@ const Tarjetaversus = ({match, teamId}) => {
                     <div className="card-image lienzo-logo"> 
                         <Link to ={`/${opponentSlug}`}> 
                             <LazyLoad offset={100} >
-                                <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo" src={opponentLogo}/> 
+                                <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast" src={opponentLogo}/> 
                             </LazyLoad>  
                         </Link>
                     </div>
@@ -189,11 +189,3 @@ const Tarjetaversus = ({match, teamId}) => {
 }
 
 export default Tarjetaversus;
-
-/*
-
-
-
-
-
-*/

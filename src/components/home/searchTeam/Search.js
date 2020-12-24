@@ -30,7 +30,7 @@ const Search = () => {
     }
 
     return ( 
-        <div className="search-container">
+        <div className="search-container animate__animated animate__backInLeft animate__faster">
             <div className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()} }>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
@@ -41,9 +41,9 @@ const Search = () => {
                 equiposfiltrados.map(team => (
                     <Link className="searched-team" to={`/${team.path}`} title={`Ver el perfil de ${team.name}`} key={team.id}>
                         <LazyLoad offset={100} >
-                            <img className="searched-team-img" alt={team.name} src={team.img}/>
+                            <img className="searched-team-img animate__animated animate__fadeIn animate__fast" alt={team.name} src={team.img}/>
                         </LazyLoad>
-                        <span className="font-bold color-text-black">{team.name}</span>
+                        <span className="font-bold color-text-black animate__animated animate__backInDown animate__faster">{team.name}</span>
                     </Link> 
                 ))
             }

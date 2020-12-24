@@ -3,17 +3,15 @@ import './loader.css';
 
 const LoadScreen = ({loaderprogress}) => {
     return (
-        <div className="loader-container">
-            <div>
-                <div className="preloader-wrapper active spinner-loader">
-                    <div className="spinner-layer spinner-color">
-                        <div className="circle-clipper left">
-                            <div className="circle spinner-width"></div>
-                        </div><div className="gap-patch">
-                            <div className="circle spinner-width"></div>
-                        </div><div className="circle-clipper right">
-                            <div className="circle spinner-width"></div>
-                        </div>
+        <div className="loader-container animate__animated animate__fadeIn animate__faster">
+            <div className="preloader-wrapper active spinner-loader">
+                <div className="spinner-layer spinner-color">
+                    <div className="circle-clipper left">
+                        <div className="circle spinner-width"></div>
+                    </div><div className="gap-patch">
+                        <div className="circle spinner-width"></div>
+                    </div><div className="circle-clipper right">
+                        <div className="circle spinner-width"></div>
                     </div>
                 </div>
             </div>

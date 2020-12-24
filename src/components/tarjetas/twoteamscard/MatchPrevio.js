@@ -35,7 +35,7 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                             <Link to={`/${opponentSlug}`}>
                                 <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
                                 <LazyLoad offset={100} >
-                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={opponentLogo}/>
                                 </LazyLoad>
                                 </div> 
                             </Link>
@@ -48,7 +48,7 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                             </div>
                             <div className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>
                                 <LazyLoad offset={100} >
-                                    <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                                    <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={ownLogo}/>
                                 </LazyLoad>
                             </div> 
                         </div>
@@ -64,7 +64,7 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                         <div className="row-team-name-gamewin">
                             <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
                                 <LazyLoad offset={100} >
-                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game" src={opponentLogo}/>
+                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={opponentLogo}/>
                                 </LazyLoad>
                             </div> 
                             <p className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>{opponentName}</p> 
@@ -74,7 +74,7 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                         <div className="row-team-name-gamewin">
                             <div className={winner_id === teamId? "match-winner outline-shade-black" : "match-loser outline-shade-black"}>                            
                                 <LazyLoad offset={100} >
-                                    <img alt="b team" className="max-size-logo-prev-game" src={ownLogo}/>
+                                    <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={ownLogo}/>
                                 </LazyLoad>  
                             </div> 
                             <p className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>{ownName}</p>
