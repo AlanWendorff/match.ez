@@ -22,14 +22,6 @@
         align-items: center;
         flex-direction: column;
     }
-    .tournament-canvas{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        height: 100%;
-        width: 300px;
-    }
     .tournament-logo-size{
         max-width: 110px;
     }
@@ -61,14 +53,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-
-    .tournament-canvas{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 85%;
     }
     .tournament-logo-size{
         max-width: 60px;

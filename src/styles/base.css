@@ -62,6 +62,9 @@
 .color-text-black{
     color: black !important;
 }
+.color-text-white{
+    color: white !important;
+}
 .font-bold{
     font-weight: bold;
 }

@@ -13,7 +13,7 @@ const Warning = () => {
                     </div>
                     <div className="card-content separate-items">
                         <p>Algo ha ocurrido, inténtelo de nuevo más tarde o recargue la página.</p>
-                        <Link to='/' class="waves-effect waves-light btn red darken-4"><i class="material-icons left">home</i>Home</Link>
+                        <Link to='/' className="waves-effect waves-light btn red darken-4"><i className="material-icons left">home</i>Home</Link>
                     </div>
                 </div>
             </div>

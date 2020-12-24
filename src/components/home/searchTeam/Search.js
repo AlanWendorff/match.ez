@@ -33,7 +33,7 @@ const Search = () => {
         <div className="search-container">
             <div className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()} }>
                 <i className="material-icons prefix">people_outline</i>
-                <input id="icon_prefix" type="text" className="validate" autocomplete="off"></input>
+                <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
                 <label className="color-text-black" htmlFor="icon_prefix">Equipo:</label>
             </div>
             <div className="list-of-teams-container">

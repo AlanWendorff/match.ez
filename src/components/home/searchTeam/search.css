@@ -55,7 +55,7 @@
   
 @media (min-width: 401px) and (max-width: 999px) {    
     .search-container{
-        width: 75%;
+        width: 80%;
         margin: 50px 0px;
         padding: 20px 0px;
         align-self: center;
@@ -91,7 +91,7 @@
 
 @media screen and (max-width: 400px) {    
     .search-container{
-        width: 75%;
+        width: 80%;
         margin: 50px 0px;
         padding: 20px 0px;
         align-self: center;

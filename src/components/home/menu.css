@@ -1,9 +1,22 @@
 /*       MENU         */
 
+.nav-bar-container{
+  display: flex;
+  flex-direction: row;
+}
+.nav-bar-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  width: 50%;
+  height: 70px;
+  background-color: #ffffff1a;
+}
 
 @media (min-width: 600px) {    
   .teams-position{
-    padding: 30px 0px 30px 0px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -23,13 +36,16 @@
   .logo-team-menu{
     max-width: 60% !important;
   }
+  .nav-bar-button:hover{
+    background-color: #ffffff2f !important;
+  }
 }
 
 @media screen and (max-width: 600px) {    
   .teams-position{
-    padding: 30px 0px 30px 0px;
+    padding-bottom: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     width: 95%;
     align-self: center;
@@ -48,6 +64,8 @@
     max-width: 50% !important;
   }
 }
+
+
 
 .menu-background{ 
   background-image: url('../../pattern/generic_team_pattern.png');
