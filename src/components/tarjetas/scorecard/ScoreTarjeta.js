@@ -59,7 +59,7 @@ const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
             return ( 
                 <div className="container-tarjeta-score">  
                     <div className="head-score-icons-kda-button-container z-depth-5">
-                        <a href="#/" className="waves-effect waves-light btn pulse red kda-button-size" onClick={() => hideShow()}><i className="material-icons right">chevron_right</i>K A M H</a>    
+                        <a href="#/" className="waves-effect waves-light btn red kda-button-size" onClick={() => hideShow()}><i className="material-icons right">chevron_right</i>K A M H</a>    
                         <p className="text-explain-game-stadistic" style={hideTitle}>Estadísticas de los jugadores en la serie.</p>
                         
                         <div className="kda-icons" style={hide}>
@@ -145,7 +145,7 @@ const ScoreTarjeta = ({scoreMatch, prevMatch}) => {
                 return ( 
                     <div className="container-tarjeta-score">  
                         <div className="text-align head-score-icons-kda-button-container z-depth-5">
-                            <a href="#/" className="waves-effect waves-light btn pulse red kda-button-size" onClick={() => hideShow()}><i className="material-icons right">chevron_right</i>K A M H</a>    
+                            <a href="#/" className="waves-effect waves-light btn red kda-button-size" onClick={() => hideShow()}><i className="material-icons right">chevron_right</i>K A M H</a>    
                             <p style={hideTitle}>Estadísticas de los jugadores en la serie.</p>
                         </div>
                         <div className="col s12 m6 cursor-default">

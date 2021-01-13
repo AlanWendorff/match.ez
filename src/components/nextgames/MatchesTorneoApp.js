@@ -6,7 +6,6 @@ import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
-import csgoLogo from '../../LogoTeams/csgoLogo.png';
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
 
@@ -40,14 +39,16 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[darkMuted]);
+
     const {width} = loaderprogress;
+    
     if (crash !== true){
         if(width === '100%' && paletestate === true){
             return(
                 <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
-                    <a href="/" title={`Click para volver a la página de inicio`}>  
+                    <a href="/" title={`Click para volver a la página de inicio`} className="animate__animated animate__fadeInDown animate__faster">  
                         <div className="z-depth-5 gradient-position cursor-pointer" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
-                            <img className="max-size-logo-header animate__animated animate__fadeIn animate__fast" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+                            <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
                         </div>
                     </a>
                     <div className="home-box">
@@ -69,11 +70,6 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         }else{
             return(
                 <div className="parametros-container menu-background">
-                    <a href="/">
-                        <div className="z-depth-5 gradient-position menu-banner cursor-pointer"> 
-                            <img title={`Click para volver a la página de inicio`} className="max-size-logo-header kaster-shadow animate__animated animate__fadeIn animate__fast" alt="Logo Team" src={csgoLogo}/>   
-                        </div>
-                    </a>
                     <div className="home-box">
                         <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
                     </div>
@@ -86,12 +82,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         };
     }else{
         return(
-            <div className="parametros-container menu-background">
-                <a href="/">
-                    <div className="z-depth-5 gradient-position menu-banner cursor-pointer"> 
-                        <img title={`Click para volver a la página de inicio`} className="max-size-logo-header kaster-shadow animate__animated animate__fadeIn animate__fast" alt="Logo Team" src={csgoLogo}/>   
-                    </div>
-                </a>         
+            <div className="parametros-container menu-background">       
                 <div className="home-box">
                     <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
                 </div>

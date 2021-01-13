@@ -2,33 +2,32 @@ import csgoLogoDefault from '../ImagenesVarias/csgoLogoDefault.png';
 
 export const setTeamLogo = (opponents, teamId) =>{
 
-    let opponentLogo = "";
-    let opponentName = "";
-    let ownName = "";
-    let ownLogo = "";
-    let opponentSlug = "";
+    const ArrteamA = opponents.find(element => element.opponent.id !== teamId);
+    const ArrteamB = opponents.find(element => element.opponent.id === teamId);
 
-    for (let i=0; i< opponents.length; i++){                        // get always the opponent team logo (pandascore object index of opponent logo team are irregular)
-        if (opponents[i].opponent.id !== teamId){
-            if(opponents[i].opponent.image_url === null){
-                opponentLogo = csgoLogoDefault;
-            }else{
-                opponentLogo = opponents[i].opponent.image_url;
-            }   
-            opponentName = opponents[i].opponent.name;
-            opponentSlug = opponents[i].opponent.slug
-        }else{
-            ownLogo = opponents[i].opponent.image_url;
-            ownName = opponents[i].opponent.name;
-            
-        }
-    };   
+    let opponentLogo;
+    let ownLogo;
+    
+    if (ArrteamA.opponent.image_url === null) {
+        opponentLogo = csgoLogoDefault;
+    }else{
+        opponentLogo = ArrteamA.opponent.image_url;
+    }
+    const opponentName = ArrteamA.opponent.name;
+    const opponentSlug = ArrteamA.opponent.slug;
+
+    if (ArrteamB.opponent.image_url === null) {
+        ownLogo = csgoLogoDefault;
+    }else{
+        ownLogo = ArrteamB.opponent.image_url;
+    }
+    const ownName = ArrteamB.opponent.name;
 
     return {
         opponentLogo, 
         opponentName, 
+        opponentSlug,
         ownLogo, 
-        ownName,
-        opponentSlug
+        ownName
     };
 }

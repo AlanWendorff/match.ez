@@ -23,48 +23,43 @@ const Tarjetaversus = ({match, teamId}) => {
     
     momentSpanishSetup();
 
-    let ownName = "";
-    let ownLogo = "";
-    let opponentName, bTeamName = "";
-    let opponentSlug, bTeamSlug = "";
-    let opponentLogo, bTeamLogo = "";
-    let bTeamId = "";
+    let ArrteamA;
+    let opponentLogo;
+    let bTeamLogo;
     let hoy = "";
     let statusStream = "Streaming inactivo";
     let diaUsuario = new Date().getDate();
     let diaMatch = parseInt(Moment(begin_at).format('D'));
 
-    const {modalidad} = setGameMode(number_of_games);
-
-    for (let i=0; i< opponents.length; i++){                        // get EVER the opponent team logo (pandascore object index of opponent logo team are irregular)
-        if (opponents[i].opponent.id !== teamId){
-            if(opponents[i].opponent.image_url === null){
-                opponentLogo = csgoLogoDefault;
-                opponentSlug = opponents[i].opponent.slug;
-                bTeamId = opponents[i].opponent.id;
-                bTeamName = opponents[i].opponent.name;
-                bTeamLogo = opponentLogo;
-            }else{
-                opponentLogo = opponents[i].opponent.image_url;
-                opponentSlug = opponents[i].opponent.slug;
-                opponentName = opponents[i].opponent.name;
-                bTeamId = opponents[i].opponent.id;
-                bTeamName = opponents[i].opponent.name;
-                bTeamLogo = opponents[i].opponent.image_url;
-            }  
+    if(opponents.length > 1){
+        ArrteamA = opponents.find(element => element.opponent.id !== teamId);
+        if (ArrteamA.opponent.image_url === null) {
+            opponentLogo = csgoLogoDefault;
+            bTeamLogo = csgoLogoDefault;
         }else{
-            ownName = opponents[i].opponent.name;
-            ownLogo = opponents[i].opponent.image_url;
+            opponentLogo = ArrteamA.opponent.image_url;
+            bTeamLogo = ArrteamA.opponent.image_url;
         }
-        if(opponents.length === 1){
-            opponentLogo = toBeDefined;
-        }
-    };
+    }else{
+        opponentLogo = toBeDefined;
+    }
+
+    const opponentName = ArrteamA.opponent.name;
+    const bTeamName = ArrteamA.opponent.name;
+    const opponentSlug  = ArrteamA.opponent.slug;
+    const bTeamSlug = ArrteamA.opponent.slug;
+    const bTeamId = ArrteamA.opponent.id;
+
+    const ArrteamB = opponents.find(element => element.opponent.id === teamId);
+    const ownLogo = ArrteamB.opponent.image_url;
+    const ownName = ArrteamB.opponent.image_url;
+
+    const {modalidad} = setGameMode(number_of_games);
 
     if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"
         hoy = "¡Hoy!";                                               
     }
-    bTeamSlug = opponentSlug;
+
     useEffect(() => {
         if (opponentLogo !== toBeDefined) {
             setNewTeamPath(bTeamSlug, bTeamId, bTeamName, bTeamLogo, database, paths); 

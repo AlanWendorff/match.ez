@@ -257,7 +257,7 @@ const MatchesApp = ({teamId}) => {
             };
         }else{                                                       // RETURN APP LOADING
             return (
-                <div className={classContainer} style={backgroundStyle}>
+                <div className={classContainer} style={{backgroundColor: '#040c1c'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     />
@@ -266,7 +266,7 @@ const MatchesApp = ({teamId}) => {
         };
     }else{
         return(
-            <div className={classContainer}>                                                                                                                                      
+            <div className={classContainer} style={{backgroundColor: '#040c1c'}}>                                                                                                                                      
                 <Warning/>       
                 <Footer/>
             </div>

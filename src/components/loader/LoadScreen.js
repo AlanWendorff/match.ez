@@ -3,7 +3,7 @@ import './loader.css';
 
 const LoadScreen = ({loaderprogress}) => {
     return (
-        <div className="loader-container animate__animated animate__fadeIn animate__faster">
+        <div className="loader-container">
             <div className="preloader-wrapper active spinner-loader">
                 <div className="spinner-layer spinner-color">
                     <div className="circle-clipper left">
