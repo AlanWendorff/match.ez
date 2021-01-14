@@ -48,6 +48,16 @@
 .mr{
     margin-right: 2% !important;
 }
+.mb-30px{
+    margin-bottom: 30px !important;
+}
+.mb-40px{
+    margin-bottom: 40px !important;
+}
+.width-50percent{
+    width: 50% !important;
+}
+
 .label-data-style{
     font-weight: bold;
 }
@@ -69,6 +79,9 @@
 
 .font-bold{
     font-weight: bold;
+}
+.font-size-50px{
+    font-size: 25px;
 }
 
 i.right{

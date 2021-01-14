@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment } from 'react';
 import Footer from '../footer/Footer';
 import TeamsHome from './TeamsHome';
 import TeamCollection from './teamdirectacces/TeamCollection';
@@ -36,10 +36,6 @@ const HomeScreen = () => {
             backgroundColor: '#ffffff1a'
         })
     };
-
-    useEffect(() => {
-        console.log(collection);
-    }, [collection]);
 
     return (
         <div className="parametros-container menu-background">

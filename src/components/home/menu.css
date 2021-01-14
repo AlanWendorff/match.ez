@@ -33,6 +33,7 @@
     height: 130px;
     width: 130px;
     margin: 2%;
+    transition: background 0.5s;
   }
   .logo-team-menu{
     max-width: 60% !important;
@@ -60,6 +61,7 @@
     height: 130px;
     width: 130px;
     margin: 2%;
+    transition: background 0.5s;
   }
   .logo-team-menu{
     max-width: 50% !important;

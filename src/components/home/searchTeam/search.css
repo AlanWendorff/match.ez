@@ -1,12 +1,4 @@
-.search-bar{
-    width: 80% !important;
-}
-.list-of-teams-container{
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 .searched-team-img{
     width: 30px;
 }
@@ -24,6 +16,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+    transition: background 0.5s;
 }
 
 .pin-team-container:hover{
@@ -47,6 +40,7 @@
     justify-content: center;
     border-radius: 3px;
     background-color: rgba(43, 255, 0, 0.384);
+    transition: background 0.5s;
 }
 
 .pin-team-container-saved:hover{
@@ -60,7 +54,23 @@
     border-radius: 3px;
 }
 
-@media (min-width: 1000px) {    
+.save-container:hover{
+    cursor: pointer;
+    background: #09ff006e;
+}
+
+@media (min-width: 1000px) {   
+    .search-bar{
+        width: 80% !important;
+        display: flex;
+        align-items: center;
+    } 
+    .list-of-teams-container{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .search-container{
         width: 50%;
         margin: 50px 0px;
@@ -81,6 +91,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        transition: background 0.5s;
     }
     .searched-team:hover{
         width: 100%;
@@ -92,10 +103,33 @@
         background-color: #0000001c;
         border-radius: 3px;
     }
+    .save-container{
+        margin-left: 50px;
+        width: 50px;
+        height: 45px;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #525355;
+        border-radius: 100px;
+        transition: background 0.5s;
+    }
    
 }
   
 @media (min-width: 401px) and (max-width: 999px) {    
+    .search-bar{
+        width: 80% !important;
+        display: flex;
+        align-items: center;
+    }
+    .list-of-teams-container{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .search-container{
         width: 80%;
         margin: 50px 0px;
@@ -127,11 +161,33 @@
         background-color: #0000001c;
         border-radius: 3px;
     }
+    .save-container{
+        margin-left: 30px;
+        width: 55px;
+        height: 45px;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #525355;
+        border-radius: 100px;
+        transition: background 0.5s;
+    }
    
 }
 
-
 @media screen and (max-width: 400px) {    
+    .search-bar{
+        width: 90% !important;
+        display: flex;
+        align-items: center;
+    }
+    .list-of-teams-container{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .search-container{
         width: 80%;
         margin: 50px 0px;
@@ -152,6 +208,18 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+    .save-container{
+        margin-left: 15px;
+        width: 60px;
+        height: 45px;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #525355;
+        border-radius: 100px;
+        transition: background 0.5s;
     }
 }
   
