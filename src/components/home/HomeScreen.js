@@ -1,6 +1,7 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Footer from '../footer/Footer';
 import TeamsHome from './TeamsHome';
+import TeamCollection from './teamdirectacces/TeamCollection';
 import ListadoDeTorneos from './ListadoDeTorneos';
 import Search from './searchTeam/Search';
 import csgoLogo from '../../LogoTeams/csgoLogo.png';
@@ -14,6 +15,7 @@ const HomeScreen = () => {
     const [navbar, setNavBar] = useState(true);
     const [teambuttonstyle, setTeamButtonStyle] = useState({backgroundColor: '#ffffff4d'});
     const [tournamentbuttonstyle, setTournamentButtonStyle] = useState({backgroundColor: '#ffffff1a'});
+    const [collection, setCollection] = useState([]);
 
     const setTournament = () => {
         setNavBar(false);
@@ -35,6 +37,10 @@ const HomeScreen = () => {
         })
     };
 
+    useEffect(() => {
+        console.log(collection);
+    }, [collection]);
+
     return (
         <div className="parametros-container menu-background">
             <div className="z-depth-5 gradient-menu menu-banner animate__animated animate__fadeInDown animate__faster"> 
@@ -47,7 +53,13 @@ const HomeScreen = () => {
 
             {navbar?
                 <Fragment>
-                    <Search/>
+                    <Search
+                        setCollection={setCollection}
+                        collection={collection}
+                    />
+                    <TeamCollection
+                        collection={collection}
+                    />
                     <TeamsHome/>
                 </Fragment>
             :
