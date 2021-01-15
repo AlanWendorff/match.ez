@@ -10,6 +10,7 @@ const database = FirebaseConfig();
 const Search = ({setCollection, collection}) => {
 
     const [equipos, guardarEquipos] = useState([]);
+    const [equiposdatabase, guardarEquiposDataBase] = useState([]);
     const [equiposfiltrados, guardarEquiposFiltrados] = useState([]);
     const [savebuttonstate, setSaveButtonState] = useState({display: 'none'});
     
@@ -20,11 +21,38 @@ const Search = ({setCollection, collection}) => {
                 guardarEquipos(arrayEquipos);
             });
         }else{
+            database.ref('paths').on('value',(snap)=>{
+                const arrayEquipos = Object.values(snap.val());
+                guardarEquiposDataBase(arrayEquipos);
+            });
             guardarEquipos(JSON.parse(localStorage.getItem('teams')));
             setCollection(JSON.parse(localStorage.getItem('collection')));
         }
         //eslint-disable-next-line
     }, []);
+    if (equiposdatabase.length > 0) {
+        function comparer(otherArray){
+            return function(current){
+              return otherArray.filter(function(other){
+                return other.name === current.name
+              }).length === 0;
+            }
+        }
+          
+        const onlyInA = equiposdatabase.filter(comparer(equipos));
+        const onlyInB = equipos.filter(comparer(equiposdatabase));
+          
+        const newTeamsArray = onlyInA.concat(onlyInB);
+        if (newTeamsArray.length !== 0) {
+            let equiposModificable = equipos;
+            newTeamsArray.map((newTeam) => {
+                equiposModificable.push(newTeam);
+                return equiposModificable;
+            })
+            guardarEquipos(equiposModificable);
+        }
+    }
+    
 
     const BuscarEquipos = () => {
         let input = document.getElementById('icon_prefix').value.toLowerCase();
