@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
+import ProgressiveImage from 'react-progressive-image';
+import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import Moment from 'moment';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
@@ -34,9 +35,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                         <div className="logos-and-gamewin">
                             <Link to={`/${opponentSlug}`}>
                                 <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
-                                <LazyLoad offset={100} >
-                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={opponentLogo}/>
-                                </LazyLoad>
+                                <ProgressiveImage src={opponentLogo} placeholder={csgoLogo}>
+                                    {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                </ProgressiveImage>
                                 </div> 
                             </Link>
                             <div>
@@ -47,9 +48,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                                 </div>  
                             </div>
                             <div className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>
-                                <LazyLoad offset={100} >
-                                    <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={ownLogo}/>
-                                </LazyLoad>
+                                <ProgressiveImage src={ownLogo} placeholder={csgoLogo}>
+                                    {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                </ProgressiveImage>
                             </div> 
                         </div>
                         <div className="text-in-card">
@@ -63,9 +64,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                     <div className="prev-game-mobile">
                         <div className="row-team-name-gamewin">
                             <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
-                                <LazyLoad offset={100} >
-                                    <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={opponentLogo}/>
-                                </LazyLoad>
+                                <ProgressiveImage src={opponentLogo} placeholder={csgoLogo}>
+                                    {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                </ProgressiveImage>
                             </div> 
                             <p className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>{opponentName}</p> 
                             <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
@@ -73,9 +74,9 @@ const MatchPrevio = ({prevMatch, teamId}) => {
 
                         <div className="row-team-name-gamewin">
                             <div className={winner_id === teamId? "match-winner outline-shade-black" : "match-loser outline-shade-black"}>                            
-                                <LazyLoad offset={100} >
-                                    <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={ownLogo}/>
-                                </LazyLoad>  
+                                <ProgressiveImage src={ownLogo} placeholder={csgoLogo}>
+                                    {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                </ProgressiveImage> 
                             </div> 
                             <p className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>{ownName}</p>
                             <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>

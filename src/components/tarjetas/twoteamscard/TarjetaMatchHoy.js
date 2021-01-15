@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
+import ProgressiveImage from 'react-progressive-image';
+import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import Moment from 'moment';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
@@ -87,10 +88,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                                     <Link to ={`/${aTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black"> 
-                                        <LazyLoad offset={100} >
-                                            <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={aTeamLogo}/>
-                                        </LazyLoad>                           
-                                            
+                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
+                                            {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        </ProgressiveImage>                          
                                         </div> 
                                     </Link>
     
@@ -104,9 +104,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                                     <Link to ={`/${bTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black">
-                                            <LazyLoad offset={100} >
-                                            <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={bTeamLogo}/>
-                                            </LazyLoad>            
+                                            <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
+                                            {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
+                                            </ProgressiveImage>          
                                         </div> 
                                     </Link>
                                 </div>
@@ -153,9 +153,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to={`/${aTeamSlug}`}>
                                     <div className="team-canvas">  
-                                        <LazyLoad offset={100} >
-                                        <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={aTeamLogo}/>
-                                        </LazyLoad>                             
+                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
+                                            {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        </ProgressiveImage>                              
                                     </div>
                                 </Link>
         
@@ -165,9 +165,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to ={`/${bTeamSlug}`}>
                                     <div className="team-canvas">
-                                        <LazyLoad offset={100} >
-                                        <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={bTeamLogo}/>
-                                        </LazyLoad>  
+                                        <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
+                                            {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        </ProgressiveImage>    
                                     </div> 
                                 </Link>
                                     
@@ -216,9 +216,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to ={`/${aTeamSlug}`}>
                                 <div className="team-canvas">          
-                                    <LazyLoad offset={100} >
-                                        <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={aTeamLogo}/>
-                                    </LazyLoad>                    
+                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
+                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                    </ProgressiveImage>                       
                                 </div>
                             </Link>
        
@@ -228,9 +228,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to ={`/${bTeamSlug}`}>
                                 <div className="team-canvas">
-                                    <LazyLoad offset={100} >
-                                        <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={bTeamLogo}/>
-                                    </LazyLoad>  
+                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
+                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
+                                    </ProgressiveImage>   
                                 </div> 
                             </Link>
           

@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
+import ProgressiveImage from 'react-progressive-image';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { TournamentContext } from '../../context/TournamentContext'
 import { PathContext } from '../../context/PathContext';
@@ -79,9 +79,6 @@ const Tarjetaversus = ({match, teamId}) => {
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <LazyLoad offset={100} >
-                                    <img alt="League Logo" className="league-size text-center mr animate__animated animate__fadeIn animate__fast" src={league.image_url}/>
-                                </LazyLoad>
                                 <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
@@ -89,9 +86,9 @@ const Tarjetaversus = ({match, teamId}) => {
 
                                 <Link to ={`/${opponentSlug}`}>
                                     <div className="team-canvas outline-shade-black"> 
-                                        <LazyLoad offset={100} >
-                                            <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={opponentLogo}/>
-                                        </LazyLoad>                           
+                                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefault}>
+                                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        </ProgressiveImage>                        
                                     </div> 
                                 </Link>
 
@@ -103,10 +100,10 @@ const Tarjetaversus = ({match, teamId}) => {
                                     </div>  
                                 </div>
 
-                                <div className="team-canvas outline-shade-black">
-                                    <LazyLoad offset={100} >
-                                        <img alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={ownLogo}/>
-                                    </LazyLoad>   
+                                <div className="team-canvas outline-shade-black">\
+                                    <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefault}>
+                                        {src => <img alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={src} />}
+                                    </ProgressiveImage>  
                                 </div> 
                             </div>
 
@@ -144,9 +141,9 @@ const Tarjetaversus = ({match, teamId}) => {
 
                     <div className="card-image lienzo-logo"> 
                         <Link to ={`/${opponentSlug}`}> 
-                            <LazyLoad offset={100} >
-                                <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast" src={opponentLogo}/> 
-                            </LazyLoad>  
+                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefault}>
+                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                        </ProgressiveImage>
                         </Link>
                     </div>
 

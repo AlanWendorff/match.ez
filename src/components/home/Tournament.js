@@ -1,15 +1,15 @@
 import React from 'react';
-import LazyLoad from 'react-lazyload';
+import ProgressiveImage from 'react-progressive-image';
+import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
 import './tournament.css';
 
 const Tournament = ({tournament}) => {
     const {name, image_url} = tournament;
-    //real-button
     return(
         <div className="tournament-flex"> 
-            <LazyLoad offset={100} >
-                <img className="tournament-logo-size animate__animated animate__fadeIn animate__fast" alt={name} src={image_url}/>
-            </LazyLoad>
+            <ProgressiveImage src={image_url} placeholder={csgoLogo}>
+                {src => <img className="tournament-logo-size" src={src} alt={name} />}
+            </ProgressiveImage>
             <span className="tournament-name">{name}</span>
         </div>  
 
