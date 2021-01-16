@@ -52,7 +52,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
     const ArrteamB = opponents.find(element => element.opponent.id === teamId);
     const ownLogo = ArrteamB.opponent.image_url;
-    const ownName = ArrteamB.opponent.image_url;
+    const ownName = ArrteamB.opponent.name;
 
     const {modalidad} = setGameMode(number_of_games);
 
@@ -100,7 +100,7 @@ const Tarjetaversus = ({match, teamId}) => {
                                     </div>  
                                 </div>
 
-                                <div className="team-canvas outline-shade-black">\
+                                <div className="team-canvas outline-shade-black">
                                     <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefault}>
                                         {src => <img alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>  

@@ -5,14 +5,15 @@ import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
 
-const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSaveButtonState}) => {
+const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSaveButtonState, equiposdatabase}) => {
     
     const [teamsaved, setTeamSaved] = useState(false);
+    const databaseTeamArray = equiposdatabase.find(databaseTeam => databaseTeam.name === team.name);
     
     return ( 
         <div className="team-container">
             <Link className="searched-team" to={`/${team.path}`} title={`Ver el perfil de ${team.name}`} key={team.id}>
-                <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                <ProgressiveImage src={databaseTeamArray.img} placeholder={csgoLogo}>
                     {src => <img className="searched-team-img animate__animated animate__fadeInLeft animate__fast" src={src} alt={team.name}  />}
                 </ProgressiveImage>
                 <span className="font-bold color-text-black animate__animated animate__fadeInRight animate__faster">{team.name}</span>

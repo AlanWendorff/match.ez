@@ -84,6 +84,7 @@ const Search = ({setCollection, collection}) => {
                 equiposfiltrados.map(team => (
                     <Team
                         key={team.id}
+                        equiposdatabase={equiposdatabase}
                         team={team}
                         setCollection={setCollection}
                         guardarEquipos={guardarEquipos}
