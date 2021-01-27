@@ -48,6 +48,14 @@
 .mr{
     margin-right: 2% !important;
 }
+.mb-0{
+    margin-bottom: 0px !important;
+}
+
+.mb-15px{
+    margin-bottom: 15px !important;
+}
+
 .mb-30px{
     margin-bottom: 30px !important;
 }

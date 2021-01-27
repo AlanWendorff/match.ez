@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { usePalette } from 'react-palette'
 import { getTournamentMatches } from './getTournamentMatches';
+/* import Moment from 'moment'; */
+/* import {momentSpanishSetup} from '../../utility/MomentSpanishSetup'; */
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
@@ -8,6 +10,7 @@ import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
+    /* momentSpanishSetup(); */
 
     const proxyUrl = `https://cors-anywhere.herokuapp.com/`;
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
@@ -41,37 +44,58 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     },[darkMuted]);
 
     const {width} = loaderprogress;
-    
+
     if (crash !== true){
         if(width === '100%' && paletestate === true){
-            return(
-                <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
-                    <a href="/" title={`Click para volver a la página de inicio`} className="animate__animated animate__fadeInDown animate__faster">  
-                        <div className="z-depth-5 gradient-position cursor-pointer" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
-                            <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+            if(noMatches !== true){
+                //const live = matchesHoy.filter(match => match.status === "running");
+                //const hoy = matchesHoy.filter(match => match.begin_at === "running");
+                //const proximamente = matchesHoy.filter(match => match.status === "running");
+                return(
+                    <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
+                        <a href="/" title={`Click para volver a la página de inicio`} className="animate__animated animate__fadeInDown animate__faster">  
+                            <div className="z-depth-5 gradient-position cursor-pointer mb-0" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
+                                <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+                            </div>
+                        </a>
+                        {/*<div className="nav-bar-container mb-15px animate__animated animate__fadeInDown animate__faster">
+                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button"  href={`/${}#`} >En Vivo</a>
+                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Hoy</a>
+                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Proximamente</a>
+                        </div>*/}
+                        <div className="home-box">
+                            <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                         </div>
-                    </a>
-                    <div className="home-box">
-                        <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
-                    </div>
-                    {noMatches?
-                        <TarjetaInformativa
-                            noMatches={noMatches}
-                        />
-                    :
                         <ListadoDeTarjetasHoy
                             matchesHoy={matchesHoy}
                             data = {data}
                         />
-                    }
-                    <Footer/>
-                </div>
-            );
+                        <Footer/>
+                    </div>
+                );
+            }else{
+                return(
+                    <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
+                        <a href="/" title={`Click para volver a la página de inicio`} className="animate__animated animate__fadeInDown animate__faster">  
+                            <div className="z-depth-5 gradient-position cursor-pointer mb-0" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
+                                <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+                            </div>
+                        </a>
+                        <div className="home-box">
+                            <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
+                        </div>
+                        <TarjetaInformativa
+                            noMatches={noMatches}
+                        />
+                        <Footer/>
+                    </div>
+                );
+            }
         }else{
             return(
                 <div className="parametros-container menu-background">
                     <div className="home-box">
-                        <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
+                        <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                     </div>
                     <LoadScreen
                         loaderprogress={loaderprogress}
@@ -84,7 +108,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         return(
             <div className="parametros-container menu-background">       
                 <div className="home-box">
-                    <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element pulse"><i className="material-icons">home</i></a> 
+                    <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                 </div>
                 <Warning/> 
                 <Footer/>

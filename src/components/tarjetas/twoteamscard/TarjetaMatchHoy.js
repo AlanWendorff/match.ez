@@ -13,11 +13,9 @@ import './tarjetaMatchesCompletos.css';
 
 const TarjetaMatchHoy = ({matchHoy, data}) => {
     const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = matchHoy; 
-    console.log(matchHoy);
     momentSpanishSetup();
-
-    let diaUsuario = new Date().getDate();
-    let diaMatch = parseInt(Moment(begin_at).format('D')); 
+    const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
+    const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
     let aTeamSlug = "";
     let bTeamSlug = "";
     let aTeamName = "";
@@ -72,7 +70,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         statusMatch = "¡Ahora!";
     }
 
-    if (diaUsuario === diaMatch || status === "running"){ 
+    if (dateUser === dateMatch || status === "running"){ 
         if (status === "running"){
             const {A_point, B_point} = setMatchResult(results, bTeamId); 
             return (

@@ -24,7 +24,7 @@ const Header = () => {
             </a>
              
             <div className="home-box">
-                <a href="/" className="btn-floating btn-large waves-effect waves-light red pulse zoom-element"><i className="material-icons">home</i></a> 
+                <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
             </div>
             
         </div>

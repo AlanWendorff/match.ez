@@ -19,6 +19,7 @@ const Search = ({setCollection, collection}) => {
             database.ref('paths').on('value',(snap)=>{
                 const arrayEquipos = Object.values(snap.val());
                 guardarEquipos(arrayEquipos);
+                guardarEquiposDataBase(arrayEquipos);
             });
         }else{
             database.ref('paths').on('value',(snap)=>{
