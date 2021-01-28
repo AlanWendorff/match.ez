@@ -28,6 +28,7 @@ export const setTeamLogo = (opponents, teamId) =>{
         opponentName, 
         opponentSlug,
         ownLogo, 
-        ownName
+        ownName,
+        csgoLogoDefault
     };
 }

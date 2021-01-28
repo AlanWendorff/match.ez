@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
+import ScoreTarjeta from './matchStadistic/ScoreTarjeta';
 import ProgressiveImage from 'react-progressive-image';
 import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import Moment from 'moment';
@@ -11,14 +12,13 @@ import {setGameMode} from '../../../utility/SetGameMode';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const MatchPrevio = ({prevMatch, teamId}) => {
+const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
 
     momentSpanishSetup();
     const ultimoMatch = prevMatch[0];
-
     const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = ultimoMatch;
     const { data } = useContext(HeaderLogoContext);
-    const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug} = setTeamLogo(opponents, teamId);
+    const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
 
@@ -28,36 +28,40 @@ const MatchPrevio = ({prevMatch, teamId}) => {
             <div className="card-image waves-effect waves-block waves-light">
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
-                        <p className="prev-game-header" style={{color: data.vibrant}}>{name}</p>
+                        <p className="prev-game-header" style={{color: data.darkMuted}}>{name}</p>
                     </div> 
 
                     <div className="prev-game-desktop">
-                        <div className="logos-and-gamewin">
+                        <div className="team-column">
                             <Link to={`/${opponentSlug}`}>
-                                <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
-                                <ProgressiveImage src={opponentLogo} placeholder={csgoLogo}>
-                                    {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
-                                </ProgressiveImage>
+                                <div className={winner_id === teamId? "match-loser-prevgame outline-shade-black" :"match-winner-prevgame outline-shade-black"}>                            
+                                    <ProgressiveImage src={opponentLogo} placeholder={csgoLogo}>
+                                        {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                    </ProgressiveImage>
                                 </div> 
                             </Link>
-                            <div>
-                                <div className="game-win">
-                                    <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
-                                    <p>-</p>
-                                    <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>                           
-                                </div>  
-                            </div>
-                            <div className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>
+
+                            <p className="name-of-teams">{opponentName}</p> 
+                        </div>
+
+                        <div>
+                            <div className="game-win">
+                                <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
+                                <p>-</p>
+                                <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>                           
+                            </div> 
+
+                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
+                        </div>
+
+                        <div className="team-column">
+                            <div className={winner_id === teamId? "match-winner-prevgame outline-shade-black" :"match-loser-prevgame outline-shade-black"}>
                                 <ProgressiveImage src={ownLogo} placeholder={csgoLogo}>
                                     {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
+                            <p className="name-of-teams">{ownName}</p> 
                         </div>
-                        <div className="text-in-card">
-                            <p className="name-of-teams">{opponentName}</p> 
-                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
-                            <p className="name-of-teams">{ownName}</p>
-                        </div> 
                     </div>
 
 
@@ -89,20 +93,25 @@ const MatchPrevio = ({prevMatch, teamId}) => {
                 </div>            
             </div>
             <div className="card-content click-more-info activator cursor-pointer">
-                <span className="head-font" style={{color: data.vibrant}}><i className="material-icons right">info</i></span>
+                <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
             </div>
             <div className="card-reveal">
                 <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i></span>
+                <ScoreTarjeta
+                    scoreMatch={scoreMatch}
+                    opponents={opponents}
+                    csgoLogoDefault={csgoLogoDefault}
+                />
 
-                <p className="text-align cursor-default font-size">
-                    <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
+                <p className="text-align-center cursor-default font-size">
+                    <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
                     {league.name +" "+ serie.full_name}
                 </p>                        
-                <p className="text-align label-fecha cursor-default font-size">
-                    <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Se jugó el: </span>
+                <p className="text-align-center label-fecha cursor-default font-size">
+                    <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
                     <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
                 </p>
-
+                
             </div>
         </div>
     );

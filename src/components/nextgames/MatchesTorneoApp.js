@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { usePalette } from 'react-palette'
 import { getTournamentMatches } from './getTournamentMatches';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 /* import Moment from 'moment'; */
 /* import {momentSpanishSetup} from '../../utility/MomentSpanishSetup'; */
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
@@ -53,16 +55,10 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 //const proximamente = matchesHoy.filter(match => match.status === "running");
                 return(
                     <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
-                        <a href="/" title={`Click para volver a la página de inicio`} className="animate__animated animate__fadeInDown animate__faster">  
-                            <div className="z-depth-5 gradient-position cursor-pointer mb-0" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
-                                <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
-                            </div>
-                        </a>
-                        {/*<div className="nav-bar-container mb-15px animate__animated animate__fadeInDown animate__faster">
-                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button"  href={`/${}#`} >En Vivo</a>
-                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Hoy</a>
-                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Proximamente</a>
-                        </div>*/}
+                        <div className="z-depth-5 gradient-position cursor-pointer mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
+                            <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+                            <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
+                        </div>
                         <div className="home-box">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                         </div>
@@ -76,11 +72,10 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
             }else{
                 return(
                     <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
-                        <a href="/" title={`Click para volver a la página de inicio`} className="animate__animated animate__fadeInDown animate__faster">  
-                            <div className="z-depth-5 gradient-position cursor-pointer mb-0" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
-                                <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
-                            </div>
-                        </a>
+                        <div className="z-depth-5 gradient-position cursor-pointer mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
+                            <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+                            <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
+                        </div>
                         <div className="home-box">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                         </div>
@@ -94,22 +89,15 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         }else{
             return(
                 <div className="parametros-container menu-background">
-                    <div className="home-box">
-                        <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
-                    </div>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     /> 
-                    <Footer/>
                 </div>
             );
         };
     }else{
         return(
             <div className="parametros-container menu-background">       
-                <div className="home-box">
-                    <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
-                </div>
                 <Warning/> 
                 <Footer/>
             </div>
@@ -117,5 +105,11 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     };   
     
 }
+
+/*<div className="nav-bar-container mb-15px animate__animated animate__fadeInDown animate__faster">
+                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button"  href={`/${}#`} >En Vivo</a>
+                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Hoy</a>
+                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Proximamente</a>
+                        </div>*/
  
 export default MatchTorneoApp;

@@ -46,6 +46,7 @@
     padding-left: 5%;
 }
 .match-loser{
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +54,7 @@
     font-weight: bold;
 }
 .match-winner{
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,0 +1,28 @@
+
+.team-field{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.space{
+    width: 250px !important;
+    padding-left: 4%;
+}
+
+.top-line-padding{
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.table-font-size{
+    font-size: 12px;
+}
+
+td, th{
+    padding: 10px 5px !important;
+}
+th{
+    border-radius: 0%;
+    background-color: #00000025;
+}
+

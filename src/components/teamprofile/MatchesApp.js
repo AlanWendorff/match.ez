@@ -7,7 +7,6 @@ import MatchPrevio from '../tarjetas/twoteamscard/MatchPrevio';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
-import ScoreTarjeta from '../tarjetas/scorecard/ScoreTarjeta';
 import { HeaderLogoContext } from '../context/HeaderLogoContext';
 import {setTeamLogo} from '../../utility/SetTeamLogo';
 
@@ -214,10 +213,6 @@ const MatchesApp = ({teamId}) => {
                             teamId={teamId}
                             scoreMatch={scoreMatch}
                         />
-                        <ScoreTarjeta
-                            scoreMatch={scoreMatch}
-                            prevMatch={prevMatch}
-                        />
                         <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(2px 2px 20px ${data.lightVibrant})`}}/>
                         <Estadisticas
                             winRate={winRate}
@@ -237,10 +232,6 @@ const MatchesApp = ({teamId}) => {
                             prevMatch={prevMatch}
                             teamId={teamId}
                             scoreMatch={scoreMatch}
-                        />
-                        <ScoreTarjeta
-                            scoreMatch={scoreMatch}
-                            prevMatch={prevMatch}
                         />
                         <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}}/>
                         <Estadisticas
