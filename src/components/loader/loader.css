@@ -28,3 +28,28 @@
     margin-bottom: 100px !important;
     align-self: center;
 }
+
+/* SIMPLE SPINNER LOADER */
+.simple-loader-container{
+    padding: 3% 3% 3% 3%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    align-self: center;
+}
+.simple-spinner-width{
+    border-width: 7px !important;
+}
+.simple-spinner-loader{
+    align-self: center;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+.web-logo{
+    width: 100px;
+}

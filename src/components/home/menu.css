@@ -70,12 +70,7 @@
 
 .menu-background{ 
   background-image: url('../../pattern/generic_team_pattern.png');
-  background-color: #040c1c;
   background-repeat: repeat; 
   background-size: 50px 50px;
   height: 100%;
-}
-
-.menu-banner{
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.94) 0%, #42d862 100%);
 }
