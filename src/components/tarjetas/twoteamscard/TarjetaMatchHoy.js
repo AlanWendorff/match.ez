@@ -74,7 +74,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         if (status === "running"){
             const {A_point, B_point} = setMatchResult(results, bTeamId); 
             return (
-                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match">
+                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy">
                     <div className="col s12 m7 posicion-tarjeta">
                         <div className="card-image waves-effect waves-block waves-light">
                             <div className="card-image container-info cursor-default padding-top-8">
@@ -138,7 +138,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
              ); 
         }else{
             return(
-                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match"> 
+                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy"> 
                     <div className="card-image waves-effect waves-block waves-light">
         
                         <div className="card-image container-info cursor-default">
@@ -200,7 +200,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         }
     }else{
         return (
-            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match"> 
+            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy"> 
                 <div className="card-image waves-effect waves-block waves-light">
     
                     <div className="card-image container-info cursor-default">

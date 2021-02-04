@@ -15,14 +15,48 @@
 }
 
 .table-font-size{
-    font-size: 12px;
+    font-size: 14px;
 }
 
 td, th{
     padding: 10px 5px !important;
 }
-th{
-    border-radius: 0%;
-    background-color: #00000025;
+
+@media (min-width: 771px) {  
+    th{
+        border-radius: 0%;
+        background-color: #2d6ea6b6;
+        color: white !important;
+        font-family: "Gilroy-ExtraBold";
+    }
+    .player-name-style{
+        margin: 0px 5px;
+        color: #2d6da3;
+        font-family: "Gilroy-ExtraBold";
+    }
+    .Team-name-score{
+        font-family: "Gilroy-ExtraBold";
+        color: white;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 770px) {  
+    th{
+        border-radius: 0%;
+        background-color: #2d6ea6b6;
+        color: white !important;
+        font-family: "Gilroy-ExtraBold";
+    }
+    .player-name-style{
+        margin: 0px 5px;
+        color: #2d6da3;
+        font-family: "Gilroy-ExtraBold";
+    }
+    .Team-name-score{
+        font-family: "Gilroy-ExtraBold";
+        color: white;
+        font-size: 15px;
+    }
 }
 

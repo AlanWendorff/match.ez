@@ -88,7 +88,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
             }
         }else{
             return(
-                <div className="parametros-container menu-background">
+                <div className="parametros-container menu-background" style={{backgroundColor: '#040c1c'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     /> 
@@ -105,11 +105,5 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     };   
     
 }
-
-/*<div className="nav-bar-container mb-15px animate__animated animate__fadeInDown animate__faster">
-                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button"  href={`/${}#`} >En Vivo</a>
-                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Hoy</a>
-                            //<a onClick={ ()=>{  } } className="waves-effect waves-light btn nav-bar-button" >Proximamente</a>
-                        </div>*/
  
 export default MatchTorneoApp;

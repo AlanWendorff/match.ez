@@ -24,7 +24,7 @@ const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
 
     //eslint-disable-next-line
     return(
-        <div className="card posicion-tarjeta size-prev-game container-gen-prev-game"> 
+        <div className="card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy"> 
             <div className="card-image waves-effect waves-block waves-light">
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">

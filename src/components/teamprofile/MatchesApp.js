@@ -168,7 +168,8 @@ const MatchesApp = ({teamId}) => {
                 //console.log("calling next match");
                 if (objNextMatches) {
                     guardarLoaderProgress({width: '100%'});
-                    guardarMatches(objNextMatches);
+                    const matchesFiltered = objNextMatches.filter(status => status.status !== "canceled");
+                    guardarMatches(matchesFiltered);
                     if(objNextMatches.length === 0){   
                         guardarNoMatches(true);
                     }

@@ -5,7 +5,7 @@ import './warning.css';
 
 const Warning = () => {
     return ( 
-        <div className="warning posicion-tarjeta">
+        <div className="warning posicion-tarjeta font-gilroy">
             <div className="col s12 m7">
                 <div className="card">
                     <div className="card-image">

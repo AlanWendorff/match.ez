@@ -20,12 +20,11 @@ const Tarjetaversus = ({match, teamId}) => {
     const { tournamentId, database } = useContext(TournamentContext);
     const { paths } = useContext(PathContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
-    
     momentSpanishSetup();
 
     let ArrteamA;
-    let opponentLogo;
-    let bTeamLogo;
+    let opponentLogo, opponentName, opponentSlug
+    let bTeamLogo, bTeamName, bTeamSlug, bTeamId
     let hoy = "";
     let statusStream = "Streaming inactivo";
     let diaUsuario = new Date().getDate();
@@ -35,20 +34,22 @@ const Tarjetaversus = ({match, teamId}) => {
         ArrteamA = opponents.find(element => element.opponent.id !== teamId);
         if (ArrteamA.opponent.image_url === null) {
             opponentLogo = csgoLogoDefault;
+            opponentSlug  = ArrteamA.opponent.slug;
+            opponentName = ArrteamA.opponent.name;
+            bTeamId = ArrteamA.opponent.id;
             bTeamLogo = csgoLogoDefault;
         }else{
             opponentLogo = ArrteamA.opponent.image_url;
             bTeamLogo = ArrteamA.opponent.image_url;
+            opponentName = ArrteamA.opponent.name;
+            bTeamName = ArrteamA.opponent.name;
+            opponentSlug  = ArrteamA.opponent.slug;
+            bTeamSlug = ArrteamA.opponent.slug;
+            bTeamId = ArrteamA.opponent.id;
         }
     }else{
         opponentLogo = toBeDefined;
     }
-
-    const opponentName = ArrteamA.opponent.name;
-    const bTeamName = ArrteamA.opponent.name;
-    const opponentSlug  = ArrteamA.opponent.slug;
-    const bTeamSlug = ArrteamA.opponent.slug;
-    const bTeamId = ArrteamA.opponent.id;
 
     const ArrteamB = opponents.find(element => element.opponent.id === teamId);
     const ownLogo = ArrteamB.opponent.image_url;
@@ -73,13 +74,13 @@ const Tarjetaversus = ({match, teamId}) => {
         statusStream = "Partido en vivo!";
         const {A_point, B_point} = setMatchResult(results, teamId); 
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match">
+            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy">
                 <div className="col s12 m7 posicion-tarjeta">
                     <div className="card-image waves-effect waves-block waves-light">
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
+                                <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.name}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -136,7 +137,7 @@ const Tarjetaversus = ({match, teamId}) => {
         );
     }else{
         return(
-            <div className="col s12 m7 posicion-tarjeta">
+            <div className="col s12 m7 posicion-tarjeta font-gilroy">
                 <div className="card horizontal tamano-tarjeta">
 
                     <div className="card-image lienzo-logo"> 
@@ -150,7 +151,7 @@ const Tarjetaversus = ({match, teamId}) => {
                     <div className="card-stacked">
                         <div className="card-content">
                             
-                            <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>
+                            <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.name}> {league.name+" "+serie.full_name} </a>
                             <p className="text-center cursor-default font-size mb-8">{name}</p>
                             
                             <p className="text-align cursor-default font-size">

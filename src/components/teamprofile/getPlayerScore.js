@@ -5,7 +5,7 @@ export const getPlayerScore = async (proxyUrl, objPastMatch) => {
     //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
     const urlPlayerScore = `https://api.pandascore.co/csgo/matches/${prevmatchID}/players/stats?token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
     try { 
-        const resPlayerScore = await fetch(proxyUrl + urlPlayerScore);      
+        const resPlayerScore = await fetch(urlPlayerScore);      
         if (resPlayerScore.status !== 200){
             return{badFetch};
         };

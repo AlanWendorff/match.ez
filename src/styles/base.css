@@ -1,11 +1,28 @@
+@font-face {
+    font-family: 'Gilroy-Light';
+    src: local('Gilroy-Light'), url(../fonts/Gilroy-Light.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Gilroy-ExtraBold';
+    src: local('Gilroy-ExtraBold'), url(../fonts/Gilroy-ExtraBold.otf) format('opentype');
+}
+
 .container-html{
     height: 100% !important;
     width: 100% !important;
     padding: 0% !important;
     margin: 0 !important;
-    font-family: "Open Sans";
     zoom: 100%;
 }
+.font-gilroy{
+    font-family: "Gilroy-Light";
+}
+
+.font-gilroy-bold{
+    font-family: "Gilroy-ExtraBold";
+}
+
 .parametros-container{
     min-height: 100vh;
     display: flex;

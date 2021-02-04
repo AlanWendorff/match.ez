@@ -31,39 +31,43 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
             }  
         };  
     };
-
+    console.log(teams);
     if (teams && teams.length > 0) {
         return(
             <div>
                 <div>
                     <table>
                         <thead>
-                            <tr className="line-width">
+                            <tr className="line-width font-gilroy">
 
                                 <th className="space color-text-black">
                                     <div className="team-field">
                                         <img alt="a team" className="table-logo-size" src={TeamLogoA} />  
-                                        <span>{TeamNameA}</span>
+                                        <span className="Team-name-score">{TeamNameA}</span>
                                     </div>
                                 </th>
 
-                                <th className="text-to-end table-font-size text-align-center color-text-black">K.</th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">A.</th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">M.</th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">H.</th>
+                                <th title="Kills" className="text-to-end table-font-size text-align-center">K</th>
+                                <th title="Assists / Asistencias" className="text-to-end table-font-size text-align-center">A</th>
+                                <th title="Deaths / Muertes" className="text-to-end table-font-size text-align-center">D</th>
+                                <th title="Headshots" className="text-to-end table-font-size text-align-center">H</th>
+                                <th title="Average Damage per Round / Promedio de Daño por Ronda" className="text-to-end table-font-size text-align-center">ADR</th>
+                                <th title="HLTV player rating" className="text-to-end table-font-size text-align-center">RATING</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                scoreMatch.teams[0].players.sort(function(a,b){return b.stats.counts.kills-a.stats.counts.kills}).map(({name, stats}, index) => {
-                                    const {counts} = stats;
+                                scoreMatch.teams[0].players.sort(function(a,b){return b.stats.counts.kills-a.stats.counts.kills}).map(({name, first_name, last_name, stats}, index) => {
+                                    const {counts, per_game_averages} = stats;
                                     return(
                                         <tr className="line-width" key={index}>
-                                            <td className="space color-text-black font-bold table-font-size">{name}</td>
+                                            <td className="space color-text-black font-bold table-font-size">{first_name}<span className="player-name-style">"{name}"</span>{last_name}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.kills}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.assists}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.deaths}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.headshots}</td>
+                                            <td className="text-align-center color-text-black font-bold table-font-size">{per_game_averages.adr}</td>
+                                            <td className="text-align-center color-text-black font-bold table-font-size">{per_game_averages.hltv_game_rating}</td>
                                         </tr>
                                     );                                  
                                 })
@@ -75,30 +79,34 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
                 <div>
                     <table>
                         <thead>
-                            <tr className="line-width">
+                            <tr className="line-width font-gilroy">
                                 <th className="space color-text-black">
                                     <div className="team-field">
                                         <img alt="b team" className="table-logo-size" src={TeamLogoB} />  
-                                        <span>{TeamNameB}</span>
+                                        <span className="Team-name-score">{TeamNameB}</span>
                                     </div>
                                 </th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">K.</th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">A.</th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">M.</th>
-                                <th className="text-to-end table-font-size text-align-center color-text-black">H.</th>
+                                <th title="Kills" className="text-to-end table-font-size text-align-center">K</th>
+                                <th title="Assists / Asistencias" className="text-to-end table-font-size text-align-center">A</th>
+                                <th title="Deaths / Muertes" className="text-to-end table-font-size text-align-center">D</th>
+                                <th title="Headshots" className="text-to-end table-font-size text-align-center">H</th>
+                                <th title="Average Damage per Round / Promedio de Daño por Ronda" className="text-to-end table-font-size text-align-center">ADR</th>
+                                <th title="HLTV player rating" className="text-to-end table-font-size text-align-center">RATING</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                scoreMatch.teams[1].players.sort(function(a,b){return b.stats.counts.kills-a.stats.counts.kills}).map(({name, stats}, index) => {
-                                    const {counts} = stats;
+                                scoreMatch.teams[1].players.sort(function(a,b){return b.stats.counts.kills-a.stats.counts.kills}).map(({name, first_name, last_name, stats}, index) => {
+                                    const {counts, per_game_averages} = stats;
                                     return(
                                         <tr className="line-width" key={index}>
-                                            <td className="space color-text-black font-bold table-font-size">{name}</td>
+                                            <td className="space color-text-black font-bold table-font-size">{first_name}<span className="player-name-style">"{name}"</span>{last_name}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.kills}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.assists}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.deaths}</td>
                                             <td className="text-align-center color-text-black font-bold table-font-size">{counts.headshots}</td>
+                                            <td className="text-align-center color-text-black font-bold table-font-size">{per_game_averages.adr}</td>
+                                            <td className="text-align-center color-text-black font-bold table-font-size">{per_game_averages.hltv_game_rating}</td>
                                         </tr>
                                     );                                  
                                 })
@@ -110,7 +118,7 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
         );
     }else{
         return(
-            <p className="text-align-center cursor-default font-size label-data-style">
+            <p className="text-align-center cursor-default font-size label-data-style font-gilroy">
                 No hay estadisticas para esta serie
             </p>  
         );

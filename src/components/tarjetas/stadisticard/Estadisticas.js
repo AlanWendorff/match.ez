@@ -9,16 +9,9 @@ const Estadisitcas = ({winRate, winStrike}) => {
         <div className="col s12 m7 posicion-tarjeta">
             <div className="card horizontal tamano-tarjeta container-estadistica">
                 
-                <p className="cursor-default font-size estadistic-position font-wins">
-                    <span className="margin-content">Porcentaje de victorias : </span>
-                    <span className="font-stadistic-data" style={{color: data.vibrant}}>{winRate}</span> 
-                </p>
+                <span className="stadistic-span">Porcentaje de victorias : <span className="font-stadistic-data" style={{color: data.vibrant}}>{winRate}</span></span>
 
-                <p className="cursor-default font-size estadistic-position font-wins">
-                    <span className="win-strike margin-content">Racha de victorias : </span>
-                    <span className="font-stadistic-data" style={{color: data.vibrant}}>{winStrike}</span> 
-                </p>
-
+                <span className="stadistic-span">Racha de victorias : <span className="font-stadistic-data" style={{color: data.vibrant}}>{winStrike}</span> </span>
             </div>
         </div>
      );
