@@ -25,7 +25,6 @@ td, th{
 @media (min-width: 771px) {  
     th{
         border-radius: 0%;
-        background-color: #2d6ea6b6;
         color: white !important;
         font-family: "Gilroy-ExtraBold";
     }
@@ -44,19 +43,22 @@ td, th{
 @media screen and (max-width: 770px) {  
     th{
         border-radius: 0%;
-        background-color: #2d6ea6b6;
         color: white !important;
-        font-family: "Gilroy-ExtraBold";
+        font-family: "Gilroy-Light";
+        font-size: 10px !important;
+    }
+    td{
+        font-size: 10px !important;
     }
     .player-name-style{
         margin: 0px 5px;
         color: #2d6da3;
-        font-family: "Gilroy-ExtraBold";
+        font-family: "Gilroy-Light";
     }
     .Team-name-score{
-        font-family: "Gilroy-ExtraBold";
+        font-family: "Gilroy-Light";
         color: white;
-        font-size: 15px;
+        font-size: 12px;
     }
 }
 

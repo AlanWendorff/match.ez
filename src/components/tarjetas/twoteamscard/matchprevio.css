@@ -119,8 +119,11 @@
 }
   
 @media screen and (max-width: 770px) {     
+    .card-reveal{
+        padding: 10px 0px !important;
+    }
     .table-logo-size{
-        width: 30px;
+        width: 25px;
         margin-right: 20px;
     }
     .size-prev-game{

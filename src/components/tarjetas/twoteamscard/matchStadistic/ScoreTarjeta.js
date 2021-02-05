@@ -2,7 +2,7 @@ import React from 'react';
 
 import './tarjetaScore.css';
 
-const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
+const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents, color}) => {
     const {teams} = scoreMatch; 
     let TeamLogoA;
     let TeamLogoB;
@@ -31,15 +31,14 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
             }  
         };  
     };
-    console.log(teams);
+
     if (teams && teams.length > 0) {
         return(
             <div>
                 <div>
                     <table>
                         <thead>
-                            <tr className="line-width font-gilroy">
-
+                            <tr className="line-width font-gilroy" style={{backgroundColor: color.darkVibrant}}>
                                 <th className="space color-text-black">
                                     <div className="team-field">
                                         <img alt="a team" className="table-logo-size" src={TeamLogoA} />  
@@ -79,7 +78,7 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
                 <div>
                     <table>
                         <thead>
-                            <tr className="line-width font-gilroy">
+                            <tr className="line-width font-gilroy" style={{backgroundColor: color.darkVibrant}}>
                                 <th className="space color-text-black">
                                     <div className="team-field">
                                         <img alt="b team" className="table-logo-size" src={TeamLogoB} />  

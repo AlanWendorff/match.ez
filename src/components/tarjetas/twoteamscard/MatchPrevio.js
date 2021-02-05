@@ -12,7 +12,7 @@ import {setGameMode} from '../../../utility/SetGameMode';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
+const MatchPrevio = ({prevMatch, teamId, scoreMatch, color}) => {
 
     momentSpanishSetup();
     const ultimoMatch = prevMatch[0];
@@ -101,6 +101,7 @@ const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
                     scoreMatch={scoreMatch}
                     opponents={opponents}
                     csgoLogoDefault={csgoLogoDefault}
+                    color={data}
                 />
 
                 <p className="text-align-center cursor-default font-size">
