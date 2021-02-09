@@ -13,8 +13,6 @@
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "colorthief": "^2.3.2",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
     "firebase": "^7.23.0",
     "font-awesome": "^4.7.0",
     "get-image-colors": "^4.0.0",
@@ -30,7 +28,7 @@
     "react-palette": "^1.0.2",
     "react-progressive-image": "^0.6.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^4.0.2",
     "shortid": "^2.2.15"
   },
   "scripts": {

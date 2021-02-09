@@ -13,8 +13,6 @@ import LoadScreen from '../loader/LoadScreen';
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
     /* momentSpanishSetup(); */
-
-    const proxyUrl = `https://cors-anywhere.herokuapp.com/`;
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
@@ -26,7 +24,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     useEffect(() => { 
         (async () => {
             if (!matchesHoy.length > 0) {
-                const {objLiga, badFetch} = await getTournamentMatches(proxyUrl, tournamentId);
+                const {objLiga, badFetch} = await getTournamentMatches(tournamentId);
                 if (objLiga) {
                     guardarLoaderProgress({width: '100%'});
                     guardarMatchesHoy(objLiga);

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Footer from '../footer/Footer';
 import TeamsHome from './TeamsHome';
 import TeamCollection from './teamdirectacces/TeamCollection';
@@ -12,7 +12,43 @@ import { getStyles } from './getStyles/firebaseStyles';
 import './menu.css';
 import './tournament.css';
 
+import axios from 'axios';
+
 const HomeScreen = () => {
+
+    const [backend, setBackend] = useState([]);
+    
+    useEffect(() => {
+        //https://arg-matchez-backend.herokuapp.com/api/nextmatches
+        const url  = 'http://localhost:5000/api/tournamentmatches';
+        const axiosApi = async () => {
+            try {
+
+                const data = JSON.stringify({"id":"4243"});
+                const config = {
+                    method: 'get',
+                    url: url,
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    data : data
+                };
+                const resLiga = await axios(config);
+
+                //const objAPI = await resLiga.json();
+                console.log(resLiga.data.data);
+            } catch (error) {
+                console.log(error); 
+            }; 
+        };
+
+        if (!backend.length > 0) {
+            axiosApi();
+        }
+    }, []);
+
+    
 
     const [navbar, setNavBar] = useState(true);
     const [teambuttonstyle, setTeamButtonStyle] = useState({backgroundColor: '#ffffff4d'});

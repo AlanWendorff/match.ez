@@ -1,8 +1,17 @@
 const badFetch = true;
-export const getTournamentMatches = async (proxyUrl, tournamentId) => {       //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
-    const urlLiga  = `https://api.pandascore.co/csgo/matches?filter[league_id]=${tournamentId}&sort=begin_at&filter[status]=not_started,running&token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
+
+export const getTournamentMatches = async (tournamentId) => {       //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
+   /*  const url  = 'https://arg-matchez-backend.herokuapp.com/api/nextmatches';
     try {
-        const resLiga = await fetch(proxyUrl + urlLiga);        
+        const resLiga = await axios.get(url);
+        console.log(resLiga.data.data);
+    } catch (error) {
+        return{badFetch};
+    }; 
+    
+    try {
+        const resLiga = await fetch(proxyUrl + urlLiga);
+        console.log(resLiga);
         if (resLiga.status !== 200){
             return{badFetch};  
         };
@@ -10,7 +19,6 @@ export const getTournamentMatches = async (proxyUrl, tournamentId) => {       //
         return{objLiga};
         
     } catch (error) {
-        return{badFetch};  
-    }; 
-
+        
+    };  */
 };
