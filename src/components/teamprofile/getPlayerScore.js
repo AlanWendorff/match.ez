@@ -1,17 +1,26 @@
-const badFetch = true;
-export const getPlayerScore = async (proxyUrl, objPastMatch) => { 
-    const prevmatchID = objPastMatch[0].id;   
-    
-    //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
-    const urlPlayerScore = `https://api.pandascore.co/csgo/matches/${prevmatchID}/players/stats?token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
-    try { 
-        const resPlayerScore = await fetch(proxyUrl + urlPlayerScore);      
-        if (resPlayerScore.status !== 200){
-            return{badFetch};
+import axios from 'axios';
+// data.headers.x-rate-limit-used
+export const getPlayerScore = async (objPastMatch) => {    
+    const gameId = objPastMatch[0].id;  
+    const badFetch = true;    
+    //https://arg-matchez-backend.herokuapp.com          
+    const url = `https://arg-matchez-backend.herokuapp.com/api/teamscore/${gameId}`;
+    try {
+        const config = {
+            method: 'get',
+            url: url,
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+            }
         };
-        const objPlayerScore = await resPlayerScore.json();
-        return{objPlayerScore}
+        const gameScore = await axios(config);
+        const objPlayerScore = gameScore.data;
+        if (gameScore.status !== 200){
+            return{badFetch};
+        }else{
+            return{objPlayerScore}
+        };
     } catch (error) {
-        return{badFetch};   
-    };      
+        return{badFetch};  
+    }
 };

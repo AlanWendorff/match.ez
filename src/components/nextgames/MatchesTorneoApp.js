@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { usePalette } from 'react-palette'
 import { getTournamentMatches } from './getTournamentMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +9,8 @@ import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
+import { usePalette } from 'react-palette'
+/* import axios from 'axios'; */
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
     /* momentSpanishSetup(); */
@@ -18,17 +19,68 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [noMatches, guardarNoMatches] = useState(false);  
     const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
-    const { data } = usePalette(`https://cors-anywhere.herokuapp.com/` + image_url);
+    const { data } = usePalette('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=' + image_url)
+    /* const [colors, guardarColors] = useState([]);
+
+    const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+        const hex = x.toString(16)
+        return hex.length === 1 ? '0' + hex : hex
+    }).join('')
+    
+    const getColor = async () => {  
+        const image = "https://cdn.pandascore.co/images/league/image/4243/798px-ESEA_banner.png";
+        //https://arg-matchez-backend.herokuapp.com          
+        const url = 'http://localhost:5000/api/getcolor';
+        const configGet = {
+            method: 'get',
+            url: url,
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+            }
+        };
+        const configPost = {
+            method: 'post',
+            url: url,
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+            },
+            data: {"image": `${image}`}
+        };
+
+        try {
+            axios(configPost).then(()=> {
+                axios(configGet).then((arrayColors)=> {
+                    //guardarColors(arrayColors);
+                    console.log(arrayColors.data);
+                    
+                      
+                    rgbToHex(102, 51, 153);
+                });
+            });
+        } catch (error) {
+            console.log(error);  
+        }
+    };
+
+    const data = {
+        darkMuted: "#2a324b",
+        darkVibrant: "#0e7a4b",
+        lightMuted: "#9cceb7",
+        lightVibrant: "#a4d4bc",
+        muted: "#64aa8a",
+        vibrant: "#b4d43c",
+    } */
     const {darkMuted} = data;
 
     useEffect(() => { 
+        /* getColor(); */
         (async () => {
             if (!matchesHoy.length > 0) {
-                const {objLiga, badFetch} = await getTournamentMatches(tournamentId);
-                if (objLiga) {
+                const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
+                if (matchesTournament) {
                     guardarLoaderProgress({width: '100%'});
-                    guardarMatchesHoy(objLiga);
-                    if(objLiga.length === 0){   
+                    guardarMatchesHoy(matchesTournament);
+                    if(matchesTournament.length === 0){   
                         guardarNoMatches(true);
                     }
                 }

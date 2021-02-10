@@ -1,16 +1,25 @@
-const badFetch = true;
-export const getPastMatch = async (proxyUrl, urlTeamId) => {       //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
-    const urlPast = `https://api.pandascore.co/csgo/matches/past?filter[opponent_id]=${urlTeamId}&filter[finished]=true&token=yVPKLDCsTsxGSJcEWb_gbzDiC6NSWVQ3thriZ3Qft_p6lGvLxPc`;
+import axios from 'axios';
+// data.headers.x-rate-limit-used
+export const getPastMatch = async (teamId) => {    
+    const badFetch = true;    
+    //https://arg-matchez-backend.herokuapp.com          
+    const url = `https://arg-matchez-backend.herokuapp.com/api/prevmatches/${teamId}`;
     try {
-        const resPastMatch = await fetch(proxyUrl + urlPast);      
-        if (resPastMatch.status !== 200){
-            return{badFetch};  
+        const config = {
+            method: 'get',
+            url: url,
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+            }
         };
-        const objPastMatch = await resPastMatch.json();
-        return{objPastMatch};
-        
+        const resPrevMatches = await axios(config);
+        const objPastMatch = resPrevMatches.data;
+        if (resPrevMatches.status !== 200){
+            return{badFetch};
+        }else{
+            return{objPastMatch}
+        };
     } catch (error) {
         return{badFetch};  
-    }; 
-
+    }
 };

@@ -1,24 +1,25 @@
-const badFetch = true;
-
-export const getTournamentMatches = async (tournamentId) => {       //          --- FREE PLAN TOKEN register on pandascore.co and get your free token ---                      
-   /*  const url  = 'https://arg-matchez-backend.herokuapp.com/api/nextmatches';
+import axios from 'axios';
+// data.headers.x-rate-limit-used
+export const getTournamentMatches = async (tournamentId) => {    
+    const badFetch = true;    
+    //https://arg-matchez-backend.herokuapp.com          
+    const url = `https://arg-matchez-backend.herokuapp.com/api/tournamentmatches/${tournamentId}`;
     try {
-        const resLiga = await axios.get(url);
-        console.log(resLiga.data.data);
-    } catch (error) {
-        return{badFetch};
-    }; 
-    
-    try {
-        const resLiga = await fetch(proxyUrl + urlLiga);
-        console.log(resLiga);
-        if (resLiga.status !== 200){
-            return{badFetch};  
+        const config = {
+            method: 'get',
+            url: url,
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+            }
         };
-        const objLiga = await resLiga.json();
-        return{objLiga};
-        
+        const resLiga = await axios(config);
+        const matchesTournament = resLiga.data;
+        if (resLiga.status !== 200){
+            return{badFetch};
+        }else{
+            return{matchesTournament}
+        };
     } catch (error) {
-        
-    };  */
+        return{badFetch};  
+    }
 };

@@ -28,9 +28,7 @@ import np_pattern from '../../pattern/np_pattern.png';
 import sharks_pattern from '../../pattern/sharks_pattern.png';
 
 
-const MatchesApp = ({teamId}) => {
-    const proxyUrl = `https://cors-anywhere.herokuapp.com/`;  
-    
+const MatchesApp = ({teamId}) => { 
     let urlTeamId = "";
     let classContainer = "parametros-container mosaico "
     let backgroundStyle;
@@ -135,13 +133,13 @@ const MatchesApp = ({teamId}) => {
         //console.log("loop del effect");
         (async () => {
             if (prevMatch.length === 0) {
-                const {objPastMatch, badFetch} = await getPastMatch(proxyUrl, teamId);
+                const {objPastMatch, badFetch} = await getPastMatch(teamId);
                 //console.log("calling prev match");
                 if (objPastMatch) {
                     guardarLoaderProgress({width: '30%'});
                     guardarPrevMatch(objPastMatch);
                     if(scoreMatch.length === 0){
-                        const {objPlayerScore, badFetch} = await getPlayerScore(proxyUrl, objPastMatch);
+                        const {objPlayerScore, badFetch} = await getPlayerScore(objPastMatch);
                         //console.log("calling player score");
                         if (objPlayerScore) {
                             guardarLoaderProgress({width: '50%'});
@@ -164,7 +162,7 @@ const MatchesApp = ({teamId}) => {
             };
             
             if(!matches.length > 0){
-                const {objNextMatches, badFetch} = await getNextMatches(proxyUrl, urlTeamId);
+                const {objNextMatches, badFetch} = await getNextMatches(urlTeamId);
                 //console.log("calling next match");
                 if (objNextMatches) {
                     guardarLoaderProgress({width: '100%'});

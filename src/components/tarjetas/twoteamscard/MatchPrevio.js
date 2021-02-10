@@ -13,7 +13,7 @@ import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
 const MatchPrevio = ({prevMatch, teamId, scoreMatch, color}) => {
-
+    
     momentSpanishSetup();
     const ultimoMatch = prevMatch[0];
     const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = ultimoMatch;
