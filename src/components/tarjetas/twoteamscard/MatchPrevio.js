@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
 import ScoreTarjeta from './matchStadistic/ScoreTarjeta';
@@ -12,19 +12,20 @@ import {setGameMode} from '../../../utility/SetGameMode';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const MatchPrevio = ({prevMatch, teamId, scoreMatch, color}) => {
+const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
     
     momentSpanishSetup();
     const ultimoMatch = prevMatch[0];
+    const [sizecard, setSizeCard] = useState();
     const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = ultimoMatch;
     const { data } = useContext(HeaderLogoContext);
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
-
+    
     //eslint-disable-next-line
     return(
-        <div className="card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy"> 
+        <div className="card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect" style={sizecard}> 
             <div className="card-image waves-effect waves-block waves-light">
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
@@ -92,11 +93,11 @@ const MatchPrevio = ({prevMatch, teamId, scoreMatch, color}) => {
                     </div>
                 </div>            
             </div>
-            <div className="card-content click-more-info activator cursor-pointer">
+            <div className="card-content click-more-info activator cursor-pointer" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "750px", overflow: "hidden"}) : setSizeCard({height: "590px", overflow: "hidden"})}}}}>
                 <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
             </div>
             <div className="card-reveal">
-                <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i></span>
+                <span className="card-title grey-text text-darken-4 margin-right-bottom" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "297px", overflow: "hidden"}) : setSizeCard({height: "236px", overflow: "hidden"})}}}}><i className="material-icons right">close</i></span>
                 <ScoreTarjeta
                     scoreMatch={scoreMatch}
                     opponents={opponents}

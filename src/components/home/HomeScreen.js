@@ -6,8 +6,9 @@ import ListadoDeTorneos from './ListadoDeTorneos';
 import Search from './searchTeam/Search';
 import SimpleLoadScreen from '../loader/SimpleLoadScreen';
 import icon from '../../ImagenesVarias/Icon.png';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faFistRaised, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { getStyles } from './getStyles/firebaseStyles';
 import './menu.css';
 import './tournament.css';
@@ -15,14 +16,14 @@ const HomeScreen = () => {
 
     const [navbar, setNavBar] = useState(true);
     const [teambuttonstyle, setTeamButtonStyle] = useState({backgroundColor: '#ffffff4d'});
-    const [tournamentbuttonstyle, setTournamentButtonStyle] = useState({backgroundColor: '#ffffff1a'});
+    const [tournamentbuttonstyle, setTournamentButtonStyle] = useState({backgroundColor: '#ffffff00'});
     const [collection, setCollection] = useState([]);
     const styles = getStyles();
 
     const setTournament = () => {
         setNavBar(false);
         setTeamButtonStyle({
-            backgroundColor: '#ffffff1a'
+            backgroundColor: '#ffffff00'
         })
         setTournamentButtonStyle({
             backgroundColor: '#ffffff4d'
@@ -35,7 +36,7 @@ const HomeScreen = () => {
             backgroundColor: '#ffffff4d'
         })
         setTournamentButtonStyle({
-            backgroundColor: '#ffffff1a'
+            backgroundColor: '#ffffff00'
         })
     };
     if (styles !== undefined) {
@@ -45,8 +46,9 @@ const HomeScreen = () => {
                     <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
                 </div>
                 <div className="nav-bar-container animate__animated animate__fadeInDown animate__faster">
-                    <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faUserFriends}/>Equipos</a>
-                    <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>Torneos</a>
+                    <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faUserFriends}/>{window.innerWidth > 782? 'Equipos' : ''}</a>
+                    <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>{window.innerWidth > 782? 'Torneos' : ''}</a>
+                    <Link to='all-matches' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faFistRaised}/>{window.innerWidth > 782? 'Todos los partidos' : ''}</Link>
                 </div>
     
                 {navbar?

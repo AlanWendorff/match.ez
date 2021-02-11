@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import MatchesApp from './components/teamprofile/MatchesApp';
 import HomeScreen from './components/home/HomeScreen';
+import Allmatches from './components/allmatches/Allmatches';
 import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
 import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
@@ -40,7 +41,7 @@ const Layer = () => {
             );                                  
           })
         }
-
+        <Route path="/all-matches" component={Allmatches}/>
         <Route path="/" component={HomeScreen}/>
       </Switch>
     </Router>

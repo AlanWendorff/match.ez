@@ -1,18 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import Moment from 'moment';
-import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
-import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
-import {setMatchResult} from '../../../utility/SetMatchResult';
-import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
-import {setGameMode} from '../../../utility/SetGameMode';
+import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
+import {setGameMode} from '../../utility/SetGameMode';
+import {setMatchResult} from '../../utility/SetMatchResult';
+import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
+import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 
-import './tarjetaMatchesCompletos.css';
+const TarjetaAllmatches = ({match}) => {
 
-const TarjetaMatchHoy = ({matchHoy, data}) => {
-    const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = matchHoy; 
+    const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = match; 
     momentSpanishSetup();
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
@@ -79,14 +77,14 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                         <div className="card-image waves-effect waves-block waves-light">
                             <div className="card-image container-info cursor-default padding-top-8">
                                 <div className="live-league-container">
-                                    <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
+                                    <a className="text-center head-font highlight-text" rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
                                 </div>
                                 
                                 <div className="live-container-puntos-logos-upcoming">
     
                                     <Link to ={`/${aTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black"> 
-                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
+                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefault}>
                                             {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
                                         </ProgressiveImage>                          
                                         </div> 
@@ -102,7 +100,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                                     <Link to ={`/${bTeamSlug}`}>
                                         <div className="team-canvas outline-shade-black">
-                                            <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
+                                            <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefault}>
                                             {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
                                             </ProgressiveImage>          
                                         </div> 
@@ -111,19 +109,19 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                                 <div className="container-label">
                                     <p className="label-teams">{aTeamName}</p> 
-                                    <p className="modalidad-past-match" style={{color: data.darkMuted}}>{modalidad}</p>
+                                    <p className="modalidad-past-match" >{modalidad}</p>
                                     <p className="label-teams">{bTeamName}</p>
                                 </div> 
     
     
                                 <div className="live-container-info-bottom">
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
+                                        <span className="label-data-style margin-entre-label-contenido" >Fase:</span> 
                                         {tournament.name}
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Empezó: </span>
+                                        <span className="label-data-style margin-entre-label-contenido" >Empezó: </span>
                                         <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                     </p>                  
                                 </div>
@@ -151,7 +149,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to={`/${aTeamSlug}`}>
                                     <div className="team-canvas">  
-                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
+                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefault}>
                                             {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
                                         </ProgressiveImage>                              
                                     </div>
@@ -163,7 +161,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to ={`/${bTeamSlug}`}>
                                     <div className="team-canvas">
-                                        <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
+                                        <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefault}>
                                             {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>    
                                     </div> 
@@ -173,25 +171,25 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         
                             <div className="container-label">
                                 <p className="label-teams">{aTeamName}</p> 
-                                <p className="modalidad-past-match" style={{color: data.darkMuted}}>{modalidad}</p>
+                                <p className="modalidad-past-match" >{modalidad}</p>
                                 <p className="label-teams">{bTeamName}</p>
                             </div> 
                         </div>            
                     
                     </div>
                     <div className="card-content click-more-info activator cursor-pointer">
-                        <span className="head-font" style={{color: data.vibrant}}><i className="material-icons right">info</i></span>
+                        <span className="head-font" ><i className="material-icons right">info</i></span>
                     </div>
                     <div className="card-reveal card-reveal-padding">
                         <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
     
                         <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
+                            <span className="label-data-style margin-entre-label-contenido" >Torneo:</span> 
                             {league.name+" "+serie.full_name}
                         </p>
         
                         <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
+                            <span className="label-data-style margin-entre-label-contenido" >Fase:</span> 
                             {tournament.name}
                         </p>    
                     </div>
@@ -214,7 +212,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to ={`/${aTeamSlug}`}>
                                 <div className="team-canvas">          
-                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
+                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefault}>
                                         {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                       
                                 </div>
@@ -226,7 +224,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to ={`/${bTeamSlug}`}>
                                 <div className="team-canvas">
-                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
+                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefault}>
                                         {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>   
                                 </div> 
@@ -236,25 +234,25 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                         <div className="container-label">
                             <p className="label-teams">{aTeamName}</p> 
-                            <p className="modalidad-past-match" style={{color: data.darkMuted}}>{modalidad}</p>
+                            <p className="modalidad-past-match" >{modalidad}</p>
                             <p className="label-teams">{bTeamName}</p>
                         </div> 
                     </div>            
                 
                 </div>
                 <div className="card-content click-more-info activator cursor-pointer">
-                    <span className="head-font Furious-font"><i className="material-icons right" style={{color: data.vibrant}}>info</i></span>
+                    <span className="head-font Furious-font"><i className="material-icons right" >info</i></span>
                 </div>
                 <div className="card-reveal card-reveal-padding">
                     <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
    
                     <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
+                        <span className="label-data-style margin-entre-label-contenido" >Torneo:</span> 
                         {league.name+" "+serie.full_name}
                     </p>
     
                     <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
+                        <span className="label-data-style margin-entre-label-contenido" >Fase:</span> 
                         {tournament.name}
                     </p>     
                 </div>
@@ -263,4 +261,4 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     } 
 }
  
-export default TarjetaMatchHoy;
+export default TarjetaAllmatches;

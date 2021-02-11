@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './tarjetaScore.css';
 
 const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents, color}) => {
@@ -8,7 +7,7 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents, color}) => {
     let TeamLogoB;
     let TeamNameA;
     let TeamNameB;
-
+    
     if(teams && teams.length > 0){
         for (let i=0; i< opponents.length; i++){         
             if(opponents[0].opponent.image_url === null){
