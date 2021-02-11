@@ -17,7 +17,7 @@ const Header = () => {
 
     return ( 
         <div>
-            <div className="z-depth-5 gradient-position cursor-pointer animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}>    
+            <div className="z-depth-5 gradient-position animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}>    
                 <ProgressiveImage src={logo} placeholder={csgoLogo}>
                     {src => <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} src={src} alt="Header Team Logo" />}
                 </ProgressiveImage>   

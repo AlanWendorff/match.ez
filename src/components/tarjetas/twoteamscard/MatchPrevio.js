@@ -93,7 +93,7 @@ const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
                     </div>
                 </div>            
             </div>
-            <div className="card-content click-more-info activator cursor-pointer" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "750px", overflow: "hidden"}) : setSizeCard({height: "590px", overflow: "hidden"})}}}}>
+            <div className="card-content click-more-info activator cursor-pointer" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "750px", overflow: "hidden"}) : setSizeCard({height: "600px"})}}}}>
                 <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
             </div>
             <div className="card-reveal">
