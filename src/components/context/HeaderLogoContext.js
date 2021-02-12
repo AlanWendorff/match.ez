@@ -9,7 +9,9 @@ const HeaderLogoProvider = (props) => {
 
     const [logo, guardarLogo] = useState('');
     const [paletestate, guardarPaleteCharged] = useState(false);
-    const { data } = usePalette('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=' + logo)
+   // https://proxy-kremowy.herokuapp.com/
+    //'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url='
+    const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + logo)
     /* const data = {
         darkMuted: "#2a324b",
         darkVibrant: "#0e7a4b",

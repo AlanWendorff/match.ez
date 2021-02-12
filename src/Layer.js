@@ -6,8 +6,26 @@ import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
 import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from 'axios';
 
 const Layer = () => {
+  (async()=>{
+    try {
+      const config = {
+        method: 'get',
+        url: 'https://arg-matchez-backend.herokuapp.com/api/wakeup',
+        headers: { 
+          "Access-Control-Allow-Origin": "*",
+        }
+      };
+      const res = await axios(config);
+      const firstCall = res.data;
+      //console.log(firstCall);
+    } catch (error) {
+      //console.log(error);
+    }
+  })()
+  
 
   const { tournamentId } = useContext(TournamentContext);
   const tournamentArray = Object.values(tournamentId);

@@ -9,7 +9,6 @@ import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setGameMode} from '../../../utility/SetGameMode';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setNewTournament} from '../../../utility/FirebaseSetNewTournament';
-import {setNewTeamPath} from '../../../utility/FirebaseSetNewTeamPath';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import './tarjetaUpcomingMatch.css';
@@ -62,11 +61,8 @@ const Tarjetaversus = ({match, teamId}) => {
     }
 
     useEffect(() => {
-        if (opponentLogo !== toBeDefined) {
-            setNewTeamPath(bTeamSlug, bTeamId, bTeamName, bTeamLogo, database, paths); 
-        }
         setNewTournament(league, tournamentId, database);
-    }, [bTeamSlug, bTeamId, bTeamLogo, bTeamName, opponentLogo, database, paths, league, tournamentId]); 
+    }, [database, paths, league, tournamentId]); 
     //eslint-disable-next-line
 
     if(status === 'running'){
