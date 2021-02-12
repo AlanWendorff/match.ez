@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './loader.css';
 
-const LoadScreen = ({loaderprogress}) => {
+const LoadScreen = ({loaderprogress, darkMuted, guardarPaleteCharged}) => {
+
+    useEffect(() => {
+        if (darkMuted !== undefined) {
+            guardarPaleteCharged(true);
+        }
+    }, [darkMuted]);
+
     return (
         <div className="loader-container">
             <div className="preloader-wrapper active spinner-loader">

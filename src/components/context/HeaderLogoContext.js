@@ -9,17 +9,18 @@ const HeaderLogoProvider = (props) => {
 
     const [logo, guardarLogo] = useState('');
     const [paletestate, guardarPaleteCharged] = useState(false);
-   // https://proxy-kremowy.herokuapp.com/
-    //'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url='
-    const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + logo)
-    /* const data = {
-        darkMuted: "#2a324b",
-        darkVibrant: "#0e7a4b",
-        lightMuted: "#9cceb7",
-        lightVibrant: "#a4d4bc",
-        muted: "#64aa8a",
-        vibrant: "#b4d43c",
-    } */
+    let { data, error } = usePalette('https://proxy-kremowy.herokuapp.com/' + logo)
+    if (error) {
+        data = {
+            darkMuted: "#1c313a",
+            darkVibrant: "#455a64",
+            lightMuted: "#455a64",
+            lightVibrant: "#718792",
+            muted: "#1c313a",
+            vibrant: "#718792",
+        }
+    }
+    
     const {darkMuted} = data;
     useEffect(() => {
         guardarPaleteCharged(false);

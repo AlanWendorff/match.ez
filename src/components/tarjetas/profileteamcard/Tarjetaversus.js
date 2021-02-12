@@ -1,14 +1,11 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
-import { TournamentContext } from '../../context/TournamentContext'
-import { PathContext } from '../../context/PathContext';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setGameMode} from '../../../utility/SetGameMode';
 import {setMatchResult} from '../../../utility/SetMatchResult';
-import {setNewTournament} from '../../../utility/FirebaseSetNewTournament';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import './tarjetaUpcomingMatch.css';
@@ -16,8 +13,6 @@ import './tarjetaUpcomingMatch.css';
 const Tarjetaversus = ({match, teamId}) => {
 
     const { data } = useContext(HeaderLogoContext);
-    const { tournamentId, database } = useContext(TournamentContext);
-    const { paths } = useContext(PathContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
     momentSpanishSetup();
 
@@ -59,10 +54,6 @@ const Tarjetaversus = ({match, teamId}) => {
     if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"
         hoy = "¡Hoy!";                                               
     }
-
-    useEffect(() => {
-        setNewTournament(league, tournamentId, database);
-    }, [database, paths, league, tournamentId]); 
     //eslint-disable-next-line
 
     if(status === 'running'){

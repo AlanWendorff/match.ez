@@ -20,60 +20,9 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
     const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + image_url)
-    /* const [colors, guardarColors] = useState([]);
-
-    const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
-        const hex = x.toString(16)
-        return hex.length === 1 ? '0' + hex : hex
-    }).join('')
-    
-    const getColor = async () => {  
-        const image = "https://cdn.pandascore.co/images/league/image/4243/798px-ESEA_banner.png";
-        //https://arg-matchez-backend.herokuapp.com          
-        const url = 'http://localhost:5000/api/getcolor';
-        const configGet = {
-            method: 'get',
-            url: url,
-            headers: { 
-                "Access-Control-Allow-Origin": "*",
-            }
-        };
-        const configPost = {
-            method: 'post',
-            url: url,
-            headers: { 
-                "Access-Control-Allow-Origin": "*",
-            },
-            data: {"image": `${image}`}
-        };
-
-        try {
-            axios(configPost).then(()=> {
-                axios(configGet).then((arrayColors)=> {
-                    //guardarColors(arrayColors);
-                    console.log(arrayColors.data);
-                    
-                      
-                    rgbToHex(102, 51, 153);
-                });
-            });
-        } catch (error) {
-            console.log(error);  
-        }
-    };
-
-    const data = {
-        darkMuted: "#2a324b",
-        darkVibrant: "#0e7a4b",
-        lightMuted: "#9cceb7",
-        lightVibrant: "#a4d4bc",
-        muted: "#64aa8a",
-        vibrant: "#b4d43c",
-    } */
     const {darkMuted} = data;
-
+    
     useEffect(() => { 
-        /* getColor(); */
         (async () => {
             if (!matchesHoy.length > 0) {
                 const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
@@ -89,11 +38,8 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 }
             }
         })()
-        if (darkMuted !== undefined) {
-            guardarPaleteCharged(true);
-        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[darkMuted]);
+    },[]);
 
     const {width} = loaderprogress;
 
@@ -141,6 +87,8 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 <div className="parametros-container menu-background" style={{backgroundColor: '#040c1c'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
+                        guardarPaleteCharged={guardarPaleteCharged}
+                        darkMuted={darkMuted}
                     /> 
                 </div>
             );
