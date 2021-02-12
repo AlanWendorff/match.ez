@@ -19,7 +19,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [noMatches, guardarNoMatches] = useState(false);  
     const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
-    const { data } = usePalette('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=' + image_url)
+    const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + image_url)
     /* const [colors, guardarColors] = useState([]);
 
     const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
