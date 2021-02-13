@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import MatchesApp from './components/teamprofile/MatchesApp';
 import HomeScreen from './components/home/HomeScreen';
 import Allmatches from './components/allmatches/Allmatches';
@@ -10,22 +10,27 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from 'axios';
 
 const Layer = () => {
-  (async()=>{
-    try {
-      const config = {
-        method: 'get',
-        url: 'https://arg-matchez-backend.herokuapp.com/api/wakeup',
-        headers: { 
-          "Access-Control-Allow-Origin": "*",
-        }
-      };
-      const res = await axios(config);
-      const firstCall = res.data;
-      //console.log(firstCall);
-    } catch (error) {
-      //console.log(error);
-    }
-  })()
+
+  useEffect(() => {
+    (async()=>{
+      console.log('llamo');
+      try {
+        const config = {
+          method: 'get',
+          url: 'https://arg-matchez-backend.herokuapp.com/api/wakeup',
+          headers: { 
+            "Access-Control-Allow-Origin": "*",
+          }
+        };
+        const res = await axios(config);
+        const firstCall = res.data;
+        //console.log(firstCall);
+      } catch (error) {
+        //console.log(error);
+      }
+    })()
+  }, []);
+  
   
 
   const { tournamentId } = useContext(TournamentContext);

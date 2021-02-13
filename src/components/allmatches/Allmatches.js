@@ -19,7 +19,6 @@ const Allmatches = () => {
     const styles = getStyles();
     
     useEffect(() => { 
-        /* getColor(); */
         (async () => {
             if (!allmatches.length > 0) {
                 const {AllMatches, badFetch} = await getAllmatches();

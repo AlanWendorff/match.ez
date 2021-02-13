@@ -134,8 +134,7 @@ const MatchesApp = ({teamId}) => {
         (async () => {
             if (prevMatch.length === 0) {
                 const {objPastMatch, badFetch} = await getPastMatch(teamId);
-                //console.log("calling prev match");
-                if (objPastMatch) {
+                if (objPastMatch && objPastMatch.length !== 0) {
                     guardarLoaderProgress({width: '30%'});
                     guardarPrevMatch(objPastMatch);
                     if(scoreMatch.length === 0){
@@ -151,10 +150,13 @@ const MatchesApp = ({teamId}) => {
                                 guardarLogo(ownLogo);
                             } 
                         }
+                        
                         if (badFetch) {
                             guardarStateCrash(true);
                         }  
                     };
+                }else{
+                    guardarPrevMatch("no-match");
                 }
                 if (badFetch) {
                     guardarStateCrash(true);
@@ -206,12 +208,16 @@ const MatchesApp = ({teamId}) => {
             if (!matches.length > 0) {
                 return(
                     <div className={classContainer} style={backgroundStyle}>
-                        <Header/>                                                                                                                                 
-                        <MatchPrevio
-                            prevMatch={prevMatch}
-                            teamId={teamId}
-                            scoreMatch={scoreMatch}
-                        />
+                        <Header/>   
+                        {prevMatch !== "no-match"?
+                            <MatchPrevio
+                                prevMatch={prevMatch}
+                                teamId={teamId}
+                                scoreMatch={scoreMatch}
+                            />
+                        :
+                            null
+                        }                                                                                                                              
                         <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(2px 2px 20px ${data.lightVibrant})`}}/>
                         <Estadisticas
                             winRate={winRate}
@@ -227,11 +233,15 @@ const MatchesApp = ({teamId}) => {
                 return(
                     <div className={classContainer} style={backgroundStyle}>
                         <Header/>                                                                                                                                 
-                        <MatchPrevio
-                            prevMatch={prevMatch}
-                            teamId={teamId}
-                            scoreMatch={scoreMatch}
-                        />
+                        {prevMatch !== "no-match"?
+                            <MatchPrevio
+                                prevMatch={prevMatch}
+                                teamId={teamId}
+                                scoreMatch={scoreMatch}
+                            />
+                        :
+                            null
+                        }  
                         <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}}/>
                         <Estadisticas
                             winRate={winRate}
