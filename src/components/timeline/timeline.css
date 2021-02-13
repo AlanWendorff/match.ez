@@ -1,3 +1,61 @@
+.timeline-background{ 
+    background-image: url('../../pattern/generic_team_pattern.png');
+    background-repeat: repeat; 
+    background-size: 50px 50px;
+    height: 100%;
+}
+
+h3{
+    font-family: "Gilroy-ExtraBold" !important;
+    margin-bottom: 5px !important;
+}
+
+h5{
+    margin-bottom: 5px !important;
+}
+
+
+
+.name-of-tournament{
+    width: 100%;
+}
+
+.vertical-timeline-element-date{
+    border-radius: 50px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+    padding: 0px !important;
+    font-family: "Gilroy-ExtraBold" !important;
+    font-size: 40px !important;
+    height: 60px;
+    width: 500px !important;
+    background-color: white;
+    border: 3px solid #17253c !important;
+}
+.vertical-timeline-element-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 70px !important; 
+    width: 70px !important;
+    left: 50% !important;
+    margin-left: -35px !important;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 0 0 4px rgba(252, 0, 0, 0), inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%);
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0), inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%);
+    transition: all 0.1s ease-out;
+}
+.vertical-timeline-element-icon:hover{
+    filter: drop-shadow(0px 0px 5px rgb(255, 255, 255));
+}
+.tournament-logo-timeline{
+    width: 50px;
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+}
+
 .time-line-container{
     width: 100%;
     display: flex;
@@ -17,34 +75,59 @@
 
 .icon-container{
     margin: 5px;
-    width: 65px;
-    height: 65px;
+    width: 67px;
+    height: 67px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .team-icon{
-    border: 3px solid rgba(0, 0, 0, 0.308);
+    z-index: 100 !important;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.205);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     transition: all 0.1s ease-out;
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
 }
+
 .team-icon:hover{
-    width: 65px;
-    height: 65px;
+    width: 90px;
+    height: 90px;
+    bottom: 0px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .team-logo-timeline{
     width: 50px;
-    transition: all 0.1s ease-out;
 }
-.team-logo-timeline:hover{
-    width: 55px;
+.no-team-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.no-team{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.205);
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
