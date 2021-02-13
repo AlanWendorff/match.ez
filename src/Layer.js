@@ -3,6 +3,7 @@ import MatchesApp from './components/teamprofile/MatchesApp';
 import HomeScreen from './components/home/HomeScreen';
 import Allmatches from './components/allmatches/Allmatches';
 import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
+import Timeline from './components/timeline/Timeline';
 import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -59,6 +60,7 @@ const Layer = () => {
             );                                  
           })
         }
+        <Route path="/time-line" component={Timeline}/>
         <Route path="/all-matches" component={Allmatches}/>
         <Route path="/" component={HomeScreen}/>
       </Switch>

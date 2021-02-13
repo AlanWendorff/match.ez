@@ -17,8 +17,8 @@ const Tarjetaversus = ({match, teamId}) => {
     momentSpanishSetup();
 
     let ArrteamA;
-    let opponentLogo, opponentName, opponentSlug
-    let bTeamLogo, bTeamName, bTeamSlug, bTeamId
+    let opponentLogo, opponentName, opponentSlug;
+    let bTeamLogo, bTeamName, bTeamSlug, bTeamId;
     let hoy = "";
     let statusStream = "Streaming inactivo";
     let diaUsuario = new Date().getDate();

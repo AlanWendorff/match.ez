@@ -8,7 +8,7 @@ import SimpleLoadScreen from '../loader/SimpleLoadScreen';
 import icon from '../../ImagenesVarias/Icon.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFistRaised, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faFistRaised, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { getStyles } from './getStyles/firebaseStyles';
 import './menu.css';
 import './tournament.css';
@@ -46,6 +46,7 @@ const HomeScreen = () => {
                     <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
                 </div>
                 <div className="nav-bar-container animate__animated animate__fadeInDown animate__faster">
+                    <Link to='time-line' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faChartLine}/>{window.innerWidth > 782? 'Linea Temporal' : ''}</Link>
                     <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faUserFriends}/>{window.innerWidth > 782? 'Equipos' : ''}</a>
                     <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>{window.innerWidth > 782? 'Torneos' : ''}</a>
                     <Link to='all-matches' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faFistRaised}/>{window.innerWidth > 782? 'Todos los partidos' : ''}</Link>
