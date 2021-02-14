@@ -77,7 +77,7 @@ const TarjetaAllmatches = ({match}) => {
                         <div className="card-image waves-effect waves-block waves-light">
                             <div className="card-image container-info cursor-default padding-top-8">
                                 <div className="live-league-container">
-                                    <a className="text-center head-font highlight-text" rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
+                                    <a className="text-center head-font highlight-text" rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
                                 </div>
                                 
                                 <div className="live-container-puntos-logos-upcoming">

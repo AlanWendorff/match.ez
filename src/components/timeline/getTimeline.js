@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getTimeline = async () => {    
     const badFetch = true;    
     //https://arg-matchez-backend.herokuapp.com          
-    const url = 'http://localhost:5000/api/timeline';
+    const url = 'https://arg-matchez-backend.herokuapp.com/api/timeline';
     try {
         const config = {
             method: 'get',

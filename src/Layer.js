@@ -13,7 +13,6 @@ const Layer = () => {
 
   useEffect(() => {
     (async()=>{
-      console.log('llamo');
       try {
         const config = {
           method: 'get',
@@ -55,7 +54,7 @@ const Layer = () => {
         {   
           tournamentArray.map((tournament) => {
             return(
-              <Route path={`/${tournament.name}`} key = {tournament.name}>
+              <Route path={`/${tournament.path}`} key = {tournament.name}>
                 <MatchTorneoApp
                   key  = {tournament.id}
                   tournamentId={tournament.id}

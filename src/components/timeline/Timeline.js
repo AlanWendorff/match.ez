@@ -21,6 +21,8 @@ const Timeline = () => {
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [length, guardarlength] = useState(false);  
+    //const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
+    //data.filter(date => date.begin_at !== null)
 
     useEffect(() => { 
         (async () => {
@@ -42,30 +44,40 @@ const Timeline = () => {
     },[]);
 
     const {width} = loaderprogress;
-
+    
     if (styles !== undefined) {
         if (crash !== true){
             if(width === '100%'){
                 return ( 
                     <div className="timeline-background time-line-container font-gilroy" style={{backgroundColor: styles.background_color}}>
-                        <VerticalTimeline>
+                        <VerticalTimeline layout='1-column-left'>
                             {   
                                 time.map((tournament) => {
-                                    const {begin_at, league, serie, name, teams} = tournament;
+                                    const {begin_at, league, serie, name, teams, prizepool, matches} = tournament;
+                                    const date = Moment(begin_at).format("DD - MMMM - hh:mm") + ' hs';
                                     return(
                                         <VerticalTimelineElement
                                             key={shortid.generate()}
                                             className="vertical-timeline-element--education"
-                                            date={Moment(begin_at).format("DD - MMMM - hh:mm")}
+                                            date={date}
                                             iconStyle={{border: `3px solid ${styles.header_color}`}}
-                                            icon={<Link to={`/${league.name}`} title={`Click para Ver los Próximos partidos de la ${league.name}`}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
+                                            icon={<Link to={`/${league.slug}`} title={`Click para Ver los Próximos partidos de la ${league.name}`}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
                                             >
                                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
                                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>
-                                            <div className="column-align mb-5px">
-                                                <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
-                                                <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
-                                            </div>
+                                            {prizepool !== null?
+                                                <div className="column-align mb-5px">
+                                                    <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
+                                                    <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
+                                                    <span className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></span>
+                                                </div>
+                                            :   
+                                                <div className="column-align mb-5px">
+                                                    <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
+                                                    <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
+                                                </div>
+                                            }
+                                            
                                             
                                             <div className="teams-in-tournament">
                                                 {teams.length > 1?

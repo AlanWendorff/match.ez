@@ -67,7 +67,7 @@ const Tarjetaversus = ({match, teamId}) => {
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.name}> {league.name+" "+serie.full_name} </a>     
+                                <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -138,7 +138,7 @@ const Tarjetaversus = ({match, teamId}) => {
                     <div className="card-stacked">
                         <div className="card-content">
                             
-                            <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.name}> {league.name+" "+serie.full_name} </a>
+                            <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
                             <p className="text-center cursor-default font-size mb-8">{name}</p>
                             
                             <p className="text-align cursor-default font-size">

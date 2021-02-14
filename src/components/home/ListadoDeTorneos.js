@@ -12,7 +12,7 @@ const ListadoDeTorneos = () => {
         <Fragment> 
             {
                 objectToArray.map(tournament => (
-                    <Link className="tournament-size z-depth-5 cursor-pointer real-button" to={`/${tournament.name}`} title={`Ver el partidos de la ${tournament.name}`} key={tournament.id}>
+                    <Link className="tournament-size z-depth-5 cursor-pointer real-button" to={`/${tournament.path}`} title={`Ver el partidos de la ${tournament.name}`} key={tournament.id}>
                         <Tournament
                             key={tournament.id}
                             tournament={tournament}
