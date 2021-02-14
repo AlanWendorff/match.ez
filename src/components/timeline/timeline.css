@@ -109,7 +109,7 @@
         font-family: "Gilroy-ExtraBold" !important;
         font-size: 20px !important;
         height: 50px;
-        width: 250px !important;
+        width: 100% !important;
         background-color: white;
         border: 3px solid #17253c !important;
     }

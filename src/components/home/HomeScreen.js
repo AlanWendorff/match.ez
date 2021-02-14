@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react';
+import { useSwipeable } from "react-swipeable";
 import Footer from '../footer/Footer';
 import TeamsHome from './TeamsHome';
 import TeamCollection from './teamdirectacces/TeamCollection';
@@ -20,6 +21,26 @@ const HomeScreen = () => {
     const [collection, setCollection] = useState([]);
     const styles = getStyles();
 
+    const config = {
+        delta: 10,                            // min distance(px) before a swipe starts
+        preventDefaultTouchmoveEvent: false,  // call e.preventDefault *See Details*
+        trackTouch: true,                     // track touch input
+        trackMouse: false,                    // track mouse input
+        rotationAngle: 0,                     // set a rotation angle
+    };
+
+    const handlers = useSwipeable({
+        onSwiped: (eventData) => {
+            if (eventData.dir === "Left") {
+                setTournament();
+            }
+            if (eventData.dir === "Right") {
+                setTeam();
+            }
+        },
+        ...config,
+    });
+
     const setTournament = () => {
         setNavBar(false);
         setTeamButtonStyle({
@@ -39,9 +60,10 @@ const HomeScreen = () => {
             backgroundColor: '#ffffff00'
         })
     };
+
     if (styles !== undefined) {
         return (
-            <div className="parametros-container menu-background font-gilroy" style={{backgroundColor: styles.background_color}}>
+            <div {...handlers} className="parametros-container menu-background font-gilroy" style={{backgroundColor: styles.background_color}}>
                 <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
                     <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
                 </div>
