@@ -49,11 +49,11 @@ const Timeline = () => {
         if (crash !== true){
             if(width === '100%'){
                 return ( 
-                    <div className="timeline-background time-line-container font-gilroy" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container font-gilroy" style={{backgroundColor: styles.background_color}}>
                         <VerticalTimeline layout='1-column-left'>
                             {   
                                 time.map((tournament) => {
-                                    const {begin_at, league, serie, name, teams, prizepool, matches} = tournament;
+                                    const {begin_at, league, serie, name, teams, prizepool} = tournament;
                                     const date = Moment(begin_at).format("DD - MMMM - hh:mm") + ' hs';
                                     return(
                                         <VerticalTimelineElement
@@ -111,7 +111,7 @@ const Timeline = () => {
                  );
             }else{
                 return(
-                    <div className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
                         <LoadScreen
                             loaderprogress={loaderprogress}
                         /> 
@@ -120,14 +120,14 @@ const Timeline = () => {
             }
         }else{
             return(
-                <div className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
                     <Warning/>
                 </div>
             );
         }
     }else{
         return(
-            <div className="timeline-background time-line-container" style={{backgroundColor: 'black'}}>
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: 'black'}}>
                 <SimpleLoadScreen/>
             </div>
         );

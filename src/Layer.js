@@ -46,6 +46,7 @@ const Layer = () => {
                 <MatchesApp
                   key  = {team.id}
                   teamId={team.id}
+                  image_url={team.img}
                 />
               </Route>
             );                                  

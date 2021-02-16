@@ -28,7 +28,7 @@ import np_pattern from '../../pattern/np_pattern.png';
 import sharks_pattern from '../../pattern/sharks_pattern.png';
 
 
-const MatchesApp = ({teamId}) => { 
+const MatchesApp = ({teamId, image_url}) => { 
     let urlTeamId = "";
     let classContainer = "parametros-container mosaico "
     let backgroundStyle;
@@ -143,14 +143,7 @@ const MatchesApp = ({teamId}) => {
                         if (objPlayerScore) {
                             guardarLoaderProgress({width: '50%'});
                             guardarScoreMatch(objPlayerScore);
-                            const ultimoMatch = objPastMatch[0];
-                            const {opponents} = ultimoMatch;
-                            const {ownLogo} = setTeamLogo(opponents, teamId);
-                            if (ownLogo !== '') {
-                                guardarLogo(ownLogo);
-                            } 
                         }
-                        
                         if (badFetch) {
                             guardarStateCrash(true);
                         }  
@@ -161,6 +154,9 @@ const MatchesApp = ({teamId}) => {
                 if (badFetch) {
                     guardarStateCrash(true);
                 }
+                if (image_url) {
+                    guardarLogo(image_url);
+                } 
             };
             
             if(!matches.length > 0){
@@ -207,7 +203,7 @@ const MatchesApp = ({teamId}) => {
         if(width === '100%' && prevMatch.length > 0 && paletestate === true){
             if (!matches.length > 0) {
                 return(
-                    <div className={classContainer} style={backgroundStyle}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
                         <Header/>   
                         {prevMatch !== "no-match"?
                             <MatchPrevio
@@ -231,7 +227,7 @@ const MatchesApp = ({teamId}) => {
                 ); 
             }else{
                 return(
-                    <div className={classContainer} style={backgroundStyle}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
                         <Header/>                                                                                                                                 
                         {prevMatch !== "no-match"?
                             <MatchPrevio
@@ -257,7 +253,7 @@ const MatchesApp = ({teamId}) => {
             };
         }else{                                                       // RETURN APP LOADING
             return (
-                <div className={classContainer} style={{backgroundColor: '#040c1c'}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: '#040c1c'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     />
@@ -266,7 +262,7 @@ const MatchesApp = ({teamId}) => {
         };
     }else{
         return(
-            <div className={classContainer} style={{backgroundColor: '#040c1c'}}>                                                                                                                                      
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: '#040c1c'}}>                                                                                                                                      
                 <Warning/>       
                 <Footer/>
             </div>

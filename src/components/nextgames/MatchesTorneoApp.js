@@ -50,7 +50,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 //const hoy = matchesHoy.filter(match => match.begin_at === "running");
                 //const proximamente = matchesHoy.filter(match => match.status === "running");
                 return(
-                    <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
                         <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
                             <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
                             <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
@@ -67,7 +67,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 );
             }else{
                 return(
-                    <div className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
                         <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
                             <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
                             <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
@@ -84,7 +84,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
             }
         }else{
             return(
-                <div className="parametros-container menu-background" style={{backgroundColor: '#040c1c'}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: '#040c1c'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                         guardarPaleteCharged={guardarPaleteCharged}
@@ -95,7 +95,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         };
     }else{
         return(
-            <div className="parametros-container menu-background">       
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background">       
                 <Warning/> 
                 <Footer/>
             </div>

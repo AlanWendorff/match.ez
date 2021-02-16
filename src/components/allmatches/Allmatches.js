@@ -43,7 +43,7 @@ const Allmatches = () => {
         if(width === '100%'){
             if(noMatches !== true){
                 return(
-                    <div className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
                         <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
                             <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
                             <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
@@ -58,7 +58,7 @@ const Allmatches = () => {
                 );
             }else{
                 return(
-                    <div className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
                         <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
                             <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
                             <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
@@ -75,7 +75,7 @@ const Allmatches = () => {
             }
         }else{
             return(
-                <div className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     /> 
@@ -84,7 +84,7 @@ const Allmatches = () => {
         };
     }else{
         return(
-            <div className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>       
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>       
                 <Warning/> 
                 <Footer/>
             </div>
