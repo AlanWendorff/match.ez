@@ -18,7 +18,6 @@ const Tarjetaversus = ({match, teamId}) => {
 
     let ArrteamA;
     let opponentLogo, opponentName, opponentSlug;
-    let bTeamLogo, bTeamName, bTeamSlug, bTeamId;
     let hoy = "";
     let statusStream = "Streaming inactivo";
     let diaUsuario = new Date().getDate();
@@ -30,16 +29,10 @@ const Tarjetaversus = ({match, teamId}) => {
             opponentLogo = csgoLogoDefault;
             opponentSlug  = ArrteamA.opponent.slug;
             opponentName = ArrteamA.opponent.name;
-            bTeamId = ArrteamA.opponent.id;
-            bTeamLogo = csgoLogoDefault;
         }else{
             opponentLogo = ArrteamA.opponent.image_url;
-            bTeamLogo = ArrteamA.opponent.image_url;
             opponentName = ArrteamA.opponent.name;
-            bTeamName = ArrteamA.opponent.name;
             opponentSlug  = ArrteamA.opponent.slug;
-            bTeamSlug = ArrteamA.opponent.slug;
-            bTeamId = ArrteamA.opponent.id;
         }
     }else{
         opponentLogo = toBeDefined;

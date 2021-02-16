@@ -1,20 +1,20 @@
 import React, {useEffect, useState, useContext} from 'react';
 import Header from '../header/Header';
 import ListadoDeTarjetas from '../mapmatch/ListadoDeTarjetas';
+import ListadoDePartidosPrevios from '../mapmatch/ListadoDePartidosPrevios';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import Estadisticas from '../tarjetas/stadisticard/Estadisticas';
-import MatchPrevio from '../tarjetas/twoteamscard/MatchPrevio';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import { HeaderLogoContext } from '../context/HeaderLogoContext';
-import {setTeamLogo} from '../../utility/SetTeamLogo';
 
 import { getPastMatch } from './getPastMatch';
 import { getNextMatches } from './getNextMatches';
 import { getPlayerScore } from './getPlayerScore';
 
 import '../../styles/base.css';
+import 'react-notifications-component/dist/theme.css'
 
 import ca_pattern from '../../pattern/ca_pattern.png';
 import fg_pattern from '../../pattern/fg_pattern.png';
@@ -30,7 +30,7 @@ import sharks_pattern from '../../pattern/sharks_pattern.png';
 
 const MatchesApp = ({teamId, image_url}) => { 
     let urlTeamId = "";
-    let classContainer = "parametros-container mosaico "
+    let classContainer = "parametros-container mosaico noselect "
     let backgroundStyle;
 
     let winStrike = 0;
@@ -206,7 +206,7 @@ const MatchesApp = ({teamId, image_url}) => {
                     <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
                         <Header/>   
                         {prevMatch !== "no-match"?
-                            <MatchPrevio
+                            <ListadoDePartidosPrevios
                                 prevMatch={prevMatch}
                                 teamId={teamId}
                                 scoreMatch={scoreMatch}
@@ -230,7 +230,7 @@ const MatchesApp = ({teamId, image_url}) => {
                     <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
                         <Header/>                                                                                                                                 
                         {prevMatch !== "no-match"?
-                            <MatchPrevio
+                            <ListadoDePartidosPrevios
                                 prevMatch={prevMatch}
                                 teamId={teamId}
                                 scoreMatch={scoreMatch}

@@ -6,7 +6,7 @@ const Estadisitcas = ({winRate, winStrike}) => {
     const { data } = useContext(HeaderLogoContext);
 
     return ( 
-        <div className="col s12 m7 posicion-tarjeta">
+        <div className="noselect col s12 m7 posicion-tarjeta">
             <div className="card horizontal tamano-tarjeta container-estadistica">
                 
                 <span className="stadistic-span">Porcentaje de victorias : <span className="font-stadistic-data" style={{color: data.vibrant}}>{winRate}</span></span>

@@ -86,6 +86,9 @@
 .width-50percent{
     width: 50% !important;
 }
+.width-100percent{
+    width: 100% !important;
+}
 
 .label-data-style{
     font-weight: bold;
@@ -125,6 +128,9 @@ i.right{
     margin-left: 0% !important;
 }
 
+.position-relative{
+    position: relative;
+}
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */

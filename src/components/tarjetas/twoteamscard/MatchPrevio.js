@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, Fragment} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
 import ScoreTarjeta from './matchStadistic/ScoreTarjeta';
@@ -9,15 +9,18 @@ import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setGameMode} from '../../../utility/SetGameMode';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { store } from 'react-notifications-component';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
-    
+const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch, oneMatch, firstIndexDate}) => {
     momentSpanishSetup();
-    const ultimoMatch = prevMatch[0];
+
+    //onClick={ store.addNotification(oneMatch) }
     const [sizecard, setSizeCard] = useState();
-    const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = ultimoMatch;
+    const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
@@ -25,7 +28,21 @@ const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
     
     //eslint-disable-next-line
     return(
-        <div className="card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect" style={sizecard}> 
+        <div className="noselect card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect position-relative" style={sizecard}> 
+            {begin_at === firstIndexDate?
+                <div onClick={() => {
+                    if (droplist) {
+                        setDropList(false);
+                        store.addNotification(oneMatch);
+                    }else{
+                        setDropList(true);
+                        store.addNotification(allMatch);
+                    }}}
+                className="drop-container" style={{backgroundColor: data.darkVibrant}}><FontAwesomeIcon className="color-text-white mr" icon={droplist? faChevronDown : faChevronUp}/></div>
+            :
+                null
+            }
+            
             <div className="card-image waves-effect waves-block waves-light">
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
@@ -93,28 +110,46 @@ const MatchPrevio = ({prevMatch, teamId, scoreMatch}) => {
                     </div>
                 </div>            
             </div>
-            <div className="card-content click-more-info activator cursor-pointer" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "750px", overflow: "hidden"}) : setSizeCard({height: "650px"})}}}}>
-                <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
-            </div>
-            <div className="card-reveal">
-                <span className="card-title grey-text text-darken-4 margin-right-bottom" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "297px", overflow: "hidden"}) : setSizeCard({height: "236px", overflow: "hidden"})}}}}><i className="material-icons right">close</i></span>
-                <ScoreTarjeta
-                    scoreMatch={scoreMatch}
-                    opponents={opponents}
-                    csgoLogoDefault={csgoLogoDefault}
-                    color={data}
-                />
 
-                <p className="text-align-center cursor-default font-size">
-                    <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
-                    {league.name +" "+ serie.full_name}
-                </p>                        
-                <p className="text-align-center label-fecha cursor-default font-size">
-                    <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
-                    <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
-                </p>
-                
-            </div>
+            {begin_at === firstIndexDate?
+                <Fragment>
+                    <div className="card-content click-more-info activator cursor-pointer" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "750px", overflow: "hidden"}) : setSizeCard({height: "650px"})}}}}>
+                        <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
+                    </div>
+                    <div className="card-reveal">
+                        <span className="card-title grey-text text-darken-4 margin-right-bottom" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "297px", overflow: "hidden"}) : setSizeCard({height: "236px", overflow: "hidden"})}}}}><i className="material-icons right">close</i></span>
+                        
+                        <ScoreTarjeta
+                            scoreMatch={scoreMatch}
+                            opponents={opponents}
+                            csgoLogoDefault={csgoLogoDefault}
+                            color={data}
+                        />
+                        
+                        <p className="text-align-center cursor-default font-size">
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
+                            {league.name +" "+ serie.full_name}
+                        </p>                        
+                        <p className="text-align-center label-fecha cursor-default font-size">
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
+                            <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
+                        </p>
+                    </div>
+                </Fragment>
+            :
+                <div className="not-first-index-container">
+                    <div className="info-not-first-index text-align-center">
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
+                        <span>{league.name +" "+ serie.full_name}</span>     
+                    </div>
+
+                    <div className="info-not-first-index text-align-center">
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
+                        <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>     
+                    </div>
+                </div>
+            }
+            
         </div>
     );
 }
