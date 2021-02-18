@@ -2,18 +2,15 @@ import React, {useEffect, useState} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
-/* import Moment from 'moment'; */
-/* import {momentSpanishSetup} from '../../utility/MomentSpanishSetup'; */
+import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import { usePalette } from 'react-palette'
-/* import axios from 'axios'; */
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
-    /* momentSpanishSetup(); */
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
@@ -42,6 +39,50 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     },[]);
 
     const {width} = loaderprogress;
+
+    if (matchesHoy.length > 0) {
+        //img: winner.image_url !== null? winner.image_url :  csgoLogoDefault,
+        let array = [];
+        let array2 = [];
+        matchesHoy.map(match => {
+            const {winner} = match;
+            array.push(
+                {
+                    name: winner.name,
+                    img: winner.image_url !== null? winner.image_url :  csgoLogoDefault,
+                }
+            );
+        });
+        //console.log(array);
+
+        function groupBy(list, keyGetter) {
+            const map = new Map();
+            list.forEach((item) => {
+                 const key = keyGetter(item);
+                 const collection = map.get(key);
+                 if (!collection) {
+                     map.set(key, [item]);
+                 } else {
+                     collection.push(item);
+                 }
+            });
+            return map;
+        };
+
+        array.map(team => {
+            const grouped = groupBy(array, team => team.name);
+            const gettedTeam = grouped.get(team.name)
+            array2.push(
+                {
+                    name: gettedTeam[0].name,
+                    img: gettedTeam[0].img,
+                    points: gettedTeam.length,
+                }
+            );
+        });
+
+        console.log(array2);
+    }
 
     if (crash !== true){
         if(width === '100%' && paletestate === true){

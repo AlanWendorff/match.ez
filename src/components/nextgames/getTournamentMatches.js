@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getTournamentMatches = async (tournamentId) => {    
     const badFetch = true;    
     //https://arg-matchez-backend.herokuapp.com          
-    const url = `https://arg-matchez-backend.herokuapp.com/api/tournamentmatches/${tournamentId}`;
+    const url = `http://localhost:5000/api/tournamentmatches/${tournamentId}`;
     try {
         const config = {
             method: 'get',
