@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
+import Leaderboard from './Leaderboard/Leaderboard';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
@@ -16,6 +16,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [noMatches, guardarNoMatches] = useState(false);  
     const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
+    const [leaderboard, guardarLeaderboard] = useState([]);
     const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + image_url)
     const {darkMuted} = data;
     
@@ -23,10 +24,12 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         (async () => {
             if (!matchesHoy.length > 0) {
                 const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
+                const {data, ladder} = matchesTournament;
                 if (matchesTournament) {
                     guardarLoaderProgress({width: '100%'});
-                    guardarMatchesHoy(matchesTournament);
-                    if(matchesTournament.length === 0){   
+                    guardarMatchesHoy(data);
+                    guardarLeaderboard(ladder);
+                    if(data.length === 0){   
                         guardarNoMatches(true);
                     }
                 }
@@ -40,56 +43,9 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
 
     const {width} = loaderprogress;
 
-    if (matchesHoy.length > 0) {
-        //img: winner.image_url !== null? winner.image_url :  csgoLogoDefault,
-        let array = [];
-        let array2 = [];
-        matchesHoy.map(match => {
-            const {winner} = match;
-            array.push(
-                {
-                    name: winner.name,
-                    img: winner.image_url !== null? winner.image_url :  csgoLogoDefault,
-                }
-            );
-        });
-        //console.log(array);
-
-        function groupBy(list, keyGetter) {
-            const map = new Map();
-            list.forEach((item) => {
-                 const key = keyGetter(item);
-                 const collection = map.get(key);
-                 if (!collection) {
-                     map.set(key, [item]);
-                 } else {
-                     collection.push(item);
-                 }
-            });
-            return map;
-        };
-
-        array.map(team => {
-            const grouped = groupBy(array, team => team.name);
-            const gettedTeam = grouped.get(team.name)
-            array2.push(
-                {
-                    name: gettedTeam[0].name,
-                    img: gettedTeam[0].img,
-                    points: gettedTeam.length,
-                }
-            );
-        });
-
-        console.log(array2);
-    }
-
     if (crash !== true){
         if(width === '100%' && paletestate === true){
             if(noMatches !== true){
-                //const live = matchesHoy.filter(match => match.status === "running");
-                //const hoy = matchesHoy.filter(match => match.begin_at === "running");
-                //const proximamente = matchesHoy.filter(match => match.status === "running");
                 return(
                     <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: data.darkVibrant}}>
                         <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
@@ -99,6 +55,14 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                         <div className="home-box">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                         </div>
+                        {leaderboard?
+                            <Leaderboard 
+                            leaderboard={leaderboard}
+                            />
+                            :
+                            null
+                        }
+                        
                         <ListadoDeTarjetasHoy
                             matchesHoy={matchesHoy}
                             data = {data}
@@ -116,6 +80,15 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                         <div className="home-box">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                         </div>
+
+                        {leaderboard?
+                            <Leaderboard 
+                            leaderboard={leaderboard}
+                            />
+                            :
+                            null
+                        }
+                        
                         <TarjetaInformativa
                             noMatches={noMatches}
                         />
