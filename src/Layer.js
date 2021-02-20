@@ -36,6 +36,7 @@ const Layer = () => {
   const tournamentArray = Object.values(tournamentId);
   const { paths } = useContext(PathContext);
   const pathsArray = Object.values(paths);
+
   return ( 
     <Router> 
       <Switch>

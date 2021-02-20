@@ -1,0 +1,7 @@
+.twitch-container{
+    margin: 20px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 700px;
+}

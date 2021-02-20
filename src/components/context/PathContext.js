@@ -15,8 +15,9 @@ const PathProvider = (props) => {
         database.ref('paths').on('value',(snap)=>{
         guardarPath(snap.val());
         });
+        
     },[]);//Hacemos que ejecute una sola vez
-
+    
     return(
         <PathContext.Provider 
             value={{paths}}

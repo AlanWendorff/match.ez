@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faFistRaised, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { getStyles } from './getStyles/firebaseStyles';
+import TwitchStream from '../stream/TwitchStream';
 import './menu.css';
 import './tournament.css';
 const HomeScreen = () => {
@@ -73,7 +74,6 @@ const HomeScreen = () => {
                     <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>{window.innerWidth > 782? 'Torneos' : ''}</a>
                     <Link to='all-matches' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faFistRaised}/>{window.innerWidth > 782? 'Todos los partidos' : ''}</Link>
                 </div>
-    
                 {navbar?
                     <Fragment>
                         <Search
@@ -84,6 +84,7 @@ const HomeScreen = () => {
                             collection={collection}
                         />
                         <TeamsHome/>
+                        <TwitchStream/>
                     </Fragment>
                 :
                     <div className="tournaments-position animate__animated animate__backInRight animate__faster">

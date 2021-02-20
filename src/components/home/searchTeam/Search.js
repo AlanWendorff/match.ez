@@ -69,7 +69,7 @@ const Search = ({setCollection, collection}) => {
 
     return ( 
         <div className="search-container animate__animated animate__backInLeft animate__faster">
-            <div className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 110);}}>
+            <div title={ `${equiposdatabase.length} Equipos para buscar` } className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 110);}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
                 <label className="color-text-black width-50percent" htmlFor="icon_prefix">Equipo:</label>
