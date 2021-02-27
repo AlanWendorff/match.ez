@@ -14,6 +14,7 @@ import { getStyles } from './getStyles/firebaseStyles';
 import TwitchStream from '../stream/TwitchStream';
 import './menu.css';
 import './tournament.css';
+
 const HomeScreen = () => {
 
     const [navbar, setNavBar] = useState(true);

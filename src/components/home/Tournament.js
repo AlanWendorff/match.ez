@@ -3,11 +3,19 @@ import ProgressiveImage from 'react-progressive-image';
 import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
 import './tournament.css';
 
-const Tournament = ({tournament}) => {
-    const {name, image_url} = tournament;
+const Tournament = ({tournament, customTournament}) => {
+    let img;
+    let name;
+    if (tournament === undefined) {
+        img = customTournament.img;
+        name = customTournament.name;
+    }else{
+        img = tournament.image_url;
+        name = tournament.name;
+    }
     return(
         <div className="tournament-flex"> 
-            <ProgressiveImage src={image_url} placeholder={csgoLogo}>
+            <ProgressiveImage src={img} placeholder={csgoLogo}>
                 {src => <img className="tournament-logo-size" src={src} alt={name} />}
             </ProgressiveImage>
             <span className="tournament-name">{name}</span>

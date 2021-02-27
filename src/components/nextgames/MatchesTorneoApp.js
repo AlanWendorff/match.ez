@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,10 @@ import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
-import { usePalette } from 'react-palette'
+import { PathContext } from '../context/PathContext'
+import { usePalette } from 'react-palette';
+import { template } from './template';
+import { unity, unityTeams } from '../../custom/unity-flow-league-schedule';
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
@@ -17,29 +20,39 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
     const [leaderboard, guardarLeaderboard] = useState([]);
-    const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + image_url)
+    const { data } = usePalette('https://proxy-kremowy.herokuapp.com/' + image_url);
     const {darkMuted} = data;
+    const { paths } = useContext(PathContext);
+    const pathsArray = Object.values(paths);
     
     useEffect(() => { 
-        (async () => {
-            if (!matchesHoy.length > 0) {
-                const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
-                const {data, ladder} = matchesTournament;
-                if (matchesTournament) {
-                    guardarLoaderProgress({width: '100%'});
-                    guardarMatchesHoy(data);
-                    guardarLeaderboard(ladder);
-                    if(data.length === 0){   
-                        guardarNoMatches(true);
+        if (tournamentId !== undefined) {
+            (async () => {
+                if (!matchesHoy.length > 0) {
+                    const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
+                    const {data, ladder} = matchesTournament;
+                    if (matchesTournament) {
+                        guardarLoaderProgress({width: '100%'});
+                        guardarMatchesHoy(data);
+                        guardarLeaderboard(ladder);
+                        if(data.length === 0){   
+                            guardarNoMatches(true);
+                        }
+                    }
+                    if (badFetch) {
+                        guardarStateCrash(true);
                     }
                 }
-                if (badFetch) {
-                    guardarStateCrash(true);
-                }
+            })()
+        }else{
+            if (pathsArray.length > 0) {
+                const customMatches = template(unity, pathsArray, unityTeams);
+                guardarMatchesHoy(customMatches);
+                guardarLoaderProgress({width: '100%'});
             }
-        })()
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    },[tournamentId === undefined? paths : null]);
 
     const {width} = loaderprogress;
 
@@ -55,7 +68,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                         <div className="home-box">
                             <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
                         </div>
-                        {leaderboard?
+                        {leaderboard && leaderboard.length > 0?
                             <Leaderboard 
                             leaderboard={leaderboard}
                             />
