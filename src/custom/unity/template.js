@@ -7,7 +7,7 @@ String.prototype.replaceAt = function(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
 
-export const template = (unity, pathsArray, unityTeams) => {
+export const template_unity = (unity, pathsArray, unityTeams) => {
     momentSpanishSetup();
     unity.map((match) => {
         const {begin_at, team_1, team_2} = match;

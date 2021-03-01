@@ -28,7 +28,7 @@ import np_pattern from '../../pattern/np_pattern.png';
 import sharks_pattern from '../../pattern/sharks_pattern.png';
 
 
-const MatchesApp = ({teamId, image_url}) => { 
+const MatchesApp = ({teamId, image_url, name}) => { 
     let urlTeamId = "";
     let classContainer = "parametros-container mosaico noselect "
     let backgroundStyle;

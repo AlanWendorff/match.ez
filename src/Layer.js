@@ -7,7 +7,7 @@ import Timeline from './components/timeline/Timeline';
 import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { unity_info } from './custom/unity-flow-league-schedule';
+import { unity_info } from './custom/unity/unity-flow-league-schedule';
 import axios from 'axios';
 
 const Layer = () => {
@@ -46,6 +46,7 @@ const Layer = () => {
                 <MatchesApp
                   key={team.id}
                   teamId={team.id}
+                  name={team.name}
                   image_url={team.img}
                 />
               </Route>

@@ -8,10 +8,10 @@ import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
-import { PathContext } from '../context/PathContext'
+import { PathContext } from '../context/PathContext';
 import { usePalette } from 'react-palette';
-import { template } from './template';
-import { unity, unityTeams } from '../../custom/unity-flow-league-schedule';
+import { template_unity } from '../../custom/unity/template';
+import { unity, unityTeams } from '../../custom/unity/unity-flow-league-schedule';
 
 const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
@@ -46,7 +46,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
             })()
         }else{
             if (pathsArray.length > 0) {
-                const customMatches = template(unity, pathsArray, unityTeams);
+                const customMatches = template_unity(unity, pathsArray, unityTeams);
                 guardarMatchesHoy(customMatches);
                 guardarLoaderProgress({width: '100%'});
             }
