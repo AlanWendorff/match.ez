@@ -66,6 +66,7 @@ const HomeScreen = () => {
     if (styles !== undefined) {
         return (
             <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} {...handlers} className="parametros-container menu-background font-gilroy" style={{backgroundColor: styles.background_color}}>
+                
                 <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
                     <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
                 </div>

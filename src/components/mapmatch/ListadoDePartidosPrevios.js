@@ -37,8 +37,8 @@ const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamId, scoreMatch}) => {
 
     useEffect(() => {
         const firstMatch = prevMatch[0];
-        const {begin_at} = firstMatch;
-        setFirstIndexDate(begin_at);
+        const {id} = firstMatch;
+        setFirstIndexDate(id);
         if (droplist === false) {
             setArrayMatches([firstMatch]);
         }else{

@@ -30,7 +30,7 @@ td, th{
     }
     .player-name-style{
         margin: 0px 5px;
-        color: #2d6da3;
+        /* color: #2d6da3; */
         font-family: "Gilroy-ExtraBold";
     }
     .Team-name-score{
@@ -52,7 +52,7 @@ td, th{
     }
     .player-name-style{
         margin: 0px 5px;
-        color: #2d6da3;
+        /* color: #2d6da3; */
         font-family: "Gilroy-Light";
     }
     .Team-name-score{

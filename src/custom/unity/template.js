@@ -35,9 +35,19 @@ export const template_unity = (unity, pathsArray, unityTeams) => {
             path_2 = null;
         }
         const fullTimeUser = Moment(Date.now()).format("YYYY-MM-DD HH:mm:00");
-        const dateMatch = Moment(begin_at).format("YYYY-MM-DD HH:mm:00");
-        const fullintPlus = parseInt(dateMatch.charAt(12)) + 1;
-        const fullavgMatchTime = dateMatch.replaceAt(12, fullintPlus.toString());
+        const dateMatch = Moment(begin_at).utc().format("YYYY-MM-DD HH:mm:00");
+        let fullintPlus;
+        let fullavgMatchTime;
+        let firstNumberHour;
+        if (parseInt(dateMatch.charAt(12)) === 9) {
+            fullintPlus = 0;
+            firstNumberHour = parseInt(dateMatch.charAt(11)) + 1;
+            fullavgMatchTime = dateMatch.replaceAt(11, firstNumberHour.toString());
+            fullavgMatchTime = fullavgMatchTime.replaceAt(12, fullintPlus.toString());
+        }else{
+            fullintPlus = parseInt(dateMatch.charAt(12)) + 1;
+            fullavgMatchTime = dateMatch.replaceAt(12, fullintPlus.toString());
+        }
         if (fullTimeUser >= dateMatch && fullTimeUser <= fullavgMatchTime) {
             status = "running";
         }else{
@@ -45,23 +55,23 @@ export const template_unity = (unity, pathsArray, unityTeams) => {
         }
         if (fullTimeUser >= fullavgMatchTime) {
             status = "finished";
-        }
+        };
         if (status !== "finished") {
             customTournamentMatches.push(
                 {
                     "number_of_games": 1,
                     "name": `${team_1} vs ${team_2}`,
-                    "begin_at": `${begin_at}`,
+                    "begin_at": `${dateMatch}`,
                     "tournament": {
                         "name": "Temporada Regular"
                     },
                     "results": [
                         {
-                            "score": "-",
+                            "score": "0",
                             "team_id": 128394
                         },
                         {
-                            "score": "-",
+                            "score": "0",
                             "team_id": 126634
                         }
                     ],

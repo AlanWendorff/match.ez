@@ -17,10 +17,10 @@ import './matchprevio.css';
 
 const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch, oneMatch, firstIndexDate}) => {
     momentSpanishSetup();
-
+    const {teams} = scoreMatch;
     //onClick={ store.addNotification(oneMatch) }
     const [sizecard, setSizeCard] = useState();
-    const {number_of_games, league, serie, begin_at, winner_id, opponents, results, name} = match;
+    const {number_of_games, league, serie, begin_at, id, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
@@ -29,7 +29,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
     //eslint-disable-next-line
     return(
         <div className="noselect card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect position-relative" style={sizecard}> 
-            {begin_at === firstIndexDate?
+            {id === firstIndexDate?
                 <div onClick={() => {
                     if (droplist) {
                         setDropList(false);
@@ -111,19 +111,37 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                 </div>            
             </div>
 
-            {begin_at === firstIndexDate?
+            {id === firstIndexDate?
                 <Fragment>
-                    <div className="card-content click-more-info activator cursor-pointer" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "750px", overflow: "hidden"}) : setSizeCard({height: "650px"})}}}}>
+                    <div className="card-content click-more-info activator cursor-pointer" 
+                    onClick={()=>{ 
+                        if (teams && teams.length > 0) {
+                            if (window.innerWidth > 770) {
+                                setSizeCard({height: "750px", overflow: "hidden"});
+                            }else{
+                                setSizeCard({height: "650px"});
+                            }
+                        }
+                        }}>
                         <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
                     </div>
                     <div className="card-reveal">
-                        <span className="card-title grey-text text-darken-4 margin-right-bottom" onClick={()=>{ { {window.innerWidth > 770? setSizeCard({height: "297px", overflow: "hidden"}) : setSizeCard({height: "236px", overflow: "hidden"})}}}}><i className="material-icons right">close</i></span>
+                        <span className="card-title grey-text text-darken-4 margin-right-bottom" 
+                        onClick={()=>{ 
+                            if (teams && teams.length > 0) {
+                                if (window.innerWidth > 770) {
+                                    setSizeCard({height: "297px", overflow: "hidden"});
+                                }else{
+                                    setSizeCard({height: "236px", overflow: "hidden"});
+                                }
+                            }
+                        }}
+                        ><i className="material-icons right">close</i></span>
                         
                         <ScoreTarjeta
                             scoreMatch={scoreMatch}
                             opponents={opponents}
                             csgoLogoDefault={csgoLogoDefault}
-                            color={data}
                         />
                         
                         <p className="text-align-center cursor-default font-size">

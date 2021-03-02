@@ -60,7 +60,7 @@ const Tarjetaversus = ({match, teamId}) => {
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
+                                <a className="text-center head-font highlight-text" style={{color: data.darkVibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -97,12 +97,12 @@ const Tarjetaversus = ({match, teamId}) => {
 
                             <div className="live-container-info-bottom">
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Fase:</span> 
+                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fase:</span> 
                                     {tournament.name}
                                 </p>
 
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Empezó: </span>
+                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Empezó: </span>
                                     <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                 </p>                  
                             </div>
@@ -131,28 +131,28 @@ const Tarjetaversus = ({match, teamId}) => {
                     <div className="card-stacked">
                         <div className="card-content">
                             
-                            <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
+                            <a className="text-center head-font highlight-text" style={{color: data.darkVibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
                             <p className="text-center cursor-default font-size mb-8">{name}</p>
                             
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Fase:</span> 
+                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fase:</span> 
                                 {tournament.name}
                             </p>
                             
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Fecha: </span>
+                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fecha: </span>
                                 <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs  <span className="hoy-color">{hoy}</span> </span> 
                             </p>
                             
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.vibrant}}>Modalidad:</span> 
+                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Modalidad:</span> 
                                 {modalidad}
                             </p>
                         
                         </div>
     
                         <div className="card-action padding-streaming-box">
-                            <span className="cursor-default" style={{color: data.vibrant}}>{statusStream}</span>   
+                            <span className="cursor-default" style={{color: data.darkVibrant}}>{statusStream}</span>   
                         </div>
                     </div>
                 </div>

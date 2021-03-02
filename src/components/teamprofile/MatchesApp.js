@@ -15,7 +15,7 @@ import { getPlayerScore } from './getPlayerScore';
 
 import '../../styles/base.css';
 import 'react-notifications-component/dist/theme.css'
-
+import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import ca_pattern from '../../pattern/ca_pattern.png';
 import fg_pattern from '../../pattern/fg_pattern.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
@@ -26,7 +26,6 @@ import mibr_pattern from '../../pattern/mibr_pattern.png';
 import river_pattern from '../../pattern/river_pattern.png';
 import np_pattern from '../../pattern/np_pattern.png';
 import sharks_pattern from '../../pattern/sharks_pattern.png';
-
 
 const MatchesApp = ({teamId, image_url, name}) => { 
     let urlTeamId = "";
@@ -42,8 +41,31 @@ const MatchesApp = ({teamId, image_url, name}) => {
     const [prevMatch, guardarPrevMatch] = useState([]);
     const [matches, guardarMatches]     = useState([]);
     const [scoreMatch, guardarScoreMatch] = useState([]);
+    const [b64Logo, guardarB64Logo] = useState('');
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
+
+    const proxyTeamLogo = 'https://proxy-kremowy.herokuapp.com/' + image_url;
+
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+            callback(reader.result);
+          }
+          reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+    if (image_url !== csgoLogoDefault) {
+        toDataURL(proxyTeamLogo, function(dataUrl) {
+            guardarB64Logo(dataUrl);
+        })
+    }
+    
 
     switch (teamId) {
         case 126709:  //9z
@@ -121,10 +143,18 @@ const MatchesApp = ({teamId, image_url, name}) => {
             
         default:
             classContainer = classContainer + "menu-background";
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${generic_team_pattern})`
-            };
+            if (image_url !== csgoLogoDefault) {
+                backgroundStyle = {
+                    backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+                    backgroundColor: `${data.darkVibrant}`,
+                };
+            }else{
+                backgroundStyle = {
+                    backgroundColor: `${data.darkVibrant}`,
+                    backgroundImage: `url(${generic_team_pattern})`
+                };
+            }
+            
             urlTeamId = teamId;
             break;
     }
@@ -253,7 +283,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
             };
         }else{                                                       // RETURN APP LOADING
             return (
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: '#040c1c'}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: 'black'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     />
