@@ -8,6 +8,7 @@ import {setGameMode} from '../../../utility/SetGameMode';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
+import { usePalette } from 'react-palette';
 import './tarjetaUpcomingMatch.css';
 
 const Tarjetaversus = ({match, teamId}) => {
@@ -15,13 +16,26 @@ const Tarjetaversus = ({match, teamId}) => {
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
     momentSpanishSetup();
-
+    let proxyLogo;
     let ArrteamA;
     let opponentLogo, opponentName, opponentSlug;
     let hoy = "";
     let statusStream = "Streaming inactivo";
     let diaUsuario = new Date().getDate();
     let diaMatch = parseInt(Moment(begin_at).format('D'));
+    if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
+    let error = usePalette(proxyLogo).error;
+    let leagueColors = usePalette(proxyLogo).data;
+    if (error) {
+        leagueColors = {
+            darkMuted: "#1c313a",
+            darkVibrant: "#455a64",
+            lightMuted: "#455a64",
+            lightVibrant: "#718792",
+            muted: "#1c313a",
+            vibrant: "#718792",
+        }
+    }
 
     if(opponents.length > 1){
         ArrteamA = opponents.find(element => element.opponent.id !== teamId);
@@ -55,12 +69,12 @@ const Tarjetaversus = ({match, teamId}) => {
         const {A_point, B_point} = setMatchResult(results, teamId); 
         return(
             <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy">
-                <div className="col s12 m7 posicion-tarjeta">
+                <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image waves-effect waves-block waves-light">
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: data.darkVibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
+                                <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -97,7 +111,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
                             <div className="live-container-info-bottom">
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fase:</span> 
+                                    <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
                                     {tournament.name}
                                 </p>
 
@@ -118,7 +132,7 @@ const Tarjetaversus = ({match, teamId}) => {
     }else{
         return(
             <div className="col s12 m7 posicion-tarjeta font-gilroy">
-                <div className="card horizontal tamano-tarjeta">
+                <div className="card horizontal tamano-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
 
                     <div className="card-image lienzo-logo"> 
                         <Link to ={`/${opponentSlug}`}> 
@@ -131,11 +145,11 @@ const Tarjetaversus = ({match, teamId}) => {
                     <div className="card-stacked">
                         <div className="card-content">
                             
-                            <a className="text-center head-font highlight-text" style={{color: data.darkVibrant}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
+                            <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
                             <p className="text-center cursor-default font-size mb-8">{name}</p>
                             
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fase:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
                                 {tournament.name}
                             </p>
                             
@@ -145,7 +159,7 @@ const Tarjetaversus = ({match, teamId}) => {
                             </p>
                             
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Modalidad:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Modalidad:</span> 
                                 {modalidad}
                             </p>
                         

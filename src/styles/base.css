@@ -62,7 +62,9 @@
 .margin-content{
     margin-right: 5% !important;
 }
-
+.mr-3px{
+    margin-right: 3px;
+}
 .mr{
     margin-right: 2% !important;
 }

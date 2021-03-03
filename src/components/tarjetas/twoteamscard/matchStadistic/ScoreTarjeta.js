@@ -83,7 +83,7 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
                         </thead>
                         <tbody>
                             {
-                                scoreMatch.teams[0].players.sort(function(a,b){return b.stats.counts.kills-a.stats.counts.kills}).map(({name, first_name, last_name, stats}, index) => {
+                                scoreMatch.teams[0].players.sort(function(a,b){return b.stats.per_game_averages.hltv_game_rating-a.stats.per_game_averages.hltv_game_rating}).map(({name, first_name, last_name, stats}, index) => {
                                     const {counts, per_game_averages} = stats;
                                     return(
                                         <tr className="line-width" key={index}>
@@ -122,7 +122,7 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
                         </thead>
                         <tbody>
                             {
-                                scoreMatch.teams[1].players.sort(function(a,b){return b.stats.counts.kills-a.stats.counts.kills}).map(({name, first_name, last_name, stats}, index) => {
+                                scoreMatch.teams[1].players.sort(function(a,b){return b.stats.per_game_averages.hltv_game_rating-a.stats.per_game_averages.hltv_game_rating}).map(({name, first_name, last_name, stats}, index) => {
                                     const {counts, per_game_averages} = stats;
                                     return(
                                         <tr className="line-width" key={index}>

@@ -12,12 +12,14 @@ import {setGameMode} from '../../../utility/SetGameMode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { store } from 'react-notifications-component';
+import { usePalette } from 'react-palette';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
 const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch, oneMatch, firstIndexDate}) => {
     momentSpanishSetup();
     const {teams} = scoreMatch;
+    let proxyLogo;
     //onClick={ store.addNotification(oneMatch) }
     const [sizecard, setSizeCard] = useState();
     const {number_of_games, league, serie, begin_at, id, winner_id, opponents, results, name} = match;
@@ -25,6 +27,20 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
+
+    if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
+    let error = usePalette(proxyLogo).error;
+    let leagueColors = usePalette(proxyLogo).data;
+    if (error) {
+        leagueColors = {
+            darkMuted: "#1c313a",
+            darkVibrant: "#455a64",
+            lightMuted: "#455a64",
+            lightVibrant: "#718792",
+            muted: "#1c313a",
+            vibrant: "#718792",
+        }
+    }
     
     //eslint-disable-next-line
     return(
@@ -43,7 +59,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                 null
             }
             
-            <div className="card-image waves-effect waves-block waves-light">
+            <div className="card-image waves-effect waves-block waves-light" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
                         <p className="prev-game-header" style={{color: data.darkMuted}}>{name}</p>

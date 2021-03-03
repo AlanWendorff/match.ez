@@ -16,7 +16,6 @@ import './timeline.css'
 const Timeline = () => {
     momentSpanishSetup();
     const styles = getStyles();
-
     const [time, setTime] = useState([]);
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);

@@ -7,6 +7,7 @@ import {setGameMode} from '../../utility/SetGameMode';
 import {setMatchResult} from '../../utility/SetMatchResult';
 import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
+import { usePalette } from 'react-palette';
 
 const TarjetaAllmatches = ({match}) => {
 
@@ -14,6 +15,7 @@ const TarjetaAllmatches = ({match}) => {
     momentSpanishSetup();
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
+    let proxyLogo;
     let aTeamSlug = "";
     let bTeamSlug = "";
     let aTeamName = "";
@@ -23,6 +25,19 @@ const TarjetaAllmatches = ({match}) => {
     let bTeamId = "";
     let statusStream = "Streaming inactivo";
     let statusMatch = "¡Hoy " + Moment(begin_at).format('H:mm') + "hs!";
+    if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
+    let { data, error } = usePalette(proxyLogo);
+
+    if (error) {
+        data = {
+            darkMuted: "#1c313a",
+            darkVibrant: "#455a64",
+            lightMuted: "#455a64",
+            lightVibrant: "#718792",
+            muted: "#1c313a",
+            vibrant: "#718792",
+        }
+    }
 
     if (opponents.length !== 0) {
         if (opponents.length === 1) {
@@ -70,14 +85,14 @@ const TarjetaAllmatches = ({match}) => {
 
     if (dateUser === dateMatch || status === "running"){ 
         if (status === "running"){
-            const {A_point, B_point} = setMatchResult(results, bTeamId); 
+            const {A_point, B_point} = setMatchResult(results, bTeamId);                            //backgroundColor: `${data.lightVibrant}`
             return (
-                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy">
+                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy" style={{border: `5px solid ${data.lightVibrant}`}}>
                     <div className="col s12 m7 posicion-tarjeta">
                         <div className="card-image waves-effect waves-block waves-light">
                             <div className="card-image container-info cursor-default padding-top-8">
                                 <div className="live-league-container">
-                                    <a className="text-center head-font highlight-text" rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
+                                    <a className="text-center head-font highlight-text" style={{color: `${data.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
                                 </div>
                                 
                                 <div className="live-container-puntos-logos-upcoming">
@@ -116,12 +131,12 @@ const TarjetaAllmatches = ({match}) => {
     
                                 <div className="live-container-info-bottom">
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" >Fase:</span> 
+                                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
                                         {tournament.name}
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" >Empezó: </span>
+                                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Empezó: </span>
                                         <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                     </p>                  
                                 </div>
@@ -136,7 +151,7 @@ const TarjetaAllmatches = ({match}) => {
              ); 
         }else{
             return(
-                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy"> 
+                <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy" style={{border: `5px solid ${data.lightVibrant}`}}> 
                     <div className="card-image waves-effect waves-block waves-light">
         
                         <div className="card-image container-info cursor-default">
@@ -184,12 +199,12 @@ const TarjetaAllmatches = ({match}) => {
                         <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
     
                         <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" >Torneo:</span> 
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Torneo:</span> 
                             {league.name+" "+serie.full_name}
                         </p>
         
                         <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" >Fase:</span> 
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
                             {tournament.name}
                         </p>    
                     </div>
@@ -198,7 +213,7 @@ const TarjetaAllmatches = ({match}) => {
         }
     }else{
         return (
-            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy"> 
+            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy" style={{border: `5px solid ${data.lightVibrant}`}}> 
                 <div className="card-image waves-effect waves-block waves-light">
     
                     <div className="card-image container-info cursor-default">
@@ -247,12 +262,12 @@ const TarjetaAllmatches = ({match}) => {
                     <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
    
                     <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" >Torneo:</span> 
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Torneo:</span> 
                         {league.name+" "+serie.full_name}
                     </p>
     
                     <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" >Fase:</span> 
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
                         {tournament.name}
                     </p>     
                 </div>

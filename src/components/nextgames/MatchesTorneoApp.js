@@ -30,8 +30,8 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const { paths } = useContext(PathContext);
     const pathsArray = Object.values(paths);
     let { data, error } = usePalette(proxyLogo);
-
-    if (error) {
+    let darkMuted = data.darkMuted;
+    if (error || darkMuted === undefined) {
         data = {
             darkMuted: "#1c313a",
             darkVibrant: "#455a64",
@@ -41,9 +41,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
             vibrant: "#718792",
         }
     }
-
-    const {darkMuted} = data;
-
+    darkMuted = data.darkMuted;
     function toDataURL(url, callback) {
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
