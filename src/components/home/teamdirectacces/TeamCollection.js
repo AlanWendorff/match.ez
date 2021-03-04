@@ -5,6 +5,7 @@ import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import './teamcollection.css';
 
 const TeamCollection = ({collection}) => {
+
     if (collection.length > 0) {
         return(
             <div className="collection-container animate__animated animate__backInLeft animate__faster">
