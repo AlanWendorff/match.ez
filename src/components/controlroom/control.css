@@ -1,0 +1,33 @@
+.secret{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.479);
+}
+.home-box-secret{
+    display: flex;
+    width: 10%;
+    padding: 1% 0% 0% 1%;
+    margin: 1% 3% 5% 1%;
+    justify-content: center;
+    position: fixed; /* Fixed/sticky position */
+    bottom: 0%; /* Place the button at the bottom of the page */
+    right: 0%; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    padding: 0%; /* Some padding */
+}
+
+.secret-item-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 200px;
+    margin: 20px 0px;
+    background-color: rgba(0, 0, 0, 0.199);
+}
+
+.secret-item-container > img {
+    width: 50px;
+}

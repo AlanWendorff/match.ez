@@ -4,6 +4,7 @@ import HomeScreen from './components/home/HomeScreen';
 import Allmatches from './components/allmatches/Allmatches';
 import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
 import Timeline from './components/timeline/Timeline';
+import Control from './components/controlroom/Control';
 import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -39,7 +40,7 @@ const Layer = () => {
   return ( 
     <Router> 
       <Switch>
-        {   
+        {
           pathsArray.map((team) => {
             return(
               <Route exact path={`/${team.path}`} key={team.path}>
@@ -53,7 +54,7 @@ const Layer = () => {
             );                                  
           })
         }
-        {   
+        {
           tournamentArray.map((tournament) => {
             return(
               <Route exact path={`/${tournament.path}`} key={tournament.name}>
@@ -63,9 +64,16 @@ const Layer = () => {
                   image_url={tournament.image_url}
                 />
               </Route>
-            );                                  
+            );                    
           })
         }
+
+        <Route exact path="/control-room">
+          <Control
+            tournamentArray={tournamentArray}
+            pathsArray={pathsArray}
+          />
+        </Route>
         
         <Route exact path="/unity-league">
           <MatchTorneoApp
