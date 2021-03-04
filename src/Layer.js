@@ -9,9 +9,11 @@ import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { unity_info } from './custom/unity/unity-flow-league-schedule';
+import FirebaseConfig from './utility/FirebaseConfig';
 import axios from 'axios';
 
 const Layer = () => {
+  const database = FirebaseConfig();
 
   useEffect(() => {
     (async()=>{
@@ -72,6 +74,7 @@ const Layer = () => {
           <Control
             tournamentArray={tournamentArray}
             pathsArray={pathsArray}
+            database={database}
           />
         </Route>
         
