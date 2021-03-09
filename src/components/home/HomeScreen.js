@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faFistRaised, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { getStyles } from './getStyles/firebaseStyles';
-import TwitchStream from '../stream/TwitchStream';
 import './menu.css';
 import './tournament.css';
 
@@ -86,7 +85,6 @@ const HomeScreen = () => {
                             collection={collection}
                         />
                         <TeamsHome/>
-                        <TwitchStream/>
                     </Fragment>
                 :
                     <div className="tournaments-position animate__animated animate__backInRight animate__faster">

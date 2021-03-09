@@ -88,7 +88,7 @@ const Search = ({setCollection, collection}) => {
             <div title="Busca tu equipo" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 110);}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
-                <label className="color-text-black width-50percent" htmlFor="icon_prefix">{ `${equiposdatabase.length} Equipos para buscar:` }</label>
+                <label className="color-text-black width-100percent" htmlFor="icon_prefix">{ `${equiposdatabase.length} Equipos para buscar:` }</label>
                 <div className="save-container animate__animated animate__fadeInRight animate__faster" style={savebuttonstate} onClick={() => { 
                         localStorage.setItem('collection', JSON.stringify(collection));
                         //localStorage.removeItem('teams');

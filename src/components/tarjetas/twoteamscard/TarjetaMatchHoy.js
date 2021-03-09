@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
 import Moment from 'moment';
-import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
+import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
@@ -23,14 +22,24 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     let aTeamLogo = "";
     let bTeamLogo = "";
     let bTeamId = "";
+    let fase = "";
     let statusStream = "Streaming inactivo";
     let statusMatch = "¡Hoy " + Moment(begin_at).format('H:mm') + "hs!";
+
+    if (name.includes(":")) {
+        fase = name.substring(
+            name.lastIndexOf(0), 
+            name.lastIndexOf(":")
+        );
+    }else{
+        fase = name;
+    }
 
     if (opponents.length !== 0) {
         if (opponents.length === 1) {
             aTeamName = opponents[0].opponent.name;
             if(opponents[0].opponent.image_url === null){
-                aTeamLogo = csgoLogoDefault;
+                aTeamLogo = csgoLogoDefaultBlack;
             }else{
                 aTeamLogo = opponents[0].opponent.image_url;
             };
@@ -43,12 +52,12 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             bTeamSlug = opponents[1].opponent.slug;
             bTeamId = opponents[1].opponent.id;
             if(opponents[0].opponent.image_url === null || undefined){
-                aTeamLogo = csgoLogoDefault;
+                aTeamLogo = csgoLogoDefaultBlack;
             }else{
                 aTeamLogo = opponents[0].opponent.image_url;
             };
             if(opponents[1].opponent.image_url === null){
-                bTeamLogo = csgoLogoDefault;
+                bTeamLogo = csgoLogoDefaultBlack;
             }else{
                 bTeamLogo = opponents[1].opponent.image_url;
             };
@@ -82,9 +91,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <div className="live-container-puntos-logos-upcoming">
     
                                     <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
-                                        <div className="team-canvas outline-shade-black"> 
-                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
-                                            {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        <div className="team-canvas"> 
+                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                         </ProgressiveImage>                          
                                         </div> 
                                     </Link>
@@ -98,9 +107,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                     </div>
     
                                     <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
-                                        <div className="team-canvas outline-shade-black">
-                                            <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
-                                            {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        <div className="team-canvas">
+                                            <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                             </ProgressiveImage>          
                                         </div> 
                                     </Link>
@@ -116,7 +125,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <div className="live-container-info-bottom">
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
                                         <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
-                                        {tournament.name}
+                                        {name.includes(":")? fase : tournament.name}
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
@@ -148,8 +157,8 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
                                     <div className="team-canvas">  
-                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
-                                            {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                         </ProgressiveImage>                              
                                     </div>
                                 </Link>
@@ -160,8 +169,8 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                                 <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
                                     <div className="team-canvas">
-                                        <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
-                                            {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>    
                                     </div> 
                                 </Link>
@@ -189,7 +198,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         
                         <p className="text-align-center cursor-default font-size">
                             <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
-                            {tournament.name}
+                            {name.includes(":")? fase : tournament.name}
                         </p>    
                     </div>
                 </div>
@@ -211,8 +220,8 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
                                 <div className="team-canvas">          
-                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogo}>
-                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                       
                                 </div>
                             </Link>
@@ -223,8 +232,8 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
                             <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
                                 <div className="team-canvas">
-                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogo}>
-                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-team-logo-prev-match outline-shade-black animate__animated animate__fadeIn animate__fast" src={src} />}
+                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>   
                                 </div> 
                             </Link>
@@ -252,7 +261,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                     <p className="text-align-center cursor-default font-size">
                         <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
-                        {tournament.name}
+                        {name.includes(":")? fase : tournament.name}
                     </p>     
                 </div>
             </div>

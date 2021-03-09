@@ -1,4 +1,4 @@
-import csgoLogoDefault from '../ImagenesVarias/csgoLogoDefault.png';
+import csgoLogoDefaultBlack from '../ImagenesVarias/csgoLogoDefaultBlack.png';
 
 export const setTeamLogo = (opponents, teamId) =>{
 
@@ -9,7 +9,7 @@ export const setTeamLogo = (opponents, teamId) =>{
     let ownLogo;
     
     if (ArrteamA.opponent.image_url === null) {
-        opponentLogo = csgoLogoDefault;
+        opponentLogo = csgoLogoDefaultBlack;
     }else{
         opponentLogo = ArrteamA.opponent.image_url;
     }
@@ -17,7 +17,7 @@ export const setTeamLogo = (opponents, teamId) =>{
     const opponentSlug = ArrteamA.opponent.slug;
 
     if (ArrteamB.opponent.image_url === null) {
-        ownLogo = csgoLogoDefault;
+        ownLogo = csgoLogoDefaultBlack;
     }else{
         ownLogo = ArrteamB.opponent.image_url;
     }
@@ -29,6 +29,6 @@ export const setTeamLogo = (opponents, teamId) =>{
         opponentSlug,
         ownLogo, 
         ownName,
-        csgoLogoDefault
+        csgoLogoDefaultBlack
     };
 }

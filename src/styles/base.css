@@ -171,6 +171,10 @@ i.right{
     .font-size{
         font-size: 17px;
     }
+    .size-team-logo{
+        max-width: 130px !important;
+        max-height: auto !important;
+    }  
 }
   
 @media screen and (max-width: 770px) {     
@@ -183,4 +187,8 @@ i.right{
     .font-size{
         font-size: 12px;
     }
+    .size-team-logo{
+        max-width: 80px !important;
+        max-height: auto !important;
+    }  
 }

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import LazyLoad from 'react-lazyload';
 import TarjetaMatchHoy from '../tarjetas/twoteamscard/TarjetaMatchHoy';
 import shortid from 'shortid';
 
@@ -14,11 +15,12 @@ const ListadoDeTarjetasHoy = ({matchesHoy, data }) => {
                     {
                         matchesHoy.sort(function(a,b){ return  new Date(a.begin_at) - new Date(b.begin_at)  }).map(matchHoy => {
                             return(
-                                <TarjetaMatchHoy 
-                                    key={shortid.generate()}
-                                    matchHoy={matchHoy}
-                                    data = {data}
-                                />
+                                <LazyLoad offset={100} height={100} once key={shortid.generate()}>
+                                    <TarjetaMatchHoy 
+                                        matchHoy={matchHoy}
+                                        data = {data}
+                                    />
+                                </LazyLoad>
                             );
                         })
                     }

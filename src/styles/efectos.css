@@ -35,3 +35,35 @@
 .transition-effect{
     transition: all 0.1s ease-out;
 }
+
+.effect-360 {
+    position: relative;
+    transition: .5s;
+    z-index: 3;
+}
+
+.effect-360-img:hover {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+  
+.effect-360-container {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+  
+.effect-360-container:hover:before {
+    top: 0;
+}
+
+.effect-360-container:before{
+    background: #3b5999;
+}

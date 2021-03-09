@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import LazyLoad from 'react-lazyload';
 import Tarjetaversus from '../tarjetas/twoteamscard/MatchPrevio';
 
 const ListadoDeTarjetas = ({matches, teamId}) => {
@@ -6,11 +7,12 @@ const ListadoDeTarjetas = ({matches, teamId}) => {
     return ( 
         <Fragment> 
             {matches.map(match => ( 
-                <Tarjetaversus 
-                    key={match.id}
-                    match={match}
-                    teamId={teamId}
-                />
+                <LazyLoad offset={100} height={100} once key={match.id}>
+                    <Tarjetaversus 
+                        match={match}
+                        teamId={teamId}
+                    />
+                </LazyLoad>
         ))}
         </Fragment> 
      );

@@ -6,7 +6,7 @@ import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setGameMode} from '../../../utility/SetGameMode';
 import {setMatchResult} from '../../../utility/SetMatchResult';
-import csgoLogoDefault from '../../../ImagenesVarias/csgoLogoDefault.png';
+import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import { usePalette } from 'react-palette';
 import './tarjetaUpcomingMatch.css';
@@ -21,9 +21,10 @@ const Tarjetaversus = ({match, teamId}) => {
     let opponentLogo, opponentName, opponentSlug;
     let hoy = "";
     let statusStream = "Streaming inactivo";
+    let fase = "";
     let diaUsuario = new Date().getDate();
     let diaMatch = parseInt(Moment(begin_at).format('D'));
-    if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
+    if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let error = usePalette(proxyLogo).error;
     let leagueColors = usePalette(proxyLogo).data;
     if (error) {
@@ -36,11 +37,19 @@ const Tarjetaversus = ({match, teamId}) => {
             vibrant: "#718792",
         }
     }
+    if (name.includes(":")) {
+        fase = name.substring(
+            name.lastIndexOf(0), 
+            name.lastIndexOf(":")
+        );
+    }else{
+        fase = name;
+    }
 
     if(opponents.length > 1){
         ArrteamA = opponents.find(element => element.opponent.id !== teamId);
         if (ArrteamA.opponent.image_url === null) {
-            opponentLogo = csgoLogoDefault;
+            opponentLogo = csgoLogoDefaultBlack;
             opponentSlug  = ArrteamA.opponent.slug;
             opponentName = ArrteamA.opponent.name;
         }else{
@@ -80,9 +89,9 @@ const Tarjetaversus = ({match, teamId}) => {
                             <div className="live-container-puntos-logos-upcoming">
 
                                 <Link to ={`/${opponentSlug}`}>
-                                    <div className="team-canvas outline-shade-black"> 
-                                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefault}>
-                                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={src} />}
+                                    <div className="team-canvas"> 
+                                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>                        
                                     </div> 
                                 </Link>
@@ -95,9 +104,9 @@ const Tarjetaversus = ({match, teamId}) => {
                                     </div>  
                                 </div>
 
-                                <div className="team-canvas outline-shade-black">
-                                    <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefault}>
-                                        {src => <img alt="b team" className="max-size-team-logo-prev-match animate__animated animate__fadeIn animate__fast" src={src} />}
+                                <div className="team-canvas">
+                                    <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>  
                                 </div> 
                             </div>
@@ -112,7 +121,7 @@ const Tarjetaversus = ({match, teamId}) => {
                             <div className="live-container-info-bottom">
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
                                     <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
-                                    {tournament.name}
+                                    {name.includes(":")? fase : tournament.name}
                                 </p>
 
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
@@ -136,7 +145,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
                     <div className="card-image lienzo-logo"> 
                         <Link to ={`/${opponentSlug}`}> 
-                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefault}>
+                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
                             {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                         </ProgressiveImage>
                         </Link>
@@ -150,7 +159,7 @@ const Tarjetaversus = ({match, teamId}) => {
                             
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
-                                {tournament.name}
+                                {name.includes(":")? fase : tournament.name}
                             </p>
                             
                             <p className="text-align cursor-default font-size">

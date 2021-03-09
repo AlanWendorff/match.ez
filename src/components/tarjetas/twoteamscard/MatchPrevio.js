@@ -3,7 +3,7 @@ import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
 import ScoreTarjeta from './matchStadistic/ScoreTarjeta';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
+import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import Moment from 'moment';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
@@ -68,8 +68,8 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                     <div className="prev-game-desktop">
                         <div className="team-column">
                             <Link to={`/${opponentSlug}`}>
-                                <div className={winner_id === teamId? "match-loser-prevgame outline-shade-black" :"match-winner-prevgame outline-shade-black"}>                            
-                                    <ProgressiveImage src={opponentLogo} placeholder={csgoLogo}>
+                                <div className={winner_id === teamId? "match-loser-prevgame" :"match-winner-prevgame"}>                            
+                                    <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
@@ -89,8 +89,8 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                         </div>
 
                         <div className="team-column">
-                            <div className={winner_id === teamId? "match-winner-prevgame outline-shade-black" :"match-loser-prevgame outline-shade-black"}>
-                                <ProgressiveImage src={ownLogo} placeholder={csgoLogo}>
+                            <div className={winner_id === teamId? "match-winner-prevgame" :"match-loser-prevgame"}>
+                                <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
                                     {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
@@ -101,22 +101,22 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
 
                     <div className="prev-game-mobile">
                         <div className="row-team-name-gamewin">
-                            <div className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>                            
-                                <ProgressiveImage src={opponentLogo} placeholder={csgoLogo}>
+                            <div className={winner_id === teamId? "match-loser" :"match-winner"}>                            
+                                <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
                                     {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
-                            <p className={winner_id === teamId? "match-loser outline-shade-black" :"match-winner outline-shade-black"}>{opponentName}</p> 
+                            <p className={winner_id === teamId? "match-loser" :"match-winner"}>{opponentName}</p> 
                             <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
                         </div>
 
                         <div className="row-team-name-gamewin">
-                            <div className={winner_id === teamId? "match-winner outline-shade-black" : "match-loser outline-shade-black"}>                            
-                                <ProgressiveImage src={ownLogo} placeholder={csgoLogo}>
+                            <div className={winner_id === teamId? "match-winner" : "match-loser"}>                            
+                                <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
                                     {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage> 
                             </div> 
-                            <p className={winner_id === teamId? "match-winner outline-shade-black" :"match-loser outline-shade-black"}>{ownName}</p>
+                            <p className={winner_id === teamId? "match-winner" :"match-loser"}>{ownName}</p>
                             <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>
                         </div>
 

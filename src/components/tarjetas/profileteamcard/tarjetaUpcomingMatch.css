@@ -1,9 +1,7 @@
 /*  Tarjeta     */
 .posicion-tarjeta{
-  margin-bottom: 20px;
   align-self: center;
   text-align: center;
-  
 }
 .text-center{
   text-align: center;
@@ -54,14 +52,7 @@
 .padding-top-8{
   padding-top: 16px !important;
 }
-.live-container-puntos-logos-upcoming{
-  padding: 0% 0% 0% 0%;
-  width: 100%;
-  height: 187px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
+
 .live-container-info-bottom{
   padding: 0% 0% 0% 0%;
   width: 100%;
@@ -79,9 +70,6 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-}
-.live-streaming-box-bottom-padding{
-  padding-bottom: 0% !important;
 }
 .live-league-container{
   padding: 0% 0% 0% 0%;
@@ -105,12 +93,19 @@
     display: flex;
     align-items: center;
     align-content: center;
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.808));
   }
   .head-font{
     padding: 0% 0% 0% 0%;
     font-size: 24px;
     font-weight: bold;
+  }
+  .live-container-puntos-logos-upcoming{
+    padding: 0% 0% 0% 0%;
+    width: 100%;
+    height: 187px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
 
@@ -124,14 +119,21 @@
   .lienzo-logo{
     padding-top: 5%;
     align-self: center;
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.808));
   }
   .max-size-team-logo{
     max-width: 150px !important;
   }
   .head-font{
     padding: 0% 0% 0% 0%;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
+  }
+  .live-container-puntos-logos-upcoming{
+    padding: 0% 0% 0% 0%;
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }

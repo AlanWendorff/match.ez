@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import LazyLoad from 'react-lazyload';
 import MatchPrevio from '../tarjetas/twoteamscard/MatchPrevio';
 import ReactNotification from 'react-notifications-component'
 
@@ -50,17 +51,18 @@ const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamId, scoreMatch}) => {
         <Fragment> 
             <ReactNotification />
             {arrayMatches.map(match => ( 
-                <MatchPrevio 
-                    key={match.id}
-                    firstIndexDate={firstIndexDate}
-                    match={match}
-                    teamId={teamId}
-                    setDropList={setDropList}
-                    droplist={droplist}
-                    scoreMatch={scoreMatch}
-                    oneMatch={oneMatch}
-                    allMatch={allMatch}
-                />
+                <LazyLoad offset={100} height={100} once key={match.id}>
+                    <MatchPrevio 
+                        firstIndexDate={firstIndexDate}
+                        match={match}
+                        teamId={teamId}
+                        setDropList={setDropList}
+                        droplist={droplist}
+                        scoreMatch={scoreMatch}
+                        oneMatch={oneMatch}
+                        allMatch={allMatch}
+                    />
+                </LazyLoad>
         ))}
         </Fragment> 
      );
