@@ -43,7 +43,7 @@ const Tarjetaversus = ({match, teamId}) => {
             name.lastIndexOf(":")
         );
     }else{
-        fase = name;
+        fase = tournament.name;
     }
 
     if(opponents.length > 1){
@@ -121,7 +121,7 @@ const Tarjetaversus = ({match, teamId}) => {
                             <div className="live-container-info-bottom">
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
                                     <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
-                                    {name.includes(":")? fase : tournament.name}
+                                    {fase}
                                 </p>
 
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
@@ -155,11 +155,10 @@ const Tarjetaversus = ({match, teamId}) => {
                         <div className="card-content">
                             
                             <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
-                            <p className="text-center cursor-default font-size mb-8">{name}</p>
                             
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
-                                {name.includes(":")? fase : tournament.name}
+                                {fase}
                             </p>
                             
                             <p className="text-align cursor-default font-size">

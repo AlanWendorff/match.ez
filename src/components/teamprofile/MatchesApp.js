@@ -17,7 +17,6 @@ import '../../styles/base.css';
 import 'react-notifications-component/dist/theme.css'
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import ca_pattern from '../../pattern/ca_pattern.png';
-import fg_pattern from '../../pattern/fg_pattern.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
 import isurus_pattern from '../../pattern/isurus_pattern.png';
 import kaster_pattern from '../../pattern/kaster_pattern.png';
@@ -99,14 +98,6 @@ const MatchesApp = ({teamId, image_url, name}) => {
             };
             urlTeamId = teamId;
             break;    
-    
-        case 125779:  //FuriousGaming
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${fg_pattern})`
-            };
-            urlTeamId = teamId;
-            break;  
 
         case 127246:  //CoscuArmy
             backgroundStyle = {

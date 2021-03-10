@@ -28,14 +28,14 @@ const TarjetaAllmatches = ({match}) => {
     let statusMatch = "¡Hoy " + Moment(begin_at).format('H:mm') + "hs!";
     if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let { data, error } = usePalette(proxyLogo);
-
+    
     if (name.includes(":")) {
         fase = name.substring(
             name.lastIndexOf(0), 
             name.lastIndexOf(":")
         );
     }else{
-        fase = name;
+        fase = tournament.name;
     }
 
     if (error) {
@@ -140,7 +140,7 @@ const TarjetaAllmatches = ({match}) => {
                                 <div className="live-container-info-bottom">
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
                                         <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
-                                        {name.includes(":")? fase : tournament.name}
+                                        {fase}
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
@@ -161,6 +161,9 @@ const TarjetaAllmatches = ({match}) => {
             return(
                 <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy" style={{border: `5px solid ${data.lightVibrant}`}}> 
                     <div className="card-image waves-effect waves-block waves-light">
+                        <p className="text-align-center cursor-default font-size mb-0">
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
+                        </p> 
         
                         <div className="card-image container-info cursor-default">
                             <div className="hoy-esquina-container">
@@ -200,22 +203,7 @@ const TarjetaAllmatches = ({match}) => {
                         </div>            
                     
                     </div>
-                    <div className="card-content click-more-info activator cursor-pointer">
-                        <span className="head-font" ><i className="material-icons right">info</i></span>
-                    </div>
-                    <div className="card-reveal card-reveal-padding">
-                        <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
-    
-                        <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Torneo:</span> 
-                            {league.name+" "+serie.full_name}
-                        </p>
-        
-                        <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
-                            {name.includes(":")? fase : tournament.name}
-                        </p>    
-                    </div>
+                    
                 </div>
             );    
         }
@@ -223,11 +211,12 @@ const TarjetaAllmatches = ({match}) => {
         return (
             <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy" style={{border: `5px solid ${data.lightVibrant}`}}> 
                 <div className="card-image waves-effect waves-block waves-light">
-    
+                    <p className="text-align-center cursor-default font-size mb-0">
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
+                    </p> 
                     <div className="card-image container-info cursor-default">
-                        
                         <div className="hoy-esquina-container">
-                            <p className="labels-esquinas">{name.includes(":")? fase : tournament.name}</p>
+                            <p className="labels-esquinas" >{fase}</p>
                             <p className="labels-esquinas">{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
                         </div>
 
@@ -262,22 +251,6 @@ const TarjetaAllmatches = ({match}) => {
                         </div> 
                     </div>            
                 
-                </div>
-                <div className="card-content click-more-info activator cursor-pointer">
-                    <span className="head-font Furious-font"><i className="material-icons right" >info</i></span>
-                </div>
-                <div className="card-reveal card-reveal-padding">
-                    <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
-   
-                    <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Torneo:</span> 
-                        {league.name+" "+serie.full_name}
-                    </p>
-    
-                    <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
-                        {name.includes(":")? fase : tournament.name}
-                    </p>     
                 </div>
             </div>
         ); 

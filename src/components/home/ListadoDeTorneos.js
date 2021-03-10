@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import Tournament from './Tournament';
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import { TournamentContext } from '../context/TournamentContext'
 import './tournament.css';
@@ -20,12 +21,13 @@ const ListadoDeTorneos = () => {
             {
                 objectToArray.map(tournament => (
                     <Link className="tournament-size z-depth-5 cursor-pointer real-button" to={`/${tournament.path}`} title={`Ver el partidos de la ${tournament.name}`} key={tournament.id}>
-                        <Tournament
-                            key={tournament.id}
-                            tournament={tournament}
-                        />
+                        <LazyLoad offset={100} height={100} once>
+                            <Tournament
+                                key={tournament.id}
+                                tournament={tournament}
+                            />
+                        </LazyLoad>
                     </Link>
-                    
                 ))
             }
         </Fragment> 

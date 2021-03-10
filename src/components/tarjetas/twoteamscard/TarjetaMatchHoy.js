@@ -32,7 +32,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             name.lastIndexOf(":")
         );
     }else{
-        fase = name;
+        fase = tournament.name;
     }
 
     if (opponents.length !== 0) {
@@ -125,7 +125,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <div className="live-container-info-bottom">
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
                                         <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
-                                        {name.includes(":")? fase : tournament.name}
+                                        {fase}
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
@@ -146,10 +146,12 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             return(
                 <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy"> 
                     <div className="card-image waves-effect waves-block waves-light">
-        
+                        <p className="text-align-center cursor-default font-size mb-0">
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
+                        </p> 
                         <div className="card-image container-info cursor-default">
                             <div className="hoy-esquina-container">
-                                <p className="hoy-esquina">{name}</p>
+                                <p className="hoy-esquina">{fase}</p>
                                 <p className="hoy-esquina">{statusMatch}</p> 
                             </div>
         
@@ -185,22 +187,6 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                         </div>            
                     
                     </div>
-                    <div className="card-content click-more-info activator cursor-pointer">
-                        <span className="head-font" style={{color: data.vibrant}}><i className="material-icons right">info</i></span>
-                    </div>
-                    <div className="card-reveal card-reveal-padding">
-                        <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
-    
-                        <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
-                            {league.name+" "+serie.full_name}
-                        </p>
-        
-                        <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
-                            {name.includes(":")? fase : tournament.name}
-                        </p>    
-                    </div>
                 </div>
             );    
         }
@@ -208,11 +194,13 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         return (
             <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy"> 
                 <div className="card-image waves-effect waves-block waves-light">
-    
+                    <p className="text-align-center cursor-default font-size mb-0">
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
+                    </p> 
                     <div className="card-image container-info cursor-default">
                         
                         <div className="hoy-esquina-container">
-                            <p className="labels-esquinas">{name}</p>
+                            <p className="labels-esquinas">{fase}</p>
                             <p className="labels-esquinas">{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
                         </div>
 
@@ -247,22 +235,6 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                         </div> 
                     </div>            
                 
-                </div>
-                <div className="card-content click-more-info activator cursor-pointer">
-                    <span className="head-font Furious-font"><i className="material-icons right" style={{color: data.vibrant}}>info</i></span>
-                </div>
-                <div className="card-reveal card-reveal-padding">
-                    <span className="card-title grey-text text-darken-4 margin-right-bottom"><i className="material-icons right">close</i></span>
-   
-                    <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Torneo:</span> 
-                        {league.name+" "+serie.full_name}
-                    </p>
-    
-                    <p className="text-align-center cursor-default font-size">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
-                        {name.includes(":")? fase : tournament.name}
-                    </p>     
                 </div>
             </div>
         ); 
