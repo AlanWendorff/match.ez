@@ -1,5 +1,5 @@
-import FirebaseConfig from '../../../utility/FirebaseConfig';
-const database = FirebaseConfig();
+import firebase from '../../../utility/FirebaseConfig';
+const database = firebase.database();
 
 export const getStyles = () =>{
     let styles;

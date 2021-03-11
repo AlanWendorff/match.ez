@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
-import FirebaseConfig from '../../utility/FirebaseConfig';
+import firebase from '../../utility/FirebaseConfig';
 
-const database = FirebaseConfig();
+const database = firebase.database();
 
 // creacion del context
 export const PathContext = createContext();

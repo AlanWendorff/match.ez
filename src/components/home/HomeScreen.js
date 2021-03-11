@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect} from 'react';
 import { useSwipeable } from "react-swipeable";
 import Footer from '../footer/Footer';
 import TeamsHome from './TeamsHome';

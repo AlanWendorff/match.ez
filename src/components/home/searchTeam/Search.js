@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Team from './Team';
-import FirebaseConfig from '../../../utility/FirebaseConfig';
+import firebase from '../../../utility/FirebaseConfig';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import './search.css';
 
-const database = FirebaseConfig();
+const database = firebase.database();
 
 const Search = ({setCollection, collection}) => {
 
