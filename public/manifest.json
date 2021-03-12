@@ -2,20 +2,22 @@
   "name": "ARGmatch.ez",
   "short_name": "match.ez",
   "theme_color": "#000000",
-  "background_color": "#00abff",
-  "display": "minimal-ui",
+  "background_color": "#4274a6",
+  "display": "fullscreen",
   "scope": "/",
   "start_url": "/",
   "icons": [
     {
       "src": "icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

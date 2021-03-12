@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Team from './Team';
 import firebase from '../../../utility/FirebaseConfig';
+import LazyLoad from 'react-lazyload';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import './search.css';
@@ -67,10 +68,6 @@ const Search = ({setCollection, collection}) => {
         //eslint-disable-next-line
     }, []);
 
-    /* if (localStorage.getItem('teams') && localStorage.getItem('collection') && equiposdatabase.length > 0) {
-        
-    } */
-
     const BuscarEquipos = () => {
         let input = document.getElementById('icon_prefix').value.toLowerCase();
         let filteredTeams = []
@@ -85,7 +82,7 @@ const Search = ({setCollection, collection}) => {
     
     return ( 
         <div className="search-container animate__animated animate__backInLeft animate__faster">
-            <div title="Busca tu equipo" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 110);}}>
+            <div title="Busca tu equipo" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 100);}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
                 <label className="color-text-black width-100percent" htmlFor="icon_prefix">{ `${equiposdatabase.length} Equipos para buscar:` }</label>
@@ -100,16 +97,18 @@ const Search = ({setCollection, collection}) => {
             <div className="list-of-teams-container">
             {
                 equiposfiltrados.map(team => (
-                    <Team
-                        key={team.id}
-                        equiposdatabase={equiposdatabase}
-                        team={team}
-                        setCollection={setCollection}
-                        guardarEquipos={guardarEquipos}
-                        equipos={equipos}
-                        collection={collection}
-                        setSaveButtonState={setSaveButtonState}
-                    />
+                    <LazyLoad offset={100} height={100} once>
+                        <Team
+                            key={team.id}
+                            equiposdatabase={equiposdatabase}
+                            team={team}
+                            setCollection={setCollection}
+                            guardarEquipos={guardarEquipos}
+                            equipos={equipos}
+                            collection={collection}
+                            setSaveButtonState={setSaveButtonState}
+                        />
+                    </LazyLoad>
                 ))
             }
             </div>

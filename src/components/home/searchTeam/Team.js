@@ -75,13 +75,3 @@ const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSave
 }
  
 export default Team;
-
-/*teamsaved?
-                <div className="pin-team-container-saved" onClick={() => {
-                        const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
-                        setCollection( deletedTeam );  
-                        setTeamSaved(false);
-                    }}>
-                            
-                    <FontAwesomeIcon icon={faThumbtack}/>
-                </div>*/

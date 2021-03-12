@@ -79,7 +79,6 @@
   align-items: center;
 }
 
-
 @media (min-width: 771px) {   
   .max-size-team-logo{
     max-width: 200px !important;
@@ -91,6 +90,7 @@
   .lienzo-logo{
     padding-left: 2%;
     display: flex;
+    justify-content: center;
     align-items: center;
     align-content: center;
   }
@@ -106,6 +106,23 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+  }
+  .card-stacked{
+    max-width: 420px;
+  }
+  .card-image{
+    min-width: 200px;
+  }
+  .card-content{
+    padding: 24px 24px 0px 24px !important;
+  }
+  .card-stacked > .card-content > .social{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 180px;
+    margin: 10px 0px;
   }
 }
 
@@ -135,5 +152,16 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+  }
+  .card-content{
+    padding: 15px 15px 0px 15px !important;
+  }
+  .card-stacked > .card-content > .social{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 150px;
+    margin: 10px 0px;
   }
 }

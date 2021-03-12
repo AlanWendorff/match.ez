@@ -161,6 +161,10 @@ i.right{
     align-items: center;
 }
 
+.text-align-start{
+    text-align: start;
+}
+
 @media (min-width: 771px) {   
     .position-hr{
         min-width: 550px;

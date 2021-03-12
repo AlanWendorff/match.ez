@@ -9,6 +9,16 @@ import {setMatchResult} from '../../../utility/SetMatchResult';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import { usePalette } from 'react-palette';
+import {
+    FacebookShareButton,
+    WhatsappShareButton,
+    TwitterShareButton,
+  } from "react-share";
+  import {
+    FacebookIcon,
+    TwitterIcon,
+    WhatsappIcon,
+  } from "react-share";
 import './tarjetaUpcomingMatch.css';
 
 const Tarjetaversus = ({match, teamId}) => {
@@ -77,7 +87,7 @@ const Tarjetaversus = ({match, teamId}) => {
         statusStream = "Partido en vivo!";
         const {A_point, B_point} = setMatchResult(results, teamId); 
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy">
+            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown">
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image waves-effect waves-block waves-light">
                         <div className="card-image container-info cursor-default padding-top-8">
@@ -140,37 +150,63 @@ const Tarjetaversus = ({match, teamId}) => {
         );
     }else{
         return(
-            <div className="col s12 m7 posicion-tarjeta font-gilroy">
+            <div className="col s12 m7 posicion-tarjeta font-gilroy animate__animated animate__fadeInDown">
                 <div className="card horizontal tamano-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
-
                     <div className="card-image lienzo-logo"> 
                         <Link to ={`/${opponentSlug}`}> 
-                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
-                        </ProgressiveImage>
+                            <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
+                                {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                            </ProgressiveImage>
                         </Link>
                     </div>
 
                     <div className="card-stacked">
                         <div className="card-content">
-                            
                             <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
-                            
+                            <p className="text-align cursor-default font-size">
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Vs:</span> 
+                                {opponentName === undefined? 'a definir' : opponentName}
+                            </p>
+                                
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
                                 {fase}
                             </p>
-                            
+                                
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fecha: </span>
                                 <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs  <span className="hoy-color">{hoy}</span> </span> 
                             </p>
-                            
+                                
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Modalidad:</span> 
                                 {modalidad}
                             </p>
-                        
+                            <div className="social">
+                                <FacebookShareButton 
+                                    url={`${window.location.href}`} 
+                                    hashtag="#csgo" 
+                                    quote={
+                                        `${opponentName} VS ${ownName}
+                                        ${modalidad}
+                                        ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs 
+                                        ${league.name +" "+ serie.full_name}
+                                        `
+                                    }>
+                                    <FacebookIcon size={32} round={true} />
+                                </FacebookShareButton>
+
+                                <TwitterShareButton 
+                                    url={`${window.location.href}`} 
+                                    title={`${opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`}>
+                                    <TwitterIcon size={32} round={true} />
+                                </TwitterShareButton>
+
+                                <WhatsappShareButton 
+                                    url={`${opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`} >
+                                    <WhatsappIcon size={32} round={true} />
+                                </WhatsappShareButton>
+                            </div>
                         </div>
     
                         <div className="card-action padding-streaming-box">

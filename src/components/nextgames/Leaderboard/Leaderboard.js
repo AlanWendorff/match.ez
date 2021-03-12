@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTimes, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import ProgressiveImage from 'react-progressive-image';
+import LazyLoad from 'react-lazyload';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import './leaderboard.css'
 
@@ -21,13 +23,17 @@ const Leaderboard = ({leaderboard}) => {
                     </div>
                     
                     {leaderboard.map(team  => (
-                        <div className="ladder-team animate__animated animate__fadeInDown animate__faster" key={team.name}>
-                            <div className="space-between">
-                                <img className="width-30px mr-35px" src={team.img === null? csgoLogoDefaultBlack : team.img}/>
-                                <span>{team.name}</span>
+                        <LazyLoad offset={100} height={100} once key={team.name}>
+                            <div className="ladder-team animate__animated animate__fadeInDown animate__faster">
+                                <div className="space-between">
+                                    <ProgressiveImage src={team.img === null? csgoLogoDefaultBlack : team.img} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img alt="laderboard team" className="width-30px mr-35px" src={src} />}
+                                    </ProgressiveImage>
+                                    <span>{team.name}</span>
+                                </div>
+                                <span>{team.points}</span>
                             </div>
-                            <span>{team.points}</span>
-                        </div>
+                        </LazyLoad>
                     ))}
                 </div>
 

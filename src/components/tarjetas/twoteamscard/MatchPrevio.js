@@ -13,6 +13,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { store } from 'react-notifications-component';
 import { usePalette } from 'react-palette';
+import {
+    FacebookShareButton,
+    WhatsappShareButton,
+    TwitterShareButton,
+  } from "react-share";
+  import {
+    FacebookIcon,
+    TwitterIcon,
+    WhatsappIcon,
+  } from "react-share";
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
@@ -22,7 +32,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
     let proxyLogo;
     //onClick={ store.addNotification(oneMatch) }
     const [sizecard, setSizeCard] = useState();
-    const {number_of_games, league, serie, begin_at, id, winner_id, opponents, results, name} = match;
+    const {number_of_games, league, serie, tournament, begin_at, id, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
     const {A_point, B_point} = setMatchResult(results, teamId);
@@ -31,6 +41,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
     if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let error = usePalette(proxyLogo).error;
     let leagueColors = usePalette(proxyLogo).data;
+    let fase = "";
     if (error) {
         leagueColors = {
             darkMuted: "#1c313a",
@@ -42,6 +53,14 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
         }
     }
     
+    if (name.includes(":")) {
+        fase = name.substring(
+            name.lastIndexOf(0), 
+            name.lastIndexOf(":")
+        );
+    }else{
+        fase = tournament.name;
+    }
     //eslint-disable-next-line
     return(
         <div className="noselect card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect position-relative" style={sizecard}> 
@@ -62,7 +81,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
             <div className="card-image waves-effect waves-block waves-light" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
-                        <p className="prev-game-header" style={{color: data.darkMuted}}>{name}</p>
+                        <p className="prev-game-header" style={{color: data.darkMuted}}>{fase}</p>
                     </div> 
 
                     <div className="prev-game-desktop">
@@ -153,6 +172,30 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                             }
                         }}
                         ><i className="material-icons right">close</i></span>
+                        <div className="social">
+                            <FacebookShareButton 
+                                url={`${window.location.href}`} 
+                                hashtag="#csgo" 
+                                quote={
+                                    `${opponentName}: ${A_point} 
+                                    ${ownName}: ${B_point}  
+                                    ${league.name +" "+ serie.full_name}
+                                    `
+                                }>
+                                <FacebookIcon size={32} round={true} />
+                            </FacebookShareButton>
+
+                            <TwitterShareButton 
+                                url={`${window.location.href}`} 
+                                title={`${opponentName}: ${A_point} VS ${ownName}: ${B_point} | ${league.name+" "+serie.full_name}`}>
+                                <TwitterIcon size={32} round={true} />
+                            </TwitterShareButton>
+
+                            <WhatsappShareButton 
+                                url={`${opponentName}: ${A_point} VS ${ownName}: ${B_point} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`} >
+                                <WhatsappIcon size={32} round={true} />
+                            </WhatsappShareButton>
+                        </div>
                         
                         <ScoreTarjeta
                             scoreMatch={scoreMatch}
@@ -168,13 +211,14 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                             <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
                             <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
                         </p>
+                        
                     </div>
                 </Fragment>
             :
                 <div className="not-first-index-container">
                     <div className="info-not-first-index text-align-center">
                         <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
-                        <span>{league.name +" "+ serie.full_name}</span>     
+                        <span className="text-align-start">{league.name +" "+ serie.full_name}</span>     
                     </div>
 
                     <div className="info-not-first-index text-align-center">

@@ -59,6 +59,10 @@
     background: #09ff006e;
 }
 
+.list-of-teams-container > .lazyload-wrapper{
+    width: 100% !important;
+}
+
 @media (min-width: 1000px) {   
     .search-bar{
         width: 80% !important;

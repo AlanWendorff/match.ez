@@ -47,7 +47,7 @@ const Allmatches = () => {
                     return(
                         <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
                             <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
-                                <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
+                                <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
                                 <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
                             </div>
                             <div className="home-box">
@@ -62,7 +62,7 @@ const Allmatches = () => {
                     return(
                         <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
                             <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
-                                <img className="max-size-logo-header white-neon" alt="Logo Team" src={icon}/>   
+                                <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
                                 <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
                             </div>
                             <div className="home-box">

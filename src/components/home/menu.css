@@ -31,7 +31,10 @@
     -moz-box-shadow: 2px -1px 10px 5px rgba(0, 0, 0, 0) !important;
     box-shadow: 2px -1px 10px 5px rgba(0, 0, 0, 0) !important;
 }
-
+.menu-header-logo{
+  width: 200px;
+  height: 200px;
+}
 @media (min-width: 600px) {    
   .teams-position{
     padding-bottom: 30px;
@@ -91,4 +94,16 @@
   background-size: 50px 50px;
   height: 100%;
 }
-/*  */
+.download-app-btn{
+  display: flex;
+  width: 60px;
+  height: 60px;
+  padding: 1% 0% 0% 1%;
+  margin: 1% 3% 5% 1%;
+  justify-content: center;
+  position: fixed; /* Fixed/sticky position */
+  bottom: 0%; /* Place the button at the bottom of the page */
+  right: 0%; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  padding: 0%; /* Some padding */
+}

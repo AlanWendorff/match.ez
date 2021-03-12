@@ -124,3 +124,7 @@
     }
 }
 
+.ladder-teams-container > .lazyload-wrapper{
+    width: 100% !important;
+}
+
