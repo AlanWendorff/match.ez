@@ -5,6 +5,7 @@ import ScoreTarjeta from './matchStadistic/ScoreTarjeta';
 import ProgressiveImage from 'react-progressive-image';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import Moment from 'moment';
+import Share from '../../share/Share';
 import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
 import {setMatchResult} from '../../../utility/SetMatchResult';
@@ -13,16 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { store } from 'react-notifications-component';
 import { usePalette } from 'react-palette';
-import {
-    FacebookShareButton,
-    WhatsappShareButton,
-    TwitterShareButton,
-  } from "react-share";
-  import {
-    FacebookIcon,
-    TwitterIcon,
-    WhatsappIcon,
-  } from "react-share";
+
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
@@ -61,6 +53,14 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
     }else{
         fase = tournament.name;
     }
+    const Facebook = 
+    `${opponentName}: ${A_point} 
+    ${ownName}: ${B_point}  
+    ${league.name +" "+ serie.full_name}
+    `;
+    const Twitter = `${opponentName}: ${A_point} VS ${ownName}: ${B_point} | ${league.name+" "+serie.full_name}`;
+    const Wapp = `${opponentName}: ${A_point} VS ${ownName}: ${B_point} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
+    
     //eslint-disable-next-line
     return(
         <div className="noselect card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect position-relative" style={sizecard}> 
@@ -78,7 +78,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                 null
             }
             
-            <div className="card-image waves-effect waves-block waves-light" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
+            <div className="card-image" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
                         <p className="prev-game-header" style={{color: data.darkMuted}}>{fase}</p>
@@ -161,40 +161,23 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                         <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
                     </div>
                     <div className="card-reveal">
-                        <span className="card-title grey-text text-darken-4 margin-right-bottom" 
-                        onClick={()=>{ 
-                            if (teams && teams.length > 0) {
-                                if (window.innerWidth > 770) {
-                                    setSizeCard({height: "297px", overflow: "hidden"});
-                                }else{
-                                    setSizeCard({height: "236px", overflow: "hidden"});
+                        <div className="card-title grey-text text-darken-4" >
+                            <i className="material-icons right" onClick={()=>{ 
+                                if (teams && teams.length > 0) {
+                                    if (window.innerWidth > 770) {
+                                        setSizeCard({height: "297px", overflow: "hidden"});
+                                    }else{
+                                        setSizeCard({height: "236px", overflow: "hidden"});
+                                    }
                                 }
-                            }
-                        }}
-                        ><i className="material-icons right">close</i></span>
-                        <div className="social">
-                            <FacebookShareButton 
-                                url={`${window.location.href}`} 
-                                hashtag="#csgo" 
-                                quote={
-                                    `${opponentName}: ${A_point} 
-                                    ${ownName}: ${B_point}  
-                                    ${league.name +" "+ serie.full_name}
-                                    `
-                                }>
-                                <FacebookIcon size={32} round={true} />
-                            </FacebookShareButton>
-
-                            <TwitterShareButton 
-                                url={`${window.location.href}`} 
-                                title={`${opponentName}: ${A_point} VS ${ownName}: ${B_point} | ${league.name+" "+serie.full_name}`}>
-                                <TwitterIcon size={32} round={true} />
-                            </TwitterShareButton>
-
-                            <WhatsappShareButton 
-                                url={`${opponentName}: ${A_point} VS ${ownName}: ${B_point} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`} >
-                                <WhatsappIcon size={32} round={true} />
-                            </WhatsappShareButton>
+                            }}>close</i>
+                        </div>
+                        <div className="share">
+                            <Share
+                                Facebook={Facebook}
+                                Twitter={Twitter}
+                                Wapp={Wapp}
+                            />
                         </div>
                         
                         <ScoreTarjeta

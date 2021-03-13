@@ -9,16 +9,7 @@ import {setMatchResult} from '../../../utility/SetMatchResult';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import { usePalette } from 'react-palette';
-import {
-    FacebookShareButton,
-    WhatsappShareButton,
-    TwitterShareButton,
-  } from "react-share";
-  import {
-    FacebookIcon,
-    TwitterIcon,
-    WhatsappIcon,
-  } from "react-share";
+import Share from '../../share/Share';
 import './tarjetaUpcomingMatch.css';
 
 const Tarjetaversus = ({match, teamId}) => {
@@ -26,6 +17,7 @@ const Tarjetaversus = ({match, teamId}) => {
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
     momentSpanishSetup();
+
     let proxyLogo;
     let ArrteamA;
     let opponentLogo, opponentName, opponentSlug;
@@ -74,13 +66,21 @@ const Tarjetaversus = ({match, teamId}) => {
     const ArrteamB = opponents.find(element => element.opponent.id === teamId);
     const ownLogo = ArrteamB.opponent.image_url;
     const ownName = ArrteamB.opponent.name;
-
     const {modalidad} = setGameMode(number_of_games);
 
     if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"
         hoy = "¡Hoy!";                                               
     }
-    //eslint-disable-next-line
+
+    const Facebook = 
+    `${opponentName === undefined? 'a definir' : opponentName} VS ${ownName}
+    ${modalidad}
+    ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs 
+    ${league.name +" "+ serie.full_name}
+    `;
+    const Twitter =`${opponentName === undefined? 'a definir' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`;
+    const Wapp = `${opponentName === undefined? 'a definir' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
+    
 
     if(status === 'running'){
         hoy = "¡Ahora!"; 
@@ -89,7 +89,7 @@ const Tarjetaversus = ({match, teamId}) => {
         return(
             <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown">
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
-                    <div className="card-image waves-effect waves-block waves-light">
+                    <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
@@ -182,31 +182,11 @@ const Tarjetaversus = ({match, teamId}) => {
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Modalidad:</span> 
                                 {modalidad}
                             </p>
-                            <div className="social">
-                                <FacebookShareButton 
-                                    url={`${window.location.href}`} 
-                                    hashtag="#csgo" 
-                                    quote={
-                                        `${opponentName} VS ${ownName}
-                                        ${modalidad}
-                                        ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs 
-                                        ${league.name +" "+ serie.full_name}
-                                        `
-                                    }>
-                                    <FacebookIcon size={32} round={true} />
-                                </FacebookShareButton>
-
-                                <TwitterShareButton 
-                                    url={`${window.location.href}`} 
-                                    title={`${opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`}>
-                                    <TwitterIcon size={32} round={true} />
-                                </TwitterShareButton>
-
-                                <WhatsappShareButton 
-                                    url={`${opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`} >
-                                    <WhatsappIcon size={32} round={true} />
-                                </WhatsappShareButton>
-                            </div>
+                            <Share
+                                Facebook={Facebook}
+                                Twitter={Twitter}
+                                Wapp={Wapp}
+                            />
                         </div>
     
                         <div className="card-action padding-streaming-box">

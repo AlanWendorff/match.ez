@@ -97,7 +97,7 @@ const TarjetaAllmatches = ({match}) => {
             return (
                 <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.lightVibrant}`}}>
                     <div className="col s12 m7 posicion-tarjeta">
-                        <div className="card-image waves-effect waves-block waves-light">
+                        <div className="card-image">
                             <div className="card-image container-info cursor-default padding-top-8">
                                 <div className="live-league-container">
                                     <a className="text-center head-font highlight-text" style={{color: `${data.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
@@ -160,7 +160,7 @@ const TarjetaAllmatches = ({match}) => {
         }else{
             return(
                 <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.lightVibrant}`}}> 
-                    <div className="card-image waves-effect waves-block waves-light">
+                    <div className="card-image">
                         <p className="text-align-center cursor-default font-size mb-0">
                             <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
                         </p> 
@@ -210,7 +210,7 @@ const TarjetaAllmatches = ({match}) => {
     }else{
         return (
             <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.lightVibrant}`}}> 
-                <div className="card-image waves-effect waves-block waves-light">
+                <div className="card-image">
                     <p className="text-align-center cursor-default font-size mb-0">
                         <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
                     </p> 

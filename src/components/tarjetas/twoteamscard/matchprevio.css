@@ -65,28 +65,34 @@
 
 @media (min-width: 771px) {  
     .margin-right-bottom{
-        margin-bottom: 40px;
-        margin-right: 20px;
+        margin-bottom: 0px;
+        margin-right: 0px;
     }
-    .card-title > i {
+    .card-title{
+        top: 0;
+        right: 0;
+        position: absolute;
+        margin-right: 15px;
+        margin-top: 16px;
+    }
+    .card-reveal > .share{
+        top: 0;
+        left: 0;
+        position: absolute;
+        margin-left: 15px;
+        margin-top: 9px;
+        width: 200px;
+    }
+    /* .card-title > i {
         position: absolute;
         top: 0;
         right: 0;
         padding: 17px 20px 0px 0px;
         z-index: 100;
-    }
-    .card-reveal > .social{
-        width: 100%;
-        display: flex;
-        padding: 15px 450px 0px 20px;
-        justify-content: space-between;
-        position: absolute;
-        top: 0;
-        z-index: 0;
-    }
+    } */
     .card-reveal{
         overflow: hidden !important;
-        padding: 24px 0px !important;
+        padding: 58px 0px 0px 0px!important;
     } 
     .table-logo-size{
         width: 40px;
@@ -176,29 +182,35 @@
   
 @media screen and (max-width: 770px) {     
     .margin-right-bottom{
-        margin-bottom: 40px;
-        margin-right: 15px;
+        margin-bottom: 0px;
+        margin-right: 0px;
     }
-    .card-title > i {
+    .card-title{
+        top: 0;
+        right: 0;
+        position: absolute;
+        margin-right: 15px;
+        margin-top: 16px;
+    }
+    .card-reveal > .share{
+        top: 0;
+        left: 0;
+        position: absolute;
+        margin-left: 15px;
+        margin-top: 9px;
+        width: 200px;
+    }
+    /* .card-title > i {
         position: absolute;
         top: 0;
         right: 0;
-        padding: 15px 15px 0px 0px;
+        padding: 17px 20px 0px 0px;
         z-index: 100;
-    }
-    .card-reveal > .social{
-        width: 100%;
-        display: flex;
-        padding: 10px 150px 0px 20px;
-        justify-content: space-between;
-        position: absolute;
-        top: 0;
-        z-index: 0;
-    }
+    } */
     .card-reveal{
         overflow: hidden !important;
-        padding: 10px 0px !important;
-    }
+        padding: 58px 0px 0px 0px!important;
+    } 
     .table-logo-size{
         width: 25px;
         margin-right: 20px;

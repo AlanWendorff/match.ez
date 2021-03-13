@@ -53,7 +53,7 @@ const Timeline = () => {
                             {   
                                 time.map((tournament) => {
                                     const {begin_at, league, serie, name, teams, prizepool} = tournament;
-                                    const date = Moment(begin_at).format("DD - MMMM - hh:mm") + ' hs';
+                                    const date = Moment(begin_at).format("DD - MMMM - HH:mm") + ' hs';
                                     return(
                                         <VerticalTimelineElement
                                             key={shortid.generate()}

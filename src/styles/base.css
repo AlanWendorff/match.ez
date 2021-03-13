@@ -136,6 +136,10 @@ i.right{
     margin-left: 0% !important;
 }
 
+.display-none{
+    display: none;
+}
+
 .position-relative{
     position: relative;
 }

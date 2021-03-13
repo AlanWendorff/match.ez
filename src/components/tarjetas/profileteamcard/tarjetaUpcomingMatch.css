@@ -116,14 +116,6 @@
   .card-content{
     padding: 24px 24px 0px 24px !important;
   }
-  .card-stacked > .card-content > .social{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 180px;
-    margin: 10px 0px;
-  }
 }
 
 @media screen and (max-width: 770px) { 
@@ -155,13 +147,5 @@
   }
   .card-content{
     padding: 15px 15px 0px 15px !important;
-  }
-  .card-stacked > .card-content > .social{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 150px;
-    margin: 10px 0px;
   }
 }
