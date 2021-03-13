@@ -8,7 +8,7 @@ import riverLogo from '../../LogoTeams/riverLogo.png';
 import './teamdirectacces/teamcollection.css';
 
 const TeamsHome = () => (
-    <div className="collection-container animate__animated animate__backInLeft animate__faster">
+    <div className="collection-container animate__animated animate__fadeInLeft animate__faster">
         <span className="color-text-white font-bold font-size-50px mb-40px">ALGUNOS EJEMPLOS</span>
         <div className="teams-position">
             <Link to='isurus-gaming-cs-go' className="teams-size z-depth-5 real-button" title="Ver perfil de Isurus Gaming"> 

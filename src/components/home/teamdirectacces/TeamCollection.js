@@ -8,7 +8,7 @@ const TeamCollection = ({collection}) => {
 
     if (collection.length > 0) {
         return(
-            <div className="collection-container animate__animated animate__backInLeft animate__faster">
+            <div className="collection-container animate__animated animate__fadeInLeft animate__faster">
                 <span className="color-text-white font-bold font-size-50px mb-40px">MIS ACCESOS DIRECTOS</span>
                 <div className="teams-position mb-30px">
                 {

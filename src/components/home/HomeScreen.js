@@ -120,7 +120,7 @@ const HomeScreen = () => {
                         <TeamsHome/>
                     </Fragment>
                 :
-                    <div className="tournaments-position animate__animated animate__backInRight animate__faster">
+                    <div className="tournaments-position animate__animated animate__fadeInRight animate__faster">
                         <ListadoDeTorneos/>
                     </div>
                 }

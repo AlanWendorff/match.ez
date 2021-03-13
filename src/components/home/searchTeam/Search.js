@@ -81,7 +81,7 @@ const Search = ({setCollection, collection}) => {
     }
     
     return ( 
-        <div className="search-container animate__animated animate__backInLeft animate__faster">
+        <div className="search-container animate__animated animate__fadeInLeft animate__faster">
             <div title="Busca tu equipo" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 100);}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
