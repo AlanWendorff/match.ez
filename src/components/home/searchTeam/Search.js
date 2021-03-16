@@ -1,7 +1,8 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Team from './Team';
 import firebase from '../../../utility/FirebaseConfig';
 import LazyLoad from 'react-lazyload';
+import { PathContext } from '../../context/PathContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import './search.css';
@@ -14,59 +15,56 @@ const Search = ({setCollection, collection}) => {
     const [equiposdatabase, guardarEquiposDataBase] = useState([]);
     const [equiposfiltrados, guardarEquiposFiltrados] = useState([]);
     const [savebuttonstate, setSaveButtonState] = useState({display: 'none'});
-    
+    const { paths } = useContext(PathContext);
+    const pathsArray = Object.values(paths);
     useEffect(() => {
         if (!localStorage.getItem('teams') && !localStorage.getItem('collection')) {
             //console.log("entro a buscar al firebase");
-            database.ref('paths').on('value',(snap)=>{
-                const arrayEquipos = Object.values(snap.val());
-                guardarEquipos(arrayEquipos);
-                guardarEquiposDataBase(arrayEquipos);
-            });
+            guardarEquipos(pathsArray);
+            guardarEquiposDataBase(pathsArray);
+
         }else{
             //console.log("entro a buscar al local");
-            database.ref('paths').on('value',(snap)=>{
-                const arrayEquipos = Object.values(snap.val());
-                guardarEquiposDataBase(arrayEquipos);
-                const equipos = JSON.parse(localStorage.getItem('teams'));
+            guardarEquiposDataBase(pathsArray);
+            const equipos = JSON.parse(localStorage.getItem('teams'));
 
-                function comparer(otherArray){
-                    return function(current){
-                        return otherArray.filter(function(other){
-                        return other.name === current.name
-                        }).length === 0;
-                    }
+            function comparer(otherArray){
+                return function(current){
+                    return otherArray.filter(function(other){
+                    return other.name === current.name
+                    }).length === 0;
                 }
-                //to push or remove from localStorage
-                const toPush = arrayEquipos.filter(comparer(equipos));
-                const toRemove = equipos.filter(comparer(arrayEquipos));
-                let equiposModificable = equipos;
-                //console.log({toRemove, toPush});
-                if (toPush.length !== 0) {
-                    toPush.map((newTeam) => {
-                        //console.log("voy a pushear nuevo equipo", newTeam);
-                        equiposModificable.push(newTeam);
-                        return equiposModificable;
-                    })
-                }
-                if (toRemove.length !== 0) {
-                    toRemove.map((removeTeam) => {
-                        //console.log("voy a eliminar equipo", removeTeam);    
-                        const arrWithTeamRemoved = equiposModificable.filter(item => item !== removeTeam);
-                        equiposModificable = arrWithTeamRemoved;
-                        return equiposModificable;
-                    })
-                    
-                }
-                //console.log("voy a setear en LS el equipos modificable a su vez es del local storage ");
-                localStorage.setItem('teams', JSON.stringify(equiposModificable));
-                //console.log("voy a setear en state el equipos modificable a su vez es del local storage ");
-                guardarEquipos(equiposModificable);
-                setCollection(JSON.parse(localStorage.getItem('collection')));
-            });
+            }
+            //to push or remove from localStorage
+            const toPush = pathsArray.filter(comparer(equipos));
+            const toRemove = equipos.filter(comparer(pathsArray));
+            let equiposModificable = equipos;
+            //console.log({toRemove, toPush});
+            if (toPush.length !== 0) {
+                toPush.map((newTeam) => {
+                    //console.log("voy a pushear nuevo equipo", newTeam);
+                    equiposModificable.push(newTeam);
+                    return equiposModificable;
+                })
+            }
+            if (toRemove.length !== 0) {
+                toRemove.map((removeTeam) => {
+                    //console.log("voy a eliminar equipo", removeTeam);    
+                    const arrWithTeamRemoved = equiposModificable.filter(item => item !== removeTeam);
+                    equiposModificable = arrWithTeamRemoved;
+                    return equiposModificable;
+                })
+                
+            }
+            //console.log("voy a setear en LS el equipos modificable a su vez es del local storage ");
+            localStorage.setItem('teams', JSON.stringify(equiposModificable));
+            //console.log("voy a setear en state el equipos modificable a su vez es del local storage ");
+            guardarEquipos(equiposModificable);
+            setCollection(JSON.parse(localStorage.getItem('collection')));
+            
         }
         //eslint-disable-next-line
-    }, []);
+    }, [paths]);
 
     const BuscarEquipos = () => {
         let input = document.getElementById('icon_prefix').value.toLowerCase();
@@ -97,9 +95,8 @@ const Search = ({setCollection, collection}) => {
             <div className="list-of-teams-container">
             {
                 equiposfiltrados.map(team => (
-                    <LazyLoad offset={100} height={100} once>
+                    <LazyLoad offset={100} height={100} once key={team.id}>
                         <Team
-                            key={team.id}
                             equiposdatabase={equiposdatabase}
                             team={team}
                             setCollection={setCollection}

@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getAllmatches = async () => {    
     const badFetch = true;    
     //https://arg-matchez-backend.herokuapp.com          
-    const url = 'https://arg-matchez-backend.herokuapp.com/api/allmatches';
+    const url = 'https://arg-matchez-backendv2.herokuapp.com/api/allmatches';
     try {
         const config = {
             method: 'get',

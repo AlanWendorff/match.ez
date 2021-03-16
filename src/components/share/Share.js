@@ -5,13 +5,10 @@ import {
     FacebookShareButton,
     WhatsappShareButton,
     TwitterShareButton,
+    FacebookIcon,
+    TwitterIcon,
+    WhatsappIcon,
 } from "react-share";
-import {
-FacebookIcon,
-TwitterIcon,
-WhatsappIcon,
-} from "react-share";
-
 import './share.css';
 
 const Share = ({Facebook, Twitter, Wapp}) => {

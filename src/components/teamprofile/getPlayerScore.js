@@ -4,7 +4,7 @@ export const getPlayerScore = async (objPastMatch) => {
     const gameId = objPastMatch[0].id;  
     const badFetch = true;    
     //https://arg-matchez-backend.herokuapp.com          
-    const url = `https://arg-matchez-backend.herokuapp.com/api/teamscore/${gameId}`;
+    const url = `https://arg-matchez-backendv2.herokuapp.com/api/teamscore/${gameId}`;
     try {
         const config = {
             method: 'get',

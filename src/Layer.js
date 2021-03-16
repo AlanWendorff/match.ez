@@ -11,27 +11,51 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { unity_info } from './custom/unity/unity-flow-league-schedule';
 import firebase from './utility/FirebaseConfig';
 import axios from 'axios';
-
 const Layer = () => {
   const database = firebase.database();
 
   useEffect(() => {
-    (async()=>{
-      try {
-        const config = {
-          method: 'get',
-          url: 'https://arg-matchez-backend.herokuapp.com/api/wakeup',
-          headers: { 
-            "Access-Control-Allow-Origin": "*",
-          }
-        };
-        const res = await axios(config);
-        const firstCall = res.data;
-        //console.log(firstCall);
-      } catch (error) {
-        //console.log(error);
-      }
-    })()
+    const LSwakeupBackend = JSON.parse(localStorage.getItem('wakeupBackend'));
+    if (LSwakeupBackend !== true) {
+      console.log("llamo a backend");
+      (async()=>{
+        try {
+          const config = {
+            method: 'get',
+            url: 'https://arg-matchez-backend.herokuapp.com/api/wakeup',
+            headers: { 
+              "Access-Control-Allow-Origin": "*",
+            }
+          };
+          await axios(config);
+          //const res = 
+          //const firstCall = res.data;
+          //console.log(firstCall);
+        } catch (error) {
+          //console.log(error);
+        }
+        try {
+          const config = {
+            method: 'get',
+            url: 'https://arg-matchez-backendv2.herokuapp.com/api/wakeup',
+            headers: { 
+              "Access-Control-Allow-Origin": "*",
+            }
+          };
+          await axios(config);
+          //const res = 
+          //const firstCall = res.data;
+          //console.log(firstCall);
+        } catch (error) {
+          //console.log(error);
+        }
+      })()
+      localStorage.setItem('wakeupBackend', JSON.stringify(true));
+    }
+    window.addEventListener("beforeunload", function () {
+      localStorage.removeItem('wakeupBackend');
+      return undefined;
+    });
   }, []);
   
   const { tournamentId } = useContext(TournamentContext);

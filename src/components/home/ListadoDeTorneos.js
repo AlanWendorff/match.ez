@@ -14,8 +14,9 @@ const ListadoDeTorneos = () => {
     const [tournaments, setTournaments] = useState([]);
 
     useEffect(() => {
+        //console.log("seteo en state el array de torneos");
         setTournaments(objectToArray);
-    }, [objectToArray.length]);
+    }, []);
 
     if (!objectToArray.length > 0) return null;
     return ( 
