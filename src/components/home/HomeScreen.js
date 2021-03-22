@@ -103,10 +103,10 @@ const HomeScreen = () => {
                     <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
                 </div>
                 <div className="nav-bar-container animate__animated animate__fadeInDown animate__faster">
-                    <Link to='time-line' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faChartLine}/>{window.innerWidth > 782? 'Linea Temporal' : ''}</Link>
-                    <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faUserFriends}/>{window.innerWidth > 782? 'Equipos' : ''}</a>
-                    <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>{window.innerWidth > 782? 'Torneos' : ''}</a>
-                    <Link to='all-matches' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faFistRaised}/>{window.innerWidth > 782? 'Todos los partidos' : ''}</Link>
+                    <Link to='time-line' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faChartLine}/>{window.innerWidth > 782? 'TOURNAMENT TIMELINE' : ''}</Link>
+                    <a onClick={ ()=>{ setTeam(); } } className="waves-effect waves-light btn nav-bar-button" style={teambuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faUserFriends}/>{window.innerWidth > 782? 'Teams' : ''}</a>
+                    <a onClick={ ()=>{ setTournament(); } } className="waves-effect waves-light btn nav-bar-button" style={tournamentbuttonstyle} href="/#"><FontAwesomeIcon className="color-text-white mr" icon={faTrophy}/>{window.innerWidth > 782? 'Tournaments' : ''}</a>
+                    <Link to='all-matches' className="waves-effect waves-light btn all-matches-button" ><FontAwesomeIcon className="color-text-white mr" icon={faFistRaised}/>{window.innerWidth > 782? 'All matches' : ''}</Link>
                 </div>
                 {navbar?
                     <Fragment>

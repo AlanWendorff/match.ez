@@ -80,10 +80,10 @@ const Search = ({setCollection, collection}) => {
     
     return ( 
         <div className="search-container animate__animated animate__fadeInLeft animate__faster">
-            <div title="Busca tu equipo" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 100);}}>
+            <div title="Search team" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}} onClick={() => {window.scroll(0, 100);}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
-                <label className="color-text-black width-100percent" htmlFor="icon_prefix">{ `${equiposdatabase.length} Equipos para buscar:` }</label>
+                <label className="color-text-black width-100percent" htmlFor="icon_prefix">{ `${equiposdatabase.length} Teams in the database:` }</label>
                 <div className="save-container animate__animated animate__fadeInRight animate__faster" style={savebuttonstate} onClick={() => { 
                         localStorage.setItem('collection', JSON.stringify(collection));
                         //localStorage.removeItem('teams');
@@ -95,8 +95,9 @@ const Search = ({setCollection, collection}) => {
             <div className="list-of-teams-container">
             {
                 equiposfiltrados.map(team => (
-                    <LazyLoad offset={100} height={100} once key={team.id}>
+                    <LazyLoad offset={100} height={100} once>
                         <Team
+                            key={team.id}
                             equiposdatabase={equiposdatabase}
                             team={team}
                             setCollection={setCollection}

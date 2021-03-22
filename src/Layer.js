@@ -17,7 +17,7 @@ const Layer = () => {
   useEffect(() => {
     const LSwakeupBackend = JSON.parse(localStorage.getItem('wakeupBackend'));
     if (LSwakeupBackend !== true) {
-      console.log("llamo a backend");
+      //console.log("llamo a backend");
       (async()=>{
         try {
           const config = {

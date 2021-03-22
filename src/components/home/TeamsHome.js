@@ -9,24 +9,24 @@ import './teamdirectacces/teamcollection.css';
 
 const TeamsHome = () => (
     <div className="collection-container animate__animated animate__fadeInLeft animate__faster">
-        <span className="color-text-white font-bold font-size-50px mb-40px">ALGUNOS EJEMPLOS</span>
+        <span className="color-text-white font-bold font-size-50px mb-40px">SOME TEAMS</span>
         <div className="teams-position">
-            <Link to='isurus-gaming-cs-go' className="teams-size z-depth-5 real-button" title="Ver perfil de Isurus Gaming"> 
+            <Link to='isurus-gaming-cs-go' className="teams-size z-depth-5 real-button" title="Look the team profile of: Isurus Gaming"> 
                 <LazyLoad offset={100} >
                     <img className="logo-team-menu animate__animated animate__fadeIn animate__fast" alt="Logo Team" src={isurusLogo}/>   
                 </LazyLoad> 
             </Link>
-            <Link to='9z' className="teams-size z-depth-5 real-button" title="Ver perfil de 9z">
+            <Link to='9z' className="teams-size z-depth-5 real-button" title="Look the team profile of: 9z">
                 <LazyLoad offset={100} >
                     <img className="logo-team-menu animate__animated animate__fadeIn animate__fast" alt="Logo Team" src={KasterLogo}/>      
                 </LazyLoad>
             </Link>
-            <Link to='coscu-army-cs-go' className="teams-size z-depth-5 real-button" title="Ver perfil de Coscu Army Esports">
+            <Link to='coscu-army-cs-go' className="teams-size z-depth-5 real-button" title="Look the team profile of: Coscu Army Esports">
                 <LazyLoad offset={100} >
                     <img className="logo-team-menu animate__animated animate__fadeIn animate__fast" alt="Logo Team" src={coscuLogo}/>   
                 </LazyLoad> 
             </Link>
-            <Link to='river-plate' className="teams-size z-depth-5 real-button" title="Ver perfil de River Plate Esports">
+            <Link to='river-plate' className="teams-size z-depth-5 real-button" title="Look the team profile of: River Plate Esports">
                 <LazyLoad offset={100} >
                     <img className="logo-team-menu animate__animated animate__fadeIn animate__fast" alt="Logo Team" src={riverLogo}/>     
                 </LazyLoad>

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Tournament from './Tournament';
 import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
@@ -11,13 +11,6 @@ const ListadoDeTorneos = () => {
     const { tournamentId } = useContext(TournamentContext);
     const objectToArray = Object.values(tournamentId);
 
-    const [tournaments, setTournaments] = useState([]);
-
-    useEffect(() => {
-        //console.log("seteo en state el array de torneos");
-        setTournaments(objectToArray);
-    }, []);
-
     if (!objectToArray.length > 0) return null;
     return ( 
         <Fragment> 
@@ -27,7 +20,7 @@ const ListadoDeTorneos = () => {
                 />
             </Link>
             {
-                tournaments.map(tournament => (
+                objectToArray.map(tournament => (
                     <Link className="tournament-size z-depth-5 cursor-pointer real-button" to={`/${tournament.path}`} title={`Ver el partidos de la ${tournament.name}`} key={tournament.id}>
                         <LazyLoad offset={100} height={100} once>
                             <Tournament

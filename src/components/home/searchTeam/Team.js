@@ -12,7 +12,7 @@ const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSave
 
     return ( 
         <div className="team-container">
-            <Link className="searched-team" to={`/${team.path}`} title={`Ver el perfil de ${team.name}`} key={team.id}>
+            <Link className="searched-team" to={`/${team.path}`} title={`Look the team profile of: ${team.name}`} key={team.id}>
                 <ProgressiveImage src={databaseTeam.img} placeholder={csgoLogo}>
                     {src => <img className="searched-team-img animate__animated animate__fadeInLeft animate__fast" src={src} alt={team.name}  />}
                 </ProgressiveImage>
