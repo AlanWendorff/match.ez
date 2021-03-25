@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { getAllmatches } from './getAllmatches.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -9,15 +9,14 @@ import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import icon from '../../ImagenesVarias/Icon.png';
-import { getStyles } from '../../utility/FirebaseStyles';
+import { ColorThemeContext } from '../context/ColorThemeContext';
 
 const Allmatches = () => {
-
+    const { colors } = useContext(ColorThemeContext);
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
     const [allmatches, guardarAllmatches] = useState([]);
-    const styles = getStyles();
     
     useEffect(() => { 
         (async () => {
@@ -40,13 +39,13 @@ const Allmatches = () => {
     },[]);
 
     const {width} = loaderprogress;
-    if (styles !== undefined) {
+    if (colors !== undefined) {
         if (crash !== true){
             if(width === '100%'){
                 if(noMatches !== true){
                     return(
-                        <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
-                            <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
+                        <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: colors.background_color}}>
+                            <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${colors.header_color} 100%)`}}> 
                                 <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
                                 <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
                             </div>
@@ -60,8 +59,8 @@ const Allmatches = () => {
                     );
                 }else{
                     return(
-                        <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
-                            <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${styles.header_color} 100%)`}}> 
+                        <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: colors.background_color}}>
+                            <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${colors.header_color} 100%)`}}> 
                                 <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
                                 <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
                             </div>
@@ -77,7 +76,7 @@ const Allmatches = () => {
                 }
             }else{
                 return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: colors.background_color}}>
                         <LoadScreen
                             loaderprogress={loaderprogress}
                         /> 
@@ -86,7 +85,7 @@ const Allmatches = () => {
             };
         }else{
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: styles.background_color}}>       
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: colors.background_color}}>       
                     <Warning/> 
                     <Footer/>
                 </div>

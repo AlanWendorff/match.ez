@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../../ImagenesVarias/csgoLogoDefault.png';
+import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
 

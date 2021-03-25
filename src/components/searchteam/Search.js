@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Team from './Team';
-import firebase from '../../../utility/FirebaseConfig';
+import firebase from '../../utility/FirebaseConfig';
 import LazyLoad from 'react-lazyload';
-import { PathContext } from '../../context/PathContext';
+import { PathContext } from '../context/PathContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import './search.css';

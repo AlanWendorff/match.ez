@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import Moment from 'moment';
 import shortid from 'shortid';
 import SimpleLoadScreen from '../loader/SimpleLoadScreen';
@@ -10,12 +10,12 @@ import { getTimeline } from './getTimeline';
 import { Link } from 'react-router-dom';
 import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import { getStyles } from '../../utility/FirebaseStyles';
+import { ColorThemeContext } from '../context/ColorThemeContext';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {
     momentSpanishSetup();
-    const styles = getStyles();
+    const { colors } = useContext(ColorThemeContext);
     const [time, setTime] = useState([]);
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
@@ -44,11 +44,11 @@ const Timeline = () => {
 
     const {width} = loaderprogress;
     
-    if (styles !== undefined) {
+    if (colors !== undefined) {
         if (crash !== true){
             if(width === '100%'){
                 return ( 
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container font-gilroy" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container font-gilroy" style={{backgroundColor: colors.background_color}}>
                         <VerticalTimeline layout='1-column-left'>
                             {   
                                 time.map((tournament) => {
@@ -59,7 +59,7 @@ const Timeline = () => {
                                             key={shortid.generate()}
                                             className="vertical-timeline-element--education"
                                             date={date}
-                                            iconStyle={{border: `3px solid ${styles.header_color}`}}
+                                            iconStyle={{border: `3px solid ${colors.header_color}`}}
                                             icon={<Link to={`/${league.slug}`} title={`Click para Ver los Próximos partidos de la ${league.name}`}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
                                             >
                                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
@@ -110,7 +110,7 @@ const Timeline = () => {
                  );
             }else{
                 return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: colors.background_color}}>
                         <LoadScreen
                             loaderprogress={loaderprogress}
                         /> 
@@ -119,7 +119,7 @@ const Timeline = () => {
             }
         }else{
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: colors.background_color}}>
                     <Warning/>
                 </div>
             );
