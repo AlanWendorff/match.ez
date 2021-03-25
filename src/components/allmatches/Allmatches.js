@@ -9,7 +9,7 @@ import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import icon from '../../ImagenesVarias/Icon.png';
-import { getStyles } from '../home/getStyles/firebaseStyles';
+import { getStyles } from '../../utility/FirebaseStyles';
 
 const Allmatches = () => {
 

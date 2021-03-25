@@ -268,6 +268,7 @@ export const unity = [
         team_2: "Stone Movistar",
     },
 ];
+export const customTournament = {img: "https://i.ibb.co/H4BqgkX/LVP-Unity-league-flow.png", name: "Unity League Flow"}
 
 export const unityTeams = [
     {

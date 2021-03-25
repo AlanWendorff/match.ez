@@ -1,7 +1,6 @@
 /*       FOOTER         */
-.footer-container{
+.footer-container {
     height: 200px;
-    display: flex;
     width: 100%;
     padding: 40px 0px 20px 0px;
     margin-top: 2%;
@@ -19,4 +18,15 @@
     color: white !important;
     text-decoration: none !important;
     text-align: center;
+}
+@media (min-width: 1025px) {     
+    .footer-container {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 1024px) {     
+    .footer-container {
+        display: none;
+    }
 }

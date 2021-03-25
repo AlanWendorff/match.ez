@@ -11,7 +11,7 @@ const Leaderboard = ({leaderboard}) => {
     return ( 
         <div className="ladder transition-effect">
             <div className="ladder-title transition-effect" onClick={()=> { setTitleStatus({display: 'none'}); }} style={titlestatus}>
-                <span className="text-align-center leaderboard-title highlight-text">LeaderBoard</span>
+                <span className="text-align-center leaderboard-title highlight-text">Leader board</span>
             </div>
 
             {titlestatus.display !== undefined?

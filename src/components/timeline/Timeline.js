@@ -10,7 +10,7 @@ import { getTimeline } from './getTimeline';
 import { Link } from 'react-router-dom';
 import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import { getStyles } from '../home/getStyles/firebaseStyles';
+import { getStyles } from '../../utility/FirebaseStyles';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {

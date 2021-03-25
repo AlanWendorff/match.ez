@@ -5,7 +5,7 @@ import KasterLogo from '../../LogoTeams/KasterLogo.png';
 import isurusLogo from '../../LogoTeams/isurusLogo.png';
 import coscuLogo from '../../LogoTeams/coscuLogo.png';
 import riverLogo from '../../LogoTeams/riverLogo.png';
-import './teamdirectacces/teamcollection.css';
+import '../teamcollection/teamcollection.css';
 
 const TeamsHome = () => (
     <div className="collection-container animate__animated animate__fadeInLeft animate__faster">

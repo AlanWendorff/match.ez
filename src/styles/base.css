@@ -8,6 +8,31 @@
     src: local('Gilroy-ExtraBold'), url(../fonts/Gilroy-ExtraBold.otf) format('opentype');
 }
 
+@font-face {
+    font-family: 'Oswald-ExtraLight';
+    src: local('Oswald-ExtraLight'), url(../fonts/Oswald-ExtraLight.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'Oswald-Light';
+    src: local('Oswald-Light'), url(../fonts/Oswald-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'Oswald-Regular';
+    src: local('Oswald-Regular'), url(../fonts/Oswald-Regular.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'Oswald-Medium';
+    src: local('Oswald-Medium'), url(../fonts/Oswald-Medium.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'Oswald-SemiBold';
+    src: local('Oswald-SemiBold'), url(../fonts/Oswald-SemiBold.ttf) format('TrueType');
+}
+
 .container-html{
     height: 100% !important;
     width: 100% !important;
@@ -23,13 +48,7 @@
     font-family: "Gilroy-ExtraBold";
 }
 
-.parametros-container{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-x: hidden;
-} 
+
 .lazyload-wrapper{
     height: 100%;
     max-width: 100%;
@@ -169,7 +188,24 @@ i.right{
     text-align: start;
 }
 
-@media (min-width: 771px) {   
+@media (min-width: 1024px) {   
+    .parametros-container{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-x: hidden;
+    } 
+}
+
+@media (min-width: 771px) and (max-width: 1023px) {   
+    .parametros-container{
+        height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y: scroll;
+    } 
     .position-hr{
         min-width: 550px;
         margin: 2% 0% 3% 0%;
@@ -186,6 +222,13 @@ i.right{
 }
   
 @media screen and (max-width: 770px) {     
+    .parametros-container{
+        height: calc(100vh - 80px);
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    } 
     .position-hr{
         min-width: 300px;
         margin: 2% 0% 3% 0%;

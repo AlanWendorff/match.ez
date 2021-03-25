@@ -1,16 +1,27 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, Fragment} from 'react';
 import MatchesApp from './components/teamprofile/MatchesApp';
-import HomeScreen from './components/home/HomeScreen';
+import Home from './components/home2/Home';
+import Tournaments from './components/tournaments/Tournaments';
 import Allmatches from './components/allmatches/Allmatches';
 import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
 import Timeline from './components/timeline/Timeline';
 import Control from './components/controlroom/Control';
+import NavigationBar from './components/navigationbar/NavigationBar';
 import { PathContext } from './components/context/PathContext';
 import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { unity_info } from './custom/unity/unity-flow-league-schedule';
 import firebase from './utility/FirebaseConfig';
+import {
+  HOME,
+  TOURNAMENTS,
+  TIMELINE,
+  ALLMATCHES,
+  UNITY,
+  CONTROL,
+} from './routes/routes';
 import axios from 'axios';
+
 const Layer = () => {
   const database = firebase.database();
 
@@ -64,55 +75,61 @@ const Layer = () => {
   const pathsArray = Object.values(paths);
 
   return ( 
-    <Router> 
-      <Switch>
-        {
-          pathsArray.map((team) => {
-            return(
-              <Route exact path={`/${team.path}`} key={team.path}>
-                <MatchesApp
-                  key={team.id}
-                  teamId={team.id}
-                  name={team.name}
-                  image_url={team.img}
-                />
-              </Route>
-            );                                  
-          })
-        }
-        {
-          tournamentArray.map((tournament) => {
-            return(
-              <Route exact path={`/${tournament.path}`} key={tournament.name}>
-                <MatchTorneoApp
-                  key={tournament.id}
-                  tournamentId={tournament.id}
-                  image_url={tournament.image_url}
-                />
-              </Route>
-            );                    
-          })
-        }
+    <Fragment>
+      <Router> 
+          <Switch>
+            {
+              pathsArray.map((team) => {
+                return(
+                  <Route exact path={`/${team.path}`} key={team.path}>
+                    <MatchesApp
+                      key={team.id}
+                      teamId={team.id}
+                      name={team.name}
+                      image_url={team.img}
+                    />
+                  </Route>
+                );                                  
+              })
+            }
+            {
+              tournamentArray.map((tournament) => {
+                return(
+                  <Route exact path={`/${tournament.path}`} key={tournament.name}>
+                    <MatchTorneoApp
+                      key={tournament.id}
+                      tournamentId={tournament.id}
+                      image_url={tournament.image_url}
+                    />
+                  </Route>
+                );                    
+              })
+            }
 
-        <Route exact path="/control-room">
-          <Control
-            tournamentArray={tournamentArray}
-            pathsArray={pathsArray}
-            database={database}
-          />
-        </Route>
-        
-        <Route exact path="/unity-league">
-          <MatchTorneoApp
-            image_url={unity_info.image_url}
-          />
-        </Route>
-        
-        <Route exact path="/time-line" component={Timeline}/>
-        <Route exact path="/all-matches" component={Allmatches}/>
-        <Route exact path="/" component={HomeScreen}/>
-      </Switch>
-    </Router>
+            <Route exact path={CONTROL}>
+              <Control
+                tournamentArray={tournamentArray}
+                pathsArray={pathsArray}
+                database={database}
+              />
+            </Route>
+            
+            <Route exact path={UNITY}>
+              <MatchTorneoApp
+                image_url={unity_info.image_url}
+              />
+            </Route>
+            
+            <Route exact path={TOURNAMENTS} component={Tournaments}/>
+            <Route exact path={TIMELINE} component={Timeline}/>
+            <Route exact path={ALLMATCHES} component={Allmatches}/>
+            <Route exact path={HOME} component={Home}/>
+          </Switch>
+        <footer>
+          <NavigationBar/>
+        </footer>
+      </Router>
+    </Fragment>
   );
 }
 
