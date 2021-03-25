@@ -1,5 +1,6 @@
 import React, { useState, Fragment, useEffect, useContext } from 'react';
 import Item from './Item';
+import SimpleLoadScreen from '../loader/SimpleLoadScreen';
 import { ColorThemeContext } from '../context/ColorThemeContext';
 import { Link } from 'react-router-dom';
 import { TournamentContext } from '../context/TournamentContext';
@@ -21,7 +22,7 @@ const Tournaments = () => {
     const { tournamentId } = useContext(TournamentContext);
     const objectToArray = Object.values(tournamentId);
     console.log(objectToArray);
-    return (
+    return (colors.background_color !== undefined?
         <div className="tournament-container font-gilroy"  style={{backgroundColor: colors.background_color}}>
             <Link className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" to={UNITY} title={LOOKUNITY}>
                 <Item
@@ -39,6 +40,8 @@ const Tournaments = () => {
                 ))
             }
         </div>
+        :
+        <SimpleLoadScreen/>
      );
 }
  

@@ -1,6 +1,6 @@
 .loader-container{
+    height: calc(100vh - 65px);
     padding: 3% 3% 3% 3%;
-    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -32,14 +32,15 @@
 /* SIMPLE SPINNER LOADER */
 .simple-loader-container{
     padding: 3% 3% 3% 3%;
-    height: 100vh;
+    height: calc(100vh - 65px);
     position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     align-self: center;
+    background-color: black;
 }
 .simple-spinner-width{
     border-width: 7px !important;
