@@ -1,5 +1,5 @@
 import React from 'react';
-import Layer from './Layer';
+import Layout from './Layout';
 import ColorThemeProvider from './components/context/ColorThemeContext';
 import TournamentProvider from './components/context/TournamentContext';
 import PathProvider from './components/context/PathContext';
@@ -16,7 +16,7 @@ const App = () => {
           <HeaderLogoProvider>
             <LoaderProvider>
               <TournamentProvider>
-                  <Layer/>
+                  <Layout/>
               </TournamentProvider>
             </LoaderProvider>
           </HeaderLogoProvider>

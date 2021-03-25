@@ -11,7 +11,7 @@ const ColorThemeProvider = (props) => {
         database.ref('styles').on('value',(snap)=>{
             setColors(snap.val());
         });
-    }, [colors]);
+    }, []);
 
     return(
         <ColorThemeContext.Provider 

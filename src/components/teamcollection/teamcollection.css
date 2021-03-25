@@ -1,5 +1,60 @@
 .collection-container{
+    margin-top: 20px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.collection-container > span{
+   font-size: 20px;
+}
+
+
+
+@media (min-width: 1025px) {     
+
+}
+
+@media screen and (max-width: 1024px) {   
+    .teams-position > a{
+        width: 100%;
+        margin: 15px 0px;
+        background-color: rgba(0, 0, 0, 0.329);
+        display: flex;
+        align-items: center;
+        height: 75px;
+    }
+    .teams-position{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .teams-position > a > div{
+        padding: 0px 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .teams-position > a > div > div{
+        background-color: rgba(255, 255, 255, 0.233);
+        height: 60px;
+        width: 60px;
+        overflow: hidden;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .teams-position > a > div > div > img{
+        max-width: 45px;
+        max-height: 100%;
+    }
+    .teams-position > a > div > span{
+        color: white;
+        font-size: 20px;
+        
+    }
 }

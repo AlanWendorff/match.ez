@@ -1,0 +1,21 @@
+/*       MENU         */
+.home{
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(100vh - 65px);
+    background-image: url('../../pattern/generic_team_pattern.png');
+    background-repeat: repeat; 
+    background-size: 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 1025px) {     
+
+}
+
+@media screen and (max-width: 1024px) {   
+
+}
+  

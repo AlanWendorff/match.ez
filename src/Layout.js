@@ -22,10 +22,10 @@ import {
 } from './routes/routes';
 import axios from 'axios';
 
-const Layer = () => {
+const Layout = () => {
   const database = firebase.database();
 
-  useEffect(() => {
+  /* useEffect(() => {
     const LSwakeupBackend = JSON.parse(localStorage.getItem('wakeupBackend'));
     if (LSwakeupBackend !== true) {
       //console.log("llamo a backend");
@@ -67,7 +67,7 @@ const Layer = () => {
       localStorage.removeItem('wakeupBackend');
       return undefined;
     });
-  }, []);
+  }, []); */
   
   const { tournamentId } = useContext(TournamentContext);
   const tournamentArray = Object.values(tournamentId);
@@ -133,4 +133,4 @@ const Layer = () => {
   );
 }
 
-export default Layer;
+export default Layout;

@@ -58,71 +58,8 @@
     cursor: pointer;
     background: #09ff006e;
 }
-
-.list-of-teams-container > .lazyload-wrapper{
-    width: 100% !important;
-}
-
-@media (min-width: 1000px) {   
-    .search-bar{
-        width: 80% !important;
-        display: flex;
-        align-items: center;
-    } 
-    .list-of-teams-container{
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .search-container{
-        width: 50%;
-        margin: 50px 0px;
-        padding: 10px 0px;
-        align-self: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #ffffffb7;
-        border-radius: 3px;
-    }
-    .searched-team{
-        width: 100%;
-        height: 40px;
-        margin: 10px 0px;
-        padding: 0px 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: background 0.5s;
-    }
-    .searched-team:hover{
-        width: 100%;
-        height: 40px;
-        margin: 10px 0px;
-        padding: 0px 90px;
-        display: flex;
-        justify-content: space-between;
-        background-color: #0000001c;
-        border-radius: 3px;
-    }
-    .save-container{
-        margin-left: 50px;
-        width: 50px;
-        height: 45px;
-        font-size: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #525355;
-        border-radius: 100px;
-        transition: background 0.5s;
-    }
-   
-}
   
-@media (min-width: 401px) and (max-width: 999px) {    
+@media (min-width: 1025px){    
     .search-bar{
         width: 80% !important;
         display: flex;
@@ -180,7 +117,19 @@
    
 }
 
-@media screen and (max-width: 400px) {    
+@media screen and (max-width: 1024px) {    
+    .search-container{
+        height: 80px;
+        width: 100%;
+        margin: 0px;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        border-radius: 0px;
+    }
     .search-bar{
         width: 90% !important;
         display: flex;
@@ -191,18 +140,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-    .search-container{
-        width: 80%;
-        margin: 50px 0px;
-        padding: 5px 0px;
-        align-self: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #ffffffb7;
-        border-radius: 3px;
     }
     .searched-team{
         width: 100%;

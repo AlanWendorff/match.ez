@@ -1,6 +1,6 @@
-import React, { Fragment, useContext } from 'react';
-import LazyLoad from 'react-lazyload';
+import React, { useState, Fragment, useEffect, useContext } from 'react';
 import Item from './Item';
+import { ColorThemeContext } from '../context/ColorThemeContext';
 import { Link } from 'react-router-dom';
 import { TournamentContext } from '../context/TournamentContext';
 import {
@@ -16,29 +16,29 @@ import {
 import './tournaments.css';
 
 const Tournaments = () => {
+
+    const { colors } = useContext(ColorThemeContext);
     const { tournamentId } = useContext(TournamentContext);
     const objectToArray = Object.values(tournamentId);
-
-    return (objectToArray > 0 &&
-        <Fragment> 
-            <Link className="tournament-size z-depth-5 cursor-pointer real-button" to={UNITY} title={LOOKUNITY}>
+    console.log(objectToArray);
+    return (
+        <div className="tournament-container font-gilroy"  style={{backgroundColor: colors.background_color}}>
+            <Link className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" to={UNITY} title={LOOKUNITY}>
                 <Item
                     customTournament={customTournament}
                 />
             </Link>
-            {
+            {objectToArray.length > 0 &&
                 objectToArray.map(tournament => (
-                    <Link className="tournament-size z-depth-5 cursor-pointer real-button" to={`/${tournament.path}`} title={`${LOOKMATCHES} ${tournament.name}`} key={tournament.id}>
-                        <LazyLoad offset={100} height={100} once>
-                            <Item
-                                key={tournament.id}
-                                tournament={tournament}
-                            />
-                        </LazyLoad>
+                    <Link className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" to={`/${tournament.path}`} title={`${LOOKMATCHES} ${tournament.name}`} key={tournament.id}>
+                        <Item
+                            key={tournament.id}
+                            tournament={tournament}
+                        />
                     </Link>
                 ))
             }
-        </Fragment> 
+        </div>
      );
 }
  
