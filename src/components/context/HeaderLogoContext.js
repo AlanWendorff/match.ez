@@ -1,12 +1,11 @@
 import React, { createContext, useState, useEffect} from 'react';
-import { usePalette } from 'react-palette'
-
+import appLogo from '../../ImagenesVarias/defuse.png'
+import { usePalette } from 'react-palette';
 // creacion del context
 export const HeaderLogoContext = createContext();
 
 // provider donde se encuentran las funciones y state's
 const HeaderLogoProvider = (props) => {
-
     const [logo, guardarLogo] = useState('');
     const [paletestate, guardarPaleteCharged] = useState(false);
     let { data, error } = usePalette('https://proxy-kremowy.herokuapp.com/' + logo)
@@ -27,7 +26,11 @@ const HeaderLogoProvider = (props) => {
         if (darkMuted !== undefined) {
             guardarPaleteCharged(true);
         }
-    }, [darkMuted, paletestate]);
+        /* if (paletestate) {
+            console.log("muestro logo default");
+            //guardarLogo(appLogo);
+        } */
+    }, [darkMuted, paletestate, logo]);
 
     return(
         <HeaderLogoContext.Provider 
