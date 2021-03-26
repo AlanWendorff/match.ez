@@ -1,4 +1,3 @@
-
 .searched-team-img{
     width: 30px;
 }
@@ -7,8 +6,8 @@
     flex-direction: row;
     width: 100%;
     align-items: center;
+    padding: 0px 10px;
 }
-
 .pin-team-container{
     width: 40px;
     height: 40px;
@@ -18,19 +17,6 @@
     border-radius: 3px;
     transition: background 0.5s;
 }
-
-.pin-team-container:hover{
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #0000001c;
-    cursor: pointer;
-    transform: rotate(90deg);
-    border-radius: 3px;
-}
-
 .pin-team-container-saved{
     width: 40px;
     height: 40px;
@@ -41,22 +27,6 @@
     border-radius: 3px;
     background-color: rgba(43, 255, 0, 0.384);
     transition: background 0.5s;
-}
-
-.pin-team-container-saved:hover{
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 0, 0, 0.342);
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.save-container:hover{
-    cursor: pointer;
-    background: #09ff006e;
 }
   
 @media (min-width: 1025px){    
@@ -114,12 +84,32 @@
         border-radius: 100px;
         transition: background 0.5s;
     }
+    .pin-team-container:hover{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0000001c;
+        cursor: pointer;
+        transform: rotate(90deg);
+        border-radius: 3px;
+    }
+    .pin-team-container-saved:hover{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 0, 0, 0.342);
+        cursor: pointer;
+        border-radius: 3px;
+    }
    
 }
 
 @media screen and (max-width: 1024px) {    
     .search-container{
-        height: 80px;
         width: 100%;
         margin: 0px;
         align-self: center;
@@ -127,7 +117,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #ffffff;
         border-radius: 0px;
     }
     .search-bar{
@@ -136,10 +125,11 @@
         align-items: center;
     }
     .list-of-teams-container{
-        width: 90%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: white;
     }
     .searched-team{
         width: 100%;

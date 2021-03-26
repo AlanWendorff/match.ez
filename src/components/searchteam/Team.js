@@ -5,7 +5,7 @@ import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
 
-const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSaveButtonState, equiposdatabase}) => {
+const Team = ({team, setCollection, guardarEquipos, equipos, collection, setFirstPin, equiposdatabase}) => {
     
     const [teamsaved, setTeamSaved] = useState(false);
     const databaseTeam = equiposdatabase.find(databaseTeam => databaseTeam.name === team.name);
@@ -22,24 +22,24 @@ const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSave
             {team.pined === true?
                 <div className={teamsaved? "pin-team-container" : "pin-team-container-saved" } onClick={() => {
                     //console.log("---pined");
-                        if (teamsaved === false) {
-                            //console.log("X delete pin");
-                            const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
-                            setCollection( deletedTeam );   
-                            const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                            guardarEquipos(TeamAnteriorEliminado);
-                            guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: false }])
-                            setTeamSaved(true);
-                            setSaveButtonState({});
-                        }else{
-                            //console.log(".pinging");
-                            setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
-                            const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                            guardarEquipos(TeamAnteriorEliminado);
-                            guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: true }])    
-                            setTeamSaved(false);
-                            setSaveButtonState({});
-                        }
+                    if (teamsaved === false) {
+                        //console.log("X delete pin");
+                        const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
+                        setCollection( deletedTeam );   
+                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
+                        guardarEquipos(TeamAnteriorEliminado);
+                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: false }])
+                        setTeamSaved(true);
+                        setFirstPin(true);
+                    }else{
+                        //console.log(".pinging");
+                        setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
+                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
+                        guardarEquipos(TeamAnteriorEliminado);
+                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: true }])    
+                        setTeamSaved(false);
+                        setFirstPin(true);
+                    }
                     }}> 
                     <FontAwesomeIcon icon={faThumbtack}/>
                 </div>
@@ -47,24 +47,24 @@ const Team = ({team, setCollection, guardarEquipos, equipos, collection, setSave
             :   
                 <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
                     //console.log("---not pined");
-                        if (teamsaved === true) {
-                            //console.log("X delete pin");
-                            const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
-                            setCollection( deletedTeam );   
-                            const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                            guardarEquipos(TeamAnteriorEliminado);
-                            guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: false }])
-                            setTeamSaved(false);
-                            setSaveButtonState({});
-                        }else{
-                            //console.log(".pinging");
-                            setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
-                            const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                            guardarEquipos(TeamAnteriorEliminado);
-                            guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: true }])
-                            setTeamSaved(true);
-                            setSaveButtonState({});
-                        }
+                    if (teamsaved === true) {
+                        //console.log("X delete pin");
+                        const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
+                        setCollection( deletedTeam );   
+                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
+                        guardarEquipos(TeamAnteriorEliminado);
+                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: false }])
+                        setTeamSaved(false);
+                        setFirstPin(true);
+                    }else{
+                        console.log(".pinging");
+                        setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
+                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
+                        guardarEquipos(TeamAnteriorEliminado);
+                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: true }])
+                        setTeamSaved(true);
+                        setFirstPin(true);
+                    }
                     }}>
                             
                     <FontAwesomeIcon icon={faThumbtack}/>
