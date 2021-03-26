@@ -7,12 +7,10 @@ const ListadoDeTarjetas = ({matches, teamId}) => {
     return ( 
         <Fragment> 
             {matches.map(match => ( 
-                <LazyLoad offset={100} height={100} once key={match.id}>
-                    <Tarjetaversus 
-                        match={match}
-                        teamId={teamId}
-                    />
-                </LazyLoad>
+                <Tarjetaversus 
+                    match={match}
+                    teamId={teamId}
+                />
         ))}
         </Fragment> 
      );

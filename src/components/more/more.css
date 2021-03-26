@@ -1,15 +1,4 @@
-.options{
-    width: 100%;
-    overflow: scroll;
-    height: calc(100vh - 65px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(0, 0, 0);
-    padding: 20px 0px;
-    overflow-x: hidden;
-    position: relative;
-}
+
 
 .options > span{
     bottom: 0;
@@ -60,5 +49,51 @@
 .options > .option > .rights > span{
     width: 100%;
     text-align: center;
+}
+
+@media (min-width: 1025px) {   
+    .options{
+        width: 100%;
+        overflow: scroll;
+        height: calc(100vh - 65px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+        padding: 20px 0px;
+        overflow-x: hidden;
+        position: relative;
+    }
+}
+
+  
+@media (max-width: 641px) and (max-width: 1024px)  {     
+    .options{
+        width: 100%;
+        overflow: scroll;
+        height: calc(100vh - 65px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+        padding: 20px 0px;
+        overflow-x: hidden;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .options{
+        width: 100%;
+        overflow: scroll;
+        height: calc(100vh - 50px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+        padding: 20px 0px;
+        overflow-x: hidden;
+        position: relative;
+    }
 }
 

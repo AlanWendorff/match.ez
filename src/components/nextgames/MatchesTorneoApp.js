@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import Leaderboard from './Leaderboard/Leaderboard';
+import Leaderboard from '../leaderboard/Leaderboard';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
@@ -10,6 +10,7 @@ import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
+import HeaderMobile from '../headermobile/HeaderMobile';
 import { PathContext } from '../context/PathContext';
 import { usePalette } from 'react-palette';
 import { template_unity } from '../../custom/unity/template';
@@ -20,6 +21,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     let backgroundStyle;
     let proxyLogo;
     if (image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + image_url;
+    const [show, setShow] = useState("");
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
@@ -82,12 +84,12 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                         guardarLoaderProgress({width: '100%'});
                         guardarMatchesHoy(data);
                         guardarLeaderboard(ladder);
-                        if(data.length === 0){   
-                            guardarNoMatches(true);
-                        }
                     }
                     if (badFetch) {
                         guardarStateCrash(true);
+                    }
+                    if(matchesHoy.length === 0){   
+                        guardarNoMatches(true);
                     }
                 }
             })()
@@ -105,60 +107,41 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
 
     if (crash !== true){
         if(width === '100%' && paletestate === true){
-            if(noMatches !== true){
-                return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={backgroundStyle}>
-                        <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
-                            <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
-                            <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
-                        </div>
-                        <div className="home-box">
-                            <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
-                        </div>
-                        {leaderboard && leaderboard.length > 0?
-                            <Leaderboard 
+            return(
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container pattern-background" style={backgroundStyle}>
+                    <HeaderMobile
+                        color={data}
+                        img={image_url}
+                        setShow={setShow}
+                    />
+                    {/* <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
+                        <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
+                        <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
+                    </div> */}
+                    {/* <div className="home-box">
+                        <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
+                    </div> */}
+                    {show === "ladder"&&
+                        <Leaderboard 
                             leaderboard={leaderboard}
-                            />
-                            :
-                            null
-                        }
-                        
-                        <ListadoDeTarjetasHoy
-                            matchesHoy={matchesHoy}
-                            data = {data}
                         />
-                        <Footer/>
-                    </div>
-                );
-            }else{
-                return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={backgroundStyle}>
-                        <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
-                            <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
-                            <a href="/" className="back-to-home"><FontAwesomeIcon style={{color: data.lightVibrant}} icon={faChevronCircleLeft}/></a>
-                        </div>
-                        <div className="home-box">
-                            <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
-                        </div>
-
-                        {leaderboard?
-                            <Leaderboard 
-                            leaderboard={leaderboard}
-                            />
-                            :
-                            null
-                        }
-                        
-                        <TarjetaInformativa
-                            noMatches={noMatches}
-                        />
-                        <Footer/>
-                    </div>
-                );
-            }
+                    }
+                    {show === "vs" && noMatches !== true &&
+                        <ListadoDeTarjetasHoy matchesHoy={matchesHoy} data={data}/> 
+                    }
+                    {show === "vs"&& noMatches === true&&
+                        <TarjetaInformativa noMatches={noMatches}/>
+                    }
+                    {show === "history"&&
+                        <div>aca van los matches historicos</div>
+                    }
+                    
+                    <Footer/>
+                </div>
+            );
         }else{
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background" style={{backgroundColor: 'black'}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container pattern-background" style={{backgroundColor: 'black'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                         guardarPaleteCharged={guardarPaleteCharged}
@@ -169,7 +152,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         };
     }else{
         return(
-            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container menu-background">       
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container pattern-background">       
                 <Warning/> 
                 <Footer/>
             </div>

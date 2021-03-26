@@ -1,22 +1,23 @@
 
-.time-line-container{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 100%;
-    height: calc(100vh - 65px);
-    background-image: url('../../pattern/generic_team_pattern.png');
-    background-repeat: repeat; 
-    background-size: 50px 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .name-of-tournament{
     width: 100%;
 }
 
 @media (min-width: 1170px) { 
+    
+    .time-line-container{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: calc(100vh - 65px);
+        background-image: url('../../pattern/generic_team_pattern.png');
+        background-repeat: repeat; 
+        background-size: 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     h3{
         font-family: "Gilroy-ExtraBold" !important;
         margin-bottom: 5px !important;
@@ -107,6 +108,18 @@
 }
 
 @media screen and (max-width: 1169px) { 
+    .time-line-container{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: calc(100vh - 65px);
+        background-image: url('../../pattern/generic_team_pattern.png');
+        background-repeat: repeat; 
+        background-size: 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     h3{
         font-family: "Gilroy-ExtraBold" !important;
         margin-bottom: 5px !important;
@@ -188,6 +201,40 @@
         justify-content: center;
         align-items: center;
     }
+}
+
+
+@media (max-width: 641px) and (max-width: 1169px) {
+    .time-line-container{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: calc(100vh - 65px);
+        background-image: url('../../pattern/generic_team_pattern.png');
+        background-repeat: repeat; 
+        background-size: 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
+
+
+@media screen and (max-width: 640px) {
+    .time-line-container{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: calc(100vh - 50px);
+        background-image: url('../../pattern/generic_team_pattern.png');
+        background-repeat: repeat; 
+        background-size: 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }
 
 .teams-in-tournament{

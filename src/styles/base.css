@@ -188,6 +188,11 @@ i.right{
     text-align: start;
 }
 
+.pattern-background{ 
+    background-repeat: repeat; 
+    background-size: 50px 50px;
+}
+
 @media (min-width: 1024px) {   
     .parametros-container{
         min-height: 100vh;
@@ -221,13 +226,36 @@ i.right{
     }  
 }
   
-@media screen and (max-width: 770px) {     
+@media (max-width: 641px) and (max-width: 1024px)  {     
     .parametros-container{
-        height: calc(100vh - 80px);
+        height: calc(100vh - 65px);
+        padding-top: 65px;
         overflow-y: scroll;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+    } 
+    .position-hr{
+        min-width: 300px;
+        margin: 2% 0% 3% 0%;
+        border-color: #ffffff;
+        align-self: center;
+    }
+    .font-size{
+        font-size: 12px;
+    }
+    .size-team-logo{
+        max-width: 80px !important;
+        max-height: auto !important;
+    }  
+}
+
+@media screen and (max-width: 640px) {
+    .parametros-container{
+        height: calc(100vh - 50px);
+        padding-top: 50px;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
     } 
     .position-hr{
         min-width: 300px;

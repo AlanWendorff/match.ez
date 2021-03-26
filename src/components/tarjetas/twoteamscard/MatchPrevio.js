@@ -18,11 +18,10 @@ import { usePalette } from 'react-palette';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch, oneMatch, firstIndexDate}) => {
+const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, firstIndexDate}) => {
     //momentSpanishSetup();
     const {teams} = scoreMatch;
     let proxyLogo;
-    //onClick={ store.addNotification(oneMatch) }
     const [sizecard, setSizeCard] = useState();
     const {number_of_games, league, serie, tournament, begin_at, id, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
@@ -68,10 +67,8 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch
                 <div onClick={() => {
                     if (droplist) {
                         setDropList(false);
-                        store.addNotification(oneMatch);
                     }else{
                         setDropList(true);
-                        store.addNotification(allMatch);
                     }}}
                 className="drop-container" style={{backgroundColor: data.darkVibrant}}><FontAwesomeIcon className="color-text-white mr" icon={droplist? faChevronDown : faChevronUp}/></div>
             :

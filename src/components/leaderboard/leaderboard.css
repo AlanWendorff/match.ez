@@ -74,17 +74,6 @@
         border-radius: 3px;
         transition: all 0.1s ease-out;
     }
-    
-    .ladder-title{
-        cursor: pointer;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        margin: 20px 0px;
-        transition: all 0.1s ease-out;
-    }
     .leaderboard-title{
         font-family: "Gilroy-ExtraBold";
         font-size: 30px;
@@ -107,11 +96,10 @@
         align-items: center;
         justify-content: space-between;
         background-color: #0000001c;
-        border-radius: 3px;
     }
     
     .columns-ladder{
-        padding: 30px 10px 20px 30px;
+        padding: 20px 25px 20px 30px;
         position: relative;
     }
     
