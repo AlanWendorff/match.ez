@@ -1,4 +1,3 @@
-
 @media (min-width: 1025px) {
     .menu-mobile{
         width: 100%;
@@ -20,6 +19,30 @@
     .menu-mobile > a{
         font-size: 20px;
     }
+    .menu-mobile > a > div {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+    }
+    .menu-mobile > div > div {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+    }
+    .menu-mobile > a > div > img{
+        width: 40px;
+        max-height: 40px;
+    }
+    .menu-mobile > div > div > img{
+        width: 40px;
+        max-height: 40px;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -32,5 +55,28 @@
     }
     .menu-mobile > a{
         font-size: 20px;
+    }
+    
+    .menu-mobile > a > div {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+    }
+    .menu-mobile > div > div {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+    }
+    .menu-mobile > a > div > img{
+        width: 40px;
+    }
+    .menu-mobile > div > div > img{
+        width: 35px;
     }
 }
