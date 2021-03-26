@@ -1,6 +1,6 @@
 import React, {useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faChartLine, faDownload, faFistRaised, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCalendarAlt, faTrophy, faUserFriends, faFistRaised } from '@fortawesome/free-solid-svg-icons';
 import {Link, useLocation} from 'react-router-dom';
 import { ColorThemeContext } from '../context/ColorThemeContext';
 import {
@@ -29,7 +29,11 @@ const NavigationBar = () => {
             </Link>
 
             <Link to={TIMELINE}>
-                <FontAwesomeIcon style={{color: pathname !== TIMELINE? 'black': `${colors.background_color}`}} icon={faChartLine}/>
+                <FontAwesomeIcon style={{color: pathname !== TIMELINE? 'black': `${colors.background_color}`}} icon={faCalendarAlt}/>
+            </Link>
+
+            <Link to={ALLMATCHES}>
+                <FontAwesomeIcon style={{color: pathname !== ALLMATCHES? 'black': `${colors.background_color}`}} icon={faFistRaised}/>
             </Link>
 
             <Link to={MORE}>

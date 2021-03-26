@@ -1,33 +1,86 @@
-import React, { useState, Fragment, useEffect } from 'react';
-
+import React, { useState, Fragment, useEffect, useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ColorThemeContext } from '../context/ColorThemeContext';
+import SimpleLoadScreen from '../loader/SimpleLoadScreen';
+import faGithub from '../../ImagenesVarias/github-brands.svg'
+import { faBolt, faCheck, faCodeBranch, faDownload, faFistRaised, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import {
+    HOME,
+    TOURNAMENTS,
+    TIMELINE,
+    ALLMATCHES,
+    MORE,
+    UNITY,
+    CONTROL,
+  } from '../../routes/routes';
+import './more.css';
+let deferredPrompt; 
 const More = () => {
-    
-    let deferredPrompt; 
+
+    const year = new Date().getFullYear();
+    const { colors } = useContext(ColorThemeContext);
     const [installable, setInstallable] = useState(false);
+    const [isinstalled, setIsInstalled] = useState(false);
     useEffect(() => {
+        if (window.matchMedia('(display-mode: standalone)').matches) {  
+            setIsInstalled(true);
+        }else{
+            setIsInstalled(false); 
+        }
         window.addEventListener("beforeinstallprompt", (e) => {
             e.preventDefault();
             deferredPrompt = e;
             setInstallable(true);
         });
+        console.log(isinstalled);
     }, []);
     
     const handleInstallClick = (e) => {
-        setInstallable(false);
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the install prompt');
-        } else {
-            console.log('User dismissed the install prompt');
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            setInstallable(false);
+            deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            });
         }
-        });
     };
 
-    return ( 
-        <div>
-            more
+    return ( colors.background_color !== undefined?
+        <div className="options">
+
+            <div className="option animate__animated animate__fadeInRight animate__faster">
+                <div onClick={()=> { handleInstallClick(); }}>
+                    <FontAwesomeIcon icon={!isinstalled? faDownload : faCheck}/>
+                    <span>{!isinstalled? 'Install Progresive Web App' : 'App installed successfully' }</span>
+                </div>
+            </div>
+            <hr/>
+
+            <div className="option animate__animated animate__fadeInRight animate__faster">
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/Kremowy">
+                    <FontAwesomeIcon icon={faCodeBranch}/>
+                    <span>Creator Github</span>
+                </a>
+            </div>
+            <hr/>
+
+            <div className="option animate__animated animate__fadeInRight animate__faster">
+                <a rel="noopener noreferrer" target="_blank" href="https://pandascore.co/">
+                    <FontAwesomeIcon icon={faBolt}/>
+                    <span>Powered by PandaScore.co</span>
+                </a>
+            </div>
+            <hr/>
+            
+            <span className="animate__animated animate__fadeInUp animate__faster">All Rights Reserved. {year}</span>
         </div>
+        :
+        <SimpleLoadScreen/>
      );
 }
  

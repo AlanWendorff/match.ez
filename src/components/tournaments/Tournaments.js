@@ -21,7 +21,7 @@ const Tournaments = () => {
     const { colors } = useContext(ColorThemeContext);
     const { tournamentId } = useContext(TournamentContext);
     const objectToArray = Object.values(tournamentId);
-    console.log(objectToArray);
+
     return (colors.background_color !== undefined?
         <div className="tournament-container font-gilroy"  style={{backgroundColor: colors.background_color}}>
             <Link className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" to={UNITY} title={LOOKUNITY}>

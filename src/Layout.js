@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, Fragment} from 'react';
 import MatchesApp from './components/teamprofile/MatchesApp';
 import Home from './components/home2/Home';
+import More from './components/more/More';
 import Tournaments from './components/tournaments/Tournaments';
 import Allmatches from './components/allmatches/Allmatches';
 import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
@@ -17,6 +18,7 @@ import {
   TOURNAMENTS,
   TIMELINE,
   ALLMATCHES,
+  MORE,
   UNITY,
   CONTROL,
 } from './routes/routes';
@@ -119,7 +121,8 @@ const Layout = () => {
                 image_url={unity_info.image_url}
               />
             </Route>
-            
+
+            <Route exact path={MORE} component={More}/>
             <Route exact path={TOURNAMENTS} component={Tournaments}/>
             <Route exact path={TIMELINE} component={Timeline}/>
             <Route exact path={ALLMATCHES} component={Allmatches}/>
