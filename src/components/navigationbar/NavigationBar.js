@@ -19,7 +19,7 @@ const NavigationBar = () => {
 
     const { colors } = useContext(ColorThemeContext);
     return ( 
-        <div className="menu-mobile" style={{backgroundColor: `${colors.header_color}`}}>
+        <div className="menu-mobile" style={{backgroundColor: `${colors.header_color}`}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
             <Link to={HOME}>
                 <FontAwesomeIcon style={{color: pathname !== HOME? 'black': `${colors.background_color}`}} icon={faUserFriends}/>
             </Link>

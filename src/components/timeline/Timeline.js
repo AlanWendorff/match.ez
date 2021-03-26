@@ -48,7 +48,7 @@ const Timeline = () => {
         if (crash !== true){
             if(width === '100%'){
                 return ( 
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container font-gilroy" style={{backgroundColor: colors.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container font-gilroy" style={{backgroundColor: colors.background_color}}>
                         <VerticalTimeline layout='1-column-left'>
                             {   
                                 time.map((tournament) => {
@@ -70,7 +70,7 @@ const Timeline = () => {
                                                 <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
                                                 <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
                                                 {prizepool&&
-                                                    <span className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></span>
+                                                    <label className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></label>
                                                 }
                                             </div>
                                             
@@ -111,7 +111,7 @@ const Timeline = () => {
                  );
             }else{
                 return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
                         <LoadScreen
                             loaderprogress={loaderprogress}
                         /> 
@@ -120,14 +120,14 @@ const Timeline = () => {
             }
         }else{
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
+                <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
                     <Warning/>
                 </div>
             );
         }
     }else{
         return(
-            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container">
+            <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container">
                 <SimpleLoadScreen/>
             </div>
         );

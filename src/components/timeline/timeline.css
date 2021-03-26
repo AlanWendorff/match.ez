@@ -27,7 +27,9 @@
     }
     .tournament-data{
         font-size: 20px;
+        color: black !important;
     }
+
     .vertical-timeline-element-date{
         position: absolute;
         top: 5px;
@@ -128,6 +130,7 @@
     }
     .tournament-data{
         font-size: 15px;
+        color: black !important;
     }
     .vertical-timeline-element-date{
         display: none !important;
