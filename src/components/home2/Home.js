@@ -10,7 +10,7 @@ const Home = () => {
     const [collection, setCollection] = useState([]);
     
     return ( colors.background_color !== undefined?
-        <div className="home font-gilroy" style={{backgroundColor: colors.background_color}}>
+        <div className="home font-gilroy" style={{backgroundColor: colors.background_color}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
             <Search
                 setCollection={setCollection}
                 collection={collection}

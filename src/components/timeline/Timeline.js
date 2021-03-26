@@ -48,7 +48,7 @@ const Timeline = () => {
         if (crash !== true){
             if(width === '100%'){
                 return ( 
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container font-gilroy" style={{backgroundColor: colors.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container font-gilroy" style={{backgroundColor: colors.background_color}}>
                         <VerticalTimeline layout='1-column-left'>
                             {   
                                 time.map((tournament) => {
@@ -64,19 +64,15 @@ const Timeline = () => {
                                             >
                                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
                                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>
-                                            {prizepool !== null?
-                                                <div className="column-align mb-5px">
-                                                    <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
-                                                    <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
-                                                    <span className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></span>
-                                                </div>
-                                            :   
-                                                <div className="column-align mb-5px">
-                                                    <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
-                                                    <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
-                                                </div>
-                                            }
                                             
+                                            <div className="column-align mb-5px">
+                                                <h5 className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{date}</h5>
+                                                <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
+                                                <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
+                                                {prizepool&&
+                                                    <span className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></span>
+                                                }
+                                            </div>
                                             
                                             <div className="teams-in-tournament">
                                                 {teams.length > 1?
@@ -101,6 +97,11 @@ const Timeline = () => {
                                                     
                                                 }
                                             </div>
+                                            <div className="mobile">
+                                                <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
+                                                <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
+                                            </div>
+                                            
                                         </VerticalTimelineElement>
                                     );                                  
                                 })
@@ -110,7 +111,7 @@ const Timeline = () => {
                  );
             }else{
                 return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: colors.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
                         <LoadScreen
                             loaderprogress={loaderprogress}
                         /> 
@@ -119,14 +120,14 @@ const Timeline = () => {
             }
         }else{
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: colors.background_color}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
                     <Warning/>
                 </div>
             );
         }
     }else{
         return(
-            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: 'black'}}>
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="time-line-container">
                 <SimpleLoadScreen/>
             </div>
         );

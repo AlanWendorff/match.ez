@@ -23,7 +23,7 @@ const Tournaments = () => {
     const objectToArray = Object.values(tournamentId);
 
     return (colors.background_color !== undefined?
-        <div className="tournament-container font-gilroy"  style={{backgroundColor: colors.background_color}}>
+        <div className="tournament-container font-gilroy"  style={{backgroundColor: colors.background_color}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
             <Link className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" to={UNITY} title={LOOKUNITY}>
                 <Item
                     customTournament={customTournament}

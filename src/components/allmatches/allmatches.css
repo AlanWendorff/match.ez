@@ -1,0 +1,11 @@
+.allmatches{
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(100vh - 65px);
+    background-image: url('../../pattern/generic_team_pattern.png');
+    background-repeat: repeat; 
+    background-size: 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,18 +1,15 @@
-.timeline-background{ 
+
+.time-line-container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: calc(100vh - 65px);
     background-image: url('../../pattern/generic_team_pattern.png');
     background-repeat: repeat; 
     background-size: 50px 50px;
-    height: 100%;
-}
-
-.time-line-container{
-    width: 100%;
-    height: calc(100vh - 65px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 .name-of-tournament{
@@ -90,6 +87,11 @@
         justify-content: center;
         align-items: center;
     }
+    .mobile,
+    .column-align > h5 { 
+        display: none; 
+    }
+
 }
 
 @media screen and (max-width: 1169px) { 
@@ -97,6 +99,27 @@
         font-family: "Gilroy-ExtraBold" !important;
         margin-bottom: 5px !important;
         font-size: 30px !important;
+    }
+    .mobile{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        background-color: rgba(255, 0, 0, 0.096);
+        border-radius: 20px;
+    }
+    .mobile > span{
+        width: 50%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    .mobile > span > span{
+        margin-left: 5px;
+    }
+    .column-align > span { 
+        display: none; 
     }
     
     h5{
@@ -107,18 +130,7 @@
         font-size: 15px;
     }
     .vertical-timeline-element-date{
-        border-radius: 50px !important;
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        text-align: center !important;
-        padding: 0px !important;
-        font-family: "Gilroy-ExtraBold" !important;
-        font-size: 20px !important;
-        height: 50px;
-        width: 100% !important;
-        background-color: white;
-        border: 3px solid #17253c !important;
+        display: none !important;
     }
     .vertical-timeline-element-icon{
         display: flex;
@@ -146,6 +158,7 @@
 }
 
 .teams-in-tournament{
+    margin: 10px 0px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -186,7 +199,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: 10px;
+    margin: 10px 0px;
 }
 .no-team{
     width: 60px;

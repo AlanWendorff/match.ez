@@ -33,7 +33,6 @@ const More = () => {
             deferredPrompt = e;
             setInstallable(true);
         });
-        console.log(isinstalled);
     }, []);
     
     const handleInstallClick = (e) => {
@@ -51,7 +50,7 @@ const More = () => {
     };
 
     return ( colors.background_color !== undefined?
-        <div className="options">
+        <div className="options" onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
 
             <div className="option animate__animated animate__fadeInRight animate__faster">
                 <div onClick={()=> { handleInstallClick(); }}>
