@@ -6,6 +6,8 @@ import csgoLogoDefaultBlack from '../../ImagenesVarias/csgoLogoDefaultBlack.png'
 import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDay, faMoneyBill, faMoneyCheck, faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
 import { getTimeline } from './getTimeline';
 import { Link } from 'react-router-dom';
 import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
@@ -14,7 +16,7 @@ import { ColorThemeContext } from '../context/ColorThemeContext';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {
-    momentSpanishSetup();
+    //momentSpanishSetup();
     const { colors } = useContext(ColorThemeContext);
     const [time, setTime] = useState([]);
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
@@ -66,11 +68,11 @@ const Timeline = () => {
                                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>
                                             
                                             <div className="column-align mb-5px">
-                                                <h5 className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{date}</h5>
+                                                <h5 style={{backgroundColor: `${colors.header_color}`}} className="vertical-timeline-element-subtitle name-of-tournament tournament-data"><FontAwesomeIcon icon={faCalendarDay}/> {date}</h5>
                                                 <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
                                                 <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
                                                 {prizepool&&
-                                                    <label className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></label>
+                                                    <label style={{backgroundColor: `${colors.header_color}`}} className="tournament-data"><FontAwesomeIcon icon={faMoneyCheckAlt}/> <span className="font-gilroy-bold">{prizepool}</span></label>
                                                 }
                                             </div>
                                             
@@ -97,7 +99,7 @@ const Timeline = () => {
                                                     
                                                 }
                                             </div>
-                                            <div className="mobile">
+                                            <div className="mobile" style={{backgroundColor: `${colors.header_color}`}}>
                                                 <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
                                                 <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
                                             </div>

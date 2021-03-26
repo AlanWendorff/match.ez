@@ -12,7 +12,7 @@ import { usePalette } from 'react-palette';
 const TarjetaAllmatches = ({match}) => {
 
     const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = match; 
-    momentSpanishSetup();
+    //momentSpanishSetup();
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
     let proxyLogo;

@@ -12,7 +12,7 @@ import './tarjetaMatchesCompletos.css';
 
 const TarjetaMatchHoy = ({matchHoy, data}) => {
     const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = matchHoy; 
-    momentSpanishSetup();
+    //momentSpanishSetup();
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
     let aTeamSlug = "";

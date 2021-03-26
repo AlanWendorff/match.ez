@@ -16,7 +16,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
-    momentSpanishSetup();
+    //momentSpanishSetup();
 
     let proxyLogo;
     let ArrteamA;

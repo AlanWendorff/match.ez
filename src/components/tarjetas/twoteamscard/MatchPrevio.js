@@ -19,7 +19,7 @@ import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
 const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, allMatch, oneMatch, firstIndexDate}) => {
-    momentSpanishSetup();
+    //momentSpanishSetup();
     const {teams} = scoreMatch;
     let proxyLogo;
     //onClick={ store.addNotification(oneMatch) }

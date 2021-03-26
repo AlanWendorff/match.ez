@@ -93,6 +93,16 @@
     .column-align > h5 { 
         display: none; 
     }
+    .column-align > label{
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        padding: 0px 10px;
+        height: 30px;
+    }
+    .column-align > label > svg{
+        margin-right: 10px;
+    }
 
 }
 
@@ -101,6 +111,8 @@
         font-family: "Gilroy-ExtraBold" !important;
         margin-bottom: 5px !important;
         font-size: 30px !important;
+        width: 100%;
+        text-align: center;
     }
     .mobile{
         margin-top: 10px;
@@ -108,7 +120,6 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        background-color: rgba(255, 0, 0, 0.096);
         border-radius: 20px;
     }
     .mobile > span{
@@ -123,14 +134,33 @@
     .column-align > span { 
         display: none; 
     }
+    .column-align > h5,
+    .column-align > label{
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        padding: 0px 10px;
+        height: 30px;
+    }
     
     h5{
         font-size: 20px !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 15px !important;
+        width: 100%;
+        text-align: center;
+    }
+    .column-align > .tournament-data{
+        margin-bottom: 15px;
     }
     .tournament-data{
         font-size: 15px;
         color: black !important;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .vertical-timeline-element-subtitle > svg{
+        font-size: 19px;
     }
     .vertical-timeline-element-date{
         display: none !important;
