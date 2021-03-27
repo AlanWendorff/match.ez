@@ -18,7 +18,7 @@ import { usePalette } from 'react-palette';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, firstIndexDate}) => {
+const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     //momentSpanishSetup();
     const {teams} = scoreMatch;
     let proxyLogo;
@@ -63,17 +63,6 @@ const MatchPrevio = ({match, teamId, scoreMatch, setDropList, droplist, firstInd
     //eslint-disable-next-line
     return(
         <div className="noselect card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect position-relative" style={sizecard}> 
-            {id === firstIndexDate?
-                <div onClick={() => {
-                    if (droplist) {
-                        setDropList(false);
-                    }else{
-                        setDropList(true);
-                    }}}
-                className="drop-container" style={{backgroundColor: data.darkVibrant}}><FontAwesomeIcon className="color-text-white mr" icon={droplist? faChevronDown : faChevronUp}/></div>
-            :
-                null
-            }
             
             <div className="card-image" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">

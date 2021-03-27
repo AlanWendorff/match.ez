@@ -33,47 +33,11 @@ const NavigationBar = () => {
                 <FontAwesomeIcon style={{color: pathname !== TOURNAMENTS? 'black': `${colors.background_color}`}} icon={faTrophy}/>
             </Link>
 
-            {pathname === TOURNAMENTS?
-                <Link to={MORE}>
-                    <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
-                        <img className="nav-logo" src={appLogo}/>
-                    </div>
-                </Link>
-                :
-                pathname === HOME?
-                <Link to={MORE}>
-                    <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
-                        <img className="nav-logo" src={appLogo}/>
-                    </div>
-                </Link>
-                :
-                pathname === ALLMATCHES?
-                <Link to={MORE}>
-                    <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
-                        <img className="nav-logo" src={appLogo}/>
-                    </div>
-                </Link>
-                :
-                pathname === MORE?
-                <Link to={MORE}>
-                    <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
-                        <img className="nav-logo" src={appLogo}/>
-                    </div>
-                </Link>
-                :
-                pathname === TIMELINE?
-                <Link to={MORE}>
-                    <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
-                        <img className="nav-logo" src={appLogo}/>
-                    </div>
-                </Link>
-                :
-                <div>
-                    <div style={{backgroundColor: `${data.darkVibrant}`}}>
-                        <img className="nav-logo" src={logo}/>
-                    </div>
+            <Link to={MORE}>
+                <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
+                    <img className="nav-logo" src={appLogo}/>
                 </div>
-            }
+            </Link>
             
             <Link to={TIMELINE}>
                 <FontAwesomeIcon style={{color: pathname !== TIMELINE? 'black': `${colors.background_color}`}} icon={faCalendarAlt}/>

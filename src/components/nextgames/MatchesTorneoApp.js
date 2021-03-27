@@ -12,6 +12,7 @@ import LoadScreen from '../loader/LoadScreen';
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
 import HeaderMobile from '../headermobile/HeaderMobile';
+import Logo from '../navigationbar/Logo';
 import { PathContext } from '../context/PathContext';
 import { usePalette } from 'react-palette';
 import { template_unity } from '../../custom/unity/template';
@@ -119,6 +120,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                         color={data}
                         img={image_url}
                         setShow={setShow}
+                        isTournament
                     />
                     {/* <div className="z-depth-5 gradient-position mb-0 animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${data.vibrant} 100%)`}}> 
                         <img className="max-size-logo-header" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}} alt="Logo Team" src={image_url}/>   
@@ -141,7 +143,10 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                     {show === "history"&&
                         <div>aca van los matches historicos</div>
                     }
-                    
+                    <Logo
+                        color={data}
+                        img={image_url}
+                    />
                     <Footer/>
                 </div>
             );

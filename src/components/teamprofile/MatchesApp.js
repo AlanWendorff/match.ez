@@ -8,12 +8,13 @@ import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import { HeaderLogoContext } from '../context/HeaderLogoContext';
-
+import Logo from '../navigationbar/Logo';
+import HeaderMobile from '../headermobile/HeaderMobile';
 import { getPastMatch } from './getPastMatch';
 import { getNextMatches } from './getNextMatches';
 import { getPlayerScore } from './getPlayerScore';
 
-import '../../styles/base.css';
+
 import 'react-notifications-component/dist/theme.css'
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import ca_pattern from '../../pattern/ca_pattern.png';
@@ -25,6 +26,7 @@ import mibr_pattern from '../../pattern/mibr_pattern.png';
 import river_pattern from '../../pattern/river_pattern.png';
 import np_pattern from '../../pattern/np_pattern.png';
 import sharks_pattern from '../../pattern/sharks_pattern.png';
+import '../../styles/base.css';
 
 const MatchesApp = ({teamId, image_url, name}) => { 
     let urlTeamId = "";
@@ -41,6 +43,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
     const [matches, guardarMatches]     = useState([]);
     const [scoreMatch, guardarScoreMatch] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
+    const [show, setShow] = useState("");
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
 
@@ -218,60 +221,49 @@ const MatchesApp = ({teamId, image_url, name}) => {
             }
         }    
     }
-
+    
     const {width} = loaderprogress;
     if (!crash){
         if(width === '100%' && prevMatch.length > 0 && paletestate === true){
-            if (!matches.length > 0) {
-                return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
-                        <Header/>   
-                        {prevMatch !== "no-match"?
-                            <ListadoDePartidosPrevios
-                                prevMatch={prevMatch}
-                                teamId={teamId}
-                                scoreMatch={scoreMatch}
-                            />
-                        :
-                            null
-                        }                                                                                                                              
-                        <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(2px 2px 20px ${data.lightVibrant})`}}/>
-                        <Estadisticas
-                            winRate={winRate}
-                            winStrike={winStrike}
-                        /> 
+            return(
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
+                    {/* <Header/>  */}
+                    <HeaderMobile
+                        color={data}
+                        img={image_url}
+                        setShow={setShow}
+                    />  
+                    <Estadisticas
+                        winRate={winRate}
+                        winStrike={winStrike}
+                    /> 
+ 
+                    {show === "vs" && !matches.length > 0 &&
                         <TarjetaInformativa
                             noMatches={noMatches}
                         />
-                        <Footer/>
-                    </div>
-                ); 
-            }else{
-                return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
-                        <Header/>                                                                                                                                 
-                        {prevMatch !== "no-match"?
-                            <ListadoDePartidosPrevios
-                                prevMatch={prevMatch}
-                                teamId={teamId}
-                                scoreMatch={scoreMatch}
-                            />
-                        :
-                            null
-                        }  
-                        <hr className="position-hr" noshade="noshade" style={{filter: `drop-shadow(4px 2px 20px ${data.lightVibrant})`}}/>
-                        <Estadisticas
-                            winRate={winRate}
-                            winStrike={winStrike}
-                        /> 
+                    }
+                    {show === "vs" && matches.length > 0 &&
                         <ListadoDeTarjetas
                             matches={matches}
                             teamId={teamId}
                         />
-                        <Footer/>
-                    </div>
-                );   
-            };
+                    }
+
+                    {show === "history" && prevMatch !== "no-match" &&
+                        <ListadoDePartidosPrevios
+                            prevMatch={prevMatch}
+                            teamId={teamId}
+                            scoreMatch={scoreMatch}
+                        />
+                    }                                                                                                                           
+                    <Logo
+                        color={data}
+                        img={image_url}
+                    />
+                    <Footer/>
+                </div>
+            );      
         }else{                                                       // RETURN APP LOADING
             return (
                 <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: 'black'}}>

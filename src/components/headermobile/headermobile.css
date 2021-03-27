@@ -19,6 +19,7 @@
         flex-direction: row;
         position: absolute;
         top: 0;
+        z-index: 100;
     }
 }
 
@@ -30,6 +31,7 @@
         flex-direction: row;
         position: absolute;
         top: 0;
+        z-index: 100;
     }
 }
 
@@ -42,5 +44,6 @@
         flex-direction: row;
         position: absolute;
         top: 0;
+        z-index: 100;
     }
 }
