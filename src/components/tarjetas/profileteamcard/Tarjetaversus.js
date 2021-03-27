@@ -11,6 +11,7 @@ import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.p
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import { usePalette } from 'react-palette';
 import Share from '../../share/Share';
+import { PlaySound } from '../../../utility/PlaySound';
 import './tarjetaUpcomingMatch.css';
 
 const Tarjetaversus = ({match, teamId}) => {
@@ -84,7 +85,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
     if(status === 'running'){
         hoy = "Playing Now"; 
-        statusStream = "LIVE";
+        official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         const {A_point, B_point} = setMatchResult(results, teamId); 
         return(
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown animate__faster">
@@ -140,7 +141,7 @@ const Tarjetaversus = ({match, teamId}) => {
                                 </span>                  
                             </div>
 
-                            <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container"> 
+                            <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container" onClick={()=>{official_stream_url !== null&& PlaySound()}}> 
                                 <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={official_stream_url}> {statusStream} <span className="dot-indicator"></span></a>
                             </div>
                         </div>              

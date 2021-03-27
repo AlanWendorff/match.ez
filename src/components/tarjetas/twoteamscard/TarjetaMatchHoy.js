@@ -8,6 +8,7 @@ import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.p
 import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setGameMode} from '../../../utility/SetGameMode';
+import { PlaySound } from '../../../utility/PlaySound';
 
 import './tarjetaMatchesCompletos.css';
 
@@ -72,12 +73,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
 
     const {modalidad} = setGameMode(number_of_games);
 
-    if (status === "running"){                                  // if the status is running the status stream change to "Stream in live!"
-        statusStream = "LIVE";
-        statusMatch = "¡Playing Now!";
-    }
-
     if (status === "running"){
+        official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
+        statusMatch = "¡Playing Now!";
         const {A_point, B_point} = setMatchResult(results, bTeamId); 
         return (
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown">
@@ -134,7 +132,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 </span>                  
                             </div>
 
-                            <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container">
+                            <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container" onClick={()=>{official_stream_url !== null&& PlaySound()}}>
                                 <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={official_stream_url}> {statusStream} <span className="dot-indicator"></span></a>
                             </div>
                         </div>              
