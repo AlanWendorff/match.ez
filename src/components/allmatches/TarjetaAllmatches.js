@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import Moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
 import {setGameMode} from '../../utility/SetGameMode';
 import {setMatchResult} from '../../utility/SetMatchResult';
@@ -137,16 +139,16 @@ const TarjetaAllmatches = ({match}) => {
                                 </div> 
     
     
-                                <div className="live-container-info-bottom">
-                                    <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Fase:</span> 
-                                        {fase}
-                                    </p>
-    
-                                    <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: `${data.darkVibrant}`}}>Empezó: </span>
-                                        <span>{Moment(begin_at).format('H:mm')}  hs</span> 
-                                    </p>                  
+                                <div className="match-data">
+                                    <span className="font-size">
+                                        <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
+                                        <span className="data">{fase}</span> 
+                                    </span>
+
+                                    <span className="font-size">
+                                        <span style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
+                                        <span className="data">{Moment(begin_at).format('H:mm')}  hs</span> 
+                                    </span>                  
                                 </div>
     
                                 <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container">

@@ -249,4 +249,13 @@
     .stream-box{
         margin-top: 117px;
     }
+    .match-data{
+        width: 100% ;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 30px ;
+      }
+      .match-data > span > .data{
+        margin-left: 5px;
+      }
 }

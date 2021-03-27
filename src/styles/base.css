@@ -192,6 +192,10 @@ i.right{
     text-align: end;
 }
 
+.turn-left-90{
+    transform: rotate(250deg);
+}
+
 
 .pattern-background{ 
     background-repeat: repeat; 
@@ -269,7 +273,7 @@ i.right{
         align-self: center;
     }
     .font-size{
-        font-size: 12px;
+        font-size: 15px;
     }
     .size-team-logo{
         max-width: 80px !important;

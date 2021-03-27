@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import Moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock} from '@fortawesome/free-solid-svg-icons';
+import { faClock, faCodeBranch} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
@@ -89,7 +89,7 @@ const Tarjetaversus = ({match, teamId}) => {
         statusStream = "LIVE";
         const {A_point, B_point} = setMatchResult(results, teamId); 
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown animate__faster">
+            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
@@ -103,7 +103,7 @@ const Tarjetaversus = ({match, teamId}) => {
                                 <Link to ={`/${opponentSlug}`}>
                                     <div className="team-canvas"> 
                                         <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src} />}
+                                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>                        
                                     </div> 
                                 </Link>
@@ -118,7 +118,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
                                 <div className="team-canvas">
                                     <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img alt="b team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>  
                                 </div> 
                             </div>
@@ -130,16 +130,16 @@ const Tarjetaversus = ({match, teamId}) => {
                             </div> 
 
 
-                            <div className="live-container-info-bottom">
-                                <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Stage:</span> 
-                                    {fase}
-                                </p>
+                            <div className="match-data">
+                                <span className="font-size">
+                                    <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
+                                    <span className="data">{fase}</span> 
+                                </span>
 
-                                <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
-                                    <span>{Moment(begin_at).format('H:mm')}  hs</span> 
-                                </p>                  
+                                <span className="font-size">
+                                    <span style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
+                                    <span className="data">{Moment(begin_at).format('H:mm')}  hs</span> 
+                                </span>                  
                             </div>
 
                             <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container"> 

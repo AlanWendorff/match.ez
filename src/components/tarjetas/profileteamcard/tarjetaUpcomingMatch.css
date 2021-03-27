@@ -15,9 +15,6 @@
   margin-bottom: 8px !important;
 }
 
-.margin-entre-label-contenido{
-  margin-right: 1%;
-}
 .stream-font-color-LIVE{
   color:  #FF0000 !important;
   font-weight: bold;
@@ -119,6 +116,9 @@
 }
 
 @media screen and (max-width: 770px) { 
+  .team-logo{
+    max-width: 80px;
+  } 
   .tamano-tarjeta{
     /*width: 330px !important;*/
     width: 330px !important;
@@ -147,5 +147,14 @@
   }
   .card-content{
     padding: 15px 15px 0px 15px !important;
+  }
+  .match-data{
+    width: 100% ;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px ;
+  }
+  .match-data > span > .data{
+    margin-left: 5px;
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import ProgressiveImage from 'react-progressive-image';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
@@ -74,8 +74,8 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     const {modalidad} = setGameMode(number_of_games);
 
     if (status === "running"){                                  // if the status is running the status stream change to "Stream in live!"
-        statusStream = "Partido en vivo!";
-        statusMatch = "¡Ahora!";
+        statusStream = "LIVE";
+        statusMatch = "¡Playing Now!";
     }
 
     if (dateUser === dateMatch || status === "running"){ 
@@ -124,16 +124,16 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 </div> 
     
     
-                                <div className="live-container-info-bottom">
-                                    <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Stage:</span> 
-                                        {fase}
-                                    </p>
-    
-                                    <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}><FontAwesomeIcon icon={faClock}/> </span>
-                                        <span>{Moment(begin_at).format('H:mm')}  hs</span> 
-                                    </p>                  
+                                <div className="match-data">
+                                    <span className="font-size">
+                                        <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
+                                        <span className="data">{fase}</span> 
+                                    </span>
+
+                                    <span className="font-size">
+                                        <span style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
+                                        <span className="data">{Moment(begin_at).format('H:mm')}  hs</span> 
+                                    </span>                  
                                 </div>
     
                                 <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container">
