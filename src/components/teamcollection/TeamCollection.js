@@ -16,14 +16,19 @@ const examples = [
             path: "isurus-gaming-cs-go"
         },
         {
-            img: "https://cdn.pandascore.co/images/team/image/127693/10786.png",
-            name: "River Plate",
-            path: "river-plate"
+            img: "https://cdn.pandascore.co/images/team/image/125785/7718.png",
+            name: "Movistar Riders",
+            path: "movistar-riders-cs-go"
         },
         {   
             img: "https://cdn.pandascore.co/images/team/image/3213/220px_team_liquidlogo_square.png",
             name: "Liquid",
             path: "liquid-cs-go"
+        },
+        {   
+            img: "https://cdn.pandascore.co/images/team/image/3393/600px_winstrike_team_2019_logo.png",
+            name: "Winstrike",
+            path: "winstrike"
         }
 ]
 

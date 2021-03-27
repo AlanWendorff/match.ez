@@ -87,7 +87,6 @@ const Layout = () => {
                     <MatchesApp
                       key={team.id}
                       teamId={team.id}
-                      name={team.name}
                       image_url={team.img}
                     />
                   </Route>

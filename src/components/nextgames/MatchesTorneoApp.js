@@ -1,7 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import ListadoDePartidosPrevios from '../mapmatch/ListadoDePartidosPrevios';
 import { HeaderLogoContext } from '../context/HeaderLogoContext';
 import Leaderboard from '../leaderboard/Leaderboard';
@@ -85,7 +83,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 if (!matchesHoy.length > 0) {
                     const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
                     const {data, ladder, lastGames} = matchesTournament;
-                    //console.log(ladder);
+                    console.log(data);
                     if (matchesTournament) {
                         guardarLoaderProgress({width: '100%'});
                         guardarMatchesHoy(data);
@@ -101,7 +99,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                     if (badFetch) {
                         guardarStateCrash(true);
                     }
-                    if(matchesHoy.length === 0){   
+                    if(!data.length > 0){   
                         guardarNoMatches(true);
                     }
                 }
@@ -120,7 +118,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     },[tournamentId === undefined? paths : null]);
 
     const {width} = loaderprogress;
-    
+    console.log(matchesHoy);
     if (crash !== true){
         if(width === '100%' && paletestate === true){
             return(

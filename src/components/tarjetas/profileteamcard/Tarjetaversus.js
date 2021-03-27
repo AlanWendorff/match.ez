@@ -5,7 +5,6 @@ import { faClock, faCodeBranch} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
-import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setGameMode} from '../../../utility/SetGameMode';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
@@ -18,7 +17,6 @@ const Tarjetaversus = ({match, teamId}) => {
 
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
-    //momentSpanishSetup();
 
     let proxyLogo;
     let ArrteamA;

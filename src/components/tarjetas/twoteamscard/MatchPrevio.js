@@ -1,4 +1,4 @@
-import React, {useContext, useState, Fragment} from 'react';
+import React, {useContext, Fragment} from 'react';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
 import { Link } from 'react-router-dom';
 import ScoreTarjeta from './matchStadistic/ScoreTarjeta';
@@ -6,13 +6,11 @@ import ProgressiveImage from 'react-progressive-image';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import Moment from 'moment';
 import Share from '../../share/Share';
-import {momentSpanishSetup} from '../../../utility/MomentSpanishSetup';
 import {setTeamLogo} from '../../../utility/SetTeamLogo';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setGameMode} from '../../../utility/SetGameMode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDay, faChevronDown, faChevronUp, faTrophy } from '@fortawesome/free-solid-svg-icons';
-import { store } from 'react-notifications-component';
+import { faCalendarDay, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { usePalette } from 'react-palette';
 
 import './tarjetaMatchesCompletos.css';
@@ -21,6 +19,7 @@ import './matchprevio.css';
 const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     //momentSpanishSetup();
     let proxyLogo;
+    let fase = "";
     const {number_of_games, league, serie, tournament, begin_at, id, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
     const {bTeamLogo, bTeamName, aTeamLogo, aTeamName, bTeamSlug, aTeamSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId); 
@@ -30,8 +29,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let error = usePalette(proxyLogo).error;
     let leagueColors = usePalette(proxyLogo).data;
-    let fase = "";
-
+    
     if (error) {
         leagueColors = {
             darkMuted: "#1c313a",

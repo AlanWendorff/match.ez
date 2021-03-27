@@ -14,25 +14,14 @@ import { getPastMatch } from './getPastMatch';
 import { getNextMatches } from './getNextMatches';
 import { getPlayerScore } from './getPlayerScore';
 
-
 import 'react-notifications-component/dist/theme.css'
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
-import ca_pattern from '../../pattern/ca_pattern.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
-import isurus_pattern from '../../pattern/isurus_pattern.png';
-import kaster_pattern from '../../pattern/kaster_pattern.png';
-import malvinas_pattern from '../../pattern/malvinas_pattern.png';
-import mibr_pattern from '../../pattern/mibr_pattern.png';
-import river_pattern from '../../pattern/river_pattern.png';
-import np_pattern from '../../pattern/np_pattern.png';
-import sharks_pattern from '../../pattern/sharks_pattern.png';
 import '../../styles/base.css';
 
-const MatchesApp = ({teamId, image_url, name}) => { 
-    let urlTeamId = "";
-    let classContainer = "parametros-container mosaico noselect "
-    let backgroundStyle;
+const MatchesApp = ({teamId, image_url}) => { 
 
+    let backgroundStyle;
     let winStrike = 0;
     let winRate   = 0;
     let matchWin  = 0;
@@ -68,89 +57,16 @@ const MatchesApp = ({teamId, image_url, name}) => {
         })
     }
     
-
-    switch (teamId) {
-        case 126709:  //9z
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${kaster_pattern})`
-            };
-            urlTeamId = teamId;
-            break;
-
-        case 125863:  //Isurus
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${isurus_pattern})`
-            };
-            urlTeamId = teamId;
-            break;
-
-        case 127882:  //malvinas
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${malvinas_pattern})`
-            };
-            urlTeamId = teamId;
-            break;
-
-        case 3260:  //sharks
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${sharks_pattern})`
-            };
-            urlTeamId = teamId;
-            break;    
-
-        case 127246:  //CoscuArmy
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${ca_pattern})`
-            };
-            urlTeamId = teamId;
-            break; 
-
-        case 127883:  //New Pampas
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${np_pattern})`
-            };
-            urlTeamId = teamId;
-            break; 
-
-        case 3250:  //mibr
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${mibr_pattern})`
-            };
-            urlTeamId = teamId;
-            break;
-
-        case 127693:  //River
-            backgroundStyle = {
-                backgroundColor: `${data.darkVibrant}`,
-                backgroundImage: `url(${river_pattern})`
-                
-            };
-            urlTeamId = teamId;
-            break; 
-            
-        default:
-            classContainer = classContainer + "menu-background";
-            if (image_url !== csgoLogoDefault) {
-                backgroundStyle = {
-                    backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-                    backgroundColor: `${data.darkVibrant}`,
-                };
-            }else{
-                backgroundStyle = {
-                    backgroundColor: `${data.darkVibrant}`,
-                    backgroundImage: `url(${generic_team_pattern})`
-                };
-            }
-            
-            urlTeamId = teamId;
-            break;
+    if (image_url !== csgoLogoDefault) {
+        backgroundStyle = {
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+            backgroundColor: `${data.darkVibrant}`,
+        };
+    }else{
+        backgroundStyle = {
+            backgroundColor: `${data.darkVibrant}`,
+            backgroundImage: `url(${generic_team_pattern})`
+        };
     }
 
     useEffect(() => {  
@@ -184,7 +100,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
             };
             
             if(!matches.length > 0){
-                const {objNextMatches, badFetch} = await getNextMatches(urlTeamId);
+                const {objNextMatches, badFetch} = await getNextMatches(teamId);
                 //console.log("calling next match");
                 if (objNextMatches) {
                     guardarLoaderProgress({width: '100%'});
@@ -226,7 +142,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
     if (!crash){
         if(width === '100%' && prevMatch.length > 0 && paletestate === true){
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={backgroundStyle}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container mosaico noselect" style={backgroundStyle}>
                     {/* <Header/>  */}
                     <HeaderMobile
                         color={data}
@@ -266,7 +182,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
             );      
         }else{                                                       // RETURN APP LOADING
             return (
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: 'black'}}>
+                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container mosaico noselect" style={{backgroundColor: 'black'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
                     />
@@ -275,7 +191,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
         };
     }else{
         return(
-            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className={classContainer} style={{backgroundColor: '#040c1c'}}>                                                                                                                                      
+            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container mosaico noselect" style={{backgroundColor: '#040c1c'}}>                                                                                                                                      
                 <Warning/>       
                 <Footer/>
             </div>

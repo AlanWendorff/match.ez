@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import LazyLoad from 'react-lazyload';
 import TarjetaMatchHoy from '../tarjetas/twoteamscard/TarjetaMatchHoy';
 import shortid from 'shortid';
 
