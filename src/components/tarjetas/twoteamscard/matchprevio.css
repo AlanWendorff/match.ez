@@ -1,12 +1,4 @@
 /* Tarjeta Prev Match */
-.container-gen-prev-game{
-    overflow: hidden;
-    padding: 0% 0% 0% 0% !important;
-    display: flex;
-    flex-direction: column;
-}   
-
-  
 .click-more-info{
     padding: 2% 0% 2% 0% !important;
     display: flex;
@@ -55,11 +47,11 @@
 }
 
 .info-not-first-index{
-    padding: 5px 0px;
+    padding: 5px 35px;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 
@@ -91,7 +83,6 @@
         z-index: 100;
     } */
     .card-reveal{
-        overflow: hidden !important;
         padding: 58px 0px 0px 0px!important;
     } 
     .table-logo-size{
@@ -208,8 +199,7 @@
         z-index: 100;
     } */
     .card-reveal{
-        overflow: hidden !important;
-        padding: 58px 0px 0px 0px!important;
+        padding: 58px 0px 0px 0px !important;
     } 
     .table-logo-size{
         width: 25px;

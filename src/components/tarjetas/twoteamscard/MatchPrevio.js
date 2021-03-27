@@ -11,7 +11,7 @@ import {setTeamLogo} from '../../../utility/SetTeamLogo';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setGameMode} from '../../../utility/SetGameMode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDay, faChevronDown, faChevronUp, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { store } from 'react-notifications-component';
 import { usePalette } from 'react-palette';
 
@@ -22,7 +22,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     //momentSpanishSetup();
     const {teams} = scoreMatch;
     let proxyLogo;
-    const [sizecard, setSizeCard] = useState();
+
     const {number_of_games, league, serie, tournament, begin_at, id, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
     const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
@@ -62,7 +62,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     
     //eslint-disable-next-line
     return(
-        <div className="noselect card posicion-tarjeta size-prev-game container-gen-prev-game font-gilroy transition-effect position-relative" style={sizecard}> 
+        <div className="noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__animated animate__fadeInDown animate__faster"> 
             
             <div className="card-image" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
@@ -136,26 +136,26 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                 <Fragment>
                     <div className="card-content click-more-info activator cursor-pointer" 
                     onClick={()=>{ 
-                        if (teams && teams.length > 0) {
+                        /* if (teams && teams.length > 0) {
                             if (window.innerWidth > 770) {
-                                setSizeCard({height: "750px", overflow: "hidden"});
+                                setSizeCard({height: "750px"});
                             }else{
                                 setSizeCard({height: "650px"});
                             }
-                        }
+                        } */
                         }}>
                         <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
                     </div>
                     <div className="card-reveal">
                         <div className="card-title grey-text text-darken-4" >
                             <i className="material-icons right" onClick={()=>{ 
-                                if (teams && teams.length > 0) {
+                                /* if (teams && teams.length > 0) {
                                     if (window.innerWidth > 770) {
-                                        setSizeCard({height: "297px", overflow: "hidden"});
+                                        setSizeCard({height: "297px"});
                                     }else{
-                                        setSizeCard({height: "236px", overflow: "hidden"});
+                                        setSizeCard({height: "236px"});
                                     }
-                                }
+                                } */
                             }}>close</i>
                         </div>
                         <div className="share">
@@ -173,26 +173,26 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                         />
                         
                         <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 
                             {league.name +" "+ serie.full_name}
                         </p>                        
                         <p className="text-align-center label-fecha cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
-                            <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
+                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faCalendarDay}/> </span>
+                            <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
                         </p>
                         
                     </div>
                 </Fragment>
             :
                 <div className="not-first-index-container">
-                    <div className="info-not-first-index text-align-center">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Torneo:</span> 
-                        <span className="text-align-start">{league.name +" "+ serie.full_name}</span>     
+                    <div className="info-not-first-index">
+                        <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 
+                        <span>{league.name +" "+ serie.full_name}</span>     
                     </div>
 
-                    <div className="info-not-first-index text-align-center">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}>Se jugó el: </span>
-                        <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</span>     
+                    <div className="info-not-first-index">
+                        <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faCalendarDay}/> </span>
+                        <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</span>     
                     </div>
                 </div>
             }

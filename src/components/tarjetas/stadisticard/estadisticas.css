@@ -1,13 +1,13 @@
-/* Tarjeta Estadisticas*/
-.container-estadistica{
-    align-self: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 20px 5px;
-}   
+
 
 @media (min-width: 771px) {   
+    .container-estadistica{
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 20px 5px;
+    }   
     .font-wins{  
         font-size: 20px !important;
         font-weight: bold !important;
@@ -26,6 +26,15 @@
 }
   
 @media screen and (max-width: 770px) {     
+    /* Tarjeta Estadisticas*/
+    .container-estadistica{
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 10px 5px;
+        margin: 10px 0px;
+    }   
     .font-wins{  
         font-size: 15px !important;
         font-weight: bold !important;

@@ -43,7 +43,7 @@ const MatchesApp = ({teamId, image_url, name}) => {
     const [matches, guardarMatches]     = useState([]);
     const [scoreMatch, guardarScoreMatch] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
-    const [show, setShow] = useState("");
+    const [show, setShow] = useState("vs");
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
 

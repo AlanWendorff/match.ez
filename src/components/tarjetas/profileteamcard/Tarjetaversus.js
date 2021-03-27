@@ -22,7 +22,7 @@ const Tarjetaversus = ({match, teamId}) => {
     let ArrteamA;
     let opponentLogo, opponentName, opponentSlug;
     let hoy = "";
-    let statusStream = "Streaming inactivo";
+    let statusStream = "Streaming off";
     let fase = "";
     let diaUsuario = new Date().getDate();
     let diaMatch = parseInt(Moment(begin_at).format('D'));
@@ -69,25 +69,25 @@ const Tarjetaversus = ({match, teamId}) => {
     const {modalidad} = setGameMode(number_of_games);
 
     if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"
-        hoy = "¡Hoy!";                                               
+        hoy = "¡Today!";                                               
     }
 
     const Facebook = 
-    `${opponentName === undefined? 'a definir' : opponentName} VS ${ownName}
+    `${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName}
     ${modalidad}
     ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs 
     ${league.name +" "+ serie.full_name}
     `;
-    const Twitter =`${opponentName === undefined? 'a definir' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`;
-    const Wapp = `${opponentName === undefined? 'a definir' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
+    const Twitter =`${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`;
+    const Wapp = `${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
     
 
     if(status === 'running'){
-        hoy = "¡Ahora!"; 
-        statusStream = "Partido en vivo!";
+        hoy = "Playing Now"; 
+        statusStream = "LIVE";
         const {A_point, B_point} = setMatchResult(results, teamId); 
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown">
+            <div className="card posicion-tarjeta tamano-tarjeta-previo container-prev-match font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
@@ -150,7 +150,7 @@ const Tarjetaversus = ({match, teamId}) => {
         );
     }else{
         return(
-            <div className="col s12 m7 posicion-tarjeta font-gilroy animate__animated animate__fadeInDown">
+            <div className="col s12 m7 posicion-tarjeta font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="card horizontal tamano-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image lienzo-logo"> 
                         <Link to ={`/${opponentSlug}`}> 
@@ -169,17 +169,17 @@ const Tarjetaversus = ({match, teamId}) => {
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Stage:</span> 
                                 {fase}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Fecha: </span>
-                                <span>{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs  <span className="hoy-color">{hoy}</span> </span> 
+                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Date: </span>
+                                <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs  <span className="hoy-color">{hoy}</span> </span> 
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Modalidad:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Games:</span> 
                                 {modalidad}
                             </p>
                             <Share

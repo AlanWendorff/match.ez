@@ -24,7 +24,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     let proxyLogo;
     if (image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + image_url;
     const { guardarLogo } = useContext(HeaderLogoContext);
-    const [show, setShow] = useState("");
+    const [show, setShow] = useState("vs");
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
