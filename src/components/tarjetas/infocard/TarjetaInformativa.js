@@ -2,7 +2,7 @@ import React from 'react';
 import './tarjetaInfo.css';
 const TarjetaInformativa = ({noMatches}) => {
     return ( 
-        <div className="container-tarjeta-instagram posicion-tarjeta">
+        <div className="no-match-card posicion-tarjeta">
             <p className="NO-matches cursor-default">No matches upcoming.</p> 
         </div>
     );   

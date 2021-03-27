@@ -11,7 +11,7 @@ const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamId, scoreMatch}) => {
     }, []);
 
     if (!prevMatch.length > 0) return null;
-    console.log(prevMatch);
+
     return ( 
         <Fragment> 
             {prevMatch.map(match => ( 

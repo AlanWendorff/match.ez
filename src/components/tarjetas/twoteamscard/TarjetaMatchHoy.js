@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import ProgressiveImage from 'react-progressive-image';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../../ImagenesVarias/csgoLogoDefaultBlack.png';
@@ -43,7 +45,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             }else{
                 aTeamLogo = opponents[0].opponent.image_url;
             };
-            bTeamName = "a definir";
+            bTeamName = "To be defined";
             bTeamLogo = toBeDefined;
         }else{
             aTeamName = opponents[0].opponent.name;
@@ -63,9 +65,9 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             };
         }
     }else{
-        aTeamName = "a definir";
+        aTeamName = "To be defined";
         aTeamLogo = toBeDefined;
-        bTeamName = "a definir";
+        bTeamName = "To be defined";
         bTeamLogo = toBeDefined;
     }
 
@@ -124,12 +126,12 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                                 <div className="live-container-info-bottom">
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Fase:</span> 
+                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Stage:</span> 
                                         {fase}
                                     </p>
     
                                     <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>Empezó: </span>
+                                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}><FontAwesomeIcon icon={faClock}/> </span>
                                         <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                     </p>                  
                                 </div>

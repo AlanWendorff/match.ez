@@ -20,12 +20,10 @@ import './matchprevio.css';
 
 const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     //momentSpanishSetup();
-    const {teams} = scoreMatch;
     let proxyLogo;
-
     const {number_of_games, league, serie, tournament, begin_at, id, winner_id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
-    const {opponentLogo, opponentName, ownLogo, ownName, opponentSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId);
+    const {bTeamLogo, bTeamName, aTeamLogo, aTeamName, bTeamSlug, aTeamSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId); 
     const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
 
@@ -33,6 +31,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     let error = usePalette(proxyLogo).error;
     let leagueColors = usePalette(proxyLogo).data;
     let fase = "";
+
     if (error) {
         leagueColors = {
             darkMuted: "#1c313a",
@@ -53,12 +52,12 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
         fase = tournament.name;
     }
     const Facebook = 
-    `${opponentName}: ${A_point} 
-    ${ownName}: ${B_point}  
+    `${bTeamName}: ${A_point} 
+    ${aTeamName}: ${B_point}  
     ${league.name +" "+ serie.full_name}
     `;
-    const Twitter = `${opponentName}: ${A_point} VS ${ownName}: ${B_point} | ${league.name+" "+serie.full_name}`;
-    const Wapp = `${opponentName}: ${A_point} VS ${ownName}: ${B_point} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
+    const Twitter = `${bTeamName}: ${A_point} VS ${aTeamName}: ${B_point} | ${league.name+" "+serie.full_name}`;
+    const Wapp = `${bTeamName}: ${A_point} VS ${aTeamName}: ${B_point} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
     
     //eslint-disable-next-line
     return(
@@ -72,15 +71,15 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={`/${opponentSlug}`}>
-                                <div className={winner_id === teamId? "match-loser-prevgame" :"match-winner-prevgame"}>                            
-                                    <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                            <Link to={`/${aTeamSlug}`}>
+                                <div className={A_point < B_point? "match-loser-prevgame" :"match-winner-prevgame"}>                            
+                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
 
-                            <p className="name-of-teams">{opponentName}</p> 
+                            <p className="name-of-teams">{aTeamName}</p> 
                         </div>
 
                         <div>
@@ -94,35 +93,37 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                         </div>
 
                         <div className="team-column">
-                            <div className={winner_id === teamId? "match-winner-prevgame" :"match-loser-prevgame"}>
-                                <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
-                                </ProgressiveImage>
-                            </div> 
-                            <p className="name-of-teams">{ownName}</p> 
+                            <Link to={!teamId&& `/${bTeamSlug}`}>
+                                <div className={A_point > B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
+                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={!teamId&& `Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                    </ProgressiveImage>
+                                </div> 
+                            </Link>
+                            <p className="name-of-teams">{bTeamName}</p> 
                         </div>
                     </div>
 
 
                     <div className="prev-game-mobile">
                         <div className="row-team-name-gamewin">
-                            <div className={winner_id === teamId? "match-loser" :"match-winner"}>                            
-                                <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                            <div className={A_point < B_point? "match-loser" :"match-winner"}>                            
+                                <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
+                                    {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
-                            <p className={winner_id === teamId? "match-loser" :"match-winner"}>{opponentName}</p> 
-                            <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
+                            <p className={A_point < B_point? "match-loser" :"match-winner"}>{bTeamName}</p> 
+                            <p className={A_point < B_point? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
                         </div>
 
                         <div className="row-team-name-gamewin">
-                            <div className={winner_id === teamId? "match-winner" : "match-loser"}>                            
-                                <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
+                            <div className={A_point < B_point? "match-winner" : "match-loser"}>                            
+                                <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                     {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage> 
                             </div> 
-                            <p className={winner_id === teamId? "match-winner" :"match-loser"}>{ownName}</p>
-                            <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>
+                            <p className={A_point < B_point? "match-winner" :"match-loser"}>{aTeamName}</p>
+                            <p className={A_point < B_point? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>
                         </div>
 
                         <div className="text-in-card">
@@ -131,70 +132,72 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                     </div>
                 </div>            
             </div>
-
-            {id === firstIndexDate?
+            {!teamId&&
                 <Fragment>
-                    <div className="card-content click-more-info activator cursor-pointer" 
-                    onClick={()=>{ 
-                        /* if (teams && teams.length > 0) {
-                            if (window.innerWidth > 770) {
-                                setSizeCard({height: "750px"});
-                            }else{
-                                setSizeCard({height: "650px"});
-                            }
-                        } */
-                        }}>
-                        <span className="head-font" style={{color: data.darkMuted}}><i className="material-icons right">info</i></span>
-                    </div>
-                    <div className="card-reveal">
-                        <div className="card-title grey-text text-darken-4" >
-                            <i className="material-icons right" onClick={()=>{ 
-                                /* if (teams && teams.length > 0) {
-                                    if (window.innerWidth > 770) {
-                                        setSizeCard({height: "297px"});
-                                    }else{
-                                        setSizeCard({height: "236px"});
-                                    }
-                                } */
-                            }}>close</i>
-                        </div>
-                        <div className="share">
-                            <Share
-                                Facebook={Facebook}
-                                Twitter={Twitter}
-                                Wapp={Wapp}
-                            />
-                        </div>
-                        
-                        <ScoreTarjeta
-                            scoreMatch={scoreMatch}
-                            opponents={opponents}
-                            csgoLogoDefault={csgoLogoDefault}
-                        />
-                        
-                        <p className="text-align-center cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 
-                            {league.name +" "+ serie.full_name}
-                        </p>                        
-                        <p className="text-align-center label-fecha cursor-default font-size">
-                            <span className="label-data-style margin-entre-label-contenido" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faCalendarDay}/> </span>
-                            <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
-                        </p>
-                        
-                    </div>
-                </Fragment>
-            :
-                <div className="not-first-index-container">
                     <div className="info-not-first-index">
                         <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 
-                        <span>{league.name +" "+ serie.full_name}</span>     
+                        <span className="align-end">{league.name +" "+ serie.full_name}</span>     
                     </div>
 
                     <div className="info-not-first-index">
                         <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faCalendarDay}/> </span>
                         <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</span>     
                     </div>
-                </div>
+                    <div className="prevgame-share">
+                        <Share
+                            Facebook={Facebook}
+                            Twitter={Twitter}
+                            Wapp={Wapp}
+                        />
+                    </div>
+                </Fragment>
+            }
+
+            {teamId?
+                id === firstIndexDate?   
+                <Fragment>
+                    <ScoreTarjeta
+                        scoreMatch={scoreMatch}
+                        opponents={opponents}
+                        csgoLogoDefault={csgoLogoDefault}
+                    />
+                    <p className="info-not-first-index">
+                        <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 
+                        <span className="align-end">{league.name +" "+ serie.full_name}</span>
+                    </p>                        
+                    <p className="info-not-first-index">
+                        <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faCalendarDay}/> </span>
+                        <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</span>      
+                    </p>
+                    <div className="prevgame-share">
+                        <Share
+                            Facebook={Facebook}
+                            Twitter={Twitter}
+                            Wapp={Wapp}
+                        />
+                    </div>
+                </Fragment>
+                :
+                <Fragment>
+                    <div className="info-not-first-index">
+                        <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 
+                        <span className="align-end">{league.name +" "+ serie.full_name}</span>     
+                    </div>
+
+                    <div className="info-not-first-index">
+                        <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faCalendarDay}/> </span>
+                        <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</span>     
+                    </div>
+                    <div className="prevgame-share">
+                        <Share
+                            Facebook={Facebook}
+                            Twitter={Twitter}
+                            Wapp={Wapp}
+                        />
+                    </div>
+                </Fragment>
+            :
+            null
             }
             
         </div>

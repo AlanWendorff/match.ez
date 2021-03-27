@@ -188,6 +188,11 @@ i.right{
     text-align: start;
 }
 
+.align-end{
+    text-align: end;
+}
+
+
 .pattern-background{ 
     background-repeat: repeat; 
     background-size: 50px 50px;

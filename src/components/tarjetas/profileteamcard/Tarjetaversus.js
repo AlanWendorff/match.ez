@@ -1,5 +1,7 @@
 import React, {useContext} from 'react';
 import Moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import { HeaderLogoContext } from '../../context/HeaderLogoContext'
@@ -130,12 +132,12 @@ const Tarjetaversus = ({match, teamId}) => {
 
                             <div className="live-container-info-bottom">
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Fase:</span> 
+                                    <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Stage:</span> 
                                     {fase}
                                 </p>
 
                                 <p className="text-center cursor-default font-size live-child-width-info-bottom">
-                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Empezó: </span>
+                                    <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
                                     <span>{Moment(begin_at).format('H:mm')}  hs</span> 
                                 </p>                  
                             </div>

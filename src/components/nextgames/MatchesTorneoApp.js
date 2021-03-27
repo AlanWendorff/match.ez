@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import ListadoDePartidosPrevios from '../mapmatch/ListadoDePartidosPrevios';
 import { HeaderLogoContext } from '../context/HeaderLogoContext';
 import Leaderboard from '../leaderboard/Leaderboard';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
@@ -30,6 +31,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [noMatches, guardarNoMatches] = useState(false);  
     const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
+    const [prevMatch, guardarPrevMatch] = useState([]);
     const [leaderboard, guardarLeaderboard] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
     const { paths } = useContext(PathContext);
@@ -82,12 +84,19 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
             (async () => {
                 if (!matchesHoy.length > 0) {
                     const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
-                    const {data, ladder} = matchesTournament;
-                    console.log(ladder);
+                    const {data, ladder, lastGames} = matchesTournament;
+                    //console.log(ladder);
                     if (matchesTournament) {
                         guardarLoaderProgress({width: '100%'});
                         guardarMatchesHoy(data);
                         guardarLeaderboard(ladder);
+                        console.log();
+                        if (lastGames.length < 1) {
+                            guardarPrevMatch("no-match");
+                        }else{
+                            guardarPrevMatch(lastGames);
+                        }
+                        
                     }
                     if (badFetch) {
                         guardarStateCrash(true);
@@ -111,7 +120,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     },[tournamentId === undefined? paths : null]);
 
     const {width} = loaderprogress;
-
+    
     if (crash !== true){
         if(width === '100%' && paletestate === true){
             return(
@@ -140,9 +149,11 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                     {show === "vs"&& noMatches === true&&
                         <TarjetaInformativa noMatches={noMatches}/>
                     }
-                    {show === "history"&&
-                        <div>aca van los matches historicos</div>
-                    }
+                    {show === "history" && prevMatch !== "no-match" &&
+                        <ListadoDePartidosPrevios
+                            prevMatch={prevMatch}
+                        />
+                    }  
                     <Logo
                         color={data}
                         img={image_url}

@@ -1,34 +1,57 @@
 import csgoLogoDefaultBlack from '../ImagenesVarias/csgoLogoDefaultBlack.png';
 
 export const setTeamLogo = (opponents, teamId) =>{
-
-    const ArrteamA = opponents.find(element => element.opponent.id !== teamId);
-    const ArrteamB = opponents.find(element => element.opponent.id === teamId);
-
-    let opponentLogo;
-    let ownLogo;
+    let ArrteamA;
+    let ArrteamB;
+    let aTeamSlug;
+    let bTeamLogo;
+    let aTeamLogo;
+    let aTeamName;
+    let bTeamName;
+    let bTeamSlug;
     
-    if (ArrteamA.opponent.image_url === null) {
-        opponentLogo = csgoLogoDefaultBlack;
-    }else{
-        opponentLogo = ArrteamA.opponent.image_url;
-    }
-    const opponentName = ArrteamA.opponent.name;
-    const opponentSlug = ArrteamA.opponent.slug;
+    if (teamId) {
+        ArrteamA = opponents.find(element => element.opponent.id !== teamId);
+        ArrteamB = opponents.find(element => element.opponent.id === teamId);
 
-    if (ArrteamB.opponent.image_url === null) {
-        ownLogo = csgoLogoDefaultBlack;
+        if (ArrteamA.opponent.image_url === null) {
+            bTeamLogo = csgoLogoDefaultBlack;
+        }else{
+            bTeamLogo = ArrteamA.opponent.image_url;
+        }
+        bTeamName = ArrteamA.opponent.name;
+        bTeamSlug = ArrteamA.opponent.slug;
+    
+        if (ArrteamB.opponent.image_url === null) {
+            aTeamLogo = csgoLogoDefaultBlack;
+        }else{
+            aTeamLogo = ArrteamB.opponent.image_url;
+        }
+        aTeamName = ArrteamB.opponent.name;
     }else{
-        ownLogo = ArrteamB.opponent.image_url;
+        aTeamName = opponents[0].opponent.name;
+        aTeamSlug = opponents[0].opponent.slug;
+        bTeamName = opponents[1].opponent.name;
+        bTeamSlug = opponents[1].opponent.slug;
+        if(opponents[0].opponent.image_url === null || undefined){
+            aTeamLogo = csgoLogoDefaultBlack;
+        }else{
+            aTeamLogo = opponents[0].opponent.image_url;
+        };
+        if(opponents[1].opponent.image_url === null){
+            bTeamLogo = csgoLogoDefaultBlack;
+        }else{
+            bTeamLogo = opponents[1].opponent.image_url;
+        };
     }
-    const ownName = ArrteamB.opponent.name;
 
     return {
-        opponentLogo, 
-        opponentName, 
-        opponentSlug,
-        ownLogo, 
-        ownName,
-        csgoLogoDefaultBlack
+        bTeamLogo, 
+        bTeamName, 
+        bTeamSlug,
+        aTeamSlug,
+        aTeamLogo, 
+        aTeamName,
+        csgoLogoDefaultBlack,
     };
 }

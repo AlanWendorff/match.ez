@@ -145,7 +145,7 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
     }else{
         return(
             <p className="text-align-center cursor-default font-size label-data-style font-gilroy">
-                No hay estadisticas para esta serie
+                No player stadistics for this serie
             </p>  
         );
     }

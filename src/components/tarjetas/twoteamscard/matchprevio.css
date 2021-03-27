@@ -5,7 +5,6 @@
     justify-content: center !important;
 } 
 
-
 .match-loser-prevgame{
     height: 172px;
     display: flex;
@@ -47,7 +46,7 @@
 }
 
 .info-not-first-index{
-    padding: 5px 35px;
+    padding: 5px 20px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -183,21 +182,10 @@
         margin-right: 15px;
         margin-top: 16px;
     }
-    .card-reveal > .share{
-        top: 0;
-        left: 0;
-        position: absolute;
+    .prevgame-share{
         margin-left: 15px;
-        margin-top: 9px;
-        width: 200px;
+        margin-bottom: 15px;
     }
-    /* .card-title > i {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 17px 20px 0px 0px;
-        z-index: 100;
-    } */
     .card-reveal{
         padding: 58px 0px 0px 0px !important;
     } 
