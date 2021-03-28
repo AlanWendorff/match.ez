@@ -5,15 +5,15 @@ export const setMatchResult = (results, teamId) =>{
     let B_point = "";
     if (teamId) {
         if (results[0].team_id === teamId){
-            A_point = results[1].score;
-            B_point = results[0].score;
-        }else{
             A_point = results[0].score;
             B_point = results[1].score;
+        }else{
+            A_point = results[1].score;
+            B_point = results[0].score;
         }  
     }else{
-        A_point = results[1].score;
-        B_point = results[0].score;
+        A_point = results[0].score;
+        B_point = results[1].score;
     }
     
 

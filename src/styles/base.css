@@ -201,24 +201,8 @@ i.right{
     background-size: 50px 50px;
 }
 
-@media (min-width: 1025px) {   
-    .parametros-container{
-        height: calc(100vh - 65px);
-        padding-top: 65px;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: column;
-    } 
-    .font-size{
-        font-size: 12px;
-    }
-    .size-team-logo{
-        max-width: 80px !important;
-        max-height: auto !important;
-    }  
-}
   
-@media (max-width: 641px) and (max-width: 1024px)  {     
+@media (min-width: 641px)  {     
     .parametros-container{
         height: calc(100vh - 50px);
         padding-top: 65px;
@@ -227,10 +211,10 @@ i.right{
         flex-direction: column;
     } 
     .font-size{
-        font-size: 12px;
+        font-size: 20px;
     }
     .size-team-logo{
-        max-width: 80px !important;
+        max-width: 150px !important;
         max-height: auto !important;
     }  
 }

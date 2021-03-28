@@ -10,6 +10,10 @@ import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
 import csgoLogoDefaultBlack from '../../ImagenesVarias/csgoLogoDefaultBlack.png';
 import { usePalette } from 'react-palette';
 import { PlaySound } from '../../utility/PlaySound';
+import { 
+    LOOKPROFILE, 
+    LOOKMATCHES 
+} from '../../titlestag/titlestag';
 
 const TarjetaAllmatches = ({match}) => {
 
@@ -108,7 +112,7 @@ const TarjetaAllmatches = ({match}) => {
                                 <Link to ={`/${aTeamSlug}`}>
                                     <div className="team-canvas"> 
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>                          
                                     </div> 
                                 </Link>
@@ -124,7 +128,7 @@ const TarjetaAllmatches = ({match}) => {
                                 <Link to ={`/${bTeamSlug}`}>
                                     <div className="team-canvas">
                                         <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>          
                                     </div> 
                                 </Link>
@@ -184,7 +188,7 @@ const TarjetaAllmatches = ({match}) => {
                             <Link to={`/${aTeamSlug}`}>
                                 <div className="team-canvas">  
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                              
                                 </div>
                             </Link>
@@ -196,7 +200,7 @@ const TarjetaAllmatches = ({match}) => {
                             <Link to ={`/${bTeamSlug}`}>
                                 <div className="team-canvas">
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>    
                                 </div> 
                             </Link>

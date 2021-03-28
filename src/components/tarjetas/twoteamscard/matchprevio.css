@@ -45,16 +45,10 @@
     padding: 10px 0px;
 }
 
-.info-not-first-index{
-    padding: 5px 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 
-@media (min-width: 771px) {  
+
+@media (min-width: 641px) {  
     .margin-right-bottom{
         margin-bottom: 0px;
         margin-right: 0px;
@@ -66,24 +60,7 @@
         margin-right: 15px;
         margin-top: 16px;
     }
-    .card-reveal > .share{
-        top: 0;
-        left: 0;
-        position: absolute;
-        margin-left: 15px;
-        margin-top: 9px;
-        width: 200px;
-    }
-    /* .card-title > i {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 17px 20px 0px 0px;
-        z-index: 100;
-    } */
-    .card-reveal{
-        padding: 58px 0px 0px 0px!important;
-    } 
+    
     .table-logo-size{
         width: 40px;
         margin-right: 20px;
@@ -107,6 +84,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
+        margin-bottom: 20px;
     }
     .team-column{
         height: 200px;
@@ -167,10 +145,20 @@
     .point-B{
         padding-left: 5%;
     }
-    
+    .info-not-first-index{
+        padding: 10px 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .prevgame-share{
+        margin-left: 95px;
+        margin-bottom: 15px;
+    }
 }
   
-@media screen and (max-width: 770px) {     
+@media screen and (max-width: 640px) {     
     .margin-right-bottom{
         margin-bottom: 0px;
         margin-right: 0px;
@@ -206,6 +194,7 @@
         flex-direction: column;
         justify-content: space-between;
         height: 150px;
+        margin-bottom: 10px;
     }
     .row-team-name-gamewin{
         padding: 0px 20px;
@@ -262,5 +251,11 @@
         padding: 0%;
         width: 100%;
     }
-    
+    .info-not-first-index{
+        padding: 5px 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }

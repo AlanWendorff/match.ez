@@ -61,15 +61,12 @@
     font-weight: bold;
 }
 
-@media (min-width: 771px) { 
+@media (min-width: 641px) { 
     .margin-right-bottom{
         margin-bottom: 35px;
         margin-right: 15px;
     }
-    .card-reveal{
-        overflow: hidden !important;
-        padding: 10px 0px !important;
-    }
+
     .tamano-tarjeta-previo{
         width: 630px !important;
     }
@@ -159,7 +156,7 @@
     
 }
   
-@media screen and (max-width: 770px) {     
+@media screen and (max-width: 640px) {     
     .tamano-tarjeta-previo{
         width: 330px !important;
     }

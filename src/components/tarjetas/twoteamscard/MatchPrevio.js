@@ -71,10 +71,10 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={`/${aTeamSlug}`}>
+                            <Link to={!teamId&& `/${aTeamSlug}`}>
                                 <div className={A_point < B_point? "match-loser-prevgame" :"match-winner-prevgame"}>                            
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                        {src => <img title={!teamId&& LOOKPROFILE + aTeamName} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
@@ -84,19 +84,19 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
 
                         <div>
                             <div className="game-win">
-                                <p className={winner_id === teamId? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
+                                <p className={A_point < B_point? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
                                 <p>-</p>
-                                <p className={winner_id === teamId? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>                           
+                                <p className={A_point < B_point? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>                           
                             </div> 
 
                             <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
                         </div>
 
                         <div className="team-column">
-                            <Link to={!teamId&& `/${bTeamSlug}`}>
-                                <div className={A_point > B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
+                            <Link to={`/${bTeamSlug}`}>
+                                <div className={A_point < B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={!teamId&& LOOKPROFILE + bTeamName } alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                        {src => <img title={LOOKPROFILE + bTeamName } alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
