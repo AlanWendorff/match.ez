@@ -81,7 +81,7 @@ const Search = ({setCollection, collection}) => {
 
     const SaveOnLS = () => {
         setTimeout(() => {  
-            console.log("guardo en LS");
+            //console.log("guardo en LS");
             localStorage.setItem('collection', JSON.stringify(collection));
             localStorage.removeItem('teams');
             localStorage.setItem('teams', JSON.stringify(equipos));

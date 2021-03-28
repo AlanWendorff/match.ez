@@ -12,7 +12,9 @@ import {setGameMode} from '../../../utility/SetGameMode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDay, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { usePalette } from 'react-palette';
-
+import { 
+    LOOKPROFILE 
+} from '../../../titlestag/titlestag';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
@@ -72,7 +74,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                             <Link to={`/${aTeamSlug}`}>
                                 <div className={A_point < B_point? "match-loser-prevgame" :"match-winner-prevgame"}>                            
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
@@ -94,7 +96,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                             <Link to={!teamId&& `/${bTeamSlug}`}>
                                 <div className={A_point > B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={!teamId&& `Click para ver el perfil de ${bTeamName}`} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                        {src => <img title={!teamId&& LOOKPROFILE + bTeamName } alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>

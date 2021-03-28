@@ -9,7 +9,10 @@ import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import {setMatchResult} from '../../../utility/SetMatchResult';
 import {setGameMode} from '../../../utility/SetGameMode';
 import { PlaySound } from '../../../utility/PlaySound';
-
+import { 
+    LOOKPROFILE, 
+    LOOKMATCHES 
+} from '../../../titlestag/titlestag';
 import './tarjetaMatchesCompletos.css';
 
 const TarjetaMatchHoy = ({matchHoy, data}) => {
@@ -83,7 +86,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
+                                <a title={LOOKMATCHES + league.name} className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -91,7 +94,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
                                     <div className="team-canvas"> 
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                          
                                     </div> 
                                 </Link>
@@ -107,7 +110,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
                                     <div className="team-canvas">
                                         <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>          
                                     </div> 
                                 </Link>
@@ -145,7 +148,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown"> 
                 <div className="card-image">
                     <p className="text-align-center cursor-default font-size mb-0">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
+                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}} title={LOOKMATCHES + league.name}>{league.name+" "+serie.full_name}</span> 
                     </p> 
                     <div className="card-image container-info cursor-default">
 
@@ -167,7 +170,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
                                 <div className="team-canvas">  
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${aTeamName}`} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                              
                                 </div>
                             </Link>
@@ -179,7 +182,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
                                 <div className="team-canvas">
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>    
                                 </div> 
                             </Link>

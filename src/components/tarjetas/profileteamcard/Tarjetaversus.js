@@ -12,6 +12,10 @@ import toBeDefined from '../../../ImagenesVarias/toBeDefined.png';
 import { usePalette } from 'react-palette';
 import Share from '../../share/Share';
 import { PlaySound } from '../../../utility/PlaySound';
+import { 
+    LOOKPROFILE, 
+    LOOKMATCHES 
+} from '../../../titlestag/titlestag';
 import './tarjetaUpcomingMatch.css';
 
 const Tarjetaversus = ({match, teamId}) => {
@@ -94,15 +98,15 @@ const Tarjetaversus = ({match, teamId}) => {
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
+                                <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug} title={LOOKMATCHES + league.name}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
 
-                                <Link to ={`/${opponentSlug}`}>
+                                <Link to={opponentSlug === "null"? '/' : `/${opponentSlug}`}>
                                     <div className="team-canvas"> 
                                         <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                            {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                            {src => <img title={LOOKPROFILE + opponentName} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>                        
                                     </div> 
                                 </Link>
@@ -154,16 +158,16 @@ const Tarjetaversus = ({match, teamId}) => {
             <div className="col s12 m7 posicion-tarjeta font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="card horizontal tamano-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image lienzo-logo"> 
-                        <Link to ={`/${opponentSlug}`}> 
+                        <Link to={opponentSlug === "null"? '/' : `/${opponentSlug}`}> 
                             <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                {src => <img title={`Click para ver el perfil de ${opponentName}`} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                {src => <img title={LOOKPROFILE + opponentName} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                             </ProgressiveImage>
                         </Link>
                     </div>
 
                     <div className="card-stacked">
                         <div className="card-content">
-                            <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>
+                            <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </a>
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Vs:</span> 
                                 {opponentName === undefined? 'a definir' : opponentName}

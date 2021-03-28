@@ -2,8 +2,7 @@ import React, { useState, Fragment, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ColorThemeContext } from '../context/ColorThemeContext';
 import SimpleLoadScreen from '../loader/SimpleLoadScreen';
-import faGithub from '../../ImagenesVarias/github-brands.svg'
-import { faBolt, faCheck, faCodeBranch, faDownload, faFistRaised, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { faBolt, faCheck, faCodeBranch, faDownload, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import {
     HOME,
@@ -22,7 +21,12 @@ const More = () => {
     const { colors } = useContext(ColorThemeContext);
     const [installable, setInstallable] = useState(false);
     const [isinstalled, setIsInstalled] = useState(false);
+    const [sound, setSound] = useState(true);
     useEffect(() => {
+
+        if (JSON.parse(localStorage.getItem('sounds')) === false) {
+            setSound(false);
+        }
         if (window.matchMedia('(display-mode: standalone)').matches) {  
             setIsInstalled(true);
         }else{
@@ -49,6 +53,16 @@ const More = () => {
         }
     };
 
+    const turnOffSound = () => {
+        localStorage.setItem('sounds', false);
+        setSound(false);
+    };
+
+    const turnOnSound = () => {
+        setSound(true);
+        localStorage.setItem('sounds', true);
+    };
+    
     return ( colors.background_color !== undefined?
         <div className="options" onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
 
@@ -75,6 +89,13 @@ const More = () => {
                 </a>
             </div>
             <hr/>
+
+            <div className="option animate__animated animate__fadeInRight animate__faster">
+                <div onClick={()=> { !sound? turnOnSound() : turnOffSound() }}>
+                    <FontAwesomeIcon icon={!sound? faVolumeMute : faVolumeUp}/>
+                    <span>{!sound? 'Turn on sounds' : 'Turn off sounds'}</span>
+                </div>
+            </div>
             
             <span className="animate__animated animate__fadeInUp animate__faster">All Rights Reserved. {year}</span>
         </div>
