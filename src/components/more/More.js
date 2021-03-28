@@ -66,7 +66,7 @@ const More = () => {
     return ( colors.background_color !== undefined?
         <div className="options" onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
 
-            <div className="option animate__animated animate__fadeInRight animate__faster">
+            <div className="option animate__animated animate__fadeInRight animate__faster cursor-pointer">
                 <div onClick={()=> { handleInstallClick(); }}>
                     <FontAwesomeIcon icon={!isinstalled? faDownload : faCheck}/>
                     <span>{!isinstalled? 'Install Progresive Web App' : 'App installed successfully' }</span>
@@ -74,7 +74,7 @@ const More = () => {
             </div>
             <hr/>
 
-            <div className="option animate__animated animate__fadeInRight animate__faster">
+            <div className="option animate__animated animate__fadeInRight animate__faster cursor-pointer">
                 <a rel="noopener noreferrer" target="_blank" href="https://github.com/Kremowy">
                     <FontAwesomeIcon icon={faCodeBranch}/>
                     <span>Creator Github</span>
@@ -82,7 +82,7 @@ const More = () => {
             </div>
             <hr/>
 
-            <div className="option animate__animated animate__fadeInRight animate__faster">
+            <div className="option animate__animated animate__fadeInRight animate__faster cursor-pointer">
                 <a rel="noopener noreferrer" target="_blank" href="https://pandascore.co/">
                     <FontAwesomeIcon icon={faBolt}/>
                     <span>Powered by PandaScore.co</span>
@@ -90,10 +90,10 @@ const More = () => {
             </div>
             <hr/>
 
-            <div className="option animate__animated animate__fadeInRight animate__faster">
+            <div className="option animate__animated animate__fadeInRight animate__faster cursor-pointer">
                 <div onClick={()=> { !sound? turnOnSound() : turnOffSound() }}>
-                    <FontAwesomeIcon icon={!sound? faVolumeMute : faVolumeUp}/>
-                    <span>{!sound? 'Turn on sounds' : 'Turn off sounds'}</span>
+                    <FontAwesomeIcon icon={sound? faVolumeMute : faVolumeUp}/>
+                    <span>{!sound? 'Sound On' : 'Sound Off'}</span>
                 </div>
             </div>
             
