@@ -11,13 +11,15 @@ const Home = () => {
     
     return ( colors.background_color !== undefined?
         <div className="home font-gilroy" style={{backgroundColor: colors.background_color}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
-            <Search
-                setCollection={setCollection}
-                collection={collection}
-            />
-            <TeamCollection
-                collection={collection}
-            />
+            <div className="child-home">
+                <Search
+                    setCollection={setCollection}
+                    collection={collection}
+                />
+                <TeamCollection
+                    collection={collection}
+                />
+            </div>
         </div>
         :
         <SimpleLoadScreen/>

@@ -7,12 +7,15 @@ import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDay, faMoneyBill, faMoneyCheck, faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDay, faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
 import { getTimeline } from './getTimeline';
 import { Link } from 'react-router-dom';
-import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { ColorThemeContext } from '../context/ColorThemeContext';
+import { 
+    LOOKMATCHES,
+    LOOKPROFILE
+ } from '../../titlestag/titlestag';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {
@@ -62,7 +65,7 @@ const Timeline = () => {
                                             className="vertical-timeline-element--education"
                                             date={date}
                                             iconStyle={{border: `3px solid ${colors.header_color}`}}
-                                            icon={<Link to={`/${league.slug}`} title={`Click para Ver los Próximos partidos de la ${league.name}`}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
+                                            icon={<Link to={`/${league.slug}`} title={LOOKMATCHES + league.name}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
                                             >
                                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
                                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>
@@ -79,7 +82,7 @@ const Timeline = () => {
                                             <div className="teams-in-tournament">
                                                 {teams.length > 1?
                                                     teams.map((team) => (
-                                                        <Link to={`/${team.slug}`} title={`Click para Ver el Perfil de ${team.name}`} key={shortid.generate()}>
+                                                        <Link to={`/${team.slug}`} title={LOOKPROFILE + team.name} key={shortid.generate()}>
                                                             <div className="icon-container">
                                                                 <div className="team-icon">
                                                                     <img className="team-logo-timeline" src={team.image_url === null?  csgoLogoDefaultBlack : team.image_url}></img>

@@ -1,57 +1,19 @@
 
-
-@media (min-width: 1025px) {     
+@media (min-width: 641px) {   
     .tournament-container{
         padding-top: 10px;
         overflow-y: scroll;
-        width: 100%;
-        height: calc(100vh - 65px);
+        height: calc(100vh - 50px);
         background-image: url('../../pattern/generic_team_pattern.png');
         background-repeat: repeat; 
         background-size: 50px 50px;
         display: flex;
         align-items: center;
     }
-    .tournament-container{
-        flex-direction: row;
-        justify-content: center;
-    }
-    .tournament-size{
-        background-color: #ffffffb7;
-        border-radius: 3px;
-        padding: 20px 0px;
-        height: 220px;
-        width: 300px;
-        margin: 10px;
-    }
-    .tournament-flex{
-        height: 100%;
+    .child-tournament{
+        width: 40%;
         display: flex;
-        align-items: center;
         flex-direction: column;
-        justify-content: space-evenly;
-    }
-    .tournament-logo-size{
-        max-width: 110px;
-    }
-    .tournament-name{
-        font-weight: bold;
-        font-size: 20px;
-        color: black;
-        text-align: center;
-    }
-}
-
-@media (max-width: 641px) and (max-width: 1024px) {   
-    .tournament-container{
-        padding-top: 10px;
-        overflow-y: scroll;
-        width: 100%;
-        height: calc(100vh - 65px);
-        background-image: url('../../pattern/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
-        display: flex;
         align-items: center;
     }
     .tournament-container{
@@ -88,7 +50,7 @@
 
 
 @media screen and (max-width: 640px) {
-    .tournament-container{
+    .child-tournament{
         padding-top: 10px;
         overflow-y: scroll;
         width: 100%;
@@ -97,6 +59,40 @@
         background-repeat: repeat; 
         background-size: 50px 50px;
         display: flex;
+        flex-direction: column;
         align-items: center;
+    }
+    .tournament-container{
+        width: 100%;
+    }
+    .tournament-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .tournament-size{
+        background-color: #ffffffb4;
+        border-radius: 3px;
+        padding: 0px 20px;
+        height: 90px;
+        width: 90%;
+        margin: 10px;
+    }
+    .tournament-flex{
+        padding: 5px 0px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .tournament-logo-size{
+        max-width: 80px;
+        max-height: 100%;
+    }
+    .tournament-name{
+        font-weight: bold;
+        font-size: 15px;
+        color: black;
+        text-align: end;
     }
 }

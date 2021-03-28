@@ -201,40 +201,7 @@ i.right{
     background-size: 50px 50px;
 }
 
-@media (min-width: 1024px) {   
-    .parametros-container{
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow-x: hidden;
-    } 
-}
-
-@media (min-width: 771px) and (max-width: 1023px) {   
-    .parametros-container{
-        height: calc(100vh - 80px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow-y: scroll;
-    } 
-    .position-hr{
-        min-width: 550px;
-        margin: 2% 0% 3% 0%;
-        border-color: #ffffff;
-        align-self: center;
-    }
-    .font-size{
-        font-size: 17px;
-    }
-    .size-team-logo{
-        max-width: 130px !important;
-        max-height: auto !important;
-    }  
-}
-  
-@media (max-width: 641px) and (max-width: 1024px)  {     
+@media (min-width: 1025px) {   
     .parametros-container{
         height: calc(100vh - 65px);
         padding-top: 65px;
@@ -242,12 +209,23 @@ i.right{
         display: flex;
         flex-direction: column;
     } 
-    .position-hr{
-        min-width: 300px;
-        margin: 2% 0% 3% 0%;
-        border-color: #ffffff;
-        align-self: center;
+    .font-size{
+        font-size: 12px;
     }
+    .size-team-logo{
+        max-width: 80px !important;
+        max-height: auto !important;
+    }  
+}
+  
+@media (max-width: 641px) and (max-width: 1024px)  {     
+    .parametros-container{
+        height: calc(100vh - 50px);
+        padding-top: 65px;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+    } 
     .font-size{
         font-size: 12px;
     }
@@ -265,12 +243,6 @@ i.right{
         display: flex;
         flex-direction: column;
     } 
-    .position-hr{
-        min-width: 300px;
-        margin: 2% 0% 3% 0%;
-        border-color: #ffffff;
-        align-self: center;
-    }
     .font-size{
         font-size: 15px;
     }

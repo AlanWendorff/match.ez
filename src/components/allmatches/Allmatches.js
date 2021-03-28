@@ -46,14 +46,6 @@ const Allmatches = () => {
                 if(noMatches !== true){
                     return(
                         <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="allmatches" style={{backgroundColor: colors.background_color}}>
-                            <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${colors.header_color} 100%)`}}> 
-                                <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
-                                <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
-                            </div>
-                            <div className="home-box">
-                                <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
-                            </div>
-
                             <ListadoAllmatches allmatches={allmatches}/>
                             <Footer/>
                         </div>
@@ -61,13 +53,6 @@ const Allmatches = () => {
                 }else{
                     return(
                         <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="allmatches" style={{backgroundColor: colors.background_color}}>
-                            <div className="z-depth-5 gradient-menu animate__animated animate__fadeInDown animate__faster" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${colors.header_color} 100%)`}}> 
-                                <img className="menu-header-logo white-neon" alt="Logo Team" src={icon}/>   
-                                <a href="/" className="back-to-home"><FontAwesomeIcon icon={faChevronCircleLeft}/></a>
-                            </div>
-                            <div className="home-box">
-                                <a href="/" className="btn-floating btn-large waves-effect waves-light red zoom-element"><i className="material-icons">home</i></a> 
-                            </div>
                             <TarjetaInformativa
                                 noMatches={noMatches}
                             />

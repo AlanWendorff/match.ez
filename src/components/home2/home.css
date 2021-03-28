@@ -1,35 +1,26 @@
 /*       MENU         */
-@media (min-width: 1025px) {   
+@media (min-width: 641px) {  
     .home{
-        overflow-y: scroll;
         width: 100%;
-        height: calc(100vh - 65px);
         background-image: url('../../pattern/generic_team_pattern.png');
         background-repeat: repeat; 
         background-size: 50px 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-}
-
-@media (min-width: 641px) and (max-width: 1024) {
-    .home{
         overflow-y: scroll;
-        width: 100%;
-        height: calc(100vh - 65px);
-        background-image: url('../../pattern/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
+        height: calc(100vh - 50px);
+    } 
+    .child-home{
+        width: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
-  
 
 @media screen and (max-width: 640px) {
-    .home{
+    .child-home{
         overflow-y: scroll;
         width: 100%;
         height: calc(100vh - 50px);
@@ -39,6 +30,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .home{
+        width: 100%;
     }
 }
   

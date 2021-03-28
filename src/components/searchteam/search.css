@@ -1,13 +1,7 @@
 .searched-team-img{
     width: 30px;
 }
-.team-container{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    padding: 0px 10px;
-}
+
 .pin-team-container{
     width: 40px;
     height: 40px;
@@ -29,29 +23,35 @@
     transition: background 0.5s;
 }
   
-@media (min-width: 1025px){    
-    .search-bar{
-        width: 80% !important;
-        display: flex;
-        align-items: center;
-    }
-    .list-of-teams-container{
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+@media (min-width: 641px){    
     .search-container{
-        width: 80%;
-        margin: 50px 0px;
-        padding: 5px 0px;
+        width: 100%;
+        margin: 0px;
         align-self: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #ffffffb7;
-        border-radius: 3px;
+        border-radius: 0px;
+    }
+    .search-bar{
+        width: 90% !important;
+        display: flex;
+        align-items: center;
+    }
+    .list-of-teams-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+    }
+    .team-container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        padding: 0px 50px;
     }
     .searched-team{
         width: 100%;
@@ -62,19 +62,9 @@
         align-items: center;
         justify-content: space-between;
     }
-    .searched-team:hover{
-        width: 100%;
-        height: 40px;
-        margin: 10px 0px;
-        padding: 0px 20px;
-        display: flex;
-        justify-content: space-between;
-        background-color: #0000001c;
-        border-radius: 3px;
-    }
     .save-container{
-        margin-left: 30px;
-        width: 55px;
+        margin-left: 15px;
+        width: 60px;
         height: 45px;
         font-size: 30px;
         display: flex;
@@ -83,6 +73,15 @@
         color: #525355;
         border-radius: 100px;
         transition: background 0.5s;
+    }
+    .searched-team:hover{
+        width: 100%;
+        height: 40px;
+        margin: 10px 0px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #0000001c;
+        border-radius: 3px;
     }
     .pin-team-container:hover{
         width: 40px;
@@ -123,6 +122,13 @@
         width: 90% !important;
         display: flex;
         align-items: center;
+    }
+    .team-container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        padding: 0px 10px;
     }
     .list-of-teams-container{
         width: 100%;
