@@ -92,8 +92,8 @@ const More = () => {
 
             <div className="option animate__animated animate__fadeInRight animate__faster cursor-pointer">
                 <div onClick={()=> { !sound? turnOnSound() : turnOffSound() }}>
-                    <FontAwesomeIcon icon={sound? faVolumeMute : faVolumeUp}/>
-                    <span>{!sound? 'Sound On' : 'Sound Off'}</span>
+                    <FontAwesomeIcon icon={!sound? faVolumeMute : faVolumeUp}/>
+                    <span>{sound? 'Sound On' : 'Sound Off'}</span>
                 </div>
             </div>
             

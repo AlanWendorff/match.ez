@@ -205,7 +205,7 @@ i.right{
 @media (min-width: 641px)  {     
     .parametros-container{
         height: calc(100vh - 50px);
-        padding-top: 65px;
+        padding-top: 50px;
         overflow-y: scroll;
         display: flex;
         flex-direction: column;

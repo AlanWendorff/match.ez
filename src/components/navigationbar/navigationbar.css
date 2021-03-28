@@ -54,6 +54,8 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        position: absolute;
+        bottom: 0;
     }
     .menu-mobile > a{
         font-size: 20px;
