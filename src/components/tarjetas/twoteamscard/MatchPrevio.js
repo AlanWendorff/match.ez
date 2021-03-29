@@ -110,7 +110,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                         <div className="row-team-name-gamewin">
                             <div className={A_point > B_point? "match-loser" :"match-winner"}>                            
                                 <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img title={`Click para ver el perfil de ${bTeamName}`} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                    {src => <img title={LOOKPROFILE + bTeamName} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
                             <p className={A_point > B_point? "match-loser" :"match-winner"}>{bTeamName}</p> 

@@ -178,7 +178,7 @@ const TarjetaAllmatches = ({match}) => {
                         :
                             <div className="hoy-esquina-container">
                                 <p className="labels-esquinas" >{fase}</p>
-                                <p className="labels-esquinas">{Moment(begin_at).format('Do')} de {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
+                                <p className="labels-esquinas">{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
                             </div>
                         }
                         

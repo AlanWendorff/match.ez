@@ -12,7 +12,7 @@ const Warning = () => {
                         <img alt="warning, error!" src={BannerWarning}/>
                     </div>
                     <div className="card-content separate-items">
-                        <p>Algo ha ocurrido, inténtelo de nuevo más tarde o recargue la página.</p>
+                        <p>Something happened.</p>
                         <Link to='/' className="waves-effect waves-light btn red darken-4"><i className="material-icons left">home</i>Home</Link>
                     </div>
                 </div>
