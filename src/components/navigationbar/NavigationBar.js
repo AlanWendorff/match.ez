@@ -35,7 +35,7 @@ const NavigationBar = () => {
 
             <Link to={MORE}>
                 <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
-                    <img className="nav-logo" src={appLogo}/>
+                    <img className="nav-logo" src={appLogo} alt="app logo"/>
                 </div>
             </Link>
             

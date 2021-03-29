@@ -4,7 +4,7 @@ const Logo = ({img, color}) => {
 
     return ( 
         <div className="loguito" style={{backgroundColor: `${color.darkMuted}`}}>
-            <img src={img}/>
+            <img src={img} alt="team profile indicator"/>
         </div>
      );
 }

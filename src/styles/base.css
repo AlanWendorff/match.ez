@@ -201,7 +201,6 @@ i.right{
     background-size: 50px 50px;
 }
 
-  
 @media (min-width: 641px)  {     
     .parametros-container{
         height: calc(100vh - 50px);

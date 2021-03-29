@@ -45,7 +45,11 @@
     padding: 10px 0px;
 }
 
-
+.size-prev-game > .sort-content{
+    margin: 0px;
+    font-size: 30px;
+    cursor: pointer;
+}
 
 
 @media (min-width: 641px) {  
