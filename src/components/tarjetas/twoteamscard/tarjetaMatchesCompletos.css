@@ -153,6 +153,15 @@
     .stream-box{
         margin-top: 130px;
     }
+    .match-data{
+        width: 100% ;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 60px ;
+    }
+    .match-data > span > .data{
+    margin-left: 5px;
+    }
     
 }
   

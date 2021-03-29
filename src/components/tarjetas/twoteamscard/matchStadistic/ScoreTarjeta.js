@@ -2,7 +2,7 @@ import React from 'react';
 import { usePalette } from 'react-palette';
 import './tarjetaScore.css';
 
-const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
+const ScoreTarjeta = ({scoreMatch, csgoLogoDefaultBlack, opponents}) => {
     const {teams} = scoreMatch; 
     let TeamLogoA;
     let TeamLogoB;
@@ -10,33 +10,32 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
     let TeamNameB;
     let colorTeamA;
     let colorTeamB;
+
     if(teams && teams.length > 0){
         for (let i=0; i< opponents.length; i++){         
             if(scoreMatch.teams[0].name === opponents[0].opponent.name) {
                 if (opponents[0].opponent.image_url === null) {
-                    TeamLogoA = csgoLogoDefault;
+                    TeamLogoA = csgoLogoDefaultBlack;
                 }else{
                     TeamLogoA = opponents[0].opponent.image_url;
                 }
                 if (opponents[1].opponent.image_url === null) {
-                    TeamLogoB = csgoLogoDefault;
+                    TeamLogoB = csgoLogoDefaultBlack;
                 }else{
                     TeamLogoB = opponents[1].opponent.image_url;
                 }
             
                 TeamNameA = opponents[0].opponent.name;
                 TeamNameB = opponents[1].opponent.name;
-                
-                
 
             }else{
                 if (opponents[1].opponent.image_url === null) {
-                    TeamLogoA = csgoLogoDefault;
+                    TeamLogoA = csgoLogoDefaultBlack;
                 }else{
                     TeamLogoA = opponents[1].opponent.image_url;
                 }
                 if (opponents[0].opponent.image_url === null) {
-                    TeamLogoB = csgoLogoDefault;
+                    TeamLogoB = csgoLogoDefaultBlack;
                 }else{
                     TeamLogoB = opponents[0].opponent.image_url;
                 }
@@ -48,12 +47,13 @@ const ScoreTarjeta = ({scoreMatch, csgoLogoDefault, opponents}) => {
     };
     colorTeamA = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoA).data;
     colorTeamB = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoB).data;
-    if (TeamLogoA === csgoLogoDefault) {
+
+    if (TeamLogoA === csgoLogoDefaultBlack) {
         colorTeamA = {
             darkVibrant: "#2d6da3"
         }
     }
-    if (TeamLogoB === csgoLogoDefault) {
+    if (TeamLogoB === csgoLogoDefaultBlack) {
         TeamLogoB = {
             darkVibrant: "#2d6da3"
         }

@@ -26,10 +26,6 @@ const HeaderLogoProvider = (props) => {
         if (darkMuted !== undefined) {
             guardarPaleteCharged(true);
         }
-        /* if (paletestate) {
-            console.log("muestro logo default");
-            //guardarLogo(appLogo);
-        } */
     }, [darkMuted, paletestate, logo]);
 
     return(

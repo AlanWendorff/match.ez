@@ -226,6 +226,7 @@ i.right{
         overflow-y: scroll;
         display: flex;
         flex-direction: column;
+        padding-bottom: 50px;
     } 
     .font-size{
         font-size: 15px;

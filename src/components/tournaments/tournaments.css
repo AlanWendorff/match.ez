@@ -51,6 +51,7 @@
 
 @media screen and (max-width: 640px) {
     .child-tournament{
+        padding-bottom: 50px;
         padding-top: 10px;
         overflow-y: scroll;
         width: 100%;

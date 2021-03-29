@@ -57,7 +57,7 @@ const Team = ({team, setCollection, guardarEquipos, equipos, collection, setFirs
                         setTeamSaved(false);
                         setFirstPin(true);
                     }else{
-                        console.log(".pinging");
+                        //console.log(".pinging");
                         setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
                         const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
                         guardarEquipos(TeamAnteriorEliminado);

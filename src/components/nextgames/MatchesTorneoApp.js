@@ -83,12 +83,10 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                 if (!matchesHoy.length > 0) {
                     const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
                     const {data, ladder, lastGames} = matchesTournament;
-                    console.log(data);
                     if (matchesTournament) {
                         guardarLoaderProgress({width: '100%'});
                         guardarMatchesHoy(data);
                         guardarLeaderboard(ladder);
-                        console.log();
                         if (lastGames.length < 1) {
                             guardarPrevMatch("no-match");
                         }else{
@@ -118,7 +116,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     },[tournamentId === undefined? paths : null]);
 
     const {width} = loaderprogress;
-    console.log(matchesHoy);
+
     if (crash !== true){
         if(width === '100%' && paletestate === true){
             return(

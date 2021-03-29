@@ -159,7 +159,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                     <ScoreTarjeta
                         scoreMatch={scoreMatch}
                         opponents={opponents}
-                        csgoLogoDefault={csgoLogoDefault}
+                        csgoLogoDefaultBlack={csgoLogoDefaultBlack}
                     />
                     <p className="info-not-first-index">
                         <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 

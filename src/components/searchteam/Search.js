@@ -37,10 +37,8 @@ const Search = ({setCollection, collection}) => {
             //to push or remove from localStorage
             if (pathsArray.length > 0) {
                 const toPush = pathsArray.filter(comparer(equipos));
-                //console.log('pathsArray (database lenght)',pathsArray.length);
                 const toRemove = equipos.filter(comparer(pathsArray));
                 let equiposModificable = equipos;
-                //console.log({toRemove, toPush});
                 if (toPush.length !== 0) {
                     toPush.map((newTeam) => {
                         //console.log("voy a pushear nuevo equipo", newTeam);
@@ -56,10 +54,7 @@ const Search = ({setCollection, collection}) => {
                         return equiposModificable;
                     })
                 }
-                //console.log(equiposModificable);
-                //console.log("voy a setear en LS el equipos modificable a su vez es del local storage ");
                 localStorage.setItem('teams', JSON.stringify(equiposModificable));
-                //console.log("voy a setear en state el equipos modificable a su vez es del local storage ");
                 guardarEquipos(equiposModificable);
             }
             setCollection(JSON.parse(localStorage.getItem('collection')));
@@ -81,7 +76,6 @@ const Search = ({setCollection, collection}) => {
 
     const SaveOnLS = () => {
         setTimeout(() => {  
-            //console.log("guardo en LS");
             localStorage.setItem('collection', JSON.stringify(collection));
             localStorage.removeItem('teams');
             localStorage.setItem('teams', JSON.stringify(equipos));

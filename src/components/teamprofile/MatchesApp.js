@@ -70,7 +70,7 @@ const MatchesApp = ({teamId, image_url}) => {
     }
 
     useEffect(() => {  
-        //console.log("loop del effect");
+
         (async () => {
             if (prevMatch.length === 0) {
                 const {objPastMatch, badFetch} = await getPastMatch(teamId);
@@ -79,7 +79,6 @@ const MatchesApp = ({teamId, image_url}) => {
                     guardarPrevMatch(objPastMatch);
                     if(scoreMatch.length === 0){
                         const {objPlayerScore, badFetch} = await getPlayerScore(objPastMatch);
-                        //console.log("calling player score");
                         if (objPlayerScore) {
                             guardarLoaderProgress({width: '50%'});
                             guardarScoreMatch(objPlayerScore);
@@ -101,7 +100,6 @@ const MatchesApp = ({teamId, image_url}) => {
             
             if(!matches.length > 0){
                 const {objNextMatches, badFetch} = await getNextMatches(teamId);
-                //console.log("calling next match");
                 if (objNextMatches) {
                     guardarLoaderProgress({width: '100%'});
                     const matchesFiltered = objNextMatches.filter(status => status.status !== "canceled");
