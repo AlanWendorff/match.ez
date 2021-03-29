@@ -28,6 +28,11 @@
         width: 90%;
         margin: 10px;
     }
+    .tournament-size :hover{
+        cursor: pointer;
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.39));
+        transition: all 0.1s ease-out;
+    }
     .tournament-flex{
         padding: 5px 0px;
         height: 100%;

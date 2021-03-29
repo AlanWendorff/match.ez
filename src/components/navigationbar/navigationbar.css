@@ -10,7 +10,12 @@
     .menu-mobile > a{
         font-size: 20px;
     }
-    
+
+    .menu-mobile > a :hover{
+        filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
+        transition: all 0.1s ease-out;
+    }
+
     .menu-mobile > a > div {
         width: 45px;
         height: 45px;

@@ -11,7 +11,7 @@ const Leaderboard = ({leaderboard}) => {
         <div className="ladder transition-effect">
             <div className="space-between width-100percent columns-ladder">
                 <span className="space-between" style={{width: '70px'}}><FontAwesomeIcon className="mr" icon={faUserFriends}/>Teams:</span>
-                <span className="space-between" style={{width: '110px'}}><FontAwesomeIcon className="mr" icon={faTrophy}/>Matches won:</span>
+                <span className="space-between" style={{width: '115px'}}><FontAwesomeIcon className="mr" icon={faTrophy}/>Matches won:</span>
             </div>
             
             {leaderboard.map(team  => (

@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-@media (min-width: 1170px) { 
+@media (min-width: 1561px) { 
     
     .time-line-container{
         overflow-y: scroll;
@@ -107,104 +107,7 @@
 
 }
 
-@media (min-width: 641px) and (max-width: 1169px) { 
-    .time-line-container{
-        overflow-y: scroll;
-        overflow-x: hidden;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background-image: url('../../pattern/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    h3{
-        font-family: "Gilroy-ExtraBold" !important;
-        margin-bottom: 5px !important;
-        font-size: 30px !important;
-        width: 100%;
-        text-align: center;
-    }
-    .mobile{
-        margin-top: 10px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 100%;
-        border-radius: 20px;
-    }
-    .mobile > span{
-        width: 50%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-    }
-    .mobile > span > span{
-        margin-left: 5px;
-    }
-    .column-align > span { 
-        display: none; 
-    }
-    .column-align > h5,
-    .column-align > label{
-        display: flex;
-        align-items: center;
-        border-radius: 20px;
-        padding: 0px 10px;
-        height: 30px;
-    }
-    
-    h5{
-        font-size: 20px !important;
-        margin-bottom: 15px !important;
-        width: 100%;
-        text-align: center;
-    }
-    .column-align > .tournament-data{
-        margin-bottom: 15px;
-    }
-    .tournament-data{
-        font-size: 15px;
-        color: black !important;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-    .vertical-timeline-element-subtitle > svg{
-        font-size: 19px;
-    }
-    .vertical-timeline-element-date{
-        display: none !important;
-    }
-    .vertical-timeline-element-icon{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        height: 55px !important; 
-        width: 55px !important;
-        left: -7px !important;
-        border-radius: 50%;
-        -webkit-box-shadow: 0 0 0 4px rgba(252, 0, 0, 0), inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%);
-        box-shadow: 0 0 0 4px rgba(255, 0, 0, 0), inset 0 2px 0 rgb(0 0 0 / 8%), 0 3px 0 4px rgb(0 0 0 / 5%);
-        transition: all 0.1s ease-out;
-    }
-    
-    .tournament-logo-timeline{
-        width: 40px;
-        filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
-    }
-    .vertical-timeline-element-icon > a{
-        display: flex; 
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1560px) {
     .time-line-container{
         overflow-y: scroll;
         overflow-x: hidden;
