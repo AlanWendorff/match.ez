@@ -21,6 +21,7 @@ import {
   MORE,
   UNITY,
   CONTROL,
+  TOURNAMENT,
 } from './routes/routes';
 import axios from 'axios';
 
@@ -89,19 +90,10 @@ const Layout = () => {
                 );                                  
               })
             }
-            {
-              tournamentArray.map((tournament) => {
-                return(
-                  <Route exact path={`/${tournament.path}`} key={tournament.name}>
-                    <MatchTorneoApp
-                      key={tournament.id}
-                      tournamentId={tournament.id}
-                      image_url={tournament.image_url}
-                    />
-                  </Route>
-                );                    
-              })
-            }
+
+            
+            
+
 
             <Route exact path={CONTROL}>
               <Control
@@ -117,6 +109,7 @@ const Layout = () => {
               />
             </Route>
 
+            <Route exact path={TOURNAMENT} component={MatchTorneoApp}/>
             <Route exact path={MORE} component={More}/>
             <Route exact path={TOURNAMENTS} component={Tournaments}/>
             <Route exact path={TIMELINE} component={Timeline}/>

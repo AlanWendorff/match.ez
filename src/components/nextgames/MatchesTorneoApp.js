@@ -12,13 +12,14 @@ import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
 import HeaderMobile from '../headermobile/HeaderMobile';
 import Logo from '../navigationbar/Logo';
-import { PathContext } from '../context/PathContext';
+//import { PathContext } from '../context/PathContext';
 import { usePalette } from 'react-palette';
-import { template_unity } from '../../custom/unity/template';
-import { unity, unityTeams } from '../../custom/unity/unity-flow-league-schedule';
+//import { template_unity } from '../../custom/unity/template';
+//import { unity, unityTeams } from '../../custom/unity/unity-flow-league-schedule';
+import { useParams } from 'react-router';
 
-const MatchTorneoApp = ({tournamentId, image_url}) => {
-
+const MatchTorneoApp = () => {
+    const {tournamentId} = useParams();
     let backgroundStyle;
     let proxyLogo;
     if (image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + image_url;
@@ -32,8 +33,8 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     const [prevMatch, guardarPrevMatch] = useState([]);
     const [leaderboard, guardarLeaderboard] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
-    const { paths } = useContext(PathContext);
-    const pathsArray = Object.values(paths);
+    //const { paths } = useContext(PathContext);
+    //const pathsArray = Object.values(paths);
     let { data, error } = usePalette(proxyLogo);
     let darkMuted = data.darkMuted;
     if (error || darkMuted === undefined) {
@@ -78,7 +79,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
     }
     
     useEffect(() => { 
-        if (tournamentId !== undefined) {
+        //if (tournamentId !== undefined) {
             (async () => {
                 if (!matchesHoy.length > 0) {
                     const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
@@ -102,7 +103,7 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
                     }
                 }
             })()
-        }else{
+       /*  }else{
             if (pathsArray.length > 0) {
                 const customMatches = template_unity(unity, pathsArray, unityTeams);
                 guardarMatchesHoy(customMatches);
@@ -111,9 +112,9 @@ const MatchTorneoApp = ({tournamentId, image_url}) => {
         }
         if (image_url) {
             guardarLogo(image_url);
-        } 
+        }  */
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[tournamentId === undefined? paths : null]);
+    },[/*tournamentId === undefined? paths : null*/]);
 
     const {width} = loaderprogress;
 
