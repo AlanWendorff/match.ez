@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { TournamentContext } from '../context/TournamentContext';
 import {
     TOURNAMENT,
-  } from './routes/routes';
+  } from '../../routes/routes';
 /* import {
     UNITY
 } from '../../routes/routes'; */
