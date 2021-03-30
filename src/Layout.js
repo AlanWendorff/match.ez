@@ -28,7 +28,7 @@ const Layout = () => {
   const database = firebase.database();
 
   useEffect(() => {
-    const LSwakeupBackend = JSON.parse(localStorage.getItem('wakeupBackend'));
+    const LSwakeupBackend = JSON.parse(sessionStorage.getItem('wakeupBackend'));
     if (LSwakeupBackend !== true) {
       //console.log("llamo a backend");
       (async()=>{
@@ -63,12 +63,8 @@ const Layout = () => {
           //console.log(error);
         }
       })()
-      localStorage.setItem('wakeupBackend', JSON.stringify(true));
+      sessionStorage.setItem('wakeupBackend', JSON.stringify(true));
     }
-    window.addEventListener("beforeunload", function () {
-      localStorage.removeItem('wakeupBackend');
-      return undefined;
-    });
   }, []);
   
   const { tournamentId } = useContext(TournamentContext);

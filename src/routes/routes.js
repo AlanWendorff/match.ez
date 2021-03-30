@@ -5,3 +5,5 @@ export const UNITY = "/unity-league";
 export const TIMELINE = "/time-line";
 export const ALLMATCHES = "/all-matches";
 export const CONTROL = "/control-room";
+export const TEAM = "/team/:id";
+export const TOURNAMENT = "/tournament/:id";
