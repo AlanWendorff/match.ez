@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { getTournamentMatches } from './getTournamentMatches';
 import ListadoDePartidosPrevios from '../mapmatch/ListadoDePartidosPrevios';
-import { HeaderLogoContext } from '../context/HeaderLogoContext';
 import Leaderboard from '../leaderboard/Leaderboard';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
@@ -16,14 +15,17 @@ import Logo from '../navigationbar/Logo';
 import { usePalette } from 'react-palette';
 //import { template_unity } from '../../custom/unity/template';
 //import { unity, unityTeams } from '../../custom/unity/unity-flow-league-schedule';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
+import {
+    HOME,
+  } from '../../routes/routes';
 
 const MatchTorneoApp = () => {
     const {tournamentId} = useParams();
+    const history = useHistory();
     let backgroundStyle;
     let proxyLogo;
-    if (image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + image_url;
-    const { guardarLogo } = useContext(HeaderLogoContext);
+
     const [show, setShow] = useState("vs");
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
@@ -33,10 +35,12 @@ const MatchTorneoApp = () => {
     const [prevMatch, guardarPrevMatch] = useState([]);
     const [leaderboard, guardarLeaderboard] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
+    const [image_url, setImageLeague] = useState('');
     //const { paths } = useContext(PathContext);
     //const pathsArray = Object.values(paths);
     let { data, error } = usePalette(proxyLogo);
     let darkMuted = data.darkMuted;
+
     if (error || darkMuted === undefined) {
         data = {
             darkMuted: "#1c313a",
@@ -48,46 +52,24 @@ const MatchTorneoApp = () => {
         }
     }
     darkMuted = data.darkMuted;
-    function toDataURL(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-          var reader = new FileReader();
-          reader.onloadend = function() {
-            callback(reader.result);
-          }
-          reader.readAsDataURL(xhr.response);
-        };
-        xhr.open('GET', url);
-        xhr.responseType = 'blob';
-        xhr.send();
-    }
-
-    if (image_url !== csgoLogoDefault) {
-        toDataURL(proxyLogo, function(dataUrl) {
-            guardarB64Logo(dataUrl);
-        })
-        backgroundStyle = {
-            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-            backgroundColor: `${data.darkVibrant}`,
-            
-        };
-    }else{
-        backgroundStyle = {
-            backgroundColor: `${data.darkVibrant}`,
-            backgroundImage: `url(${generic_team_pattern})`,
-        };
-    }
+    
+    
     
     useEffect(() => { 
         //if (tournamentId !== undefined) {
             (async () => {
                 if (!matchesHoy.length > 0) {
                     const {matchesTournament, badFetch} = await getTournamentMatches(tournamentId);
-                    const {data, ladder, lastGames} = matchesTournament;
+                    const {data, ladder, lastGames, imageLeague} = matchesTournament;
                     if (matchesTournament) {
                         guardarLoaderProgress({width: '100%'});
                         guardarMatchesHoy(data);
                         guardarLeaderboard(ladder);
+                        if (imageLeague === null) {
+                            setImageLeague(csgoLogoDefault);
+                        }else{
+                            setImageLeague('https://proxy-kremowy.herokuapp.com/' + imageLeague);
+                        }
                         if (lastGames.length < 1) {
                             guardarPrevMatch("no-match");
                         }else{
@@ -95,12 +77,16 @@ const MatchTorneoApp = () => {
                         }
                         
                     }
-                    if (badFetch) {
-                        guardarStateCrash(true);
-                    }
-                    if(!data.length > 0){   
-                        guardarNoMatches(true);
-                    }
+                    if (!data) {
+                        history.push(HOME)
+                    }else{
+                        if (badFetch) {
+                            guardarStateCrash(true);
+                        }
+                        if(!data.length > 0){   
+                            guardarNoMatches(true);
+                        }
+                    } 
                 }
             })()
        /*  }else{
@@ -115,6 +101,40 @@ const MatchTorneoApp = () => {
         }  */
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[/*tournamentId === undefined? paths : null*/]);
+
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+            callback(reader.result);
+          }
+          reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
+
+    if (image_url !== csgoLogoDefault) {
+        toDataURL(image_url, function(dataUrl) {
+            guardarB64Logo(dataUrl);
+        })
+    }
+    
+    if (image_url !== csgoLogoDefault) {
+        backgroundStyle = {
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+            backgroundColor: `${data.darkVibrant}`,
+            
+        };
+    }else{
+        backgroundStyle = {
+            backgroundColor: `${data.darkVibrant}`,
+            backgroundImage: `url(${generic_team_pattern})`
+        };
+    }
 
     const {width} = loaderprogress;
 

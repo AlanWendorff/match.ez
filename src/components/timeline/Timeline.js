@@ -16,6 +16,9 @@ import {
     LOOKMATCHES,
     LOOKPROFILE
  } from '../../titlestag/titlestag';
+ import {
+    TOURNAMENT,
+  } from '../../routes/routes';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {
@@ -65,7 +68,7 @@ const Timeline = () => {
                                             className="vertical-timeline-element--education"
                                             date={date}
                                             iconStyle={{border: `3px solid ${colors.header_color}`}}
-                                            icon={<Link to={`/${league.slug}`} title={LOOKMATCHES + league.name}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
+                                            icon={<Link to={TOURNAMENT.replace(':tournamentId', tournament.id)} title={LOOKMATCHES + league.name}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
                                             >
                                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
                                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>

@@ -16,6 +16,9 @@ import {
     LOOKPROFILE, 
     LOOKMATCHES 
 } from '../../../titlestag/titlestag';
+import {
+    TOURNAMENT,
+  } from '../../../routes/routes';
 import './tarjetaUpcomingMatch.css';
 
 const Tarjetaversus = ({match, teamId}) => {
@@ -98,7 +101,7 @@ const Tarjetaversus = ({match, teamId}) => {
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug} title={LOOKMATCHES + league.name}> {league.name+" "+serie.full_name} </a>     
+                                <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={TOURNAMENT.replace(':tournamentId', tournament.id)} title={LOOKMATCHES + league.name}> {league.name+" "+serie.full_name} </a>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -167,7 +170,7 @@ const Tarjetaversus = ({match, teamId}) => {
 
                     <div className="card-stacked">
                         <div className="card-content">
-                            <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </a>
+                            <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={TOURNAMENT.replace(':tournamentId', tournament.id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </a>
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Vs:</span> 
                                 {opponentName === undefined? 'a definir' : opponentName}

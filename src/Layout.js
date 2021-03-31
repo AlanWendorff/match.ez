@@ -22,6 +22,7 @@ import {
   UNITY,
   CONTROL,
   TOURNAMENT,
+  TEAM,
 } from './routes/routes';
 import axios from 'axios';
 
@@ -77,23 +78,7 @@ const Layout = () => {
     <Fragment>
       <Router> 
           <Switch>
-            {
-              pathsArray.map((team) => {
-                return(
-                  <Route exact path={`/${team.path}`} key={team.path}>
-                    <MatchesApp
-                      key={team.id}
-                      teamId={team.id}
-                      image_url={team.img}
-                    />
-                  </Route>
-                );                                  
-              })
-            }
-
             
-            
-
 
             <Route exact path={CONTROL}>
               <Control
@@ -109,6 +94,7 @@ const Layout = () => {
               />
             </Route>
 
+            <Route exact path={TEAM} component={MatchesApp}/>
             <Route exact path={TOURNAMENT} component={MatchTorneoApp}/>
             <Route exact path={MORE} component={More}/>
             <Route exact path={TOURNAMENTS} component={Tournaments}/>

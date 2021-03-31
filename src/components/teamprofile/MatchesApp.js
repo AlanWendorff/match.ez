@@ -13,14 +13,15 @@ import HeaderMobile from '../headermobile/HeaderMobile';
 import { getPastMatch } from './getPastMatch';
 import { getNextMatches } from './getNextMatches';
 import { getPlayerScore } from './getPlayerScore';
-
+import { useParams, useHistory } from 'react-router';
 import 'react-notifications-component/dist/theme.css'
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
 import '../../styles/base.css';
 
-const MatchesApp = ({teamId, image_url}) => { 
-
+const MatchesApp = () => { 
+    const {teamid} = useParams();
+    const history = useHistory();
     let backgroundStyle;
     let winStrike = 0;
     let winRate   = 0;
@@ -35,50 +36,23 @@ const MatchesApp = ({teamId, image_url}) => {
     const [show, setShow] = useState("vs");
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
-
-    const proxyTeamLogo = 'https://proxy-kremowy.herokuapp.com/' + image_url;
-
-    function toDataURL(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-          var reader = new FileReader();
-          reader.onloadend = function() {
-            callback(reader.result);
-          }
-          reader.readAsDataURL(xhr.response);
-        };
-        xhr.open('GET', url);
-        xhr.responseType = 'blob';
-        xhr.send();
-    }
-    if (image_url !== csgoLogoDefault) {
-        toDataURL(proxyTeamLogo, function(dataUrl) {
-            guardarB64Logo(dataUrl);
-        })
-    }
-    
-    if (image_url !== csgoLogoDefault) {
-        backgroundStyle = {
-            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-            backgroundColor: `${data.darkVibrant}`,
-        };
-    }else{
-        backgroundStyle = {
-            backgroundColor: `${data.darkVibrant}`,
-            backgroundImage: `url(${generic_team_pattern})`
-        };
-    }
+    const [image_url, setImageTeam] = useState('');
 
     useEffect(() => {  
-
         (async () => {
             if (prevMatch.length === 0) {
-                const {objPastMatch, badFetch} = await getPastMatch(teamId);
-                if (objPastMatch && objPastMatch.length !== 0) {
+                const {objPastMatch, badFetch} = await getPastMatch(teamid);
+                const {data, imageTeam} = objPastMatch;
+                if (data && data.length !== 0) {
                     guardarLoaderProgress({width: '30%'});
-                    guardarPrevMatch(objPastMatch);
+                    guardarPrevMatch(data);
+                    if (imageTeam === null) {
+                        setImageTeam(csgoLogoDefault);
+                    }else{
+                        setImageTeam('https://proxy-kremowy.herokuapp.com/' + imageTeam);
+                    }
                     if(scoreMatch.length === 0){
-                        const {objPlayerScore, badFetch} = await getPlayerScore(objPastMatch);
+                        const {objPlayerScore, badFetch} = await getPlayerScore(data);
                         if (objPlayerScore) {
                             guardarLoaderProgress({width: '50%'});
                             guardarScoreMatch(objPlayerScore);
@@ -93,13 +67,13 @@ const MatchesApp = ({teamId, image_url}) => {
                 if (badFetch) {
                     guardarStateCrash(true);
                 }
-                if (image_url) {
+                if (imageTeam) {
                     guardarLogo(image_url);
                 } 
             };
             
             if(!matches.length > 0){
-                const {objNextMatches, badFetch} = await getNextMatches(teamId);
+                const {objNextMatches, badFetch} = await getNextMatches(teamid);
                 if (objNextMatches) {
                     guardarLoaderProgress({width: '100%'});
                     const matchesFiltered = objNextMatches.filter(status => status.status !== "canceled");
@@ -117,9 +91,43 @@ const MatchesApp = ({teamId, image_url}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+    function toDataURL(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+            callback(reader.result);
+          }
+          reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+    }
+
+
+    if (image_url !== csgoLogoDefault) {
+        toDataURL(image_url, function(dataUrl) {
+            guardarB64Logo(dataUrl);
+        })
+    }
+    
+    if (image_url !== csgoLogoDefault) {
+        backgroundStyle = {
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+            backgroundColor: `${data.darkVibrant}`,
+            
+        };
+    }else{
+        backgroundStyle = {
+            backgroundColor: `${data.darkVibrant}`,
+            backgroundImage: `url(${generic_team_pattern})`
+        };
+    }
+
     if(prevMatch.length !== 0){
         for(let i = 0; i < prevMatch.length; i++) {
-            if(prevMatch[i].winner_id === teamId){
+            if(prevMatch[i].winner_id === teamid){
                 matchWin = matchWin + 1;
             }
         }
@@ -127,7 +135,7 @@ const MatchesApp = ({teamId, image_url}) => {
         winRate = parseFloat(avg).toFixed(2)+"%";
 
         for(let c = prevMatch.length-1; c >= 0; c--) {
-            if(prevMatch[c].winner_id === teamId){
+            if(prevMatch[c].winner_id === teamid){
                 winStrike = winStrike + 1;
             }
             else{
@@ -160,14 +168,14 @@ const MatchesApp = ({teamId, image_url}) => {
                     {show === "vs" && matches.length > 0 &&
                         <ListadoDeTarjetas
                             matches={matches}
-                            teamId={teamId}
+                            teamid={teamid}
                         />
                     }
 
                     {show === "history" && prevMatch !== "no-match" &&
                         <ListadoDePartidosPrevios
                             prevMatch={prevMatch}
-                            teamId={teamId}
+                            teamid={teamid}
                             scoreMatch={scoreMatch}
                         />
                     }                                                                                                                           
