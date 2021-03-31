@@ -11,8 +11,8 @@ export const setTeamLogo = (opponents, teamId) =>{
     let bTeamSlug;
     
     if (teamId) {
-        ArrteamA = opponents.find(element => element.opponent.id !== teamId);
-        ArrteamB = opponents.find(element => element.opponent.id === teamId);
+        ArrteamA = opponents.find(element => element.opponent.id !== parseInt(teamId));
+        ArrteamB = opponents.find(element => element.opponent.id === parseInt(teamId));
 
         if (ArrteamA.opponent.image_url === null) {
             bTeamLogo = csgoLogoDefaultBlack;

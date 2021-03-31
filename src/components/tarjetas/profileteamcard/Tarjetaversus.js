@@ -25,7 +25,9 @@ const Tarjetaversus = ({match, teamId}) => {
 
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
-
+    
+    let ownLogo;
+    let ownName;
     let proxyLogo;
     let ArrteamA;
     let opponentLogo, opponentName, opponentSlug;
@@ -57,23 +59,28 @@ const Tarjetaversus = ({match, teamId}) => {
     }
 
     if(opponents.length > 1){
-        ArrteamA = opponents.find(element => element.opponent.id !== teamId);
-        if (ArrteamA.opponent.image_url === null) {
-            opponentLogo = csgoLogoDefaultBlack;
-            opponentSlug  = ArrteamA.opponent.slug;
-            opponentName = ArrteamA.opponent.name;
+        if (opponents[0].opponent.id === parseInt(teamId)) {
+            opponentLogo = opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url;
+            opponentSlug  = opponents[0].opponent.slug;
+            opponentName = opponents[0].opponent.name;
         }else{
-            opponentLogo = ArrteamA.opponent.image_url;
-            opponentName = ArrteamA.opponent.name;
-            opponentSlug  = ArrteamA.opponent.slug;
+            opponentLogo = opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url;
+            opponentSlug  = opponents[1].opponent.slug;
+            opponentName = opponents[1].opponent.name;
         }
     }else{
         opponentLogo = toBeDefined;
     }
 
-    const ArrteamB = opponents.find(element => element.opponent.id === teamId);
-    const ownLogo = ArrteamB.opponent.image_url;
-    const ownName = ArrteamB.opponent.name;
+    
+    if (opponents[0].opponent.id === parseInt(teamId)) {
+        ownLogo = opponents[0].opponent.image_url;
+        ownName = opponents[0].opponent.name;
+    }else{
+        ownLogo = opponents[1].opponent.image_url;
+        ownName = opponents[1].opponent.name;
+    }
+
     const {modalidad} = setGameMode(number_of_games);
 
     if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"

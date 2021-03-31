@@ -14,7 +14,6 @@ import { getPastMatch } from './getPastMatch';
 import { getNextMatches } from './getNextMatches';
 import { getPlayerScore } from './getPlayerScore';
 import { useParams, useHistory } from 'react-router';
-import 'react-notifications-component/dist/theme.css'
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
 import '../../styles/base.css';
@@ -43,6 +42,7 @@ const MatchesApp = () => {
             if (prevMatch.length === 0) {
                 const {objPastMatch, badFetch} = await getPastMatch(teamid);
                 const {data, imageTeam} = objPastMatch;
+                console.log(imageTeam);
                 if (data && data.length !== 0) {
                     guardarLoaderProgress({width: '30%'});
                     guardarPrevMatch(data);
@@ -113,12 +113,14 @@ const MatchesApp = () => {
     }
     
     if (image_url !== csgoLogoDefault) {
+        console.log(data);
         backgroundStyle = {
             backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
             backgroundColor: `${data.darkVibrant}`,
             
         };
     }else{
+        console.log('entro al else');
         backgroundStyle = {
             backgroundColor: `${data.darkVibrant}`,
             backgroundImage: `url(${generic_team_pattern})`
