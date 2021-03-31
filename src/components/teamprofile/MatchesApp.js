@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useContext} from 'react';
-import Header from '../header/Header';
 import ListadoDeTarjetas from '../mapmatch/ListadoDeTarjetas';
 import ListadoDePartidosPrevios from '../mapmatch/ListadoDePartidosPrevios';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
@@ -46,10 +45,12 @@ const MatchesApp = () => {
                 if (data && data.length !== 0) {
                     guardarLoaderProgress({width: '30%'});
                     guardarPrevMatch(data);
+                        
                     if (imageTeam === null) {
                         setImageTeam(csgoLogoDefault);
                     }else{
                         setImageTeam('https://proxy-kremowy.herokuapp.com/' + imageTeam);
+                        guardarLogo('https://proxy-kremowy.herokuapp.com/' + imageTeam);
                     }
                     if(scoreMatch.length === 0){
                         const {objPlayerScore, badFetch} = await getPlayerScore(data);
@@ -67,9 +68,6 @@ const MatchesApp = () => {
                 if (badFetch) {
                     guardarStateCrash(true);
                 }
-                if (imageTeam) {
-                    guardarLogo(image_url);
-                } 
             };
             
             if(!matches.length > 0){
@@ -113,14 +111,12 @@ const MatchesApp = () => {
     }
     
     if (image_url !== csgoLogoDefault) {
-        console.log(data);
         backgroundStyle = {
             backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
             backgroundColor: `${data.darkVibrant}`,
             
         };
     }else{
-        console.log('entro al else');
         backgroundStyle = {
             backgroundColor: `${data.darkVibrant}`,
             backgroundImage: `url(${generic_team_pattern})`

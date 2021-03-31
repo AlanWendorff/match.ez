@@ -7,8 +7,10 @@ export const HeaderLogoContext = createContext();
 // provider donde se encuentran las funciones y state's
 const HeaderLogoProvider = (props) => {
     const [logo, guardarLogo] = useState('');
+    console.log(logo);
     const [paletestate, guardarPaleteCharged] = useState(false);
-    let { data, error } = usePalette('https://proxy-kremowy.herokuapp.com/' + logo)
+    let { data, error } = usePalette(logo)
+
     if (error) {
         data = {
             darkMuted: "#1c313a",

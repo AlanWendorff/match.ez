@@ -6,6 +6,7 @@ import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoDeTarjetasHoy from '../mapmatch/ListadoDeTarjetasHoy';
 import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
+import { HeaderLogoContext } from '../context/HeaderLogoContext';
 import LoadScreen from '../loader/LoadScreen';
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
@@ -26,11 +27,11 @@ const MatchTorneoApp = () => {
     let backgroundStyle;
     let proxyLogo;
 
+    const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
     const [show, setShow] = useState("vs");
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
-    const [paletestate, guardarPaleteCharged] = useState(false);
     const [matchesHoy, guardarMatchesHoy] = useState([]);
     const [prevMatch, guardarPrevMatch] = useState([]);
     const [leaderboard, guardarLeaderboard] = useState([]);
@@ -38,22 +39,6 @@ const MatchTorneoApp = () => {
     const [image_url, setImageLeague] = useState('');
     //const { paths } = useContext(PathContext);
     //const pathsArray = Object.values(paths);
-    let { data, error } = usePalette(proxyLogo);
-    let darkMuted = data.darkMuted;
-
-    if (error || darkMuted === undefined) {
-        data = {
-            darkMuted: "#1c313a",
-            darkVibrant: "#455a64",
-            lightMuted: "#455a64",
-            lightVibrant: "#718792",
-            muted: "#1c313a",
-            vibrant: "#718792",
-        }
-    }
-    darkMuted = data.darkMuted;
-    
-    
     
     useEffect(() => { 
         //if (tournamentId !== undefined) {
@@ -69,6 +54,7 @@ const MatchTorneoApp = () => {
                             setImageLeague(csgoLogoDefault);
                         }else{
                             setImageLeague('https://proxy-kremowy.herokuapp.com/' + imageLeague);
+                            guardarLogo('https://proxy-kremowy.herokuapp.com/' + imageLeague);
                         }
                         if (lastGames.length < 1) {
                             guardarPrevMatch("no-match");
