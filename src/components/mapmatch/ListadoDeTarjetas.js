@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import LazyLoad from 'react-lazyload';
 import Tarjetaversus from '../tarjetas/profileteamcard/Tarjetaversus';
 
-const ListadoDeTarjetas = ({matches, teamId}) => {
+const ListadoDeTarjetas = ({matches, teamid}) => {
     if (!matches.length > 0) return null;
     return ( 
         <Fragment> 
@@ -10,7 +10,7 @@ const ListadoDeTarjetas = ({matches, teamId}) => {
                 <Tarjetaversus 
                     key={match.id}
                     match={match}
-                    teamId={teamId}
+                    teamid={teamid}
                 />
         ))}
         </Fragment> 

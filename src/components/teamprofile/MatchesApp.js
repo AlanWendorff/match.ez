@@ -125,7 +125,7 @@ const MatchesApp = () => {
 
     if(prevMatch.length !== 0){
         for(let i = 0; i < prevMatch.length; i++) {
-            if(prevMatch[i].winner_id === teamid){
+            if(prevMatch[i].winner_id === parseInt(teamid)){
                 matchWin = matchWin + 1;
             }
         }
@@ -133,7 +133,7 @@ const MatchesApp = () => {
         winRate = parseFloat(avg).toFixed(2)+"%";
 
         for(let c = prevMatch.length-1; c >= 0; c--) {
-            if(prevMatch[c].winner_id === teamid){
+            if(prevMatch[c].winner_id === parseInt(teamid)){
                 winStrike = winStrike + 1;
             }
             else{

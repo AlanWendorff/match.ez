@@ -21,7 +21,7 @@ import {
   } from '../../../routes/routes';
 import './tarjetaUpcomingMatch.css';
 
-const Tarjetaversus = ({match, teamId}) => {
+const Tarjetaversus = ({match, teamid}) => {
 
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
@@ -29,7 +29,6 @@ const Tarjetaversus = ({match, teamId}) => {
     let ownLogo;
     let ownName;
     let proxyLogo;
-    let ArrteamA;
     let opponentLogo, opponentName, opponentSlug;
     let hoy = "";
     let statusStream = "Streaming off";
@@ -39,6 +38,7 @@ const Tarjetaversus = ({match, teamId}) => {
     if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let error = usePalette(proxyLogo).error;
     let leagueColors = usePalette(proxyLogo).data;
+
     if (error) {
         leagueColors = {
             darkMuted: "#1c313a",
@@ -59,7 +59,7 @@ const Tarjetaversus = ({match, teamId}) => {
     }
 
     if(opponents.length > 1){
-        if (opponents[0].opponent.id === parseInt(teamId)) {
+        if (opponents[0].opponent.id !== parseInt(teamid)) {
             opponentLogo = opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url;
             opponentSlug  = opponents[0].opponent.slug;
             opponentName = opponents[0].opponent.name;
@@ -73,7 +73,7 @@ const Tarjetaversus = ({match, teamId}) => {
     }
 
     
-    if (opponents[0].opponent.id === parseInt(teamId)) {
+    if (opponents[0].opponent.id === parseInt(teamid)) {
         ownLogo = opponents[0].opponent.image_url;
         ownName = opponents[0].opponent.name;
     }else{
@@ -100,7 +100,7 @@ const Tarjetaversus = ({match, teamId}) => {
     if(status === 'running'){
         hoy = "Playing Now"; 
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
-        const {A_point, B_point} = setMatchResult(results, teamId); 
+        const {A_point, B_point} = setMatchResult(results, teamid); 
         return(
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
