@@ -7,7 +7,6 @@ export const HeaderLogoContext = createContext();
 // provider donde se encuentran las funciones y state's
 const HeaderLogoProvider = (props) => {
     const [logo, guardarLogo] = useState('');
-    console.log(logo);
     const [paletestate, guardarPaleteCharged] = useState(false);
     let { data, error } = usePalette(logo)
 

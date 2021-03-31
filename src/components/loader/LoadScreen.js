@@ -1,13 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './loader.css';
 
-const LoadScreen = ({loaderprogress, darkMuted, guardarPaleteCharged}) => {
+const LoadScreen = ({loaderprogress}) => {
 
-    useEffect(() => {
-        if (darkMuted !== undefined) {
-            guardarPaleteCharged(true);
-        }
-    }, [darkMuted]);
 
     return (
         <div className="loader-container">

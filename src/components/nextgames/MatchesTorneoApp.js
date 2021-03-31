@@ -169,8 +169,6 @@ const MatchTorneoApp = () => {
                 <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container pattern-background" style={{backgroundColor: 'black'}}>
                     <LoadScreen
                         loaderprogress={loaderprogress}
-                        guardarPaleteCharged={guardarPaleteCharged}
-                        darkMuted={darkMuted}
                     /> 
                 </div>
             );
