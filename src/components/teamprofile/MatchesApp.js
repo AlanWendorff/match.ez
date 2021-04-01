@@ -15,6 +15,9 @@ import { getPlayerScore } from './getPlayerScore';
 import { useParams, useHistory } from 'react-router';
 import csgoLogoDefault from '../../ImagenesVarias/csgoLogoDefault.png';
 import generic_team_pattern from '../../pattern/generic_team_pattern.png';
+import {
+    HOME,
+  } from '../../routes/routes';
 import '../../styles/base.css';
 
 const MatchesApp = () => { 
@@ -41,7 +44,7 @@ const MatchesApp = () => {
             if (prevMatch.length === 0) {
                 const {objPastMatch, badFetch} = await getPastMatch(teamid);
                 const {data, imageTeam} = objPastMatch;
-                console.log(imageTeam);
+                if (!data) history.push(HOME);
                 if (data && data.length !== 0) {
                     guardarLoaderProgress({width: '30%'});
                     guardarPrevMatch(data);
@@ -113,7 +116,7 @@ const MatchesApp = () => {
     if (image_url !== csgoLogoDefault) {
         backgroundStyle = {
             backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-            backgroundColor: `${data.darkVibrant}`,
+            backgroundColor: `${data.darkMuted}`,
             
         };
     }else{
@@ -147,7 +150,6 @@ const MatchesApp = () => {
         if(width === '100%' && prevMatch.length > 0 && paletestate === true){
             return(
                 <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container mosaico noselect" style={backgroundStyle}>
-                    {/* <Header/>  */}
                     <HeaderMobile
                         color={data}
                         img={image_url}

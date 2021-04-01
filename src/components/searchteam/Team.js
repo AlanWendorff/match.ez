@@ -28,7 +28,6 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
             </Link> 
             
             <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
-                //console.log("---not pined");
                 if (teamsaved === true) {
                     console.log("X delete pin");
                     const deletedTeam = collection.filter(deleteteam => deleteteam.id !== team.id);

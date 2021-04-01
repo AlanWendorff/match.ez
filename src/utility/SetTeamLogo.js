@@ -3,13 +3,10 @@ import csgoLogoDefaultBlack from '../ImagenesVarias/csgoLogoDefaultBlack.png';
 export const setTeamLogo = (opponents, teamId) =>{
     let ArrteamA;
     let ArrteamB;
-    let aTeamId;
-    let bTeamLogo;
-    let aTeamLogo;
-    let aTeamName;
-    let bTeamName;
-    let bTeamId;
+    let aTeamName, aTeamId, aTeamLogo;
+    let bTeamName, bTeamId, bTeamLogo;
     
+    console.log(teamId);
     if (teamId) {
         ArrteamA = opponents.find(element => element.opponent.id !== parseInt(teamId));
         ArrteamB = opponents.find(element => element.opponent.id === parseInt(teamId));

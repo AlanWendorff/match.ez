@@ -27,7 +27,7 @@ const More = () => {
         if (JSON.parse(localStorage.getItem('sounds')) === false) {
             setSound(false);
         }
-        if (window.matchMedia('(display-mode: standalone)').matches) {  
+        if (window.matchMedia('(display-mode: fullscreen)').matches) {  
             setIsInstalled(true);
         }else{
             setIsInstalled(false); 
@@ -64,7 +64,7 @@ const More = () => {
     };
     
     return ( colors.background_color !== undefined?
-        <div className="options" onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
+        <div className="options noselect" onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
 
             <div className="option animate__animated animate__fadeInRight animate__faster cursor-pointer">
                 <div onClick={()=> { handleInstallClick(); }}>

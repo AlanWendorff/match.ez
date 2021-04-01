@@ -30,7 +30,7 @@ const Tarjetaversus = ({match, teamid}) => {
     let ownLogo;
     let ownName;
     let proxyLogo;
-    let opponentLogo, opponentName, opponentSlug, opponentId;
+    let opponentLogo, opponentName, opponentId, opponentSlug;
     let hoy = "";
     let statusStream = "Streaming off";
     let fase = "";

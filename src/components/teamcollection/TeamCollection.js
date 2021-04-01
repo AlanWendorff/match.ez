@@ -43,7 +43,7 @@ const TeamCollection = ({collection}) => {
                 {collection.length > 0?
                     collection.map(team => (
                         <Link key={team.name} to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`}> 
-                            <div>
+                            <div className="crosshair-green">
                                 <div>
                                     <ProgressiveImage src={team.img} placeholder={csgoLogo}>
                                         {src => <img className="" loading="lazy" src={src} alt={`${team.name}`} />}
@@ -56,7 +56,7 @@ const TeamCollection = ({collection}) => {
                     :
                     examples.map(team => (
                         <Link key={team.name} to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`}> 
-                            <div>
+                            <div className="crosshair-green">
                                 <div>
                                     <ProgressiveImage src={team.img} placeholder={csgoLogo}>
                                         {src => <img className="" loading="lazy" src={src} alt={`${team.name}`} />}

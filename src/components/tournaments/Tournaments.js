@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Item from './Item';
 import SimpleLoadScreen from '../loader/SimpleLoadScreen';
 import { ColorThemeContext } from '../context/ColorThemeContext';
@@ -7,16 +7,9 @@ import { TournamentContext } from '../context/TournamentContext';
 import {
     TOURNAMENT,
   } from '../../routes/routes';
-/* import {
-    UNITY
-} from '../../routes/routes'; */
 import {
-    //LOOKUNITY,
     LOOKMATCHES
 } from '../../titlestag/titlestag';
-/* import {
-    customTournament
-} from '../../custom/unity/unity-flow-league-schedule'; */
 import './tournaments.css';
 
 const Tournaments = () => {
@@ -26,16 +19,11 @@ const Tournaments = () => {
     const objectToArray = Object.values(tournamentId);
 
     return (colors.background_color !== undefined?
-        <div className="tournament-container font-gilroy"  style={{backgroundColor: colors.background_color}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
+        <div className="tournament-container font-gilroy" style={{backgroundColor: colors.background_color}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
             <div className="child-tournament">
-                {/* <Link className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" to={UNITY} title={LOOKUNITY}>
-                    <Item
-                        customTournament={customTournament}
-                    />
-                </Link> */}
                 {objectToArray.length > 0 &&
                     objectToArray.map(tournament => (
-                        <Link to={TOURNAMENT.replace(':tournamentId', tournament.id)} className="tournament-size z-depth-5 cursor-pointer animate__animated animate__fadeInDown animate__faster" title={`${LOOKMATCHES} ${tournament.name}`} key={tournament.id}>
+                        <Link to={TOURNAMENT.replace(':tournamentId', tournament.id)} className="tournament-size z-depth-5 animate__animated animate__fadeInDown animate__faster" title={`${LOOKMATCHES} ${tournament.name}`} key={tournament.id}>
                             <Item
                                 key={tournament.id}
                                 tournament={tournament}

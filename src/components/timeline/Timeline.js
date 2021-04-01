@@ -18,18 +18,16 @@ import {
  } from '../../titlestag/titlestag';
  import {
     TOURNAMENT,
+    TEAM
   } from '../../routes/routes';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {
-    //momentSpanishSetup();
+
     const { colors } = useContext(ColorThemeContext);
     const [time, setTime] = useState([]);
-    const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
-    const [crash,    guardarStateCrash]    = useState(false);
-    const [length, guardarlength] = useState(false);  
-    //const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
-    //data.filter(date => date.begin_at !== null)
+    const [loaderprogress, guardarLoaderProgress] = useState({width: '0%'});
+    const [crash, guardarStateCrash] = useState(false);
 
     useEffect(() => { 
         (async () => {
@@ -38,9 +36,6 @@ const Timeline = () => {
                 if (objTime) {
                     guardarLoaderProgress({width: '100%'});
                     setTime(objTime);
-                    if(objTime.length === 0){   
-                        guardarlength(true);
-                    }
                 }
                 if (badFetch) {
                     guardarStateCrash(true);
@@ -85,7 +80,7 @@ const Timeline = () => {
                                             <div className="teams-in-tournament">
                                                 {teams.length > 1?
                                                     teams.map((team) => (
-                                                        <Link to={`/${team.slug}`} title={LOOKPROFILE + team.name} key={shortid.generate()}>
+                                                        <Link to={TEAM.replace(':teamid', team.id)} title={LOOKPROFILE + team.name} key={shortid.generate()}>
                                                             <div className="icon-container">
                                                                 <div className="team-icon">
                                                                     <img className="team-logo-timeline" src={team.image_url === null?  csgoLogoDefaultBlack : team.image_url}></img>

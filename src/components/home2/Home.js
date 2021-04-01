@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Search from '../searchteam/Search';
 import SimpleLoadScreen from '../loader/SimpleLoadScreen';
 import { ColorThemeContext } from '../context/ColorThemeContext';

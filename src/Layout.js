@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, Fragment} from 'react';
+import React, {useEffect, Fragment} from 'react';
 import MatchesApp from './components/teamprofile/MatchesApp';
 import Home from './components/home2/Home';
 import More from './components/more/More';
@@ -8,18 +8,14 @@ import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
 import Timeline from './components/timeline/Timeline';
 import Control from './components/controlroom/Control';
 import NavigationBar from './components/navigationbar/NavigationBar';
-import { PathContext } from './components/context/PathContext';
-import { TournamentContext } from './components/context/TournamentContext'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { unity_info } from './custom/unity/unity-flow-league-schedule';
-import firebase from './utility/FirebaseConfig';
+
 import {
   HOME,
   TOURNAMENTS,
   TIMELINE,
   ALLMATCHES,
   MORE,
-  UNITY,
   CONTROL,
   TOURNAMENT,
   TEAM,
@@ -27,12 +23,10 @@ import {
 import axios from 'axios';
 
 const Layout = () => {
-  const database = firebase.database();
-
+  
   useEffect(() => {
     const LSwakeupBackend = JSON.parse(sessionStorage.getItem('wakeupBackend'));
     if (LSwakeupBackend !== true) {
-      //console.log("llamo a backend");
       (async()=>{
         try {
           const config = {
@@ -69,31 +63,11 @@ const Layout = () => {
     }
   }, []);
   
-  const { tournamentId } = useContext(TournamentContext);
-  const tournamentArray = Object.values(tournamentId);
-  const { paths } = useContext(PathContext);
-  const pathsArray = Object.values(paths);
-
   return ( 
     <Fragment>
       <Router> 
           <Switch>
-            
-
-            <Route exact path={CONTROL}>
-              <Control
-                tournamentArray={tournamentArray}
-                pathsArray={pathsArray}
-                database={database}
-              />
-            </Route>
-            
-            <Route exact path={UNITY}>
-              <MatchTorneoApp
-                image_url={unity_info.image_url}
-              />
-            </Route>
-
+            <Route exact path={CONTROL} component={Control}/>
             <Route exact path={TEAM} component={MatchesApp}/>
             <Route exact path={TOURNAMENT} component={MatchTorneoApp}/>
             <Route exact path={MORE} component={More}/>

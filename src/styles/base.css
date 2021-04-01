@@ -32,7 +32,18 @@
     font-family: 'Oswald-SemiBold';
     src: local('Oswald-SemiBold'), url(../fonts/Oswald-SemiBold.ttf) format('TrueType');
 }
-
+.crosshair-expand {
+    cursor: url(../cursors/crosshair-expand.cur), auto !important;
+}
+.crosshair-green {
+    cursor: url(../cursors/crosshair-green.cur), auto !important;
+}
+.crosshair-large {
+    cursor: url(../cursors/crosshair-large.cur), auto !important;
+}
+.crosshair-thin {
+    cursor: url(../cursors/crosshair-thin.cur), auto !important;
+}
 .container-html{
     height: 100% !important;
     width: 100% !important;

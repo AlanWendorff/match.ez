@@ -1,12 +1,10 @@
-import React, {useEffect, useState, useContext, Fragment} from 'react';
+import React, {useEffect, useState, useContext } from 'react';
 import { getAllmatches } from './getAllmatches.js';
 import SimpleLoadScreen from '../loader/SimpleLoadScreen';
 import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
 import ListadoAllmatches from './ListadoAllmatches';
-import Footer from '../footer/Footer';
 import Warning from '../warning/Warning';
 import LoadScreen from '../loader/LoadScreen';
-import LoadMore from '../loadmore/LoadMore';
 import { ColorThemeContext } from '../context/ColorThemeContext';
 import './allmatches.css';
 
@@ -35,7 +33,6 @@ const Allmatches = () => {
                 }
             }
         })()
-        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -45,7 +42,6 @@ const Allmatches = () => {
             if(width === '100%'){
                 return(
                     <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="allmatches" style={{backgroundColor: colors.background_color}}>
-                        
                         {noMatches !== true?
                                 <ListadoAllmatches 
                                     allmatches={allmatches}

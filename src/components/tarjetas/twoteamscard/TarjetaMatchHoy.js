@@ -13,20 +13,19 @@ import {
     LOOKPROFILE, 
     LOOKMATCHES 
 } from '../../../titlestag/titlestag';
+import {
+    TEAM
+  } from '../../../routes/routes';
 import './tarjetaMatchesCompletos.css';
 
 const TarjetaMatchHoy = ({matchHoy, data}) => {
+
     const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = matchHoy; 
-    //momentSpanishSetup();
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
-    let aTeamSlug = "";
-    let bTeamSlug = "";
-    let aTeamName = "";
-    let bTeamName = "";
-    let aTeamLogo = "";
-    let bTeamLogo = "";
-    let bTeamId = "";
+
+    let aTeamName, aTeamId, aTeamLogo = "";
+    let bTeamName, bTeamId, bTeamLogo = "";
     let fase = "";
     let statusStream = "Streaming off";
     let statusMatch = "Today " + Moment(begin_at).format('H:mm') + "hs";
@@ -43,6 +42,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     if (opponents.length !== 0) {
         if (opponents.length === 1) {
             aTeamName = opponents[0].opponent.name;
+            aTeamId = opponents[0].opponent.id;
             if(opponents[0].opponent.image_url === null){
                 aTeamLogo = csgoLogoDefaultBlack;
             }else{
@@ -52,20 +52,11 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
             bTeamLogo = toBeDefined;
         }else{
             aTeamName = opponents[0].opponent.name;
-            aTeamSlug = opponents[0].opponent.slug;
+            aTeamId = opponents[0].opponent.id;
             bTeamName = opponents[1].opponent.name;
-            bTeamSlug = opponents[1].opponent.slug;
             bTeamId = opponents[1].opponent.id;
-            if(opponents[0].opponent.image_url === null || undefined){
-                aTeamLogo = csgoLogoDefaultBlack;
-            }else{
-                aTeamLogo = opponents[0].opponent.image_url;
-            };
-            if(opponents[1].opponent.image_url === null){
-                bTeamLogo = csgoLogoDefaultBlack;
-            }else{
-                bTeamLogo = opponents[1].opponent.image_url;
-            };
+            opponents[0].opponent.image_url === null? aTeamLogo = csgoLogoDefaultBlack : aTeamLogo = opponents[0].opponent.image_url;
+            opponents[1].opponent.image_url === null? bTeamLogo = csgoLogoDefaultBlack : bTeamLogo = opponents[1].opponent.image_url;
         }
     }else{
         aTeamName = "To be defined";
@@ -73,7 +64,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
         bTeamName = "To be defined";
         bTeamLogo = toBeDefined;
     }
-
+    
     const {modalidad} = setGameMode(number_of_games);
 
     if (status === "running"){
@@ -91,7 +82,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                             
                             <div className="live-container-puntos-logos-upcoming">
 
-                                <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
+                                <Link to={TEAM.replace(':teamid', aTeamId)}>
                                     <div className="team-canvas"> 
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
@@ -107,7 +98,7 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                     </div>  
                                 </div>
 
-                                <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
+                                <Link to={TEAM.replace(':teamid', bTeamId)}>
                                     <div className="team-canvas">
                                         <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
@@ -167,10 +158,10 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
     
                         <div className="container-puntosYlogos">
 
-                            <Link to={aTeamSlug === "null"? '/' : `/${aTeamSlug}`}>
+                            <Link to={aTeamName === "To be defined"? '/' : TEAM.replace(':teamid', aTeamId)}>
                                 <div className="team-canvas">  
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        {src => <img title={aTeamName !== "To be defined"? LOOKPROFILE + aTeamName : undefined} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                              
                                 </div>
                             </Link>
@@ -179,10 +170,10 @@ const TarjetaMatchHoy = ({matchHoy, data}) => {
                                 <p>VS</p>           
                             </div>         
 
-                            <Link to={aTeamSlug === "null"? '/' : `/${bTeamSlug}`}>
+                            <Link to={bTeamName === "To be defined"? '/' : TEAM.replace(':teamid', bTeamId)}>
                                 <div className="team-canvas">
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={bTeamName !== "To be defined"? LOOKPROFILE + bTeamName : undefined} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>    
                                 </div> 
                             </Link>

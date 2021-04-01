@@ -1,7 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import { PathContext } from '../context/PathContext';
+import { TournamentContext } from '../context/TournamentContext';
 import './control.css';
 
-const Control = ({tournamentArray, pathsArray, database}) => {
+const Control = () => {
+    const { tournamentId } = useContext(TournamentContext);
+    const tournamentArray = Object.values(tournamentId);
+    const { paths } = useContext(PathContext);
+    const pathsArray = Object.values(paths);
 
     const [password, setPassword] = useState('');
     useEffect(() => {
@@ -15,28 +21,6 @@ const Control = ({tournamentArray, pathsArray, database}) => {
         setPassword(input);
     }
 
-    const deleteItem = (path, type ) => {
-        /* 
-        let route;
-        if (type === "team") {
-            route = 'path'
-        }else{
-            route = 'tournament'
-        }
-        const query = database.ref().child("paths").orderByChild("path").equalTo("path");
-        query.get().then(function(snapshot) {
-            console.log(snapshot);
-        });
-
-
-        /* let query = database.ref().child("paths").orderByChild("path").equalTo("path");
-            query.on('value', function(snapshot) {
-            snapshot.ref.update({ img: image_url })
-        });  */
-         
-    }
-
-
 
     return ( 
         password === 'pass'?
@@ -46,7 +30,7 @@ const Control = ({tournamentArray, pathsArray, database}) => {
                     pathsArray.map((team) => {
                         return(
                             <div className="secret-item-container" key={team.id}>
-                                <span onClick={()=>{ deleteItem(team.path, "team"); }} className="font-size-20px cursor-pointer">Eliminar</span>
+                                <span className="font-size-20px cursor-pointer">Eliminar</span>
                                 <span className="font-size-20px color-text-white">{team.id}</span>
                                 <span className="font-size-20px color-text-white">{team.name}</span>
                                 <span className="font-size-20px color-text-white">{team.path}</span>
@@ -60,7 +44,7 @@ const Control = ({tournamentArray, pathsArray, database}) => {
                     tournamentArray.map((tournament) => {
                         return(
                             <div className="secret-item-container" key={tournament.id}>
-                                <span onClick={()=>{ deleteItem(tournament.name, "tournament"); }} className="font-size-20px cursor-pointer">Eliminar</span>
+                                <span className="font-size-20px cursor-pointer">Eliminar</span>
                                 <span className="font-size-20px color-text-white">{tournament.id}</span>
                                 <span className="font-size-20px color-text-white">{tournament.name}</span>
                                 <span className="font-size-20px color-text-white">{tournament.path}</span>
