@@ -3,12 +3,12 @@ import csgoLogoDefaultBlack from '../ImagenesVarias/csgoLogoDefaultBlack.png';
 export const setTeamLogo = (opponents, teamId) =>{
     let ArrteamA;
     let ArrteamB;
-    let aTeamSlug;
+    let aTeamId;
     let bTeamLogo;
     let aTeamLogo;
     let aTeamName;
     let bTeamName;
-    let bTeamSlug;
+    let bTeamId;
     
     if (teamId) {
         ArrteamA = opponents.find(element => element.opponent.id !== parseInt(teamId));
@@ -20,7 +20,7 @@ export const setTeamLogo = (opponents, teamId) =>{
             bTeamLogo = ArrteamA.opponent.image_url;
         }
         bTeamName = ArrteamA.opponent.name;
-        bTeamSlug = ArrteamA.opponent.slug;
+        bTeamId = ArrteamA.opponent.id;
     
         if (ArrteamB.opponent.image_url === null) {
             aTeamLogo = csgoLogoDefaultBlack;
@@ -30,9 +30,9 @@ export const setTeamLogo = (opponents, teamId) =>{
         aTeamName = ArrteamB.opponent.name;
     }else{
         aTeamName = opponents[0].opponent.name;
-        aTeamSlug = opponents[0].opponent.slug;
+        aTeamId = opponents[0].opponent.id;
         bTeamName = opponents[1].opponent.name;
-        bTeamSlug = opponents[1].opponent.slug;
+        bTeamId = opponents[1].opponent.id;
         if(opponents[0].opponent.image_url === null || undefined){
             aTeamLogo = csgoLogoDefaultBlack;
         }else{
@@ -48,8 +48,8 @@ export const setTeamLogo = (opponents, teamId) =>{
     return {
         bTeamLogo, 
         bTeamName, 
-        bTeamSlug,
-        aTeamSlug,
+        bTeamId,
+        aTeamId,
         aTeamLogo, 
         aTeamName,
         csgoLogoDefaultBlack,

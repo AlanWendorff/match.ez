@@ -14,6 +14,9 @@ import {
     LOOKPROFILE, 
     LOOKMATCHES 
 } from '../../titlestag/titlestag';
+import {
+    TEAM,
+  } from '../../routes/routes';
 
 const TarjetaAllmatches = ({match}) => {
 
@@ -22,8 +25,7 @@ const TarjetaAllmatches = ({match}) => {
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
     let proxyLogo;
-    let aTeamSlug = "";
-    let bTeamSlug = "";
+    let aTeamId;
     let aTeamName = "";
     let bTeamName = "";
     let aTeamLogo = "";
@@ -62,19 +64,17 @@ const TarjetaAllmatches = ({match}) => {
                 aTeamLogo = csgoLogoDefaultBlack;
             }else{
                 aTeamLogo = opponents[0].opponent.image_url;
-                //aTeamId = opponents[0].opponent.id;
+                aTeamId = opponents[0].opponent.id;
             };
             bTeamName = "To be defined";
             bTeamLogo = toBeDefined;
         }else{
             aTeamName = opponents[0].opponent.name;
-            aTeamSlug = opponents[0].opponent.slug;
-            //aTeamId = opponents[0].opponent.id;
+            aTeamId = opponents[0].opponent.id;
 
             bTeamName = opponents[1].opponent.name;
-            bTeamSlug = opponents[1].opponent.slug;
             bTeamId = opponents[1].opponent.id;
-            if(opponents[0].opponent.image_url === null || undefined){
+            if(opponents[0].opponent.image_url === null){
                 aTeamLogo = csgoLogoDefaultBlack;
             }else{
                 aTeamLogo = opponents[0].opponent.image_url;
@@ -93,7 +93,7 @@ const TarjetaAllmatches = ({match}) => {
     }
 
     const {modalidad} = setGameMode(number_of_games);
-    
+
     if (status === "running"){
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         statusMatch = "¡Playing Now!";
@@ -109,7 +109,7 @@ const TarjetaAllmatches = ({match}) => {
                             
                             <div className="live-container-puntos-logos-upcoming">
 
-                                <Link to ={`/${aTeamSlug}`}>
+                                <Link to={TEAM.replace(':teamid', aTeamId)}>
                                     <div className="team-canvas"> 
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
@@ -125,7 +125,7 @@ const TarjetaAllmatches = ({match}) => {
                                     </div>  
                                 </div>
 
-                                <Link to ={`/${bTeamSlug}`}>
+                                <Link to={TEAM.replace(':teamid', bTeamId)}>
                                     <div className="team-canvas">
                                         <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
@@ -185,10 +185,10 @@ const TarjetaAllmatches = ({match}) => {
     
                         <div className="container-puntosYlogos">
 
-                            <Link to={`/${aTeamSlug}`}>
+                            <Link to={aTeamId !== undefined&& TEAM.replace(':teamid', aTeamId)}>
                                 <div className="team-canvas">  
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        {src => <img title={aTeamId !== undefined&& LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                                     </ProgressiveImage>                              
                                 </div>
                             </Link>
@@ -197,10 +197,10 @@ const TarjetaAllmatches = ({match}) => {
                                 <p>VS</p>           
                             </div>         
 
-                            <Link to ={`/${bTeamSlug}`}>
+                            <Link to={bTeamId !== undefined&& TEAM.replace(':teamid', bTeamId)}>
                                 <div className="team-canvas">
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={bTeamId !== undefined&& LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>    
                                 </div> 
                             </Link>

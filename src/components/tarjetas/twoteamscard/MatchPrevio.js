@@ -15,6 +15,9 @@ import { usePalette } from 'react-palette';
 import { 
     LOOKPROFILE 
 } from '../../../titlestag/titlestag';
+import {
+    TEAM,
+  } from '../../../routes/routes';
 import './tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
@@ -25,7 +28,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
     const [content, setContent] = useState(false);
     const {number_of_games, league, serie, tournament, begin_at, id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
-    const {bTeamLogo, bTeamName, aTeamLogo, aTeamName, bTeamSlug, aTeamSlug, csgoLogoDefault} = setTeamLogo(opponents, teamId); 
+    const {bTeamLogo, bTeamName, aTeamLogo, aTeamName, aTeamId,  bTeamSlug, bTeamId, csgoLogoDefault} = setTeamLogo(opponents, teamId); 
     const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
 
@@ -72,7 +75,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={!teamId? `/${aTeamSlug}` : `/${bTeamSlug}`}>
+                            <Link to={!teamId? TEAM.replace(':teamid', bTeamId) : TEAM.replace(':teamid', aTeamId)}>
                                 <div className={A_point < B_point? "match-loser-prevgame" :"match-winner-prevgame"}>                            
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={!teamId? LOOKPROFILE + aTeamName : null} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
@@ -94,7 +97,7 @@ const MatchPrevio = ({match, teamId, scoreMatch, firstIndexDate}) => {
                         </div>
 
                         <div className="team-column">
-                            <Link to={`/${bTeamSlug}`}>
+                            <Link to={TEAM.replace(':teamid', bTeamSlug)}>
                                 <div className={A_point < B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + bTeamName } alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}

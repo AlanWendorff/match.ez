@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import LazyLoad from 'react-lazyload';
 import Tarjetaversus from '../tarjetas/profileteamcard/Tarjetaversus';
 
 const ListadoDeTarjetas = ({matches, teamid}) => {

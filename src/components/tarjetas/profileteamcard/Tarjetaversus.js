@@ -18,6 +18,7 @@ import {
 } from '../../../titlestag/titlestag';
 import {
     TOURNAMENT,
+    TEAM
   } from '../../../routes/routes';
 import './tarjetaUpcomingMatch.css';
 
@@ -29,7 +30,7 @@ const Tarjetaversus = ({match, teamid}) => {
     let ownLogo;
     let ownName;
     let proxyLogo;
-    let opponentLogo, opponentName, opponentSlug;
+    let opponentLogo, opponentName, opponentSlug, opponentId;
     let hoy = "";
     let statusStream = "Streaming off";
     let fase = "";
@@ -63,10 +64,12 @@ const Tarjetaversus = ({match, teamid}) => {
             opponentLogo = opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url;
             opponentSlug  = opponents[0].opponent.slug;
             opponentName = opponents[0].opponent.name;
+            opponentId = opponents[0].opponent.id;
         }else{
             opponentLogo = opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url;
             opponentSlug  = opponents[1].opponent.slug;
             opponentName = opponents[1].opponent.name;
+            opponentId = opponents[1].opponent.id;
         }
     }else{
         opponentLogo = toBeDefined;
@@ -113,7 +116,7 @@ const Tarjetaversus = ({match, teamid}) => {
                             
                             <div className="live-container-puntos-logos-upcoming">
 
-                                <Link to={opponentSlug === "null"? '/' : `/${opponentSlug}`}>
+                                <Link to={TEAM.replace(':teamid', opponentId)} >
                                     <div className="team-canvas"> 
                                         <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
                                             {src => <img title={LOOKPROFILE + opponentName} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
@@ -168,9 +171,9 @@ const Tarjetaversus = ({match, teamid}) => {
             <div className="col s12 m7 posicion-tarjeta font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="card horizontal tamano-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image lienzo-logo"> 
-                        <Link to={opponentSlug === "null"? '/' : `/${opponentSlug}`}> 
+                        <Link to={opponentName !== undefined&& TEAM.replace(':teamid', opponentId)} > 
                             <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                {src => <img title={LOOKPROFILE + opponentName} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                {src => <img title={opponentName !== undefined&& LOOKPROFILE + opponentName} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
                             </ProgressiveImage>
                         </Link>
                     </div>
@@ -180,7 +183,7 @@ const Tarjetaversus = ({match, teamid}) => {
                             <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={TOURNAMENT.replace(':tournamentId', tournament.id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </a>
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Vs:</span> 
-                                {opponentName === undefined? 'a definir' : opponentName}
+                                {opponentName === undefined? 'To be defined' : opponentName}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">

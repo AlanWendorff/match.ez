@@ -8,7 +8,7 @@ import './home.css';
 const Home = () => {
     const { colors } = useContext(ColorThemeContext);
     const [collection, setCollection] = useState([]);
-    
+
     return ( colors.background_color !== undefined?
         <div className="home font-gilroy" style={{backgroundColor: colors.background_color}} onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()}>
             <div className="child-home">
