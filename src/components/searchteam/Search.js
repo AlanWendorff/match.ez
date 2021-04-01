@@ -3,11 +3,10 @@ import Team from './Team';
 import SaveInLS from './SaveInLS';
 import { ColorThemeContext } from '../context/ColorThemeContext';
 import { PathContext } from '../context/PathContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 import './search.css';
 
 const Search = ({setCollection, collection}) => {
+    
     const { colors } = useContext(ColorThemeContext);
     const [equiposfiltrados, guardarEquiposFiltrados] = useState([]);
     const [firstpin, setFirstPin] = useState(false);
@@ -19,7 +18,6 @@ const Search = ({setCollection, collection}) => {
             localStorage.setItem('collection', JSON.stringify([]));
         }
         setCollection(JSON.parse(localStorage.getItem('collection')));
-        //eslint-disable-next-line
     }, [paths]);
 
     const BuscarEquipos = () => {
@@ -37,7 +35,7 @@ const Search = ({setCollection, collection}) => {
     const SaveOnLS = () => {
         setTimeout(() => {  
             localStorage.setItem('collection', JSON.stringify(collection));
-         }, 200);
+         }, 100);
     }
 
     return ( 

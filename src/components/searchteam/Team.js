@@ -11,11 +11,11 @@ import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
 const Team = ({team, setCollection, collection, setFirstPin}) => {
     
     const [teamsaved, setTeamSaved] = useState(false);
-    const [exist, setExist] = useState(undefined);
 
     useEffect(() => {
-        const exist = collection.find(element => element.name === team.name);
-        setExist(exist);
+        const exist = collection.find(element => element.id === team.id);
+        console.log(exist);
+        exist === undefined? setTeamSaved(false) : setTeamSaved(true);
     }, [teamsaved]);
 
     return ( 
@@ -27,44 +27,25 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
                 <span className="font-bold color-text-black animate__animated animate__fadeInRight animate__faster">{team.name}</span>
             </Link> 
             
-            {exist !== undefined?
-                <div className={teamsaved? "pin-team-container" : "pin-team-container-saved"} onClick={() => {
+            <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
+                //console.log("---not pined");
+                if (teamsaved === true) {
                     console.log("X delete pin");
-                    if (teamsaved === false) {
-                        const deletedTeam = collection.filter(deleteteam => deleteteam.id !== team.id);
-                        setCollection( deletedTeam );   
-                        setTeamSaved(false);
-                        setFirstPin(true);
-                    }else{
-                        console.log(".pinging");
-                        setCollection( [...collection, {img : team.img, name : team.name, id : team.id}] ); 
-                        setTeamSaved(true);
-                        setFirstPin(true);
-                    }
-                    }}> 
-                    <FontAwesomeIcon icon={faThumbtack}/>
-                </div>
-
-            :   
-                <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
-                    //console.log("---not pined");
-                    if (teamsaved === true) {
-                        console.log("X delete pin");
-                        const deletedTeam = collection.filter(deleteteam => deleteteam.id !== team.id);
-                        setCollection( deletedTeam );   
-                        setTeamSaved(false);
-                        setFirstPin(true);
-                    }else{
-                        console.log(".pinging");
-                        setCollection( [...collection, {img : team.img, name : team.name, id : team.id}] ); 
-                        setTeamSaved(true);
-                        setFirstPin(true);
-                    }
-                    }}>
-                            
-                    <FontAwesomeIcon icon={faThumbtack}/>
-                </div>
-            }
+                    const deletedTeam = collection.filter(deleteteam => deleteteam.id !== team.id);
+                    setCollection( deletedTeam );   
+                    setTeamSaved(false);
+                    setFirstPin(true);
+                }else{
+                    console.log(".pinging");
+                    setCollection( [...collection, {img : team.img, name : team.name, id : team.id}] ); 
+                    setTeamSaved(true);
+                    setFirstPin(true);
+                }
+                }}>
+                        
+                <FontAwesomeIcon icon={faThumbtack}/>
+            </div>
+            
         </div>       
      );
 }
