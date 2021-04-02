@@ -44,6 +44,7 @@ const MatchesApp = () => {
             if (prevMatch.length === 0) {
                 const {objPastMatch, badFetch} = await getPastMatch(teamid);
                 const {data, imageTeam} = objPastMatch;
+                console.log(imageTeam);
                 if (!data) history.push(HOME);
                 if (data && data.length !== 0) {
                     guardarLoaderProgress({width: '30%'});

@@ -26,7 +26,7 @@ const Tarjetaversus = ({match, teamid}) => {
 
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
-    
+
     let ownLogo;
     let ownName;
     let proxyLogo;
@@ -111,7 +111,7 @@ const Tarjetaversus = ({match, teamid}) => {
                         <div className="card-image container-info cursor-default padding-top-8">
 
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={TOURNAMENT.replace(':tournamentId', tournament.id)} title={LOOKMATCHES + league.name}> {league.name+" "+serie.full_name} </a>     
+                                <Link className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name}> {league.name+" "+serie.full_name} </Link>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -180,7 +180,7 @@ const Tarjetaversus = ({match, teamid}) => {
 
                     <div className="card-stacked">
                         <div className="card-content">
-                            <a className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={TOURNAMENT.replace(':tournamentId', tournament.id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </a>
+                            <Link className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}}  to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </Link>
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Vs:</span> 
                                 {opponentName === undefined? 'To be defined' : opponentName}
