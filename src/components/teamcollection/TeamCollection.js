@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
-import {
-    TEAM,
-  } from '../../routes/routes';
+import csgoLogo from '../../Images/csgoLogoDefault.png';
+import { TEAM } from '../../routes/routes';
 import './teamcollection.css';
 
 const examples = [

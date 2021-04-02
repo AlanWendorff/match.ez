@@ -1,15 +1,14 @@
 import React, {useEffect, Fragment} from 'react';
-import MatchesApp from './components/teamprofile/MatchesApp';
-import Home from './components/home2/Home';
-import More from './components/more/More';
-import Tournaments from './components/tournaments/Tournaments';
-import Allmatches from './components/allmatches/Allmatches';
-import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
-import Timeline from './components/timeline/Timeline';
-import Control from './components/controlroom/Control';
-import NavigationBar from './components/navigationbar/NavigationBar';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import TeamProfile from './components/TeamProfile/TeamProfile';
+import Home from './components/Home/Home';
+import More from './components/More/More';
+import Tournaments from './components/Tournaments/Tournaments';
+import AllMatches from './components/AllMatches/AllMatches';
+import LeagueGames from './components/LeagueGames/LeagueGames';
+import Timeline from './components/Timeline/Timeline';
+import ControlRoom from './components/ControlRoom/ControlRoom';
+import NavigationBar from './components/NavigationBar/NavigationBar';
 import {
   HOME,
   TOURNAMENTS,
@@ -67,13 +66,13 @@ const Layout = () => {
     <Fragment>
       <Router> 
           <Switch>
-            <Route exact path={CONTROL} component={Control}/>
-            <Route exact path={TEAM} component={MatchesApp}/>
-            <Route exact path={TOURNAMENT} component={MatchTorneoApp}/>
+            <Route exact path={CONTROL} component={ControlRoom}/>
+            <Route exact path={TEAM} component={TeamProfile}/>
+            <Route exact path={TOURNAMENT} component={LeagueGames}/>
             <Route exact path={MORE} component={More}/>
             <Route exact path={TOURNAMENTS} component={Tournaments}/>
             <Route exact path={TIMELINE} component={Timeline}/>
-            <Route exact path={ALLMATCHES} component={Allmatches}/>
+            <Route exact path={ALLMATCHES} component={AllMatches}/>
             <Route exact path={HOME} component={Home}/>
           </Switch>
         <footer>

@@ -1,22 +1,26 @@
-
-
-@media (min-width: 641px)  {
-    .allmatches{
-        overflow-y: scroll;
+/*       MENU         */
+@media (min-width: 641px) {  
+    .home{
         width: 100%;
-        height: calc(100vh - 50px);
         background-image: url('../../Images/generic_team_pattern.png');
         background-repeat: repeat; 
         background-size: 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll;
+        height: calc(100vh - 50px);
+    } 
+    .child-home{
+        width: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
-  
 
 @media screen and (max-width: 640px) {
-    .allmatches{
+    .child-home{
         overflow-y: scroll;
         width: 100%;
         height: calc(100vh - 50px);
@@ -26,6 +30,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 50px;
+    }
+    .home{
+        width: 100%;
     }
 }
   

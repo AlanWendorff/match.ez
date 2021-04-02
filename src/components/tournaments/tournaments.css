@@ -4,7 +4,7 @@
         padding-top: 10px;
         overflow-y: scroll;
         height: calc(100vh - 50px);
-        background-image: url('../../pattern/generic_team_pattern.png');
+        background-image: url('../../Images/generic_team_pattern.png');
         background-repeat: repeat; 
         background-size: 50px 50px;
         display: flex;
@@ -61,7 +61,7 @@
         overflow-y: scroll;
         width: 100%;
         height: calc(100vh - 50px);
-        background-image: url('../../pattern/generic_team_pattern.png');
+        background-image: url('../../Images/generic_team_pattern.png');
         background-repeat: repeat; 
         background-size: 50px 50px;
         display: flex;

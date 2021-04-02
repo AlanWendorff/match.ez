@@ -1,20 +1,13 @@
 import React, {useContext } from 'react';
+import { faCalendarAlt, faTrophy, faUserFriends, faFistRaised } from '@fortawesome/free-solid-svg-icons';
+import { HOME, TOURNAMENTS, MORE, TIMELINE, ALLMATCHES, } from '../../routes/routes';
+import { ColorThemeContext } from '../Context/ColorThemeContext';
+import { HeaderLogoContext } from '../Context/HeaderLogoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCalendarAlt, faTrophy, faUserFriends, faFistRaised } from '@fortawesome/free-solid-svg-icons';
 import {Link, useLocation} from 'react-router-dom';
-import { ColorThemeContext } from '../context/ColorThemeContext';
-import appLogo from '../../ImagenesVarias/defuse.png'
-import csgoLogo from '../../LogoTeams/csgoLogo.png'
-import {HeaderLogoContext} from '../context/HeaderLogoContext';
-import {
-    HOME,
-    TOURNAMENTS,
-    MORE,
-    TIMELINE,
-    ALLMATCHES,
-    UNITY,
-    CONTROL,
-  } from '../../routes/routes';
+
+import appLogo from '../../Images/defuse.png'
+import csgoLogo from '../../Images/csgoLogo.png'
 import './navigationbar.css';
 
 const NavigationBar = () => {

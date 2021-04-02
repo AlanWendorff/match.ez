@@ -1,9 +1,8 @@
 import React from 'react';
+import { faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTimes, faTrophy, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import ProgressiveImage from 'react-progressive-image';
-import LazyLoad from 'react-lazyload';
-import csgoLogoDefaultBlack from '../../ImagenesVarias/csgoLogoDefaultBlack.png';
+import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
 import './leaderboard.css'
 
 const Leaderboard = ({leaderboard}) => {

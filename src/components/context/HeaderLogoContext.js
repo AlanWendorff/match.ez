@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect} from 'react';
-import appLogo from '../../ImagenesVarias/defuse.png'
 import { usePalette } from 'react-palette';
 // creacion del context
 export const HeaderLogoContext = createContext();

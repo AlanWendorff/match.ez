@@ -1,10 +1,10 @@
 import React from 'react';
 import Layout from './Layout';
-import ColorThemeProvider from './components/context/ColorThemeContext';
-import TournamentProvider from './components/context/TournamentContext';
-import PathProvider from './components/context/PathContext';
-import HeaderLogoProvider from './components/context/HeaderLogoContext';
-import LoaderProvider from './components/context/LoaderContext';
+import ColorThemeProvider from './components/Context/ColorThemeContext';
+import TournamentProvider from './components/Context/TournamentContext';
+import PathProvider from './components/Context/PathContext';
+import HeaderLogoProvider from './components/Context/HeaderLogoContext';
+import LoaderProvider from './components/Context/LoaderContext';
 
 const App = () => {  
   if(navigator.onLine !== true){

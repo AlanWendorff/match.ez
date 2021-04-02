@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BannerWarning from '../../ImagenesVarias/bannerWarning.jpg';
+import BannerWarning from '../../Images/bannerWarning.jpg';
 import './warning.css';
 
 const Warning = () => {

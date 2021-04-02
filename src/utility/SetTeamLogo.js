@@ -1,4 +1,4 @@
-import csgoLogoDefaultBlack from '../ImagenesVarias/csgoLogoDefaultBlack.png';
+import csgoLogoDefaultBlack from '../Images/csgoLogoDefaultBlack.png';
 
 export const setTeamLogo = (opponents, teamId) =>{
     let ArrteamA;

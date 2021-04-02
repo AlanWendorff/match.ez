@@ -1,6 +1,6 @@
 import React from 'react';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
+import csgoLogo from '../../Images/csgoLogoDefault.png';
 import './tournaments.css';
 
 

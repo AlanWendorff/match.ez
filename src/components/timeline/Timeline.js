@@ -1,25 +1,19 @@
 import React, {useEffect, useState, useContext} from 'react';
-import Moment from 'moment';
-import shortid from 'shortid';
-import SimpleLoadScreen from '../loader/SimpleLoadScreen';
-import csgoLogoDefaultBlack from '../../ImagenesVarias/csgoLogoDefaultBlack.png';
-import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
-import Warning from '../warning/Warning';
-import LoadScreen from '../loader/LoadScreen';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { faCalendarDay, faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
+import { LOOKMATCHES, LOOKPROFILE } from '../../titlestag/titlestag';
+import { ColorThemeContext } from '../Context/ColorThemeContext';
+import { TOURNAMENT, TEAM } from '../../routes/routes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getTimeline } from './getTimeline';
 import { Link } from 'react-router-dom';
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import { ColorThemeContext } from '../context/ColorThemeContext';
-import { 
-    LOOKMATCHES,
-    LOOKPROFILE
- } from '../../titlestag/titlestag';
- import {
-    TOURNAMENT,
-    TEAM
-  } from '../../routes/routes';
+import SimpleLoadScreen from '../Loader/SimpleLoadScreen';
+import LoadScreen from '../Loader/LoadScreen';
+import Warning from '../Warning/Warning';
+import shortid from 'shortid';
+import Moment from 'moment';
+import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
+import toBeDefined from '../../Images/toBeDefined.png';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {

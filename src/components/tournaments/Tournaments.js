@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
-import Item from './Item';
-import SimpleLoadScreen from '../loader/SimpleLoadScreen';
-import { ColorThemeContext } from '../context/ColorThemeContext';
+import { ColorThemeContext } from '../Context/ColorThemeContext';
+import { TournamentContext } from '../Context/TournamentContext';
+import { LOOKMATCHES } from '../../titlestag/titlestag';
+import { TOURNAMENT } from '../../routes/routes';
 import { Link } from 'react-router-dom';
-import { TournamentContext } from '../context/TournamentContext';
-import {
-    TOURNAMENT,
-  } from '../../routes/routes';
-import {
-    LOOKMATCHES
-} from '../../titlestag/titlestag';
+import SimpleLoadScreen from '../Loader/SimpleLoadScreen';
+import Item from './Item';
 import './tournaments.css';
 
 const Tournaments = () => {

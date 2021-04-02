@@ -1,14 +1,14 @@
 import React, {useEffect, useState, useContext } from 'react';
+import { ColorThemeContext } from '../Context/ColorThemeContext';
 import { getAllmatches } from './getAllmatches.js';
-import SimpleLoadScreen from '../loader/SimpleLoadScreen';
-import TarjetaInformativa from '../tarjetas/infocard/TarjetaInformativa';
+import SimpleLoadScreen from '../Loader/SimpleLoadScreen';
+import InfoCard from '../InfoCard/InfoCard';
 import ListadoAllmatches from './ListadoAllmatches';
-import Warning from '../warning/Warning';
-import LoadScreen from '../loader/LoadScreen';
-import { ColorThemeContext } from '../context/ColorThemeContext';
+import Warning from '../Warning/Warning';
+import LoadScreen from '../Loader/LoadScreen';
 import './allmatches.css';
 
-const Allmatches = () => {
+const AllMatches = () => {
     const { colors } = useContext(ColorThemeContext);
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
@@ -47,7 +47,7 @@ const Allmatches = () => {
                                     allmatches={allmatches}
                                 />
                             :
-                                <TarjetaInformativa
+                                <InfoCard
                                     noMatches={noMatches}
                                 />
                         }
@@ -79,4 +79,4 @@ const Allmatches = () => {
     };
         
 }
-export default Allmatches;
+export default AllMatches;

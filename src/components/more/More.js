@@ -1,18 +1,8 @@
-import React, { useState, Fragment, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ColorThemeContext } from '../context/ColorThemeContext';
-import SimpleLoadScreen from '../loader/SimpleLoadScreen';
+import { ColorThemeContext } from '../Context/ColorThemeContext';
+import SimpleLoadScreen from '../Loader/SimpleLoadScreen';
 import { faBolt, faCheck, faCodeBranch, faDownload, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import {
-    HOME,
-    TOURNAMENTS,
-    TIMELINE,
-    ALLMATCHES,
-    MORE,
-    UNITY,
-    CONTROL,
-  } from '../../routes/routes';
 import './more.css';
 let deferredPrompt; 
 const More = () => {

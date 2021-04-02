@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
-import {
-    TEAM,
-  } from '../../routes/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { TEAM } from '../../routes/routes';
+import ProgressiveImage from 'react-progressive-image';
+import csgoLogo from '../../Images/csgoLogoDefault.png';
 
 const Team = ({team, setCollection, collection, setFirstPin}) => {
     
