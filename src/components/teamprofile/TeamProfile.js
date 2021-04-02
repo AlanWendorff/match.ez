@@ -37,58 +37,54 @@ const TeamProfile = () => {
     const [image_url, setImageTeam] = useState('');
 
     useEffect(() => {  
+        guardarLoaderProgress({width: '0%'})
+        guardarNoMatches(false);
+        guardarStateCrash(false);
+
         (async () => {
-            if (prevMatch.length === 0) {
-                const {objPastMatch, badFetch} = await getPastMatch(teamid);
-                const {data, imageTeam} = objPastMatch;
-                console.log(imageTeam);
-                if (!data) history.push(HOME);
-                if (data && data.length !== 0) {
-                    guardarLoaderProgress({width: '30%'});
-                    guardarPrevMatch(data);
-                        
-                    if (imageTeam === null) {
-                        setImageTeam(csgoLogoDefault);
-                    }else{
-                        setImageTeam('https://proxy-kremowy.herokuapp.com/' + imageTeam);
-                        guardarLogo('https://proxy-kremowy.herokuapp.com/' + imageTeam);
-                    }
-                    if(scoreMatch.length === 0){
-                        const {objPlayerScore, badFetch} = await getPlayerScore(data);
-                        if (objPlayerScore) {
-                            guardarLoaderProgress({width: '50%'});
-                            guardarScoreMatch(objPlayerScore);
-                        }
-                        if (badFetch) {
-                            guardarStateCrash(true);
-                        }  
-                    };
+            const {objPastMatch, badFetch} = await getPastMatch(teamid);
+            const {data, imageTeam} = objPastMatch;
+            if (!data) history.push(HOME);
+            if (data && data.length !== 0) {
+                guardarPrevMatch(data);
+                if (imageTeam === null) {
+                    setImageTeam(csgoLogoDefault);
                 }else{
-                    guardarPrevMatch("no-match");
+                    setImageTeam('https://proxy-kremowy.herokuapp.com/' + imageTeam);
+                    guardarLogo('https://proxy-kremowy.herokuapp.com/' + imageTeam);
+                }
+                guardarLoaderProgress({width: '30%'});
+                const {objPlayerScore, badFetch} = await getPlayerScore(data);
+                if (objPlayerScore) {
+                    guardarScoreMatch(objPlayerScore);
+                    guardarLoaderProgress({width: '50%'});
                 }
                 if (badFetch) {
                     guardarStateCrash(true);
-                }
-            };
-            
-            if(!matches.length > 0){
+                }  
+            }else{
+                guardarPrevMatch("no-match");
+            }
+            if (badFetch) {
+                guardarStateCrash(true);
+            }
+            if (winStrike !== -3) {
                 const {objNextMatches, badFetch} = await getNextMatches(teamid);
                 if (objNextMatches) {
-                    guardarLoaderProgress({width: '100%'});
                     const matchesFiltered = objNextMatches.filter(status => status.status !== "canceled");
                     guardarMatches(matchesFiltered);
                     if(objNextMatches.length === 0){   
                         guardarNoMatches(true);
                     }
+                    guardarLoaderProgress({width: '100%'});
                 }
                 if (badFetch) {
                     guardarStateCrash(true);
                 }
-            };
+            }
         })()
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    },[teamid]);
 
     function toDataURL(url, callback) {
         var xhr = new XMLHttpRequest();

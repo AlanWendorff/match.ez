@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import HistoricMatchCard from './HistoricMatchCard';
 
-const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamId, scoreMatch}) => {
+const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamid, scoreMatch}) => {
     const [firstIndexDate, setFirstIndexDate] = useState("");
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamId, scoreMatch}) => {
                     key={match.id}
                     firstIndexDate={firstIndexDate}
                     match={match}
-                    teamId={teamId}
+                    teamId={teamid}
                     scoreMatch={scoreMatch}
                 />
         ))}

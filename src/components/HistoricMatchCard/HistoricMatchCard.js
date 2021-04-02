@@ -199,8 +199,8 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate}) => {
                                 />
                             </div>
                         </Fragment>
-                    :
-                    null
+                        :
+                        null
                     }
                 </Fragment>
             }

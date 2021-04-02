@@ -5,8 +5,7 @@ export const setTeamLogo = (opponents, teamId) =>{
     let ArrteamB;
     let aTeamName, aTeamId, aTeamLogo;
     let bTeamName, bTeamId, bTeamLogo;
-    
-    console.log(teamId);
+
     if (teamId) {
         ArrteamA = opponents.find(element => element.opponent.id !== parseInt(teamId));
         ArrteamB = opponents.find(element => element.opponent.id === parseInt(teamId));

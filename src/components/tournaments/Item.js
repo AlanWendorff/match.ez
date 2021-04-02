@@ -15,7 +15,7 @@ const Item = ({customTournament, tournament}) => {
         name = tournament.name;
     }
     return(
-        <div className="tournament-flex crosshair-large"> 
+        <div className="tournament-flex crosshair-expand"> 
             <ProgressiveImage src={img} placeholder={csgoLogo}>
                 {src => <img className="tournament-logo-size" loading="lazy" src={src} alt={name} />}
             </ProgressiveImage>

@@ -12,7 +12,6 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
 
     useEffect(() => {
         const exist = collection.find(element => element.id === team.id);
-        console.log(exist);
         exist === undefined? setTeamSaved(false) : setTeamSaved(true);
     }, [teamsaved]);
 
@@ -27,13 +26,11 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
             
             <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
                 if (teamsaved === true) {
-                    console.log("X delete pin");
                     const deletedTeam = collection.filter(deleteteam => deleteteam.id !== team.id);
                     setCollection( deletedTeam );   
                     setTeamSaved(false);
                     setFirstPin(true);
                 }else{
-                    console.log(".pinging");
                     setCollection( [...collection, {img : team.img, name : team.name, id : team.id}] ); 
                     setTeamSaved(true);
                     setFirstPin(true);

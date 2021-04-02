@@ -1,14 +1,14 @@
 import React, {useEffect, Fragment} from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavigationBar from './components/NavigationBar/NavigationBar';
 import TeamProfile from './components/TeamProfile/TeamProfile';
+import Tournaments from './components/Tournaments/Tournaments';
+import LeagueGames from './components/LeagueGames/LeagueGames';
+import ControlRoom from './components/ControlRoom/ControlRoom';
+import AllMatches from './components/AllMatches/AllMatches';
+import Timeline from './components/Timeline/Timeline';
 import Home from './components/Home/Home';
 import More from './components/More/More';
-import Tournaments from './components/Tournaments/Tournaments';
-import AllMatches from './components/AllMatches/AllMatches';
-import LeagueGames from './components/LeagueGames/LeagueGames';
-import Timeline from './components/Timeline/Timeline';
-import ControlRoom from './components/ControlRoom/ControlRoom';
-import NavigationBar from './components/NavigationBar/NavigationBar';
 import {
   HOME,
   TOURNAMENTS,
@@ -18,7 +18,7 @@ import {
   CONTROL,
   TOURNAMENT,
   TEAM,
-} from './routes/routes';
+ } from './routes/routes';
 import axios from 'axios';
 
 const Layout = () => {
