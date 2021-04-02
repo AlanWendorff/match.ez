@@ -126,6 +126,7 @@ const LeagueGames = () => {
                     {show === "history" && prevMatch !== "no-match" &&
                         <HistoricMatchMapping
                             prevMatch={prevMatch}
+                            setShow={setShow}
                         />
                     }  
                     <Logo

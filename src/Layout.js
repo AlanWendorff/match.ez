@@ -66,13 +66,13 @@ const Layout = () => {
     <Fragment>
       <Router> 
           <Switch>
-            <Route exact path={CONTROL} component={ControlRoom}/>
-            <Route exact path={TEAM} component={TeamProfile}/>
-            <Route exact path={TOURNAMENT} component={LeagueGames}/>
-            <Route exact path={MORE} component={More}/>
             <Route exact path={TOURNAMENTS} component={Tournaments}/>
-            <Route exact path={TIMELINE} component={Timeline}/>
+            <Route exact path={TOURNAMENT} component={LeagueGames}/>
             <Route exact path={ALLMATCHES} component={AllMatches}/>
+            <Route exact path={CONTROL} component={ControlRoom}/>
+            <Route exact path={TIMELINE} component={Timeline}/>
+            <Route exact path={TEAM} component={TeamProfile}/>       
+            <Route exact path={MORE} component={More}/>      
             <Route exact path={HOME} component={Home}/>
           </Switch>
         <footer>

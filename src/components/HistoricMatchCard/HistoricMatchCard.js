@@ -17,7 +17,7 @@ import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
 import '../CompetitionCard/tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate}) => {
+const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate, setShow}) => {
 
     let proxyLogo;
     let fase = "";
@@ -71,7 +71,7 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate}) => {
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={!teamId? TEAM.replace(':teamid', aTeamId) : TEAM.replace(':teamid', bTeamId)}>
+                            <Link to={!teamId? TEAM.replace(':teamid', aTeamId) : undefined} onClick={()=>{!teamId&& setShow("vs")}}>
                                 <div className={A_point < B_point? "match-loser-prevgame" :"match-winner-prevgame"}>                            
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={!teamId? LOOKPROFILE + aTeamName : undefined} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
@@ -93,7 +93,7 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate}) => {
                         </div>
 
                         <div className="team-column">
-                            <Link to={TEAM.replace(':teamid', bTeamId)}>
+                            <Link to={TEAM.replace(':teamid', bTeamId)} onClick={()=>{setShow("vs")}}>
                                 <div className={A_point < B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}

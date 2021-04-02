@@ -20,11 +20,12 @@ import '../../styles/base.css';
 const TeamProfile = () => { 
     const {teamid} = useParams();
     const history = useHistory();
+    
+    if (!teamid) history.push(HOME);
     let backgroundStyle;
     let winStrike = 0;
     let winRate   = 0;
     let matchWin  = 0;
-
     const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
     const [loaderprogress, guardarLoaderProgress]  = useState({width: '0%'});
     const [prevMatch, guardarPrevMatch] = useState([]);
@@ -37,14 +38,13 @@ const TeamProfile = () => {
     const [image_url, setImageTeam] = useState('');
 
     useEffect(() => {  
+        setShow("vs");
         guardarLoaderProgress({width: '0%'})
         guardarNoMatches(false);
         guardarStateCrash(false);
-
         (async () => {
             const {objPastMatch, badFetch} = await getPastMatch(teamid);
             const {data, imageTeam} = objPastMatch;
-            if (!data) history.push(HOME);
             if (data && data.length !== 0) {
                 guardarPrevMatch(data);
                 if (imageTeam === null) {
@@ -171,6 +171,7 @@ const TeamProfile = () => {
                             prevMatch={prevMatch}
                             teamid={teamid}
                             scoreMatch={scoreMatch}
+                            setShow={setShow}
                         />
                     }                                                                                                                           
                     <Logo
