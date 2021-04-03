@@ -12,6 +12,6 @@ table{
     padding: 5px 0px !important;
 }
 
-td > img{
+td > .player-image{
     height: 50px;
 }

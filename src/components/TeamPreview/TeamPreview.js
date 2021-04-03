@@ -1,5 +1,5 @@
 import React from 'react';
-
+import unknown from '../../Images/unknown.png';
 import './teampreview.css';
 
 const TeamPreview = ({color, matches, prevMatch}) => {
@@ -160,7 +160,7 @@ const TeamPreview = ({color, matches, prevMatch}) => {
     ]
     
     return ( 
-        <div className="preview-container">
+        <div className="preview-container font-gilroy">
             <table>
                 <tbody>
                     {
@@ -168,9 +168,9 @@ const TeamPreview = ({color, matches, prevMatch}) => {
                             const {nationality, name, first_name, last_name, image_url} = player;
                             return(
                                 <tr className="line-width" >
-                                    <td className="text-align-center color-text-black font-bold table-font-size"><img src={image_url} /></td>
+                                    <td className="text-align-center color-text-black font-bold table-font-size"><img className="player-image" src={image_url === null? unknown : image_url} /></td>
                                     <td className="space color-text-black font-bold table-font-size">{first_name}<span style={{color: color.darkVibrant}} className="player-name-style">"{name}"</span>{last_name}</td>
-                                    <td className="text-align-center color-text-black font-bold table-font-size">{nationality}</td>
+                                    <td className="text-align-center color-text-black font-bold table-font-size" title={nationality}><img src={`https://www.countryflags.io/${nationality}/flat/48.png`} /></td>
                                 </tr>
                             );                                  
                         })
