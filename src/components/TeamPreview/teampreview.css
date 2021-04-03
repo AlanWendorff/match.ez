@@ -1,0 +1,17 @@
+.preview-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table{
+    width: 630px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px 0px !important;
+}
+
+td > img{
+    height: 50px;
+}

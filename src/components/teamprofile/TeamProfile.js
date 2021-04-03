@@ -9,6 +9,7 @@ import HistoricMatchMapping from '../HistoricMatchCard/HistoricMatchMapping';
 import OneTeamMapping from '../OneTeamCard/OneTeamMapping';
 import StadisticCard from '../StadisticCard/StadisticCard';
 import MobileHeader from '../MobileHeader/MobileHeader';
+import TeamPreview from '../TeamPreview/TeamPreview';
 import LoadScreen from '../Loader/LoadScreen';
 import InfoCard from '../InfoCard/InfoCard';
 import Warning from '../Warning/Warning';
@@ -148,11 +149,20 @@ const TeamProfile = () => {
                         color={data}
                         img={image_url}
                         setShow={setShow}
+                        isProfile
                     />  
                     <StadisticCard
                         winRate={winRate}
                         winStrike={winStrike}
                     /> 
+
+                    {show === "preview"&&
+                        <TeamPreview
+                            color={data}
+                            matches={matches}
+                            prevMatch={prevMatch}
+                        />
+                    }
  
                     {show === "vs" && !matches.length > 0 &&
                         <InfoCard

@@ -11,6 +11,10 @@
     background-color: rgba(0, 0, 0, 0.342);
 }
 
+.header-mobile > div > img {
+    width: 30px;
+}
+
 @media (min-width: 641px) {
     .header-mobile{
         width: 100%;
