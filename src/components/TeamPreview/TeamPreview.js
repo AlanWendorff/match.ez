@@ -5,7 +5,9 @@ import './teampreview.css';
 const TeamPreview = ({color, matches, prevMatch}) => {
     const NEXTMATCH = matches[0];
     const LASTMATCH = prevMatch[0];
-
+    console.log(LASTMATCH.results);
+    //const {opponents, results} = LASTMATCH;
+    //const {opponents, status} = NEXTMATCH;
     const array = [
         {
             "current_team": {
@@ -177,6 +179,42 @@ const TeamPreview = ({color, matches, prevMatch}) => {
                     }
                 </tbody>
             </table>
+
+            <div className="little-info">
+                <div className="last-match">
+                    <div className="team">
+                        <img src={LASTMATCH.opponents[0].opponent.image_url}/>
+                        <span>{LASTMATCH.opponents[0].opponent.name}</span>
+                    </div>
+                    <span>{LASTMATCH.results[0].score}</span>
+                    <span>-</span>
+                    <span>{LASTMATCH.results[1].score}</span>
+                    <div className="team">
+                        <img src={LASTMATCH.opponents[1].opponent.image_url}/>
+                        <span>{LASTMATCH.opponents[1].opponent.name}</span>
+                    </div>
+                </div>
+
+                <div className="next-match">
+                    {NEXTMATCH?
+                        <>
+                            <div className="team">
+                                <img src={NEXTMATCH.opponents[0].opponent.image_url}/>
+                                <span>{NEXTMATCH.opponents[0].opponent.name}</span>
+                            </div>
+                            <span>vs</span>
+                            <div className="team">
+                                <img src={NEXTMATCH.opponents[1].opponent.image_url}/>
+                                <span>{NEXTMATCH.opponents[1].opponent.name}</span>
+                            </div>
+                        </>
+                    :
+
+                        <span>NO UPCOMING MATCH</span>
+
+                    }
+                </div>
+            </div>
 
             
         </div>
