@@ -39,6 +39,7 @@ const LeagueGames = () => {
         }
     );
     const setHistory = () => {
+        window.scrollTo(0, 0);
         setButtonStatus({
             vs: false,
             history: true,
@@ -49,6 +50,7 @@ const LeagueGames = () => {
     }
 
     const setLadder = () => {
+        window.scrollTo(0, 0);
         setButtonStatus({
             vs: false,
             history: false,
@@ -59,6 +61,7 @@ const LeagueGames = () => {
     }
 
     const setVs = () => {
+        window.scrollTo(0, 0);
         setButtonStatus({
             vs: true,
             history: false,

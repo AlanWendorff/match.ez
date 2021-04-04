@@ -17,7 +17,7 @@ import csgoLogoDefault from '../../Images/csgoLogoDefault.png';
 import '../CompetitionCard/tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const HistoricMatchCard = ({match, teamId, firstIndex, setShow, setPlayerScore, playerscore}) => {
+const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScore, playerscore}) => {
 
     let proxyLogo;
     let fase = "";
@@ -85,7 +85,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setShow, setPlayerScore, 
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)} onClick={()=>{setShow("preview")}}>
+                            <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)} onClick={()=>{setPreview();}}>
                                 <div className={results[0].score < results[1].score? "match-loser-prevgame" :"match-winner-prevgame"}>                            
                                     <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
@@ -107,7 +107,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setShow, setPlayerScore, 
                         </div>
 
                         <div className="team-column">
-                            <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)} onClick={()=>{setShow("preview")}}>
+                            <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)} onClick={()=>{setPreview();}}>
                                 <div className={results[0].score < results[1].score? "match-winner-prevgame" : "match-loser-prevgame"}>
                                     <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
                                         {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}

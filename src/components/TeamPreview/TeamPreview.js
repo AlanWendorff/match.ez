@@ -10,7 +10,7 @@ import './teampreview.css';
 const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => {
     const NEXTMATCH = matches[0];
     const LASTMATCH = prevMatch[0];
-
+    
     return ( 
         <div className="preview-container font-gilroy">
             <div className="team">
@@ -44,15 +44,25 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => 
                             <img src={LASTMATCH.opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : LASTMATCH.opponents[0].opponent.image_url}/>
                             <span>{LASTMATCH.opponents[0].opponent.name}</span>
                         </div>
-                        <span>{LASTMATCH.results[0].score}</span>
+                        
+                        <span 
+                            className={LASTMATCH.results[0].score > LASTMATCH.results[1].score? "winner-dot" : ""}
+                            style={{ backgroundColor: LASTMATCH.results[0].score > LASTMATCH.results[1].score&& color.vibrant }}
+                            >{LASTMATCH.results[0].score}</span>
+
                         <span>-</span>
-                        <span>{LASTMATCH.results[1].score}</span>
+
+                        <span 
+                            className={LASTMATCH.results[0].score < LASTMATCH.results[1].score? "winner-dot" : ""}
+                            style={{ backgroundColor: LASTMATCH.results[0].score < LASTMATCH.results[1].score&& color.vibrant }}
+                            >{LASTMATCH.results[1].score}</span>
+                        
                         <div className="team">
                             <img src={LASTMATCH.opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : LASTMATCH.opponents[1].opponent.image_url}/>
                             <span>{LASTMATCH.opponents[1].opponent.name}</span>
                         </div>
                     </div>
-                    <FontAwesomeIcon onClick={()=> {setHistory()}} className="font-size-17px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
+                    <FontAwesomeIcon onClick={()=> {window.scrollTo(0, 0); setHistory();}} className="font-size-18px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
                 </div>
 
                 <div className="next-match">
@@ -84,7 +94,7 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => 
                                         <span>{NEXTMATCH.opponents.length > 1? NEXTMATCH.opponents[1].opponent.name : "To be Defined"}</span>
                                     </div>
                                 </div>
-                                <FontAwesomeIcon onClick={()=> {setVs()}} className="font-size-17px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
+                                <FontAwesomeIcon onClick={()=> {window.scrollTo(0, 0); setVs();}} className="font-size-18px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
                             </>
                         :
                             <div>

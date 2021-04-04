@@ -48,6 +48,7 @@ const TeamProfile = () => {
     );
 
     const setHistory = () => {
+        window.scrollTo(0, 0);
         setButtonStatus({
             vs: false,
             history: true,
@@ -58,6 +59,7 @@ const TeamProfile = () => {
     }
 
     const setVs = () => {
+        window.scrollTo(0, 0);
         setButtonStatus({
             vs: true,
             history: false,
@@ -68,6 +70,7 @@ const TeamProfile = () => {
     }
 
     const setPreview = () => {
+        window.scrollTo(0, 0);
         setButtonStatus({
             vs: false,
             history: false,
@@ -78,7 +81,7 @@ const TeamProfile = () => {
     }
 
     useEffect(() => {  
-        setShow("preview");
+        setPreview();
         guardarLoaderProgress({width: '0%'})
         guardarNoMatches(false);
         guardarStateCrash(false);
@@ -132,7 +135,6 @@ const TeamProfile = () => {
         xhr.responseType = 'blob';
         xhr.send();
     }
-
 
     if (image_url !== csgoLogoDefault) {
         toDataURL(image_url, function(dataUrl) {
@@ -222,7 +224,7 @@ const TeamProfile = () => {
                             teamid={teamid}
                             setPlayerScore={setPlayerScore}
                             playerscore={playerscore}
-                            setShow={setShow}
+                            setPreview={setPreview}
                         />
                     }                                                                                                                           
                     <Logo

@@ -61,6 +61,7 @@
     }
     
 }
+
 @media screen and (max-width: 770px) {   
     .preview-container > .team{
         display: flex;
@@ -121,16 +122,12 @@
     }
 }
 
-
-
 .preview-container > .team > .player > span{
     width: 100%;
     margin: 0px;
     text-align: center;
     font-size: 13px;
 }
-
-
 
 .preview-container > .little-info > .next-match > span{
     width: 100%;
@@ -183,4 +180,13 @@
     border-radius: 50%;
     display: inline-block;
     margin-left: 5px;
+}
+
+.winner-dot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
 }
