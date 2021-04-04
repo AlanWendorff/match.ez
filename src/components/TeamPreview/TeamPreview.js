@@ -1,8 +1,10 @@
 import React from 'react';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import unknown from '../../Images/unknown.png';
 import './teampreview.css';
 
-const TeamPreview = ({color, matches, prevMatch}) => {
+const TeamPreview = ({color, matches, prevMatch, setVs, setHistory}) => {
     const NEXTMATCH = matches[0];
     const LASTMATCH = prevMatch[0];
     console.log(LASTMATCH.results);
@@ -182,37 +184,46 @@ const TeamPreview = ({color, matches, prevMatch}) => {
 
             <div className="little-info">
                 <div className="last-match">
-                    <div className="team">
-                        <img src={LASTMATCH.opponents[0].opponent.image_url}/>
-                        <span>{LASTMATCH.opponents[0].opponent.name}</span>
+                    <span>Last Game</span>
+                    <div>
+                        <div className="team">
+                            <img src={LASTMATCH.opponents[0].opponent.image_url}/>
+                            <span>{LASTMATCH.opponents[0].opponent.name}</span>
+                        </div>
+                        <span>{LASTMATCH.results[0].score}</span>
+                        <span>-</span>
+                        <span>{LASTMATCH.results[1].score}</span>
+                        <div className="team">
+                            <img src={LASTMATCH.opponents[1].opponent.image_url}/>
+                            <span>{LASTMATCH.opponents[1].opponent.name}</span>
+                        </div>
                     </div>
-                    <span>{LASTMATCH.results[0].score}</span>
-                    <span>-</span>
-                    <span>{LASTMATCH.results[1].score}</span>
-                    <div className="team">
-                        <img src={LASTMATCH.opponents[1].opponent.image_url}/>
-                        <span>{LASTMATCH.opponents[1].opponent.name}</span>
-                    </div>
+                    <FontAwesomeIcon onClick={()=> {setHistory()}} className="font-size-17px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
                 </div>
 
                 <div className="next-match">
-                    {NEXTMATCH?
-                        <>
-                            <div className="team">
-                                <img src={NEXTMATCH.opponents[0].opponent.image_url}/>
-                                <span>{NEXTMATCH.opponents[0].opponent.name}</span>
-                            </div>
-                            <span>vs</span>
-                            <div className="team">
-                                <img src={NEXTMATCH.opponents[1].opponent.image_url}/>
-                                <span>{NEXTMATCH.opponents[1].opponent.name}</span>
-                            </div>
-                        </>
-                    :
+                    <span>Next Game {NEXTMATCH.status === 'running'&& <span>Live<span className="dot-indicator"></span></span>}</span>
+                    <div>
+                        {NEXTMATCH?
+                            <>
+                                
+                                <div className="team">
+                                    <img src={NEXTMATCH.opponents[0].opponent.image_url}/>
+                                    <span>{NEXTMATCH.opponents[0].opponent.name}</span>
+                                </div>
+                                <span>vs</span>
+                                <div className="team">
+                                    <img src={NEXTMATCH.opponents[1].opponent.image_url}/>
+                                    <span>{NEXTMATCH.opponents[1].opponent.name}</span>
+                                </div>
+                            </>
+                        :
 
-                        <span>NO UPCOMING MATCH</span>
+                            <span>NO UPCOMING MATCH</span>
 
-                    }
+                        }
+                    </div>
+                    <FontAwesomeIcon onClick={()=> {setVs()}} className="font-size-17px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
                 </div>
             </div>
 

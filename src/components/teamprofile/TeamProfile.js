@@ -33,10 +33,48 @@ const TeamProfile = () => {
     const [matches, guardarMatches]     = useState([]);
     const [scoreMatch, guardarScoreMatch] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
-    const [show, setShow] = useState("vs");
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
     const [image_url, setImageTeam] = useState('');
+    const [show, setShow] = useState("vs");
+    const [buttonstatus, setButtonStatus] = useState(
+        {   
+            preview: false,
+            vs: true,
+            history: false,
+            ladder: false
+        }
+    );
+
+    const setHistory = () => {
+        setButtonStatus({
+            vs: false,
+            history: true,
+            ladder: false,
+            preview: false,
+        })
+        setShow("history");
+    }
+
+    const setVs = () => {
+        setButtonStatus({
+            vs: true,
+            history: false,
+            ladder: false,
+            preview: false,
+        })
+        setShow("vs");
+    }
+
+    const setPreview = () => {
+        setButtonStatus({
+            vs: false,
+            history: false,
+            ladder: false,
+            preview: true,
+        })
+        setShow("preview");
+    }
 
     useEffect(() => {  
         setShow("vs");
@@ -148,8 +186,12 @@ const TeamProfile = () => {
                     <MobileHeader
                         color={data}
                         img={image_url}
-                        setShow={setShow}
+                        buttonstatus={buttonstatus}
+                        setPreview={setPreview}
+                        setVs={setVs}
+                        setHistory={setHistory}
                         isProfile
+                        setLadder
                     />  
                     <StadisticCard
                         winRate={winRate}
@@ -161,6 +203,9 @@ const TeamProfile = () => {
                             color={data}
                             matches={matches}
                             prevMatch={prevMatch}
+                            setPreview={setPreview}
+                            setVs={setVs}
+                            setHistory={setHistory}
                         />
                     }
  

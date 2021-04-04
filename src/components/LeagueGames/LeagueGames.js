@@ -20,7 +20,7 @@ const LeagueGames = () => {
     let backgroundStyle;
 
     const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
-    const [show, setShow] = useState("vs");
+    
     const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
     const [crash,    guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
@@ -29,6 +29,44 @@ const LeagueGames = () => {
     const [leaderboard, guardarLeaderboard] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
     const [image_url, setImageLeague] = useState('');
+    const [show, setShow] = useState("vs");
+    const [buttonstatus, setButtonStatus] = useState(
+        {   
+            preview: false,
+            vs: true,
+            history: false,
+            ladder: false
+        }
+    );
+    const setHistory = () => {
+        setButtonStatus({
+            vs: false,
+            history: true,
+            ladder: false,
+            preview: false,
+        })
+        setShow("history");
+    }
+
+    const setLadder = () => {
+        setButtonStatus({
+            vs: false,
+            history: false,
+            ladder: true,
+            preview: false,
+        })
+        setShow("ladder");
+    }
+
+    const setVs = () => {
+        setButtonStatus({
+            vs: true,
+            history: false,
+            ladder: false,
+            preview: false,
+        })
+        setShow("vs");
+    }
     
     useEffect(() => { 
         (async () => {
@@ -109,7 +147,11 @@ const LeagueGames = () => {
                     <MobileHeader
                         color={data}
                         img={image_url}
-                        setShow={setShow}
+                        buttonstatus={buttonstatus}
+                        setVs={setVs}
+                        setHistory={setHistory}
+                        setLadder={setLadder}
+                        setPreview
                         isTournament
                     />
                     {show === "ladder"&&
