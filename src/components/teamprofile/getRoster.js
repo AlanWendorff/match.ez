@@ -1,8 +1,8 @@
 import axios from 'axios';
 // data.headers.x-rate-limit-used
-export const getPastMatch = async (teamId) => {    
-    const badFetch = true;          
-    const url = `https://arg-matchez-backend.herokuapp.com/api/prevmatches/${teamId}`;
+export const getRoster = async (teamId) => {    
+    const badFetch = true;            
+    const url = `https://arg-matchez-backendv2.herokuapp.com/api/roster/${teamId}`;
     try {
         const config = {
             method: 'get',
@@ -11,12 +11,12 @@ export const getPastMatch = async (teamId) => {
                 "Access-Control-Allow-Origin": "*",
             }
         };
-        const resPrevMatches = await axios(config);
-        const objPastMatch = resPrevMatches.data;
-        if (resPrevMatches.status !== 200){
+        const resRoster = await axios(config);
+        const objRoster = resRoster.data;
+        if (resRoster.status !== 200){
             return{badFetch};
         }else{
-            return{objPastMatch}
+            return{objRoster}
         };
     } catch (error) {
         return{badFetch};  

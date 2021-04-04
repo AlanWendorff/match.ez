@@ -1,8 +1,7 @@
 import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getAllmatches = async () => {    
-    const badFetch = true;    
-    //https://arg-matchez-backend.herokuapp.com          
+    const badFetch = true;          
     const url = 'https://arg-matchez-backendv2.herokuapp.com/api/allmatches';
     try {
         const config = {

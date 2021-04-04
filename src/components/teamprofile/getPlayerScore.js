@@ -2,8 +2,7 @@ import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getPlayerScore = async (data) => {    
     const gameId = data[0].id;  
-    const badFetch = true;    
-    //https://arg-matchez-backend.herokuapp.com          
+    const badFetch = true;           
     const url = `https://arg-matchez-backendv2.herokuapp.com/api/teamscore/${gameId}`;
     try {
         const config = {

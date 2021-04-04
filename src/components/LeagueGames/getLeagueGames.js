@@ -1,8 +1,7 @@
 import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getLeagueGames = async (tournamentId) => {    
-    const badFetch = true;    
-    //https://arg-matchez-backend.herokuapp.com          
+    const badFetch = true;          
     const url = `https://arg-matchez-backend.herokuapp.com/api/tournamentmatches/${tournamentId}`;
     try {
         const config = {

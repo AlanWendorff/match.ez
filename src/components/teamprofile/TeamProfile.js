@@ -4,6 +4,7 @@ import { HeaderLogoContext } from '../Context/HeaderLogoContext';
 import { getNextMatches } from './getNextMatches';
 import { getPlayerScore } from './getPlayerScore';
 import { getPastMatch } from './getPastMatch';
+import { getRoster } from './getRoster';
 import { HOME } from '../../routes/routes';
 import HistoricMatchMapping from '../HistoricMatchCard/HistoricMatchMapping';
 import OneTeamMapping from '../OneTeamCard/OneTeamMapping';
@@ -32,6 +33,7 @@ const TeamProfile = () => {
     const [prevMatch, guardarPrevMatch] = useState([]);
     const [matches, guardarMatches]     = useState([]);
     const [scoreMatch, guardarScoreMatch] = useState([]);
+    const [roster, setRoster] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
@@ -82,6 +84,8 @@ const TeamProfile = () => {
         guardarNoMatches(false);
         guardarStateCrash(false);
         (async () => {
+            const {objRoster} = await getRoster(teamid);
+            setRoster(objRoster);
             const {objPastMatch, badFetch} = await getPastMatch(teamid);
             const {data, imageTeam} = objPastMatch;
             if (data && data.length !== 0) {
@@ -206,6 +210,7 @@ const TeamProfile = () => {
                             setPreview={setPreview}
                             setVs={setVs}
                             setHistory={setHistory}
+                            roster={roster}
                         />
                     }
  
