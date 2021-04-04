@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import HistoricMatchCard from './HistoricMatchCard';
 
-const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamid, scoreMatch, setShow}) => {
-    const [firstIndexDate, setFirstIndexDate] = useState("");
+const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamid, setShow, setPlayerScore, playerscore}) => {
+    const [firstIndex, setFirstIndex] = useState("");
 
     useEffect(() => {
         const firstMatch = prevMatch[0];
         const {id} = firstMatch;
-        setFirstIndexDate(id);
+        setFirstIndex(id);
     }, []);
 
     if (!prevMatch.length > 0) return null;
@@ -17,11 +17,12 @@ const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamid, scoreMatch, setSho
             {prevMatch.map(match => ( 
                 <HistoricMatchCard 
                     key={match.id}
-                    firstIndexDate={firstIndexDate}
+                    firstIndex={firstIndex}
                     match={match}
                     teamId={teamid}
-                    scoreMatch={scoreMatch}
                     setShow={setShow}
+                    setPlayerScore={setPlayerScore}
+                    playerscore={playerscore}
                 />
         ))}
         </Fragment> 

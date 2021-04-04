@@ -2,8 +2,8 @@ import React from 'react';
 import { usePalette } from 'react-palette';
 import './tarjetaScore.css';
 
-const PlayerScore = ({scoreMatch, csgoLogoDefaultBlack, opponents}) => {
-    const {teams} = scoreMatch; 
+const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents}) => {
+    const {teams} = playerscore; 
     let TeamLogoA;
     let TeamLogoB;
     let TeamNameA;
@@ -13,7 +13,7 @@ const PlayerScore = ({scoreMatch, csgoLogoDefaultBlack, opponents}) => {
 
     if(teams && teams.length > 0){
         for (let i=0; i< opponents.length; i++){         
-            if(scoreMatch.teams[0].name === opponents[0].opponent.name) {
+            if(playerscore.teams[0].name === opponents[0].opponent.name) {
                 if (opponents[0].opponent.image_url === null) {
                     TeamLogoA = csgoLogoDefaultBlack;
                 }else{
@@ -83,7 +83,7 @@ const PlayerScore = ({scoreMatch, csgoLogoDefaultBlack, opponents}) => {
                         </thead>
                         <tbody>
                             {
-                                scoreMatch.teams[0].players.sort(function(a,b){return b.stats.per_game_averages.hltv_game_rating-a.stats.per_game_averages.hltv_game_rating}).map(({name, first_name, last_name, stats}, index) => {
+                                playerscore.teams[0].players.sort(function(a,b){return b.stats.per_game_averages.hltv_game_rating-a.stats.per_game_averages.hltv_game_rating}).map(({name, first_name, last_name, stats}, index) => {
                                     const {counts, per_game_averages} = stats;
                                     return(
                                         <tr className="line-width" key={index}>
@@ -122,7 +122,7 @@ const PlayerScore = ({scoreMatch, csgoLogoDefaultBlack, opponents}) => {
                         </thead>
                         <tbody>
                             {
-                                scoreMatch.teams[1].players.sort(function(a,b){return b.stats.per_game_averages.hltv_game_rating-a.stats.per_game_averages.hltv_game_rating}).map(({name, first_name, last_name, stats}, index) => {
+                                playerscore.teams[1].players.sort(function(a,b){return b.stats.per_game_averages.hltv_game_rating-a.stats.per_game_averages.hltv_game_rating}).map(({name, first_name, last_name, stats}, index) => {
                                     const {counts, per_game_averages} = stats;
                                     return(
                                         <tr className="line-width" key={index}>

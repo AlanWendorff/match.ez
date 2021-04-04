@@ -2,7 +2,6 @@ import React, {useEffect, useState, useContext} from 'react';
 import { useParams, useHistory } from 'react-router';
 import { HeaderLogoContext } from '../Context/HeaderLogoContext';
 import { getNextMatches } from './getNextMatches';
-import { getPlayerScore } from './getPlayerScore';
 import { getPastMatch } from './getPastMatch';
 import { getRoster } from './getRoster';
 import { HOME } from '../../routes/routes';
@@ -32,7 +31,7 @@ const TeamProfile = () => {
     const [loaderprogress, guardarLoaderProgress]  = useState({width: '0%'});
     const [prevMatch, guardarPrevMatch] = useState([]);
     const [matches, guardarMatches]     = useState([]);
-    const [scoreMatch, guardarScoreMatch] = useState([]);
+    const [playerscore, setPlayerScore] = useState([]);
     const [roster, setRoster] = useState([]);
     const [b64Logo, guardarB64Logo] = useState('');
     const [crash, guardarStateCrash]    = useState(false);
@@ -96,15 +95,6 @@ const TeamProfile = () => {
                     setImageTeam('https://proxy-kremowy.herokuapp.com/' + imageTeam);
                     guardarLogo('https://proxy-kremowy.herokuapp.com/' + imageTeam);
                 }
-                guardarLoaderProgress({width: '30%'});
-                const {objPlayerScore, badFetch} = await getPlayerScore(data);
-                if (objPlayerScore) {
-                    guardarScoreMatch(objPlayerScore);
-                    guardarLoaderProgress({width: '50%'});
-                }
-                if (badFetch) {
-                    guardarStateCrash(true);
-                }  
             }else{
                 guardarPrevMatch("no-match");
             }
@@ -230,7 +220,8 @@ const TeamProfile = () => {
                         <HistoricMatchMapping
                             prevMatch={prevMatch}
                             teamid={teamid}
-                            scoreMatch={scoreMatch}
+                            setPlayerScore={setPlayerScore}
+                            playerscore={playerscore}
                             setShow={setShow}
                         />
                     }                                                                                                                           

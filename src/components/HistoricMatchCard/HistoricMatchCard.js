@@ -1,11 +1,10 @@
-import React, {useContext, Fragment, useState} from 'react';
+import React, {useContext, Fragment, useState } from 'react';
 import { faCalendarDay, faSortDown, faSortUp, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { HeaderLogoContext } from '../Context/HeaderLogoContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { setMatchResult } from '../../utility/SetMatchResult';
 import { LOOKPROFILE } from '../../titlestag/titlestag';
-import { setTeamLogo } from '../../utility/SetTeamLogo';
 import { setGameMode } from '../../utility/SetGameMode';
+import { getPlayerScore } from './getPlayerScore';
 import { usePalette } from 'react-palette';
 import { TEAM } from '../../routes/routes';
 import { Link } from 'react-router-dom';
@@ -14,18 +13,19 @@ import PlayerScore from '../PlayerScore/PlayerScore';
 import Share from '../Share/Share';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
+import csgoLogoDefault from '../../Images/csgoLogoDefault.png';
 import '../CompetitionCard/tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate, setShow}) => {
+const HistoricMatchCard = ({match, teamId, firstIndex, setShow, setPlayerScore, playerscore}) => {
 
     let proxyLogo;
     let fase = "";
+    
+    const [badfetch, setBadFetch] = useState(false);
     const [content, setContent] = useState(false);
     const {number_of_games, league, serie, tournament, begin_at, id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
-    const {bTeamLogo, bTeamName, bTeamId, aTeamLogo, aTeamName, aTeamId, csgoLogoDefault} = setTeamLogo(opponents, teamId); 
-    const {A_point, B_point} = setMatchResult(results, teamId);
     const {modalidad} = setGameMode(number_of_games);
 
     if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
@@ -52,13 +52,27 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate, setShow})
         fase = tournament.name;
     }
     const Facebook = 
-    `${bTeamName}: ${B_point} 
-    ${aTeamName}: ${A_point}  
+    `${opponents[0].opponent.name}: ${results[0].score} 
+    ${opponents[1].opponent.name}: ${results[1].score}  
     ${league.name +" "+ serie.full_name}
     `;
-    const Twitter = `${bTeamName}: ${B_point} VS ${aTeamName}: ${A_point} | ${league.name+" "+serie.full_name}`;
-    const Wapp = `${bTeamName}: ${B_point} VS ${aTeamName}: ${A_point} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
-    
+    const Twitter = `${opponents[0].opponent.name}: ${results[0].score} VS ${opponents[1].opponent.name}: ${results[1].score} | ${league.name+" "+serie.full_name} -> ${window.location.href}`;
+    const Wapp = `${opponents[0].opponent.name}: ${results[0].score} VS ${opponents[1].opponent.name}: ${results[1].score} |  ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
+
+    const playerScore = async () => {
+        const {teams} = playerscore; 
+        if (teams === undefined) {
+            console.log('llamo a playerscore');
+            const {objPlayerScore, badFetch} = await getPlayerScore(id);
+            if (objPlayerScore) {
+                setPlayerScore(objPlayerScore);
+            }
+            if (badFetch) {
+                setBadFetch(true);
+            } 
+        }
+    }
+
     //eslint-disable-next-line
     return(
         <div className="noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__animated animate__fadeInDown animate__faster"> 
@@ -71,59 +85,59 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate, setShow})
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={!teamId? TEAM.replace(':teamid', aTeamId) : undefined} onClick={()=>{!teamId&& setShow("vs")}}>
-                                <div className={A_point < B_point? "match-loser-prevgame" :"match-winner-prevgame"}>                            
-                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={!teamId? LOOKPROFILE + aTeamName : undefined} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                            <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)} onClick={()=>{setShow("preview")}}>
+                                <div className={results[0].score < results[1].score? "match-loser-prevgame" :"match-winner-prevgame"}>                            
+                                    <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
 
-                            <p className="name-of-teams">{aTeamName}</p> 
+                            <p className="name-of-teams">{opponents[0].opponent.name}</p> 
                         </div>
 
                         <div>
                             <div className="game-win">
-                                <p className={A_point < B_point? "match-loser point-A" :"match-winner point-A"}>{A_point}</p>
+                                <p className={results[0].score < results[1].score? "match-loser point-A" :"match-winner point-A"}>{results[0].score}</p>
                                 <p>-</p>
-                                <p className={A_point < B_point? "match-winner point-B" : "match-loser point-B"}>{B_point}</p>                           
+                                <p className={results[0].score < results[1].score? "match-winner point-B" : "match-loser point-B"}>{results[1].score}</p>                           
                             </div> 
 
                             <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
                         </div>
 
                         <div className="team-column">
-                            <Link to={TEAM.replace(':teamid', bTeamId)} onClick={()=>{setShow("vs")}}>
-                                <div className={A_point < B_point? "match-winner-prevgame" : "match-loser-prevgame"}>
-                                    <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                            <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)} onClick={()=>{setShow("preview")}}>
+                                <div className={results[0].score < results[1].score? "match-winner-prevgame" : "match-loser-prevgame"}>
+                                    <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
-                            <p className="name-of-teams">{bTeamName}</p> 
+                            <p className="name-of-teams">{opponents[1].opponent.name}</p> 
                         </div>
                     </div>
 
 
                     <div className="prev-game-mobile">
                         <div className="row-team-name-gamewin">
-                            <div className={A_point > B_point? "match-loser" :"match-winner"}>                            
-                                <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img title={LOOKPROFILE + bTeamName} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                            <div className={results[0].score < results[1].score? "match-loser" :"match-winner"}>                            
+                                <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                    {src => <img alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
-                            <p className={A_point > B_point? "match-loser" :"match-winner"}>{bTeamName}</p> 
-                            <p className={A_point > B_point? "match-loser point-A" :"match-winner point-A"}>{B_point}</p>
+                            <p className={results[0].score < results[1].score? "match-loser" :"match-winner"}>{opponents[0].opponent.name}</p> 
+                            <p className={results[0].score < results[1].score? "match-loser point-A" :"match-winner point-A"}>{results[0].score}</p>
                         </div>
 
                         <div className="row-team-name-gamewin">
-                            <div className={A_point > B_point? "match-winner" : "match-loser"}>                            
-                                <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img  alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                            <div className={results[0].score < results[1].score? "match-winner" : "match-loser"}>                            
+                                <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                    {src => <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage> 
                             </div> 
-                            <p className={A_point > B_point? "match-winner" :"match-loser"}>{aTeamName}</p>
-                            <p className={A_point > B_point? "match-winner point-B" : "match-loser point-B"}>{A_point}</p>
+                            <p className={results[0].score < results[1].score? "match-winner" :"match-loser"}>{opponents[1].opponent.name}</p>
+                            <p className={results[0].score < results[1].score? "match-winner point-B" : "match-loser point-B"}>{results[1].score}</p>
                         </div>
 
                         <div className="text-in-card">
@@ -132,7 +146,16 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate, setShow})
                     </div>
                 </div>            
             </div>
-            <div onClick={()=>{content? setContent(false) : setContent(true)}} className="sort-content"><FontAwesomeIcon icon={!content? faSortDown : faSortUp}/></div>
+            <div onClick={()=>{
+                content? 
+                    setContent(false) 
+                : 
+                    setContent(true); 
+                if (teamId) {
+                    id === firstIndex&& playerScore()
+                }     
+            }} className="sort-content"><FontAwesomeIcon icon={!content? faSortDown : faSortUp}/></div>
+            
             {content&&
                 <Fragment>
                     {!teamId&&
@@ -157,10 +180,10 @@ const HistoricMatchCard = ({match, teamId, scoreMatch, firstIndexDate, setShow})
                     }
 
                     {teamId?
-                        id === firstIndexDate?   
+                        id === firstIndex?   
                         <Fragment>
                             <PlayerScore
-                                scoreMatch={scoreMatch}
+                                playerscore={playerscore}
                                 opponents={opponents}
                                 csgoLogoDefaultBlack={csgoLogoDefaultBlack}
                             />
