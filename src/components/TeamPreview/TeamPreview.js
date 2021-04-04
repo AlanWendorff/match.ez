@@ -1,6 +1,7 @@
 import React from 'react';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
 import unknown from '../../Images/unknown.png';
 import './teampreview.css';
 
@@ -165,7 +166,23 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory}) => {
     
     return ( 
         <div className="preview-container font-gilroy">
-            <table>
+            <div className="team">
+                {
+                    array.map(player => {
+                        const {nationality, name, first_name, last_name, image_url} = player;
+                        return(
+                            <div className="player">  
+                                <div>  
+                                    <img className="player-image" src={image_url === null? unknown : image_url} />
+                                </div>
+                                
+                                <span style={{color: color.darkVibrant}} className="player-name-style">{name}</span>
+                            </div>
+                        );                                  
+                    })
+                }
+            </div>
+            {/* <table>
                 <tbody>
                     {
                         array.map(player => {
@@ -180,21 +197,21 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory}) => {
                         })
                     }
                 </tbody>
-            </table>
+            </table> */}
 
             <div className="little-info">
                 <div className="last-match">
                     <span>Last Game</span>
                     <div>
                         <div className="team">
-                            <img src={LASTMATCH.opponents[0].opponent.image_url}/>
+                            <img src={LASTMATCH.opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : LASTMATCH.opponents[0].opponent.image_url}/>
                             <span>{LASTMATCH.opponents[0].opponent.name}</span>
                         </div>
                         <span>{LASTMATCH.results[0].score}</span>
                         <span>-</span>
                         <span>{LASTMATCH.results[1].score}</span>
                         <div className="team">
-                            <img src={LASTMATCH.opponents[1].opponent.image_url}/>
+                            <img src={LASTMATCH.opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : LASTMATCH.opponents[1].opponent.image_url}/>
                             <span>{LASTMATCH.opponents[1].opponent.name}</span>
                         </div>
                     </div>
@@ -202,28 +219,29 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory}) => {
                 </div>
 
                 <div className="next-match">
-                    <span>Next Game {NEXTMATCH.status === 'running'&& <span>Live<span className="dot-indicator"></span></span>}</span>
-                    <div>
                         {NEXTMATCH?
                             <>
-                                
-                                <div className="team">
-                                    <img src={NEXTMATCH.opponents[0].opponent.image_url}/>
-                                    <span>{NEXTMATCH.opponents[0].opponent.name}</span>
+                                <span>Next Game {NEXTMATCH.status === 'running'&& <span>Live<span className="dot-indicator"></span></span>}</span>
+                                <div>
+                                    
+                                    <div className="team">
+                                        <img src={NEXTMATCH.opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : NEXTMATCH.opponents[0].opponent.image_url}/>
+                                        <span>{NEXTMATCH.opponents[0].opponent.name}</span>
+                                    </div>
+                                    <span>vs</span>
+                                    <div className="team">
+                                        <img src={NEXTMATCH.opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : NEXTMATCH.opponents[1].opponent.image_url}/>
+                                        <span>{NEXTMATCH.opponents[1].opponent.name}</span>
+                                    </div>
                                 </div>
-                                <span>vs</span>
-                                <div className="team">
-                                    <img src={NEXTMATCH.opponents[1].opponent.image_url}/>
-                                    <span>{NEXTMATCH.opponents[1].opponent.name}</span>
-                                </div>
+                                <FontAwesomeIcon onClick={()=> {setVs()}} className="font-size-17px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
                             </>
                         :
-
-                            <span>NO UPCOMING MATCH</span>
+                            <div>
+                                <span>NO UPCOMING MATCH</span>
+                            </div>
 
                         }
-                    </div>
-                    <FontAwesomeIcon onClick={()=> {setVs()}} className="font-size-17px cursor-pointer" style={{ color: color.darkVibrant }} icon={faInfoCircle}/>
                 </div>
             </div>
 

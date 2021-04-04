@@ -36,11 +36,11 @@ const TeamProfile = () => {
     const [crash, guardarStateCrash]    = useState(false);
     const [noMatches, guardarNoMatches] = useState(false);  
     const [image_url, setImageTeam] = useState('');
-    const [show, setShow] = useState("vs");
+    const [show, setShow] = useState();
     const [buttonstatus, setButtonStatus] = useState(
         {   
-            preview: false,
-            vs: true,
+            preview: true,
+            vs: false,
             history: false,
             ladder: false
         }
@@ -77,7 +77,7 @@ const TeamProfile = () => {
     }
 
     useEffect(() => {  
-        setShow("vs");
+        setShow("preview");
         guardarLoaderProgress({width: '0%'})
         guardarNoMatches(false);
         guardarStateCrash(false);
