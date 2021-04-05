@@ -1,0 +1,64 @@
+
+.team-field{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.space{
+    width: 250px !important;
+    padding-left: 4%;
+}
+
+.top-line-padding{
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.table-font-size{
+    font-size: 14px;
+}
+
+td, th{
+    padding: 10px 5px !important;
+}
+
+@media (min-width: 771px) {  
+    th{
+        border-radius: 0%;
+        color: white !important;
+        font-family: "Gilroy-ExtraBold";
+    }
+    .player-name-style{
+        margin: 0px 5px;
+        /* color: #2d6da3; */
+        font-family: "Gilroy-Light";
+    }
+    .Team-name-score{
+        font-family: "Gilroy-ExtraBold";
+        color: white;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 770px) {  
+    th{
+        border-radius: 0%;
+        color: white !important;
+        font-family: "Gilroy-Light";
+        font-size: 10px !important;
+    }
+    td{
+        font-size: 10px !important;
+    }
+    .player-name-style{
+        margin: 0px 5px;
+        /* color: #2d6da3; */
+        font-family: "Gilroy-Light";
+    }
+    .Team-name-score{
+        font-family: "Gilroy-Light";
+        color: white;
+        font-size: 12px;
+    }
+}
+

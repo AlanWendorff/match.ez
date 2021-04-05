@@ -1,5 +1,5 @@
 import React from 'react';
-import webLogo from '../../ImagenesVarias/Icon.png';
+import webLogo from '../../Images/Icon.png';
 import './loader.css';
 
 const SimpleLoadScreen = () => {

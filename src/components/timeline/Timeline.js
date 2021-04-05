@@ -1,27 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import Moment from 'moment';
-import shortid from 'shortid';
-import SimpleLoadScreen from '../loader/SimpleLoadScreen';
-import csgoLogoDefaultBlack from '../../ImagenesVarias/csgoLogoDefaultBlack.png';
-import toBeDefined from '../../ImagenesVarias/toBeDefined.png';
-import Warning from '../warning/Warning';
-import LoadScreen from '../loader/LoadScreen';
+import React, {useEffect, useState, useContext} from 'react';
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import { faCalendarDay, faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
+import { LOOKMATCHES, LOOKPROFILE } from '../../titlestag/titlestag';
+import { ColorThemeContext } from '../Context/ColorThemeContext';
+import { TOURNAMENT, TEAM } from '../../routes/routes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getTimeline } from './getTimeline';
 import { Link } from 'react-router-dom';
-import {momentSpanishSetup} from '../../utility/MomentSpanishSetup';
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import { getStyles } from '../home/getStyles/firebaseStyles';
+import SimpleLoadScreen from '../Loader/SimpleLoadScreen';
+import LoadScreen from '../Loader/LoadScreen';
+import Warning from '../Warning/Warning';
+import shortid from 'shortid';
+import Moment from 'moment';
+import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
+import toBeDefined from '../../Images/toBeDefined.png';
 import 'react-vertical-timeline-component/style.min.css';
 import './timeline.css'
 const Timeline = () => {
-    momentSpanishSetup();
-    const styles = getStyles();
+
+    const { colors } = useContext(ColorThemeContext);
     const [time, setTime] = useState([]);
-    const [loaderprogress, guardarLoaderProgress]     = useState({width: '0%'});
-    const [crash,    guardarStateCrash]    = useState(false);
-    const [length, guardarlength] = useState(false);  
-    //const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
-    //data.filter(date => date.begin_at !== null)
+    const [loaderprogress, guardarLoaderProgress] = useState({width: '0%'});
+    const [crash, guardarStateCrash] = useState(false);
 
     useEffect(() => { 
         (async () => {
@@ -30,9 +30,6 @@ const Timeline = () => {
                 if (objTime) {
                     guardarLoaderProgress({width: '100%'});
                     setTime(objTime);
-                    if(objTime.length === 0){   
-                        guardarlength(true);
-                    }
                 }
                 if (badFetch) {
                     guardarStateCrash(true);
@@ -44,11 +41,11 @@ const Timeline = () => {
 
     const {width} = loaderprogress;
     
-    if (styles !== undefined) {
+    if (colors !== undefined) {
         if (crash !== true){
             if(width === '100%'){
                 return ( 
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container font-gilroy" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container font-gilroy" style={{backgroundColor: colors.background_color}}>
                         <VerticalTimeline layout='1-column-left'>
                             {   
                                 time.map((tournament) => {
@@ -59,29 +56,25 @@ const Timeline = () => {
                                             key={shortid.generate()}
                                             className="vertical-timeline-element--education"
                                             date={date}
-                                            iconStyle={{border: `3px solid ${styles.header_color}`}}
-                                            icon={<Link to={`/${league.slug}`} title={`Click para Ver los Próximos partidos de la ${league.name}`}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
+                                            iconStyle={{border: `3px solid ${colors.header_color}`}}
+                                            icon={<Link to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name}><img className="tournament-logo-timeline" src={league.image_url}/></Link>}
                                             >
                                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
                                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>
-                                            {prizepool !== null?
-                                                <div className="column-align mb-5px">
-                                                    <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
-                                                    <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
-                                                    <span className="tournament-data">Prizepool: <span className="font-gilroy-bold">{prizepool}</span></span>
-                                                </div>
-                                            :   
-                                                <div className="column-align mb-5px">
-                                                    <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
-                                                    <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
-                                                </div>
-                                            }
                                             
+                                            <div className="column-align mb-5px">
+                                                <h5 style={{backgroundColor: `${colors.header_color}`}} className="vertical-timeline-element-subtitle name-of-tournament tournament-data"><FontAwesomeIcon icon={faCalendarDay}/> {date}</h5>
+                                                <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
+                                                <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
+                                                {prizepool&&
+                                                    <label style={{backgroundColor: `${colors.header_color}`}} className="tournament-data"><FontAwesomeIcon icon={faMoneyCheckAlt}/> <span className="font-gilroy-bold">{prizepool}</span></label>
+                                                }
+                                            </div>
                                             
                                             <div className="teams-in-tournament">
                                                 {teams.length > 1?
                                                     teams.map((team) => (
-                                                        <Link to={`/${team.slug}`} title={`Click para Ver el Perfil de ${team.name}`} key={shortid.generate()}>
+                                                        <Link to={TEAM.replace(':teamid', team.id)} title={LOOKPROFILE + team.name} key={shortid.generate()}>
                                                             <div className="icon-container">
                                                                 <div className="team-icon">
                                                                     <img className="team-logo-timeline" src={team.image_url === null?  csgoLogoDefaultBlack : team.image_url}></img>
@@ -101,6 +94,11 @@ const Timeline = () => {
                                                     
                                                 }
                                             </div>
+                                            <div className="mobile" style={{backgroundColor: `${colors.header_color}`}}>
+                                                <span className="vertical-timeline-element-subtitle name-of-tournament tournament-data">{name}</span>
+                                                <span className="tournament-data">Tier: <span className="font-gilroy-bold">{serie.tier}</span></span>
+                                            </div>
+                                            
                                         </VerticalTimelineElement>
                                     );                                  
                                 })
@@ -110,7 +108,7 @@ const Timeline = () => {
                  );
             }else{
                 return(
-                    <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
+                    <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
                         <LoadScreen
                             loaderprogress={loaderprogress}
                         /> 
@@ -119,14 +117,14 @@ const Timeline = () => {
             }
         }else{
             return(
-                <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: styles.background_color}}>
+                <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container" style={{backgroundColor: colors.background_color}}>
                     <Warning/>
                 </div>
             );
         }
     }else{
         return(
-            <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="timeline-background time-line-container" style={{backgroundColor: 'black'}}>
+            <div onContextMenu={(e)=> window.innerWidth > 1024? null : e.preventDefault()} className="time-line-container">
                 <SimpleLoadScreen/>
             </div>
         );

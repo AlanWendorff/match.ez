@@ -1,8 +1,7 @@
 import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getPastMatch = async (teamId) => {    
-    const badFetch = true;    
-    //https://arg-matchez-backend.herokuapp.com          
+    const badFetch = true;          
     const url = `https://arg-matchez-backend.herokuapp.com/api/prevmatches/${teamId}`;
     try {
         const config = {

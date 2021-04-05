@@ -3,7 +3,7 @@
   "short_name": "match.ez",
   "theme_color": "#000000",
   "background_color": "#4274a6",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [

@@ -1,9 +1,10 @@
 import React from 'react';
-import Layer from './Layer';
-import TournamentProvider from './components/context/TournamentContext';
-import PathProvider from './components/context/PathContext';
-import HeaderLogoProvider from './components/context/HeaderLogoContext';
-import LoaderProvider from './components/context/LoaderContext';
+import Layout from './Layout';
+import ColorThemeProvider from './components/Context/ColorThemeContext';
+import TournamentProvider from './components/Context/TournamentContext';
+import PathProvider from './components/Context/PathContext';
+import HeaderLogoProvider from './components/Context/HeaderLogoContext';
+import LoaderProvider from './components/Context/LoaderContext';
 
 const App = () => {  
   if(navigator.onLine !== true){
@@ -11,13 +12,15 @@ const App = () => {
   }else{
     return(
       <PathProvider>
-        <HeaderLogoProvider>
-          <LoaderProvider>
-            <TournamentProvider>
-                <Layer/>
-            </TournamentProvider>
-          </LoaderProvider>
-        </HeaderLogoProvider>
+        <ColorThemeProvider>
+          <HeaderLogoProvider>
+            <LoaderProvider>
+              <TournamentProvider>
+                  <Layout/>
+              </TournamentProvider>
+            </LoaderProvider>
+          </HeaderLogoProvider>
+        </ColorThemeProvider>
       </PathProvider>
     );
   };

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import LazyLoad from 'react-lazyload';
 import TarjetaAllmatches from './TarjetaAllmatches';
-import shortid from 'shortid';
+import LazyLoad from 'react-lazyload';
 
 const ListadoAllmatches = ({allmatches}) => {
     if (!allmatches.length > 0) return null;
@@ -14,7 +13,7 @@ const ListadoAllmatches = ({allmatches}) => {
                 {
                     allmatches.sort(function(a,b){ return  new Date(a.begin_at) - new Date(b.begin_at)  }).map(match => {
                         return(
-                            <LazyLoad offset={100} height={100} once key={shortid.generate()}>
+                            <LazyLoad offset={100} height={100} overflow key={match.id}>
                                 <TarjetaAllmatches 
                                     match={match}
                                 />

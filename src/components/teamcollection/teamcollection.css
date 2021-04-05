@@ -1,0 +1,115 @@
+
+.collection-container > span{
+   font-size: 20px;
+}
+
+
+
+@media (min-width: 641px) {  
+    .collection-container{
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }    
+    .teams-position > a{
+        width: 100%;
+        margin: 15px 0px;
+        background-color: rgba(0, 0, 0, 0.26);
+        display: flex;
+        align-items: center;
+        height: 75px;
+    }
+
+    .teams-position > a :hover{
+        cursor: pointer;
+        filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.39));
+        transition: all 0.1s ease-out;
+    }
+
+    .teams-position{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .teams-position > a > div{
+        padding: 0px 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .teams-position > a > div > div{
+        background-color: rgba(0, 0, 0, 0.212);
+        height: 60px;
+        width: 60px;
+        overflow: hidden;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .teams-position > a > div > div > img{
+        max-width: 45px;
+        max-height: 100%;
+    }
+    .teams-position > a > div > span{
+        color: white;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+}
+
+@media screen and (max-width: 640px) {  
+    .collection-container{
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } 
+    .teams-position > a{
+        width: 100%;
+        margin: 15px 0px;
+        background-color: rgba(0, 0, 0, 0.26);
+        display: flex;
+        align-items: center;
+        height: 75px;
+    }
+    .teams-position{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .teams-position > a > div{
+        padding: 0px 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .teams-position > a > div > div{
+        background-color: rgba(0, 0, 0, 0.212);
+        height: 60px;
+        width: 60px;
+        overflow: hidden;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .teams-position > a > div > div > img{
+        max-width: 45px;
+        max-height: 100%;
+    }
+    .teams-position > a > div > span{
+        color: white;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+}

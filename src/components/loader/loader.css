@@ -1,13 +1,4 @@
-.loader-container{
-    padding: 3% 3% 3% 3%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    align-self: center;
-}
+
 .spinner-color{
     border-color: #989898 !important;
 }
@@ -30,17 +21,7 @@
 }
 
 /* SIMPLE SPINNER LOADER */
-.simple-loader-container{
-    padding: 3% 3% 3% 3%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    align-self: center;
-}
+
 .simple-spinner-width{
     border-width: 7px !important;
 }
@@ -52,4 +33,54 @@
 }
 .web-logo{
     width: 100px;
+}
+
+@media (min-width: 641px) {
+    .loader-container{
+        height: calc(100vh - 50px);
+        padding: 3% 3% 3% 3%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        align-self: center;
+    }
+    .simple-loader-container{
+        padding: 3% 3% 3% 3%;
+        height: calc(100vh - 50px);
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        align-self: center;
+        background-color: black;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .loader-container{
+        height: calc(100vh - 50px);
+        padding: 3% 3% 3% 3%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        align-self: center;
+    }
+    .simple-loader-container{
+        padding: 3% 3% 3% 3%;
+        height: calc(100vh - 50px);
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        align-self: center;
+        background-color: black;
+    }
 }
