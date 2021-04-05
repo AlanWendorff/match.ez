@@ -16,9 +16,9 @@ const Leaderboard = ({leaderboard}) => {
             {leaderboard.map(team  => (
                 <div className="ladder-team animate__animated animate__fadeInDown animate__faster" key={team.name}>
                     <div className="space-between">
-                        <ProgressiveImage src={team.img === null? csgoLogoDefaultBlack : team.img} placeholder={csgoLogoDefaultBlack}>
-                            {src => <img alt="laderboard team" className="width-30px mr-35px" src={src} />}
-                        </ProgressiveImage>
+                            <ProgressiveImage src={team.img === null? csgoLogoDefaultBlack : team.img} placeholder={csgoLogoDefaultBlack}>
+                                {src => <img alt="laderboard team" className="width-30px mr-35px" src={src} />}
+                            </ProgressiveImage>
                         <span>{team.name}</span>
                     </div>
                     <span>{team.points}</span>

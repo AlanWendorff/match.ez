@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import CompetitionCard from './CompetitionCard';
-import shortid from 'shortid';
-
+import LazyLoad from 'react-lazyload';
 
 const CompetitionMapping = ({matchesHoy, data }) => {
     
@@ -12,13 +11,14 @@ const CompetitionMapping = ({matchesHoy, data }) => {
             return ( 
                 <Fragment> 
                     {
-                        matchesHoy.sort(function(a,b){ return  new Date(a.begin_at) - new Date(b.begin_at)  }).map(matchHoy => {
+                        matchesHoy.sort(function(a,b){ return  new Date(a.begin_at) - new Date(b.begin_at)  }).map(match => {
                             return(
-                                <CompetitionCard 
-                                    key={shortid.generate()}
-                                    matchHoy={matchHoy}
-                                    data = {data}
-                                />
+                                <LazyLoad offset={100} height={100} overflow key={match.id}>
+                                    <CompetitionCard 
+                                        match={match}
+                                        data = {data}
+                                    />
+                                </LazyLoad>
                             );
                         })
                     }

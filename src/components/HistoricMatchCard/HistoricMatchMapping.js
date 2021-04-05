@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import HistoricMatchCard from './HistoricMatchCard';
+import LazyLoad from 'react-lazyload';
 
 const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamid, setPreview, setPlayerScore, playerscore}) => {
     const [firstIndex, setFirstIndex] = useState("");
@@ -15,15 +16,16 @@ const ListadoDeTarjetasPartidosPrevios = ({prevMatch, teamid, setPreview, setPla
     return ( 
         <Fragment> 
             {prevMatch.map(match => ( 
-                <HistoricMatchCard 
-                    key={match.id}
-                    firstIndex={firstIndex}
-                    match={match}
-                    teamId={teamid}
-                    setPreview={setPreview}
-                    setPlayerScore={setPlayerScore}
-                    playerscore={playerscore}
-                />
+                <LazyLoad offset={50} height={100} overflow key={match.id}>
+                    <HistoricMatchCard 
+                        firstIndex={firstIndex}
+                        match={match}
+                        teamId={teamid}
+                        setPreview={setPreview}
+                        setPlayerScore={setPlayerScore}
+                        playerscore={playerscore}
+                    />
+                </LazyLoad>
         ))}
         </Fragment> 
      );

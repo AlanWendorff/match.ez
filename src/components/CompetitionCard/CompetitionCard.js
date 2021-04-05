@@ -13,9 +13,9 @@ import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../Images/toBeDefined.png';
 import './tarjetaMatchesCompletos.css';
 
-const CompetitionCard = ({matchHoy, data}) => {
+const CompetitionCard = ({match, data}) => {
 
-    const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = matchHoy; 
+    const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = match; 
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
     const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
 
