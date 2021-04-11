@@ -208,6 +208,17 @@
         justify-content: space-between;
         align-items: center;
     }
+
+    .row-team-name-gamewin > p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        height: 30px;
+        padding: 0px 15px;
+        
+    }
+
     .prev-game-desktop{
         display: none;
     }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { faClock, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {setMatchResult} from '../../utility/SetMatchResult';
 import { setGameMode } from '../../utility/SetGameMode';
 import { LOOKPROFILE } from '../../titlestag/titlestag';
 import { usePalette } from 'react-palette';
@@ -92,7 +91,6 @@ const TarjetaAllmatches = ({match}) => {
     if (status === "running"){
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         statusMatch = "¡Playing Now!";
-        const {A_point, B_point} = setMatchResult(results, bTeamId);                            //backgroundColor: `${data.lightVibrant}`
         return (
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.lightVibrant}`}}>
                 <div className="col s12 m7 posicion-tarjeta">
@@ -104,35 +102,35 @@ const TarjetaAllmatches = ({match}) => {
                             
                             <div className="live-container-puntos-logos-upcoming">
 
-                                <Link to={TEAM.replace(':teamid', aTeamId)}>
+                                <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)}>
                                     <div className="team-canvas"> 
-                                    <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                    <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                     </ProgressiveImage>                          
                                     </div> 
                                 </Link>
 
                                 <div title="Partidos ganados en la serie">
                                     <div className="points" title="Partidos ganados en la serie">
-                                        <p className="match-winner point-A">{A_point}</p>
+                                        <p className="match-winner point-A">{results[0].score}</p>
                                         <p>-</p>
-                                        <p className="match-winner point-B">{B_point}</p>                           
+                                        <p className="match-winner point-B">{results[1].score}</p>                           
                                     </div>  
                                 </div>
 
-                                <Link to={TEAM.replace(':teamid', bTeamId)}>
+                                <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)}>
                                     <div className="team-canvas">
-                                        <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                        {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>          
                                     </div> 
                                 </Link>
                             </div>
 
                             <div className="container-label">
-                                <p className="label-teams">{aTeamName}</p> 
+                                <p className="label-teams">{opponents[0].opponent.name}</p> 
                                 <p className="modalidad-past-match" >{modalidad}</p>
-                                <p className="label-teams">{bTeamName}</p>
+                                <p className="label-teams">{opponents[1].opponent.name}</p>
                             </div> 
 
 

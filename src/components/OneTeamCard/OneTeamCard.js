@@ -174,24 +174,24 @@ const OneTeamCard = ({match, teamid}) => {
 
                     <div className="card-stacked">
                         <div className="card-content">
-                            <Link className="text-center head-font highlight-text" style={{color: `${leagueColors.darkVibrant}`}}  to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </Link>
+                            <Link className="text-center head-font highlight-text" style={{color: leagueColors.darkVibrant}}  to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </Link>
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Vs:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: leagueColors.darkVibrant}}>Vs:</span> 
                                 {opponentName === undefined? 'To be defined' : opponentName}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Stage:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: leagueColors.darkVibrant}}>Stage:</span> 
                                 {fase}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: data.darkVibrant}}>Date: </span>
+                                <span className="label-data-style margin-entre-label-contenid" style={{color: leagueColors.darkVibrant}}>Date: </span>
                                 <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs  <span className="hoy-color">{hoy}</span> </span> 
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: data.darkVibrant}}>Games:</span> 
+                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: leagueColors.darkVibrant}}>Games:</span> 
                                 {modalidad}
                             </p>
                             <Share

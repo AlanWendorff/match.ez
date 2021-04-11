@@ -13,29 +13,7 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => 
     
     return ( 
         <div className="preview-container font-gilroy">
-            <div className="team">
-                {
-                    roster.map(player => {
-                        const {nationality, name, first_name, last_name, image_url} = player;
-                        const FIRSTNAME = first_name !== null? first_name : "";
-                        const LASTNAME = last_name   !== null? last_name : "";
-                        const NATIONALITY = nationality !== null? `https://www.countryflags.io/${nationality}/flat/24.png` : undefined;
-                        return(
-                            <div className="player" key={name}>  
-                                <div>  
-                                    <ProgressiveImage src={image_url === null? unknown : image_url} placeholder={unknown}>
-                                        {src => <img title={first_name +" "+ last_name} className="player-image" loading="lazy" src={src} alt={name} />}
-                                    </ProgressiveImage>
-                                </div>
-                                <img title={nationality} src={ NATIONALITY } />
-                                <span style={{color: color.darkVibrant}} title={first_name +" "+ last_name} className="player-name-style">{name}</span>
-                                <span style={{color: color.darkVibrant}} className="player-name-style">{FIRSTNAME +" "+ LASTNAME}</span>
-                            </div>
-                        );                                  
-                    })
-                }
-            </div>
-
+            
             <div className="little-info">
                 <div className="last-match">
                     <span>Last Game</span>
@@ -105,7 +83,29 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => 
                 </div>
             </div>
 
-            
+            <div className="team">
+                {
+                    roster.map(player => {
+                        const {nationality, name, first_name, last_name, image_url} = player;
+                        const FIRSTNAME = first_name !== null? first_name : "";
+                        const LASTNAME = last_name   !== null? last_name : "";
+                        const NATIONALITY = nationality !== null? `https://www.countryflags.io/${nationality}/flat/24.png` : undefined;
+                        return(
+                            <div className="player" key={name}>  
+                                <div>  
+                                    <ProgressiveImage src={image_url === null? unknown : image_url} placeholder={unknown}>
+                                        {src => <img title={first_name +" "+ last_name} className="player-image" loading="lazy" src={src} alt={name} />}
+                                    </ProgressiveImage>
+                                </div>
+                                <img title={nationality} src={ NATIONALITY } />
+                                <span style={{color: color.darkVibrant}} title={first_name +" "+ last_name} className="player-name-style">{name}</span>
+                                <span style={{color: color.darkVibrant}} className="player-name-style">{FIRSTNAME +" "+ LASTNAME}</span>
+                            </div>
+                        );                                  
+                    })
+                }
+            </div>
+
         </div>
      );
 }
