@@ -21,8 +21,10 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
 
     let proxyLogo;
     let fase = "";
-    
+    let colorTeamA;
+    let colorTeamB;
     const [badfetch, setBadFetch] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [content, setContent] = useState(false);
     const {number_of_games, league, serie, tournament, begin_at, id, opponents, results, name} = match;
     const { data } = useContext(HeaderLogoContext);
@@ -62,9 +64,10 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
     const playerScore = async () => {
         const {teams} = playerscore; 
         if (teams === undefined) {
-            console.log('llamo a playerscore');
+            setLoading(true);
             const {objPlayerScore, badFetch} = await getPlayerScore(id);
             if (objPlayerScore) {
+                setLoading(false);
                 setPlayerScore(objPlayerScore);
             }
             if (badFetch) {
@@ -73,11 +76,24 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
         }
     }
 
+    colorTeamA = usePalette('https://proxy-kremowy.herokuapp.com/' + opponents[0].opponent.image_url).data;
+    colorTeamB = usePalette('https://proxy-kremowy.herokuapp.com/' + opponents[1].opponent.image_url).data;
+ 
+    if (colorTeamA.darkVibrant === undefined) {
+        colorTeamA = {
+            darkVibrant: "#2d6da3"
+        }
+    }
+    if (colorTeamB.darkVibrant === undefined) {
+        colorTeamB = {
+            darkVibrant: "#2d6da3"
+        }
+    }
     //eslint-disable-next-line
     return(
         <div className="noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__animated animate__fadeInDown animate__faster"> 
             
-            <div className="card-image" style={{borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
+            <div className="card-image" style={teamId&& {borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
                         <p className="prev-game-header" style={{color: data.darkMuted}}>{fase}</p>
@@ -121,22 +137,22 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
 
                     <div className="prev-game-mobile">
                         <div className="row-team-name-gamewin">
-                            <div className={results[0].score < results[1].score? "match-loser" :"match-winner"}>                            
+                            <div className={results[0].score < results[1].score? "match-loser" : "match-winner"} >                            
                                 <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
                                     {src => <img alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
-                            <p className={results[0].score < results[1].score? "match-loser" :"match-winner"}>{opponents[0].opponent.name}</p> 
+                            <p className={results[0].score < results[1].score? "match-loser" :"match-winner"} style={{backgroundColor: results[0].score > results[1].score&& colorTeamA.darkVibrant, color: results[0].score > results[1].score&& 'white'}} >{opponents[0].opponent.name}</p> 
                             <p className={results[0].score < results[1].score? "match-loser point-A" :"match-winner point-A"}>{results[0].score}</p>
                         </div>
 
                         <div className="row-team-name-gamewin">
-                            <div className={results[0].score < results[1].score? "match-winner" : "match-loser"}>                            
+                            <div className={results[0].score < results[1].score? "match-winner" : "match-loser"} >                            
                                 <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
                                     {src => <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
                                 </ProgressiveImage> 
                             </div> 
-                            <p className={results[0].score < results[1].score? "match-winner" :"match-loser"}>{opponents[1].opponent.name}</p>
+                            <p className={results[0].score < results[1].score? "match-winner" :"match-loser"} style={{backgroundColor: results[0].score < results[1].score&& colorTeamB.darkVibrant, color: results[0].score < results[1].score&& 'white'}}>{opponents[1].opponent.name}</p>
                             <p className={results[0].score < results[1].score? "match-winner point-B" : "match-loser point-B"}>{results[1].score}</p>
                         </div>
 
@@ -186,6 +202,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
                                 playerscore={playerscore}
                                 opponents={opponents}
                                 csgoLogoDefaultBlack={csgoLogoDefaultBlack}
+                                loading={loading}
                             />
                             <p className="info-not-first-index">
                                 <span className="label-data-style" style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faTrophy}/></span> 

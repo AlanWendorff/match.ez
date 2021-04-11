@@ -2,7 +2,7 @@ import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getNextMatches = async (teamId) => {    
     const badFetch = true;           
-    const url = `https://arg-matchez-backend.herokuapp.com/api/nextmatches/${teamId}`;
+    const url = `https://arg-matchez-backendv2.herokuapp.com/api/nextmatches/${teamId}`;
     try {
         const config = {
             method: 'get',

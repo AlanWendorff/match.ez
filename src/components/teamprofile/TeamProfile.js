@@ -82,14 +82,16 @@ const TeamProfile = () => {
 
     useEffect(() => {  
         setPreview();
-        guardarLoaderProgress({width: '0%'})
+        guardarLoaderProgress({width: '0%'});
         guardarNoMatches(false);
         guardarStateCrash(false);
         (async () => {
             const {objRoster} = await getRoster(teamid);
             setRoster(objRoster);
+            guardarLoaderProgress({width: '20%'});
             const {objPastMatch, badFetch} = await getPastMatch(teamid);
             const {data, imageTeam} = objPastMatch;
+            guardarLoaderProgress({width: '50%'});
             if (data && data.length !== 0) {
                 guardarPrevMatch(data);
                 if (imageTeam === null) {
@@ -98,6 +100,7 @@ const TeamProfile = () => {
                     setImageTeam('https://proxy-kremowy.herokuapp.com/' + imageTeam);
                     guardarLogo('https://proxy-kremowy.herokuapp.com/' + imageTeam);
                 }
+                guardarLoaderProgress({width: '70%'});
             }else{
                 guardarPrevMatch("no-match");
             }
@@ -112,11 +115,11 @@ const TeamProfile = () => {
                     if(objNextMatches.length === 0){   
                         guardarNoMatches(true);
                     }
-                    guardarLoaderProgress({width: '100%'});
                 }
                 if (badFetch) {
                     guardarStateCrash(true);
                 }
+                guardarLoaderProgress({width: '100%'});
             }
         })()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -176,7 +179,7 @@ const TeamProfile = () => {
     
     const {width} = loaderprogress;
     if (!crash){
-        if(width === '100%' && prevMatch.length > 0 && paletestate === true){
+        if(width === '100%' && paletestate === true){
             return(
                 <div onContextMenu={(e)=> window.innerWidth > 782? null : e.preventDefault()} className="parametros-container mosaico noselect" style={backgroundStyle}>
                     <MobileHeader
