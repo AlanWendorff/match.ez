@@ -154,6 +154,9 @@
     justify-content: space-between;
     padding: 10px 30px ;
   }
+  .match-data > span{
+    width: 50%;
+  }
   .match-data > span > .data{
     margin-left: 5px;
   }

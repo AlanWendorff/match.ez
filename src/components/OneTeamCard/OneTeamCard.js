@@ -4,7 +4,6 @@ import { faClock, faCodeBranch} from '@fortawesome/free-solid-svg-icons';
 import { HeaderLogoContext } from '../Context/HeaderLogoContext'
 import { TOURNAMENT, TEAM } from '../../routes/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {setMatchResult} from '../../utility/SetMatchResult';
 import { setGameMode } from '../../utility/SetGameMode';
 import { usePalette } from 'react-palette';
 import { PlaySound } from '../../utility/PlaySound';
@@ -97,7 +96,6 @@ const OneTeamCard = ({match, teamid}) => {
     if(status === 'running'){
         hoy = "Playing Now"; 
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
-        const {A_point, B_point} = setMatchResult(results, teamid); 
         return(
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown animate__faster">
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
@@ -110,43 +108,44 @@ const OneTeamCard = ({match, teamid}) => {
                             
                             <div className="live-container-puntos-logos-upcoming">
 
-                                <Link to={TEAM.replace(':teamid', opponentId)} >
+                                <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)} >
                                     <div className="team-canvas"> 
-                                        <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                            {src => <img title={LOOKPROFILE + opponentName} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
                                         </ProgressiveImage>                        
                                     </div> 
                                 </Link>
 
                                 <div title="Partidos ganados en la serie">
                                     <div className="points">
-                                        <p className="match-winner point-A">{A_point}</p>
+                                        <p className="match-winner point-A">{results[0].score}</p>
                                         <p>-</p>
-                                        <p className="match-winner point-B">{B_point}</p>                           
+                                        <p className="match-winner point-B">{results[1].score}</p>                           
                                     </div>  
                                 </div>
-
-                                <div className="team-canvas">
-                                    <ProgressiveImage src={ownLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img alt="b team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
-                                    </ProgressiveImage>  
-                                </div> 
+                                <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)} >
+                                    <div className="team-canvas">
+                                        <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
+                                            {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        </ProgressiveImage>  
+                                    </div> 
+                                </Link>
                             </div>
 
                             <div className="container-label">
-                                <p className="label-teams">{opponentName}</p> 
+                                <p className="label-teams">{opponents[0].opponent.name}</p> 
                                 <p className="modalidad-past-match">{modalidad}</p>
-                                <p className="label-teams">{ownName}</p>
+                                <p className="label-teams">{opponents[1].opponent.name}</p>
                             </div> 
 
 
                             <div className="match-data">
-                                <span className="font-size">
+                                <span className="font-size text-align-start">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
                                     <span className="data">{fase}</span> 
                                 </span>
 
-                                <span className="font-size">
+                                <span className="font-size align-end">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
                                     <span className="data">{Moment(begin_at).format('H:mm')}  hs</span> 
                                 </span>                  
