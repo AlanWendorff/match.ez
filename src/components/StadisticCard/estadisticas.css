@@ -1,13 +1,39 @@
 
-
-@media (min-width: 771px) {   
+.W-green{
+    color: green;
+    font-family: "Gilroy-ExtraBold";
+}
+.L-red{
+    color: rgb(128, 0, 0);
+    font-family: "Gilroy-ExtraBold";
+}
+@media (min-width: 771px) { 
+    .stadistic-card-container{
+        background-color: white;
+        align-self: center;
+        border-radius: 3px;
+        width: 630px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: 15px;
+    }  
     .container-estadistica{
+        margin: 15px 0px 15px 0px;
+        width: 100%;
         align-self: center;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        padding: 20px 5px;
-    }   
+    }  
+    .win-and-loose{
+        margin: 0px 0px 15px 0px;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+     
     .font-wins{  
         font-size: 20px !important;
         font-weight: bold !important;
@@ -26,15 +52,31 @@
 }
   
 @media screen and (max-width: 770px) {     
-    /* Tarjeta Estadisticas*/
+    .stadistic-card-container{
+        background-color: white;
+        align-self: center;
+        border-radius: 3px;
+        width: 330px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: 15px;
+    }  
     .container-estadistica{
+        margin: 10px 0px 10px 0px;
+        width: 100%;
         align-self: center;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        padding: 10px 5px;
-        margin: 10px 0px;
-    }   
+    }  
+    .win-and-loose{
+        margin: 0px 0px 10px 0px;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    } 
     .font-wins{  
         font-size: 15px !important;
         font-weight: bold !important;

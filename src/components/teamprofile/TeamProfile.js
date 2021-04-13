@@ -26,6 +26,7 @@ const TeamProfile = () => {
     let backgroundStyle;
     let winStrike = 0;
     let winRate   = 0;
+    let wl = [];
     let matchWin  = 0;
     const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
     const [loaderprogress, guardarLoaderProgress]  = useState({width: '0%'});
@@ -162,7 +163,16 @@ const TeamProfile = () => {
         for(let i = 0; i < prevMatch.length; i++) {
             if(prevMatch[i].winner_id === parseInt(teamid)){
                 matchWin = matchWin + 1;
+                if (wl.length < 5) {
+                    wl.push("W");
+                }
+                
+            }else{
+                if (wl.length < 5) {
+                    wl.push("L");
+                }
             }
+
         }
         let avg = matchWin * 100 / prevMatch.length;
         winRate = parseFloat(avg).toFixed(2)+"%";
@@ -174,7 +184,7 @@ const TeamProfile = () => {
             else{
                 winStrike = 0;
             }
-        }    
+        }     
     }
     
     const {width} = loaderprogress;
@@ -195,6 +205,7 @@ const TeamProfile = () => {
                     <StadisticCard
                         winRate={winRate}
                         winStrike={winStrike}
+                        wl={wl}
                     /> 
 
                     {show === "preview"&&
