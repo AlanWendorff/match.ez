@@ -109,12 +109,12 @@ const CompetitionCard = ({match, data}) => {
 
 
                             <div className="match-data">
-                                <span className="font-size">
+                                <span className="font-size text-align-start">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
                                     <span className="data">{fase}</span> 
                                 </span>
 
-                                <span className="font-size">
+                                <span className="font-size align-end">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
                                     <span className="data">{Moment(begin_at).format('H:mm')}  hs</span> 
                                 </span>                  

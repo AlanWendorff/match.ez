@@ -5,7 +5,7 @@ import { setGameMode } from '../../utility/SetGameMode';
 import { LOOKPROFILE } from '../../titlestag/titlestag';
 import { usePalette } from 'react-palette';
 import { PlaySound } from '../../utility/PlaySound';
-import { TEAM } from '../../routes/routes';
+import { TEAM, TOURNAMENT } from '../../routes/routes';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
 import Moment from 'moment';
@@ -97,7 +97,7 @@ const TarjetaAllmatches = ({match}) => {
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
                             <div className="live-league-container">
-                                <a className="text-center head-font highlight-text" style={{color: `${data.darkVibrant}`}} rel="noopener noreferrer" target="_blank" href={league.slug}> {league.name+" "+serie.full_name} </a>     
+                                <Link to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} className="text-center head-font highlight-text" style={{color: `${data.darkVibrant}`}}> {league.name+" "+serie.full_name} </Link>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -135,12 +135,12 @@ const TarjetaAllmatches = ({match}) => {
 
 
                             <div className="match-data">
-                                <span className="font-size">
+                                <span className="font-size text-align-start">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
                                     <span className="data">{fase}</span> 
                                 </span>
 
-                                <span className="font-size">
+                                <span className="font-size align-end">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon icon={faClock}/>  </span>
                                     <span className="data">{Moment(begin_at).format('H:mm')}  hs</span> 
                                 </span>                  
