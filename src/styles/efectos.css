@@ -67,3 +67,51 @@
 .effect-360-container:before{
     background: #3b5999;
 }
+
+
+.fire {
+    animation: fire 15s infinite;
+}
+
+@keyframes fire{
+  0% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    -moz-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    box-shadow: 2px 0px 20px 2px rgba(181,0,0,1);
+  }
+  10% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px #ffad00;
+    -moz-box-shadow: inset 0px -13px 16px 6px #ffad00;
+    box-shadow: 0px -1px 25px 5px #ffad00;
+  }
+  30% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px #ffad00;
+    -moz-box-shadow: inset 0px -13px 16px 6px #ffad00;
+    box-shadow: -4px 5px 25px 5px #ffa300;
+  }
+  50% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    -moz-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    box-shadow: 3px -3px 13px 2px #e64d01;
+  }
+  50% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    -moz-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    box-shadow: -1px 2px 25px 4px #ffe840;
+  }
+  70% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    -moz-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    box-shadow: 2px 4px 30px 5px #a12000;
+  }
+  90% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    -moz-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    box-shadow: 1px 5px 25px 5px #ff8901;
+  }
+  100% {
+    -webkit-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    -moz-box-shadow: inset 0px -13px 16px 6px rgba(181,0,0,1);
+    box-shadow: 2px 0px 20px 2px rgba(181,0,0,1);
+  }
+}

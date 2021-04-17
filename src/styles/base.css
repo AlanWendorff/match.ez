@@ -138,6 +138,14 @@
 .invert-color{
     filter: invert();
 }
+.color-text-red{
+    color: rgb(207, 0, 0) !important;
+    font-family: "Gilroy-ExtraBold !important";
+}
+.color-text-green{
+    color: rgb(0, 180, 0) !important;
+    font-family: "Gilroy-ExtraBold !important";
+}
 .color-text-black{
     color: black !important;
 }

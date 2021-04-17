@@ -5,6 +5,7 @@ import TeamProfile from './components/TeamProfile/TeamProfile';
 import Tournaments from './components/Tournaments/Tournaments';
 import LeagueGames from './components/LeagueGames/LeagueGames';
 import ControlRoom from './components/ControlRoom/ControlRoom';
+import HltvRanking from './components/HltvRanking/HltvRanking';
 import AllMatches from './components/AllMatches/AllMatches';
 import Timeline from './components/Timeline/Timeline';
 import Home from './components/Home/Home';
@@ -18,6 +19,7 @@ import {
   CONTROL,
   TOURNAMENT,
   TEAM,
+  RANKING
  } from './routes/routes';
 import axios from 'axios';
 
@@ -86,8 +88,9 @@ const Layout = () => {
             <Route exact path={TOURNAMENT} component={LeagueGames}/>
             <Route exact path={ALLMATCHES} component={AllMatches}/>
             <Route exact path={CONTROL} component={ControlRoom}/>
+            <Route exact path={RANKING} component={HltvRanking}/>    
             <Route exact path={TIMELINE} component={Timeline}/>
-            <Route exact path={TEAM} component={TeamProfile}/>       
+            <Route exact path={TEAM} component={TeamProfile}/>    
             <Route exact path={MORE}>
               <More 
                 handleInstallClick={handleInstallClick}

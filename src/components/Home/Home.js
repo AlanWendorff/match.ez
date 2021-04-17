@@ -3,6 +3,10 @@ import SearchTeam from '../SearchTeam/SearchTeam';
 import SimpleLoadScreen from '../Loader/SimpleLoadScreen';
 import { ColorThemeContext } from '../Context/ColorThemeContext';
 import TeamCollection from '../TeamCollection/TeamCollection';
+import { Link } from "react-router-dom";
+import {
+    RANKING
+   } from '../../routes/routes';
 import './home.css';
 
 const Home = () => {
@@ -19,6 +23,7 @@ const Home = () => {
                 <TeamCollection
                     collection={collection}
                 />
+                <Link to={RANKING} title="Look ranking"> Team Ranking </Link>
             </div>
         </div>
         :
