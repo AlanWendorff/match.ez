@@ -24,7 +24,7 @@ const Home = () => {
       <div className="child-home">
         <Link to={RANKING} title="Look ranking" style={{ backgroundColor: colors.header_color }}>
           <FontAwesomeIcon icon={faListOl} /> 
-          #30 World Ranking
+          World Ranking
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
         <SearchTeam setCollection={setCollection} collection={collection} />

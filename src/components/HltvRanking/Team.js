@@ -19,12 +19,12 @@ const Team = ({
   let colorTeam;
   colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
 
-  console.log(colorTeam);
   return (
     <Link
       key={name}
       to={id ? TEAM.replace(":teamid", id) : RANKING}
       title={`Look the team profile of: ${name}`}
+      className="animate__animated animate__faster animate__fadeInUp"
     >
       <div
         /* className={
@@ -44,11 +44,11 @@ const Team = ({
         </div>
         <div className="name">
           <span>{name}</span>
-          <span>{points}</span>
+          <span>{points} Points</span>
         </div>
         <div className="roster">
           {roster.map((player) => (
-            <span>{player}</span>
+            <span key={player}>{player}</span>
           ))}
         </div>
         <span className={balanceColor}>{balance}</span>
