@@ -27,9 +27,9 @@ const Team = ({
       title={`Look the team profile of: ${name}`}
     >
       <div
-        className={
-          position === 1 ? "crosshair-expand fire" : "crosshair-expand"
-        }
+        /* className={
+          position === 1 ? "fire" : ""
+        } */
         style={{ backgroundColor: colorTeam.darkVibrant }}
       >
         <div className="team">

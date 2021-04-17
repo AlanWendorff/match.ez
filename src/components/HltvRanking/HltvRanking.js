@@ -3,7 +3,7 @@ import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { PathContext } from "../Context/PathContext";
 import { getRanking } from "./getHltvRanking";
-import LazyLoad from 'react-lazyload';
+import LazyLoad from "react-lazyload";
 import Team from "./Team";
 import "./hltvranking.css";
 
