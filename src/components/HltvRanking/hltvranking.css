@@ -19,39 +19,39 @@
     background-color: rgba(0, 0, 0, 0.192);
 }
 
-.table-container > a{
+.table-container > .lazyload-wrapper > a{
     width: 100%;
     margin: 15px 0px;
-    background-color: rgba(0, 0, 0, 0.349);
     display: flex;
     align-items: center;
     height: 75px;
 }
 
-.table-container > a :hover{
+.table-container > .lazyload-wrapper > a :hover{
     cursor: pointer;
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.39));
     transition: all 0.1s ease-out;
 }
 
-.table-container > a > div{
+.table-container > .lazyload-wrapper > a > div{
     padding: 0px 20px;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #2d6da3;
 }
-.table-container > a > div > .team{
+.table-container > .lazyload-wrapper > a > div > .team{
     font-size: 20px;
-    width: 100px;
+    width: 120px;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.table-container > a > div > .name{
+.table-container > .lazyload-wrapper > a > div > .name{
     color: white;
     font-size: 20px;
     width: 200px;
@@ -61,18 +61,21 @@
     align-items: center;
 }
 
-.table-container > a > div > .roster{
+.table-container > .lazyload-wrapper > a > div > .roster{
     color: white;
     font-family: "Gilroy-ExtraBold";
     font-size: 16px;
     display: flex;
     justify-content: space-between;
     text-align: center;
-    width: 470px;
+    width: 490px;
+    padding: 0px 20px;
+    background-color: rgba(0, 0, 0, 0.226);
+    border-radius: 10px;
 }
 
-.table-container > a > div > .team > div{
-    background-color: rgba(255, 255, 255, 0);
+.table-container > .lazyload-wrapper > a > div > .team > div{
+    background-color: rgba(255, 255, 255, 0.801);
     height: 60px;
     width: 60px;
     border-radius: 10px;
@@ -80,12 +83,20 @@
     align-items: center;
     justify-content: center;
 }
-.table-container > a > div > .team > div > img{
+.table-container > .lazyload-wrapper > a > div > .team > div > img{
     max-width: 45px;
     max-height: 100%;
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.63));
 }
-.table-container > a > div > span{
+.table-container > .lazyload-wrapper > a > div > span{
+    font-family: "Gilroy-ExtraBold";
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.801);
     font-size: 20px;
     letter-spacing: 2px;
 }

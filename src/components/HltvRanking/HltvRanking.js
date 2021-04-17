@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { TEAM } from "../../routes/routes";
 import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
-import ProgressiveImage from "react-progressive-image";
 import { PathContext } from "../Context/PathContext";
 import { getRanking } from "./getHltvRanking";
-import csgoLogo from "../../Images/csgoLogoDefault.png";
+import LazyLoad from 'react-lazyload';
+import Team from "./Team";
 import "./hltvranking.css";
+
 const HltvRanking = () => {
   const [badfetch, setBadFetch] = useState(false);
   const { colors } = useContext(ColorThemeContext);
@@ -32,54 +31,31 @@ const HltvRanking = () => {
           const databaseTeam = pathsArray.find(
             (element) => element.name.toLowerCase() === team.name.toLowerCase()
           );
-          console.log({team, databaseTeam});
+          console.log({ team, databaseTeam });
           const { balance, name, points, position, roster } = team;
           const img = databaseTeam && databaseTeam.img;
           const id = databaseTeam && databaseTeam.id;
 
           let balanceColor;
-          balance.length > 1?
-            balance.includes("-")?
-              balanceColor = "color-text-red"
-              :
-              balanceColor = "color-text-green"
-          :
-          balanceColor = "color-text-white";
-          
+          balance.length > 1
+            ? balance.includes("-")
+              ? (balanceColor = "color-text-red")
+              : (balanceColor = "color-text-green")
+            : (balanceColor = "color-text-black");
+
           return (
-            <Link
-              key={name}
-              to={id ? TEAM.replace(":teamid", id) : "/"}
-              title={`Look the team profile of: ${name}`}
-            >
-              <div className={position === 1? "crosshair-expand fire" : "crosshair-expand"}>
-                <div className="team">
-                  <span className="color-text-white">#{position}</span>
-                  <div>
-                    <ProgressiveImage
-                      src={img ? img : csgoLogo}
-                      placeholder={csgoLogo}
-                    >
-                      {(src) => (
-                        <img className="" loading="lazy" src={src} alt={name} />
-                      )}
-                    </ProgressiveImage>
-                  </div>
-                </div>
-                <div className="name">
-                  <span>{name}</span>
-                  <span>{points}</span>
-                </div>
-                <div className="roster">
-                    {
-                      roster.map((player)=> (
-                          <span>{player}</span>
-                        ))
-                    }
-                </div>
-                <span className={balanceColor}>{balance}</span>
-              </div>
-            </Link>
+            <LazyLoad offset={80} height={80} overflow key={name}>
+              <Team
+                balanceColor={balanceColor}
+                id={id}
+                img={img}
+                balance={balance}
+                name={name}
+                points={points}
+                position={position}
+                roster={roster}
+              />
+            </LazyLoad>
           );
         })}
       </div>
