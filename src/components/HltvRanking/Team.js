@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogo from "../../Images/csgoLogoDefault.png";
+import csgoLogoBlack from "../../Images/csgoLogoDefaultBlack.png";
 import { usePalette } from "react-palette";
 import "./hltvranking.css";
 
@@ -35,7 +35,7 @@ const Team = ({
         <div className="team">
           <span className="color-text-white">#{position}</span>
           <div>
-            <ProgressiveImage src={img ? img : csgoLogo} placeholder={csgoLogo}>
+            <ProgressiveImage src={img ? img : csgoLogoBlack} placeholder={csgoLogoBlack}>
               {(src) => (
                 <img className="" loading="lazy" src={src} alt={name} />
               )}
