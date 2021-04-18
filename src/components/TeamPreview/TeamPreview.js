@@ -98,7 +98,7 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => 
                                     </ProgressiveImage>
                                 </div>
                                 <img title={nationality} src={ NATIONALITY } />
-                                <span style={{color: color.darkVibrant}} title={first_name +" "+ last_name} className="player-name-style">{name}</span>
+                                <span style={{color: color.darkVibrant}} title={first_name +" "+ last_name} className="font-gilroy-bold">{name}</span>
                                 <span style={{color: color.darkVibrant}} className="player-name-style">{FIRSTNAME +" "+ LASTNAME}</span>
                             </div>
                         );                                  

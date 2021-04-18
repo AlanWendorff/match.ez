@@ -26,16 +26,14 @@ const Team = ({
       title={`Look the team profile of: ${name}`}
       className="animate__animated animate__faster animate__fadeInUp"
     >
-      <div
-        /* className={
-          position === 1 ? "fire" : ""
-        } */
-        style={{ backgroundColor: colorTeam.darkVibrant }}
-      >
+      <div style={{ backgroundColor: colorTeam.darkVibrant }}>
         <div className="team">
           <span className="color-text-white">#{position}</span>
           <div>
-            <ProgressiveImage src={img ? img : csgoLogoBlack} placeholder={csgoLogoBlack}>
+            <ProgressiveImage
+              src={img ? img : csgoLogoBlack}
+              placeholder={csgoLogoBlack}
+            >
               {(src) => (
                 <img className="" loading="lazy" src={src} alt={name} />
               )}

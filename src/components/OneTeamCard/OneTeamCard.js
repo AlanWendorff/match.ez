@@ -9,6 +9,7 @@ import { usePalette } from 'react-palette';
 import { PlaySound } from '../../utility/PlaySound';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
+import TeamRanking from "../TeamRanking/TeamRanking";
 import Share from '../Share/Share';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
