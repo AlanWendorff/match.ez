@@ -113,7 +113,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
                         </div>
 
                         <div>
-                            <div className="game-win">
+                            <div className="game-win font-gilroy-bold">
                                 <p className={results[0].score < results[1].score? "match-loser point-A" :"match-winner point-A"}>{results[0].score}</p>
                                 <p>-</p>
                                 <p className={results[0].score < results[1].score? "match-winner point-B" : "match-loser point-B"}>{results[1].score}</p>                           

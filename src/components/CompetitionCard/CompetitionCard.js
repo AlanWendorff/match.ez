@@ -7,6 +7,7 @@ import {setGameMode} from '../../utility/SetGameMode';
 import { PlaySound } from '../../utility/PlaySound';
 import { Link } from 'react-router-dom';
 import { TEAM } from '../../routes/routes';
+import { usePalette } from 'react-palette';
 import ProgressiveImage from 'react-progressive-image';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
@@ -24,6 +25,22 @@ const CompetitionCard = ({match, data}) => {
     let fase = "";
     let statusStream = "Streaming off";
     let statusMatch = "Today " + Moment(begin_at).format('H:mm') + "hs";
+
+    const TeamLogoA = opponents[0]? opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url : csgoLogoDefaultBlack;
+    const TeamLogoB = opponents[1]? opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url : csgoLogoDefaultBlack;
+    let colorTeamA = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoA).data;
+    let colorTeamB = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoB).data;
+
+    if (TeamLogoA === csgoLogoDefaultBlack) {
+        colorTeamA = {
+            darkVibrant: "#2d6da3"
+        }
+    }
+    if (TeamLogoB === csgoLogoDefaultBlack) {
+        colorTeamB = {
+            darkVibrant: "#2d6da3"
+        }
+    }
 
     if (name.includes(":")) {
         fase = name.substring(
@@ -101,10 +118,10 @@ const CompetitionCard = ({match, data}) => {
                                 </Link>
                             </div>
 
-                            <div className="container-label">
-                                <p className="label-teams pill">{opponents[0].opponent.name}</p> 
+                            <div className="container-label color-text-white letter-spacing">
+                                <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant}} >{opponents[0].opponent.name}</p> 
                                 <p className="modalidad-past-match" ></p>
-                                <p className="label-teams pill">{opponents[1].opponent.name}</p>
+                                <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant}} >{opponents[1].opponent.name}</p>
                             </div> 
 
                             <div className="rankings-label">
@@ -181,10 +198,10 @@ const CompetitionCard = ({match, data}) => {
                                 
                         </div>
 
-                        <div className="container-label">
-                            <p className="label-teams pill" style={{color: data.darkMuted}}>{aTeamName}</p> 
+                        <div className="container-label color-text-white letter-spacing">
+                            <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant}}>{aTeamName}</p> 
                             <p className="modalidad-past-match" ></p>
-                            <p className="label-teams pill" style={{color: data.darkMuted}}>{bTeamName}</p>
+                            <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant}}>{bTeamName}</p>
                         </div> 
 
                         <div className="rankings-label">

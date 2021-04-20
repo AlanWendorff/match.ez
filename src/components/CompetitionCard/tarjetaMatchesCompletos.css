@@ -75,7 +75,6 @@
     border-radius: 100px;
     height: 30px;
     z-index: 100;
-    background-color: rgb(228, 228, 228);
 }
 
 @media (min-width: 641px) { 
@@ -116,7 +115,7 @@
         max-width: 110px !important;
     }  
     .label-teams{
-        width: 150px;
+        width: 160px;
         margin: 2% 0% 2% 0% !important;
         font-size: 15px;
         font-family: "Gilroy-ExtraBold";
@@ -220,7 +219,7 @@
         font-weight: bold;
     }
     .label-teams{
-        width: 100px;
+        width: 130px;
         margin: 2% 0% 2% 0% !important;
         font-size: 12px;
         font-weight: bold;
@@ -231,6 +230,7 @@
         font-size: 12px;
         align-self: flex-start;
         text-align: center;
+        width: 55px;
     }
     .versus-label{
         align-self: center;
@@ -254,7 +254,7 @@
     .labels-esquinas{
         margin: 0%;
         color:  #1b1b1b !important;
-        font-size: 10px;
+        font-size: 13px;
         font-family: "Gilroy-ExtraBold";
     }
     .league-size{

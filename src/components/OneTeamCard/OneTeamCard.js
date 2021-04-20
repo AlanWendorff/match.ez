@@ -118,7 +118,7 @@ const OneTeamCard = ({match, teamid}) => {
                                 </Link>
 
                                 <div title="Partidos ganados en la serie">
-                                    <div className="points">
+                                    <div className="points font-gilroy-bold">
                                         <p className="match-winner point-A">{results[0].score}</p>
                                         <p>-</p>
                                         <p className="match-winner point-B">{results[1].score}</p>                           
@@ -176,22 +176,22 @@ const OneTeamCard = ({match, teamid}) => {
                         <div className="card-content">
                             <Link className="text-center head-font highlight-text" style={{color: leagueColors.darkVibrant}}  to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </Link>
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: leagueColors.darkVibrant}}>Vs:</span> 
+                                <span className="label-data-style mr-3px font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Vs:</span> 
                                 {opponentName === undefined? 'To be defined' : opponentName}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: leagueColors.darkVibrant}}>Stage:</span> 
+                                <span className="label-data-style mr-3px font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Stage:</span> 
                                 {fase}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid" style={{color: leagueColors.darkVibrant}}>Date: </span>
+                                <span className="label-data-style font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Date: </span>
                                 <span>{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs  <span className="hoy-color">{hoy}</span> </span> 
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
-                                <span className="label-data-style margin-entre-label-contenid mr-3px" style={{color: leagueColors.darkVibrant}}>Games:</span> 
+                                <span className="label-data-style mr-3px font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Games:</span> 
                                 {modalidad}
                             </p>
                             <Share

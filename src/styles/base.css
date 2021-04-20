@@ -152,7 +152,9 @@
 .color-text-white{
     color: white !important;
 }
-
+.letter-spacing{
+    letter-spacing: 1px;
+}
 .white-neon{
     filter: drop-shadow(2px 2px 10px #ffffffce);
 }

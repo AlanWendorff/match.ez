@@ -31,6 +31,21 @@ const TarjetaAllmatches = ({match}) => {
     let statusMatch = "Today " + Moment(begin_at).format('H:mm') + "hs";
     if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let { data, error } = usePalette(proxyLogo);
+    const TeamLogoA = opponents[0]? opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url : csgoLogoDefaultBlack;
+    const TeamLogoB = opponents[1]? opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url : csgoLogoDefaultBlack;
+    let colorTeamA = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoA).data;
+    let colorTeamB = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoB).data;
+
+    if (TeamLogoA === csgoLogoDefaultBlack) {
+        colorTeamA = {
+            darkVibrant: "#2d6da3"
+        }
+    }
+    if (TeamLogoB === csgoLogoDefaultBlack) {
+        colorTeamB = {
+            darkVibrant: "#2d6da3"
+        }
+    }
     
     if (name.includes(":")) {
         fase = name.substring(
@@ -112,7 +127,7 @@ const TarjetaAllmatches = ({match}) => {
                                 </Link>
 
                                 <div title="Partidos ganados en la serie">
-                                    <div className="points" title="Partidos ganados en la serie">
+                                    <div className="points font-gilroy-bold" title="Partidos ganados en la serie">
                                         <p className="match-winner point-A">{results[0].score}</p>
                                         <p>-</p>
                                         <p className="match-winner point-B">{results[1].score}</p>                           
@@ -128,10 +143,10 @@ const TarjetaAllmatches = ({match}) => {
                                 </Link>
                             </div>
 
-                            <div className="container-label">
-                                <p className="label-teams pill">{opponents[0].opponent.name}</p> 
+                            <div className="container-label color-text-white letter-spacing">
+                                <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant}} >{opponents[0].opponent.name}</p> 
                                 <p className="modalidad-past-match" ></p>
-                                <p className="label-teams pill">{opponents[1].opponent.name}</p>
+                                <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant}} >{opponents[1].opponent.name}</p>
                             </div> 
 
                             <div className="rankings-label">
@@ -168,7 +183,7 @@ const TarjetaAllmatches = ({match}) => {
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.darkVibrant}`}}> 
                 <div className="card-image">
                     <p className="text-align-center cursor-default font-size mb-0">
-                        <Link to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} className="label-data-style margin-entre-label-contenido highlight-text" style={{color: data.darkVibrant}}>{league.name+" "+serie.full_name}</Link> 
+                        <Link to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} className="label-data-style highlight-text" style={{color: data.darkVibrant}}>{league.name+" "+serie.full_name}</Link> 
                     </p> 
     
                     <div className="card-image container-info cursor-default">
@@ -209,10 +224,10 @@ const TarjetaAllmatches = ({match}) => {
                                 
                         </div>
     
-                        <div className="container-label">
-                            <p className="label-teams pill">{aTeamName}</p> 
+                        <div className="container-label color-text-white letter-spacing">
+                            <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant}} >{aTeamName}</p> 
                             <p className="modalidad-past-match" ></p>
-                            <p className="label-teams pill">{bTeamName}</p>
+                            <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant}} >{bTeamName}</p>
                         </div> 
 
                         <div className="rankings-label">

@@ -110,10 +110,7 @@
         margin-bottom: 0% !important;
     }
     .max-size-logo-prev-game{
-        max-width: 130px !important;
-        max-height: auto !important;
-        /*max-width: 160px !important;
-        max-height: 187px !important;*/
+        max-width: 110px !important;
     }   
     .text-in-card{
         width: 100%;
