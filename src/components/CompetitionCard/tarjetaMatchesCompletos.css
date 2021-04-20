@@ -15,13 +15,13 @@
 /* Tarjeta Prev Match */
 .container-prev-match{
     overflow: hidden;
-    padding: 0% 0% 0% 0% !important;
+    padding: 0%!important;
     display: flex;
     flex-direction: column;
 }   
 
 .container-label{
-    padding: 0% 0% 0% 0%;
+    padding: 0%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -61,6 +61,23 @@
     font-weight: bold;
 }
 
+.rankings-label{
+    padding: 0%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.pill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    height: 30px;
+    z-index: 100;
+    background-color: rgb(228, 228, 228);
+}
+
 @media (min-width: 641px) { 
     .margin-right-bottom{
         margin-bottom: 35px;
@@ -96,14 +113,13 @@
         margin-bottom: 0% !important;
     }
     .max-size-team-logo-prev-match{
-        max-width: 160px !important;
-        max-height: 187px !important;
-    }   
+        max-width: 110px !important;
+    }  
     .label-teams{
-        width: 40%;
+        width: 150px;
         margin: 2% 0% 2% 0% !important;
         font-size: 15px;
-        font-weight: bold;
+        font-family: "Gilroy-ExtraBold";
     }
     .modalidad-past-match{
         margin: 2% 0% 2% 0% !important;
@@ -119,28 +135,25 @@
         font-size: 50px;
         display: flex;
         margin-bottom: 0% !important;
-        font-weight: bold;
+        font-family: "Gilroy-ExtraBold";
     }
     
     .team-canvas{
-        width: 160px;
+        width: 110px;
         height: 160px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-weight: bold;
     }
     .hoy-esquina{
         margin: 0%;
         color:  #FF0000 !important;
-        font-weight: bold;
-        filter: drop-shadow(5px 5px 8px rgb(255, 0, 0));
+        font-family: "Gilroy-ExtraBold";
     }
     .labels-esquinas{
         margin: 0%;
         color:  #1b1b1b !important;
-        font-weight: bold;
-        filter: drop-shadow(5px 5px 8px #000000be);
+        font-family: "Gilroy-ExtraBold";
     }
     .league-size{
         max-width: 40px !important;
@@ -160,8 +173,9 @@
         padding: 10px 60px ;
     }
     .match-data > span > .data{
-    margin-left: 5px;
+        margin-left: 5px;
     }
+    
     
 }
   
@@ -197,8 +211,16 @@
     .max-size-team-logo-prev-match{
         max-width: 110px !important;
     }   
+    .team-canvas{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
     .label-teams{
-        width: 40%;
+        width: 100px;
         margin: 2% 0% 2% 0% !important;
         font-size: 12px;
         font-weight: bold;
@@ -215,34 +237,25 @@
         justify-self: center;
         padding-left: 2%;
         padding-right: 2%;
-        font-size: 30px;
+        font-size: 25px;
         display: flex;
         margin-bottom: 0% !important;
-        font-weight: bold;
+        font-family: "Gilroy-ExtraBold";
     }
 
-    .team-canvas{
-        width: 100px;
-        height: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-    }
+    
 
     .hoy-esquina{
         margin: 0%;
         color:  #FF0000 !important;
-        font-weight: bold;
         font-size: 10px;
-        filter: drop-shadow(5px 5px 8px rgb(255, 0, 0));
+        font-family: "Gilroy-ExtraBold";
     }
     .labels-esquinas{
         margin: 0%;
         color:  #1b1b1b !important;
-        font-weight: bold;
         font-size: 10px;
-        filter: drop-shadow(5px 5px 8px #000000be);
+        font-family: "Gilroy-ExtraBold";
     }
     .league-size{
         max-width: 30px !important;
@@ -260,8 +273,14 @@
         display: flex;
         justify-content: space-between;
         padding: 10px 30px ;
-      }
-      .match-data > span > .data{
+    }
+    .match-data > span > .data{
         margin-left: 5px;
-      }
+    }
+    .card > .card-image > .text-align-center > span {
+        font-size: 16px;
+    }
+    .live-league-container > span {
+        font-size: 16px;
+    }
 }

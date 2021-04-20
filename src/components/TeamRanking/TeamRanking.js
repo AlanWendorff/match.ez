@@ -6,7 +6,7 @@ const TeamRanking = ({ name }) => {
   const rankedTeam = ranking.find(
     (element) => element.name.toLowerCase() === name.toLowerCase()
   );
-  return <div className="mini-ranking color-text-black font-gilroy-bold">{rankedTeam && `# ${rankedTeam.position}`}</div>;
+  return <div className="mini-ranking color-text-black font-gilroy-bold">{rankedTeam ? `# ${rankedTeam.position}` : '# ?'}</div>;
 };
 
 export default TeamRanking;

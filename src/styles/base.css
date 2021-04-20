@@ -236,8 +236,7 @@ i.right{
         font-size: 20px;
     }
     .size-team-logo{
-        max-width: 150px !important;
-        max-height: auto !important;
+        width: 110px;
     }  
 }
 
@@ -250,10 +249,9 @@ i.right{
         flex-direction: column;
     } 
     .font-size{
-        font-size: 15px;
+        font-size: 13px;
     }
     .size-team-logo{
         max-width: 80px !important;
-        max-height: auto !important;
     }  
 }

@@ -7,6 +7,7 @@ import { usePalette } from 'react-palette';
 import { PlaySound } from '../../utility/PlaySound';
 import { TEAM, TOURNAMENT } from '../../routes/routes';
 import { Link } from 'react-router-dom';
+import TeamRanking from '../TeamRanking/TeamRanking';
 import ProgressiveImage from 'react-progressive-image';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
@@ -92,7 +93,7 @@ const TarjetaAllmatches = ({match}) => {
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         statusMatch = "¡Playing Now!";
         return (
-            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.lightVibrant}`}}>
+            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.darkVibrant}`}}>
                 <div className="col s12 m7 posicion-tarjeta">
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
@@ -128,10 +129,18 @@ const TarjetaAllmatches = ({match}) => {
                             </div>
 
                             <div className="container-label">
-                                <p className="label-teams">{opponents[0].opponent.name}</p> 
-                                <p className="modalidad-past-match" >{modalidad}</p>
-                                <p className="label-teams">{opponents[1].opponent.name}</p>
+                                <p className="label-teams pill">{opponents[0].opponent.name}</p> 
+                                <p className="modalidad-past-match" ></p>
+                                <p className="label-teams pill">{opponents[1].opponent.name}</p>
                             </div> 
+
+                            <div className="rankings-label">
+                                <TeamRanking name={aTeamName} />
+                                <p className="modalidad-past-match" >{modalidad}</p>
+                                <TeamRanking name={bTeamName} />
+                            </div>
+
+
 
 
                             <div className="match-data">
@@ -156,16 +165,16 @@ const TarjetaAllmatches = ({match}) => {
             ); 
     }else{
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.lightVibrant}`}}> 
+            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.darkVibrant}`}}> 
                 <div className="card-image">
                     <p className="text-align-center cursor-default font-size mb-0">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}}>{league.name+" "+serie.full_name}</span> 
+                        <Link to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} className="label-data-style margin-entre-label-contenido highlight-text" style={{color: data.darkVibrant}}>{league.name+" "+serie.full_name}</Link> 
                     </p> 
     
                     <div className="card-image container-info cursor-default">
                         {dateUser === dateMatch?
                             <div className="hoy-esquina-container">
-                                <p className="hoy-esquina">{fase}</p>
+                                <p className="labels-esquinas">{fase}</p>
                                 <p className="hoy-esquina">{statusMatch}</p> 
                             </div>
                         :
@@ -201,10 +210,16 @@ const TarjetaAllmatches = ({match}) => {
                         </div>
     
                         <div className="container-label">
-                            <p className="label-teams">{aTeamName}</p> 
-                            <p className="modalidad-past-match" >{modalidad}</p>
-                            <p className="label-teams">{bTeamName}</p>
+                            <p className="label-teams pill">{aTeamName}</p> 
+                            <p className="modalidad-past-match" ></p>
+                            <p className="label-teams pill">{bTeamName}</p>
                         </div> 
+
+                        <div className="rankings-label">
+                            <TeamRanking name={aTeamName} />
+                            <p className="modalidad-past-match" >{modalidad}</p>
+                            <TeamRanking name={bTeamName} />
+                        </div>
                     </div>            
                 
                 </div>

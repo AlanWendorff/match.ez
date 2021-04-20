@@ -74,6 +74,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Gilroy-ExtraBold";
 }
 
 @media (min-width: 771px) {

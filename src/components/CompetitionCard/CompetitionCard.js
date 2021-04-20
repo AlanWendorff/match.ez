@@ -2,7 +2,7 @@ import React from 'react';
 import { LOOKPROFILE, LOOKMATCHES } from '../../titlestag/titlestag';
 import { faClock, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {setMatchResult} from '../../utility/SetMatchResult';
+import TeamRanking from '../TeamRanking/TeamRanking';
 import {setGameMode} from '../../utility/SetGameMode';
 import { PlaySound } from '../../utility/PlaySound';
 import { Link } from 'react-router-dom';
@@ -71,7 +71,7 @@ const CompetitionCard = ({match, data}) => {
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
                             <div className="live-league-container">
-                                <a title={LOOKMATCHES + league.name} className="text-center head-font highlight-text" style={{color: data.vibrant}} rel="noopener noreferrer" target="_blank" href={league.url}> {league.name+" "+serie.full_name} </a>     
+                                <span className="text-center head-font font-gilroy-bold" style={{color: data.vibrant}}> {league.name+" "+serie.full_name} </span>     
                             </div>
                             
                             <div className="live-container-puntos-logos-upcoming">
@@ -102,10 +102,17 @@ const CompetitionCard = ({match, data}) => {
                             </div>
 
                             <div className="container-label">
-                                <p className="label-teams">{opponents[0].opponent.name}</p> 
-                                <p className="modalidad-past-match" style={{color: data.darkMuted}}>{modalidad}</p>
-                                <p className="label-teams">{opponents[1].opponent.name}</p>
+                                <p className="label-teams pill">{opponents[0].opponent.name}</p> 
+                                <p className="modalidad-past-match" ></p>
+                                <p className="label-teams pill">{opponents[1].opponent.name}</p>
                             </div> 
+
+                            <div className="rankings-label">
+                                <TeamRanking name={aTeamName} />
+                                <p className="modalidad-past-match" >{modalidad}</p>
+                                <TeamRanking name={bTeamName} />
+                            </div>
+
 
 
                             <div className="match-data">
@@ -133,13 +140,13 @@ const CompetitionCard = ({match, data}) => {
             <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown"> 
                 <div className="card-image">
                     <p className="text-align-center cursor-default font-size mb-0">
-                        <span className="label-data-style margin-entre-label-contenido" style={{color: data.vibrant}} title={LOOKMATCHES + league.name}>{league.name+" "+serie.full_name}</span> 
+                        <span className="text-center head-font font-gilroy-bold" style={{color: data.vibrant}}> {league.name+" "+serie.full_name} </span>     
                     </p> 
                     <div className="card-image container-info cursor-default">
 
                         {dateUser === dateMatch?
                             <div className="hoy-esquina-container">
-                                <p className="hoy-esquina">{fase}</p>
+                                <p className="labels-esquinas">{fase}</p>
                                 <p className="hoy-esquina">{statusMatch}</p> 
                             </div>
                         :
@@ -173,12 +180,18 @@ const CompetitionCard = ({match, data}) => {
                             </Link>
                                 
                         </div>
-    
+
                         <div className="container-label">
-                            <p className="label-teams">{aTeamName}</p> 
-                            <p className="modalidad-past-match" style={{color: data.darkMuted}}>{modalidad}</p>
-                            <p className="label-teams">{bTeamName}</p>
+                            <p className="label-teams pill" style={{color: data.darkMuted}}>{aTeamName}</p> 
+                            <p className="modalidad-past-match" ></p>
+                            <p className="label-teams pill" style={{color: data.darkMuted}}>{bTeamName}</p>
                         </div> 
+
+                        <div className="rankings-label">
+                            <TeamRanking name={aTeamName} />
+                            <p className="modalidad-past-match" >{modalidad}</p>
+                            <TeamRanking name={bTeamName} />
+                        </div>
                     </div>            
                 
                 </div>
