@@ -118,7 +118,7 @@
         width: 160px;
         margin: 2% 0% 2% 0% !important;
         font-size: 15px;
-        font-family: "Gilroy-ExtraBold";
+        font-family: "Gilroy-Light";
     }
     .modalidad-past-match{
         margin: 2% 0% 2% 0% !important;
@@ -222,7 +222,6 @@
         width: 130px;
         margin: 2% 0% 2% 0% !important;
         font-size: 12px;
-        font-weight: bold;
     }
     .modalidad-past-match{
         margin: 2% 0% 2% 0% !important;
@@ -242,8 +241,6 @@
         margin-bottom: 0% !important;
         font-family: "Gilroy-ExtraBold";
     }
-
-    
 
     .hoy-esquina{
         margin: 0%;

@@ -1,18 +1,25 @@
 import React from "react";
-import { FILTERBY } from "../../titlestag/titlestag";
+import { Link } from 'react-router-dom';
+import { TOURNAMENT } from '../../routes/routes';
+import { LOOKMATCHES } from '../../titlestag/titlestag';
 import { usePalette } from "react-palette";
 import "./circulartournaments.css";
 
-const CircularItem = ({ img, name, id }) => {
+const CircularItem = ({ img, name, id, filterByTournament }) => {
   let colorImg = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
+  //title={FILTERBY + name}
+  /* filterByTournament(name); */
   return (
-    <div className="cursor-pointer" >
+    <Link
+      className="cursor-pointer"
+      to={TOURNAMENT.replace(':tournamentId', id)}
+      title={LOOKMATCHES + name}
+    >
       <div
         style={{
           border: `4px solid ${colorImg.lightVibrant}`,
         }}
         className="circular-item"
-        title={FILTERBY + name}
       >
         <img src={img} alt={id} />
       </div>
@@ -22,9 +29,9 @@ const CircularItem = ({ img, name, id }) => {
           backgroundColor: colorImg.lightVibrant,
         }}
       >
-        {name.length > 10? name.substr(0,9) + '...' : name}
+        {name.length > 10 ? name.substr(0, 9) + "..." : name}
       </span>
-    </div>
+    </Link>
   );
 };
 export default CircularItem;

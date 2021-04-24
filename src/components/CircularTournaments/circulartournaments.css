@@ -1,40 +1,7 @@
-.circular-item {
-  height: 70px;
-  width: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  margin: 15px 15px 10px 15px;
-  background-color: white;
-}
-
-.circular-item > img {
-  width: 40px;
-}
-
-.circular-container > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.circular-container > div > span {
-  width: 85px;
-  height: 30px;
-  border-radius: 50px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Gilroy-Light";
-}
-
-
 div:hover > .circular-item {
-  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
-  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   transition: all 0.1s ease-out;
   filter: drop-shadow(0px 0px 5px #ffffff5e);
 }
@@ -46,12 +13,88 @@ div:hover > .circular-item > img {
 
 @media (min-width: 771px) {
   .circular-container {
-    border-radius: 100px;
-    display: flex;
     align-self: center;
     margin: 15px;
+  }
+  .circular-container > div {
+    display: flex;
+  }
+  .circular-item {
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin: 15px 15px 10px 15px;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  .circular-item > img {
+    width: 40px;
+  }
+
+  .circular-container > div > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .circular-container > div > a > span {
+    width: 85px;
+    height: 30px;
+    border-radius: 50px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Gilroy-Light";
+    color: black;
   }
 }
 
 @media screen and (max-width: 770px) {
+  .circular-container {
+    margin: 0px 15px;
+    width: 330px;
+  }
+  .circular-container > div {
+    display: flex;
+    overflow-x: scroll;
+    height: 130px;
+  }
+  .circular-item {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin: 15px 15px 10px 15px;
+    background-color: white;
+    overflow: hidden;
+  }
+  .circular-item > img {
+    width: 30px;
+  }
+
+  .circular-container > div > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .circular-container > div > a > span {
+    width: 75px;
+    height: 30px;
+    border-radius: 50px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    letter-spacing: 0.5px;
+    font-family: "Gilroy-Extrabold";
+  }
 }

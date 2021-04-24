@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CircularItem from './CircularItem';
 import './circulartournaments.css';
 
-const CircularTournaments = ({matches, show, prevMatch}) => {
+const CircularTournaments = ({matches, show, prevMatch, filterByTournament}) => {
     
     const [tournaments, setTournaments] = useState([]);
 
@@ -26,16 +26,19 @@ const CircularTournaments = ({matches, show, prevMatch}) => {
 
     return ( 
         <div className="circular-container">
-            {
-                tournaments.map(tournament => ( 
-                    <CircularItem 
-                        key={tournament.id}
-                        img={tournament.img}
-                        name={tournament.name}
-                        id={tournament.id}
-                    />
-                ))
-            }
+            <div>
+                {
+                    tournaments.map(tournament => ( 
+                        <CircularItem 
+                            key={tournament.id}
+                            filterByTournament={filterByTournament}
+                            img={tournament.img}
+                            name={tournament.name}
+                            id={tournament.id}
+                        />
+                    ))
+                }
+            </div>
         </div>
      );
 }

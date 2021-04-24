@@ -183,6 +183,10 @@ i.right{
     display: none;
 }
 
+.display-flex{
+    display: flex;
+    align-items: center;
+}
 .position-relative{
     position: relative;
 }

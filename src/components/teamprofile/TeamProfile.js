@@ -57,6 +57,14 @@ const TeamProfile = () => {
     xhr.send();
   };
 
+  const filterByTournament = (name) => {
+    const arrmatches = show === "vs"? matches : prevMatch;
+    const matchesFiltered = arrmatches.filter(
+      (match) => match.league.name === name
+    );
+    show === "vs"? guardarMatches(matchesFiltered) : guardarPrevMatch(matchesFiltered);
+  };
+
   const setHistory = () => {
     window.scrollTo(0, 0);
     setButtonStatus({
@@ -227,7 +235,7 @@ const TeamProfile = () => {
           )}
 
           {show === "vs" && matches.length > 0 && (
-            <CircularTournaments matches={matches} />
+            <CircularTournaments filterByTournament={filterByTournament} matches={matches} />
           )}
           {show === "vs" && !matches.length > 0 && (
             <InfoCard noMatches={noMatches} />
@@ -237,7 +245,7 @@ const TeamProfile = () => {
           )}
 
           {show === "history" && prevMatch !== "no-match" && (
-            <CircularTournaments prevMatch={prevMatch} />
+            <CircularTournaments filterByTournament={filterByTournament} prevMatch={prevMatch} />
           )}
 
           {show === "history" && prevMatch !== "no-match" && (

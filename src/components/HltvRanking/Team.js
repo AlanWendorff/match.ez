@@ -41,14 +41,13 @@ const Team = ({
         </div>
         <div className="name">
           <span>{name}</span>
-          <span>{points} Points</span>
+          <span  className="display-flex" >{points} Points <span className={balanceColor}>{balance}</span></span>
         </div>
         <div className="roster">
           {roster.map((player) => (
             <span key={player}>{player}</span>
           ))}
         </div>
-        <span className={balanceColor}>{balance}</span>
       </div>
     </Link>
   );
