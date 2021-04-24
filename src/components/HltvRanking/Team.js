@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
 import ProgressiveImage from "react-progressive-image";
@@ -16,8 +16,7 @@ const Team = ({
   position,
   roster,
 }) => {
-  let colorTeam;
-  colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
+  let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
 
   return (
     <Link

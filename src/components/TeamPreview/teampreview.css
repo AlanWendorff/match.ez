@@ -129,6 +129,10 @@
     font-size: 13px;
 }
 
+.preview-container > .team > .player > img{
+    width: 24px;
+}
+
 .preview-container > .little-info > .next-match > span{
     width: 100%;
     text-align: center;
