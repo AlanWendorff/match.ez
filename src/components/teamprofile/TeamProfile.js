@@ -15,21 +15,23 @@ import InfoCard from "../InfoCard/InfoCard";
 import Warning from "../Warning/Warning";
 import Logo from "../NavigationBar/Logo";
 import generic_team_pattern from "../../Images/generic_team_pattern.png";
+import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import "../../styles/base.css";
 
 const TeamProfile = () => {
   const { teamid } = useParams();
   const history = useHistory();
-
   if (!teamid) history.push(HOME);
+
+  let backgroundStyle = [];
   const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [stadistics, setStadistics] = useState([]);
-  const [backgroundStyle, setBackgroundStyle] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
   const [matches, guardarMatches] = useState([]);
   const [playerscore, setPlayerScore] = useState([]);
   const [roster, setRoster] = useState([]);
+  const [b64Logo, guardarB64Logo] = useState("");
   const [crash, guardarStateCrash] = useState(false);
   const [noMatches, guardarNoMatches] = useState(false);
   const [image_url, setImageTeam] = useState("");
@@ -92,7 +94,6 @@ const TeamProfile = () => {
     let winStrike = 0;
     let winRate = 0;
     let wl = [];
-    let tournaments = [];
     let matchWin = 0;
     setPreview();
     guardarLoaderProgress({ width: "0%" });
@@ -107,22 +108,12 @@ const TeamProfile = () => {
       if (objPastMatch.data && objPastMatch.data.length !== 0) {
         guardarPrevMatch(objPastMatch.data);
         if (objPastMatch.imageTeam === null) {
-          setBackgroundStyle({
-            backgroundColor: `${data.darkVibrant}`,
-            backgroundImage: `url(${generic_team_pattern})`,
-          });
+          setImageTeam(csgoLogoDefault);
         } else {
-          toDataURL(
-            "https://proxy-kremowy.herokuapp.com/" + objPastMatch.imageTeam,
-            function (dataUrl) {
-              setBackgroundStyle({
-                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${dataUrl}" /></svg>')`,
-                backgroundColor: `${data.darkMuted}`,
-              });
-            }
-          );
-          setImageTeam(objPastMatch.imageTeam);
           guardarLogo(
+            "https://proxy-kremowy.herokuapp.com/" + objPastMatch.imageTeam
+          );
+          setImageTeam(
             "https://proxy-kremowy.herokuapp.com/" + objPastMatch.imageTeam
           );
         }
@@ -148,6 +139,7 @@ const TeamProfile = () => {
           guardarStateCrash(true);
         }
         guardarLoaderProgress({ width: "90%" });
+
         if (objPastMatch.data.length !== 0) {
           for (let i = 0; i < objPastMatch.data.length; i++) {
             if (objPastMatch.data[i].winner_id === parseInt(teamid)) {
@@ -160,33 +152,7 @@ const TeamProfile = () => {
                 wl.push("L");
               }
             }
-            show === "history" &&
-              tournaments.push({
-                name: objPastMatch.data[i].league.name
-                  ? objPastMatch.data[i].league.name
-                  : "none",
-                img: objPastMatch.data[i].league.image_url
-                  ? objPastMatch.data[i].league.image_url
-                  : "none",
-                id: objPastMatch.data[i].league.id
-                  ? objPastMatch.data[i].league.id
-                  : "none",
-              });
-          }
-          show === "vs" &&
-            objNextMatches.map((match) => {
-              tournaments.push({
-                name: match.league.name ? match.league.name : "none",
-                img: match.league.image_url ? match.league.image_url : "none",
-                id: match.league.id ? match.league.id : "none",
-              });
-            });
-
-          if (tournaments.length !== 0) {
-            tournaments = tournaments.filter(
-              (v, i, a) => a.findIndex((t) => t.id === v.id) === i
-            );
-          }
+          } 
           let avg = (matchWin * 100) / objPastMatch.data.length;
           winRate = parseFloat(avg).toFixed(2) + "%";
 
@@ -197,14 +163,31 @@ const TeamProfile = () => {
               winStrike = 0;
             }
           }
-          console.log("pruebas");
           guardarLoaderProgress({ width: "100%" });
-          setStadistics({ winStrike, winRate, wl, tournaments });
+          setStadistics({ winStrike, winRate, wl });
         }
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [teamid]);
+
+  if (image_url !== csgoLogoDefault) {
+    toDataURL(image_url, function (dataUrl) {
+      guardarB64Logo(dataUrl);
+    });
+  }
+
+  if (image_url !== csgoLogoDefault) {
+    backgroundStyle = {
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+      backgroundColor: `${data.darkMuted}`,
+    };
+  } else {
+    backgroundStyle = {
+      backgroundColor: `${data.darkVibrant}`,
+      backgroundImage: `url(${generic_team_pattern})`,
+    };
+  }
 
   const { width } = loaderprogress;
   if (!crash) {
@@ -244,7 +227,7 @@ const TeamProfile = () => {
           )}
 
           {show === "vs" && matches.length > 0 && (
-            <CircularTournaments tournaments={stadistics.tournaments} />
+            <CircularTournaments matches={matches} />
           )}
           {show === "vs" && !matches.length > 0 && (
             <InfoCard noMatches={noMatches} />
@@ -254,7 +237,7 @@ const TeamProfile = () => {
           )}
 
           {show === "history" && prevMatch !== "no-match" && (
-            <CircularTournaments tournaments={stadistics.tournaments} />
+            <CircularTournaments prevMatch={prevMatch} />
           )}
 
           {show === "history" && prevMatch !== "no-match" && (
