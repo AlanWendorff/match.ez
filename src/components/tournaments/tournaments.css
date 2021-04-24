@@ -21,8 +21,7 @@
         align-items: center;
     }
     .tournament-size{
-        background-color: #ffffffb4;
-        border-radius: 3px;
+        background-color: rgba(150, 150, 150, 0.26);
         padding: 0px 20px;
         height: 90px;
         width: 90%;
@@ -44,12 +43,18 @@
     .tournament-logo-size{
         max-width: 80px;
         max-height: 100%;
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.555));
     }
     .tournament-name{
+        border-radius: 100px;
+        padding: 0px 15px;
+        background-color: rgba(255, 255, 255, 0.26);
         font-weight: bold;
         font-size: 15px;
-        color: black;
+        color: white;
         text-align: end;
+        font-family: "Gilroy-Light";
+        letter-spacing: 2px;
     }
 }
 
@@ -77,10 +82,10 @@
     .tournament-size{
         background-color: #ffffffb4;
         border-radius: 3px;
-        padding: 0px 20px;
-        height: 90px;
-        width: 90%;
-        margin: 10px;
+        padding: 0px 15px;
+        height: 70px;
+        width: 97%;
+        margin: 10px 0px;
     }
     .tournament-flex{
         padding: 5px 0px;
@@ -91,13 +96,19 @@
         justify-content: space-between;
     }
     .tournament-logo-size{
-        max-width: 80px;
+        max-width: 50px;
         max-height: 100%;
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.555));
     }
     .tournament-name{
-        font-weight: bold;
-        font-size: 15px;
-        color: black;
         text-align: end;
+        border-radius: 100px;
+        padding: 0px 15px;
+        background-color: rgba(255, 255, 255, 0.26);
+        font-weight: bold;
+        font-size: 13px;
+        color: white;
+        font-family: "Gilroy-Light";
+        letter-spacing: 2px;
     }
 }

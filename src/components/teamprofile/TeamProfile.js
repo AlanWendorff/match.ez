@@ -254,7 +254,6 @@ const TeamProfile = () => {
               teamid={teamid}
               setPlayerScore={setPlayerScore}
               playerscore={playerscore}
-              setPreview={setPreview}
             />
           )}
           <Logo color={data} img={image_url} />
