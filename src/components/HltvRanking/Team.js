@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
 import ProgressiveImage from "react-progressive-image";
@@ -16,15 +16,14 @@ const Team = ({
   position,
   roster,
 }) => {
-  let colorTeam;
-  colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
-
+  let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
+  
   return (
     <Link
       key={name}
       to={id ? TEAM.replace(":teamid", id) : RANKING}
       title={`Look the team profile of: ${name}`}
-      className="animate__animated animate__faster animate__fadeInUp"
+      className={`animate__faster animate__fadeInUp ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}
     >
       <div style={{ backgroundColor: colorTeam.darkVibrant }}>
         <div className="team">
@@ -42,14 +41,13 @@ const Team = ({
         </div>
         <div className="name">
           <span>{name}</span>
-          <span>{points} Points</span>
+          <span  className="display-flex" >{points} Points <span className={balanceColor}>{balance}</span></span>
         </div>
         <div className="roster">
           {roster.map((player) => (
             <span key={player}>{player}</span>
           ))}
         </div>
-        <span className={balanceColor}>{balance}</span>
       </div>
     </Link>
   );

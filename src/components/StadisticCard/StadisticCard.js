@@ -12,8 +12,8 @@ const StadisticCard = ({winRate, winStrike, wl}) => {
                 <span className="stadistic-span ">Winstrike : <span className="font-stadistic-data" style={{color: data.darkVibrant}}>{winStrike}</span> </span>
             </div>
             <div className="win-and-loose" title="Last 5 games">
-                {wl.map(status => ( 
-                    <span className={status === "W"? "W-green": "L-red"}>{status}</span>
+                {wl.map((status, index) => ( 
+                    <span key={index} className={status === "W"? "W-green": "L-red"}>{status}</span>
                 ))}
             
             </div>

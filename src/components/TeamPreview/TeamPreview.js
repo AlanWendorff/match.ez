@@ -1,19 +1,25 @@
 import React from 'react';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import StadisticCard from '../StadisticCard/StadisticCard';
 import ProgressiveImage from 'react-progressive-image';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../Images/toBeDefined.png';
 import unknown from '../../Images/unknown.png';
 import './teampreview.css';
 
-const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => {
+const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster, winRate, winStrike, wl}) => {
     const NEXTMATCH = matches[0];
     const LASTMATCH = prevMatch[0];
-    
+    //https://www.countryflags.io//flat/24.png
     return ( 
         <div className="preview-container font-gilroy">
-            
+            <StadisticCard
+                winRate={winRate}
+                winStrike={winStrike}
+                wl={wl}
+            /> 
+
             <div className="little-info">
                 <div className="last-match">
                     <span>Last Game</span>
@@ -89,7 +95,7 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster}) => 
                         const {nationality, name, first_name, last_name, image_url} = player;
                         const FIRSTNAME = first_name !== null? first_name : "";
                         const LASTNAME = last_name   !== null? last_name : "";
-                        const NATIONALITY = nationality !== null? `https://www.countryflags.io/${nationality}/flat/24.png` : undefined;
+                        const NATIONALITY = nationality !== null? `http://purecatamphetamine.github.io/country-flag-icons/3x2/${nationality}.svg` : undefined;
                         return(
                             <div className="player" key={name}>  
                                 <div>  

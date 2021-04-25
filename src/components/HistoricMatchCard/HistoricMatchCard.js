@@ -17,7 +17,7 @@ import csgoLogoDefault from '../../Images/csgoLogoDefault.png';
 import '../CompetitionCard/tarjetaMatchesCompletos.css';
 import './matchprevio.css';
 
-const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScore, playerscore}) => {
+const HistoricMatchCard = ({match, teamId, firstIndex, setPlayerScore, playerscore}) => {
 
     let proxyLogo;
     let fase = "";
@@ -91,8 +91,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
     }
     //eslint-disable-next-line
     return(
-        <div className="noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__animated animate__fadeInDown animate__faster"> 
-            
+        <div className={`noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}> 
             <div className="card-image" style={teamId&& {borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
@@ -101,10 +100,10 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
 
                     <div className="prev-game-desktop">
                         <div className="team-column">
-                            <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)} onClick={()=>{setPreview();}}>
+                            <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)}>
                                 <div className={results[0].score < results[1].score? "match-loser-prevgame" :"match-winner-prevgame"}>                            
                                     <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                        {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="max-size-logo-prev-game" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
@@ -123,10 +122,10 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
                         </div>
 
                         <div className="team-column">
-                            <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)} onClick={()=>{setPreview();}}>
+                            <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)}>
                                 <div className={results[0].score < results[1].score? "match-winner-prevgame" : "match-loser-prevgame"}>
                                     <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                        {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="max-size-logo-prev-game" src={src}/>}
                                     </ProgressiveImage>
                                 </div> 
                             </Link>
@@ -139,7 +138,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
                         <div className="row-team-name-gamewin">
                             <div className={results[0].score < results[1].score? "match-loser" : "match-winner"} >                            
                                 <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img alt="a team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                    {src => <img alt="a team" className="max-size-logo-prev-game" src={src}/>}
                                 </ProgressiveImage>
                             </div> 
                             <p className={results[0].score < results[1].score? "match-loser" :"match-winner"} style={{backgroundColor: results[0].score > results[1].score&& colorTeamA.darkVibrant, color: results[0].score > results[1].score&& 'white'}} >{opponents[0].opponent.name}</p> 
@@ -149,7 +148,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPreview, setPlayerScor
                         <div className="row-team-name-gamewin">
                             <div className={results[0].score < results[1].score? "match-winner" : "match-loser"} >                            
                                 <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                    {src => <img alt="b team" className="max-size-logo-prev-game animate__animated animate__fadeIn animate__fast" src={src}/>}
+                                    {src => <img alt="b team" className="max-size-logo-prev-game" src={src}/>}
                                 </ProgressiveImage> 
                             </div> 
                             <p className={results[0].score < results[1].score? "match-winner" :"match-loser"} style={{backgroundColor: results[0].score < results[1].score&& colorTeamB.darkVibrant, color: results[0].score < results[1].score&& 'white'}}>{opponents[1].opponent.name}</p>

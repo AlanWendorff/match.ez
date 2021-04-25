@@ -26,7 +26,7 @@ const NavigationBar = () => {
                 <FontAwesomeIcon style={{color: pathname !== TOURNAMENTS? 'black': `${colors.background_color}`}} icon={faTrophy}/>
             </Link>
 
-            <Link to={MORE}>
+            <Link to={MORE} style={{zIndex: '5'}}>
                 <div style={{backgroundColor: pathname !== MORE? '': `${colors.background_color}`}}>
                     <img className="nav-logo" src={appLogo} alt="app logo"/>
                 </div>

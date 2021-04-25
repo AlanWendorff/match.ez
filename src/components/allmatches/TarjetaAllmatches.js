@@ -108,7 +108,7 @@ const TarjetaAllmatches = ({match}) => {
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         statusMatch = "¡Playing Now!";
         return (
-            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.darkVibrant}`}}>
+            <div className={`card posicion-tarjeta tamano-tarjeta-previo font-gilroy ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"} animate__fadeInDown`} style={{border: `5px solid ${data.darkVibrant}`}}>
                 <div className="col s12 m7 posicion-tarjeta">
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
@@ -121,7 +121,7 @@ const TarjetaAllmatches = ({match}) => {
                                 <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)}>
                                     <div className="team-canvas"> 
                                     <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="size-team-logo" src={src} />}
                                     </ProgressiveImage>                          
                                     </div> 
                                 </Link>
@@ -137,16 +137,16 @@ const TarjetaAllmatches = ({match}) => {
                                 <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)}>
                                     <div className="team-canvas">
                                         <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="size-team-logo" src={src} />}
                                         </ProgressiveImage>          
                                     </div> 
                                 </Link>
                             </div>
 
                             <div className="container-label color-text-white letter-spacing">
-                                <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant}} >{opponents[0].opponent.name}</p> 
+                                <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant, fontSize: opponents[0].opponent.name.length > 11&& "12px"}} >{opponents[0].opponent.name}</p> 
                                 <p className="modalidad-past-match" ></p>
-                                <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant}} >{opponents[1].opponent.name}</p>
+                                <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant, fontSize: opponents[1].opponent.name.length > 11&& "12px"}} >{opponents[1].opponent.name}</p>
                             </div> 
 
                             <div className="rankings-label">
@@ -180,7 +180,7 @@ const TarjetaAllmatches = ({match}) => {
             ); 
     }else{
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown" style={{border: `5px solid ${data.darkVibrant}`}}> 
+            <div className={`card posicion-tarjeta tamano-tarjeta-previo font-gilroy ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"} animate__fadeInDown`} style={{border: `5px solid ${data.darkVibrant}`}}> 
                 <div className="card-image">
                     <p className="text-align-center cursor-default font-size mb-0">
                         <Link to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} className="label-data-style highlight-text" style={{color: data.darkVibrant}}>{league.name+" "+serie.full_name}</Link> 
@@ -205,7 +205,7 @@ const TarjetaAllmatches = ({match}) => {
                             <Link to={aTeamId !== undefined&& TEAM.replace(':teamid', aTeamId)}>
                                 <div className="team-canvas">  
                                     <ProgressiveImage src={aTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={aTeamId !== undefined&& LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                        {src => <img title={aTeamId !== undefined&& LOOKPROFILE + aTeamName} alt="a team" className="size-team-logo"  src={src} />}
                                     </ProgressiveImage>                              
                                 </div>
                             </Link>
@@ -217,7 +217,7 @@ const TarjetaAllmatches = ({match}) => {
                             <Link to={bTeamId !== undefined&& TEAM.replace(':teamid', bTeamId)}>
                                 <div className="team-canvas">
                                     <ProgressiveImage src={bTeamLogo} placeholder={csgoLogoDefaultBlack}>
-                                        {src => <img title={bTeamId !== undefined&& LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                        {src => <img title={bTeamId !== undefined&& LOOKPROFILE + bTeamName} alt="b team" className="size-team-logo" src={src} />}
                                     </ProgressiveImage>    
                                 </div> 
                             </Link>
@@ -225,9 +225,9 @@ const TarjetaAllmatches = ({match}) => {
                         </div>
     
                         <div className="container-label color-text-white letter-spacing">
-                            <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant}} >{aTeamName}</p> 
+                            <p className="label-teams pill" style={{backgroundColor: colorTeamA.darkVibrant, fontSize: aTeamName.length > 11&& "12px"}} >{aTeamName}</p> 
                             <p className="modalidad-past-match" ></p>
-                            <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant}} >{bTeamName}</p>
+                            <p className="label-teams pill" style={{backgroundColor: colorTeamB.darkVibrant, fontSize: bTeamName.length > 11&& "12px"}} >{bTeamName}</p>
                         </div> 
 
                         <div className="rankings-label">

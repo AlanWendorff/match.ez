@@ -15,7 +15,7 @@ const Leaderboard = ({leaderboard}) => {
             </div>
             
             {leaderboard.map(team  => (
-                <div className="ladder-team animate__animated animate__fadeInDown animate__faster" key={team.name}>
+                <div className={`ladder-team animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} key={team.name}>
                     <div>
                         <TeamRanking name={team.name} />
                         <ProgressiveImage src={team.img === null? csgoLogoDefaultBlack : team.img} placeholder={csgoLogoDefaultBlack}>

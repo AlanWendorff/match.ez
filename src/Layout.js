@@ -8,6 +8,7 @@ import ControlRoom from "./components/ControlRoom/ControlRoom";
 import HltvRanking from "./components/HltvRanking/HltvRanking";
 import AllMatches from "./components/AllMatches/AllMatches";
 import Timeline from "./components/Timeline/Timeline";
+import News from "./components/News/News";
 import Home from "./components/Home/Home";
 import More from "./components/More/More";
 import {
@@ -20,6 +21,7 @@ import {
   TOURNAMENT,
   TEAM,
   RANKING,
+  NEWS,
 } from "./routes/routes";
 import axios from "axios";
 
@@ -41,7 +43,6 @@ const Layout = () => {
       });
     }
   };
-
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
@@ -78,6 +79,7 @@ const Layout = () => {
           <Route exact path={RANKING} component={HltvRanking} />
           <Route exact path={TIMELINE} component={Timeline} />
           <Route exact path={TEAM} component={TeamProfile} />
+          <Route exact path={NEWS} component={News} />
           <Route exact path={MORE}>
             <More
               handleInstallClick={handleInstallClick}

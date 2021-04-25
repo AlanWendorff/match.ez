@@ -33,7 +33,6 @@ const Control = () => {
                                 <span className="font-size-20px cursor-pointer">Eliminar</span>
                                 <span className="font-size-20px color-text-white">{team.id}</span>
                                 <span className="font-size-20px color-text-white">{team.name}</span>
-                                <span className="font-size-20px color-text-white">{team.path}</span>
                                 <img src={team.img} />
                             </div>
                         );                                  
@@ -47,7 +46,6 @@ const Control = () => {
                                 <span className="font-size-20px cursor-pointer">Eliminar</span>
                                 <span className="font-size-20px color-text-white">{tournament.id}</span>
                                 <span className="font-size-20px color-text-white">{tournament.name}</span>
-                                <span className="font-size-20px color-text-white">{tournament.path}</span>
                                 <img src={tournament.image_url} />
                             </div>
                         );                                  

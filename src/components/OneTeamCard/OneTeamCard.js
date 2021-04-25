@@ -98,7 +98,7 @@ const OneTeamCard = ({match, teamid}) => {
         hoy = "Playing Now"; 
         official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         return(
-            <div className="card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__animated animate__fadeInDown animate__faster">
+            <div className={`card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image">
                         <div className="card-image container-info cursor-default padding-top-8">
@@ -112,7 +112,7 @@ const OneTeamCard = ({match, teamid}) => {
                                 <Link to={TEAM.replace(':teamid', opponents[0].opponent.id)} >
                                     <div className="team-canvas"> 
                                         <ProgressiveImage src={opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                            {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                            {src => <img title={LOOKPROFILE + opponents[0].opponent.name} alt="a team" className="team-logo" src={src} />}
                                         </ProgressiveImage>                        
                                     </div> 
                                 </Link>
@@ -127,7 +127,7 @@ const OneTeamCard = ({match, teamid}) => {
                                 <Link to={TEAM.replace(':teamid', opponents[1].opponent.id)} >
                                     <div className="team-canvas">
                                         <ProgressiveImage src={opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url} placeholder={csgoLogoDefaultBlack}>
-                                            {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="team-logo animate__animated animate__fadeIn animate__fast" src={src} />}
+                                            {src => <img title={LOOKPROFILE + opponents[1].opponent.name} alt="b team" className="team-logo" src={src} />}
                                         </ProgressiveImage>  
                                     </div> 
                                 </Link>
@@ -162,12 +162,12 @@ const OneTeamCard = ({match, teamid}) => {
         );
     }else{
         return(
-            <div className="col s12 m7 posicion-tarjeta font-gilroy animate__animated animate__fadeInDown animate__faster">
+            <div className={`col s12 m7 posicion-tarjeta font-gilroy animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
                 <div className="card horizontal tamano-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
                     <div className="card-image lienzo-logo"> 
                         <Link to={opponentName !== undefined&& TEAM.replace(':teamid', opponentId)} > 
                             <ProgressiveImage src={opponentLogo} placeholder={csgoLogoDefaultBlack}>
-                                {src => <img title={opponentName !== undefined&& LOOKPROFILE + opponentName} alt="versus team" className="max-size-team-logo animate__animated animate__fadeIn animate__fast"  src={src} />}
+                                {src => <img title={opponentName !== undefined&& LOOKPROFILE + opponentName} alt="versus team" className="max-size-team-logo"  src={src} />}
                             </ProgressiveImage>
                         </Link>
                     </div>

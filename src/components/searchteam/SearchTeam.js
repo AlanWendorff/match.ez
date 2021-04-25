@@ -39,7 +39,7 @@ const SearchTeam = ({setCollection, collection}) => {
     }
 
     return ( 
-        <div className="search-container animate__animated animate__fadeInDown animate__faster" style={{backgroundColor: colors.header_color}}>
+        <div className={`search-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} style={{backgroundColor: colors.header_color}}>
             <div title="Search team" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>

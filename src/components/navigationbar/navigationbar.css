@@ -1,3 +1,22 @@
+.loguito-container{
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.loguito{
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+}
+.loguito > img{
+    width: 30px;
+}
 
 @media (min-width: 641px) {
     .menu-mobile{
@@ -8,11 +27,14 @@
         align-items: center;
     }
     .menu-mobile > a{
+        z-index: 100;
         font-size: 20px;
+        width: 55px;
+        text-align: center;
     }
 
-    .menu-mobile > a :hover{
-        filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
+    .menu-mobile > a:hover {
+        font-size: 25px;
         transition: all 0.1s ease-out;
     }
 
@@ -35,21 +57,6 @@
     .menu-mobile > a > div > img{
         width: 40px;
     }
-    .loguito{
-        width: 55px;
-        height: 55px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-        position: absolute;
-        bottom: 0;
-        z-index: 100;
-        margin-left: 49%;
-    }
-    .loguito > img{
-        width: 30px;
-    }
 }
 
 @media screen and (max-width: 640px) {
@@ -59,11 +66,12 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        position: fixed;
-        bottom: 0;
     }
     .menu-mobile > a{
+        z-index: 100;
         font-size: 20px;
+        width: 55px;
+        text-align: center;
     }
     
     .menu-mobile > a > div {
@@ -85,24 +93,8 @@
     .menu-mobile > a > div > img{
         width: 40px;
     }
-    .loguito{
-        width: 55px;
-        height: 55px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-        position: fixed;
-        bottom: 0;
-        z-index: 100;
-        margin-left: 44%;
-        
-    }
-    .loguito > img{
-        width: 30px;
-    }
 }
 
 .loguito > img {
-    filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
+    filter: drop-shadow(0px 0px 10px rgb(117, 117, 117));
 }
