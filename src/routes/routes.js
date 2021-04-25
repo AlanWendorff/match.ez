@@ -1,4 +1,5 @@
 export const HOME = "/";
+export const NEWS = "/news";
 export const TOURNAMENTS = "/tournaments";
 export const MORE = "/more";
 export const UNITY = "/unity-league";

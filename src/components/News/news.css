@@ -1,0 +1,127 @@
+.news-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-image: url("../../Images/generic_team_pattern.png");
+  background-repeat: repeat;
+  background-size: 50px 50px;
+  height: calc(100vh - 50px);
+}
+
+@media (min-width: 680px) {
+  .new {
+    width: 630px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.596);
+    border-radius: 3px;
+    margin: 15px;
+    padding: 15px;
+  }
+  .new > h1 {
+    font-size: 25px;
+  }
+  .new > h2 {
+    font-size: 20px;
+  }
+  .new > h2 > hr {
+    width: 35%;
+  }
+  .new > p {
+    font-size: 20px;
+  }
+
+  .new > span {
+    font-size: 15px;
+  }
+  .new > span > hr {
+    width: 33%;
+  }
+
+  .new > span > a:hover {
+    border-bottom: 1px solid #000000;
+    transition: color 0.5s, border-bottom 0.5s ease-out;
+  }
+}
+
+@media screen and (max-width: 679px) {
+  .new {
+    width: 330px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.596);
+    border-radius: 3px;
+    margin: 15px;
+    padding: 15px;
+  }
+  .new > h1 {
+    font-size: 20px;
+  }
+  .new > h2 {
+    font-size: 15px;
+  }
+  .new > h2 > hr {
+    width: 30%;
+  }
+  .new > p {
+    font-size: 15px;
+  }
+  .new > span {
+    font-size: 13px;
+  }
+  .new > span > hr {
+    width: 20%;
+  }
+}
+
+.new > h1 {
+  letter-spacing: 0.5px;
+  color: white;
+  line-height: 35px;
+  margin-top: 0px;
+  font-family: "Oswald-SemiBold";
+  text-align: center;
+}
+.new > h2 {
+  width: 100%;
+  margin: 0px;
+  font-family: "Oswald-Medium";
+  /* color: rgba(0, 0, 0, 0.63); */
+  color: #ffffffa9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.new > h2 > hr {
+  height: 1px;
+  /* background-color: #00000062; */
+  background-color: #ffffffa9;
+  border: 0px;
+  margin: 15px 0px;
+}
+.new > p {
+  letter-spacing: 0.5px;
+  font-family: "Oswald-light";
+  text-align: center;
+  color: white;
+}
+
+.new > span {
+  font-family: "Oswald-Light";
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.new > span > hr {
+  height: 1px;
+  background-color: #ffffffa9;
+  border: 0px;
+  margin: 15px 0px;
+}
