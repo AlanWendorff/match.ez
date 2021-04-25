@@ -9,17 +9,19 @@
   background-size: 50px 50px;
   height: calc(100vh - 50px);
 }
+.new {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.849);
+  border-radius: 3px;
+  margin: 15px;
+  padding: 15px;
+}
 
 @media (min-width: 680px) {
   .new {
     width: 630px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.596);
-    border-radius: 3px;
-    margin: 15px;
-    padding: 15px;
   }
   .new > h1 {
     font-size: 25px;
@@ -50,13 +52,6 @@
 @media screen and (max-width: 679px) {
   .new {
     width: 330px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.596);
-    border-radius: 3px;
-    margin: 15px;
-    padding: 15px;
   }
   .new > h1 {
     font-size: 20px;

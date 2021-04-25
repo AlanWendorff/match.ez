@@ -30,17 +30,14 @@ div:hover > .circular-item > img {
     background-color: white;
     overflow: hidden;
   }
-
   .circular-item > img {
     width: 40px;
   }
-
   .circular-container > div > a {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .circular-container > div > a > span {
     width: 85px;
     height: 30px;

@@ -17,13 +17,13 @@ const Team = ({
   roster,
 }) => {
   let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
-
+  
   return (
     <Link
       key={name}
       to={id ? TEAM.replace(":teamid", id) : RANKING}
       title={`Look the team profile of: ${name}`}
-      className="animate__animated animate__faster animate__fadeInUp"
+      className={`animate__faster animate__fadeInUp ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}
     >
       <div style={{ backgroundColor: colorTeam.darkVibrant }}>
         <div className="team">

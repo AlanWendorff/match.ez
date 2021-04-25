@@ -74,7 +74,7 @@
     align-items: center;
     border-radius: 100px;
     height: 30px;
-    z-index: 100;
+    z-index: 90;
 }
 
 @media (min-width: 641px) { 

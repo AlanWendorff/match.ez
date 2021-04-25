@@ -21,7 +21,7 @@ import {
   TOURNAMENT,
   TEAM,
   RANKING,
-  NEWS
+  NEWS,
 } from "./routes/routes";
 import axios from "axios";
 
@@ -43,7 +43,6 @@ const Layout = () => {
       });
     }
   };
-
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
