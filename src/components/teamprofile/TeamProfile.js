@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretSquareDown } from "@fortawesome/free-solid-svg-icons";
 import { getNextMatches } from "./getNextMatches";
 import { getPastMatch } from "./getPastMatch";
 import { getRoster } from "./getRoster";
@@ -28,6 +30,7 @@ const TeamProfile = () => {
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [stadistics, setStadistics] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
+  const [matchesmod, guardarMatchesMod] = useState([]);
   const [matches, guardarMatches] = useState([]);
   const [playerscore, setPlayerScore] = useState([]);
   const [roster, setRoster] = useState([]);
@@ -42,6 +45,14 @@ const TeamProfile = () => {
     history: false,
     ladder: false,
   });
+
+  const loadMoreItems = () => {
+    let arrayLimit =
+      matchesmod.length === 6
+        ? Math.round(prevMatch.length / 2)
+        : prevMatch.length;
+    guardarMatchesMod(prevMatch.slice(0, arrayLimit));
+  };
 
   const toDataURL = (url, callback) => {
     var xhr = new XMLHttpRequest();
@@ -114,6 +125,7 @@ const TeamProfile = () => {
       const { objPastMatch, badFetch } = await getPastMatch(teamid);
       guardarLoaderProgress({ width: "50%" });
       if (objPastMatch.data && objPastMatch.data.length !== 0) {
+        guardarMatchesMod(objPastMatch.data.slice(0, 6));
         guardarPrevMatch(objPastMatch.data);
         if (objPastMatch.imageTeam === null) {
           setImageTeam(csgoLogoDefault);
@@ -221,6 +233,7 @@ const TeamProfile = () => {
 
           {show === "preview" && stadistics.winStrike !== undefined && (
             <TeamPreview
+              teamid={teamid}
               color={data}
               matches={matches}
               prevMatch={prevMatch}
@@ -245,16 +258,26 @@ const TeamProfile = () => {
           )}
 
           {show === "history" && prevMatch !== "no-match" && (
-            <CircularTournaments filterByTournament={filterByTournament} prevMatch={prevMatch} />
-          )}
-
-          {show === "history" && prevMatch !== "no-match" && (
-            <HistoricMatchMapping
-              prevMatch={prevMatch}
-              teamid={teamid}
-              setPlayerScore={setPlayerScore}
-              playerscore={playerscore}
-            />
+            <>
+              <CircularTournaments filterByTournament={filterByTournament} prevMatch={prevMatch} />
+              <HistoricMatchMapping
+                prevMatch={matchesmod}
+                teamid={teamid}
+                setPlayerScore={setPlayerScore}
+                playerscore={playerscore}
+              />
+              {matchesmod.length !== prevMatch.length && (
+                <div
+                  onClick={() => {
+                    loadMoreItems();
+                  }}
+                  className="load-more"
+                >
+                  <FontAwesomeIcon icon={faCaretSquareDown} /> Load More{" "}
+                  <FontAwesomeIcon icon={faCaretSquareDown} />{" "}
+                </div>
+              )}
+            </>
           )}
           <Logo color={data} img={image_url} />
         </div>

@@ -244,6 +244,21 @@ i.right {
   background-size: 50px 50px;
 }
 
+.load-more {
+  font-family: "Gilroy-ExtraBold";
+  font-size: 25px;
+  margin: 15px;
+  color: white;
+  cursor: pointer;
+}
+.load-more:hover{
+  border: 1px solid white;
+  border-radius: 100px;
+  transition: all 0.5s ease-out ;
+}
+.load-more > svg {
+  margin: 0px 15px;
+}
 @media (min-width: 641px) {
   .parametros-container {
     height: calc(100vh - 50px);
@@ -251,6 +266,7 @@ i.right {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .font-size {
     font-size: 20px;
@@ -267,6 +283,7 @@ i.right {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .font-size {
     font-size: 13px;

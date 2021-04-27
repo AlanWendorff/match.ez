@@ -1,12 +1,3 @@
-.tournament-container > .load-more {
-  font-family: "Gilroy-ExtraBold";
-  font-size: 25px;
-  margin: 15px;
-  color: white;
-}
-.tournament-container > .load-more > svg {
-  margin: 0px 15px;
-}
 
 @media (min-width: 641px) {
   .tournament-container {

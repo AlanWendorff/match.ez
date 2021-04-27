@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import TarjetaAllmatches from './TarjetaAllmatches';
 import LazyLoad from 'react-lazyload';
 
-const ListadoAllmatches = ({allmatches}) => {
-    if (!allmatches.length > 0) return null;
+const ListadoAllmatches = ({matchesmod}) => {
+    if (!matchesmod.length > 0) return null;
 
     if(navigator.onLine !== true){
         alert('No Internet Connection');
@@ -11,7 +11,7 @@ const ListadoAllmatches = ({allmatches}) => {
         return ( 
             <Fragment> 
                 {
-                    allmatches.sort(function(a,b){ return  new Date(a.begin_at) - new Date(b.begin_at)  }).map(match => {
+                    matchesmod.sort(function(a,b){ return  new Date(a.begin_at) - new Date(b.begin_at)  }).map(match => {
                         return(
                             <LazyLoad offset={100} height={100} overflow key={match.id}>
                                 <TarjetaAllmatches 

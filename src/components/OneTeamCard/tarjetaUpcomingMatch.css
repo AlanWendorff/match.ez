@@ -114,6 +114,12 @@
   .card-content {
     padding: 24px 24px 0px 24px !important;
   }
+  .match-data > span {
+    width: 50%;
+  }
+  .match-data > span > .data {
+    margin-left: 5px;
+  }
 }
 
 @media screen and (max-width: 770px) {
