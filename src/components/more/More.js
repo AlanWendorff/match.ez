@@ -13,8 +13,9 @@ import {
   faNewspaper,
   faVolumeMute,
   faVolumeUp,
+  faListOl
 } from "@fortawesome/free-solid-svg-icons";
-import { NEWS } from "../../routes/routes";
+import { NEWS, RANKING } from "../../routes/routes";
 import "./more.css";
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   const year = new Date().getFullYear();
@@ -67,6 +68,17 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     >
       <div className="scroll">
         <div className="column-align width-100percent ">
+          <Link
+            to={RANKING}
+            className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+          >
+            <div>
+              <FontAwesomeIcon icon={faListOl} />
+              <span>World Ranking</span>
+            </div>
+          </Link>
+          <hr />
+
           <Link
             to={NEWS}
             className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"

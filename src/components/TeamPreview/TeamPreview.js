@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TeamRankingContext } from "../Context/TeamRankingContext";
 import StadisticCard from '../StadisticCard/StadisticCard';
 import ProgressiveImage from 'react-progressive-image';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
@@ -8,9 +9,12 @@ import toBeDefined from '../../Images/toBeDefined.png';
 import unknown from '../../Images/unknown.png';
 import './teampreview.css';
 
-const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster, winRate, winStrike, wl}) => {
+const TeamPreview = ({teamid, color, matches, prevMatch, setVs, setHistory, roster, winRate, winStrike, wl}) => {
+    const { ranking, badfetch } = useContext(TeamRankingContext);
     const NEXTMATCH = matches[0];
     const LASTMATCH = prevMatch[0];
+    const arrayTeam = LASTMATCH.opponents.find((element) => element.opponent.id === parseInt(teamid));
+    const rankingTeam = ranking.find((element) => element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase());
     //https://www.countryflags.io//flat/24.png
     return ( 
         <div className="preview-container font-gilroy">
@@ -88,7 +92,13 @@ const TeamPreview = ({color, matches, prevMatch, setVs, setHistory, roster, winR
                         }
                 </div>
             </div>
-
+            
+            {rankingTeam&&
+                <div style={{color: color.vibrant}} className="place-in-world">
+                    {arrayTeam.opponent.name} #{rankingTeam.position} in the world
+                </div>
+            }
+            
             <div className="team">
                 {
                     roster.map(player => {

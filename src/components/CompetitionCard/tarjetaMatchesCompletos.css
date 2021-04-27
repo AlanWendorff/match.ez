@@ -145,14 +145,17 @@
         align-items: center;
     }
     .hoy-esquina{
+        width: 50%;
+        text-align: end;
         margin: 0%;
         color:  #FF0000 !important;
         font-family: "Gilroy-ExtraBold";
     }
     .labels-esquinas{
+        width: 50%;
         margin: 0%;
         color:  #1b1b1b !important;
-        font-family: "Gilroy-ExtraBold";
+        font-family: "Gilroy-Light";
     }
     .league-size{
         max-width: 40px !important;
@@ -243,16 +246,19 @@
     }
 
     .hoy-esquina{
+        width: 50%;
+        text-align: end;
         margin: 0%;
         color:  #FF0000 !important;
-        font-size: 10px;
+        font-size: 13px;
         font-family: "Gilroy-ExtraBold";
     }
     .labels-esquinas{
         margin: 0%;
+        width: 50%;
         color:  #1b1b1b !important;
         font-size: 13px;
-        font-family: "Gilroy-ExtraBold";
+        font-family: "Gilroy-Light";
     }
     .league-size{
         max-width: 30px !important;

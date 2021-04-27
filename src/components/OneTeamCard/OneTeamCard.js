@@ -152,9 +152,9 @@ const OneTeamCard = ({match, teamid}) => {
                                 </span>                  
                             </div>
 
-                            <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container" onClick={()=>{official_stream_url !== null&& PlaySound()}}> 
-                                <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={official_stream_url}> {statusStream} <span className="dot-indicator"></span></a>
-                            </div>
+                            <a className="card-action live-streaming-box-bottom-padding live-streaming-box-container"  rel="noopener noreferrer" target="_blank" href={official_stream_url} onClick={()=>{official_stream_url !== null&& PlaySound()}}> 
+                                <span className="stream-font-color-LIVE"> {statusStream} <span className="dot-indicator"></span></span>
+                            </a>
                         </div>              
                     </div>
                 </div>

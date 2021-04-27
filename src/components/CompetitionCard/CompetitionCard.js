@@ -102,7 +102,7 @@ const CompetitionCard = ({match, data}) => {
                                 </Link>
 
                                 <div title="Partidos ganados en la serie">
-                                    <div className="points" title="Partidos ganados en la serie">
+                                    <div className="points font-gilroy-bold" title="Partidos ganados en la serie">
                                         <p className="match-winner point-A">{results[0].score}</p>
                                         <p>-</p>
                                         <p className="match-winner point-B">{results[1].score}</p>                           
@@ -144,9 +144,9 @@ const CompetitionCard = ({match, data}) => {
                                 </span>                  
                             </div>
 
-                            <div className="card-action live-streaming-box-bottom-padding live-streaming-box-container" onClick={()=>{official_stream_url !== null&& PlaySound()}}>
-                                <a className="stream-font-color-LIVE" rel="noopener noreferrer" target="_blank" href={official_stream_url}> {statusStream} <span className="dot-indicator"></span></a>
-                            </div>
+                            <a className="card-action live-streaming-box-bottom-padding live-streaming-box-container" rel="noopener noreferrer" target="_blank" href={official_stream_url} onClick={()=>{official_stream_url !== null&& PlaySound()}}>
+                                <span className="stream-font-color-LIVE" > {statusStream} <span className="dot-indicator"></span></span>
+                            </a>
                         </div>              
                     </div>
                 </div>
@@ -163,13 +163,13 @@ const CompetitionCard = ({match, data}) => {
 
                         {dateUser === dateMatch?
                             <div className="hoy-esquina-container">
-                                <p className="labels-esquinas">{fase}</p>
+                                <p className="labels-esquinas text-align-start">{fase}</p>
                                 <p className="hoy-esquina">{statusMatch}</p> 
                             </div>
                         :
                             <div className="hoy-esquina-container">
-                                <p className="labels-esquinas" >{fase}</p>
-                                <p className="labels-esquinas">{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
+                                <p className="labels-esquinas text-align-start" >{fase}</p>
+                                <p className="labels-esquinas align-end">{Moment(begin_at).format('Do')} {Moment(begin_at).format('MMMM - H:mm')} hs</p> 
                             </div>
                         }
                         
