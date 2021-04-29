@@ -1,20 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
-import { getAllmatches } from "./getAllmatches.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-solid-svg-icons";
 import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
-import InfoCard from "../InfoCard/InfoCard";
 import ListadoAllmatches from "./ListadoAllmatches";
-import Warning from "../Warning/Warning";
 import LoadScreen from "../Loader/LoadScreen";
+import InfoCard from "../InfoCard/InfoCard";
+import Warning from "../Warning/Warning";
+import axios from "axios";
 import "./allmatches.css";
 
 const AllMatches = () => {
   const { colors } = useContext(ColorThemeContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [crash, guardarStateCrash] = useState(false);
-  const [noMatches, guardarNoMatches] = useState(false);
   const [allmatches, guardarAllmatches] = useState([]);
   const [matchesmod, guardarMatchesMod] = useState([]);
 
@@ -27,25 +26,22 @@ const AllMatches = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      if (!allmatches.length > 0) {
-        const { AllMatches, badFetch } = await getAllmatches();
-        if (AllMatches) {
-          guardarLoaderProgress({ width: "100%" });
-          const matchesFiltered = AllMatches.filter(
-            (status) => status.status !== "canceled"
-          );
-          guardarAllmatches(matchesFiltered);
-          guardarMatchesMod(matchesFiltered.slice(0, 6));
-          if (AllMatches.length === 0) {
-            guardarNoMatches(true);
-          }
-        }
-        if (badFetch) {
+    const config = {
+      method: "get",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    axios
+      .get(`http://localhost:5000/api/allmatches`, config)
+      .then(({ data }) => {
+        guardarAllmatches(data);
+        guardarMatchesMod(data.slice(0, 6));
+        guardarLoaderProgress({ width: "100%" });
+        if (data.length === 0) {
           guardarStateCrash(true);
         }
-      }
-    })();
+      })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { width } = loaderprogress;
@@ -60,7 +56,7 @@ const AllMatches = () => {
             className="allmatches"
             style={{ backgroundColor: colors.background_color }}
           >
-            {noMatches !== true ? (
+            {allmatches.length !== 0 ? (
               <>
                 <ListadoAllmatches matchesmod={matchesmod} />
                 {matchesmod.length !== allmatches.length && (
@@ -76,7 +72,7 @@ const AllMatches = () => {
                 )}
               </>
             ) : (
-              <InfoCard noMatches={noMatches} />
+              <InfoCard />
             )}
           </div>
         );

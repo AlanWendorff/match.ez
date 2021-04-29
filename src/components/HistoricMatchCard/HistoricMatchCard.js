@@ -3,7 +3,6 @@ import { faCalendarDay, faSortDown, faSortUp, faTrophy } from '@fortawesome/free
 import { HeaderLogoContext } from '../Context/HeaderLogoContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LOOKPROFILE } from '../../titlestag/titlestag';
-import { setGameMode } from '../../utility/SetGameMode';
 import { getPlayerScore } from './getPlayerScore';
 import { usePalette } from 'react-palette';
 import { TEAM } from '../../routes/routes';

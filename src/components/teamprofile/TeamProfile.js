@@ -21,7 +21,7 @@ import "../../styles/base.css";
 const TeamProfile = () => {
   const { teamid } = useParams();
   const history = useHistory();
-  if (!teamid) history.push(HOME);
+  !teamid&& history.push(HOME);
 
   let backgroundStyle = [];
   const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);

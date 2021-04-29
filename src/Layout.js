@@ -23,7 +23,6 @@ import {
   RANKING,
   NEWS,
 } from "./routes/routes";
-import axios from "axios";
 
 let deferredPrompt;
 
@@ -48,24 +47,6 @@ const Layout = () => {
       e.preventDefault();
       deferredPrompt = e;
     });
-    const LSwakeupBackend = JSON.parse(sessionStorage.getItem("wakeupBackend"));
-    if (LSwakeupBackend !== true) {
-      (async () => {
-        try {
-          const config = {
-            method: "get",
-            url: "https://arg-matchez-backendv2.herokuapp.com/api/wakeup",
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-          };
-          await axios(config);
-        } catch (error) {
-          //console.log(error);
-        }
-      })();
-      sessionStorage.setItem("wakeupBackend", JSON.stringify(true));
-    }
   }, []);
 
   return (
