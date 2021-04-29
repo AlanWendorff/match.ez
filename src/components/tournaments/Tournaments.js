@@ -9,21 +9,22 @@ import "./tournaments.css";
 
 const Tournaments = () => {
   const { colors } = useContext(ColorThemeContext);
-  const { tournamentId } = useContext(TournamentContext);
+  const { tournamentsdatabase, getTournamentsFromDatabase } = useContext(TournamentContext);
   const [tournaments, setTournaments] = useState([]);
-  const objectToArray = Object.values(tournamentId).slice(0, 6);
+  const objectToArray = tournamentsdatabase.length !== 0 && Object.values(tournamentsdatabase).slice(0, 6);
 
   const loadMoreItems = () => {
     let arrayLimit =
       tournaments.length === 6
-        ? Math.round(Object.values(tournamentId).length / 2)
-        : Object.values(tournamentId).length;
-    setTournaments(Object.values(tournamentId).slice(0, arrayLimit));
+        ? Math.round(Object.values(tournamentsdatabase).length / 2)
+        : Object.values(tournamentsdatabase).length;
+    setTournaments(Object.values(tournamentsdatabase).slice(0, arrayLimit));
   };
 
   useEffect(() => {
+    tournamentsdatabase.length === 0 && getTournamentsFromDatabase();
     setTournaments(objectToArray);
-  }, []);
+  }, [tournamentsdatabase]);
 
   return colors.background_color !== undefined ? (
     <div
@@ -39,7 +40,7 @@ const Tournaments = () => {
             <Item tournament={tournament} key={tournament.id} />
           ))}
       </div>
-      {tournaments.length !== Object.values(tournamentId).length && (
+      {tournaments.length !== Object.values(tournamentsdatabase).length && (
         <div
           onClick={() => {
             loadMoreItems();

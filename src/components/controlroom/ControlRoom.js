@@ -4,8 +4,8 @@ import { PathContext } from '../Context/PathContext';
 import './control.css';
 
 const Control = () => {
-    const { tournamentId } = useContext(TournamentContext);
-    const tournamentArray = Object.values(tournamentId);
+    const { tournamentsdatabase } = useContext(TournamentContext);
+    const tournamentArray = Object.values(tournamentsdatabase);
     const { paths } = useContext(PathContext);
     const pathsArray = Object.values(paths);
 

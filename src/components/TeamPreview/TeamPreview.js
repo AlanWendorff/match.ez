@@ -10,7 +10,7 @@ import unknown from '../../Images/unknown.png';
 import './teampreview.css';
 
 const TeamPreview = ({teamid, color, matches, prevMatch, setVs, setHistory, roster, winRate, winStrike, wl}) => {
-    const { ranking, badfetch } = useContext(TeamRankingContext);
+    const { ranking } = useContext(TeamRankingContext);
     const NEXTMATCH = matches[0];
     const LASTMATCH = prevMatch[0];
     const arrayTeam = LASTMATCH.opponents.find((element) => element.opponent.id === parseInt(teamid));
@@ -93,11 +93,9 @@ const TeamPreview = ({teamid, color, matches, prevMatch, setVs, setHistory, rost
                 </div>
             </div>
             
-            {rankingTeam&&
-                <div style={{color: color.vibrant}} className="place-in-world">
-                    {arrayTeam.opponent.name} #{rankingTeam.position} in the world
-                </div>
-            }
+            
+            <div style={{color: color.vibrant, backgroundColor: color.darkVibrant}} className="place-in-world">{rankingTeam? `${arrayTeam.opponent.name} #${rankingTeam.position} in the world` : `${arrayTeam.opponent.name}`}</div>
+            
             
             <div className="team">
                 {

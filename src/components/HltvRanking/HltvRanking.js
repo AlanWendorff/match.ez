@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
 import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
@@ -12,9 +12,11 @@ import "./hltvranking.css";
 const HltvRanking = () => {
   const { colors } = useContext(ColorThemeContext);
   const { ranking, badfetch } = useContext(TeamRankingContext);
-  const { paths } = useContext(PathContext);
+  const { paths, getTeams } = useContext(PathContext);
   const pathsArray = Object.values(paths);
-
+  useEffect(() => {
+    paths.length === 0 && getTeams();
+  }, []);
   return colors.background_color !== undefined ? (
     !badfetch ? (
       <div

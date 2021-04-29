@@ -18,8 +18,7 @@ const OneTeamCard = ({match, teamid}) => {
 
     const { data } = useContext(HeaderLogoContext);
     const {opponents, league, begin_at, stage, serie, bestOf, tournament, status, official_stream_url, results} = match; 
-
-    let ownLogo, ownName;
+    let ownName;
     let opponentLogo, opponentName, opponentId;
     let proxyLogo;
     let hoy = "";
@@ -43,7 +42,7 @@ const OneTeamCard = ({match, teamid}) => {
 
     const opponentArray = opponents.find(element => element.opponent.id !== parseInt(teamid));
     const { opponent } = opponentArray;
-    if (opponent) {
+    if (opponent !== undefined) {
         opponentLogo = opponent.image_url === null? csgoLogoDefaultBlack : opponent.image_url;
         opponentName = opponent.name;
         opponentId = opponent.id;
@@ -51,11 +50,10 @@ const OneTeamCard = ({match, teamid}) => {
         opponentLogo = toBeDefined;
     }
     
-    const profileOpoonentArray = opponents.find(element => element.opponent.id === parseInt(teamid));
-    ownLogo = profileOpoonentArray.image_url === null? csgoLogoDefaultBlack : profileOpoonentArray.image_url;
-    ownName = profileOpoonentArray.name;
+    const profileOpponentArray = opponents.find(element => element.opponent.id === parseInt(teamid));
+    ownName = profileOpponentArray && profileOpponentArray.opponent.name;
 
-    if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"
+    if (diaUsuario === diaMatch){ 
         hoy = "¡Today!";                                               
     }
 
@@ -67,11 +65,10 @@ const OneTeamCard = ({match, teamid}) => {
     `;
     const Twitter =`${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`;
     const Wapp = `${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
-    
 
     if(status === 'running'){
         hoy = "Playing Now"; 
-        official_stream_url === null? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
+        !official_stream_url? statusStream = "PLAYING (no stream)" : statusStream = "LIVE";
         return(
             <div className={`card posicion-tarjeta tamano-tarjeta-previo font-gilroy animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
                 <div className="col s12 m7 posicion-tarjeta" style={{border: `5px solid ${leagueColors.lightVibrant}`}}>
