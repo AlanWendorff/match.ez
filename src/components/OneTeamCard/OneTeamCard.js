@@ -4,12 +4,10 @@ import { faClock, faCodeBranch} from '@fortawesome/free-solid-svg-icons';
 import { HeaderLogoContext } from '../Context/HeaderLogoContext'
 import { TOURNAMENT, TEAM } from '../../routes/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { setGameMode } from '../../utility/SetGameMode';
 import { usePalette } from 'react-palette';
 import { PlaySound } from '../../utility/PlaySound';
 import { Link } from 'react-router-dom';
 import ProgressiveImage from 'react-progressive-image';
-import TeamRanking from "../TeamRanking/TeamRanking";
 import Share from '../Share/Share';
 import Moment from 'moment';
 import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
@@ -19,15 +17,13 @@ import './tarjetaUpcomingMatch.css';
 const OneTeamCard = ({match, teamid}) => {
 
     const { data } = useContext(HeaderLogoContext);
-    const {opponents, league, begin_at, name, serie, number_of_games, tournament, status, official_stream_url, results} = match; 
+    const {opponents, league, begin_at, stage, serie, bestOf, tournament, status, official_stream_url, results} = match; 
 
-    let ownLogo;
-    let ownName;
+    let ownLogo, ownName;
+    let opponentLogo, opponentName, opponentId;
     let proxyLogo;
-    let opponentLogo, opponentName, opponentId, opponentSlug;
     let hoy = "";
     let statusStream = "Streaming off";
-    let fase = "";
     let diaUsuario = new Date().getDate();
     let diaMatch = parseInt(Moment(begin_at).format('D'));
     if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
@@ -44,41 +40,20 @@ const OneTeamCard = ({match, teamid}) => {
             vibrant: "#718792",
         }
     }
-    if (name.includes(":")) {
-        fase = name.substring(
-            name.lastIndexOf(0), 
-            name.lastIndexOf(":")
-        );
-    }else{
-        fase = tournament.name;
-    }
 
-    if(opponents.length > 1){
-        if (opponents[0].opponent.id !== parseInt(teamid)) {
-            opponentLogo = opponents[0].opponent.image_url === null? csgoLogoDefaultBlack : opponents[0].opponent.image_url;
-            opponentSlug  = opponents[0].opponent.slug;
-            opponentName = opponents[0].opponent.name;
-            opponentId = opponents[0].opponent.id;
-        }else{
-            opponentLogo = opponents[1].opponent.image_url === null? csgoLogoDefaultBlack : opponents[1].opponent.image_url;
-            opponentSlug  = opponents[1].opponent.slug;
-            opponentName = opponents[1].opponent.name;
-            opponentId = opponents[1].opponent.id;
-        }
+    const opponentArray = opponents.find(element => element.opponent.id !== parseInt(teamid));
+    const { opponent } = opponentArray;
+    if (opponent) {
+        opponentLogo = opponent.image_url === null? csgoLogoDefaultBlack : opponent.image_url;
+        opponentName = opponent.name;
+        opponentId = opponent.id;
     }else{
         opponentLogo = toBeDefined;
     }
-
     
-    if (opponents[0].opponent.id === parseInt(teamid)) {
-        ownLogo = opponents[0].opponent.image_url;
-        ownName = opponents[0].opponent.name;
-    }else{
-        ownLogo = opponents[1].opponent.image_url;
-        ownName = opponents[1].opponent.name;
-    }
-
-    const {modalidad} = setGameMode(number_of_games);
+    const profileOpoonentArray = opponents.find(element => element.opponent.id === parseInt(teamid));
+    ownLogo = profileOpoonentArray.image_url === null? csgoLogoDefaultBlack : profileOpoonentArray.image_url;
+    ownName = profileOpoonentArray.name;
 
     if (diaUsuario === diaMatch){                                   // get day of the PC user and compare of the day match to show "Today!"
         hoy = "¡Today!";                                               
@@ -86,12 +61,12 @@ const OneTeamCard = ({match, teamid}) => {
 
     const Facebook = 
     `${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName}
-    ${modalidad}
+    ${bestOf}
     ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs 
     ${league.name +" "+ serie.full_name}
     `;
-    const Twitter =`${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`;
-    const Wapp = `${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${modalidad} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
+    const Twitter =`${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name+" "+serie.full_name}`;
+    const Wapp = `${opponentName === undefined? 'To be defined' : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format('Do')} ${Moment(begin_at).format('MMMM - H:mm')} hs | ${league.name +" "+ serie.full_name} -> ${window.location.href}`;
     
 
     if(status === 'running'){
@@ -135,7 +110,7 @@ const OneTeamCard = ({match, teamid}) => {
 
                             <div className="container-label">
                                 <p className="label-teams">{opponents[0].opponent.name}</p> 
-                                <p className="modalidad-past-match">{modalidad}</p>
+                                <p className="modalidad-past-match">{bestOf}</p>
                                 <p className="label-teams">{opponents[1].opponent.name}</p>
                             </div> 
 
@@ -143,7 +118,7 @@ const OneTeamCard = ({match, teamid}) => {
                             <div className="match-data">
                                 <span className="font-size text-align-start">
                                     <span style={{color: data.darkVibrant}}><FontAwesomeIcon className="turn-left-90" icon={faCodeBranch}/></span> 
-                                    <span className="data">{fase}</span> 
+                                    <span className="data">{stage}</span> 
                                 </span>
 
                                 <span className="font-size align-end">
@@ -174,7 +149,7 @@ const OneTeamCard = ({match, teamid}) => {
 
                     <div className="card-stacked">
                         <div className="card-content">
-                            <Link className="text-center head-font highlight-text" style={{color: leagueColors.darkVibrant}}  to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </Link>
+                            <Link className="text-center head-font highlight-text font-gilroy-bold" style={{color: leagueColors.darkVibrant}}  to={TOURNAMENT.replace(':tournamentId', tournament.league_id)} title={LOOKMATCHES + league.name} > {league.name+" "+serie.full_name} </Link>
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style mr-3px font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Vs:</span> 
                                 {opponentName === undefined? 'To be defined' : opponentName}
@@ -182,7 +157,7 @@ const OneTeamCard = ({match, teamid}) => {
                                 
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style mr-3px font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Stage:</span> 
-                                {fase}
+                                {stage}
                             </p>
                                 
                             <p className="text-align cursor-default font-size">
@@ -192,7 +167,7 @@ const OneTeamCard = ({match, teamid}) => {
                                 
                             <p className="text-align cursor-default font-size">
                                 <span className="label-data-style mr-3px font-gilroy-bold" style={{color: leagueColors.darkVibrant}}>Games:</span> 
-                                {modalidad}
+                                {bestOf}
                             </p>
                             <Share
                                 Facebook={Facebook}

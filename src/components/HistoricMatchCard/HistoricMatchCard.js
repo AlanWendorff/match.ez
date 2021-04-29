@@ -20,16 +20,13 @@ import './matchprevio.css';
 const HistoricMatchCard = ({match, teamId, firstIndex, setPlayerScore, playerscore}) => {
 
     let proxyLogo;
-    let fase = "";
     let colorTeamA;
     let colorTeamB;
     const [badfetch, setBadFetch] = useState(false);
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState(false);
-    const {number_of_games, league, serie, tournament, begin_at, id, opponents, results, name} = match;
+    const {bestOf, league, serie, begin_at, id, opponents, results, stage} = match;
     const { data } = useContext(HeaderLogoContext);
-    const {modalidad} = setGameMode(number_of_games);
-
     if (league.image_url !== null && league.image_url !== csgoLogoDefault) proxyLogo = 'https://proxy-kremowy.herokuapp.com/' + league.image_url;
     let error = usePalette(proxyLogo).error;
     let leagueColors = usePalette(proxyLogo).data;
@@ -45,14 +42,6 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPlayerScore, playersco
         }
     }
     
-    if (name.includes(":")) {
-        fase = name.substring(
-            name.lastIndexOf(0), 
-            name.lastIndexOf(":")
-        );
-    }else{
-        fase = tournament.name;
-    }
     const Facebook = 
     `${opponents[0].opponent.name}: ${results[0].score} 
     ${opponents[1].opponent.name}: ${results[1].score}  
@@ -95,7 +84,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPlayerScore, playersco
             <div className="card-image" style={teamId&& {borderTop: `5px solid ${leagueColors.lightVibrant}`}}>
                 <div className="card-image prev-game-content cursor-default">
                     <div className="prev-game-header-container">
-                        <p className="prev-game-header" style={{color: data.darkMuted}}>{fase}</p>
+                        <p className="prev-game-header" style={{color: data.darkMuted}}>{stage}</p>
                     </div> 
 
                     <div className="prev-game-desktop">
@@ -118,7 +107,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPlayerScore, playersco
                                 <p className={results[0].score < results[1].score? "match-winner point-B" : "match-loser point-B"}>{results[1].score}</p>                           
                             </div> 
 
-                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
+                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{bestOf}</p>
                         </div>
 
                         <div className="team-column">
@@ -156,7 +145,7 @@ const HistoricMatchCard = ({match, teamId, firstIndex, setPlayerScore, playersco
                         </div>
 
                         <div className="text-in-card">
-                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{modalidad}</p>
+                            <p className="bestof-prev-game" style={{color: data.darkMuted}}>{bestOf}</p>
                         </div> 
                     </div>
                 </div>            

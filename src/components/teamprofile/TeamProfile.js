@@ -3,9 +3,6 @@ import { useParams, useHistory } from "react-router";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-solid-svg-icons";
-import { getNextMatches } from "./getNextMatches";
-import { getPastMatch } from "./getPastMatch";
-import { getRoster } from "./getRoster";
 import { HOME } from "../../routes/routes";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import OneTeamMapping from "../OneTeamCard/OneTeamMapping";
@@ -18,6 +15,7 @@ import Warning from "../Warning/Warning";
 import Logo from "../NavigationBar/Logo";
 import generic_team_pattern from "../../Images/generic_team_pattern.png";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
+import axios from "axios";
 import "../../styles/base.css";
 
 const TeamProfile = () => {
@@ -69,11 +67,13 @@ const TeamProfile = () => {
   };
 
   const filterByTournament = (name) => {
-    const arrmatches = show === "vs"? matches : prevMatch;
+    const arrmatches = show === "vs" ? matches : prevMatch;
     const matchesFiltered = arrmatches.filter(
       (match) => match.league.name === name
     );
-    show === "vs"? guardarMatches(matchesFiltered) : guardarPrevMatch(matchesFiltered);
+    show === "vs"
+      ? guardarMatches(matchesFiltered)
+      : guardarPrevMatch(matchesFiltered);
   };
 
   const setHistory = () => {
@@ -110,84 +110,49 @@ const TeamProfile = () => {
   };
 
   useEffect(() => {
-    let winStrike = 0;
-    let winRate = 0;
-    let wl = [];
-    let matchWin = 0;
     setPreview();
     guardarLoaderProgress({ width: "0%" });
     guardarNoMatches(false);
     guardarStateCrash(false);
-    (async () => {
-      const { objRoster } = await getRoster(teamid);
-      setRoster(objRoster);
-      guardarLoaderProgress({ width: "20%" });
-      const { objPastMatch, badFetch } = await getPastMatch(teamid);
-      guardarLoaderProgress({ width: "50%" });
-      if (objPastMatch.data && objPastMatch.data.length !== 0) {
-        guardarMatchesMod(objPastMatch.data.slice(0, 6));
-        guardarPrevMatch(objPastMatch.data);
-        if (objPastMatch.imageTeam === null) {
-          setImageTeam(csgoLogoDefault);
+
+    const config = {
+      method: "get",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+
+    axios
+      .get(`http://localhost:5000/api/teaminfo/${teamid}`, config)
+      .then(({ data }) => {
+        const {historicMatches, upcomingMatches, roster, winStrike, winRate, wl, imageTeam } = data;
+        guardarLoaderProgress({ width: "30%" });
+        setRoster(roster);
+        if (historicMatches && historicMatches.length !== 0) {
+          guardarMatchesMod(historicMatches.slice(0, 6));
+          guardarPrevMatch(historicMatches);
+          if (imageTeam === null) {
+            setImageTeam(csgoLogoDefault);
+          } else {
+            guardarLogo(
+              "https://proxy-kremowy.herokuapp.com/" + imageTeam
+            );
+            setImageTeam(
+              "https://proxy-kremowy.herokuapp.com/" + imageTeam
+            );
+          }
+          guardarLoaderProgress({ width: "70%" });
         } else {
-          guardarLogo(
-            "https://proxy-kremowy.herokuapp.com/" + objPastMatch.imageTeam
-          );
-          setImageTeam(
-            "https://proxy-kremowy.herokuapp.com/" + objPastMatch.imageTeam
-          );
+          guardarPrevMatch("no-match");
         }
-        guardarLoaderProgress({ width: "70%" });
-      } else {
-        guardarPrevMatch("no-match");
-      }
-      if (badFetch) {
+        upcomingMatches.length !== 0&& guardarMatches(upcomingMatches);
+        setStadistics({ winStrike, winRate, wl });
+        guardarLoaderProgress({ width: "100%" });
+      })
+      .catch(() => {
         guardarStateCrash(true);
-      }
-      if (winStrike !== -3) {
-        const { objNextMatches, badFetch } = await getNextMatches(teamid);
-        if (objNextMatches) {
-          const matchesFiltered = objNextMatches.filter(
-            (status) => status.status !== "canceled"
-          );
-          guardarMatches(matchesFiltered);
-          if (objNextMatches.length === 0) {
-            guardarNoMatches(true);
-          }
-        }
-        if (badFetch) {
-          guardarStateCrash(true);
-        }
-        guardarLoaderProgress({ width: "90%" });
-
-        if (objPastMatch.data.length !== 0) {
-          for (let i = 0; i < objPastMatch.data.length; i++) {
-            if (objPastMatch.data[i].winner_id === parseInt(teamid)) {
-              matchWin = matchWin + 1;
-              if (wl.length < 5) {
-                wl.push("W");
-              }
-            } else {
-              if (wl.length < 5) {
-                wl.push("L");
-              }
-            }
-          } 
-          let avg = (matchWin * 100) / objPastMatch.data.length;
-          winRate = parseFloat(avg).toFixed(2) + "%";
-
-          for (let c = objPastMatch.data.length - 1; c >= 0; c--) {
-            if (objPastMatch.data[c].winner_id === parseInt(teamid)) {
-              winStrike = winStrike + 1;
-            } else {
-              winStrike = 0;
-            }
-          }
-          guardarLoaderProgress({ width: "100%" });
-          setStadistics({ winStrike, winRate, wl });
-        }
-      }
-    })();
+        guardarLoaderProgress({ width: "100%" });
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [teamid]);
 
@@ -248,7 +213,10 @@ const TeamProfile = () => {
           )}
 
           {show === "vs" && matches.length > 0 && (
-            <CircularTournaments filterByTournament={filterByTournament} matches={matches} />
+            <CircularTournaments
+              filterByTournament={filterByTournament}
+              matches={matches}
+            />
           )}
           {show === "vs" && !matches.length > 0 && (
             <InfoCard noMatches={noMatches} />
@@ -259,7 +227,10 @@ const TeamProfile = () => {
 
           {show === "history" && prevMatch !== "no-match" && (
             <>
-              <CircularTournaments filterByTournament={filterByTournament} prevMatch={prevMatch} />
+              <CircularTournaments
+                filterByTournament={filterByTournament}
+                prevMatch={prevMatch}
+              />
               <HistoricMatchMapping
                 prevMatch={matchesmod}
                 teamid={teamid}

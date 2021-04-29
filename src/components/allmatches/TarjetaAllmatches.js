@@ -14,7 +14,7 @@ import csgoLogoDefaultBlack from '../../Images/csgoLogoDefaultBlack.png';
 import toBeDefined from '../../Images/toBeDefined.png';
 
 const TarjetaAllmatches = ({match}) => {
-
+    console.log(match);
     const {opponents, league, begin_at, serie, number_of_games, tournament, status, official_stream_url, name, results} = match; 
 
     const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
