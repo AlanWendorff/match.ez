@@ -33,7 +33,7 @@ const AllMatches = () => {
       },
     };
     axios
-      .get(`http://localhost:5000/api/allmatches`, config)
+      .get(`https://arg-matchez-backend.herokuapp.com/api/allmatches`, config)
       .then(({ data }) => {
         guardarAllmatches(data);
         guardarMatchesMod(data.slice(0, 6));

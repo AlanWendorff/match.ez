@@ -123,7 +123,7 @@ const TeamProfile = () => {
     };
 
     axios
-      .get(`http://localhost:5000/api/teaminfo/${teamid}`, config)
+      .get(`https://arg-matchez-backend.herokuapp.com/api/teaminfo/${teamid}`, config)
       .then(({ data }) => {
         const {historicMatches, upcomingMatches, roster, winStrike, winRate, wl, imageTeam } = data;
         guardarLoaderProgress({ width: "30%" });

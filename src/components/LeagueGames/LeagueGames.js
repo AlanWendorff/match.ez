@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
-import { getLeagueGames } from "./getLeagueGames";
 import { HOME } from "../../routes/routes";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
@@ -18,7 +17,7 @@ import axios from "axios";
 const LeagueGames = () => {
   const { tournamentId } = useParams();
   const history = useHistory();
-  !tournamentId&& history.push(HOME);
+  !tournamentId && history.push(HOME);
 
   let backgroundStyle;
   const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
@@ -78,7 +77,7 @@ const LeagueGames = () => {
     };
     axios
       .get(
-        `http://localhost:5000/api/tournamentmatches/${tournamentId}`,
+        `https://arg-matchez-backend.herokuapp.com/api/tournamentmatches/${tournamentId}`,
         config
       )
       .then(({ data }) => {
@@ -103,7 +102,7 @@ const LeagueGames = () => {
           guardarStateCrash(true);
           guardarLoaderProgress({ width: "100%" });
         }
-      })
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -140,7 +139,7 @@ const LeagueGames = () => {
   }
 
   const { width } = loaderprogress;
-  console.log(matchesHoy);
+
   if (crash !== true) {
     if (width === "100%" && paletestate === true) {
       return (
@@ -162,10 +161,10 @@ const LeagueGames = () => {
             isTournament
           />
           {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
-          {show === "vs" && matchesHoy.length !== 0 && (
+          {show === "vs" && matchesHoy !== undefined && (
             <CompetitionMapping matchesHoy={matchesHoy} data={data} />
           )}
-          {show === "vs" && matchesHoy.length !== 0 && <InfoCard />}
+          {show === "vs" && matchesHoy === undefined && <InfoCard />}
           {show === "history" && prevMatch !== "no-match" && (
             <HistoricMatchMapping prevMatch={prevMatch} setShow={setShow} />
           )}

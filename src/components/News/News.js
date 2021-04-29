@@ -14,7 +14,7 @@ const News = () => {
 
   useEffect(() => {
     (async () => {
-      const url = "https://arg-matchez-backendv2.herokuapp.com/api/news";
+      const url = "https://arg-matchez-backend.herokuapp.com/api/news";
       try {
         const config = {
           method: "get",

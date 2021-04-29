@@ -2,7 +2,7 @@ import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getPlayerScore = async (id) => {    
     const badFetch = true;           
-    const url = `https://arg-matchez-backendv2.herokuapp.com/api/teamscore/${id}`;
+    const url = `https://arg-matchez-backend.herokuapp.com/api/teamscore/${id}`;
     try {
         const config = {
             method: 'get',
