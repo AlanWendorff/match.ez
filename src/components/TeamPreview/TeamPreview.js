@@ -58,8 +58,8 @@ const TeamPreview = ({
       method: "get",
       headers: {
         "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
       },
     };
     try {
@@ -91,7 +91,7 @@ const TeamPreview = ({
             <div className="team">
               <img
                 src={
-                  LASTMATCH.opponents[0].opponent.image_url === null
+                  !LASTMATCH.opponents[0].opponent.image_url
                     ? csgoLogoDefaultBlack
                     : LASTMATCH.opponents[0].opponent.image_url
                 }
@@ -134,7 +134,7 @@ const TeamPreview = ({
             <div className="team">
               <img
                 src={
-                  LASTMATCH.opponents[1].opponent.image_url === null
+                  !LASTMATCH.opponents[1].opponent.image_url
                     ? csgoLogoDefaultBlack
                     : LASTMATCH.opponents[1].opponent.image_url
                 }
@@ -168,26 +168,32 @@ const TeamPreview = ({
                 <div className="team">
                   <img
                     src={
-                      NEXTMATCH.opponents[0].opponent.image_url === null
-                        ? csgoLogoDefaultBlack
-                        : NEXTMATCH.opponents[0].opponent.image_url
+                      NEXTMATCH.opponents[0] !== false
+                        ? !NEXTMATCH.opponents[0].opponent.image_url
+                          ? csgoLogoDefaultBlack
+                          : NEXTMATCH.opponents[0].opponent.image_url
+                        : toBeDefined
                     }
                   />
-                  <span>{NEXTMATCH.opponents[0].opponent.name}</span>
+                  <span>
+                    {NEXTMATCH.opponents[0] !== false
+                      ? NEXTMATCH.opponents[0].opponent.name
+                      : "To be Defined"}
+                  </span>
                 </div>
                 <span>vs</span>
                 <div className="team">
                   <img
                     src={
-                      NEXTMATCH.opponents.length > 1
-                        ? NEXTMATCH.opponents[1].opponent.image_url === null
+                      NEXTMATCH.opponents[1] !== false
+                        ? !NEXTMATCH.opponents[1].opponent.image_url
                           ? csgoLogoDefaultBlack
                           : NEXTMATCH.opponents[1].opponent.image_url
                         : toBeDefined
                     }
                   />
                   <span>
-                    {NEXTMATCH.opponents.length > 1
+                    {NEXTMATCH.opponents[1] !== false
                       ? NEXTMATCH.opponents[1].opponent.name
                       : "To be Defined"}
                   </span>
@@ -255,6 +261,22 @@ const TeamPreview = ({
                   }.svg`}
                 />
               </h4>
+              <h6
+                className="player-stadistics"
+                style={{ border: `3px solid ${color.vibrant}` }}
+              >
+                <div>
+                  <span>Headshots</span>
+                  <span>Maps Played</span>
+                  <span>Rating</span>
+                </div>
+
+                <div>
+                  <span>{playerinfo.statistics.headshots}</span>
+                  <span>{playerinfo.statistics.mapsPlayed}</span>
+                  <span>{playerinfo.statistics.rating}</span>
+                </div>
+              </h6>
               <h5 className="social-media">
                 {playerinfo.instagram && (
                   <a

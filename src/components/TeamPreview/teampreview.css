@@ -80,6 +80,26 @@
   transition: all 0.1s ease-out;
 }
 
+.ReactModal__Content h6 {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 11px;
+}
+
+.ReactModal__Content h6 div {
+  margin: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.ReactModal__Content h6 div span {
+  font-family: "Gilroy-ExtraBold";
+  text-align: center;
+}
+
+
 @media (min-width: 771px) {
   .preview-container > .team {
     display: flex;
@@ -170,6 +190,10 @@
   .ReactModal__Content .social-media img {
     width: 27px;
   }
+  .ReactModal__Content h6 div span {
+    font-size: 13px;
+    width: 78px;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -256,6 +280,10 @@
   }
   .ReactModal__Content .social-media img {
     width: 25px;
+  }
+  .ReactModal__Content h6 div span {
+    font-size: 12px;
+    width: 72px;
   }
 }
 
