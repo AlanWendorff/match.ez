@@ -5,6 +5,9 @@ import { TeamRankingContext } from "../Context/TeamRankingContext";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
+import twitter from "../../Images/twitter.png";
+import instagram from "../../Images/insta.png";
+import twitch from "../../Images/twitch.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import unknown from "../../Images/unknown.png";
 import Modal from "react-modal";
@@ -49,11 +52,14 @@ const TeamPreview = ({
       color: color.darkVibrant,
     },
   };
-  const getPlayerInfo = (playerName) => {
+  const getPlayerInfo = (playerName, LASTNAME) => {
+    playerinfo.name !== playerName && setPlayerInfo([]);
     const config = {
       method: "get",
       headers: {
         "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
       },
     };
     try {
@@ -63,8 +69,9 @@ const TeamPreview = ({
           config
         )
         .then(({ data }) => {
-          setPlayerInfo(data);
-          !data&& setIsOpen(false);
+          data.name.includes(LASTNAME)
+            ? setPlayerInfo(data)
+            : setPlayerInfo(false);
         });
     } catch (error) {
       setPlayerInfo(false);
@@ -72,7 +79,7 @@ const TeamPreview = ({
     }
   };
   //https://www.countryflags.io//flat/24.png
-  
+
   return (
     <div className="preview-container font-gilroy" id="preview">
       <StadisticCard winRate={winRate} winStrike={winStrike} wl={wl} />
@@ -225,29 +232,84 @@ const TeamPreview = ({
           className="font-size-18px cursor-pointer"
           icon={faTimes}
         />
-        {playerinfo.length !== 0 && (
-          <>
-            <h2>{playerinfo.ign&& playerinfo.ign}</h2>
-            <div className="player-canvas">
-              <img
-                className="player-pic"
-                src={playerinfo.image&& playerinfo.image}
-              />
-              <img className="background-team-logo" src={img} />
-            </div>
-            <h3>{playerinfo.name&& playerinfo.name}</h3>
+        {playerinfo.length !== 0 ? (
+          playerinfo !== false ? (
+            <>
+              <h2>{playerinfo.ign && playerinfo.ign}</h2>
+              <div className="player-canvas">
+                <img
+                  className="player-pic"
+                  src={playerinfo.image && playerinfo.image}
+                />
+                <img className="background-team-logo" src={img} />
+              </div>
+              <h3>{playerinfo.name && playerinfo.name}</h3>
 
-            <h4>{playerinfo.age&& playerinfo.age} Years old</h4>
-            <h4>
-              {playerinfo.country.name && playerinfo.country.name}
-              <img
-                title={playerinfo.country.name && playerinfo.country.name}
-                src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${
-                  playerinfo.country.code && playerinfo.country.code
-                }.svg`}
-              />
-            </h4>
-          </>
+              <h4>{playerinfo.age && playerinfo.age} Years old</h4>
+              <h4 className="place">
+                {playerinfo.country.name && playerinfo.country.name}
+                <img
+                  title={playerinfo.country.name && playerinfo.country.name}
+                  src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${
+                    playerinfo.country.code && playerinfo.country.code
+                  }.svg`}
+                />
+              </h4>
+              <h5 className="social-media">
+                {playerinfo.instagram && (
+                  <a
+                    href={playerinfo.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img title="instagram" src={instagram} />
+                  </a>
+                )}
+                {playerinfo.twitch && (
+                  <a
+                    href={playerinfo.twitch}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img title="twitch" src={twitch} />
+                  </a>
+                )}
+                {playerinfo.twitter && (
+                  <a
+                    href={playerinfo.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img title="twitter" src={twitter} />
+                  </a>
+                )}
+              </h5>
+            </>
+          ) : (
+            <>
+              <h2>?</h2>
+              <div className="player-canvas">
+                <img className="player-pic" src={unknown} />
+                <img className="background-team-logo" src={img} />
+              </div>
+            </>
+          )
+        ) : (
+          <h2>
+            <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </h2>
         )}
       </Modal>
 
@@ -272,7 +334,7 @@ const TeamPreview = ({
               key={name}
               onClick={() => {
                 setIsOpen(true);
-                getPlayerInfo(name);
+                getPlayerInfo(name, LASTNAME);
               }}
             >
               <div>

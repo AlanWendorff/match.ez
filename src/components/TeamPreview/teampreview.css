@@ -8,21 +8,16 @@
   padding: 10px !important;
 }
 .ReactModal__Content svg {
-  margin-left: 240px;
-  margin-right: 5px;
-  font-size: 30px;
   text-align: end;
 }
 .ReactModal__Content h2 {
   font-family: "Gilroy-ExtraBold";
-  font-size: 30px;
   width: 100%;
   margin: 10px 0px;
   text-align: center;
 }
 .ReactModal__Content h3 {
   font-family: "Gilroy-ExtraBold";
-  font-size: 25px;
   width: 100%;
   margin: 10px 0px;
   text-align: center;
@@ -38,23 +33,51 @@
 .ReactModal__Content .player-canvas .background-team-logo {
   position: absolute;
   filter: blur(2px);
-  width: 200px;
   z-index: 0;
 }
+
 .ReactModal__Content .player-pic {
-  width: 200px;
   z-index: 100;
 }
+
 .ReactModal__Content h4 {
   font-family: "Gilroy-Light";
   width: 100%;
   text-align: center;
-  font-size: 20px;
   margin: 15px 0px;
 }
-.ReactModal__Content h4 > img {
+.ReactModal__Content .place {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ReactModal__Content .place > img {
   width: 24px;
   margin-left: 10px;
+}
+
+.ReactModal__Content .social-media {
+  padding: 0px 40px;
+  margin: 20px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.ReactModal__Content .social-media a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ReactModal__Content .social-media img {
+  cursor: pointer;
+}
+
+.ReactModal__Content .social-media img:hover {
+  filter: drop-shadow(0px 0px 5px #000000);
+  transform: scale(1.1, 1.1);
+  transition: all 0.1s ease-out;
 }
 
 @media (min-width: 771px) {
@@ -82,8 +105,8 @@
     padding: 5px 0px;
   }
   .preview-container > .team > .player:hover {
-    -webkit-box-shadow: 2px -1px 10px 5px rgba(0, 0, 0, 0.774);
-    -moz-box-shadow: 2px -1px 10px 5px rgba(0, 0, 0, 0.726);
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.952);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.952);
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.952);
     transform: scale(1.02, 1.02);
     transition: all 0.1s ease-out;
@@ -122,6 +145,30 @@
   }
   .place-in-world {
     width: 630px;
+  }
+
+  .ReactModal__Content svg {
+    margin-left: 240px;
+    margin-right: 5px;
+    font-size: 30px;
+  }
+  .ReactModal__Content h2 {
+    font-size: 30px;
+  }
+  .ReactModal__Content h3 {
+    font-size: 25px;
+  }
+  .ReactModal__Content .player-canvas .background-team-logo {
+    width: 200px;
+  }
+  .ReactModal__Content .player-pic {
+    width: 200px;
+  }
+  .ReactModal__Content h4 {
+    font-size: 20px;
+  }
+  .ReactModal__Content .social-media img {
+    width: 27px;
   }
 }
 
@@ -185,6 +232,30 @@
   }
   .place-in-world {
     width: 330px;
+  }
+
+  .ReactModal__Content svg {
+    margin-left: 240px;
+    margin-right: 5px;
+    font-size: 25px;
+  }
+  .ReactModal__Content h2 {
+    font-size: 25px;
+  }
+  .ReactModal__Content h3 {
+    font-size: 20px;
+  }
+  .ReactModal__Content .player-canvas .background-team-logo {
+    width: 150px;
+  }
+  .ReactModal__Content .player-pic {
+    width: 150px;
+  }
+  .ReactModal__Content h4 {
+    font-size: 15px;
+  }
+  .ReactModal__Content .social-media img {
+    width: 25px;
   }
 }
 
