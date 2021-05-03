@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretSquareDown } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import ListadoAllmatches from "./ListadoAllmatches";
 import LoadScreen from "../Loader/LoadScreen";
@@ -66,8 +66,7 @@ const AllMatches = () => {
                     }}
                     className="load-more"
                   >
-                    <FontAwesomeIcon icon={faCaretSquareDown} /> Load More{" "}
-                    <FontAwesomeIcon icon={faCaretSquareDown} />{" "}
+                    <FontAwesomeIcon icon={faPlus} />
                   </div>
                 )}
               </>

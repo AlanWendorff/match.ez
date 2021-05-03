@@ -2,16 +2,21 @@ import React, { useContext, useState, useEffect } from "react";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { TournamentContext } from "../Context/TournamentContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretSquareDown } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
+import SearchTournament from "../SearchTournament/SearchTournament";
 import Item from "./Item";
 import "./tournaments.css";
 
 const Tournaments = () => {
   const { colors } = useContext(ColorThemeContext);
-  const { tournamentsdatabase, getTournamentsFromDatabase } = useContext(TournamentContext);
+  const { tournamentsdatabase, getTournamentsFromDatabase } = useContext(
+    TournamentContext
+  );
   const [tournaments, setTournaments] = useState([]);
-  const objectToArray = tournamentsdatabase.length !== 0 && Object.values(tournamentsdatabase).slice(0, 6);
+  const objectToArray =
+    tournamentsdatabase.length !== 0 &&
+    Object.values(tournamentsdatabase).slice(0, 6);
 
   const loadMoreItems = () => {
     let arrayLimit =
@@ -21,6 +26,17 @@ const Tournaments = () => {
     setTournaments(Object.values(tournamentsdatabase).slice(0, arrayLimit));
   };
 
+  const FilterTournament = () => {
+    let input = document.getElementById('last_name').value.toLowerCase();
+    let filteredTournaments = [];
+    Object.values(tournamentsdatabase).map((tournament) => {
+      if (tournament.name.toLowerCase().includes(input) && input !== "") {
+        filteredTournaments.push(tournament);
+      }
+    });
+    input === ""? setTournaments(Object.values(tournamentsdatabase).slice(0, 6)) : setTournaments(filteredTournaments);
+  };
+ 
   useEffect(() => {
     tournamentsdatabase.length === 0 && getTournamentsFromDatabase();
     setTournaments(objectToArray);
@@ -34,6 +50,7 @@ const Tournaments = () => {
         window.innerWidth > 1024 ? null : e.preventDefault()
       }
     >
+      <SearchTournament FilterTournament={FilterTournament}/>
       <div className="child-tournament">
         {tournaments.length > 0 &&
           tournaments.map((tournament) => (
@@ -47,8 +64,7 @@ const Tournaments = () => {
           }}
           className="load-more"
         >
-          <FontAwesomeIcon icon={faCaretSquareDown} /> Load More{" "}
-          <FontAwesomeIcon icon={faCaretSquareDown} />{" "}
+          <FontAwesomeIcon icon={faPlus} />
         </div>
       )}
     </div>

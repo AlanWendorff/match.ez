@@ -18,16 +18,14 @@ const Item = ({tournament}) => {
     name = tournament.name;
     
     return(
-        <LazyLoad offset={50} height={100} overflow>
-            <Link style={{ backgroundColor: colorTeam.darkVibrant }} to={TOURNAMENT.replace(':tournamentId', tournament.id)} className={`tournament-size z-depth-5 animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} title={`${LOOKMATCHES} ${tournament.name}`} key={tournament.id}>
-            <div className="tournament-flex crosshair-expand"> 
-                <ProgressiveImage src={img} placeholder={csgoLogo}>
-                    {src => <img className="tournament-logo-size" loading="lazy" src={src} alt={name} />}
-                </ProgressiveImage>
-                <span className="tournament-name">{name}</span>
-            </div> 
-            </Link>
-        </LazyLoad>
+        <Link style={{ backgroundColor: colorTeam.darkVibrant }} to={TOURNAMENT.replace(':tournamentId', tournament.id)} className={`tournament-size z-depth-5 animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} title={`${LOOKMATCHES} ${tournament.name}`} key={tournament.id}>
+        <div className="tournament-flex crosshair-expand"> 
+            <ProgressiveImage src={img} placeholder={csgoLogo}>
+                {src => <img className="tournament-logo-size" loading="lazy" src={src} alt={name} />}
+            </ProgressiveImage>
+            <span className="tournament-name">{name}</span>
+        </div> 
+        </Link>
     );
 }
  
