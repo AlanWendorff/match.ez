@@ -1,0 +1,211 @@
+.ranking-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-image: url("../../Images/generic_team_pattern.png");
+  background-repeat: repeat;
+  background-size: 50px 50px;
+  height: calc(100vh - 50px);
+}
+
+.table-container > .lazyload-wrapper > a > div > .team {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-container > .lazyload-wrapper > a > div > .name {
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-container > .lazyload-wrapper > a > div > .name > span > span {
+  font-family: "Gilroy-ExtraBold";
+  letter-spacing: 2px;
+  margin-left: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.801);
+  font-size: 18px;
+}
+.table-container > .lazyload-wrapper > a > div > .name > span > span {
+  display: flex;
+}
+
+.table-container > .lazyload-wrapper > a > div > .roster {
+  color: white;
+  font-family: "Gilroy-ExtraBold";
+  background-color: rgba(0, 0, 0, 0.226);
+  border-radius: 10px;
+}
+
+.table-container > .lazyload-wrapper > a > div > .team > div {
+  background-color: rgba(255, 255, 255, 0.801);
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-container > .lazyload-wrapper > a > div > .team > div > img {
+  max-width: 45px;
+  max-height: 100%;
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.63));
+}
+
+@media (min-width: 1076px) {
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    width: 1000px;
+    background-color: rgba(0, 0, 0, 0.192);
+  }
+  .table-container > .lazyload-wrapper > a {
+    width: 100%;
+    margin: 15px 0px;
+    display: flex;
+    align-items: center;
+    height: 75px;
+  }
+  .table-container > .lazyload-wrapper > a > div {
+    padding: 0px 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d6da3;
+  }
+  .table-container > .lazyload-wrapper > a > div > .team {
+    height: 100%;
+    width: 120px;
+  }
+  .table-container > .lazyload-wrapper > a > div > .name {
+    height: 100%;
+    width: 300px;
+  }
+  .table-container > .lazyload-wrapper > a > div > .roster {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 490px;
+    padding: 5px 20px;
+  }
+
+  .table-container > .lazyload-wrapper > a :hover {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.39));
+    transition: all 0.1s ease-out;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 1075px) {
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.192);
+  }
+  .table-container > .lazyload-wrapper > a {
+    width: 95%;
+    margin: 15px 0px;
+    display: flex;
+    align-items: center;
+    height: 180px;
+  }
+  .table-container > .lazyload-wrapper > a > div {
+    border-radius: 10px;
+    padding: 0px 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #2d6da3;
+  }
+
+  .table-container > .lazyload-wrapper > a > div > .team {
+    height: 60px;
+    width: 100%;
+  }
+
+  .table-container > .lazyload-wrapper > a > div > .name {
+    height: 30px;
+    width: 100%;
+  }
+  .table-container > .lazyload-wrapper > a > div > .roster {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    padding: 5px 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.192);
+  }
+  .table-container > .lazyload-wrapper > a {
+    width: 95%;
+    margin: 15px 0px;
+    display: flex;
+    align-items: center;
+    height: 200px;
+  }
+  .table-container > .lazyload-wrapper > a > div {
+    border-radius: 10px;
+    padding: 0px 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #2d6da3;
+  }
+
+  .table-container > .lazyload-wrapper > a > div > .team {
+    height: 60px;
+    width: 100%;
+  }
+
+  .table-container > .lazyload-wrapper > a > div > .name {
+    height: 30px;
+    width: 100%;
+  }
+  .table-container > .lazyload-wrapper > a > div > .roster {
+    font-size: 15px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 5px 5px;
+  }
+  .table-container > .lazyload-wrapper > a > div > .roster > span {
+    margin: 5px 15px;
+  }
+}

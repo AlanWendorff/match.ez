@@ -1,75 +1,45 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { TEAM } from '../../routes/routes';
+import ProgressiveImage from 'react-progressive-image';
+import csgoLogo from '../../Images/csgoLogoDefault.png';
 
-const Team = ({team, setCollection, guardarEquipos, equipos, collection, setFirstPin, equiposdatabase}) => {
+const Team = ({team, setCollection, collection, setFirstPin}) => {
     
     const [teamsaved, setTeamSaved] = useState(false);
-    const databaseTeam = equiposdatabase.find(databaseTeam => databaseTeam.name === team.name);
+
+    useEffect(() => {
+        const exist = collection.find(element => element.id === team.id);
+        exist === undefined? setTeamSaved(false) : setTeamSaved(true);
+    }, [teamsaved]);
 
     return ( 
         <div className="team-container">
-            <Link className="searched-team" to={`/${team.path}`} title={`Look the team profile of: ${team.name}`} key={team.id}>
-                <ProgressiveImage src={databaseTeam.img} placeholder={csgoLogo}>
-                    {src => <img className="searched-team-img animate__animated animate__fadeInLeft animate__fast" src={src} alt={team.name}  />}
+            <Link className="searched-team" to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`} key={team.id}>
+                <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                    {src => <img className={`searched-team-img animate__fadeInLeft animate__fast ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} src={src} alt={team.name}  />}
                 </ProgressiveImage>
-                <span className="font-bold color-text-black animate__animated animate__fadeInRight animate__faster">{team.name}</span>
+                <span className={`font-bold color-text-black animate__fadeInRight animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>{team.name}</span>
             </Link> 
             
-            {team.pined === true?
-                <div className={teamsaved? "pin-team-container" : "pin-team-container-saved" } onClick={() => {
-                    //console.log("---pined");
-                    if (teamsaved === false) {
-                        //console.log("X delete pin");
-                        const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
-                        setCollection( deletedTeam );   
-                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                        guardarEquipos(TeamAnteriorEliminado);
-                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: false }])
-                        setTeamSaved(true);
-                        setFirstPin(true);
-                    }else{
-                        //console.log(".pinging");
-                        setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
-                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                        guardarEquipos(TeamAnteriorEliminado);
-                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: true }])    
-                        setTeamSaved(false);
-                        setFirstPin(true);
-                    }
-                    }}> 
-                    <FontAwesomeIcon icon={faThumbtack}/>
-                </div>
-
-            :   
-                <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
-                    //console.log("---not pined");
-                    if (teamsaved === true) {
-                        //console.log("X delete pin");
-                        const deletedTeam = collection.filter(deleteteam => deleteteam.name !== team.name);
-                        setCollection( deletedTeam );   
-                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                        guardarEquipos(TeamAnteriorEliminado);
-                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: false }])
-                        setTeamSaved(false);
-                        setFirstPin(true);
-                    }else{
-                        //console.log(".pinging");
-                        setCollection( [...collection, {img : team.img, name : team.name, path : team.path}] ); 
-                        const TeamAnteriorEliminado = equipos.filter(pastTeam => pastTeam.name !== team.name);
-                        guardarEquipos(TeamAnteriorEliminado);
-                        guardarEquipos([...TeamAnteriorEliminado, {id: team.id, img: team.img, name: team.name, path: team.path, pined: true }])
-                        setTeamSaved(true);
-                        setFirstPin(true);
-                    }
-                    }}>
-                            
-                    <FontAwesomeIcon icon={faThumbtack}/>
-                </div>
-            }
+            <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
+                if (teamsaved === true) {
+                    const deletedTeam = collection.filter(deleteteam => deleteteam.id !== team.id);
+                    setCollection( deletedTeam );   
+                    setTeamSaved(false);
+                    setFirstPin(true);
+                }else{
+                    setCollection( [...collection, {img : team.img, name : team.name, id : team.id}] ); 
+                    setTeamSaved(true);
+                    setFirstPin(true);
+                }
+                }}>
+                        
+                <FontAwesomeIcon icon={faThumbtack}/>
+            </div>
+            
         </div>       
      );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import webLogo from '../../ImagenesVarias/Icon.png';
+import webLogo from '../../Images/Icon.png';
 import './loader.css';
 
 const SimpleLoadScreen = () => {
@@ -16,7 +16,7 @@ const SimpleLoadScreen = () => {
                     </div>
                 </div>
             </div>    
-            <img className="web-logo animate__animated animate__flip animate__infinite animate__slow noselect" alt="web main logo" src={webLogo}/>
+            <img className={`web-logo animate__flip animate__infinite animate__slow noselect ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} alt="web main logo" src={webLogo}/>
         </div>
      );
 }

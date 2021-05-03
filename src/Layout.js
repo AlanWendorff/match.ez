@@ -1,113 +1,81 @@
-import React, {useContext, useEffect, Fragment} from 'react';
-import MatchesApp from './components/teamprofile/MatchesApp';
-import Home from './components/home2/Home';
-import More from './components/more/More';
-import Tournaments from './components/tournaments/Tournaments';
-import Allmatches from './components/allmatches/Allmatches';
-import MatchTorneoApp from './components/nextgames/MatchesTorneoApp';
-import Timeline from './components/timeline/Timeline';
-import Control from './components/controlroom/Control';
-import NavigationBar from './components/navigationbar/NavigationBar';
-import { PathContext } from './components/context/PathContext';
-import { TournamentContext } from './components/context/TournamentContext'
+import React, { useEffect, Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { unity_info } from './custom/unity/unity-flow-league-schedule';
-import firebase from './utility/FirebaseConfig';
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+import TeamProfile from "./components/TeamProfile/TeamProfile";
+import Tournaments from "./components/Tournaments/Tournaments";
+import LeagueGames from "./components/LeagueGames/LeagueGames";
+import ControlRoom from "./components/ControlRoom/ControlRoom";
+import HltvRanking from "./components/HltvRanking/HltvRanking";
+import AllMatches from "./components/AllMatches/AllMatches";
+import Timeline from "./components/Timeline/Timeline";
+import News from "./components/News/News";
+import Home from "./components/Home/Home";
+import More from "./components/More/More";
 import {
   HOME,
   TOURNAMENTS,
   TIMELINE,
   ALLMATCHES,
   MORE,
-  UNITY,
   CONTROL,
   TOURNAMENT,
   TEAM,
-} from './routes/routes';
-import axios from 'axios';
+  RANKING,
+  NEWS,
+} from "./routes/routes";
+
+let deferredPrompt;
 
 const Layout = () => {
-  const database = firebase.database();
+  const [isinstalled, setIsInstalled] = useState(false);
 
-  useEffect(() => {
-    const LSwakeupBackend = JSON.parse(sessionStorage.getItem('wakeupBackend'));
-    if (LSwakeupBackend !== true) {
-      //console.log("llamo a backend");
-      (async()=>{
-        try {
-          const config = {
-            method: 'get',
-            url: 'https://arg-matchez-backend.herokuapp.com/api/wakeup',
-            headers: { 
-              "Access-Control-Allow-Origin": "*",
-            }
-          };
-          await axios(config);
-          //const res = 
-          //const firstCall = res.data;
-          //console.log(firstCall);
-        } catch (error) {
-          //console.log(error);
+  const handleInstallClick = (e) => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          //console.log('User accepted the install prompt');
+          setIsInstalled(true);
+        } else {
+          //console.log('User dismissed the install prompt');
         }
-        try {
-          const config = {
-            method: 'get',
-            url: 'https://arg-matchez-backendv2.herokuapp.com/api/wakeup',
-            headers: { 
-              "Access-Control-Allow-Origin": "*",
-            }
-          };
-          await axios(config);
-          //const res = 
-          //const firstCall = res.data;
-          //console.log(firstCall);
-        } catch (error) {
-          //console.log(error);
-        }
-      })()
-      sessionStorage.setItem('wakeupBackend', JSON.stringify(true));
+      });
     }
+  };
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
   }, []);
-  
-  const { tournamentId } = useContext(TournamentContext);
-  const tournamentArray = Object.values(tournamentId);
-  const { paths } = useContext(PathContext);
-  const pathsArray = Object.values(paths);
 
-  return ( 
+  return (
     <Fragment>
-      <Router> 
-          <Switch>
-            
-
-            <Route exact path={CONTROL}>
-              <Control
-                tournamentArray={tournamentArray}
-                pathsArray={pathsArray}
-                database={database}
-              />
-            </Route>
-            
-            <Route exact path={UNITY}>
-              <MatchTorneoApp
-                image_url={unity_info.image_url}
-              />
-            </Route>
-
-            <Route exact path={TEAM} component={MatchesApp}/>
-            <Route exact path={TOURNAMENT} component={MatchTorneoApp}/>
-            <Route exact path={MORE} component={More}/>
-            <Route exact path={TOURNAMENTS} component={Tournaments}/>
-            <Route exact path={TIMELINE} component={Timeline}/>
-            <Route exact path={ALLMATCHES} component={Allmatches}/>
-            <Route exact path={HOME} component={Home}/>
-          </Switch>
+      <Router>
+        <Switch>
+          <Route exact path={TOURNAMENTS} component={Tournaments} />
+          <Route exact path={TOURNAMENT} component={LeagueGames} />
+          <Route exact path={ALLMATCHES} component={AllMatches} />
+          <Route exact path={CONTROL} component={ControlRoom} />
+          <Route exact path={RANKING} component={HltvRanking} />
+          <Route exact path={TIMELINE} component={Timeline} />
+          <Route exact path={TEAM} component={TeamProfile} />
+          <Route exact path={NEWS} component={News} />
+          <Route exact path={MORE}>
+            <More
+              handleInstallClick={handleInstallClick}
+              setIsInstalled={setIsInstalled}
+              isinstalled={isinstalled}
+            />
+          </Route>
+          <Route exact path={HOME} component={Home} />
+        </Switch>
         <footer>
-          <NavigationBar/>
+          <NavigationBar />
         </footer>
       </Router>
     </Fragment>
   );
-}
+};
 
 export default Layout;

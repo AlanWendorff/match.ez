@@ -1,74 +1,80 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../ImagenesVarias/csgoLogoDefault.png';
-import {
-    TEAM,
-  } from '../../routes/routes';
-import './teamcollection.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { examplesAmerica, examplesnotAmerica, examplesnull } from "./Teams";
+import ProgressiveImage from "react-progressive-image";
+import csgoLogo from "../../Images/csgoLogoDefault.png";
+import { TEAM } from "../../routes/routes";
+import "./teamcollection.css";
 
-const examples = [
-        {
-            img: "https://cdn.pandascore.co/images/team/image/3209/ASTRALIS.png",
-            name: "Astralis",
-            id: 3209,
-        },
-        {
-            img: "https://cdn.pandascore.co/images/team/image/125863/isurus_2020_infocard.png",
-            name: "Isurus Gaming",
-            id: 125863,
-        },
-        {
-            img: "https://cdn.pandascore.co/images/team/image/125785/7718.png",
-            name: "Movistar Riders",
-            id: 125785,
-        },
-        {   
-            img: "https://cdn.pandascore.co/images/team/image/3213/220px_team_liquidlogo_square.png",
-            name: "Liquid",
-            id: 3213,
-        },
-        {   
-            img: "https://cdn.pandascore.co/images/team/image/3393/600px_winstrike_team_2019_logo.png",
-            name: "Winstrike",
-            id: 3393,
-        }
-]
+const TeamCollection = ({ collection }) => {
+  const [examples, setExamples] = useState(examplesnull);
 
-const TeamCollection = ({collection}) => {
-    return(
-        <div className="collection-container animate__animated animate__fadeInLeft animate__faster">
-            <span className="color-text-white font-bold">{collection.length > 0? 'MY SHORTCUTS' : 'SOME TEAMS'}</span>
-            <div className="teams-position mb-30px">
-                {collection.length > 0?
-                    collection.map(team => (
-                        <Link key={team.name} to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`}> 
-                            <div>
-                                <div>
-                                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
-                                        {src => <img className="" loading="lazy" src={src} alt={`${team.name}`} />}
-                                    </ProgressiveImage>
-                                </div>
-                                <span>{team.name}</span>
-                            </div>
-                        </Link>    
-                    ))
-                    :
-                    examples.map(team => (
-                        <Link key={team.name} to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`}> 
-                            <div>
-                                <div>
-                                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
-                                        {src => <img className="" loading="lazy" src={src} alt={`${team.name}`} />}
-                                    </ProgressiveImage>
-                                </div>
-                                <span>{team.name}</span>
-                            </div>
-                        </Link>    
-                    ))
-                }
-            </div> 
-        </div> 
-    );
-}  
+  navigator.geolocation.getCurrentPosition(function (position) {
+    if (
+      (position.coords.longitude < 0 && position.coords.latitude < 0) ||
+      (position.coords.longitude > 0 && position.coords.latitude < 0)
+    ) {
+      setExamples(examplesAmerica);
+    } else {
+      setExamples(examplesnotAmerica);
+    }
+  });
+
+  return (
+    <div className={`collection-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
+      <span className="color-text-white font-bold">
+        {collection.length > 0 ? "MY SHORTCUTS" : "SOME TEAMS"}
+      </span>
+      <div className="teams-position mb-30px">
+        {collection.length > 0
+          ? collection.map((team) => (
+              <Link
+                key={team.name}
+                to={TEAM.replace(":teamid", team.id)}
+                title={`Look the team profile of: ${team.name}`}
+              >
+                <div className="crosshair-expand">
+                  <div>
+                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                      {(src) => (
+                        <img
+                          className=""
+                          loading="lazy"
+                          src={src}
+                          alt={`${team.name}`}
+                        />
+                      )}
+                    </ProgressiveImage>
+                  </div>
+                  <span>{team.name}</span>
+                </div>
+              </Link>
+            ))
+          : examples.map((team) => (
+              <Link
+                key={team.name}
+                to={TEAM.replace(":teamid", team.id)}
+                title={`Look the team profile of: ${team.name}`}
+              >
+                <div className="crosshair-expand">
+                  <div>
+                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                      {(src) => (
+                        <img
+                          className=""
+                          loading="lazy"
+                          src={src}
+                          alt={`${team.name}`}
+                        />
+                      )}
+                    </ProgressiveImage>
+                  </div>
+                  <span>{team.name}</span>
+                </div>
+              </Link>
+            ))}
+      </div>
+    </div>
+  );
+};
 export default TeamCollection;

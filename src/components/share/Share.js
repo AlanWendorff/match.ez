@@ -23,7 +23,7 @@ const Share = ({Facebook, Twitter, Wapp}) => {
                     setState({display: 'none'});
                 }
             }} className="share-icon transition-effect zoom-element" icon={faShareAlt}/>
-            <div className="social animate__animated animate__pulse animate__faster" style={state}>
+            <div className={`social animate__pulse animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} style={state}>
                 <FacebookShareButton url={`${window.location.href}`} hashtag="#csgo" quote={Facebook}>
                     <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>

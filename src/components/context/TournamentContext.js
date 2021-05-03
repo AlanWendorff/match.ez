@@ -1,29 +1,24 @@
-import React, { createContext, useState, useEffect } from 'react';
-import firebase from '../../utility/FirebaseConfig';
+import React, { createContext, useState } from "react";
+import firebase from "../../utility/FirebaseConfig";
 
 const database = firebase.database();
 
-// creacion del context
 export const TournamentContext = createContext();
 
-// provider donde se encuentran las funciones y state's
 const TournamentProvider = (props) => {
+  const [tournamentsdatabase, guardarTournamentsDatabase] = useState([]);
 
-    const [tournamentId, guardarTournamentId] = useState([]);
+  const getTournamentsFromDatabase = () => {
+    database.ref("tournament").on("value", (snap) => {
+        guardarTournamentsDatabase(snap.val());
+    });
+  };
 
-    useEffect(() => {  
-        database.ref('tournament').on('value',(snap)=>{
-        guardarTournamentId(snap.val());
-        });
-    },[]);//Hacemos que ejecute una sola vez
+  return (
+    <TournamentContext.Provider value={{ tournamentsdatabase, getTournamentsFromDatabase }}>
+      {props.children}
+    </TournamentContext.Provider>
+  );
+};
 
-    return(
-        <TournamentContext.Provider 
-            value={{tournamentId, database}}
-        >
-            {props.children}
-        </TournamentContext.Provider>
-    );
-}
-
-export default TournamentProvider
+export default TournamentProvider;
