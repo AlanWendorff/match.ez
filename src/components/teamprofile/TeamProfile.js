@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretSquareDown } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { HOME } from "../../routes/routes";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import OneTeamMapping from "../OneTeamCard/OneTeamMapping";
@@ -245,8 +245,7 @@ const TeamProfile = () => {
                   }}
                   className="load-more"
                 >
-                  <FontAwesomeIcon icon={faCaretSquareDown} /> Load More{" "}
-                  <FontAwesomeIcon icon={faCaretSquareDown} />{" "}
+                  <FontAwesomeIcon icon={faPlus} />
                 </div>
               )}
             </>
