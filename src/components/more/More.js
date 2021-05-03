@@ -103,19 +103,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
           </a>
           <hr />
 
-          <a
-            className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://pandascore.co/"
-          >
-            <div>
-              <FontAwesomeIcon icon={faBolt} />
-              <span>Powered by PandaScore.co</span>
-            </div>
-          </a>
-          <hr />
-
           <div
             className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
             onClick={() => {

@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Team from './Team';
 import SaveInLS from './SaveInLS';
-import { ColorThemeContext } from '../Context/ColorThemeContext';
 import { PathContext } from '../Context/PathContext';
 import './search.css';
 
 const SearchTeam = ({setCollection, collection}) => {
     
-    const { colors } = useContext(ColorThemeContext);
     const [equiposfiltrados, guardarEquiposFiltrados] = useState([]);
     const [firstpin, setFirstPin] = useState(false);
     const { paths, getTeams } = useContext(PathContext);
@@ -39,13 +37,13 @@ const SearchTeam = ({setCollection, collection}) => {
     }
 
     return ( 
-        <div onClick={()=> {paths.length === 0&& getTeams();}} className={`search-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} style={{backgroundColor: colors.header_color}}>
-            <div title="Search team" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}}>
+        <div onClick={()=> {paths.length === 0&& getTeams();}} className={`search-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
+            <div title="Search Team" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
                 <label className="color-text-black" htmlFor="icon_prefix">{paths.length === 0? 'Search Teams:' : `${pathsArray.length} Teams in the database:` }</label>
             </div>
-            <div className="list-of-teams-container" style={{backgroundColor: colors.header_color}}>
+            <div className="list-of-teams-container">
             {
                 equiposfiltrados.map(team => (
                     <Team

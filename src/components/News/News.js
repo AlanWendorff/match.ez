@@ -34,7 +34,7 @@ const News = () => {
         console.log(error);
       }
     })();
-  });
+  }, []);
 
   return colors.background_color !== undefined ? (
     !badfetch ? (

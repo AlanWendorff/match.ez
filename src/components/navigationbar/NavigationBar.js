@@ -30,7 +30,6 @@ const NavigationBar = () => {
   return (
     <div
       className="menu-mobile"
-      style={{ backgroundColor: `${colors.header_color}` }}
       onContextMenu={(e) =>
         window.innerWidth > 1024 ? null : e.preventDefault()
       }
@@ -38,7 +37,7 @@ const NavigationBar = () => {
       <Link to={HOME}>
         <FontAwesomeIcon
           style={{
-            color: pathname !== HOME ? "black" : `${colors.background_color}`,
+            color: pathname !== HOME ? "white" : `${colors.background_color}`,
           }}
           icon={faUserFriends}
         />
@@ -50,7 +49,7 @@ const NavigationBar = () => {
         <FontAwesomeIcon
           style={{
             color:
-              pathname !== TOURNAMENTS ? "black" : `${colors.background_color}`,
+              pathname !== TOURNAMENTS ? "white" : `${colors.background_color}`,
           }}
           icon={faTrophy}
         />
@@ -71,7 +70,7 @@ const NavigationBar = () => {
         <FontAwesomeIcon
           style={{
             color:
-              pathname !== TIMELINE ? "black" : `${colors.background_color}`,
+              pathname !== TIMELINE ? "white" : `${colors.background_color}`,
           }}
           icon={faCalendarAlt}
         />
@@ -81,7 +80,7 @@ const NavigationBar = () => {
         <FontAwesomeIcon
           style={{
             color:
-              pathname !== ALLMATCHES ? "black" : `${colors.background_color}`,
+              pathname !== ALLMATCHES ? "white" : `${colors.background_color}`,
           }}
           icon={faFistRaised}
         />

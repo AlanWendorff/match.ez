@@ -198,6 +198,7 @@ const TeamProfile = () => {
 
           {show === "preview" && stadistics.winStrike !== undefined && (
             <TeamPreview
+              img={image_url}
               teamid={teamid}
               color={data}
               matches={matches}
