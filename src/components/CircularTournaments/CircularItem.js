@@ -5,7 +5,7 @@ import { LOOKMATCHES } from '../../titlestag/titlestag';
 import { usePalette } from "react-palette";
 import "./circulartournaments.css";
 
-const CircularItem = ({ img, name, id, filterByTournament }) => {
+const CircularItem = ({ img, name, id }) => {
   let colorImg = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
   //title={FILTERBY + name}
   /* filterByTournament(name); */

@@ -103,7 +103,6 @@ const TarjetaAllmatches = ({ match }) => {
           JSON.parse(localStorage.getItem("animations")) !== false &&
           "animate__animated"
         } animate__fadeInDown`}
-        style={{ border: `5px solid ${data.darkVibrant}` }}
       >
         <div className="col s12 m7 posicion-tarjeta">
           <div className="card-image">
@@ -243,7 +242,6 @@ const TarjetaAllmatches = ({ match }) => {
           JSON.parse(localStorage.getItem("animations")) !== false &&
           "animate__animated"
         } animate__fadeInDown`}
-        style={{ border: `5px solid ${data.darkVibrant}` }}
       >
         <div className="card-image">
           <p className="text-align-center cursor-default font-size mb-0">

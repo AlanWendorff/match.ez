@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import CircularTournaments from "../CircularTournaments/CircularTournaments";
 import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import ListadoAllmatches from "./ListadoAllmatches";
 import LoadScreen from "../Loader/LoadScreen";
@@ -41,7 +42,7 @@ const AllMatches = () => {
         if (data.length === 0) {
           guardarStateCrash(true);
         }
-      })
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { width } = loaderprogress;
@@ -58,6 +59,9 @@ const AllMatches = () => {
           >
             {allmatches.length !== 0 ? (
               <>
+                <CircularTournaments
+                  matches={allmatches}
+                />
                 <ListadoAllmatches matchesmod={matchesmod} />
                 {matchesmod.length !== allmatches.length && (
                   <div
