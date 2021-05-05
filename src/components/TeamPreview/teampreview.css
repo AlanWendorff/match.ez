@@ -179,7 +179,7 @@
     font-size: 25px;
   }
   .ReactModal__Content .player-canvas .background-team-logo {
-    width: 200px;
+    width: 180px;
   }
   .ReactModal__Content .player-pic {
     width: 200px;
@@ -261,25 +261,25 @@
   .ReactModal__Content svg {
     margin-left: 240px;
     margin-right: 5px;
-    font-size: 25px;
-  }
-  .ReactModal__Content h2 {
-    font-size: 25px;
-  }
-  .ReactModal__Content h3 {
     font-size: 20px;
   }
-  .ReactModal__Content .player-canvas .background-team-logo {
-    width: 150px;
+  .ReactModal__Content h2 {
+    font-size: 20px;
   }
-  .ReactModal__Content .player-pic {
-    width: 150px;
-  }
-  .ReactModal__Content h4 {
+  .ReactModal__Content h3 {
     font-size: 15px;
   }
+  .ReactModal__Content .player-canvas .background-team-logo {
+    width: 130px;
+  }
+  .ReactModal__Content .player-pic {
+    width: 140px;
+  }
+  .ReactModal__Content h4 {
+    font-size: 13px;
+  }
   .ReactModal__Content .social-media img {
-    width: 25px;
+    width: 20px;
   }
   .ReactModal__Content h6 div span {
     font-size: 12px;
