@@ -255,20 +255,23 @@ const TarjetaAllmatches = ({ match }) => {
           </p>
 
           <div className="card-image container-info cursor-default">
-            {dateUser === dateMatch ? (
-              <div className="hoy-esquina-container">
-                <p className="labels-esquinas text-align-start">{stage}</p>
+            <div className="hoy-esquina-container">
+              <p
+                className={`labels-esquinas text-align-start ${
+                  stage.toLowerCase().includes("final") && "font-gilroy-bold"
+                }`}
+              >
+                {stage}
+              </p>
+              {dateUser === dateMatch ? (
                 <p className="hoy-esquina">{statusMatch}</p>
-              </div>
-            ) : (
-              <div className="hoy-esquina-container">
-                <p className="labels-esquinas text-align-start">{stage}</p>
+              ) : (
                 <p className="labels-esquinas align-end">
                   {Moment(begin_at).format("Do")}{" "}
                   {Moment(begin_at).format("MMMM - H:mm")} hs
                 </p>
-              </div>
-            )}
+              )}
+            </div>
 
             <div className="container-puntosYlogos">
               <Link

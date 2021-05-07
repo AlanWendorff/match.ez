@@ -76,7 +76,9 @@
   align-items: center;
   font-family: "Gilroy-ExtraBold";
 }
-
+.card-stacked > .card-content > .display-flex {
+  margin-bottom: 5px;
+}
 @media (min-width: 771px) {
   .max-size-team-logo {
     max-width: 200px !important;
@@ -119,6 +121,9 @@
   }
   .match-data > span > .data {
     margin-left: 5px;
+  }
+  .card-stacked > .card-content > .display-flex > .text-align-start {
+    width: 75px;
   }
 }
 
@@ -166,5 +171,8 @@
   }
   .match-data > span > .data {
     margin-left: 5px;
+  }
+  .card-stacked > .card-content > .display-flex > .text-align-start {
+    width: 50px;
   }
 }

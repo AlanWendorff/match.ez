@@ -269,9 +269,9 @@ const OneTeamCard = ({ match, teamid }) => {
                 {" "}
                 {league.name + " " + serie.full_name}{" "}
               </Link>
-              <div className="cursor-default font-size">
+              <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold"
+                  className="font-gilroy-bold text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Vs:
@@ -279,9 +279,9 @@ const OneTeamCard = ({ match, teamid }) => {
                 <span>{opponentName === undefined ? "To be defined" : opponentName}</span>
               </div>
 
-              <div className="cursor-default font-size">
+              <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold"
+                  className="font-gilroy-bold text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Stage:
@@ -289,14 +289,14 @@ const OneTeamCard = ({ match, teamid }) => {
                 {stage}
               </div>
 
-              <div className="cursor-default font-size">
+              <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold"
+                  className="font-gilroy-bold text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Date:
                 </span>
-                <span className={hoy !== ''&& 'color-text-red'}>
+                <span className={hoy !== ''? 'color-text-red' : ''}>
                   {hoy === ''?
                       `${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs`
                     :
@@ -305,9 +305,9 @@ const OneTeamCard = ({ match, teamid }) => {
                 </span>
               </div>
 
-              <div className="cursor-default font-size">
+              <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold"
+                  className="font-gilroy-bold text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Games:
