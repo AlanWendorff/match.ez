@@ -37,7 +37,7 @@ const NavigationBar = () => {
       <Link to={HOME}>
         <FontAwesomeIcon
           style={{
-            color: pathname !== HOME ? "white" : `${colors.background_color}`,
+            color: pathname !== HOME ? "white" : '#4175a8',
           }}
           icon={faUserFriends}
         />
@@ -49,7 +49,7 @@ const NavigationBar = () => {
         <FontAwesomeIcon
           style={{
             color:
-              pathname !== TOURNAMENTS ? "white" : `${colors.background_color}`,
+              pathname !== TOURNAMENTS ? "white" : '#4175a8',
           }}
           icon={faTrophy}
         />
@@ -59,7 +59,7 @@ const NavigationBar = () => {
         <div
           style={{
             backgroundColor:
-              pathname !== MORE ? "" : `${colors.background_color}`,
+              pathname !== MORE ? "" : '#4175a8',
           }}
         >
           <img className="nav-logo" src={appLogo} alt="app logo" />
@@ -70,7 +70,7 @@ const NavigationBar = () => {
         <FontAwesomeIcon
           style={{
             color:
-              pathname !== TIMELINE ? "white" : `${colors.background_color}`,
+              pathname !== TIMELINE ? "white" : '#4175a8',
           }}
           icon={faCalendarAlt}
         />
@@ -80,7 +80,7 @@ const NavigationBar = () => {
         <FontAwesomeIcon
           style={{
             color:
-              pathname !== ALLMATCHES ? "white" : `${colors.background_color}`,
+              pathname !== ALLMATCHES ? "white" : '#4175a8',
           }}
           icon={faFistRaised}
         />

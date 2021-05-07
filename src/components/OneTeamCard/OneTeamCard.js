@@ -72,7 +72,7 @@ const OneTeamCard = ({ match, teamid }) => {
   ownName = profileOpponentArray && profileOpponentArray.opponent.name;
 
   if (diaUsuario === diaMatch) {
-    hoy = "¡Today!";
+    hoy = "Today";
   }
 
   const Facebook = `${
@@ -109,10 +109,7 @@ const OneTeamCard = ({ match, teamid }) => {
           "animate__animated"
         }`}
       >
-        <div
-          className="col s12 m7 posicion-tarjeta"
-          style={{ border: `5px solid ${leagueColors.lightVibrant}` }}
-        >
+        <div className="col s12 m7 posicion-tarjeta" >
           <div className="card-image">
             <div className="card-image container-info cursor-default padding-top-8">
               <div className="live-league-container">
@@ -216,7 +213,7 @@ const OneTeamCard = ({ match, teamid }) => {
                   official_stream_url !== null && PlaySound();
                 }}
               >
-                <span className="stream-font-color-LIVE">
+                <span className="stream-font-color-LIVE font-gilroy">
                   {" "}
                   {statusStream} <span className="dot-indicator"></span>
                 </span>
@@ -234,10 +231,7 @@ const OneTeamCard = ({ match, teamid }) => {
           "animate__animated"
         }`}
       >
-        <div
-          className="card horizontal tamano-tarjeta"
-          style={{ border: `5px solid ${leagueColors.lightVibrant}` }}
-        >
+        <div className="card horizontal tamano-tarjeta">
           <div className="card-image lienzo-logo">
             <Link
               to={
@@ -275,53 +269,55 @@ const OneTeamCard = ({ match, teamid }) => {
                 {" "}
                 {league.name + " " + serie.full_name}{" "}
               </Link>
-              <p className="text-align cursor-default font-size">
+              <div className="cursor-default font-size">
                 <span
-                  className="label-data-style mr-3px font-gilroy-bold"
+                  className="font-gilroy-bold"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Vs:
                 </span>
-                {opponentName === undefined ? "To be defined" : opponentName}
-              </p>
+                <span>{opponentName === undefined ? "To be defined" : opponentName}</span>
+              </div>
 
-              <p className="text-align cursor-default font-size">
+              <div className="cursor-default font-size">
                 <span
-                  className="label-data-style mr-3px font-gilroy-bold"
+                  className="font-gilroy-bold"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Stage:
                 </span>
                 {stage}
-              </p>
+              </div>
 
-              <p className="text-align cursor-default font-size">
+              <div className="cursor-default font-size">
                 <span
-                  className="label-data-style font-gilroy-bold"
+                  className="font-gilroy-bold"
                   style={{ color: leagueColors.darkVibrant }}
                 >
-                  Date:{" "}
+                  Date:
                 </span>
-                <span>
-                  {Moment(begin_at).format("Do")}{" "}
-                  {Moment(begin_at).format("MMMM - H:mm")} hs{" "}
-                  <span className="hoy-color">{hoy}</span>{" "}
+                <span className={hoy !== ''&& 'color-text-red'}>
+                  {hoy === ''?
+                      `${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs`
+                    :
+                      `${hoy} ${Moment(begin_at).format("H:mm")} hs`
+                  }
                 </span>
-              </p>
+              </div>
 
-              <p className="text-align cursor-default font-size">
+              <div className="cursor-default font-size">
                 <span
-                  className="label-data-style mr-3px font-gilroy-bold"
+                  className="font-gilroy-bold"
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   Games:
                 </span>
                 {bestOf}
-              </p>
+              </div>
               <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
             </div>
 
-            <div className="card-action padding-streaming-box">
+            <div className="card-action padding-streaming-box font-gilroy">
               <span
                 className="cursor-default"
                 style={{ color: data.darkVibrant }}

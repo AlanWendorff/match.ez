@@ -120,6 +120,9 @@
 .mb-40px {
   margin-bottom: 40px !important;
 }
+.width-75px {
+  width: 75px;
+}
 .width-30px {
   width: 30px !important;
 }
@@ -130,9 +133,6 @@
   width: 100% !important;
 }
 
-.label-data-style {
-  font-weight: bold;
-}
 .margin-0 {
   margin: 0%;
 }

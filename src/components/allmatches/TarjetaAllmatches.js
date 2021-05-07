@@ -225,7 +225,7 @@ const TarjetaAllmatches = ({ match }) => {
                   official_stream_url !== null && PlaySound();
                 }}
               >
-                <span className="stream-font-color-LIVE">
+                <span className="stream-font-color-LIVE font-gilroy">
                   {" "}
                   {statusStream} <span className="dot-indicator"></span>
                 </span>

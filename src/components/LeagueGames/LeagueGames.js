@@ -25,6 +25,7 @@ const LeagueGames = () => {
   const [crash, guardarStateCrash] = useState(false);
   const [matchesHoy, guardarMatchesHoy] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
+  const [playerscore, setPlayerScore] = useState([]);
   const [leaderboard, guardarLeaderboard] = useState([]);
   const [b64Logo, guardarB64Logo] = useState("");
   const [image_url, setImageLeague] = useState("");
@@ -164,9 +165,14 @@ const LeagueGames = () => {
           {show === "vs" && matchesHoy !== undefined && (
             <CompetitionMapping matchesHoy={matchesHoy} data={data} />
           )}
-          {show === "vs" && matchesHoy === undefined && <InfoCard />}
+          {show === "vs" && !matchesHoy.length > 0 && <InfoCard />}
           {show === "history" && prevMatch !== "no-match" && (
-            <HistoricMatchMapping prevMatch={prevMatch} setShow={setShow} />
+            <HistoricMatchMapping
+              prevMatch={prevMatch}
+              setShow={setShow}
+              setPlayerScore={setPlayerScore}
+              playerscore={playerscore}
+            />
           )}
           <Logo color={data} img={image_url} />
         </div>

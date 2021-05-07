@@ -19,9 +19,9 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
         <div className="team-container">
             <Link className="searched-team" to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`} key={team.id}>
                 <ProgressiveImage src={team.img} placeholder={csgoLogo}>
-                    {src => <img className={`searched-team-img animate__fadeInLeft animate__fast ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`} src={src} alt={team.name}  />}
+                    {src => <img className="searched-team-img" src={src} alt={team.name}  />}
                 </ProgressiveImage>
-                <span className={`font-bold color-text-black animate__fadeInRight animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>{team.name}</span>
+                <span className="font-bold color-text-black">{team.name}</span>
             </Link> 
             
             <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {
