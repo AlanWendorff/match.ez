@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { Link } from "react-router-dom";
-import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import {
-  faBolt,
   faCheck,
   faCodeBranch,
   faCog,
@@ -19,7 +16,6 @@ import { NEWS, RANKING } from "../../routes/routes";
 import "./more.css";
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   const year = new Date().getFullYear();
-  const { colors } = useContext(ColorThemeContext);
   const [hidecomponent, setHideComponent] = useState(false);
   const [sound, setSound] = useState(true);
   const [anim, setAnim] = useState(true);
@@ -59,7 +55,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     localStorage.setItem("animations", true);
   };
 
-  return colors.background_color !== undefined ? (
+  return (
     <div
       className="options noselect"
       onContextMenu={(e) =>
@@ -178,9 +174,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
         All Rights Reserved. {year}
       </span>
     </div>
-  ) : (
-    <SimpleLoadScreen />
-  );
+  )
 };
 
 export default More;

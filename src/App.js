@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "./Layout";
-import ColorThemeProvider from "./components/Context/ColorThemeContext";
 import TournamentProvider from "./components/Context/TournamentContext";
 import PathProvider from "./components/Context/PathContext";
 import HeaderLogoProvider from "./components/Context/HeaderLogoContext";
@@ -13,17 +12,15 @@ const App = () => {
   } else {
     return (
       <PathProvider>
-        <ColorThemeProvider>
-          <HeaderLogoProvider>
-            <LoaderProvider>
-              <TournamentProvider>
-                <TeamRankingProvider>
-                  <Layout />
-                </TeamRankingProvider>
-              </TournamentProvider>
-            </LoaderProvider>
-          </HeaderLogoProvider>
-        </ColorThemeProvider>
+        <HeaderLogoProvider>
+          <LoaderProvider>
+            <TournamentProvider>
+              <TeamRankingProvider>
+                <Layout />
+              </TeamRankingProvider>
+            </TournamentProvider>
+          </LoaderProvider>
+        </HeaderLogoProvider>
       </PathProvider>
     );
   }

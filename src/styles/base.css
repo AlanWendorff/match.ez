@@ -56,6 +56,15 @@
   margin: 0 !important;
   zoom: 100%;
 }
+
+.background-color-4all{
+  background-color: #011324;
+}
+
+.light-white{
+  background-color: rgb(226, 226, 226);
+}
+
 .font-gilroy {
   font-family: "Gilroy-Light";
 }

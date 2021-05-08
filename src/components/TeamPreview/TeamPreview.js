@@ -78,7 +78,6 @@ const TeamPreview = ({
       setIsOpen(false);
     }
   };
-  //https://www.countryflags.io//flat/24.png
 
   return (
     <div className="preview-container font-gilroy" id="preview">
@@ -318,16 +317,16 @@ const TeamPreview = ({
           )
         ) : (
           <h2>
-            <div class="preloader-wrapper small active">
-              <div class="spinner-layer spinner-red-only">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
+            <div className="preloader-wrapper small active">
+              <div className="spinner-layer spinner-red-only">
+                <div className="circle-clipper left">
+                  <div className="circle"></div>
                 </div>
-                <div class="gap-patch">
-                  <div class="circle"></div>
+                <div className="gap-patch">
+                  <div className="circle"></div>
                 </div>
-                <div class="circle-clipper right">
-                  <div class="circle"></div>
+                <div className="circle-clipper right">
+                  <div className="circle"></div>
                 </div>
               </div>
             </div>

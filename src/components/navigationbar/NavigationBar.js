@@ -12,7 +12,6 @@ import {
   TIMELINE,
   ALLMATCHES,
 } from "../../routes/routes";
-import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
@@ -24,7 +23,6 @@ import "./navigationbar.css";
 const NavigationBar = () => {
   const { pathname } = useLocation();
   let { logo } = useContext(HeaderLogoContext);
-  const { colors } = useContext(ColorThemeContext);
   if (logo === "") logo = csgoLogo;
 
   return (

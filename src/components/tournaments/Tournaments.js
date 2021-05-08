@@ -1,15 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { ColorThemeContext } from "../Context/ColorThemeContext";
 import { TournamentContext } from "../Context/TournamentContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import SearchTournament from "../SearchTournament/SearchTournament";
 import Item from "./Item";
 import "./tournaments.css";
 
 const Tournaments = () => {
-  const { colors } = useContext(ColorThemeContext);
   const { tournamentsdatabase, getTournamentsFromDatabase } = useContext(
     TournamentContext
   );
@@ -42,10 +39,9 @@ const Tournaments = () => {
     setTournaments(objectToArray);
   }, [tournamentsdatabase]);
 
-  return colors.background_color !== undefined ? (
+  return  (
     <div
-      className="tournament-container font-gilroy"
-      style={{ backgroundColor: colors.background_color }}
+      className="tournament-container font-gilroy background-color-4all"
       onContextMenu={(e) =>
         window.innerWidth > 1024 ? null : e.preventDefault()
       }
@@ -68,9 +64,7 @@ const Tournaments = () => {
         </div>
       )}
     </div>
-  ) : (
-    <SimpleLoadScreen />
-  );
+  )
 };
 
 export default Tournaments;

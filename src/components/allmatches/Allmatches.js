@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import { ColorThemeContext } from "../Context/ColorThemeContext";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import CircularTournaments from "../CircularTournaments/CircularTournaments";
-import SimpleLoadScreen from "../Loader/SimpleLoadScreen";
 import ListadoAllmatches from "./ListadoAllmatches";
 import LoadScreen from "../Loader/LoadScreen";
 import InfoCard from "../InfoCard/InfoCard";
@@ -12,7 +10,6 @@ import axios from "axios";
 import "./allmatches.css";
 
 const AllMatches = () => {
-  const { colors } = useContext(ColorThemeContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [crash, guardarStateCrash] = useState(false);
   const [allmatches, guardarAllmatches] = useState([]);
@@ -46,62 +43,44 @@ const AllMatches = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { width } = loaderprogress;
-  if (colors !== undefined) {
-    if (crash !== true) {
-      if (width === "100%") {
-        return (
-          <div
-            onContextMenu={(e) =>
-              window.innerWidth > 1024 ? null : e.preventDefault()
-            }
-            className="allmatches"
-            style={{ backgroundColor: colors.background_color }}
-          >
-            {allmatches.length !== 0 ? (
-              <>
-                <CircularTournaments
-                  matches={allmatches}
-                />
-                <ListadoAllmatches matchesmod={matchesmod} />
-                {matchesmod.length !== allmatches.length && (
-                  <div
-                    onClick={() => {
-                      loadMoreItems();
-                    }}
-                    className="load-more"
-                  >
-                    <FontAwesomeIcon icon={faPlus} />
-                  </div>
-                )}
-              </>
-            ) : (
-              <InfoCard />
-            )}
-          </div>
-        );
-      } else {
-        return (
-          <div
-            onContextMenu={(e) =>
-              window.innerWidth > 1024 ? null : e.preventDefault()
-            }
-            className="allmatches"
-            style={{ backgroundColor: colors.background_color }}
-          >
-            <LoadScreen loaderprogress={loaderprogress} />
-          </div>
-        );
-      }
+  if (crash !== true) {
+    if (width === "100%") {
+      return (
+        <div
+          onContextMenu={(e) =>
+            window.innerWidth > 1024 ? null : e.preventDefault()
+          }
+          className="allmatches background-color-4all"
+        >
+          {allmatches.length !== 0 ? (
+            <>
+              <CircularTournaments matches={allmatches} />
+              <ListadoAllmatches matchesmod={matchesmod} />
+              {matchesmod.length !== allmatches.length && (
+                <div
+                  onClick={() => {
+                    loadMoreItems();
+                  }}
+                  className="load-more"
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </div>
+              )}
+            </>
+          ) : (
+            <InfoCard />
+          )}
+        </div>
+      );
     } else {
       return (
         <div
           onContextMenu={(e) =>
             window.innerWidth > 1024 ? null : e.preventDefault()
           }
-          className="allmatches"
-          style={{ backgroundColor: colors.background_color }}
+          className="allmatches background-color-4all"
         >
-          <Warning />
+          <LoadScreen loaderprogress={loaderprogress} />
         </div>
       );
     }
@@ -111,9 +90,9 @@ const AllMatches = () => {
         onContextMenu={(e) =>
           window.innerWidth > 1024 ? null : e.preventDefault()
         }
-        className="allmatches"
+        className="allmatches background-color-4all"
       >
-        <SimpleLoadScreen />
+        <Warning />
       </div>
     );
   }
