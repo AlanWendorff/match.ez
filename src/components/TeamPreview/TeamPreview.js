@@ -1,16 +1,13 @@
 import React, { useContext, useState } from "react";
-import { faInfoCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
 import StadisticCard from "../StadisticCard/StadisticCard";
+import PlayerModal from '../PlayerModal/PlayerModal';
 import ProgressiveImage from "react-progressive-image";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
-import twitter from "../../Images/twitter.png";
-import instagram from "../../Images/insta.png";
-import twitch from "../../Images/twitch.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import unknown from "../../Images/unknown.png";
-import Modal from "react-modal";
 import axios from "axios";
 import "./teampreview.css";
 
@@ -27,10 +24,9 @@ const TeamPreview = ({
   wl,
   img,
 }) => {
-  Modal.setAppElement("html");
   const { ranking } = useContext(TeamRankingContext);
-  const [modalIsOpen, setIsOpen] = useState(false);
   const [playerinfo, setPlayerInfo] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const NEXTMATCH = matches[0];
   const LASTMATCH = prevMatch[0];
   const arrayTeam = LASTMATCH.opponents.find(
@@ -40,18 +36,7 @@ const TeamPreview = ({
     (element) =>
       element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase()
   );
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      filter: `drop-shadow(0px 0px 1000px ${color.vibrant})`,
-      color: color.darkVibrant,
-    },
-  };
+
   const getPlayerInfo = (playerName, LASTNAME) => {
     playerinfo.name !== playerName && setPlayerInfo([]);
     const config = {
@@ -216,6 +201,8 @@ const TeamPreview = ({
         </div>
       </div>
 
+      <PlayerModal playerinfo={playerinfo} color={color} setIsOpen={setIsOpen} modalIsOpen={modalIsOpen} img={img}/>
+
       <div
         style={{ color: color.vibrant, backgroundColor: color.darkVibrant }}
         className="place-in-world"
@@ -225,124 +212,10 @@ const TeamPreview = ({
           : `${arrayTeam.opponent.name}`}
       </div>
 
-      <Modal
-        isOpen={modalIsOpen}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <FontAwesomeIcon
-          onClick={() => {
-            setIsOpen(false);
-          }}
-          className="font-size-18px cursor-pointer"
-          icon={faTimes}
-        />
-        {playerinfo.length !== 0 ? (
-          playerinfo !== false ? (
-            <>
-              <h2>{playerinfo.ign && playerinfo.ign}</h2>
-              <div className="player-canvas">
-                <img
-                  className="player-pic"
-                  src={playerinfo.image && playerinfo.image}
-                />
-                <img className="background-team-logo" src={img} />
-              </div>
-              <h3>{playerinfo.name && playerinfo.name}</h3>
-
-              <h4>{playerinfo.age && playerinfo.age} Years old</h4>
-              <h4 className="place">
-                {playerinfo.country.name && playerinfo.country.name}
-                <img
-                  title={playerinfo.country.name && playerinfo.country.name}
-                  src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${
-                    playerinfo.country.code && playerinfo.country.code
-                  }.svg`}
-                />
-              </h4>
-              <h6
-                className="player-stadistics"
-                style={{ border: `3px solid ${color.vibrant}` }}
-              >
-                <div>
-                  <span>Headshots</span>
-                  <span>Maps Played</span>
-                  <span>Rating</span>
-                </div>
-
-                <div>
-                  <span>{playerinfo.statistics.headshots}</span>
-                  <span>{playerinfo.statistics.mapsPlayed}</span>
-                  <span>{playerinfo.statistics.rating}</span>
-                </div>
-              </h6>
-              <h5 className="social-media">
-                {playerinfo.instagram && (
-                  <a
-                    href={playerinfo.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img title="instagram" src={instagram} />
-                  </a>
-                )}
-                {playerinfo.twitch && (
-                  <a
-                    href={playerinfo.twitch}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img title="twitch" src={twitch} />
-                  </a>
-                )}
-                {playerinfo.twitter && (
-                  <a
-                    href={playerinfo.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img title="twitter" src={twitter} />
-                  </a>
-                )}
-              </h5>
-            </>
-          ) : (
-            <>
-              <h2>?</h2>
-              <div className="player-canvas">
-                <img className="player-pic" src={unknown} />
-                <img className="background-team-logo" src={img} />
-              </div>
-            </>
-          )
-        ) : (
-          <h2>
-            <div className="preloader-wrapper small active">
-              <div className="spinner-layer spinner-red-only">
-                <div className="circle-clipper left">
-                  <div className="circle"></div>
-                </div>
-                <div className="gap-patch">
-                  <div className="circle"></div>
-                </div>
-                <div className="circle-clipper right">
-                  <div className="circle"></div>
-                </div>
-              </div>
-            </div>
-          </h2>
-        )}
-      </Modal>
-
       <div className="team">
         {roster.map((player) => {
-          const {
-            nationality,
-            name,
-            first_name,
-            last_name,
-            image_url,
-          } = player;
+          const { nationality, name, first_name, last_name, image_url } =
+            player;
           const FIRSTNAME = first_name !== null ? first_name : "";
           const LASTNAME = last_name !== null ? last_name : "";
           const NATIONALITY =

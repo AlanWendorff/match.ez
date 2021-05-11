@@ -11,9 +11,11 @@ const HltvRanking = () => {
   const { ranking, badfetch } = useContext(TeamRankingContext);
   const { paths, getTeams } = useContext(PathContext);
   const pathsArray = Object.values(paths);
+
   useEffect(() => {
     paths.length === 0 && getTeams();
   }, []);
+
   return !badfetch ? (
     <div className="ranking-container font-gilroy background-color-4all">
       {ranking.length > 0 ? (

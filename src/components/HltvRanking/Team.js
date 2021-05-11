@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
+import { LOOKPROFILE } from "../../titlestag/titlestag";
 import ProgressiveImage from "react-progressive-image";
+import PlayerModal from "../PlayerModal/PlayerModal";
 import csgoLogoBlack from "../../Images/csgoLogoDefaultBlack.png";
 import { usePalette } from "react-palette";
+import axios from "axios";
 import "./hltvranking.css";
 
 const Team = ({
@@ -17,16 +20,51 @@ const Team = ({
   roster,
 }) => {
   let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
-  
+  const [playerinfo, setPlayerInfo] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const getPlayerInfo = (player) => {
+    const playerIGN = player.replace(" ", "");
+    playerinfo.ign !== playerIGN && setPlayerInfo([]);
+    const config = {
+      method: "get",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    };
+    try {
+      axios
+        .get(
+          `https://arg-matchez-backend.herokuapp.com/api/playerinfo/${playerIGN}`,
+          config
+        )
+        .then(({ data }) => {
+          setPlayerInfo(data);
+        });
+    } catch (error) {
+      setPlayerInfo(false);
+      setIsOpen(false);
+    }
+  };
   return (
-    <Link
+    <div
       key={name}
-      to={id ? TEAM.replace(":teamid", id) : RANKING}
-      title={`Look the team profile of: ${name}`}
-      className={`animate__faster animate__fadeInUp ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}
+      className={`animate__faster animate__fadeInUp ${
+        JSON.parse(localStorage.getItem("animations")) !== false &&
+        "animate__animated"
+      }`}
     >
       <div style={{ backgroundColor: colorTeam.darkVibrant }}>
-        <div className="team">
+        <PlayerModal
+          playerinfo={playerinfo}
+          color={colorTeam}
+          setIsOpen={setIsOpen}
+          modalIsOpen={modalIsOpen}
+          img={img}
+        />
+        <Link className="team" to={id ? TEAM.replace(":teamid", id) : RANKING} title={`Look the team profile of: ${name}`}>
           <span className="color-text-white">#{position}</span>
           <div>
             <ProgressiveImage
@@ -34,22 +72,33 @@ const Team = ({
               placeholder={csgoLogoBlack}
             >
               {(src) => (
-                <img className="" loading="lazy" src={src} alt={name} />
+                <img src={src} alt={name} />
               )}
             </ProgressiveImage>
           </div>
-        </div>
-        <div className="name">
+        </Link>
+        <Link className="name" to={id ? TEAM.replace(":teamid", id) : RANKING} title={`Look the team profile of: ${name}`}>
           <span>{name}</span>
-          <span  className="display-flex" >{points} Points <span className={balanceColor}>{balance}</span></span>
-        </div>
+          <span className="display-flex">
+            {points} Points <span className={balanceColor}>{balance}</span>
+          </span>
+        </Link>
         <div className="roster">
           {roster.map((player) => (
-            <span key={player}>{player}</span>
+            <span
+              title={LOOKPROFILE + player}
+              onClick={() => {
+                setIsOpen(true);
+                getPlayerInfo(player);
+              }}
+              key={player}
+            >
+              {player}
+            </span>
           ))}
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
