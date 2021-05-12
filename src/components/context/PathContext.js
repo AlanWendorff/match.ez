@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
 
-
 export const PathContext = createContext();
 
 const PathProvider = (props) => {

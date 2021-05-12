@@ -5,15 +5,16 @@ export const TeamRankingContext = createContext();
 
 const TeamRankingProvider = (props) => {
   const [ranking, setRanking] = useState([]);
-  const [badfetch, setBadFetch] = useState(false);
+  const badfetch = false;
+
 
   useEffect(() => {
     (async () => {
-      const { objRanking, badFetch } = await getRanking();
+      const { objRanking } = await getRanking();
       setRanking(objRanking);
     })();
   }, []);
-  
+
   return (
     <TeamRankingContext.Provider
       value={{

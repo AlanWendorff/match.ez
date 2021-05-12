@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchTeam from "../SearchTeam/SearchTeam";
 import TeamCollection from "../TeamCollection/TeamCollection";
 import "./home.css";
 
 const Home = () => {
   const [collection, setCollection] = useState([]);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("collection")) === null) {
+      localStorage.setItem("collection", JSON.stringify([]));
+    }
+    setCollection(JSON.parse(localStorage.getItem("collection")));
+  }, []);
 
   return (
     <div

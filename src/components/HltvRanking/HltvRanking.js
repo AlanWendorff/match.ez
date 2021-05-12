@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
-import { PathContext } from "../Context/PathContext";
 import LoadScreen from "../Loader/LoadScreen";
 import Warning from "../Warning/Warning";
 import LazyLoad from "react-lazyload";
@@ -9,25 +8,13 @@ import "./hltvranking.css";
 
 const HltvRanking = () => {
   const { ranking, badfetch } = useContext(TeamRankingContext);
-  const { teams, getTeams } = useContext(PathContext);
-
-  useEffect(() => {
-    teams.length === 0 && getTeams();
-  }, []);
 
   return !badfetch ? (
     <div className="ranking-container font-gilroy background-color-4all">
       {ranking.length > 0 ? (
         <div className="table-container">
           {ranking.map((team) => {
-            const databaseTeam = teams.find(
-              (element) =>
-                element.name.toLowerCase() === team.name.toLowerCase()
-            );
-            const { balance, name, points, position, roster } = team;
-            const img = databaseTeam && databaseTeam.img;
-            const id = databaseTeam && databaseTeam.id;
-
+            const { balance, name, points, position, roster, img, id } = team;
             let balanceColor;
             balance.length > 1
               ? balance.includes("-")

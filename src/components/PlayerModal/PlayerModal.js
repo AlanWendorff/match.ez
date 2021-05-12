@@ -62,7 +62,7 @@ const PlayerModal = ({ playerinfo, color, setIsOpen, modalIsOpen, img }) => {
             </h4>
             <h6
               className="player-stadistics"
-              style={{ border: `3px solid ${color.vibrant}` }}
+              style={{ border: `2px solid ${color.darkVibrant}` }}
             >
               <div>
                 <span>Headshots</span>
