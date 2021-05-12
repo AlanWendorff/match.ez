@@ -8,20 +8,19 @@ const SearchTeam = ({setCollection, collection}) => {
     
     const [equiposfiltrados, guardarEquiposFiltrados] = useState([]);
     const [firstpin, setFirstPin] = useState(false);
-    const { paths, getTeams } = useContext(PathContext);
-    const pathsArray = Object.values(paths);
+    const { teams, getTeams } = useContext(PathContext);
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('collection')) === null) {
             localStorage.setItem('collection', JSON.stringify([]));
         }
         setCollection(JSON.parse(localStorage.getItem('collection')));
-    }, [paths]);
+    }, [teams]);
 
     const BuscarEquipos = () => {
         let input = document.getElementById('icon_prefix').value.toLowerCase();
         let filteredTeams = []
-        pathsArray.map((equipo) => {
+        teams.map((equipo) => {
             if ( equipo.name.toLowerCase().startsWith(input) && input !== "") {
                 filteredTeams.push(equipo);
             }
@@ -37,11 +36,11 @@ const SearchTeam = ({setCollection, collection}) => {
     }
 
     return ( 
-        <div onClick={()=> {paths.length === 0&& getTeams();}} className={`search-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
+        <div onClick={()=> {teams.length === 0&& getTeams();}} className={`search-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
             <div title="Search Team" className="input-field col s6 search-bar" onChange={() => {BuscarEquipos()}}>
                 <i className="material-icons prefix">people_outline</i>
                 <input id="icon_prefix" type="text" className="validate" autoComplete="off"></input>
-                <label className="color-text-black" htmlFor="icon_prefix">{paths.length === 0? 'Search Teams:' : `${pathsArray.length} Teams in the database:` }</label>
+                <label className="color-text-black" htmlFor="icon_prefix">{teams.length === 0? 'Search Teams:' : `${teams.length} Teams in the database:` }</label>
             </div>
             <div className="list-of-teams-container">
             {

@@ -1,21 +1,26 @@
 import React, { createContext, useState } from "react";
-import firebase from "../../utility/FirebaseConfig";
+import axios from "axios";
 
-const database = firebase.database();
 
 export const PathContext = createContext();
 
 const PathProvider = (props) => {
-  const [paths, guardarPath] = useState([]);
+  const [teams, setTeams] = useState([]);
 
   const getTeams = () => {
-    database.ref("paths").on("value", (snap) => {
-      guardarPath(snap.val());
+    const config = {
+      method: "get",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    axios("https://arg-matchez-backend.herokuapp.com/database/teams", config).then(({ data }) => {
+      setTeams(data);
     });
   };
 
   return (
-    <PathContext.Provider value={{ paths, getTeams }}>
+    <PathContext.Provider value={{ teams, getTeams }}>
       {props.children}
     </PathContext.Provider>
   );

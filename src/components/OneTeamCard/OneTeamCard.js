@@ -1,6 +1,14 @@
 import React, { useContext } from "react";
 import { LOOKPROFILE, LOOKMATCHES } from "../../titlestag/titlestag";
-import { faClock, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClock,
+  faCodeBranch,
+  faCalendarDay,
+  faSortDown,
+  faSortUp,
+  faTrophy,
+  faMedal,
+} from "@fortawesome/free-solid-svg-icons";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
 import { TOURNAMENT, TEAM } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -54,10 +62,9 @@ const OneTeamCard = ({ match, teamid }) => {
   for (let index = 0; index < opponents.length; index++) {
     if (opponents[index] !== false) {
       if (opponents[index].opponent.id !== parseInt(teamid)) {
-        opponentLogo =
-          !opponents[index].opponent.image_url
-            ? csgoLogoDefaultBlack
-            : opponents[index].opponent.image_url;
+        opponentLogo = !opponents[index].opponent.image_url
+          ? csgoLogoDefaultBlack
+          : opponents[index].opponent.image_url;
         opponentName = opponents[index].opponent.name;
         opponentId = opponents[index].opponent.id;
       }
@@ -109,7 +116,7 @@ const OneTeamCard = ({ match, teamid }) => {
           "animate__animated"
         }`}
       >
-        <div className="col s12 m7 posicion-tarjeta" >
+        <div className="col s12 m7 posicion-tarjeta">
           <div className="card-image">
             <div className="card-image container-info cursor-default padding-top-8">
               <div className="live-league-container">
@@ -255,62 +262,69 @@ const OneTeamCard = ({ match, teamid }) => {
                   />
                 )}
               </ProgressiveImage>
+              <span>
+                {opponentName === undefined ? "To be defined" : opponentName}
+              </span>
             </Link>
           </div>
 
           <div className="card-stacked">
             <div className="card-content">
-              <Link
-                className="text-center head-font highlight-text font-gilroy-bold"
-                style={{ color: leagueColors.darkVibrant }}
-                to={TOURNAMENT.replace(":tournamentId", tournament.league_id)}
-                title={LOOKMATCHES + league.name}
-              >
-                {" "}
-                {league.name + " " + serie.full_name}{" "}
-              </Link>
               <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold text-align-start"
+                  className="text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
-                  Vs:
+                  <FontAwesomeIcon icon={faMedal} />
                 </span>
-                <span>{opponentName === undefined ? "To be defined" : opponentName}</span>
+                {league.name + " " + serie.full_name}
               </div>
 
               <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold text-align-start"
+                  className="text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
-                  Stage:
+                  <FontAwesomeIcon icon={faCodeBranch} />
                 </span>
                 {stage}
               </div>
 
               <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold text-align-start"
+                  className="text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
-                  Date:
+                  <FontAwesomeIcon icon={faClock} />
                 </span>
-                <span className={hoy !== ''? 'color-text-red' : ''}>
-                  {hoy === ''?
-                      `${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs`
-                    :
-                      `${hoy} ${Moment(begin_at).format("H:mm")} hs`
-                  }
+                <span className={hoy !== "" ? "color-text-red" : ""}>
+                  {hoy === ""
+                    ? `${Moment(begin_at).format("Do")} ${Moment(
+                        begin_at
+                      ).format("MMMM - H:mm")} hs`
+                    : `${hoy} ${Moment(begin_at).format("H:mm")} hs`}
                 </span>
               </div>
 
               <div className="display-flex cursor-default font-size">
                 <span
-                  className="font-gilroy-bold text-align-start"
+                  className="text-align-start"
                   style={{ color: leagueColors.darkVibrant }}
                 >
-                  Games:
+                  {bestOf.includes("1") && <FontAwesomeIcon icon={faTrophy} />}
+                  {bestOf.includes("3") && (
+                    <>
+                      <FontAwesomeIcon icon={faTrophy} />
+                      <FontAwesomeIcon icon={faTrophy} />
+                    </>
+                  )}
+                  {bestOf.includes("5") && (
+                    <>
+                      <FontAwesomeIcon icon={faTrophy} />
+                      <FontAwesomeIcon icon={faTrophy} />
+                      <FontAwesomeIcon icon={faTrophy} />
+                    </>
+                  )}
                 </span>
                 {bestOf}
               </div>

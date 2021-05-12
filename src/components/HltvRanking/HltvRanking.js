@@ -9,11 +9,10 @@ import "./hltvranking.css";
 
 const HltvRanking = () => {
   const { ranking, badfetch } = useContext(TeamRankingContext);
-  const { paths, getTeams } = useContext(PathContext);
-  const pathsArray = Object.values(paths);
+  const { teams, getTeams } = useContext(PathContext);
 
   useEffect(() => {
-    paths.length === 0 && getTeams();
+    teams.length === 0 && getTeams();
   }, []);
 
   return !badfetch ? (
@@ -21,7 +20,7 @@ const HltvRanking = () => {
       {ranking.length > 0 ? (
         <div className="table-container">
           {ranking.map((team) => {
-            const databaseTeam = pathsArray.find(
+            const databaseTeam = teams.find(
               (element) =>
                 element.name.toLowerCase() === team.name.toLowerCase()
             );

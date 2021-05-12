@@ -11,32 +11,32 @@ const Tournaments = () => {
     TournamentContext
   );
   const [tournaments, setTournaments] = useState([]);
-  const objectToArray =
+  const tournamentsModed =
     tournamentsdatabase.length !== 0 &&
-    Object.values(tournamentsdatabase).slice(0, 6);
+    tournamentsdatabase.slice(0, 6);
 
   const loadMoreItems = () => {
     let arrayLimit =
       tournaments.length === 6
-        ? Math.round(Object.values(tournamentsdatabase).length / 2)
-        : Object.values(tournamentsdatabase).length;
-    setTournaments(Object.values(tournamentsdatabase).slice(0, arrayLimit));
+        ? Math.round(tournamentsdatabase.length / 2)
+        : tournamentsdatabase.length;
+    setTournaments(tournamentsdatabase.slice(0, arrayLimit));
   };
 
   const FilterTournament = () => {
     let input = document.getElementById('last_name').value.toLowerCase();
     let filteredTournaments = [];
-    Object.values(tournamentsdatabase).map((tournament) => {
+    tournamentsdatabase.map((tournament) => {
       if (tournament.name.toLowerCase().includes(input) && input !== "") {
         filteredTournaments.push(tournament);
       }
     });
-    input === ""? setTournaments(Object.values(tournamentsdatabase).slice(0, 6)) : setTournaments(filteredTournaments);
+    input === ""? setTournaments(tournamentsdatabase.slice(0, 6)) : setTournaments(filteredTournaments);
   };
  
   useEffect(() => {
     tournamentsdatabase.length === 0 && getTournamentsFromDatabase();
-    setTournaments(objectToArray);
+    setTournaments(tournamentsModed);
   }, [tournamentsdatabase]);
 
   return  (
@@ -53,7 +53,7 @@ const Tournaments = () => {
             <Item tournament={tournament} key={tournament.id} />
           ))}
       </div>
-      {tournaments.length !== Object.values(tournamentsdatabase).length && (
+      {tournaments.length !== tournamentsdatabase.length && (
         <div
           onClick={() => {
             loadMoreItems();
