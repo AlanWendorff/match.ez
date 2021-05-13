@@ -7,15 +7,16 @@
   justify-content: center;
 }
 .loguito {
-  max-width: 55px;
-  max-height: 55px;
+  width: 55px;
+  height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
 }
 .loguito > img {
-  width: 30px;
+  max-width: 30px;
+  max-height: 30px;
 }
 .menu-mobile {
   border-top: 1px solid rgba(255, 255, 255, 0.151);

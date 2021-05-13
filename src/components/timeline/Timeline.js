@@ -69,8 +69,9 @@ const Timeline = () => {
               } = tournament;
               const dayuser = new Date().getDate();
               const day = Moment(begin_at).format("DD");
+              console.log(day, dayuser);
               const date =
-                day === dayuser
+                parseInt(day) === parseInt(dayuser)
                   ? "Today " + Moment(begin_at).format("HH:mm") + " hs"
                   : Moment(begin_at).format("DD - MMMM - HH:mm") + " hs";
               return (
@@ -85,8 +86,6 @@ const Timeline = () => {
                       title={LOOKMATCHES + league.name}
                     >
                       <img
-                        width="50"
-                        height="50"
                         alt="League"
                         className="tournament-logo-timeline"
                         src={league.image_url}
@@ -131,8 +130,6 @@ const Timeline = () => {
                           <div className="icon-container">
                             <div className="team-icon">
                               <img
-                                width="35"
-                                height="35"
                                 className="team-logo-timeline"
                                 alt="team"
                                 src={
@@ -149,8 +146,6 @@ const Timeline = () => {
                       <div className="no-team-container">
                         <div className="no-team">
                           <img
-                            width="35"
-                            height="35"
                             alt="no team"
                             className="team-logo-timeline"
                             src={toBeDefined}
@@ -158,8 +153,6 @@ const Timeline = () => {
                         </div>
                         <div className="no-team">
                           <img
-                            width="35"
-                            height="35"
                             alt="no team"
                             className="team-logo-timeline"
                             src={toBeDefined}
@@ -167,8 +160,6 @@ const Timeline = () => {
                         </div>
                         <div className="no-team">
                           <img
-                            width="35"
-                            height="35"
                             alt="no team"
                             className="team-logo-timeline"
                             src={toBeDefined}
