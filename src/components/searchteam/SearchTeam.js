@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Team from "./Team";
 import SaveInLS from "./SaveInLS";
 import axios from "axios";
+import {DebounceInput} from 'react-debounce-input';
 import "./search.css";
 
 const SearchTeam = ({ setCollection, collection }) => {
   const [teams, setTeams] = useState([]);
   const [firstpin, setFirstPin] = useState(false);
 
-  const BuscarEquipos = () => {
-    let input = document.getElementById("icon_prefix").value.toLowerCase();
+  const BuscarEquipos = (input) => {
     const config = {
       method: "get",
       headers: {
@@ -41,26 +41,23 @@ const SearchTeam = ({ setCollection, collection }) => {
         "animate__animated"
       }`}
     >
-      <div
-        title="Search Team"
-        className="input-field col s6 search-bar"
-        onChange={() => {
-          BuscarEquipos();
-        }}
-      >
+      <div title="Search Team" className="input-field col s6 search-bar">
         <i className="material-icons prefix">people_outline</i>
-        <input
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={300}
+          onChange={event => BuscarEquipos(event.target.value.toLowerCase())}
           id="icon_prefix"
           type="text"
           className="validate"
-          autoComplete="off"
-        ></input>
+          autoComplete="off"  
+          />
         <label className="color-text-black" htmlFor="icon_prefix">
           Search Teams:
         </label>
       </div>
       <div className="list-of-teams-container">
-        {document.getElementById("icon_prefix")&& document.getElementById("icon_prefix").value.length > 0 &&
+        {
           teams.map((team) => (
             <Team
               key={team.id}
