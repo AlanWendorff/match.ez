@@ -49,6 +49,7 @@
     margin: 0px;
     font-size: 30px;
     cursor: pointer;
+    text-align: center;
 }
 
 
@@ -119,25 +120,22 @@
         justify-content: space-evenly;
     }
     .name-of-teams{
-        margin: 2% 0% 2% 0% !important;
+        margin: 2% 0 !important;
         font-size: 15px;
         font-weight: bold;
     }
     .prev-game-header-container{
-        padding: 0% 0% 0% 0%;
+        padding: 0;
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
     }
     .prev-game-header{
         width: 100%;
-        margin: 2% 0% 2% 0% !important;
+        margin: 2% 0 !important;
         font-size: 15px;
-        font-weight: bold;
+        text-align: center;
     }
     .bestof-prev-game{
-        margin: 2% 0% 2% 0% !important;
+        margin: 2% 0 !important;
         text-align: center;
     }
     .point-A{
@@ -184,6 +182,12 @@
     }
     .size-prev-game{
         width: 330px !important;
+    }
+    .prev-game-header{
+        width: 100%;
+        margin: 2% 0 !important;
+        font-size: 15px;
+        text-align: center;
     }
     .prev-game-content{
         padding: 0%;

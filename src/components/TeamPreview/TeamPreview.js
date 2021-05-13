@@ -1,15 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Suspense } from "react";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
 import StadisticCard from "../StadisticCard/StadisticCard";
-import PlayerModal from '../PlayerModal/PlayerModal';
 import ProgressiveImage from "react-progressive-image";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import unknown from "../../Images/unknown.png";
 import axios from "axios";
 import "./teampreview.css";
+
+const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
 
 const TeamPreview = ({
   teamid,
@@ -201,7 +202,9 @@ const TeamPreview = ({
         </div>
       </div>
 
-      <PlayerModal playerinfo={playerinfo} color={color} setIsOpen={setIsOpen} modalIsOpen={modalIsOpen} img={img}/>
+      <Suspense fallback={<div></div>}>
+        <PlayerModal playerinfo={playerinfo} color={color} setIsOpen={setIsOpen} modalIsOpen={modalIsOpen} img={img}/>
+      </Suspense>
 
       <div
         style={{ color: color.vibrant, backgroundColor: color.darkVibrant }}

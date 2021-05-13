@@ -1,10 +1,10 @@
 import React, { useEffect, Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import TeamProfile from "./components/TeamProfile/TeamProfile";
-import Tournaments from "./components/Tournaments/Tournaments";
 import LeagueGames from "./components/LeagueGames/LeagueGames";
+import Tournaments from "./components/Tournaments/Tournaments";
 import HltvRanking from "./components/HltvRanking/HltvRanking";
+import TeamProfile from "./components/TeamProfile/TeamProfile";
 import AllMatches from "./components/AllMatches/AllMatches";
 import Timeline from "./components/Timeline/Timeline";
 import News from "./components/News/News";

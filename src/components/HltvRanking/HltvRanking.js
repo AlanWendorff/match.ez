@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, Suspense } from "react";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
 import LoadScreen from "../Loader/LoadScreen";
-import Warning from "../Warning/Warning";
 import LazyLoad from "react-lazyload";
 import Team from "./Team";
 import "./hltvranking.css";
+const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const HltvRanking = () => {
   const { ranking, badfetch } = useContext(TeamRankingContext);
@@ -44,7 +44,7 @@ const HltvRanking = () => {
     </div>
   ) : (
     <div className="ranking-container font-gilroy background-color-4all">
-      <Warning />
+      <Suspense fallback={<div></div>}><Warning /></Suspense>
     </div>
   );
 };

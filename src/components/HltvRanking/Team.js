@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
 import ProgressiveImage from "react-progressive-image";
-import PlayerModal from "../PlayerModal/PlayerModal";
 import csgoLogoBlack from "../../Images/csgoLogoDefaultBlack.png";
 import { usePalette } from "react-palette";
 import axios from "axios";
 import "./hltvranking.css";
+const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
 
 const Team = ({
   balanceColor,
@@ -57,13 +57,15 @@ const Team = ({
       }`}
     >
       <div style={{ backgroundColor: colorTeam.darkVibrant }}>
-        <PlayerModal
-          playerinfo={playerinfo}
-          color={colorTeam}
-          setIsOpen={setIsOpen}
-          modalIsOpen={modalIsOpen}
-          img={img}
-        />
+        <Suspense fallback={<div></div>}>
+          <PlayerModal
+            playerinfo={playerinfo}
+            color={colorTeam}
+            setIsOpen={setIsOpen}
+            modalIsOpen={modalIsOpen}
+            img={img}
+          />
+        </Suspense>
         <Link className="team" to={id ? TEAM.replace(":teamid", id) : RANKING} title={`Look the team profile of: ${name}`}>
           <span className="color-text-white">#{position}</span>
           <div>

@@ -1,27 +1,28 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, Suspense } from "react";
 import { useParams, useHistory } from "react-router";
 import { HeaderLogoContext } from "../Context/HeaderLogoContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { HOME } from "../../routes/routes";
-import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
-import OneTeamMapping from "../OneTeamCard/OneTeamMapping";
-import CircularTournaments from "../CircularTournaments/CircularTournaments";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
 import LoadScreen from "../Loader/LoadScreen";
-import InfoCard from "../InfoCard/InfoCard";
-import Warning from "../Warning/Warning";
 import Logo from "../NavigationBar/Logo";
 import generic_team_pattern from "../../Images/generic_team_pattern.png";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
 import "../../styles/base.css";
 
+const OneTeamMapping = React.lazy(() => import("../OneTeamCard/OneTeamMapping"));
+const InfoCard = React.lazy(() => import("../InfoCard/InfoCard"));
+const CircularTournaments = React.lazy(() => import("../CircularTournaments/CircularTournaments"));
+const HistoricMatchMapping = React.lazy(() => import("../HistoricMatchCard/HistoricMatchMapping"));
+const Warning = React.lazy(() => import("../Warning/Warning"));
+
 const TeamProfile = () => {
   const { teamid } = useParams();
   const history = useHistory();
-  !teamid&& history.push(HOME);
+  !teamid && history.push(HOME);
 
   let backgroundStyle = [];
   const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
@@ -123,9 +124,20 @@ const TeamProfile = () => {
     };
 
     axios
-      .get(`https://arg-matchez-backend.herokuapp.com/api/teaminfo/${teamid}`, config)
+      .get(
+        `https://arg-matchez-backend.herokuapp.com/api/teaminfo/${teamid}`,
+        config
+      )
       .then(({ data }) => {
-        const {historicMatches, upcomingMatches, roster, winStrike, winRate, wl, imageTeam } = data;
+        const {
+          historicMatches,
+          upcomingMatches,
+          roster,
+          winStrike,
+          winRate,
+          wl,
+          imageTeam,
+        } = data;
         guardarLoaderProgress({ width: "30%" });
         setRoster(roster);
         if (historicMatches && historicMatches.length !== 0) {
@@ -134,18 +146,14 @@ const TeamProfile = () => {
           if (imageTeam === null) {
             setImageTeam(csgoLogoDefault);
           } else {
-            guardarLogo(
-              "https://proxy-kremowy.herokuapp.com/" + imageTeam
-            );
-            setImageTeam(
-              "https://proxy-kremowy.herokuapp.com/" + imageTeam
-            );
+            guardarLogo("https://proxy-kremowy.herokuapp.com/" + imageTeam);
+            setImageTeam("https://proxy-kremowy.herokuapp.com/" + imageTeam);
           }
           guardarLoaderProgress({ width: "70%" });
         } else {
           guardarPrevMatch("no-match");
         }
-        upcomingMatches.length !== 0&& guardarMatches(upcomingMatches);
+        upcomingMatches.length !== 0 && guardarMatches(upcomingMatches);
         setStadistics({ winStrike, winRate, wl });
         guardarLoaderProgress({ width: "100%" });
       })
@@ -212,42 +220,45 @@ const TeamProfile = () => {
               wl={stadistics.wl}
             />
           )}
-
-          {show === "vs" && matches.length > 0 && (
-            <CircularTournaments
-              filterByTournament={filterByTournament}
-              matches={matches}
-            />
-          )}
           {show === "vs" && !matches.length > 0 && (
-            <InfoCard noMatches={noMatches} />
+            <Suspense fallback={<div></div>}>
+              <InfoCard noMatches={noMatches} />
+            </Suspense>
           )}
           {show === "vs" && matches.length > 0 && (
-            <OneTeamMapping matches={matches} teamid={teamid} />
+            <Suspense fallback={<div></div>}>
+              <CircularTournaments
+                filterByTournament={filterByTournament}
+                matches={matches}
+              />
+              <OneTeamMapping matches={matches} teamid={teamid} />
+            </Suspense>
           )}
 
           {show === "history" && prevMatch !== "no-match" && (
             <>
-              <CircularTournaments
-                filterByTournament={filterByTournament}
-                prevMatch={prevMatch}
-              />
-              <HistoricMatchMapping
-                prevMatch={matchesmod}
-                teamid={teamid}
-                setPlayerScore={setPlayerScore}
-                playerscore={playerscore}
-              />
-              {matchesmod.length !== prevMatch.length && (
-                <div
-                  onClick={() => {
-                    loadMoreItems();
-                  }}
-                  className="load-more"
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </div>
-              )}
+              <Suspense fallback={<div></div>}>
+                <CircularTournaments
+                  filterByTournament={filterByTournament}
+                  prevMatch={prevMatch}
+                />
+                <HistoricMatchMapping
+                  prevMatch={matchesmod}
+                  teamid={teamid}
+                  setPlayerScore={setPlayerScore}
+                  playerscore={playerscore}
+                />
+                {matchesmod.length !== prevMatch.length && (
+                  <div
+                    onClick={() => {
+                      loadMoreItems();
+                    }}
+                    className="load-more"
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </div>
+                )}
+              </Suspense>
             </>
           )}
           <Logo color={data} img={image_url} />
@@ -275,8 +286,11 @@ const TeamProfile = () => {
         }
         className="parametros-container mosaico noselect"
         style={{ backgroundColor: "#040c1c" }}
-      >
-        <Warning />
+      > 
+        <Suspense fallback={<div></div>}>
+          <Warning />
+        </Suspense>
+        
       </div>
     );
   }
