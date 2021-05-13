@@ -12,6 +12,7 @@ import Moment from "moment";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import '../OneTeamCard/tarjetaUpcomingMatch.css';
+
 const TarjetaAllmatches = ({ match }) => {
   const {
     opponents,

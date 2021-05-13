@@ -10,6 +10,7 @@ const SearchTeam = ({ setCollection, collection }) => {
   const [firstpin, setFirstPin] = useState(false);
 
   const BuscarEquipos = (input) => {
+    console.log('buscar');
     const config = {
       method: "get",
       headers: {
@@ -44,7 +45,7 @@ const SearchTeam = ({ setCollection, collection }) => {
       <div title="Search Team" className="input-field col s6 search-bar">
         <i className="material-icons prefix">people_outline</i>
         <DebounceInput
-          minLength={2}
+          minLength={1}
           debounceTimeout={300}
           onChange={event => BuscarEquipos(event.target.value.toLowerCase())}
           id="icon_prefix"
