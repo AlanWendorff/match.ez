@@ -69,7 +69,8 @@
         transition: all 0.1s ease-out;
     }
     .tournament-logo-timeline{
-        width: 50px;
+        max-width: 50px;
+        max-height: 50px;
         filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
     }
     .team-icon:hover{
@@ -129,6 +130,7 @@
     }
     .time-line-container .mobile{
         margin-top: 10px;
+        padding: 5px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -137,6 +139,7 @@
     }
     .time-line-container .mobile > span{
         width: 50%;
+        text-align: center;
         display: flex;
         flex-wrap: nowrap;
         justify-content: center;
@@ -193,7 +196,8 @@
     }
     
     .time-line-container .tournament-logo-timeline{
-        width: 40px;
+        max-width: 40px;
+        max-height: 40px;
         filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
     }
     .time-line-container .vertical-timeline-element-icon > a{
@@ -238,7 +242,8 @@
     box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.61);
 }
 .team-logo-timeline{
-    width: 50px;
+    max-width: 35px;
+    max-height: 35px;
 }
 .time-line-container .no-team-container{
     width: 100%;

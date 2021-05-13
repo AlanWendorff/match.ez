@@ -9,19 +9,26 @@ import "./teamcollection.css";
 const TeamCollection = ({ collection }) => {
   const [examples, setExamples] = useState(examplesnull);
 
-  navigator.geolocation.getCurrentPosition(function (position) {
-    if (
-      (position.coords.longitude < 0 && position.coords.latitude < 0) ||
-      (position.coords.longitude > 0 && position.coords.latitude < 0)
-    ) {
-      setExamples(examplesAmerica);
-    } else {
-      setExamples(examplesnotAmerica);
-    }
-  });
+  window.onload = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      if (
+        (position.coords.longitude < 0 && position.coords.latitude < 0) ||
+        (position.coords.longitude > 0 && position.coords.latitude < 0)
+      ) {
+        setExamples(examplesAmerica);
+      } else {
+        setExamples(examplesnotAmerica);
+      }
+    });
+  };
 
   return (
-    <div className={`collection-container animate__fadeInDown animate__faster ${JSON.parse(localStorage.getItem("animations")) !== false&& "animate__animated"}`}>
+    <div
+      className={`collection-container animate__fadeInDown animate__faster ${
+        JSON.parse(localStorage.getItem("animations")) !== false &&
+        "animate__animated"
+      }`}
+    >
       <span className="color-text-white font-bold">
         {collection.length > 0 ? "MY SHORTCUTS" : "SOME TEAMS"}
       </span>

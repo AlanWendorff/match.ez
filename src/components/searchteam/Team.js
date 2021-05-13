@@ -4,7 +4,7 @@ import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { TEAM } from '../../routes/routes';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../Images/csgoLogoDefault.png';
+import csgoLogo from '../../Images/csgoLogoDefaultBlack.png';
 
 const Team = ({team, setCollection, collection, setFirstPin}) => {
     
@@ -21,7 +21,7 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
                 <ProgressiveImage src={team.img} placeholder={csgoLogo}>
                     {src => <img className="searched-team-img" src={src} alt={team.name}  />}
                 </ProgressiveImage>
-                <span className="font-bold color-text-black">{team.name}</span>
+                <span className="font-gilroy color-text-black">{team.name}</span>
             </Link> 
             
             <div className={teamsaved? "pin-team-container-saved": "pin-team-container"} onClick={() => {

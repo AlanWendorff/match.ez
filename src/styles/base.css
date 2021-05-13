@@ -62,7 +62,7 @@
 }
 
 .light-white{
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(240, 240, 240);
 }
 
 .font-gilroy {
@@ -281,7 +281,8 @@ i.right {
     font-size: 18px;
   }
   .size-team-logo {
-    width: 110px;
+    max-width: 110px !important;
+    max-height: 150px;
   }
 }
 
@@ -298,6 +299,7 @@ i.right {
     font-size: 13px;
   }
   .size-team-logo {
-    max-width: 80px !important;
+    max-width: 50px !important;
+    max-height: 100px;
   }
 }

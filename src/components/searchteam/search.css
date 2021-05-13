@@ -1,5 +1,6 @@
 .searched-team-img {
-  width: 30px;
+  max-width: 30px;
+  max-height: 40px;
 }
 
 .pin-team-container {

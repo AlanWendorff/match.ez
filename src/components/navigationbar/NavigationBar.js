@@ -60,7 +60,7 @@ const NavigationBar = () => {
               pathname !== MORE ? "" : '#4175a8',
           }}
         >
-          <img className="nav-logo" src={appLogo} alt="app logo" />
+          <img width="40px" height="40px" className="nav-logo" src={appLogo} alt="app logo" />
         </div>
       </Link>
 

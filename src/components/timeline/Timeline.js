@@ -67,7 +67,12 @@ const Timeline = () => {
                 prizepool,
                 league_id,
               } = tournament;
-              const date = Moment(begin_at).format("DD - MMMM - HH:mm") + " hs";
+              const dayuser = new Date().getDate();
+              const day = Moment(begin_at).format("DD");
+              const date =
+                day === dayuser
+                  ? "Today " + Moment(begin_at).format("HH:mm") + " hs"
+                  : Moment(begin_at).format("DD - MMMM - HH:mm") + " hs";
               return (
                 <VerticalTimelineElement
                   key={shortid.generate()}
@@ -80,6 +85,9 @@ const Timeline = () => {
                       title={LOOKMATCHES + league.name}
                     >
                       <img
+                        width="50"
+                        height="50"
+                        alt="League"
                         className="tournament-logo-timeline"
                         src={league.image_url}
                       />
@@ -123,13 +131,16 @@ const Timeline = () => {
                           <div className="icon-container">
                             <div className="team-icon">
                               <img
+                                width="35"
+                                height="35"
                                 className="team-logo-timeline"
+                                alt="team"
                                 src={
                                   team.image_url === null
                                     ? csgoLogoDefaultBlack
                                     : team.image_url
                                 }
-                              ></img>
+                              />
                             </div>
                           </div>
                         </Link>
@@ -138,18 +149,27 @@ const Timeline = () => {
                       <div className="no-team-container">
                         <div className="no-team">
                           <img
+                            width="35"
+                            height="35"
+                            alt="no team"
                             className="team-logo-timeline"
                             src={toBeDefined}
                           />
                         </div>
                         <div className="no-team">
                           <img
+                            width="35"
+                            height="35"
+                            alt="no team"
                             className="team-logo-timeline"
                             src={toBeDefined}
                           />
                         </div>
                         <div className="no-team">
                           <img
+                            width="35"
+                            height="35"
+                            alt="no team"
                             className="team-logo-timeline"
                             src={toBeDefined}
                           />
