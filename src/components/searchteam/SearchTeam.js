@@ -60,7 +60,7 @@ const SearchTeam = ({ setCollection, collection }) => {
         </label>
       </div>
       <div className="list-of-teams-container">
-        {document.getElementById("icon_prefix").value.length > 0 &&
+        {document.getElementById("icon_prefix")&& document.getElementById("icon_prefix").value.length > 0 &&
           teams.map((team) => (
             <Team
               key={team.id}
