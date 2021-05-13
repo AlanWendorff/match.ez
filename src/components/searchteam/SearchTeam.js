@@ -17,11 +17,12 @@ const SearchTeam = ({ setCollection, collection }) => {
       },
     };
     if (input.length !== 0) {
-      axios(`https://arg-matchez-backend.herokuapp.com/database/searchteam/${input}`, config).then(
-        ({ data }) => {
-          data ? setTeams(data) : setTeams([]);
-        }
-      );
+      axios(
+        `https://arg-matchez-backend.herokuapp.com/database/searchteam/${input}`,
+        config
+      ).then(({ data }) => {
+        data ? setTeams(data) : setTeams([]);
+      });
     } else {
       setTeams([]);
     }
@@ -59,15 +60,17 @@ const SearchTeam = ({ setCollection, collection }) => {
         </label>
       </div>
       <div className="list-of-teams-container">
-        {teams.map((team) => (
-          <Team
-            key={team.id}
-            team={team}
-            setCollection={setCollection}
-            collection={collection}
-            setFirstPin={setFirstPin}
-          />
-        ))}
+        {document.getElementById("icon_prefix").value.length > 0 &&
+          teams.map((team) => (
+            <Team
+              key={team.id}
+              team={team}
+              setCollection={setCollection}
+              collection={collection}
+              setFirstPin={setFirstPin}
+            />
+          ))
+        }
         <SaveInLS
           collection={collection}
           SaveOnLS={SaveOnLS}
