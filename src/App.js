@@ -1,27 +1,30 @@
 import React from "react";
 import Layout from "./Layout";
-import TournamentProvider from "./components/Context/TournamentContext";
-import PathProvider from "./components/Context/PathContext";
-import HeaderLogoProvider from "./components/Context/HeaderLogoContext";
-import LoaderProvider from "./components/Context/LoaderContext";
 import TeamRankingProvider from "./components/Context/TeamRankingContext";
+import TournamentProvider from "./components/Context/TournamentContext";
+import HeaderLogoProvider from "./components/Context/HeaderLogoContext";
+import LocationProvider from "./components/Context/LocationContext";
+import LoaderProvider from "./components/Context/LoaderContext";
+import TeamsProvider from "./components/Context/TeamsContext";
 
 const App = () => {
   if (navigator.onLine !== true) {
     alert("No Internet Connection");
   } else {
     return (
-      <PathProvider>
+      <TeamsProvider>
         <HeaderLogoProvider>
           <LoaderProvider>
             <TournamentProvider>
               <TeamRankingProvider>
-                <Layout />
+                <LocationProvider>
+                  <Layout />
+                </LocationProvider>
               </TeamRankingProvider>
             </TournamentProvider>
           </LoaderProvider>
         </HeaderLogoProvider>
-      </PathProvider>
+      </TeamsProvider>
     );
   }
 };

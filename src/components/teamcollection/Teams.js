@@ -48,12 +48,11 @@ export const examplesnotAmerica = [
         name: "TYLOO",
     },
     {   
-        id: 3273,
-        img: "https://cdn.pandascore.co/images/team/image/3273/ORDER.png",
-        name: "ORDER",
+        id: 128847,
+        img: "https://cdn.pandascore.co/images/team/image/128847/600px_team_fiend.png",
+        name: "Fiend",
     },
 ]
-
 
 export const examplesnull = [
     {
@@ -72,14 +71,14 @@ export const examplesnull = [
         name: "9z",
     },
     {   
-        id: 124530,
-        img: "https://cdn.pandascore.co/images/team/image/124530/8297.png",
-        name: "Furia",
+        id: 3218,
+        img: "https://cdn.pandascore.co/images/team/image/3218/600px_ninjas_in_pyjamas_2021.png",
+        name: "NIP",
     },
     {   
-        id: 3273,
-        img: "https://cdn.pandascore.co/images/team/image/3273/ORDER.png",
-        name: "ORDER",
+        id: 128847,
+        img: "https://cdn.pandascore.co/images/team/image/128847/600px_team_fiend.png",
+        name: "Fiend",
     },
 ]
 

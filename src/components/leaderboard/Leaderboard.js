@@ -19,7 +19,7 @@ const Leaderboard = ({leaderboard}) => {
                     <div>
                         <TeamRanking name={team.name} />
                         <ProgressiveImage src={team.img === null? csgoLogoDefaultBlack : team.img} placeholder={csgoLogoDefaultBlack}>
-                            {src => <img alt="laderboard team" className="width-30px" src={src} />}
+                            {src => <img alt="laderboard team" src={src} />}
                         </ProgressiveImage>
                         <span className="font-gilroy">{team.name}</span>
                     </div>

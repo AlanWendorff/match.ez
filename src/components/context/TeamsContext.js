@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
 
-export const PathContext = createContext();
+export const TeamsContext = createContext();
 
-const PathProvider = (props) => {
+const TeamsProvider = (props) => {
   const [teams, setTeams] = useState([]);
 
   const getTeams = () => {
@@ -19,10 +19,10 @@ const PathProvider = (props) => {
   };
 
   return (
-    <PathContext.Provider value={{ teams, getTeams }}>
+    <TeamsContext.Provider value={{ teams, getTeams }}>
       {props.children}
-    </PathContext.Provider>
+    </TeamsContext.Provider>
   );
 };
 
-export default PathProvider;
+export default TeamsProvider;

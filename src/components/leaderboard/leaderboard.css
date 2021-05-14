@@ -117,7 +117,10 @@
         font-size: 20px;
     }
 }
-
+.ladder-team img {
+    max-width: 30px;
+    max-height: 40px;
+}
 .ladder-teams-container > .lazyload-wrapper{
     width: 100% !important;
 }

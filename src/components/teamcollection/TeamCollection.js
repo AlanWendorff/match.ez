@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { LocationContext } from "../Context/LocationContext";
 import { examplesAmerica, examplesnotAmerica, examplesnull } from "./Teams";
 import ProgressiveImage from "react-progressive-image";
 import csgoLogo from "../../Images/csgoLogoDefault.png";
@@ -8,19 +9,11 @@ import "./teamcollection.css";
 
 const TeamCollection = ({ collection }) => {
   const [examples, setExamples] = useState(examplesnull);
-
-  window.onload = () => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      if (
-        (position.coords.longitude < 0 && position.coords.latitude < 0) ||
-        (position.coords.longitude > 0 && position.coords.latitude < 0)
-      ) {
-        setExamples(examplesAmerica);
-      } else {
-        setExamples(examplesnotAmerica);
-      }
-    });
-  };
+  const { location } = useContext(LocationContext);
+  useEffect(() => {
+    location === "america" && setExamples(examplesAmerica);
+    location === "rest" && setExamples(examplesnotAmerica);
+  }, [location]);
 
   return (
     <div

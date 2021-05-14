@@ -312,6 +312,12 @@ const OneTeamCard = ({ match, teamid }) => {
                   style={{ color: leagueColors.darkVibrant }}
                 >
                   {bestOf.includes("1") && <FontAwesomeIcon icon={faTrophy} />}
+                  {bestOf.includes("2")&& (
+                    <>
+                      <FontAwesomeIcon icon={faTrophy} />
+                      <FontAwesomeIcon icon={faTrophy} />
+                    </>
+                  )}
                   {bestOf.includes("3") && (
                     <>
                       <FontAwesomeIcon icon={faTrophy} />
@@ -326,7 +332,7 @@ const OneTeamCard = ({ match, teamid }) => {
                     </>
                   )}
                 </span>
-                {bestOf}
+                {bestOf}{bestOf.includes("2")&& " (match may end in a draw)"}
               </div>
               <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
             </div>
