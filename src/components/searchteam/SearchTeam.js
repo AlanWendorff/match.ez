@@ -10,7 +10,6 @@ const SearchTeam = ({ setCollection, collection }) => {
   const [firstpin, setFirstPin] = useState(false);
 
   const BuscarEquipos = (input) => {
-    console.log('buscar');
     const config = {
       method: "get",
       headers: {

@@ -69,7 +69,6 @@ const Timeline = () => {
               } = tournament;
               const dayuser = new Date().getDate();
               const day = Moment(begin_at).format("DD");
-              console.log(day, dayuser);
               const date =
                 parseInt(day) === parseInt(dayuser)
                   ? "Today " + Moment(begin_at).format("HH:mm") + " hs"

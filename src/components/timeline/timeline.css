@@ -71,7 +71,6 @@
     .tournament-logo-timeline{
         max-width: 50px;
         max-height: 50px;
-        filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
     }
     .team-icon:hover{
         width: 80px;
@@ -198,7 +197,6 @@
     .time-line-container .tournament-logo-timeline{
         max-width: 40px;
         max-height: 40px;
-        filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
     }
     .time-line-container .vertical-timeline-element-icon > a{
         display: flex; 

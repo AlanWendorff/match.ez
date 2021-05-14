@@ -36,30 +36,38 @@ const News = () => {
   return !badfetch ? (
     <div className="news-container font-gilroy background-color-4all">
       {news.length > 0 ? (
-        news.map((n) => (
-          <div
-            className={`new animate__faster animate__fadeInDown ${
-              JSON.parse(localStorage.getItem("animations")) !== false &&
-              "animate__animated"
-            }`}
-            key={n.title}
-          >
-            <h1>{n.title}</h1>
-            <h2>
-              <hr />
-              {Moment(n.time).format("MMM, DD - YYYY")}
-              <hr />
-            </h2>
-            <p>{n.description}</p>
-            <span>
-              <hr />
-              <a rel="noopener noreferrer" target="_blank" href={n.link}>
-                You can read more on: HLTV.org Post
-              </a>
-              <hr />
-            </span>
-          </div>
-        ))
+        news.map((n) => {
+          const dayuser = new Date().getDate();
+          const day = Moment(n.time).format("DD");
+          const date =
+            parseInt(day) === parseInt(dayuser)
+              ? "Today " + Moment(n.date).format("- HH:mm")
+              : Moment(n.date).format("MMM, DD - YYYY");
+          return (
+            <div
+              className={`new animate__faster animate__fadeInDown ${
+                JSON.parse(localStorage.getItem("animations")) !== false &&
+                "animate__animated"
+              }`}
+              key={n.title}
+            >
+              <h1>{n.title}</h1>
+              <h2>
+                <hr />
+                {date}
+                <hr />
+              </h2>
+              <p>{n.description}</p>
+              <span>
+                <hr />
+                <a rel="noopener noreferrer" target="_blank" href={n.link}>
+                  You can read more on: HLTV.org Post
+                </a>
+                <hr />
+              </span>
+            </div>
+          );
+        })
       ) : (
         <LoadScreen />
       )}

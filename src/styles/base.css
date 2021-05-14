@@ -259,19 +259,17 @@ i.right {
 
 .load-more {
   font-family: "Gilroy-ExtraBold";
-  font-size: 25px;
   margin: 15px;
   color: white;
   cursor: pointer;
 }
-.load-more:hover{
-  border: 1px solid white;
-  border-radius: 100px;
-  transition: all 0.5s ease-out ;
-}
 .load-more > svg {
   margin: 0px 15px;
 }
+.head-font{
+  padding: 0px 10px;
+}
+
 @media (min-width: 641px) {
   .parametros-container {
     height: calc(100vh - 50px);
@@ -287,6 +285,14 @@ i.right {
   .size-team-logo {
     max-width: 110px !important;
     max-height: 150px;
+  }
+  .load-more {
+    font-size: 25px;
+  }
+  .load-more:hover{
+    border: 1px solid white;
+    border-radius: 100px;
+    transition: all 0.5s ease-out;
   }
 }
 
@@ -305,5 +311,8 @@ i.right {
   .size-team-logo {
     max-width: 70px !important;
     max-height: 100px;
+  }
+  .load-more {
+    font-size: 22px;
   }
 }

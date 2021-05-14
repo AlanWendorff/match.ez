@@ -7,7 +7,6 @@ import { TOURNAMENT } from '../../routes/routes';
 import { Link } from 'react-router-dom';
 import './tournaments.css';
 
-
 const Item = ({tournament}) => {
     let img;
     let name;

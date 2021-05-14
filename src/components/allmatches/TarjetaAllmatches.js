@@ -174,6 +174,7 @@ const TarjetaAllmatches = ({ match }) => {
                   style={{
                     backgroundColor: colorTeamA.darkVibrant,
                     fontSize: opponents[0].opponent.name.length > 11 && "12px",
+                    lineHeight: aTeamName.length > 11 && "14px",
                   }}
                 >
                   {opponents[0].opponent.name}
@@ -184,6 +185,7 @@ const TarjetaAllmatches = ({ match }) => {
                   style={{
                     backgroundColor: colorTeamB.darkVibrant,
                     fontSize: opponents[1].opponent.name.length > 11 && "12px",
+                    lineHeight: bTeamName.length > 11 && "14px",
                   }}
                 >
                   {opponents[1].opponent.name}
@@ -192,7 +194,7 @@ const TarjetaAllmatches = ({ match }) => {
 
               <div className="rankings-label">
                 <TeamRanking name={aTeamName} />
-                <p className="modalidad-past-match">{bestOf}</p>
+                <p className="modalidad-past-match font-size">{bestOf}</p>
                 <TeamRanking name={bTeamName} />
               </div>
 
@@ -341,17 +343,19 @@ const TarjetaAllmatches = ({ match }) => {
                 className="label-teams pill"
                 style={{
                   backgroundColor: colorTeamA.darkVibrant,
-                  fontSize: aTeamName.length > 11 && "12px",
+                  fontSize:   aTeamName.length > 11 && "12px",
+                  lineHeight: aTeamName.length > 11 && "14px",
                 }}
               >
                 {aTeamName}
               </p>
-              <p className="modalidad-past-match"></p>
+              <p className="modalidad-past-match font-size"></p>
               <p
                 className="label-teams pill"
                 style={{
                   backgroundColor: colorTeamB.darkVibrant,
                   fontSize: bTeamName.length > 11 && "12px",
+                  lineHeight: bTeamName.length > 11 && "14px",
                 }}
               >
                 {bTeamName}
@@ -360,7 +364,7 @@ const TarjetaAllmatches = ({ match }) => {
 
             <div className="rankings-label">
               <TeamRanking name={aTeamName} />
-              <p className="modalidad-past-match">{bestOf}</p>
+              <p className="modalidad-past-match font-size">{bestOf}</p>
               <TeamRanking name={bTeamName} />
             </div>
           </div>

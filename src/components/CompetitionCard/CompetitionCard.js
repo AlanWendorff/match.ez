@@ -157,6 +157,7 @@ const CompetitionCard = ({ match, data }) => {
                   style={{
                     backgroundColor: colorTeamA.darkVibrant,
                     fontSize: aTeamName.length > 11 && "12px",
+                    lineHeight: aTeamName.length > 11 && "14px",
                   }}
                 >
                   {opponents[0].opponent.name}
@@ -167,6 +168,7 @@ const CompetitionCard = ({ match, data }) => {
                   style={{
                     backgroundColor: colorTeamB.darkVibrant,
                     fontSize: bTeamName.length > 11 && "12px",
+                    lineHeight: bTeamName.length > 11 && "14px",
                   }}
                 >
                   {opponents[1].opponent.name}
@@ -175,7 +177,7 @@ const CompetitionCard = ({ match, data }) => {
 
               <div className="rankings-label">
                 <TeamRanking name={aTeamName} />
-                <p className="modalidad-past-match">{bestOf}</p>
+                <p className="modalidad-past-match font-size">{bestOf}</p>
                 <TeamRanking name={bTeamName} />
               </div>
 
@@ -324,6 +326,7 @@ const CompetitionCard = ({ match, data }) => {
                 style={{
                   backgroundColor: colorTeamA.darkVibrant,
                   fontSize: aTeamName.length > 11 && "12px",
+                  lineHeight: aTeamName.length > 11 && "14px",
                 }}
               >
                 {aTeamName}
@@ -334,6 +337,7 @@ const CompetitionCard = ({ match, data }) => {
                 style={{
                   backgroundColor: colorTeamB.darkVibrant,
                   fontSize: bTeamName.length > 11 && "12px",
+                  lineHeight: bTeamName.length > 11 && "14px",
                 }}
               >
                 {bTeamName}
@@ -342,7 +346,7 @@ const CompetitionCard = ({ match, data }) => {
 
             <div className="rankings-label">
               <TeamRanking name={aTeamName} />
-              <p className="modalidad-past-match">{bestOf}</p>
+              <p className="modalidad-past-match font-size">{bestOf}</p>
               <TeamRanking name={bTeamName} />
             </div>
           </div>

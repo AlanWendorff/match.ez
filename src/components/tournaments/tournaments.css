@@ -1,4 +1,10 @@
 
+.child-tournament > span {
+  margin: 10px 0px;
+  font-size: 17px;
+  text-align: center;
+}
+
 @media (min-width: 641px) {
   .tournament-container {
     overflow-y: scroll;
