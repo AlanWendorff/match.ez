@@ -10,10 +10,11 @@ import {
   faNewspaper,
   faVolumeMute,
   faVolumeUp,
-  faListOl
+  faListOl,
 } from "@fortawesome/free-solid-svg-icons";
 import { NEWS, RANKING } from "../../routes/routes";
 import "./more.css";
+
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   const year = new Date().getFullYear();
   const [hidecomponent, setHideComponent] = useState(false);
@@ -174,7 +175,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
         All Rights Reserved. {year}
       </span>
     </div>
-  )
+  );
 };
 
 export default More;

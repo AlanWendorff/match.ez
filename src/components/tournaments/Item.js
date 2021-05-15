@@ -11,15 +11,15 @@ const Item = ({tournament}) => {
     let img;
     let name;
 
-    //let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + tournament.image_url).data;
-    let colorTeam = {
+    let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + tournament.image_url).data;
+    /* let colorTeam = {
         darkMuted: "#1c313a",
         darkVibrant: "#455a64",
         lightMuted: "#455a64",
         lightVibrant: "#718792",
         muted: "#1c313a",
         vibrant: "#718792",
-      };
+      }; */
     img = tournament.image_url;
     name = tournament.name;
     
