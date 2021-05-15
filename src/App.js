@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "./Layout";
 import TeamRankingProvider from "./components/Context/TeamRankingContext";
-import TournamentProvider from "./components/Context/TournamentContext";
 import HeaderLogoProvider from "./components/Context/HeaderLogoContext";
 import LocationProvider from "./components/Context/LocationContext";
 import LoaderProvider from "./components/Context/LoaderContext";
@@ -15,13 +14,11 @@ const App = () => {
       <TeamsProvider>
         <HeaderLogoProvider>
           <LoaderProvider>
-            <TournamentProvider>
-              <TeamRankingProvider>
-                <LocationProvider>
-                  <Layout />
-                </LocationProvider>
-              </TeamRankingProvider>
-            </TournamentProvider>
+            <TeamRankingProvider>
+              <LocationProvider>
+                <Layout />
+              </LocationProvider>
+            </TeamRankingProvider>
           </LoaderProvider>
         </HeaderLogoProvider>
       </TeamsProvider>

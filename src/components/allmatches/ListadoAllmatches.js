@@ -3,8 +3,8 @@ import TarjetaAllmatches from './TarjetaAllmatches';
 import LazyLoad from 'react-lazyload';
 
 const ListadoAllmatches = ({matchesmod}) => {
-    if (!matchesmod.length > 0) return null;
-
+    if (!matchesmod.length > 0) return null; 
+    
     if(navigator.onLine !== true){
         alert('No Internet Connection');
     }else{
