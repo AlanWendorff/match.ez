@@ -11,14 +11,15 @@ import axios from "axios";
 const Tournaments = () => {
   const { location } = useContext(LocationContext);
   const [examples, setExamples] = useState(examplesTournamentsNull);
+  const [alltournaments, setAllTournaments] = useState([]);
   const [tournaments, setTournaments] = useState([]);
   const [mode, setMode] = useState("example");
 
   const FilterTournament = () => {
     let input = document.getElementById("last_name").value.toLowerCase();
-    input.length === 0&& setMode("example")
+    input.length === 0&& setMode("example");
     let filteredTournaments = [];
-    tournaments.map((tournament) => {
+    alltournaments.map((tournament) => {
       if (tournament.name.toLowerCase().includes(input) && input !== "") {
         filteredTournaments.push(tournament);
       }
@@ -36,6 +37,7 @@ const Tournaments = () => {
     };
     axios("https://arg-matchez-backend.herokuapp.com/database/tournaments", config).then(({ data }) => {
       setTournaments(data);
+      setAllTournaments(data);
       setMode("tournaments")
     });
   };
