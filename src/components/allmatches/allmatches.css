@@ -1,33 +1,11 @@
-
-
-@media (min-width: 641px)  {
-    .allmatches{
-        overflow-y: scroll;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background-image: url('../../Images/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.allmatches {
+  overflow-y: scroll;
+  width: 100%;
+  height: calc(100vh - 50px);
+  /* background-image: url("../../Images/generic_team_pattern.png");
+  background-repeat: repeat;
+  background-size: 50px 50px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-  
-
-@media screen and (max-width: 640px) {
-    .allmatches{
-        overflow-y: scroll;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background-image: url('../../Images/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-
-  

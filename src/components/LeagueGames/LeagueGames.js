@@ -10,7 +10,7 @@ import LoadScreen from "../Loader/LoadScreen";
 import InfoCard from "../InfoCard/InfoCard";
 import Logo from "../NavigationBar/Logo";
 import Warning from "../Warning/Warning";
-import generic_team_pattern from "../../Images/generic_team_pattern.png";
+//import generic_team_pattern from "../../Images/generic_team_pattern.png";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
 
@@ -121,21 +121,21 @@ const LeagueGames = () => {
     xhr.send();
   }
 
-  if (image_url !== csgoLogoDefault) {
+  /* if (image_url !== csgoLogoDefault) {
     toDataURL(image_url, function (dataUrl) {
       guardarB64Logo(dataUrl);
     });
-  }
+  } */
 
   if (image_url !== csgoLogoDefault) {
     backgroundStyle = {
-      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-      backgroundColor: `${data.darkMuted}`,
+      //backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+      backgroundColor: `${data.darkVibrant}`,
     };
   } else {
     backgroundStyle = {
       backgroundColor: `${data.darkVibrant}`,
-      backgroundImage: `url(${generic_team_pattern})`,
+      //backgroundImage: `url(${generic_team_pattern})`,
     };
   }
 

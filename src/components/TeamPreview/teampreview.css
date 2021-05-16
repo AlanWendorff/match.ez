@@ -55,7 +55,6 @@
     background-color: white;
     width: 630px;
     display: flex;
-    margin-bottom: 15px;
   }
   .preview-container > .little-info > .last-match,
   .preview-container > .little-info > .next-match {
@@ -146,7 +145,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 15px;
   }
   .preview-container > .little-info > .last-match,
   .preview-container > .little-info > .next-match {

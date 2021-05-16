@@ -64,6 +64,9 @@
 .light-white{
   background-color: rgb(240, 240, 240);
 }
+.background-color-transparent{
+  background-color: #ffffff00;
+}
 
 .font-gilroy {
   font-family: "Gilroy-Light";

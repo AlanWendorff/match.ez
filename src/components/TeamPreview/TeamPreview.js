@@ -207,8 +207,8 @@ const TeamPreview = ({
       </Suspense>
 
       <div
-        style={{ color: color.vibrant, backgroundColor: color.darkVibrant }}
-        className="place-in-world"
+        style={{ color: color.Muted }}
+        className="place-in-world background-color-transparent"
       >
         {rankingTeam
           ? `${arrayTeam.opponent.name} #${rankingTeam.position} in the world`

@@ -4,20 +4,20 @@
     width: 100%;
 }
 
-@media (min-width: 1561px) { 
-    
-    .time-line-container{
-        overflow-y: scroll;
-        overflow-x: hidden;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background-image: url('../../Images/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.time-line-container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: calc(100vh - 50px);
+    /* background-image: url('../../Images/generic_team_pattern.png');
+    background-repeat: repeat; 
+    background-size: 50px 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 1561px) {  
     .time-line-container h3{
         font-family: "Gilroy-ExtraBold" !important;
         margin-bottom: 5px !important;
@@ -108,18 +108,6 @@
 }
 
 @media screen and (max-width: 1560px) {
-    .time-line-container{
-        overflow-y: scroll;
-        overflow-x: hidden;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background-image: url('../../Images/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
     .time-line-container h3{
         font-family: "Gilroy-ExtraBold" !important;
         margin-bottom: 5px !important;
