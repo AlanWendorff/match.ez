@@ -32,8 +32,9 @@ const Timeline = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
+    //http://localhost:5000 https://arg-matchez-backend.herokuapp.com
     axios
-      .get(`https://arg-matchez-backend.herokuapp.com/api/timeline`, config)
+      .get(`http://localhost:5000/api/timeline`, config)
       .then(({ data }) => {
         setTime(data);
         guardarLoaderProgress({ width: "100%" });
@@ -66,6 +67,7 @@ const Timeline = () => {
                 teams,
                 prizepool,
                 league_id,
+                colors
               } = tournament;
               const dayuser = new Date().getDate();
               const day = Moment(begin_at).format("DD");
@@ -78,7 +80,8 @@ const Timeline = () => {
                   key={shortid.generate()}
                   className="vertical-timeline-element--education"
                   date={date}
-                  iconStyle={{ border: "3px solid white" }}
+                  style={{backgroundColor: colors.DarkVibrant}}
+                  iconStyle={{ border: `3px solid ${colors.DarkVibrant}`}}
                   icon={
                     <Link
                       to={TOURNAMENT.replace(":tournamentId", league_id)}
