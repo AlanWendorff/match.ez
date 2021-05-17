@@ -62,8 +62,7 @@
   width: 40% !important;
 }
 .live-streaming-box-container {
-  margin-top: 4%;
-  padding: 0% 0% 0% 0%;
+  padding: 0;
   width: 100%;
   display: flex;
   justify-content: center;

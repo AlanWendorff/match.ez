@@ -93,7 +93,7 @@ const TeamPreview = ({
               style={{
                 backgroundColor:
                   LASTMATCH.results[0].score > LASTMATCH.results[1].score &&
-                  color.vibrant,
+                  color.Vibrant,
               }}
             >
               {LASTMATCH.results[0].score}
@@ -110,7 +110,7 @@ const TeamPreview = ({
               style={{
                 backgroundColor:
                   LASTMATCH.results[0].score < LASTMATCH.results[1].score &&
-                  color.vibrant,
+                  color.Vibrant,
               }}
             >
               {LASTMATCH.results[1].score}
@@ -133,7 +133,7 @@ const TeamPreview = ({
               setHistory();
             }}
             className="font-size-18px cursor-pointer"
-            style={{ color: color.darkVibrant }}
+            style={{ color: color.DarkVibrant }}
             icon={faInfoCircle}
           />
         </div>
@@ -190,7 +190,7 @@ const TeamPreview = ({
                   setVs();
                 }}
                 className="font-size-18px cursor-pointer"
-                style={{ color: color.darkVibrant }}
+                style={{ color: color.DarkVibrant }}
                 icon={faInfoCircle}
               />
             </>
@@ -252,14 +252,14 @@ const TeamPreview = ({
               </div>
               <img title={nationality} src={NATIONALITY} />
               <span
-                style={{ color: color.darkVibrant }}
+                style={{ color: color.DarkVibrant }}
                 title={first_name + " " + last_name}
                 className="font-gilroy-bold"
               >
                 {name}
               </span>
               <span
-                style={{ color: color.darkVibrant }}
+                style={{ color: color.DarkVibrant }}
                 className="player-name-style"
               >
                 {FIRSTNAME + " " + LASTNAME}

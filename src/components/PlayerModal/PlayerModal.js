@@ -19,8 +19,8 @@ const PlayerModal = ({ playerinfo, color, setIsOpen, modalIsOpen, img }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      filter: `drop-shadow(0px 0px 1000px ${color.vibrant})`,
-      color: color.darkVibrant,
+      filter: `drop-shadow(0px 0px 1000px ${color.Vibrant})`,
+      color: color.DarkVibrant,
     },
   };
 
@@ -62,7 +62,7 @@ const PlayerModal = ({ playerinfo, color, setIsOpen, modalIsOpen, img }) => {
             </h4>
             <h6
               className="player-stadistics"
-              style={{ border: `2px solid ${color.darkVibrant}` }}
+              style={{ border: `2px solid ${color.DarkVibrant}` }}
             >
               <div>
                 <span>Headshots</span>

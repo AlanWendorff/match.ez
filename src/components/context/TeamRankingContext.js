@@ -6,8 +6,7 @@ export const TeamRankingContext = createContext();
 const TeamRankingProvider = (props) => {
   const [ranking, setRanking] = useState([]);
   const badfetch = false;
-
-
+  
   useEffect(() => {
     (async () => {
       const { objRanking } = await getRanking();

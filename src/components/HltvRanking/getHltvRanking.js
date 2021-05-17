@@ -1,8 +1,9 @@
 import axios from 'axios';
 // data.headers.x-rate-limit-used
 export const getRanking = async () => {    
-    const badFetch = true;            
-    const url = 'https://arg-matchez-backend.herokuapp.com/api/hltvranking';
+    const badFetch = true;           
+    //http://localhost:5000 https://arg-matchez-backend.herokuapp.com 
+    const url = 'http://localhost:5000/api/hltvranking';
     try {
         const config = {
             method: 'get',

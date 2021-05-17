@@ -4,7 +4,6 @@ import { TEAM, RANKING } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
 import ProgressiveImage from "react-progressive-image";
 import csgoLogoBlack from "../../Images/csgoLogoDefaultBlack.png";
-import { usePalette } from "react-palette";
 import axios from "axios";
 import "./hltvranking.css";
 const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
@@ -18,8 +17,8 @@ const Team = ({
   points,
   position,
   roster,
+  colors
 }) => {
-  let colorTeam = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
   const [playerinfo, setPlayerInfo] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -56,11 +55,11 @@ const Team = ({
         "animate__animated"
       }`}
     >
-      <div style={{ backgroundColor: colorTeam.darkVibrant }}>
+      <div style={{ backgroundColor: colors.DarkVibrant }}>
         <Suspense fallback={<div></div>}>
           <PlayerModal
             playerinfo={playerinfo}
-            color={colorTeam}
+            color={colors}
             setIsOpen={setIsOpen}
             modalIsOpen={modalIsOpen}
             img={img}

@@ -34,8 +34,8 @@ const Tournaments = () => {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    };
-    axios("https://arg-matchez-backend.herokuapp.com/database/tournaments", config).then(({ data }) => {
+    };//http://localhost:5000 https://arg-matchez-backend.herokuapp.com
+    axios("http://localhost:5000/database/tournaments", config).then(({ data }) => {
       setTournaments(data);
       setAllTournaments(data);
       setMode("tournaments")

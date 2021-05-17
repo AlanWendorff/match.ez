@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import CompetitionCard from './CompetitionCard';
 import LazyLoad from 'react-lazyload';
 
-const CompetitionMapping = ({matchesHoy, data }) => {
+const CompetitionMapping = ({matchesHoy, palette }) => {
     
     if (!matchesHoy.length > 0) return null;
         if(navigator.onLine !== true){
@@ -16,7 +16,7 @@ const CompetitionMapping = ({matchesHoy, data }) => {
                                 <LazyLoad offset={100} height={100} overflow key={match.id}>
                                     <CompetitionCard 
                                         match={match}
-                                        data = {data}
+                                        palette={palette}
                                     />
                                 </LazyLoad>
                             );

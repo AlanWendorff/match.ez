@@ -5,7 +5,7 @@ import {
   faSortUp,
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
-import { HeaderLogoContext } from "../Context/HeaderLogoContext";
+import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
 import { getPlayerScore } from "./getPlayerScore";
@@ -44,7 +44,7 @@ const HistoricMatchCard = ({
     results,
     stage,
   } = match;
-  const { data } = useContext(HeaderLogoContext);
+  const { palette } = useContext(PaletteContext);
   if (league.image_url !== null && league.image_url !== csgoLogoDefault)
     proxyLogo = "https://proxy-kremowy.herokuapp.com/" + league.image_url;
   let error = usePalette(proxyLogo).error;
@@ -124,7 +124,7 @@ const HistoricMatchCard = ({
       >
         <div className="card-image prev-game-content cursor-default">
           <div className="prev-game-header-container">
-            <p className="prev-game-header" style={{ color: data.darkMuted }}>
+            <p className="prev-game-header" style={{ color: palette.DarkMuted }}>
               {stage}
             </p>
           </div>
@@ -185,7 +185,7 @@ const HistoricMatchCard = ({
                 </p>
               </div>
 
-              <p className="bestof-prev-game" style={{ color: data.darkMuted }}>
+              <p className="bestof-prev-game" style={{ color: palette.DarkMuted }}>
                 {bestOf}
               </p>
             </div>
@@ -326,7 +326,7 @@ const HistoricMatchCard = ({
             </div>
 
             <div className="text-in-card">
-              <p className="bestof-prev-game" style={{ color: data.darkMuted }}>
+              <p className="bestof-prev-game" style={{ color: palette.DarkMuted }}>
                 {bestOf}
               </p>
             </div>
@@ -356,7 +356,7 @@ const HistoricMatchCard = ({
               <p className="info-not-first-index">
                 <span
                   className="label-data-style"
-                  style={{ color: data.darkVibrant }}
+                  style={{ color: palette.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faTrophy} />
                 </span>
@@ -367,7 +367,7 @@ const HistoricMatchCard = ({
               <p className="info-not-first-index">
                 <span
                   className="label-data-style"
-                  style={{ color: data.darkVibrant }}
+                  style={{ color: palette.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faCalendarDay} />{" "}
                 </span>
@@ -385,7 +385,7 @@ const HistoricMatchCard = ({
               <div className="info-not-first-index">
                 <span
                   className="label-data-style"
-                  style={{ color: data.darkVibrant }}
+                  style={{ color: palette.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faTrophy} />
                 </span>
@@ -397,7 +397,7 @@ const HistoricMatchCard = ({
               <div className="info-not-first-index">
                 <span
                   className="label-data-style"
-                  style={{ color: data.darkVibrant }}
+                  style={{ color: palette.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faCalendarDay} />{" "}
                 </span>

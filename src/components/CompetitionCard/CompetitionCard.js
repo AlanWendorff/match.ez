@@ -13,7 +13,7 @@ import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import "./tarjetaMatchesCompletos.css";
 
-const CompetitionCard = ({ match, data }) => {
+const CompetitionCard = ({ match, palette }) => {
   const {
     opponents,
     league,
@@ -94,11 +94,11 @@ const CompetitionCard = ({ match, data }) => {
             <div className="card-image container-info cursor-default padding-top-8">
               <div className="live-league-container">
                 <span
-                  className="text-center head-font font-gilroy-bold"
-                  style={{ color: data.vibrant }}
+                  className="text-center font-size head-font font-gilroy-bold"
+                  style={{ color: palette.Vibrant }}
                 >
                   {" "}
-                  {league.name + " " + serie.full_name}{" "}
+                  {league.name.toUpperCase() + " " + serie.full_name.toUpperCase()}{" "}
                 </span>
               </div>
 
@@ -183,7 +183,7 @@ const CompetitionCard = ({ match, data }) => {
 
               <div className="match-data">
                 <span className="font-size text-align-start">
-                  <span style={{ color: data.darkVibrant }}>
+                  <span style={{ color: palette.DarkVibrant }}>
                     <FontAwesomeIcon
                       className="turn-left-90"
                       icon={faCodeBranch}
@@ -193,7 +193,7 @@ const CompetitionCard = ({ match, data }) => {
                 </span>
 
                 <span className="font-size align-end">
-                  <span style={{ color: data.darkVibrant }}>
+                  <span style={{ color: palette.DarkVibrant }}>
                     <FontAwesomeIcon icon={faClock} />{" "}
                   </span>
                   <span className="data">
@@ -233,10 +233,10 @@ const CompetitionCard = ({ match, data }) => {
           <p className="text-align-center cursor-default font-size mb-0">
             <span
               className="text-center head-font font-gilroy-bold"
-              style={{ color: data.vibrant }}
+              style={{ color: palette.Vibrant }}
             >
               {" "}
-              {league.name + " " + serie.full_name}{" "}
+              {league.name.toUpperCase() + " " + serie.full_name.toUpperCase()}{" "}
             </span>
           </p>
           <div className="card-image container-info cursor-default">

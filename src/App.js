@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "./Layout";
 import TeamRankingProvider from "./components/Context/TeamRankingContext";
-import HeaderLogoProvider from "./components/Context/HeaderLogoContext";
+import PaletteProvider from "./components/Context/PaletteContext";
 import LocationProvider from "./components/Context/LocationContext";
 import LoaderProvider from "./components/Context/LoaderContext";
 import TeamsProvider from "./components/Context/TeamsContext";
@@ -12,7 +12,7 @@ const App = () => {
   } else {
     return (
       <TeamsProvider>
-        <HeaderLogoProvider>
+        <PaletteProvider>
           <LoaderProvider>
             <TeamRankingProvider>
               <LocationProvider>
@@ -20,7 +20,7 @@ const App = () => {
               </LocationProvider>
             </TeamRankingProvider>
           </LoaderProvider>
-        </HeaderLogoProvider>
+        </PaletteProvider>
       </TeamsProvider>
     );
   }

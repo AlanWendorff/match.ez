@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, Suspense } from "react";
 import { useParams, useHistory } from "react-router";
-import { HeaderLogoContext } from "../Context/HeaderLogoContext";
+import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { HOME } from "../../routes/routes";
@@ -13,10 +13,16 @@ import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
 import "../../styles/base.css";
 
-const OneTeamMapping = React.lazy(() => import("../OneTeamCard/OneTeamMapping"));
+const OneTeamMapping = React.lazy(() =>
+  import("../OneTeamCard/OneTeamMapping")
+);
 const InfoCard = React.lazy(() => import("../InfoCard/InfoCard"));
-const CircularTournaments = React.lazy(() => import("../CircularTournaments/CircularTournaments"));
-const HistoricMatchMapping = React.lazy(() => import("../HistoricMatchCard/HistoricMatchMapping"));
+const CircularTournaments = React.lazy(() =>
+  import("../CircularTournaments/CircularTournaments")
+);
+const HistoricMatchMapping = React.lazy(() =>
+  import("../HistoricMatchCard/HistoricMatchMapping")
+);
 const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const TeamProfile = () => {
@@ -25,7 +31,7 @@ const TeamProfile = () => {
   !teamid && history.push(HOME);
 
   let backgroundStyle = [];
-  const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
+  const { palette, setPalette, setLogo } = useContext(PaletteContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [stadistics, setStadistics] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
@@ -122,10 +128,10 @@ const TeamProfile = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
-
+//http://localhost:5000 https://arg-matchez-backend.herokuapp.com
     axios
       .get(
-        `https://arg-matchez-backend.herokuapp.com/api/teaminfo/${teamid}`,
+        `http://localhost:5000/api/teaminfo/${teamid}`,
         config
       )
       .then(({ data }) => {
@@ -137,17 +143,21 @@ const TeamProfile = () => {
           winRate,
           wl,
           imageTeam,
+          colors,
         } = data;
+        console.log(colors);
         guardarLoaderProgress({ width: "30%" });
         setRoster(roster);
         if (historicMatches && historicMatches.length !== 0) {
           guardarMatchesMod(historicMatches.slice(0, 6));
           guardarPrevMatch(historicMatches);
+          setPalette(colors);
           if (imageTeam === null) {
             setImageTeam(csgoLogoDefault);
+            setLogo("");
           } else {
-            guardarLogo("https://proxy-kremowy.herokuapp.com/" + imageTeam);
-            setImageTeam("https://proxy-kremowy.herokuapp.com/" + imageTeam);
+            setLogo(setLogo);
+            setImageTeam(imageTeam);
           }
           guardarLoaderProgress({ width: "70%" });
         } else {
@@ -169,22 +179,21 @@ const TeamProfile = () => {
       guardarB64Logo(dataUrl);
     });
   } */
-
   if (image_url !== csgoLogoDefault) {
     backgroundStyle = {
       //backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-      backgroundColor: `${data.darkVibrant}`,
+      backgroundColor: `${palette.DarkVibrant}`,
     };
   } else {
     backgroundStyle = {
-      backgroundColor: `${data.darkMuted}`,
+      backgroundColor: `${palette.DarkMuted}`,
       //backgroundImage: `url(${generic_team_pattern})`,
     };
   }
 
   const { width } = loaderprogress;
   if (!crash) {
-    if (width === "100%" && paletestate === true) {
+    if (width === "100%") {
       return (
         <div
           onContextMenu={(e) =>
@@ -194,7 +203,7 @@ const TeamProfile = () => {
           style={backgroundStyle}
         >
           <MobileHeader
-            color={data}
+            color={palette}
             img={image_url}
             buttonstatus={buttonstatus}
             setPreview={setPreview}
@@ -208,7 +217,7 @@ const TeamProfile = () => {
             <TeamPreview
               img={image_url}
               teamid={teamid}
-              color={data}
+              color={palette}
               matches={matches}
               prevMatch={prevMatch}
               setPreview={setPreview}
@@ -261,7 +270,7 @@ const TeamProfile = () => {
               </Suspense>
             </>
           )}
-          <Logo color={data} img={image_url} />
+          <Logo color={palette} img={image_url} />
         </div>
       );
     } else {
@@ -286,11 +295,10 @@ const TeamProfile = () => {
         }
         className="parametros-container mosaico noselect"
         style={{ backgroundColor: "#040c1c" }}
-      > 
+      >
         <Suspense fallback={<div></div>}>
           <Warning />
         </Suspense>
-        
       </div>
     );
   }

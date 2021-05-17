@@ -3,13 +3,10 @@ import { LOOKPROFILE, LOOKMATCHES } from "../../titlestag/titlestag";
 import {
   faClock,
   faCodeBranch,
-  faCalendarDay,
-  faSortDown,
-  faSortUp,
   faTrophy,
   faMedal,
 } from "@fortawesome/free-solid-svg-icons";
-import { HeaderLogoContext } from "../Context/HeaderLogoContext";
+import { PaletteContext } from "../Context/PaletteContext";
 import { TOURNAMENT, TEAM } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePalette } from "react-palette";
@@ -23,7 +20,7 @@ import toBeDefined from "../../Images/toBeDefined.png";
 import "./tarjetaUpcomingMatch.css";
 
 const OneTeamCard = ({ match, teamid }) => {
-  const { data } = useContext(HeaderLogoContext);
+  const { palette } = useContext(PaletteContext);
   const {
     opponents,
     league,
@@ -192,7 +189,7 @@ const OneTeamCard = ({ match, teamid }) => {
 
               <div className="match-data">
                 <span className="font-size text-align-start">
-                  <span style={{ color: data.darkVibrant }}>
+                  <span style={{ color: palette.DarkVibrant }}>
                     <FontAwesomeIcon
                       className="turn-left-90"
                       icon={faCodeBranch}
@@ -202,7 +199,7 @@ const OneTeamCard = ({ match, teamid }) => {
                 </span>
 
                 <span className="font-size align-end">
-                  <span style={{ color: data.darkVibrant }}>
+                  <span style={{ color: palette.DarkVibrant }}>
                     <FontAwesomeIcon icon={faClock} />{" "}
                   </span>
                   <span className="data">
@@ -340,7 +337,7 @@ const OneTeamCard = ({ match, teamid }) => {
             <div className="card-action padding-streaming-box font-gilroy">
               <span
                 className="cursor-default"
-                style={{ color: data.darkVibrant }}
+                style={{ color: palette.DarkVibrant }}
               >
                 {statusStream}
               </span>

@@ -12,7 +12,7 @@ import {
   TIMELINE,
   ALLMATCHES,
 } from "../../routes/routes";
-import { HeaderLogoContext } from "../Context/HeaderLogoContext";
+import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
 
@@ -22,7 +22,7 @@ import "./navigationbar.css";
 
 const NavigationBar = () => {
   const { pathname } = useLocation();
-  let { logo } = useContext(HeaderLogoContext);
+  let { logo } = useContext(PaletteContext);
   if (logo === "") logo = csgoLogo;
 
   return (

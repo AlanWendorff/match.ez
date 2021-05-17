@@ -1,15 +1,15 @@
 import React, {useContext} from 'react';
-import { HeaderLogoContext } from '../Context/HeaderLogoContext'
+import { PaletteContext } from '../Context/PaletteContext'
 import './estadisticas.css';
 
 const StadisticCard = ({winRate, winStrike, wl}) => {
-    const { data } = useContext(HeaderLogoContext);
+    const { palette } = useContext(PaletteContext);
 
     return ( 
         <div className="noselect stadistic-card-container font-gilroy">
             <div className="container-estadistica">
-                <span className="stadistic-span ">Winrate : <span className="font-stadistic-data" style={{color: data.darkVibrant}}>{winRate}</span></span>
-                <span className="stadistic-span ">Winstrike : <span className="font-stadistic-data" style={{color: data.darkVibrant}}>{winStrike}</span> </span>
+                <span className="stadistic-span ">Winrate : <span className="font-stadistic-data" style={{color: palette.DarkVibrant}}>{winRate}</span></span>
+                <span className="stadistic-span ">Winstrike : <span className="font-stadistic-data" style={{color: palette.DarkVibrant}}>{winStrike}</span> </span>
             </div>
             <div className="win-and-loose" title="Last 5 games">
                 {wl.map((status, index) => ( 

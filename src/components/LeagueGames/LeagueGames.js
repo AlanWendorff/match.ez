@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router";
-import { HeaderLogoContext } from "../Context/HeaderLogoContext";
+import { PaletteContext } from "../Context/PaletteContext";
 import { HOME } from "../../routes/routes";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
@@ -20,7 +20,7 @@ const LeagueGames = () => {
   !tournamentId && history.push(HOME);
 
   let backgroundStyle;
-  const { guardarLogo, data, paletestate } = useContext(HeaderLogoContext);
+  const { palette, setPalette, setLogo } = useContext(PaletteContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [crash, guardarStateCrash] = useState(false);
   const [matchesHoy, guardarMatchesHoy] = useState([]);
@@ -76,23 +76,24 @@ const LeagueGames = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
+    //http://localhost:5000 https://arg-matchez-backend.herokuapp.com
     axios
       .get(
-        `https://arg-matchez-backend.herokuapp.com/api/tournamentmatches/${tournamentId}`,
+        `http://localhost:5000/api/tournamentmatches/${tournamentId}`,
         config
       )
       .then(({ data }) => {
-        const { historicMatches, upcomingMatches, ladder, imageLeague } = data;
+        const { historicMatches, upcomingMatches, ladder, imageLeague, colors } = data;
         guardarMatchesHoy(upcomingMatches);
         guardarLeaderboard(ladder);
         if (historicMatches && historicMatches.length !== 0) {
+          setPalette(colors);
           if (imageLeague === null) {
             setImageLeague(csgoLogoDefault);
+            setLogo("");
           } else {
-            setImageLeague(
-              "https://proxy-kremowy.herokuapp.com/" + imageLeague
-            );
-            guardarLogo("https://proxy-kremowy.herokuapp.com/" + imageLeague);
+            setLogo(setLogo);
+            setImageLeague(imageLeague);
           }
           guardarPrevMatch(historicMatches);
         } else {
@@ -130,11 +131,11 @@ const LeagueGames = () => {
   if (image_url !== csgoLogoDefault) {
     backgroundStyle = {
       //backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-      backgroundColor: `${data.darkVibrant}`,
+      backgroundColor: `${palette.DarkVibrant}`,
     };
   } else {
     backgroundStyle = {
-      backgroundColor: `${data.darkVibrant}`,
+      backgroundColor: `${palette.DarkVibrant}`,
       //backgroundImage: `url(${generic_team_pattern})`,
     };
   }
@@ -142,7 +143,7 @@ const LeagueGames = () => {
   const { width } = loaderprogress;
 
   if (crash !== true) {
-    if (width === "100%" && paletestate === true) {
+    if (width === "100%") {
       return (
         <div
           onContextMenu={(e) =>
@@ -152,7 +153,7 @@ const LeagueGames = () => {
           style={backgroundStyle}
         >
           <MobileHeader
-            color={data}
+            color={palette}
             img={image_url}
             buttonstatus={buttonstatus}
             setVs={setVs}
@@ -163,7 +164,7 @@ const LeagueGames = () => {
           />
           {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
           {show === "vs" && matchesHoy !== undefined && (
-            <CompetitionMapping matchesHoy={matchesHoy} data={data} />
+            <CompetitionMapping matchesHoy={matchesHoy} palette={palette} />
           )}
           {show === "vs" && !matchesHoy.length > 0 && <InfoCard />}
           {show === "history" && prevMatch !== "no-match" && (
@@ -174,7 +175,7 @@ const LeagueGames = () => {
               playerscore={playerscore}
             />
           )}
-          <Logo color={data} img={image_url} />
+          <Logo color={palette} img={image_url} />
         </div>
       );
     } else {

@@ -14,7 +14,7 @@ const HltvRanking = () => {
       {ranking.length > 0 ? (
         <div className="table-container">
           {ranking.map((team) => {
-            const { balance, name, points, position, roster, img, id } = team;
+            const { balance, name, points, position, roster, img, id, colors } = team;
             let balanceColor;
             balance.length > 1
               ? balance.includes("-")
@@ -25,6 +25,7 @@ const HltvRanking = () => {
             return (
               <LazyLoad offset={80} height={80} overflow key={position}>
                 <Team
+                  colors={colors}
                   balanceColor={balanceColor}
                   id={id}
                   img={img}
