@@ -2,13 +2,9 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { TOURNAMENT } from '../../routes/routes';
 import { LOOKMATCHES } from '../../titlestag/titlestag';
-import { usePalette } from "react-palette";
 import "./circulartournaments.css";
 
-const CircularItem = ({ img, name, id }) => {
-  let colorImg = usePalette("https://proxy-kremowy.herokuapp.com/" + img).data;
-  //title={FILTERBY + name}
-  /* filterByTournament(name); */
+const CircularItem = ({ img, name, id, colors }) => {
   return (
     <Link
       className="cursor-pointer"
@@ -17,7 +13,7 @@ const CircularItem = ({ img, name, id }) => {
     >
       <div
         style={{
-          border: `4px solid ${colorImg.lightVibrant}`,
+          border: `4px solid ${colors.LightVibrant}`,
         }}
         className="circular-item"
       >
@@ -26,7 +22,7 @@ const CircularItem = ({ img, name, id }) => {
       <span
         className="font-gilroy"
         style={{
-          backgroundColor: colorImg.lightVibrant,
+          backgroundColor: colors.LightVibrant,
         }}
       >
         {name.length > 10 ? name.substr(0, 9) + "..." : name}

@@ -30,13 +30,8 @@ const TeamPreview = ({
   const [modalIsOpen, setIsOpen] = useState(false);
   const NEXTMATCH = matches[0];
   const LASTMATCH = prevMatch[0];
-  const arrayTeam = LASTMATCH.opponents.find(
-    (element) => element.opponent.id === parseInt(teamid)
-  );
-  const rankingTeam = ranking.find(
-    (element) =>
-      element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase()
-  );
+  const arrayTeam = prevMatch !== 'no-match'&& LASTMATCH.opponents.find( (element) => element.opponent.id === parseInt(teamid));
+  const rankingTeam = prevMatch !== 'no-match'&& ranking.find((element) => element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase());
 
   const getPlayerInfo = (playerName, LASTNAME) => {
     playerinfo.name !== playerName && setPlayerInfo([]);
@@ -71,71 +66,79 @@ const TeamPreview = ({
 
       <div className="little-info">
         <div className="last-match">
-          <span>Last Game</span>
-          <div>
-            <div className="team">
-              <img
-                src={
-                  !LASTMATCH.opponents[0].opponent.image_url
-                    ? csgoLogoDefaultBlack
-                    : LASTMATCH.opponents[0].opponent.image_url
-                }
+          {prevMatch !== 'no-match' ? (
+            <>
+              <span>Last Game</span>
+              <div>
+                <div className="team">
+                  <img
+                    src={
+                      !LASTMATCH.opponents[0].opponent.image_url
+                        ? csgoLogoDefaultBlack
+                        : LASTMATCH.opponents[0].opponent.image_url
+                    }
+                  />
+                  <span>{LASTMATCH.opponents[0].opponent.name}</span>
+                </div>
+
+                <span
+                  className={
+                    LASTMATCH.results[0].score > LASTMATCH.results[1].score
+                      ? "winner-dot"
+                      : ""
+                  }
+                  style={{
+                    backgroundColor:
+                      LASTMATCH.results[0].score > LASTMATCH.results[1].score &&
+                      color.Vibrant,
+                  }}
+                >
+                  {LASTMATCH.results[0].score}
+                </span>
+
+                <span>-</span>
+
+                <span
+                  className={
+                    LASTMATCH.results[0].score < LASTMATCH.results[1].score
+                      ? "winner-dot"
+                      : ""
+                  }
+                  style={{
+                    backgroundColor:
+                      LASTMATCH.results[0].score < LASTMATCH.results[1].score &&
+                      color.Vibrant,
+                  }}
+                >
+                  {LASTMATCH.results[1].score}
+                </span>
+
+                <div className="team">
+                  <img
+                    src={
+                      !LASTMATCH.opponents[1].opponent.image_url
+                        ? csgoLogoDefaultBlack
+                        : LASTMATCH.opponents[1].opponent.image_url
+                    }
+                  />
+                  <span>{LASTMATCH.opponents[1].opponent.name}</span>
+                </div>
+              </div>
+              <FontAwesomeIcon
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  setHistory();
+                }}
+                className="font-size-18px cursor-pointer"
+                style={{ color: color.DarkVibrant }}
+                icon={faInfoCircle}
               />
-              <span>{LASTMATCH.opponents[0].opponent.name}</span>
+            </>
+          ) : (
+            <div>
+              <span>NO PAST MATCH</span>
             </div>
-
-            <span
-              className={
-                LASTMATCH.results[0].score > LASTMATCH.results[1].score
-                  ? "winner-dot"
-                  : ""
-              }
-              style={{
-                backgroundColor:
-                  LASTMATCH.results[0].score > LASTMATCH.results[1].score &&
-                  color.Vibrant,
-              }}
-            >
-              {LASTMATCH.results[0].score}
-            </span>
-
-            <span>-</span>
-
-            <span
-              className={
-                LASTMATCH.results[0].score < LASTMATCH.results[1].score
-                  ? "winner-dot"
-                  : ""
-              }
-              style={{
-                backgroundColor:
-                  LASTMATCH.results[0].score < LASTMATCH.results[1].score &&
-                  color.Vibrant,
-              }}
-            >
-              {LASTMATCH.results[1].score}
-            </span>
-
-            <div className="team">
-              <img
-                src={
-                  !LASTMATCH.opponents[1].opponent.image_url
-                    ? csgoLogoDefaultBlack
-                    : LASTMATCH.opponents[1].opponent.image_url
-                }
-              />
-              <span>{LASTMATCH.opponents[1].opponent.name}</span>
-            </div>
-          </div>
-          <FontAwesomeIcon
-            onClick={() => {
-              window.scrollTo(0, 0);
-              setHistory();
-            }}
-            className="font-size-18px cursor-pointer"
-            style={{ color: color.DarkVibrant }}
-            icon={faInfoCircle}
-          />
+          )}
         </div>
 
         <div className="next-match">
@@ -203,16 +206,22 @@ const TeamPreview = ({
       </div>
 
       <Suspense fallback={<div></div>}>
-        <PlayerModal playerinfo={playerinfo} color={color} setIsOpen={setIsOpen} modalIsOpen={modalIsOpen} img={img}/>
+        <PlayerModal
+          playerinfo={playerinfo}
+          color={color}
+          setIsOpen={setIsOpen}
+          modalIsOpen={modalIsOpen}
+          img={img}
+        />
       </Suspense>
 
       <div
         style={{ color: color.Muted }}
         className="place-in-world background-color-transparent"
-      >
+      > 
         {rankingTeam
-          ? `${arrayTeam.opponent.name} #${rankingTeam.position} in the world`
-          : `${arrayTeam.opponent.name}`}
+          ? `${prevMatch !== 'no-match'&& arrayTeam.opponent.name} #${rankingTeam.position} in the world`
+          : `${prevMatch !== 'no-match'&& arrayTeam.opponent.name}`}
       </div>
 
       <div className="team">

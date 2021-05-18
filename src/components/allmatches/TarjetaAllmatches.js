@@ -29,16 +29,12 @@ const TarjetaAllmatches = ({ match }) => {
 
   const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
   const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
-  let proxyLogo;
   let aTeamId;
   let aTeamName = "";
   let bTeamName = "";
   let bTeamId = "";
   let statusStream = "Streaming off";
   let statusMatch = "Today " + Moment(begin_at).format("H:mm") + "hs";
-  if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack)
-    proxyLogo = "https://proxy-kremowy.herokuapp.com/" + league.image_url;
-  let { data, error } = usePalette(proxyLogo);
   const TeamLogoA =
     opponents[0] !== false
       ? opponents[0].opponent.image_url === null
@@ -51,33 +47,13 @@ const TarjetaAllmatches = ({ match }) => {
         ? csgoLogoDefaultBlack
         : opponents[1].opponent.image_url
       : toBeDefined;
-  let colorTeamA = usePalette(
-    "https://proxy-kremowy.herokuapp.com/" + TeamLogoA
-  ).data;
-  let colorTeamB = usePalette(
-    "https://proxy-kremowy.herokuapp.com/" + TeamLogoB
-  ).data;
 
-  if (TeamLogoA === csgoLogoDefaultBlack || TeamLogoA === toBeDefined) {
-    colorTeamA = {
-      darkVibrant: "#2d6da3",
-    };
+  const colorLeague = league.colors;
+  const colorTeamA = opponents[0] !== false? opponents[0].opponent.colors : {
+    DarkVibrant: "#2d6da3",
   }
-  if (TeamLogoB === csgoLogoDefaultBlack || TeamLogoB === toBeDefined) {
-    colorTeamB = {
-      darkVibrant: "#2d6da3",
-    };
-  }
-
-  if (error) {
-    data = {
-      darkMuted: "#1c313a",
-      darkVibrant: "#455a64",
-      lightMuted: "#455a64",
-      lightVibrant: "#718792",
-      muted: "#1c313a",
-      vibrant: "#718792",
-    };
+  const colorTeamB = opponents[1] !== false? opponents[1].opponent.colors : {
+    DarkVibrant: "#2d6da3",
   }
 
   if (opponents[0] !== false) {
@@ -112,7 +88,7 @@ const TarjetaAllmatches = ({ match }) => {
                 <Link
                   to={TOURNAMENT.replace(":tournamentId", tournament.league_id)}
                   className="text-center head-font highlight-text"
-                  style={{ color: `${data.darkVibrant}` }}
+                  style={{ color: `${colorLeague.DarkVibrant}` }}
                 >
                   {" "}
                   {league.name + " " + serie.full_name}{" "}
@@ -172,7 +148,7 @@ const TarjetaAllmatches = ({ match }) => {
                 <p
                   className="label-teams pill"
                   style={{
-                    backgroundColor: colorTeamA.darkVibrant,
+                    backgroundColor: colorTeamA.DarkVibrant,
                     fontSize: opponents[0].opponent.name.length > 11 && "12px",
                     lineHeight: aTeamName.length > 11 && "14px",
                   }}
@@ -183,7 +159,7 @@ const TarjetaAllmatches = ({ match }) => {
                 <p
                   className="label-teams pill"
                   style={{
-                    backgroundColor: colorTeamB.darkVibrant,
+                    backgroundColor: colorTeamB.DarkVibrant,
                     fontSize: opponents[1].opponent.name.length > 11 && "12px",
                     lineHeight: bTeamName.length > 11 && "14px",
                   }}
@@ -200,7 +176,7 @@ const TarjetaAllmatches = ({ match }) => {
 
               <div className="match-data">
                 <span className="font-size text-align-start">
-                  <span style={{ color: data.darkVibrant }}>
+                  <span style={{ color: colorLeague.DarkVibrant }}>
                     <FontAwesomeIcon
                       className="turn-left-90"
                       icon={faCodeBranch}
@@ -210,7 +186,7 @@ const TarjetaAllmatches = ({ match }) => {
                 </span>
 
                 <span className="font-size align-end">
-                  <span style={{ color: data.darkVibrant }}>
+                  <span style={{ color: colorLeague.DarkVibrant }}>
                     <FontAwesomeIcon icon={faClock} />{" "}
                   </span>
                   <span className="data">
@@ -251,7 +227,7 @@ const TarjetaAllmatches = ({ match }) => {
             <Link
               to={TOURNAMENT.replace(":tournamentId", tournament.league_id)}
               className="label-data-style highlight-text"
-              style={{ color: data.darkVibrant }}
+              style={{ color: colorLeague.DarkVibrant }}
             >
               {league.name + " " + serie.full_name}
             </Link>
@@ -342,7 +318,7 @@ const TarjetaAllmatches = ({ match }) => {
               <p
                 className="label-teams pill"
                 style={{
-                  backgroundColor: colorTeamA.darkVibrant,
+                  backgroundColor: colorTeamA.DarkVibrant,
                   fontSize:   aTeamName.length > 11 && "12px",
                   lineHeight: aTeamName.length > 11 && "14px",
                 }}
@@ -353,7 +329,7 @@ const TarjetaAllmatches = ({ match }) => {
               <p
                 className="label-teams pill"
                 style={{
-                  backgroundColor: colorTeamB.darkVibrant,
+                  backgroundColor: colorTeamB.DarkVibrant,
                   fontSize: bTeamName.length > 11 && "12px",
                   lineHeight: bTeamName.length > 11 && "14px",
                 }}

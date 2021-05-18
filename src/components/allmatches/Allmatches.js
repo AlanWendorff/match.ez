@@ -29,9 +29,9 @@ const AllMatches = () => {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    };
+    };//http://localhost:5000 https://arg-matchez-backend.herokuapp.com
     axios
-      .get(`https://arg-matchez-backend.herokuapp.com/api/allmatches`, config)
+      .get(`http://localhost:5000/api/allmatches`, config)
       .then(({ data }) => {
         guardarAllmatches(data);
         guardarMatchesMod(data.slice(0, 6));

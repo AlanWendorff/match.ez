@@ -14,6 +14,7 @@ const CircularTournaments = ({matches, show, prevMatch}) => {
               name: match.league.name ? match.league.name : "none",
               img: match.league.image_url ? match.league.image_url : "none",
               id: match.league.id ? match.league.id : "none",
+              colors: match.league.colors ? match.league.colors : "none",
             });
         });
         if (modTournaments.length !== 0) {
@@ -34,6 +35,7 @@ const CircularTournaments = ({matches, show, prevMatch}) => {
                             img={tournament.img}
                             name={tournament.name}
                             id={tournament.id}
+                            colors={tournament.colors}
                         />
                     ))
                 }
