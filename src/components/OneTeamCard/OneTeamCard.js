@@ -35,26 +35,12 @@ const OneTeamCard = ({ match, teamid }) => {
   } = match;
   let ownName;
   let opponentLogo, opponentName, opponentId;
-  let proxyLogo;
   let hoy = "";
   let statusStream = "Streaming off";
-  let diaUsuario = new Date().getDate();
+  const diaUsuario = new Date().getDate();
   let diaMatch = parseInt(Moment(begin_at).format("D"));
-  if (league.image_url !== null && league.image_url !== csgoLogoDefaultBlack)
-    proxyLogo = "https://proxy-kremowy.herokuapp.com/" + league.image_url;
-  let error = usePalette(proxyLogo).error;
-  let leagueColors = usePalette(proxyLogo).data;
+  const colorLeague = league.colors;
 
-  if (error) {
-    leagueColors = {
-      darkMuted: "#1c313a",
-      darkVibrant: "#455a64",
-      lightMuted: "#455a64",
-      lightVibrant: "#718792",
-      muted: "#1c313a",
-      vibrant: "#718792",
-    };
-  }
 
   for (let index = 0; index < opponents.length; index++) {
     if (opponents[index] !== false) {
@@ -119,7 +105,7 @@ const OneTeamCard = ({ match, teamid }) => {
               <div className="live-league-container">
                 <Link
                   className="text-center head-font highlight-text"
-                  style={{ color: `${leagueColors.darkVibrant}` }}
+                  style={{ color: `${colorLeague.DarkVibrant}` }}
                   to={TOURNAMENT.replace(":tournamentId", tournament.league_id)}
                   title={LOOKMATCHES + league.name}
                 >
@@ -270,7 +256,7 @@ const OneTeamCard = ({ match, teamid }) => {
               <div className="display-flex cursor-default font-size">
                 <span
                   className="text-align-start"
-                  style={{ color: leagueColors.darkVibrant }}
+                  style={{ color: colorLeague.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faMedal} />
                 </span>
@@ -280,7 +266,7 @@ const OneTeamCard = ({ match, teamid }) => {
               <div className="display-flex cursor-default font-size">
                 <span
                   className="text-align-start"
-                  style={{ color: leagueColors.darkVibrant }}
+                  style={{ color: colorLeague.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faCodeBranch} />
                 </span>
@@ -290,11 +276,11 @@ const OneTeamCard = ({ match, teamid }) => {
               <div className="display-flex cursor-default font-size">
                 <span
                   className="text-align-start"
-                  style={{ color: leagueColors.darkVibrant }}
+                  style={{ color: colorLeague.DarkVibrant }}
                 >
                   <FontAwesomeIcon icon={faClock} />
                 </span>
-                <span className={hoy !== "" ? "color-text-red" : ""}>
+                <span style={{ color: hoy !== "" &&colorLeague.DarkVibrant }}>
                   {hoy === ""
                     ? `${Moment(begin_at).format("Do")} ${Moment(
                         begin_at
@@ -306,7 +292,7 @@ const OneTeamCard = ({ match, teamid }) => {
               <div className="display-flex cursor-default font-size">
                 <span
                   className="text-align-start"
-                  style={{ color: leagueColors.darkVibrant }}
+                  style={{ color: colorLeague.DarkVibrant }}
                 >
                   {bestOf.includes("1") && <FontAwesomeIcon icon={faTrophy} />}
                   {bestOf.includes("2")&& (

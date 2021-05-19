@@ -145,7 +145,6 @@ const TeamProfile = () => {
           imageTeam,
           colors,
         } = data;
-        console.log(colors);
         guardarLoaderProgress({ width: "30%" });
         setRoster(roster);
         if (historicMatches && historicMatches.length !== 0) {

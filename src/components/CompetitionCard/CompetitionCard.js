@@ -6,7 +6,6 @@ import TeamRanking from "../TeamRanking/TeamRanking";
 import { PlaySound } from "../../utility/PlaySound";
 import { Link } from "react-router-dom";
 import { TEAM } from "../../routes/routes";
-import { usePalette } from "react-palette";
 import ProgressiveImage from "react-progressive-image";
 import Moment from "moment";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
@@ -46,22 +45,12 @@ const CompetitionCard = ({ match, palette }) => {
         ? csgoLogoDefaultBlack
         : opponents[1].opponent.image_url
       : toBeDefined;
-  let colorTeamA = usePalette(
-    "https://proxy-kremowy.herokuapp.com/" + TeamLogoA
-  ).data;
-  let colorTeamB = usePalette(
-    "https://proxy-kremowy.herokuapp.com/" + TeamLogoB
-  ).data;
 
-  if (TeamLogoA === csgoLogoDefaultBlack || TeamLogoA === toBeDefined) {
-    colorTeamA = {
-      darkVibrant: "#2d6da3",
-    };
+  const colorTeamA = opponents[0] !== false? opponents[0].opponent.colors : {
+    DarkVibrant: "#2d6da3",
   }
-  if (TeamLogoB === csgoLogoDefaultBlack || TeamLogoB === toBeDefined) {
-    colorTeamB = {
-      darkVibrant: "#2d6da3",
-    };
+  const colorTeamB = opponents[1] !== false? opponents[1].opponent.colors : {
+    DarkVibrant: "#2d6da3",
   }
 
   if (opponents[0] !== false) {
@@ -155,7 +144,7 @@ const CompetitionCard = ({ match, palette }) => {
                 <p
                   className="label-teams pill"
                   style={{
-                    backgroundColor: colorTeamA.darkVibrant,
+                    backgroundColor: colorTeamA.DarkVibrant,
                     fontSize: aTeamName.length > 11 && "12px",
                     lineHeight: aTeamName.length > 11 && "14px",
                   }}
@@ -166,7 +155,7 @@ const CompetitionCard = ({ match, palette }) => {
                 <p
                   className="label-teams pill"
                   style={{
-                    backgroundColor: colorTeamB.darkVibrant,
+                    backgroundColor: colorTeamB.DarkVibrant,
                     fontSize: bTeamName.length > 11 && "12px",
                     lineHeight: bTeamName.length > 11 && "14px",
                   }}
@@ -324,7 +313,7 @@ const CompetitionCard = ({ match, palette }) => {
               <p
                 className="label-teams pill"
                 style={{
-                  backgroundColor: colorTeamA.darkVibrant,
+                  backgroundColor: colorTeamA.DarkVibrant,
                   fontSize: aTeamName.length > 11 && "12px",
                   lineHeight: aTeamName.length > 11 && "14px",
                 }}
@@ -335,7 +324,7 @@ const CompetitionCard = ({ match, palette }) => {
               <p
                 className="label-teams pill"
                 style={{
-                  backgroundColor: colorTeamB.darkVibrant,
+                  backgroundColor: colorTeamB.DarkVibrant,
                   fontSize: bTeamName.length > 11 && "12px",
                   lineHeight: bTeamName.length > 11 && "14px",
                 }}

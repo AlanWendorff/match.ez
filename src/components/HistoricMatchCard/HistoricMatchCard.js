@@ -9,7 +9,6 @@ import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
 import { getPlayerScore } from "./getPlayerScore";
-import { usePalette } from "react-palette";
 import { TEAM } from "../../routes/routes";
 import { Link } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image";
@@ -17,7 +16,6 @@ import PlayerScore from "../PlayerScore/PlayerScore";
 import Share from "../Share/Share";
 import Moment from "moment";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
-import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import "../CompetitionCard/tarjetaMatchesCompletos.css";
 import "./matchprevio.css";
 
@@ -28,10 +26,6 @@ const HistoricMatchCard = ({
   setPlayerScore,
   playerscore,
 }) => {
-  let proxyLogo;
-  let colorTeamA;
-  let colorTeamB;
-  const [badfetch, setBadFetch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState(false);
   const {
@@ -45,20 +39,12 @@ const HistoricMatchCard = ({
     stage,
   } = match;
   const { palette } = useContext(PaletteContext);
-  if (league.image_url !== null && league.image_url !== csgoLogoDefault)
-    proxyLogo = "https://proxy-kremowy.herokuapp.com/" + league.image_url;
-  let error = usePalette(proxyLogo).error;
-  let leagueColors = usePalette(proxyLogo).data;
-
-  if (error) {
-    leagueColors = {
-      darkMuted: "#1c313a",
-      darkVibrant: "#455a64",
-      lightMuted: "#455a64",
-      lightVibrant: "#718792",
-      muted: "#1c313a",
-      vibrant: "#718792",
-    };
+  const colorLeague = league.colors;
+  const colorTeamA = opponents[0] !== false? opponents[0].opponent.colors : {
+    DarkVibrant: "#2d6da3",
+  }
+  const colorTeamB = opponents[1] !== false? opponents[1].opponent.colors : {
+    DarkVibrant: "#2d6da3",
   }
 
   const Facebook = `${opponents[0].opponent.name}: ${results[0].score} 
@@ -80,35 +66,14 @@ const HistoricMatchCard = ({
     const { teams } = playerscore;
     if (teams === undefined) {
       setLoading(true);
-      const { objPlayerScore, badFetch } = await getPlayerScore(id);
+      const { objPlayerScore } = await getPlayerScore(id);
       if (objPlayerScore) {
         setLoading(false);
         setPlayerScore(objPlayerScore);
       }
-      if (badFetch) {
-        setBadFetch(true);
-      }
     }
   };
 
-  colorTeamA = usePalette(
-    "https://proxy-kremowy.herokuapp.com/" + opponents[0].opponent.image_url
-  ).data;
-  colorTeamB = usePalette(
-    "https://proxy-kremowy.herokuapp.com/" + opponents[1].opponent.image_url
-  ).data;
-
-  if (colorTeamA.darkVibrant === undefined) {
-    colorTeamA = {
-      darkVibrant: "#2d6da3",
-    };
-  }
-  if (colorTeamB.darkVibrant === undefined) {
-    colorTeamB = {
-      darkVibrant: "#2d6da3",
-    };
-  }
-  //eslint-disable-next-line
   return (
     <div
       className={`noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__fadeInDown animate__faster ${
@@ -119,7 +84,7 @@ const HistoricMatchCard = ({
       <div
         className="card-image"
         style={
-          teamId && { borderTop: `5px solid ${leagueColors.lightVibrant}` }
+          teamId && { borderTop: `5px solid ${colorLeague.lightVibrant}` }
         }
       >
         <div className="card-image prev-game-content cursor-default">
@@ -257,7 +222,7 @@ const HistoricMatchCard = ({
                 style={{
                   backgroundColor:
                     results[0].score > results[1].score &&
-                    colorTeamA.darkVibrant,
+                    colorTeamA.DarkVibrant,
                   color: results[0].score > results[1].score && "white",
                 }}
               >
@@ -308,7 +273,7 @@ const HistoricMatchCard = ({
                 style={{
                   backgroundColor:
                     results[0].score < results[1].score &&
-                    colorTeamB.darkVibrant,
+                    colorTeamB.DarkVibrant,
                   color: results[0].score < results[1].score && "white",
                 }}
               >
@@ -352,6 +317,8 @@ const HistoricMatchCard = ({
                 opponents={opponents}
                 csgoLogoDefaultBlack={csgoLogoDefaultBlack}
                 loading={loading}
+                team0={opponents[0].opponent}
+                team1={opponents[1].opponent}
               />
               <p className="info-not-first-index">
                 <span

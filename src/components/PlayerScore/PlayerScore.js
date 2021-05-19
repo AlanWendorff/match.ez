@@ -1,15 +1,10 @@
 import React from 'react';
-import { usePalette } from 'react-palette';
 import './tarjetaScore.css';
 
-const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) => {
+const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading, team0, team1}) => {
     const {teams} = playerscore; 
-    let TeamLogoA;
-    let TeamLogoB;
-    let TeamNameA;
-    let TeamNameB;
-    let colorTeamA;
-    let colorTeamB;
+    let TeamNameA, TeamLogoA, colorTeamA;
+    let TeamNameB, TeamLogoB, colorTeamB;
 
     if(teams && teams.length > 0){
         for (let i=0; i< opponents.length; i++){         
@@ -24,10 +19,10 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) =>
                 }else{
                     TeamLogoB = opponents[1].opponent.image_url;
                 }
-            
+                colorTeamA = team0.colors 
+                colorTeamB = team1.colors 
                 TeamNameA = opponents[0].opponent.name;
                 TeamNameB = opponents[1].opponent.name;
-
             }else{
                 if (opponents[1].opponent.image_url === null) {
                     TeamLogoA = csgoLogoDefaultBlack;
@@ -39,25 +34,14 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) =>
                 }else{
                     TeamLogoB = opponents[0].opponent.image_url;
                 }
-
+                colorTeamA = team1.colors 
+                colorTeamB = team0.colors 
                 TeamNameA = opponents[1].opponent.name;
                 TeamNameB = opponents[0].opponent.name;
             }  
         };  
     };
-    colorTeamA = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoA).data;
-    colorTeamB = usePalette('https://proxy-kremowy.herokuapp.com/' + TeamLogoB).data;
 
-    if (TeamLogoA === csgoLogoDefaultBlack) {
-        colorTeamA = {
-            darkVibrant: "#2d6da3"
-        }
-    }
-    if (TeamLogoB === csgoLogoDefaultBlack) {
-        colorTeamB = {
-            darkVibrant: "#2d6da3"
-        }
-    }
 
     if (loading === false) {
         return(
@@ -68,7 +52,7 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) =>
                         <div>
                             <table>
                                 <thead>
-                                    <tr className="line-width font-gilroy" style={{backgroundColor: colorTeamA.darkVibrant}}>
+                                    <tr className="line-width font-gilroy" style={{backgroundColor: colorTeamA.DarkVibrant}}>
                                         <th className="space color-text-black">
                                             <div className="team-field">
                                                 <img alt="a team" className="table-logo-size" src={TeamLogoA} />  
@@ -90,7 +74,7 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) =>
                                             const {counts, per_game_averages} = stats;
                                             return(
                                                 <tr className="line-width" key={index}>
-                                                    <td className="space color-text-black font-bold table-font-size">{first_name}<span style={{color: colorTeamA.darkVibrant}} className="player-name-style">"{name}"</span>{last_name}</td>
+                                                    <td className="space color-text-black font-bold table-font-size">{first_name}<span style={{color: colorTeamA.DarkVibrant}} className="player-name-style">"{name}"</span>{last_name}</td>
                                                     <td className="text-align-center color-text-black font-bold table-font-size">{counts.kills}</td>
                                                     <td className="text-align-center color-text-black font-bold table-font-size">{counts.assists}</td>
                                                     <td className="text-align-center color-text-black font-bold table-font-size">{counts.deaths}</td>
@@ -108,7 +92,7 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) =>
                         <div>
                             <table>
                                 <thead>
-                                    <tr className="line-width font-gilroy" style={{backgroundColor: colorTeamB.darkVibrant}}>
+                                    <tr className="line-width font-gilroy" style={{backgroundColor: colorTeamB.DarkVibrant}}>
                                         <th className="space color-text-black">
                                             <div className="team-field">
                                                 <img alt="b team" className="table-logo-size" src={TeamLogoB} />  
@@ -129,7 +113,7 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading}) =>
                                             const {counts, per_game_averages} = stats;
                                             return(
                                                 <tr className="line-width" key={index}>
-                                                    <td className="space color-text-black font-bold table-font-size">{first_name}<span style={{color: colorTeamB.darkVibrant}} className="player-name-style">"{name}"</span>{last_name}</td>
+                                                    <td className="space color-text-black font-bold table-font-size">{first_name}<span style={{color: colorTeamB.DarkVibrant}} className="player-name-style">"{name}"</span>{last_name}</td>
                                                     <td className="text-align-center color-text-black font-bold table-font-size">{counts.kills}</td>
                                                     <td className="text-align-center color-text-black font-bold table-font-size">{counts.assists}</td>
                                                     <td className="text-align-center color-text-black font-bold table-font-size">{counts.deaths}</td>

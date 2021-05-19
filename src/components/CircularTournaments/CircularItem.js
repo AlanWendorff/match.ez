@@ -13,7 +13,7 @@ const CircularItem = ({ img, name, id, colors }) => {
     >
       <div
         style={{
-          border: `4px solid ${colors.LightVibrant}`,
+          border: `4px solid ${colors.DarkVibrant}`,
         }}
         className="circular-item"
       >

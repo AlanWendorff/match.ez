@@ -2,7 +2,6 @@ import React from "react";
 import { faClock, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
-import { usePalette } from "react-palette";
 import { PlaySound } from "../../utility/PlaySound";
 import { TEAM, TOURNAMENT } from "../../routes/routes";
 import { Link } from "react-router-dom";

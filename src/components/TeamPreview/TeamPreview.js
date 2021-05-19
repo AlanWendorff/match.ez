@@ -90,7 +90,7 @@ const TeamPreview = ({
                   style={{
                     backgroundColor:
                       LASTMATCH.results[0].score > LASTMATCH.results[1].score &&
-                      color.Vibrant,
+                      LASTMATCH.opponents[0].opponent.colors.DarkVibrant,
                   }}
                 >
                   {LASTMATCH.results[0].score}
@@ -107,7 +107,7 @@ const TeamPreview = ({
                   style={{
                     backgroundColor:
                       LASTMATCH.results[0].score < LASTMATCH.results[1].score &&
-                      color.Vibrant,
+                      LASTMATCH.opponents[1].opponent.colors.DarkVibrant,
                   }}
                 >
                   {LASTMATCH.results[1].score}
@@ -216,7 +216,7 @@ const TeamPreview = ({
       </Suspense>
 
       <div
-        style={{ color: color.Muted }}
+        style={{ color: color.Vibrant }}
         className="place-in-world background-color-transparent"
       > 
         {rankingTeam
