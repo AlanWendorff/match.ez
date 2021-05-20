@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Team from "./Team";
 import SaveInLS from "./SaveInLS";
 import axios from "axios";
-import { PLAYER_SCORE } from "../../const/ApiEndpoints";
+import { DATABASE_SEARCH_TEAM } from "../../const/ApiEndpoints";
 import {DebounceInput} from 'react-debounce-input';
 import "./search.css";
 
@@ -18,7 +18,7 @@ const SearchTeam = ({ setCollection, collection }) => {
       },
     };
     if (input.length !== 0) {
-      axios(PLAYER_SCORE.replace(':letters', input),
+      axios(DATABASE_SEARCH_TEAM.replace(':letters', input),
         config
       ).then(({ data }) => {
         data ? setTeams(data) : setTeams([]);

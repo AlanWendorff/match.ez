@@ -1,6 +1,5 @@
-const BACKEND_ENDPOINT = "http://localhost:5000";
-// data.headers.x-rate-limit-used
-//http://localhost:5000 https://arg-matchez-backend.herokuapp.com
+const BACKEND_ENDPOINT = process.env.REACT_APP_API_BASE_URL;
+//data.headers.x-rate-limit-used
 export const ALL_MATCHES = BACKEND_ENDPOINT + "/api/allmatches";
 
 export const DATABASE_TOURNAMENTS = BACKEND_ENDPOINT + "/database/tournaments";
