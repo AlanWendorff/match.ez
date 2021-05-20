@@ -11,7 +11,7 @@ const Warning = () => {
                     <div className="card-image">
                         <img alt="warning, error!" src={BannerWarning}/>
                     </div>
-                    <div className="card-content separate-items">
+                    <div className="home-button-container">
                         <p>Something happened.</p>
                         <Link to='/' className="waves-effect waves-light btn red darken-4"><i className="material-icons left">home</i>Home</Link>
                     </div>

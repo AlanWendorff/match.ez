@@ -1,17 +1,22 @@
 import React, { createContext, useState, useEffect } from "react";
-import { getRanking } from "../HltvRanking/getHltvRanking";
-
+import { HLTV_RANKING } from "../../const/ApiEndpoints";
+import axios from "axios";
 export const TeamRankingContext = createContext();
 
 const TeamRankingProvider = (props) => {
   const [ranking, setRanking] = useState([]);
   const badfetch = false;
-  
+
   useEffect(() => {
-    (async () => {
-      const { objRanking } = await getRanking();
-      setRanking(objRanking);
-    })();
+    const config = {
+      method: "get",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    axios.get(HLTV_RANKING, config).then(({ data }) => {
+      setRanking(data);
+    });
   }, []);
 
   return (

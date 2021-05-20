@@ -9,7 +9,6 @@ import {
 import { PaletteContext } from "../Context/PaletteContext";
 import { TOURNAMENT, TEAM } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { usePalette } from "react-palette";
 import { PlaySound } from "../../utility/PlaySound";
 import { Link } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image";

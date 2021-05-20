@@ -9,11 +9,8 @@
     align-self: center;
     text-align: center;
 }
-.separate-items{
-    padding: 2% 26% 2% 26% !important;
-    height: 130px;
+.home-button-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
   

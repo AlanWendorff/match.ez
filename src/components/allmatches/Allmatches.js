@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { ALL_MATCHES } from "../../const/ApiEndpoints";
 import CircularTournaments from "../CircularTournaments/CircularTournaments";
 import ListadoAllmatches from "./ListadoAllmatches";
 import LoadScreen from "../Loader/LoadScreen";
-import InfoCard from "../InfoCard/InfoCard";
-import Warning from "../Warning/Warning";
 import axios from "axios";
 import "./allmatches.css";
+const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const AllMatches = () => {
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
@@ -24,77 +24,51 @@ const AllMatches = () => {
   };
 
   useEffect(() => {
+    guardarLoaderProgress({ width: "30%" });
     const config = {
       method: "get",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-    };//http://localhost:5000 https://arg-matchez-backend.herokuapp.com
-    axios
-      .get(`http://localhost:5000/api/allmatches`, config)
-      .then(({ data }) => {
+    };
+    axios.get(ALL_MATCHES, config).then(({ data }) => {
+      if (data.length === 0) {
+        guardarStateCrash(true);
+      } else {
         guardarAllmatches(data);
         guardarMatchesMod(data.slice(0, 6));
-        guardarLoaderProgress({ width: "100%" });
-        if (data.length === 0) {
-          guardarStateCrash(true);
-        }
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      }
+      guardarLoaderProgress({ width: "100%" });
+    });
   }, []);
   const { width } = loaderprogress;
-  if (crash !== true) {
-    if (width === "100%") {
-      return (
-        <div
-          onContextMenu={(e) =>
-            window.innerWidth > 1024 ? null : e.preventDefault()
-          }
-          className="allmatches background-color-4all"
-        >
-          {allmatches.length !== 0 ? (
-            <>
-              <CircularTournaments matches={allmatches} />
-              <ListadoAllmatches matchesmod={matchesmod} />
-              {matchesmod.length !== allmatches.length && (
-                <div
-                  onClick={() => {
-                    loadMoreItems();
-                  }}
-                  className="load-more"
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </div>
-              )}
-            </>
-          ) : (
-            <InfoCard />
+  return (
+    <div className="allmatches background-color-4all">
+      {allmatches.length !== 0 && crash !== true && width === "100%" && (
+        <>
+          <CircularTournaments matches={allmatches} />
+          <ListadoAllmatches matchesmod={matchesmod} />
+          {matchesmod.length !== allmatches.length && (
+            <div
+              onClick={() => {
+                loadMoreItems();
+              }}
+              className="load-more"
+            >
+              <FontAwesomeIcon icon={faPlus} />
+            </div>
           )}
-        </div>
-      );
-    } else {
-      return (
-        <div
-          onContextMenu={(e) =>
-            window.innerWidth > 1024 ? null : e.preventDefault()
-          }
-          className="allmatches background-color-4all"
-        >
-          <LoadScreen loaderprogress={loaderprogress} />
-        </div>
-      );
-    }
-  } else {
-    return (
-      <div
-        onContextMenu={(e) =>
-          window.innerWidth > 1024 ? null : e.preventDefault()
-        }
-        className="allmatches background-color-4all"
-      >
-        <Warning />
-      </div>
-    );
-  }
+        </>
+      )}
+
+      {width !== "100%" && <LoadScreen loaderprogress={loaderprogress} />}
+
+      {crash === true && (
+        <Suspense fallback={<div></div>}>
+          <Warning />
+        </Suspense>
+      )}
+    </div>
+  );
 };
 export default AllMatches;

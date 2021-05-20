@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, Suspense } from "react";
 import { useParams, useHistory } from "react-router";
 import { PaletteContext } from "../Context/PaletteContext";
 import { HOME } from "../../routes/routes";
+import { LEAGUE_INFO } from "../../const/ApiEndpoints";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
 import MobileHeader from "../MobileHeader/MobileHeader";
@@ -9,17 +10,16 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 import LoadScreen from "../Loader/LoadScreen";
 import InfoCard from "../InfoCard/InfoCard";
 import Logo from "../NavigationBar/Logo";
-import Warning from "../Warning/Warning";
 //import generic_team_pattern from "../../Images/generic_team_pattern.png";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
+const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const LeagueGames = () => {
   const { tournamentId } = useParams();
   const history = useHistory();
   !tournamentId && history.push(HOME);
 
-  let backgroundStyle;
   const { palette, setPalette, setLogo } = useContext(PaletteContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [crash, guardarStateCrash] = useState(false);
@@ -76,15 +76,19 @@ const LeagueGames = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
-    //http://localhost:5000 https://arg-matchez-backend.herokuapp.com
     axios
-      .get(
-        `http://localhost:5000/api/tournamentmatches/${tournamentId}`,
-        config
-      )
+      .get(LEAGUE_INFO.replace(":id", tournamentId), config)
       .then(({ data }) => {
-        const { historicMatches, upcomingMatches, ladder, imageLeague, colors } = data;
-        guardarMatchesHoy(upcomingMatches);
+        const {
+          historicMatches,
+          upcomingMatches,
+          ladder,
+          imageLeague,
+          colors,
+        } = data;
+        upcomingMatches === undefined
+          ? guardarStateCrash(true)
+          : guardarMatchesHoy(upcomingMatches);
         guardarLeaderboard(ladder);
         if (historicMatches && historicMatches.length !== 0) {
           setPalette(colors);
@@ -105,7 +109,6 @@ const LeagueGames = () => {
           guardarLoaderProgress({ width: "100%" });
         }
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function toDataURL(url, callback) {
@@ -121,37 +124,33 @@ const LeagueGames = () => {
     xhr.responseType = "blob";
     xhr.send();
   }
-
-  /* if (image_url !== csgoLogoDefault) {
+  /* 
+  if (image_url !== csgoLogoDefault) {
     toDataURL(image_url, function (dataUrl) {
       guardarB64Logo(dataUrl);
     });
-  } */
+  } 
 
   if (image_url !== csgoLogoDefault) {
     backgroundStyle = {
-      //backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
       backgroundColor: `${palette.DarkVibrant}`,
     };
   } else {
     backgroundStyle = {
       backgroundColor: `${palette.DarkVibrant}`,
-      //backgroundImage: `url(${generic_team_pattern})`,
+      backgroundImage: `url(${generic_team_pattern})`,
     };
-  }
+  } */
 
   const { width } = loaderprogress;
-
-  if (crash !== true) {
-    if (width === "100%") {
-      return (
-        <div
-          onContextMenu={(e) =>
-            window.innerWidth > 782 ? null : e.preventDefault()
-          }
-          className="parametros-container pattern-background"
-          style={backgroundStyle}
-        >
+  if (width === "100%") {
+    return (
+      <div
+        className="parametros-container pattern-background"
+        style={{ backgroundColor: palette.DarkVibrant }}
+      >
+        {crash !== true && (
           <MobileHeader
             color={palette}
             img={image_url}
@@ -162,44 +161,36 @@ const LeagueGames = () => {
             setPreview
             isTournament
           />
-          {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
-          {show === "vs" && matchesHoy !== undefined && (
-            <CompetitionMapping matchesHoy={matchesHoy} palette={palette} />
-          )}
-          {show === "vs" && !matchesHoy.length > 0 && <InfoCard />}
-          {show === "history" && prevMatch !== "no-match" && (
-            <HistoricMatchMapping
-              prevMatch={prevMatch}
-              setShow={setShow}
-              setPlayerScore={setPlayerScore}
-              playerscore={playerscore}
-            />
-          )}
-          <Logo color={palette} img={image_url} />
-        </div>
-      );
-    } else {
-      return (
-        <div
-          onContextMenu={(e) =>
-            window.innerWidth > 782 ? null : e.preventDefault()
-          }
-          className="parametros-container pattern-background"
-          style={{ backgroundColor: "black" }}
-        >
-          <LoadScreen loaderprogress={loaderprogress} />
-        </div>
-      );
-    }
+        )}
+        {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
+        {show === "vs" && matchesHoy !== undefined && (
+          <CompetitionMapping matchesHoy={matchesHoy} palette={palette} />
+        )}
+        {show === "vs" && matchesHoy.length === 0 && <InfoCard />}
+        {show === "history" && prevMatch !== "no-match" && (
+          <HistoricMatchMapping
+            prevMatch={prevMatch}
+            setShow={setShow}
+            setPlayerScore={setPlayerScore}
+            playerscore={playerscore}
+          />
+        )}
+        {crash !== true && <Logo color={palette} img={image_url} />}
+
+        {crash === true && (
+          <Suspense fallback={<div></div>}>
+            <Warning />
+          </Suspense>
+        )}
+      </div>
+    );
   } else {
     return (
       <div
-        onContextMenu={(e) =>
-          window.innerWidth > 782 ? null : e.preventDefault()
-        }
         className="parametros-container pattern-background"
+        style={{ backgroundColor: "#000000" }}
       >
-        <Warning />
+        <LoadScreen loaderprogress={loaderprogress} />
       </div>
     );
   }

@@ -11,6 +11,7 @@ import { LOOKMATCHES, LOOKPROFILE } from "../../titlestag/titlestag";
 import { TOURNAMENT, TEAM } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { TIME_LINE } from "../../const/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Warning from "../Warning/Warning";
 import shortid from "shortid";
@@ -20,6 +21,7 @@ import toBeDefined from "../../Images/toBeDefined.png";
 import "react-vertical-timeline-component/style.min.css";
 import axios from "axios";
 import "./timeline.css";
+
 const Timeline = () => {
   const [time, setTime] = useState([]);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
@@ -32,18 +34,14 @@ const Timeline = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
-    //http://localhost:5000 https://arg-matchez-backend.herokuapp.com
-    axios
-      .get(`http://localhost:5000/api/timeline`, config)
-      .then(({ data }) => {
-        setTime(data);
+    axios.get(TIME_LINE, config).then(({ data }) => {
+      setTime(data);
+      guardarLoaderProgress({ width: "100%" });
+      if (data.length === 0) {
+        guardarStateCrash(true);
         guardarLoaderProgress({ width: "100%" });
-        if (data.length === 0) {
-          guardarStateCrash(true);
-          guardarLoaderProgress({ width: "100%" });
-        }
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      }
+    });
   }, []);
 
   const { width } = loaderprogress;
@@ -51,12 +49,7 @@ const Timeline = () => {
   if (crash !== true) {
     if (width === "100%") {
       return (
-        <div
-          onContextMenu={(e) =>
-            window.innerWidth > 1024 ? null : e.preventDefault()
-          }
-          className="time-line-container font-gilroy background-color-4all"
-        >
+        <div className="time-line-container font-gilroy background-color-4all">
           <VerticalTimeline layout="1-column-left">
             {time.map((tournament) => {
               const {
@@ -67,7 +60,7 @@ const Timeline = () => {
                 teams,
                 prizepool,
                 league_id,
-                colors
+                colors,
               } = tournament;
               const dayuser = new Date().getDate();
               const day = Moment(begin_at).format("DD");
@@ -80,8 +73,8 @@ const Timeline = () => {
                   key={shortid.generate()}
                   className="vertical-timeline-element--education"
                   date={date}
-                  style={{backgroundColor: colors.DarkVibrant}}
-                  iconStyle={{ border: `3px solid ${colors.DarkVibrant}`}}
+                  style={{ backgroundColor: colors.DarkVibrant }}
+                  iconStyle={{ border: `3px solid ${colors.DarkVibrant}` }}
                   icon={
                     <Link
                       to={TOURNAMENT.replace(":tournamentId", league_id)}
@@ -187,24 +180,14 @@ const Timeline = () => {
       );
     } else {
       return (
-        <div
-          onContextMenu={(e) =>
-            window.innerWidth > 1024 ? null : e.preventDefault()
-          }
-          className="time-line-container background-color-4all"
-        >
+        <div className="time-line-container background-color-4all">
           <LoadScreen loaderprogress={loaderprogress} />
         </div>
       );
     }
   } else {
     return (
-      <div
-        onContextMenu={(e) =>
-          window.innerWidth > 1024 ? null : e.preventDefault()
-        }
-        className="time-line-container background-color-4all"
-      >
+      <div className="time-line-container background-color-4all">
         <Warning />
       </div>
     );

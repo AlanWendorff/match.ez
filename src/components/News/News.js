@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NEWS } from "../../const/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Warning from "../Warning/Warning";
 import Moment from "moment";
@@ -11,7 +12,7 @@ const News = () => {
 
   useEffect(() => {
     (async () => {
-      const url = "https://arg-matchez-backend.herokuapp.com/api/news";
+      const url = NEWS;
       try {
         const config = {
           method: "get",

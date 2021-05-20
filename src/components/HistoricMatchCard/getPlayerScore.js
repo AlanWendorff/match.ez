@@ -1,8 +1,9 @@
 import axios from 'axios';
-// data.headers.x-rate-limit-used
+import { PLAYER_SCORE } from "../../const/ApiEndpoints";
+
 export const getPlayerScore = async (id) => {    
     const badFetch = true;           
-    const url = `https://arg-matchez-backend.herokuapp.com/api/teamscore/${id}`;
+    const url = PLAYER_SCORE.replace(':id', id);
     try {
         const config = {
             method: 'get',

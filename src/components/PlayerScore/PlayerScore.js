@@ -42,10 +42,8 @@ const PlayerScore = ({playerscore, csgoLogoDefaultBlack, opponents, loading, tea
         };  
     };
 
-
     if (loading === false) {
         return(
-                
             teams?
                 teams.length > 0?
                     <div>

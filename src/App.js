@@ -14,7 +14,7 @@ const App = () => {
         <LoaderProvider>
           <TeamRankingProvider>
             <LocationProvider>
-              <Layout />
+              <Layout onContextMenu={(e) => window.innerWidth > 1024 ? null : e.preventDefault()}  />
             </LocationProvider>
           </TeamRankingProvider>
         </LoaderProvider>

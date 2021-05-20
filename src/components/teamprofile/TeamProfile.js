@@ -4,6 +4,7 @@ import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { HOME } from "../../routes/routes";
+import { TEAM_INFO } from "../../const/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
 import LoadScreen from "../Loader/LoadScreen";
@@ -128,12 +129,8 @@ const TeamProfile = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
-//http://localhost:5000 https://arg-matchez-backend.herokuapp.com
     axios
-      .get(
-        `http://localhost:5000/api/teaminfo/${teamid}`,
-        config
-      )
+      .get(TEAM_INFO.replace(":id", teamid), config)
       .then(({ data }) => {
         const {
           historicMatches,
@@ -145,7 +142,6 @@ const TeamProfile = () => {
           imageTeam,
           colors,
         } = data;
-        guardarLoaderProgress({ width: "30%" });
         setRoster(roster);
         if (historicMatches && historicMatches.length !== 0) {
           guardarMatchesMod(historicMatches.slice(0, 6));
@@ -158,7 +154,6 @@ const TeamProfile = () => {
             setLogo(setLogo);
             setImageTeam(imageTeam);
           }
-          guardarLoaderProgress({ width: "70%" });
         } else {
           guardarPrevMatch("no-match");
         }
@@ -195,9 +190,6 @@ const TeamProfile = () => {
     if (width === "100%") {
       return (
         <div
-          onContextMenu={(e) =>
-            window.innerWidth > 782 ? null : e.preventDefault()
-          }
           className="parametros-container mosaico noselect"
           style={backgroundStyle}
         >
@@ -276,9 +268,6 @@ const TeamProfile = () => {
       // RETURN APP LOADING
       return (
         <div
-          onContextMenu={(e) =>
-            window.innerWidth > 782 ? null : e.preventDefault()
-          }
           className="parametros-container mosaico noselect"
           style={{ backgroundColor: "black" }}
         >
@@ -289,9 +278,6 @@ const TeamProfile = () => {
   } else {
     return (
       <div
-        onContextMenu={(e) =>
-          window.innerWidth > 782 ? null : e.preventDefault()
-        }
         className="parametros-container mosaico noselect"
         style={{ backgroundColor: "#040c1c" }}
       >

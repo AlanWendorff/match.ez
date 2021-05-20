@@ -2,6 +2,7 @@ import React, { useContext, useState, Suspense } from "react";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
+import { PLAYER_INFO } from "../../const/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
@@ -30,8 +31,17 @@ const TeamPreview = ({
   const [modalIsOpen, setIsOpen] = useState(false);
   const NEXTMATCH = matches[0];
   const LASTMATCH = prevMatch[0];
-  const arrayTeam = prevMatch !== 'no-match'&& LASTMATCH.opponents.find( (element) => element.opponent.id === parseInt(teamid));
-  const rankingTeam = prevMatch !== 'no-match'&& ranking.find((element) => element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase());
+  const arrayTeam =
+    prevMatch !== "no-match" &&
+    LASTMATCH.opponents.find(
+      (element) => element.opponent.id === parseInt(teamid)
+    );
+  const rankingTeam =
+    prevMatch !== "no-match" &&
+    ranking.find(
+      (element) =>
+        element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase()
+    );
 
   const getPlayerInfo = (playerName, LASTNAME) => {
     playerinfo.name !== playerName && setPlayerInfo([]);
@@ -45,10 +55,7 @@ const TeamPreview = ({
     };
     try {
       axios
-        .get(
-          `https://arg-matchez-backend.herokuapp.com/api/playerinfo/${playerName}`,
-          config
-        )
+        .get(PLAYER_INFO.replace(":name", playerName), config)
         .then(({ data }) => {
           data.name.includes(LASTNAME)
             ? setPlayerInfo(data)
@@ -66,7 +73,7 @@ const TeamPreview = ({
 
       <div className="little-info">
         <div className="last-match">
-          {prevMatch !== 'no-match' ? (
+          {prevMatch !== "no-match" ? (
             <>
               <span>Last Game</span>
               <div>
@@ -218,10 +225,12 @@ const TeamPreview = ({
       <div
         style={{ color: color.Vibrant }}
         className="place-in-world background-color-transparent"
-      > 
+      >
         {rankingTeam
-          ? `${prevMatch !== 'no-match'&& arrayTeam.opponent.name} #${rankingTeam.position} in the world`
-          : `${prevMatch !== 'no-match'&& arrayTeam.opponent.name}`}
+          ? `${prevMatch !== "no-match" && arrayTeam.opponent.name} #${
+              rankingTeam.position
+            } in the world`
+          : `${prevMatch !== "no-match" && arrayTeam.opponent.name}`}
       </div>
 
       <div className="team">
