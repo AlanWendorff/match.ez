@@ -203,7 +203,7 @@ const TarjetaAllmatches = ({ match }) => {
                   official_stream_url !== null && PlaySound();
                 }}
               >
-                <span className="stream-font-color-LIVE font-gilroy">
+                <span className="stream-font-color-LIVE">
                   {" "}
                   {statusStream} <span className="dot-indicator"></span>
                 </span>

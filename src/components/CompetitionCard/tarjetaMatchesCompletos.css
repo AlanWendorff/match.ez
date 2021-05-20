@@ -137,6 +137,7 @@
     }
     
     .team-canvas{
+        width: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -211,10 +212,10 @@
         max-width: 110px !important;
     }   
     .team-canvas{
+        width: 70px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-weight: bold;
     }
     .label-teams{
         width: 130px;

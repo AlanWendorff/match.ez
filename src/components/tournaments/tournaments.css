@@ -85,13 +85,13 @@
   }
   .tournament-size {
     background-color: #ffffffb4;
-    padding: 0px 15px;
+    padding: 0px 10px;
     height: 70px;
     width: 100%;
     margin: 10px 0px;
   }
   .tournament-flex {
-    padding: 5px 0px;
+    padding: 4px 0px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -109,8 +109,8 @@
     overflow: hidden;
   }
   .tournament-logo-size {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 45px;
+    max-height: 45px;
   }
   .tournament-name {
     text-align: end;
