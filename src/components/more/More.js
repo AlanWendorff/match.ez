@@ -20,6 +20,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   const [hidecomponent, setHideComponent] = useState(false);
   const [sound, setSound] = useState(true);
   const [anim, setAnim] = useState(true);
+  const [turnaround, setTurnAround] = useState("");
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("sounds")) === false) {
@@ -55,6 +56,13 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     setAnim(true);
     localStorage.setItem("animations", true);
   };
+
+  const turnAroundIcon = () => {
+    hidecomponent ? setTurnAround("rotate-icon-right-side") : setTurnAround("rotate-icon-left-side");
+    setTimeout(() => {
+      setTurnAround("");
+    }, 300);
+  }
 
   return (
     <div
@@ -103,11 +111,13 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
           <div
             className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
             onClick={() => {
+              turnAroundIcon();
               hidecomponent ? setHideComponent(false) : setHideComponent(true);
+
             }}
           >
             <div>
-              <FontAwesomeIcon icon={faCog} />
+              <FontAwesomeIcon className={turnaround} icon={faCog} />
               <span>Settings</span>
             </div>
           </div>

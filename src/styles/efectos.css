@@ -42,6 +42,15 @@
   z-index: 3;
 }
 
+.rotate-icon-right-side {
+  transform: rotate(120deg);
+  transition: 0.3s;
+}
+.rotate-icon-left-side {
+  transform: rotate(-120deg);
+  transition: 0.3s;
+}
+
 .effect-360-img:hover {
   color: #fff;
   transform: rotateY(360deg);
