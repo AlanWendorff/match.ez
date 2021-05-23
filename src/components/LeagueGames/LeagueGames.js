@@ -9,8 +9,6 @@ import MobileHeader from "../MobileHeader/MobileHeader";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import LoadScreen from "../Loader/LoadScreen";
 import InfoCard from "../InfoCard/InfoCard";
-import Logo from "../NavigationBar/Logo";
-//import generic_team_pattern from "../../Images/generic_team_pattern.png";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
 const Warning = React.lazy(() => import("../Warning/Warning"));
@@ -27,7 +25,6 @@ const LeagueGames = () => {
   const [prevMatch, guardarPrevMatch] = useState([]);
   const [playerscore, setPlayerScore] = useState([]);
   const [leaderboard, guardarLeaderboard] = useState([]);
-  const [b64Logo, guardarB64Logo] = useState("");
   const [image_url, setImageLeague] = useState("");
   const [show, setShow] = useState("vs");
   const [buttonstatus, setButtonStatus] = useState({
@@ -111,38 +108,6 @@ const LeagueGames = () => {
       });
   }, []);
 
-  function toDataURL(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      var reader = new FileReader();
-      reader.onloadend = function () {
-        callback(reader.result);
-      };
-      reader.readAsDataURL(xhr.response);
-    };
-    xhr.open("GET", url);
-    xhr.responseType = "blob";
-    xhr.send();
-  }
-  /* 
-  if (image_url !== csgoLogoDefault) {
-    toDataURL(image_url, function (dataUrl) {
-      guardarB64Logo(dataUrl);
-    });
-  } 
-
-  if (image_url !== csgoLogoDefault) {
-    backgroundStyle = {
-      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-      backgroundColor: `${palette.DarkVibrant}`,
-    };
-  } else {
-    backgroundStyle = {
-      backgroundColor: `${palette.DarkVibrant}`,
-      backgroundImage: `url(${generic_team_pattern})`,
-    };
-  } */
-
   const { width } = loaderprogress;
   if (width === "100%") {
     return (
@@ -175,7 +140,7 @@ const LeagueGames = () => {
             playerscore={playerscore}
           />
         )}
-        {crash !== true && <Logo color={palette} img={image_url} />}
+        {/* crash !== true && <Logo color={palette} img={image_url} /> */}
 
         {crash === true && (
           <Suspense fallback={<div></div>}>

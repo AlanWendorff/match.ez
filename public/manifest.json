@@ -6,18 +6,59 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "icons": [
+  "shortcuts": [
     {
-      "src": "icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "name": "View News",
+      "short_name": "News",
+      "description": "View the latest news of the CS:GO professional scene",
+      "url": "/news",
+      "icons": [{ "src": "pwa/news-icon.png", "sizes": "500x500" }]
     },
     {
-      "src": "icon-512x512.png",
-      "sizes": "512x512",
+      "name": "View Top #30 World Ranking",
+      "short_name": "Top #30 World Ranking",
+      "description": "View the top #30 teams ranked in the world",
+      "url": "/ranking",
+      "icons": [{ "src": "pwa/ranking-icon.png", "sizes": "500x500" }]
+    },
+    {
+      "name": "View All the Matches",
+      "short_name": "All Matches",
+      "description": "View all the matches in the world",
+      "url": "/all-matches",
+      "icons": [{ "src": "pwa/matches-icon.png", "sizes": "500x500" }]
+    }
+  ],
+  "icons": [
+    {
+      "src": "pwa/icon_x48.png",
+      "sizes": "48x48",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "pwa/icon_x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa/icon_x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa/icon_x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa/icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

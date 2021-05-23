@@ -8,8 +8,6 @@ import { TEAM_INFO } from "../../const/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
 import LoadScreen from "../Loader/LoadScreen";
-import Logo from "../NavigationBar/Logo";
-//import generic_team_pattern from "../../Images/generic_team_pattern.png";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
 import "../../styles/base.css";
@@ -31,7 +29,6 @@ const TeamProfile = () => {
   const history = useHistory();
   !teamid && history.push(HOME);
 
-  let backgroundStyle = [];
   const { palette, setPalette, setLogo } = useContext(PaletteContext);
   const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [stadistics, setStadistics] = useState([]);
@@ -40,7 +37,6 @@ const TeamProfile = () => {
   const [matches, guardarMatches] = useState([]);
   const [playerscore, setPlayerScore] = useState([]);
   const [roster, setRoster] = useState([]);
-  const [b64Logo, guardarB64Logo] = useState("");
   const [crash, guardarStateCrash] = useState(false);
   const [noMatches, guardarNoMatches] = useState(false);
   const [image_url, setImageTeam] = useState("");
@@ -58,20 +54,6 @@ const TeamProfile = () => {
         ? Math.round(prevMatch.length / 2)
         : prevMatch.length;
     guardarMatchesMod(prevMatch.slice(0, arrayLimit));
-  };
-
-  const toDataURL = (url, callback) => {
-    var xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      var reader = new FileReader();
-      reader.onloadend = function () {
-        callback(reader.result);
-      };
-      reader.readAsDataURL(xhr.response);
-    };
-    xhr.open("GET", url);
-    xhr.responseType = "blob";
-    xhr.send();
   };
 
   const filterByTournament = (name) => {
@@ -168,30 +150,13 @@ const TeamProfile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [teamid]);
 
-  /* if (image_url !== csgoLogoDefault) {
-    toDataURL(image_url, function (dataUrl) {
-      guardarB64Logo(dataUrl);
-    });
-  } */
-  if (image_url !== csgoLogoDefault) {
-    backgroundStyle = {
-      //backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
-      backgroundColor: `${palette.DarkVibrant}`,
-    };
-  } else {
-    backgroundStyle = {
-      backgroundColor: `${palette.DarkMuted}`,
-      //backgroundImage: `url(${generic_team_pattern})`,
-    };
-  }
-
   const { width } = loaderprogress;
   if (!crash) {
     if (width === "100%") {
       return (
         <div
           className="parametros-container mosaico noselect"
-          style={backgroundStyle}
+          style={{ backgroundColor: palette.DarkVibrant }}
         >
           <MobileHeader
             color={palette}
@@ -261,14 +226,14 @@ const TeamProfile = () => {
               </Suspense>
             </>
           )}
-          <Logo color={palette} img={image_url} />
+          {/* <Logo color={palette} img={image_url} /> */}
         </div>
       );
     } else {
       // RETURN APP LOADING
       return (
         <div
-          className="parametros-container mosaico noselect"
+          className="parametros-container noselect"
           style={{ backgroundColor: "black" }}
         >
           <LoadScreen loaderprogress={loaderprogress} />
@@ -278,7 +243,7 @@ const TeamProfile = () => {
   } else {
     return (
       <div
-        className="parametros-container mosaico noselect"
+        className="parametros-container noselect"
         style={{ backgroundColor: "#040c1c" }}
       >
         <Suspense fallback={<div></div>}>

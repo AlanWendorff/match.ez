@@ -4,6 +4,7 @@ import {
   faTrophy,
   faUserFriends,
   faFistRaised,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   HOME,
@@ -35,40 +36,34 @@ const NavigationBar = () => {
       <Link to={HOME}>
         <FontAwesomeIcon
           style={{
-            color: pathname !== HOME ? "white" : '#4175a8',
+            color: pathname !== HOME ? "white" : "#4175a8",
           }}
           icon={faUserFriends}
         />
       </Link>
 
-      <Link
-        to={TOURNAMENTS}
-      >
+      <Link to={TOURNAMENTS}>
         <FontAwesomeIcon
           style={{
-            color:
-              pathname !== TOURNAMENTS ? "white" : '#4175a8',
+            color: pathname !== TOURNAMENTS ? "white" : "#4175a8",
           }}
           icon={faTrophy}
         />
       </Link>
 
       <Link to={MORE} style={{ zIndex: "5" }}>
-        <div
+        <FontAwesomeIcon
           style={{
-            backgroundColor:
-              pathname !== MORE ? "" : '#4175a8',
+            color: pathname !== MORE ? "white" : "#4175a8",
           }}
-        >
-          <img className="nav-logo" src={appLogo} alt="app logo" />
-        </div>
+          icon={faBars}
+        />
       </Link>
 
       <Link to={TIMELINE}>
         <FontAwesomeIcon
           style={{
-            color:
-              pathname !== TIMELINE ? "white" : '#4175a8',
+            color: pathname !== TIMELINE ? "white" : "#4175a8",
           }}
           icon={faCalendarAlt}
         />
@@ -77,8 +72,7 @@ const NavigationBar = () => {
       <Link to={ALLMATCHES}>
         <FontAwesomeIcon
           style={{
-            color:
-              pathname !== ALLMATCHES ? "white" : '#4175a8',
+            color: pathname !== ALLMATCHES ? "white" : "#4175a8",
           }}
           icon={faFistRaised}
         />
