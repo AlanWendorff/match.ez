@@ -70,34 +70,6 @@
   .place-in-world {
     width: 630px;
   }
-
-  .ReactModal__Content svg {
-    margin-left: 240px;
-    margin-right: 5px;
-    font-size: 30px;
-  }
-  .ReactModal__Content h2 {
-    font-size: 30px;
-  }
-  .ReactModal__Content h3 {
-    font-size: 25px;
-  }
-  .ReactModal__Content .player-canvas .background-team-logo {
-    width: 180px;
-  }
-  .ReactModal__Content .player-pic {
-    width: 200px;
-  }
-  .ReactModal__Content h4 {
-    font-size: 20px;
-  }
-  .ReactModal__Content .social-media img {
-    width: 27px;
-  }
-  .ReactModal__Content h6 div span {
-    font-size: 13px;
-    width: 78px;
-  }
 }
 
 @media screen and (max-width: 770px) {
@@ -161,33 +133,6 @@
     width: 330px;
   }
 
-  .ReactModal__Content svg {
-    margin-left: 240px;
-    margin-right: 5px;
-    font-size: 20px;
-  }
-  .ReactModal__Content h2 {
-    font-size: 20px;
-  }
-  .ReactModal__Content h3 {
-    font-size: 15px;
-  }
-  .ReactModal__Content .player-canvas .background-team-logo {
-    width: 130px;
-  }
-  .ReactModal__Content .player-pic {
-    width: 140px;
-  }
-  .ReactModal__Content h4 {
-    font-size: 13px;
-  }
-  .ReactModal__Content .social-media img {
-    width: 20px;
-  }
-  .ReactModal__Content h6 div span {
-    font-size: 12px;
-    width: 72px;
-  }
 }
 
 .place-in-world {
@@ -251,7 +196,8 @@
 }
 .preview-container > .little-info > .last-match > div > .team > img,
 .preview-container > .little-info > .next-match > div > .team > img {
-  width: 50px;
+  max-width: 50px;
+  max-height: 50px;
   margin-bottom: 5px;
 }
 

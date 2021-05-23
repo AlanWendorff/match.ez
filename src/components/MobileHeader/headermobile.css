@@ -6,13 +6,14 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-weight: bold;
+    font-family: "Gilroy-ExtraBold";
     font-size: 25px;
     background-color: rgba(0, 0, 0, 0.342);
 }
 
 .header-mobile > div > img {
-    width: 30px;
+    max-width: 30px;
+    max-height: 40px;
 }
 
 @media (min-width: 641px) {

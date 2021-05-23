@@ -195,7 +195,7 @@ const HistoricMatchCard = ({
                     ? "match-loser"
                     : "match-winner"
                 }
-              >
+              > 
                 <ProgressiveImage
                   src={
                     opponents[0].opponent.image_url === null

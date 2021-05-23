@@ -11,14 +11,12 @@
     justify-content: center;
     align-items: center;
     opacity: 0.3;
-    font-weight: bold;
 }
 .match-winner-prevgame{
-    height: 172px;
+    max-height: 172px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
 }
 
 .drop-container{
@@ -65,9 +63,9 @@
         margin-right: 15px;
         margin-top: 16px;
     }
-    
     .table-logo-size{
-        width: 40px;
+        max-width: 40px;
+        max-height: 40px;
         margin-right: 20px;
     }
     .size-prev-game{
@@ -95,9 +93,8 @@
         height: 200px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
-        
     }
 
     .game-win{
@@ -111,7 +108,8 @@
         margin-bottom: 0% !important;
     }
     .max-size-logo-prev-game{
-        max-width: 110px !important;
+        max-width: 110px;
+        max-height: 140px;
     }   
     .text-in-card{
         width: 100%;
@@ -177,7 +175,8 @@
         padding: 58px 0px 0px 0px !important;
     } 
     .table-logo-size{
-        width: 25px;
+        max-width: 25px;
+        max-height: 25px;
         margin-right: 20px;
     }
     .size-prev-game{

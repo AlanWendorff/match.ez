@@ -24,6 +24,8 @@
   overflow: hidden;
   justify-content: center;
 }
+
+
 .ReactModal__Content .player-canvas .background-team-logo {
   position: absolute;
   filter: blur(2px);
@@ -105,8 +107,12 @@
   .ReactModal__Content h3 {
     font-size: 25px;
   }
+  .ReactModal__Content .player-canvas {
+    height: 210px;
+  }
   .ReactModal__Content .player-canvas .background-team-logo {
-    width: 180px;
+    max-width: 180px;
+    max-height: 210px;
   }
   .ReactModal__Content .player-pic {
     width: 200px;
@@ -135,8 +141,12 @@
   .ReactModal__Content h3 {
     font-size: 15px;
   }
+  .ReactModal__Content .player-canvas {
+    height: 145px;
+  }
   .ReactModal__Content .player-canvas .background-team-logo {
-    width: 130px;
+    max-width: 130px;
+    max-height: 145px;
   }
   .ReactModal__Content .player-pic {
     width: 140px;

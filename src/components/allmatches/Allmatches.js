@@ -42,6 +42,9 @@ const AllMatches = () => {
     });
   }, []);
   const { width } = loaderprogress;
+
+
+  //
   return (
     <div className="allmatches background-color-4all">
       {allmatches.length !== 0 && crash !== true && width === "100%" && (

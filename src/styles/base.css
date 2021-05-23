@@ -1,3 +1,7 @@
+.card .card-image img {
+  width: auto !important;
+}
+
 @font-face {
   font-family: "Gilroy-Light";
   src: local("Gilroy-Light"), url(../fonts/Gilroy-Light.otf) format("opentype");
@@ -57,14 +61,14 @@
   zoom: 100%;
 }
 
-.background-color-4all{
+.background-color-4all {
   background-color: #011324;
 }
 
-.light-white{
+.light-white {
   background-color: rgb(240, 240, 240);
 }
-.background-color-transparent{
+.background-color-transparent {
   background-color: #ffffff00;
 }
 
@@ -271,7 +275,7 @@ i.right {
 .load-more > svg {
   margin: 0px 15px;
 }
-.head-font{
+.head-font {
   padding: 0px 10px;
 }
 
@@ -294,7 +298,7 @@ i.right {
   .load-more {
     font-size: 25px;
   }
-  .load-more:hover{
+  .load-more:hover {
     border: 1px solid white;
     border-radius: 100px;
     transition: all 0.5s ease-out;
