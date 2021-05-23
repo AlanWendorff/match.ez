@@ -12,21 +12,21 @@
       "short_name": "News",
       "description": "View the latest news of the CS:GO professional scene",
       "url": "/news",
-      "icons": [{ "src": "pwa/news-icon.png", "sizes": "500x500" }]
+      "icons": [{ "src": "pwa/news_icon.png", "sizes": "500x500" }]
     },
     {
       "name": "View Top #30 World Ranking",
       "short_name": "Top #30 World Ranking",
       "description": "View the top #30 teams ranked in the world",
       "url": "/ranking",
-      "icons": [{ "src": "pwa/ranking-icon.png", "sizes": "500x500" }]
+      "icons": [{ "src": "pwa/ranking_icon.png", "sizes": "500x500" }]
     },
     {
       "name": "View All the Matches",
       "short_name": "All Matches",
       "description": "View all the matches in the world",
       "url": "/all-matches",
-      "icons": [{ "src": "pwa/matches-icon.png", "sizes": "500x500" }]
+      "icons": [{ "src": "pwa/matches_icon.png", "sizes": "500x500" }]
     }
   ],
   "icons": [
