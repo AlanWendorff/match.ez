@@ -58,14 +58,10 @@ const News = () => {
                 {date}
                 <hr />
               </h2>
-              <p>{n.description}</p>
-              <span>
-                <hr />
-                <a rel="noopener noreferrer" target="_blank" href={n.link}>
-                  Full story on hltv.org
-                </a>
-                <hr />
-              </span>
+              <p>
+                {n.description} 
+                <a rel="noopener noreferrer" target="_blank" href={n.link}> Full story on hltv.org</a>
+              </p>
             </div>
           );
         })
