@@ -2,7 +2,7 @@
   "name": "match.ez",
   "short_name": "match.ez",
   "theme_color": "#000000",
-  "background_color": "#4274a6",
+  "background_color": "#878EAB",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

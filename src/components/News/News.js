@@ -62,7 +62,7 @@ const News = () => {
               <span>
                 <hr />
                 <a rel="noopener noreferrer" target="_blank" href={n.link}>
-                  You can read more on: HLTV.org Post
+                  Full story on hltv.org
                 </a>
                 <hr />
               </span>
