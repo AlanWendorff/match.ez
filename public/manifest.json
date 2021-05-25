@@ -31,32 +31,8 @@
   ],
   "icons": [
     {
-      "src": "pwa/icon_x48.png",
-      "sizes": "48x48",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon_x72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon_x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon_x128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon_x192.png",
-      "sizes": "192x192",
+      "src": "icon.png",
+      "sizes": "500x500",
       "type": "image/png",
       "purpose": "any"
     }
