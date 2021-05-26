@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import { TIME_LINE } from "../../const/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Warning from "../Warning/Warning";
-import shortid from "shortid";
 import Moment from "moment";
 import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
 import toBeDefined from "../../Images/toBeDefined.png";
@@ -70,7 +69,7 @@ const Timeline = () => {
                   : Moment(begin_at).format("DD - MMMM - HH:mm") + " hs";
               return (
                 <VerticalTimelineElement
-                  key={shortid.generate()}
+                  key={league_id + name}
                   className="vertical-timeline-element--education"
                   date={date}
                   style={{ backgroundColor: colors.DarkVibrant }}
@@ -120,7 +119,7 @@ const Timeline = () => {
                         <Link
                           to={TEAM.replace(":teamid", team.id)}
                           title={LOOKPROFILE + team.name}
-                          key={shortid.generate()}
+                          key={team.id}
                         >
                           <div className="icon-container">
                             <div className="team-icon">

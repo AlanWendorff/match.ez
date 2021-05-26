@@ -33,7 +33,7 @@ const TeamCollection = ({ collection }) => {
                 to={TEAM.replace(":teamid", team.id)}
                 title={`Look the team profile of: ${team.name}`}
               >
-                <div className="crosshair-expand">
+                <div>
                   <div>
                     <ProgressiveImage src={team.img} placeholder={csgoLogo}>
                       {(src) => (
@@ -56,7 +56,7 @@ const TeamCollection = ({ collection }) => {
                 to={TEAM.replace(":teamid", team.id)}
                 title={`Look the team profile of: ${team.name}`}
               >
-                <div className="crosshair-expand">
+                <div>
                   <div>
                     <ProgressiveImage src={team.img} placeholder={csgoLogo}>
                       {(src) => (

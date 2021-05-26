@@ -1,12 +1,13 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const LocationContext = createContext();
 
 const LocationProvider = (props) => {
 
   const [location, setLocation] = useState([]);
+  const [isallowed, setIsAllowed] = useState("prompt");
 
-  window.onload = () => {
+  const getLocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       if (
         (position.coords.longitude < 0 && position.coords.latitude < 0) ||
@@ -19,8 +20,16 @@ const LocationProvider = (props) => {
     });
   };
 
+  useEffect(() => {
+    navigator.permissions.query({ name: "geolocation" }).then((res) => {
+      console.log(res.state);
+      res.state === "granted" && setIsAllowed("granted");
+      res.state === "denied" && setIsAllowed("denied");
+    });
+  }, [getLocation]);
+
   return (
-    <LocationContext.Provider value={{location}}>
+    <LocationContext.Provider value={{isallowed, location, getLocation}}>
       {props.children}
     </LocationContext.Provider>
   );

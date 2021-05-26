@@ -28,8 +28,7 @@
     "react-scripts": "^4.0.2",
     "react-share": "^4.4.0",
     "react-twitch-embed-video": "^3.0.0",
-    "react-vertical-timeline-component": "^3.3.3",
-    "shortid": "^2.2.15"
+    "react-vertical-timeline-component": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",

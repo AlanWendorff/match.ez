@@ -13,46 +13,6 @@
     url(../fonts/Gilroy-ExtraBold.otf) format("opentype");
 }
 
-@font-face {
-  font-family: "Oswald-ExtraLight";
-  src: local("Oswald-ExtraLight"),
-    url(../fonts/Oswald-ExtraLight.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: "Oswald-Light";
-  src: local("Oswald-Light"), url(../fonts/Oswald-Light.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: "Oswald-Regular";
-  src: local("Oswald-Regular"),
-    url(../fonts/Oswald-Regular.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: "Oswald-Medium";
-  src: local("Oswald-Medium"),
-    url(../fonts/Oswald-Medium.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: "Oswald-SemiBold";
-  src: local("Oswald-SemiBold"),
-    url(../fonts/Oswald-SemiBold.ttf) format("TrueType");
-}
-.crosshair-expand {
-  cursor: url(../cursors/crosshair-expand.cur), auto !important;
-}
-.crosshair-green {
-  cursor: url(../cursors/crosshair-green.cur), auto !important;
-}
-.crosshair-large {
-  cursor: url(../cursors/crosshair-large.cur), auto !important;
-}
-.crosshair-thin {
-  cursor: url(../cursors/crosshair-thin.cur), auto !important;
-}
 .container-html {
   height: 100% !important;
   width: 100% !important;

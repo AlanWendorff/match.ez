@@ -56,24 +56,21 @@
 }
 
 .new > h1 {
-  letter-spacing: 0.5px;
   color: white;
   line-height: 35px;
   margin-top: 0px;
-  font-family: "Oswald-SemiBold";
+  font-family: "Gilroy-ExtraBold";
   text-align: center;
-  letter-spacing: 1px;
 }
 .new > h2 {
   width: 100%;
   margin: 0px;
-  font-family: "Oswald-Medium";
+  font-family: "Gilroy-ExtraBold";
   /* color: rgba(0, 0, 0, 0.63); */
   color: #ffffffa9;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  letter-spacing: 1px;
 }
 .new > h2 > hr {
   height: 1px;
@@ -83,9 +80,7 @@
   margin: 15px 0px;
 }
 .new > p {
-  letter-spacing: 0.5px;
-  font-family: "Oswald-light";
+  font-family: "Gilroy-Light";
   text-align: center;
   color: white;
-  letter-spacing: .7px;
 }

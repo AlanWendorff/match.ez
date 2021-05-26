@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { LocationContext } from "../Context/LocationContext";
 import { Link } from "react-router-dom";
 import {
   faCheck,
@@ -11,12 +12,14 @@ import {
   faVolumeMute,
   faVolumeUp,
   faListOl,
+  faCompass,
 } from "@fortawesome/free-solid-svg-icons";
 import { NEWS, RANKING } from "../../routes/routes";
 import "./more.css";
 
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   const year = new Date().getFullYear();
+  const { getLocation, isallowed } = useContext(LocationContext);
   const [hidecomponent, setHideComponent] = useState(false);
   const [sound, setSound] = useState(true);
   const [anim, setAnim] = useState(true);
@@ -58,11 +61,13 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   };
 
   const turnAroundIcon = () => {
-    hidecomponent ? setTurnAround("rotate-icon-right-side") : setTurnAround("rotate-icon-left-side");
+    hidecomponent
+      ? setTurnAround("rotate-icon-right-side")
+      : setTurnAround("rotate-icon-left-side");
     setTimeout(() => {
       setTurnAround("");
     }, 300);
-  }
+  };
 
   return (
     <div
@@ -113,7 +118,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
             onClick={() => {
               turnAroundIcon();
               hidecomponent ? setHideComponent(false) : setHideComponent(true);
-
             }}
           >
             <div>
@@ -137,6 +141,29 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                     {!isinstalled
                       ? "Install Progresive Web App"
                       : "App installed successfully"}
+                  </span>
+                </div>
+              </div>
+              <hr className="margin-left-100px" />
+            </>
+          )}
+
+          {hidecomponent && (
+            <>
+              <div
+                className="margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                onClick={() => {
+                  getLocation();
+                }}
+              >
+                <div>
+                  <FontAwesomeIcon icon={faCompass} />
+                  <span>
+                    {isallowed === "prompt"
+                      ? "Activate location"
+                      : isallowed === "granted"
+                      ? "Location allowed"
+                      : "Location was denied"}
                   </span>
                 </div>
               </div>
@@ -181,9 +208,11 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
           )}
         </div>
       </div>
-      <span className="animate__animated animate__fadeInUp animate__faster">
-        All Rights Reserved. {year}
-      </span>
+      {hidecomponent && (
+        <span className="animate__animated animate__fadeInUp animate__faster">
+          All Rights Reserved. {year}
+        </span>
+      )}
     </div>
   );
 };

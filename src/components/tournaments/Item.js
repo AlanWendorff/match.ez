@@ -22,7 +22,7 @@ const Item = ({ tournament }) => {
       title={`${LOOKMATCHES} ${tournament.name}`}
       key={tournament.id}
     >
-      <div className="tournament-flex crosshair-expand">
+      <div className="tournament-flex">
         <div>
           <ProgressiveImage src={img} placeholder={csgoLogo}>
             {(src) => (

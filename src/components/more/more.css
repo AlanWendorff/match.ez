@@ -1,10 +1,10 @@
 .options > span {
   bottom: 0;
   position: absolute;
-  font-family: "Oswald-Light";
+  font-family: "Gilroy-Light";
   font-size: 15px;
   color: #ffffff;
-  margin: 0px 0px 20px 0px;
+  margin-bottom: 10px;
   text-align: center;
   z-index: 100;
 }
@@ -23,7 +23,7 @@
 }
 .options > .scroll > .column-align > .option > a > span,
 .options > .scroll > .column-align > .option > div > span {
-  font-family: "Oswald-Light";
+  font-family: "Gilroy-Light";
   font-size: 20px;
   color: #ffffff;
   margin-left: 20px;
