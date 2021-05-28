@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   faCalendarAlt,
   faTrophy,
@@ -13,18 +13,12 @@ import {
   TIMELINE,
   ALLMATCHES,
 } from "../../routes/routes";
-import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
-
-import appLogo from "../../Images/defuse.png";
-import csgoLogo from "../../Images/csgoLogo.png";
 import "./navigationbar.css";
 
 const NavigationBar = () => {
   const { pathname } = useLocation();
-  let { logo } = useContext(PaletteContext);
-  if (logo === "") logo = csgoLogo;
 
   return (
     <div

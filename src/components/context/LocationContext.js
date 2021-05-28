@@ -22,7 +22,6 @@ const LocationProvider = (props) => {
 
   useEffect(() => {
     navigator.permissions.query({ name: "geolocation" }).then((res) => {
-      console.log(res.state);
       res.state === "granted" && setIsAllowed("granted");
       res.state === "denied" && setIsAllowed("denied");
     });

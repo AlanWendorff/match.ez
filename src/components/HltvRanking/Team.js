@@ -4,7 +4,8 @@ import { TEAM, RANKING } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
 import { PLAYER_INFO } from "../../const/ApiEndpoints";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogoBlack from "../../Images/csgoLogoDefaultBlack.png";
+import loader from '../../Images/loader.gif';
+import nopic from '../../Images/nopic.png';
 import axios from "axios";
 import "./hltvranking.css";
 const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
@@ -71,8 +72,8 @@ const Team = ({
           <span className="color-text-white">#{position}</span>
           <div>
             <ProgressiveImage
-              src={img ? img : csgoLogoBlack}
-              placeholder={csgoLogoBlack}
+              src={img !== undefined ? img : nopic}
+              placeholder={loader}
             >
               {(src) => <img src={src} alt={name} />}
             </ProgressiveImage>

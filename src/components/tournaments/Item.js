@@ -1,6 +1,7 @@
 import React from "react";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogo from "../../Images/csgoLogoDefault.png";
+import loader from '../../Images/loader.gif';
+import nopic from '../../Images/nopic.png';
 import { LOOKMATCHES } from "../../titlestag/titlestag";
 import { TOURNAMENT } from "../../routes/routes";
 import { Link } from "react-router-dom";
@@ -9,7 +10,7 @@ import "./tournaments.css";
 const Item = ({ tournament }) => {
   let img;
   let name;
-  img = tournament.image_url;
+  img = tournament.img;
   name = tournament.name;
   return (
     <Link
@@ -24,7 +25,7 @@ const Item = ({ tournament }) => {
     >
       <div className="tournament-flex">
         <div>
-          <ProgressiveImage src={img} placeholder={csgoLogo}>
+          <ProgressiveImage src={img === undefined ? nopic : img } placeholder={loader}>
             {(src) => (
               <img className="tournament-logo-size" src={src} alt={name} />
             )}

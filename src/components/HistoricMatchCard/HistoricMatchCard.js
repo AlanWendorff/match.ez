@@ -15,7 +15,8 @@ import ProgressiveImage from "react-progressive-image";
 import PlayerScore from "../PlayerScore/PlayerScore";
 import Share from "../Share/Share";
 import Moment from "moment";
-import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
+import nopic from "../../Images/nopic.png";
+import loader from "../../Images/loader.gif";
 import "../CompetitionCard/tarjetaMatchesCompletos.css";
 import "./matchprevio.css";
 
@@ -40,11 +41,35 @@ const HistoricMatchCard = ({
   } = match;
   const { palette } = useContext(PaletteContext);
   const colorLeague = league.colors;
-  const colorTeamA = opponents[0] !== false? opponents[0].opponent.colors : {
-    DarkVibrant: "#2d6da3",
+  let colorTeamA;
+  let colorTeamB;
+  
+  if (opponents[0] !== false) {
+    if (opponents[0].opponent.colors !== {}) {
+      colorTeamA = opponents[0].opponent.colors;
+    } else {
+      colorTeamA = {
+        DarkVibrant: "#2d6da3",
+      };
+    }
+  } else {
+    colorTeamA = {
+      DarkVibrant: "#2d6da3",
+    };
   }
-  const colorTeamB = opponents[1] !== false? opponents[1].opponent.colors : {
-    DarkVibrant: "#2d6da3",
+
+  if (opponents[1] !== false) {
+    if (opponents[1].opponent.colors !== {}) {
+      colorTeamB = opponents[1].opponent.colors;
+    } else {
+      colorTeamB = {
+        DarkVibrant: "#2d6da3",
+      };
+    }
+  } else {
+    colorTeamB = {
+      DarkVibrant: "#2d6da3",
+    };
   }
 
   const Facebook = `${opponents[0].opponent.name}: ${results[0].score} 
@@ -107,10 +132,10 @@ const HistoricMatchCard = ({
                   <ProgressiveImage
                     src={
                       opponents[0].opponent.image_url === null
-                        ? csgoLogoDefaultBlack
+                        ? nopic
                         : opponents[0].opponent.image_url
                     }
-                    placeholder={csgoLogoDefaultBlack}
+                    placeholder={loader}
                   >
                     {(src) => (
                       <img
@@ -167,10 +192,10 @@ const HistoricMatchCard = ({
                   <ProgressiveImage
                     src={
                       opponents[1].opponent.image_url === null
-                        ? csgoLogoDefaultBlack
+                        ? nopic
                         : opponents[1].opponent.image_url
                     }
-                    placeholder={csgoLogoDefaultBlack}
+                    placeholder={loader}
                   >
                     {(src) => (
                       <img
@@ -199,10 +224,10 @@ const HistoricMatchCard = ({
                 <ProgressiveImage
                   src={
                     opponents[0].opponent.image_url === null
-                      ? csgoLogoDefaultBlack
+                      ? nopic
                       : opponents[0].opponent.image_url
                   }
-                  placeholder={csgoLogoDefaultBlack}
+                  placeholder={loader}
                 >
                   {(src) => (
                     <img
@@ -250,10 +275,10 @@ const HistoricMatchCard = ({
                 <ProgressiveImage
                   src={
                     opponents[1].opponent.image_url === null
-                      ? csgoLogoDefaultBlack
+                      ? nopic
                       : opponents[1].opponent.image_url
                   }
-                  placeholder={csgoLogoDefaultBlack}
+                  placeholder={loader}
                 >
                   {(src) => (
                     <img
@@ -315,7 +340,7 @@ const HistoricMatchCard = ({
               <PlayerScore
                 playerscore={playerscore}
                 opponents={opponents}
-                csgoLogoDefaultBlack={csgoLogoDefaultBlack}
+                nopic={nopic}
                 loading={loading}
                 team0={opponents[0].opponent}
                 team1={opponents[1].opponent}

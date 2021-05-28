@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import { TEAM } from "../../routes/routes";
 import ProgressiveImage from "react-progressive-image";
 import Moment from "moment";
-import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
+import nopic from "../../Images/nopic.png";
+import loader from "../../Images/loader.gif";
 import toBeDefined from "../../Images/toBeDefined.png";
 import "./tarjetaMatchesCompletos.css";
 
@@ -27,6 +28,8 @@ const CompetitionCard = ({ match, palette }) => {
 
   const dateUser = Moment(Date.now()).format("MM-DD-YYYY");
   const dateMatch = Moment(begin_at).format("MM-DD-YYYY");
+  let colorTeamA;
+  let colorTeamB;
   let aTeamId;
   let aTeamName = "";
   let bTeamName = "";
@@ -36,21 +39,42 @@ const CompetitionCard = ({ match, palette }) => {
   const TeamLogoA =
     opponents[0] !== false
       ? opponents[0].opponent.image_url === null
-        ? csgoLogoDefaultBlack
+        ? nopic
         : opponents[0].opponent.image_url
       : toBeDefined;
   const TeamLogoB =
     opponents[1] !== false
       ? opponents[1].opponent.image_url === null
-        ? csgoLogoDefaultBlack
+        ? nopic
         : opponents[1].opponent.image_url
       : toBeDefined;
 
-  const colorTeamA = opponents[0] !== false? opponents[0].opponent.colors : {
-    DarkVibrant: "#2d6da3",
+  if (opponents[0] !== false) {
+    if (opponents[0].opponent.colors !== {}) {
+      colorTeamA = opponents[0].opponent.colors;
+    } else {
+      colorTeamA = {
+        DarkVibrant: "#2d6da3",
+      };
+    }
+  } else {
+    colorTeamA = {
+      DarkVibrant: "#2d6da3",
+    };
   }
-  const colorTeamB = opponents[1] !== false? opponents[1].opponent.colors : {
-    DarkVibrant: "#2d6da3",
+
+  if (opponents[1] !== false) {
+    if (opponents[1].opponent.colors !== {}) {
+      colorTeamB = opponents[1].opponent.colors;
+    } else {
+      colorTeamB = {
+        DarkVibrant: "#2d6da3",
+      };
+    }
+  } else {
+    colorTeamB = {
+      DarkVibrant: "#2d6da3",
+    };
   }
 
   if (opponents[0] !== false) {
@@ -87,7 +111,9 @@ const CompetitionCard = ({ match, palette }) => {
                   style={{ color: palette.Vibrant }}
                 >
                   {" "}
-                  {league.name.toUpperCase() + " " + serie.full_name.toUpperCase()}{" "}
+                  {league.name.toUpperCase() +
+                    " " +
+                    serie.full_name.toUpperCase()}{" "}
                 </span>
               </div>
 
@@ -96,7 +122,7 @@ const CompetitionCard = ({ match, palette }) => {
                   <div className="team-canvas">
                     <ProgressiveImage
                       src={TeamLogoA}
-                      placeholder={csgoLogoDefaultBlack}
+                      placeholder={loader}
                     >
                       {(src) => (
                         <img
@@ -125,7 +151,7 @@ const CompetitionCard = ({ match, palette }) => {
                   <div className="team-canvas">
                     <ProgressiveImage
                       src={TeamLogoB}
-                      placeholder={csgoLogoDefaultBlack}
+                      placeholder={loader}
                     >
                       {(src) => (
                         <img
@@ -225,11 +251,13 @@ const CompetitionCard = ({ match, palette }) => {
               style={{ color: palette.Vibrant }}
             >
               {" "}
-              {league.name.toUpperCase() + " " + serie.full_name.toUpperCase()}{" "}
+              {league.name.toUpperCase() +
+                " " +
+                serie.full_name.toUpperCase()}{" "}
             </span>
           </p>
           <div className="card-image container-info cursor-default">
-          <div className="hoy-esquina-container">
+            <div className="hoy-esquina-container">
               <p
                 className={`labels-esquinas text-align-start ${
                   stage.toLowerCase().includes("final") && "font-gilroy-bold"
@@ -258,7 +286,7 @@ const CompetitionCard = ({ match, palette }) => {
                 <div className="team-canvas">
                   <ProgressiveImage
                     src={TeamLogoA}
-                    placeholder={csgoLogoDefaultBlack}
+                    placeholder={loader}
                   >
                     {(src) => (
                       <img
@@ -290,7 +318,7 @@ const CompetitionCard = ({ match, palette }) => {
                 <div className="team-canvas">
                   <ProgressiveImage
                     src={TeamLogoB}
-                    placeholder={csgoLogoDefaultBlack}
+                    placeholder={loader}
                   >
                     {(src) => (
                       <img

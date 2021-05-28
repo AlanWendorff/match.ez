@@ -8,7 +8,7 @@ import { TEAM_INFO } from "../../const/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
 import LoadScreen from "../Loader/LoadScreen";
-import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
+import nopic from "../../Images/nopic.png";
 import axios from "axios";
 import "../../styles/base.css";
 
@@ -130,7 +130,7 @@ const TeamProfile = () => {
           guardarPrevMatch(historicMatches);
           setPalette(colors);
           if (imageTeam === null) {
-            setImageTeam(csgoLogoDefault);
+            setImageTeam(nopic);
             setLogo("");
           } else {
             setLogo(setLogo);
@@ -147,7 +147,6 @@ const TeamProfile = () => {
         guardarStateCrash(true);
         guardarLoaderProgress({ width: "100%" });
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [teamid]);
 
   const { width } = loaderprogress;

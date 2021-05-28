@@ -109,7 +109,7 @@ const Tournaments = () => {
             className="load-more"
           >
             <FontAwesomeIcon icon={faCaretDown} />
-            View all Tournaments
+            View all tournaments
             <FontAwesomeIcon icon={faCaretDown} />
           </div>
         </>

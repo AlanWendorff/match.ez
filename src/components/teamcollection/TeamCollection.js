@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { LocationContext } from "../Context/LocationContext";
 import { examplesAmerica, examplesnotAmerica, examplesnull } from "./Teams";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogo from "../../Images/csgoLogoDefault.png";
+import loader from '../../Images/loader.gif';
 import { TEAM } from "../../routes/routes";
 import "./teamcollection.css";
 
@@ -35,7 +35,7 @@ const TeamCollection = ({ collection }) => {
               >
                 <div>
                   <div>
-                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                    <ProgressiveImage src={team.img} placeholder={loader}>
                       {(src) => (
                         <img
                           className=""
@@ -58,7 +58,7 @@ const TeamCollection = ({ collection }) => {
               >
                 <div>
                   <div>
-                    <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                    <ProgressiveImage src={team.img} placeholder={loader}>
                       {(src) => (
                         <img
                           className=""

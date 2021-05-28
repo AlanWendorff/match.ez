@@ -15,7 +15,7 @@ import { TIME_LINE } from "../../const/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Warning from "../Warning/Warning";
 import Moment from "moment";
-import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
+import nopic from '../../Images/nopic.png';
 import toBeDefined from "../../Images/toBeDefined.png";
 import "react-vertical-timeline-component/style.min.css";
 import axios from "axios";
@@ -128,7 +128,7 @@ const Timeline = () => {
                                 alt="team"
                                 src={
                                   team.image_url === null
-                                    ? csgoLogoDefaultBlack
+                                    ? nopic
                                     : team.image_url
                                 }
                               />

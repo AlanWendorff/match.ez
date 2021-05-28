@@ -3,7 +3,7 @@ import Team from "./Team";
 import SaveInLS from "./SaveInLS";
 import axios from "axios";
 import { DATABASE_SEARCH_TEAM } from "../../const/ApiEndpoints";
-import {DebounceInput} from 'react-debounce-input';
+import { DebounceInput } from 'react-debounce-input';
 import "./search.css";
 
 const SearchTeam = ({ setCollection, collection }) => {

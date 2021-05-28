@@ -5,7 +5,7 @@ import { TeamRankingContext } from "../Context/TeamRankingContext";
 import { PLAYER_INFO } from "../../const/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
-import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
+import nopic from '../../Images/nopic.png';
 import toBeDefined from "../../Images/toBeDefined.png";
 import unknown from "../../Images/unknown.png";
 import axios from "axios";
@@ -81,7 +81,7 @@ const TeamPreview = ({
                   <img
                     src={
                       !LASTMATCH.opponents[0].opponent.image_url
-                        ? csgoLogoDefaultBlack
+                        ? nopic
                         : LASTMATCH.opponents[0].opponent.image_url
                     }
                   />
@@ -124,7 +124,7 @@ const TeamPreview = ({
                   <img
                     src={
                       !LASTMATCH.opponents[1].opponent.image_url
-                        ? csgoLogoDefaultBlack
+                        ? nopic
                         : LASTMATCH.opponents[1].opponent.image_url
                     }
                   />
@@ -165,7 +165,7 @@ const TeamPreview = ({
                     src={
                       NEXTMATCH.opponents[0] !== false
                         ? !NEXTMATCH.opponents[0].opponent.image_url
-                          ? csgoLogoDefaultBlack
+                          ? nopic
                           : NEXTMATCH.opponents[0].opponent.image_url
                         : toBeDefined
                     }
@@ -182,7 +182,7 @@ const TeamPreview = ({
                     src={
                       NEXTMATCH.opponents[1] !== false
                         ? !NEXTMATCH.opponents[1].opponent.image_url
-                          ? csgoLogoDefaultBlack
+                          ? nopic
                           : NEXTMATCH.opponents[1].opponent.image_url
                         : toBeDefined
                     }

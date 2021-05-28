@@ -4,12 +4,12 @@ import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { TEAM } from '../../routes/routes';
 import ProgressiveImage from 'react-progressive-image';
-import csgoLogo from '../../Images/csgoLogoDefaultBlack.png';
+import nopic from '../../Images/nopic.png';
+import loader from '../../Images/loader.gif';
 
 const Team = ({team, setCollection, collection, setFirstPin}) => {
     
     const [teamsaved, setTeamSaved] = useState(false);
-
     useEffect(() => {
         const exist = collection.find(element => element.id === team.id);
         exist === undefined? setTeamSaved(false) : setTeamSaved(true);
@@ -18,7 +18,7 @@ const Team = ({team, setCollection, collection, setFirstPin}) => {
     return ( 
         <div className="team-container">
             <Link className="searched-team" to={TEAM.replace(':teamid', team.id)} title={`Look the team profile of: ${team.name}`} key={team.id}>
-                <ProgressiveImage src={team.img} placeholder={csgoLogo}>
+                <ProgressiveImage src={team.img === undefined ? nopic : team.img} placeholder={loader}>
                     {src => <img className="searched-team-img" src={src} alt={team.name}  />}
                 </ProgressiveImage>
                 <span className="font-gilroy color-text-black">{team.name}</span>
