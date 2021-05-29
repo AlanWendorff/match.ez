@@ -352,7 +352,7 @@ const HistoricMatchCard = ({
                 >
                   <FontAwesomeIcon icon={faTrophy} />
                 </span>
-                <span className="align-end">
+                <span className="text-align-end">
                   {league.name + " " + serie.full_name}
                 </span>
               </p>
@@ -381,7 +381,7 @@ const HistoricMatchCard = ({
                 >
                   <FontAwesomeIcon icon={faTrophy} />
                 </span>
-                <span className="align-end">
+                <span className="text-align-end">
                   {league.name + " " + serie.full_name}
                 </span>
               </div>

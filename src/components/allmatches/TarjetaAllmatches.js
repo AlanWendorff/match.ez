@@ -203,7 +203,7 @@ const TarjetaAllmatches = ({ match }) => {
                   <span className="data">{stage}</span>
                 </span>
 
-                <span className="font-size align-end">
+                <span className="font-size text-align-end">
                   <span style={{ color: colorLeague.DarkVibrant }}>
                     <FontAwesomeIcon icon={faClock} />{" "}
                   </span>
@@ -263,7 +263,7 @@ const TarjetaAllmatches = ({ match }) => {
               {dateUser === dateMatch ? (
                 <p className="hoy-esquina">{statusMatch}</p>
               ) : (
-                <p className="labels-esquinas align-end">
+                <p className="labels-esquinas text-align-end">
                   {Moment(begin_at).format("Do")}{" "}
                   {Moment(begin_at).format("MMMM - H:mm")} hs
                 </p>

@@ -207,7 +207,7 @@ const CompetitionCard = ({ match, palette }) => {
                   <span className="data">{stage}</span>
                 </span>
 
-                <span className="font-size align-end">
+                <span className="font-size text-align-end">
                   <span style={{ color: palette.DarkVibrant }}>
                     <FontAwesomeIcon icon={faClock} />{" "}
                   </span>
@@ -268,7 +268,7 @@ const CompetitionCard = ({ match, palette }) => {
               {dateUser === dateMatch ? (
                 <p className="hoy-esquina">{statusMatch}</p>
               ) : (
-                <p className="labels-esquinas align-end">
+                <p className="labels-esquinas text-align-end">
                   {Moment(begin_at).format("Do")}{" "}
                   {Moment(begin_at).format("MMMM - H:mm")} hs
                 </p>

@@ -183,7 +183,7 @@ const OneTeamCard = ({ match, teamid }) => {
                   <span className="data">{stage}</span>
                 </span>
 
-                <span className="font-size align-end">
+                <span className="font-size text-align-end">
                   <span style={{ color: palette.DarkVibrant }}>
                     <FontAwesomeIcon icon={faClock} />{" "}
                   </span>

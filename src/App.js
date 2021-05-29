@@ -6,21 +6,21 @@ import LocationProvider from "./components/Context/LocationContext";
 import LoaderProvider from "./components/Context/LoaderContext";
 
 const App = () => {
-  if (navigator.onLine !== true) {
-    alert("No Internet Connection");
-  } else {
-    return (
-      <PaletteProvider>
-        <LoaderProvider>
-          <TeamRankingProvider>
-            <LocationProvider>
-              <Layout onContextMenu={(e) => window.innerWidth > 1024 ? null : e.preventDefault()}  />
-            </LocationProvider>
-          </TeamRankingProvider>
-        </LoaderProvider>
-      </PaletteProvider>
-    );
-  }
+  return (
+    <PaletteProvider>
+      <LoaderProvider>
+        <TeamRankingProvider>
+          <LocationProvider>
+            <Layout
+              onContextMenu={(e) =>
+                window.innerWidth > 1024 ? null : e.preventDefault()
+              }
+            />
+          </LocationProvider>
+        </TeamRankingProvider>
+      </LoaderProvider>
+    </PaletteProvider>
+  );
 };
 
 export default App;

@@ -1,5 +1,6 @@
 .allmatches {
   overflow-y: scroll;
+  overflow-x: hidden;
   width: 100%;
   height: calc(100vh - 50px);
   /* background-image: url("../../Images/generic_team_pattern.png");

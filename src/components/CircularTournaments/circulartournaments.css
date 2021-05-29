@@ -13,16 +13,13 @@ div:hover > .circular-item > img {
 
 @media (min-width: 641px) {
   .circular-container {
-    width: 630px;
-    margin: 15px;    
+    margin: 15px; 
+    width: 90%;
   }
   .circular-container > div {
     display: flex;
-    width: 630px;
-    display: flex;
-    align-self: center;
-    flex-wrap: wrap;
-    justify-content: center;
+    overflow-x: scroll;
+    height: 150px;
   }
   .circular-item {
     height: 70px;
@@ -59,7 +56,7 @@ div:hover > .circular-item > img {
 @media screen and (max-width: 640px) {
   .circular-container {
     margin: 0px 15px;
-    width: 330px;
+    width: 100%;
   }
   .circular-container > div {
     display: flex;
