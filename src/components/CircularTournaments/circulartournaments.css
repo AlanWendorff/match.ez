@@ -13,13 +13,13 @@ div:hover > .circular-item > img {
 
 @media (min-width: 641px) {
   .circular-container {
-    margin: 15px; 
-    width: 90%;
+    margin: 15px 0px;
+    width: 100%;
   }
   .circular-container > div {
     display: flex;
-    overflow-x: scroll;
-    height: 150px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .circular-item {
     height: 70px;
@@ -33,7 +33,8 @@ div:hover > .circular-item > img {
     overflow: hidden;
   }
   .circular-item > img {
-    width: 40px;
+    max-width: 40px;
+    max-height: 50px;
   }
   .circular-container > div > a {
     display: flex;
@@ -75,7 +76,8 @@ div:hover > .circular-item > img {
     overflow: hidden;
   }
   .circular-item > img {
-    width: 30px;
+    max-width: 40px;
+    max-height: 40px;
   }
 
   .circular-container > div > a {
@@ -94,6 +96,7 @@ div:hover > .circular-item > img {
     justify-content: center;
     color: black;
     letter-spacing: 0.5px;
-    font-family: "Gilroy-Extrabold";
+    /* font-family: "Gilroy-Extrabold"; */
+    font-family: "Gilroy-Light";
   }
 }

@@ -23,7 +23,6 @@ const LeagueGames = () => {
   const [crash, guardarStateCrash] = useState(false);
   const [matchesHoy, guardarMatchesHoy] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
-  const [playerscore, setPlayerScore] = useState([]);
   const [leaderboard, guardarLeaderboard] = useState([]);
   const [image_url, setImageLeague] = useState("");
   const [show, setShow] = useState("vs");
@@ -136,8 +135,6 @@ const LeagueGames = () => {
           <HistoricMatchMapping
             prevMatch={prevMatch}
             setShow={setShow}
-            setPlayerScore={setPlayerScore}
-            playerscore={playerscore}
           />
         )}
         {/* crash !== true && <Logo color={palette} img={image_url} /> */}

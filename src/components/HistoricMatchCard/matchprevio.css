@@ -1,276 +1,275 @@
 /* Tarjeta Prev Match */
-.click-more-info{
-    padding: 2% 0% 2% 0% !important;
-    display: flex;
-    justify-content: center !important;
-} 
-
-.match-loser-prevgame{
-    height: 172px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.3;
-}
-.match-winner-prevgame{
-    max-height: 172px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.click-more-info {
+  padding: 2% 0% 2% 0% !important;
+  display: flex;
+  justify-content: center !important;
 }
 
-.drop-container{
-    border-radius: 3px;
+.match-loser-prevgame {
+  height: 172px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+}
+.match-winner-prevgame {
+  max-height: 172px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drop-container {
+  border-radius: 3px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 70px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.size-prev-game > .sort-content {
+  margin: 0px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+.player-stats-btn {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@media (min-width: 641px) {
+  .player-stats-btn {
+    padding: 0 250px;
+  }
+  .margin-right-bottom {
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+  .card-title {
+    top: 0;
+    right: 0;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
-    width: 70px;
-    height: 35px;
+    margin-right: 15px;
+    margin-top: 16px;
+  }
+  .table-logo-size {
+    max-width: 40px;
+    max-height: 40px;
+    margin-right: 20px;
+  }
+  .size-prev-game {
+    width: 630px !important;
+  }
+  .prev-game-content {
+    padding: 0% 0% 0% 0%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.not-first-index-container{
+    flex-wrap: wrap;
+  }
+  .prev-game-mobile {
+    display: none;
+  }
+  .prev-game-desktop {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  .team-column {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0px;
-}
+  }
 
-.size-prev-game > .sort-content{
-    margin: 0px;
-    font-size: 30px;
-    cursor: pointer;
+  .game-win {
+    align-self: center;
+    justify-self: center;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    min-width: 90px;
+    max-width: 150px;
+    margin-bottom: 0% !important;
+  }
+  .max-size-logo-prev-game {
+    max-width: 110px;
+    max-height: 140px;
+  }
+  .text-in-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .name-of-teams {
+    margin: 2% 0 !important;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .prev-game-header-container {
+    padding: 0;
+    width: 100%;
+  }
+  .prev-game-header {
+    width: 100%;
+    margin: 2% 0 !important;
+    font-size: 15px;
     text-align: center;
+  }
+  .bestof-prev-game {
+    margin: 2% 0 !important;
+    text-align: center;
+  }
+  .point-A {
+    padding-right: 5%;
+  }
+  .point-B {
+    padding-left: 5%;
+  }
+  .info-not-first-index {
+    padding: 10px 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .prevgame-share {
+    margin-left: 95px;
+    margin-bottom: 15px;
+  }
 }
 
+@media screen and (max-width: 640px) {
+  .margin-right-bottom {
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+  .card-title {
+    top: 0;
+    right: 0;
+    position: absolute;
+    margin-right: 15px;
+    margin-top: 16px;
+  }
+  .prevgame-share {
+    margin-left: 15px;
+    margin-bottom: 15px;
+  }
+  .card-reveal {
+    padding: 58px 0px 0px 0px !important;
+  }
+  .table-logo-size {
+    max-width: 25px;
+    max-height: 25px;
+    margin-right: 20px;
+  }
+  .size-prev-game {
+    width: 330px !important;
+  }
+  .prev-game-header {
+    width: 100%;
+    margin: 2% 0 !important;
+    font-size: 15px;
+    text-align: center;
+  }
+  .prev-game-content {
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+  }
+  .prev-game-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  .row-team-name-gamewin {
+    padding: 0px 20px;
+    height: 57px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-@media (min-width: 641px) {  
-    .margin-right-bottom{
-        margin-bottom: 0px;
-        margin-right: 0px;
-    }
-    .card-title{
-        top: 0;
-        right: 0;
-        position: absolute;
-        margin-right: 15px;
-        margin-top: 16px;
-    }
-    .table-logo-size{
-        max-width: 40px;
-        max-height: 40px;
-        margin-right: 20px;
-    }
-    .size-prev-game{
-        width: 630px !important;
-    }
-    .prev-game-content{
-        padding: 0% 0% 0% 0%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    .prev-game-mobile{
-        display: none;
-    }
-    .prev-game-desktop{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-bottom: 20px;
-    }
-    .team-column{
-        height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
+  .row-team-name-gamewin > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    height: 30px;
+    padding: 0px 15px;
+  }
 
-    .game-win{
-        align-self: center;
-        justify-self: center;
-        font-size: 50px;
-        display: flex;
-        justify-content: center;
-        min-width: 90px;
-        max-width: 150px;
-        margin-bottom: 0% !important;
-    }
-    .max-size-logo-prev-game{
-        max-width: 110px;
-        max-height: 140px;
-    }   
-    .text-in-card{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-    .name-of-teams{
-        margin: 2% 0 !important;
-        font-size: 15px;
-        font-weight: bold;
-    }
-    .prev-game-header-container{
-        padding: 0;
-        width: 100%;
-    }
-    .prev-game-header{
-        width: 100%;
-        margin: 2% 0 !important;
-        font-size: 15px;
-        text-align: center;
-    }
-    .bestof-prev-game{
-        margin: 2% 0 !important;
-        text-align: center;
-    }
-    .point-A{
-        padding-right: 5%;
-    }
-    .point-B{
-        padding-left: 5%;
-    }
-    .info-not-first-index{
-        padding: 10px 100px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .prevgame-share{
-        margin-left: 95px;
-        margin-bottom: 15px;
-    }
-}
-  
-@media screen and (max-width: 640px) {     
-    .margin-right-bottom{
-        margin-bottom: 0px;
-        margin-right: 0px;
-    }
-    .card-title{
-        top: 0;
-        right: 0;
-        position: absolute;
-        margin-right: 15px;
-        margin-top: 16px;
-    }
-    .prevgame-share{
-        margin-left: 15px;
-        margin-bottom: 15px;
-    }
-    .card-reveal{
-        padding: 58px 0px 0px 0px !important;
-    } 
-    .table-logo-size{
-        max-width: 25px;
-        max-height: 25px;
-        margin-right: 20px;
-    }
-    .size-prev-game{
-        width: 330px !important;
-    }
-    .prev-game-header{
-        width: 100%;
-        margin: 2% 0 !important;
-        font-size: 15px;
-        text-align: center;
-    }
-    .prev-game-content{
-        padding: 0%;
-        display: flex;
-        flex-direction: column;
-    }
-    .prev-game-mobile{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 150px;
-        margin-bottom: 10px;
-    }
-    .row-team-name-gamewin{
-        padding: 0px 20px;
-        height: 57px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .row-team-name-gamewin > p{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-        height: 30px;
-        padding: 0px 15px;
-        
-    }
-
-    .prev-game-desktop{
-        display: none;
-    }
-    .logos-and-gamewin{
-        padding: 2% 0% 0% 0%;
-        width: 100%;
-        height: 170px;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-    .game-win{
-        align-self: center;
-        justify-self: center;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        min-width: 70px;
-        max-width: 150px;
-        margin-bottom: 0% !important;
-    }
-    .max-size-logo-prev-game{
-        max-width: 40px;
-        max-height: 57px;
-        
-    }   
-    .name-of-teams{
-        font-size: 12px;
-        font-weight: bold;
-    }
-    .bestof-prev-game{
-        margin: 0% !important;
-        width: 100%;
-        height: 20px;
-        font-size: 12px;
-        text-align: center;
-    }
-    .point-A{
-        padding-right: 0%;
-    }
-    .point-B{
-        padding-left: 0%;
-    }
-    .text-in-card{
-        padding: 0%;
-        width: 100%;
-    }
-    .info-not-first-index{
-        padding: 5px 20px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+  .prev-game-desktop {
+    display: none;
+  }
+  .logos-and-gamewin {
+    padding: 2% 0% 0% 0%;
+    width: 100%;
+    height: 170px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .game-win {
+    align-self: center;
+    justify-self: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    min-width: 70px;
+    max-width: 150px;
+    margin-bottom: 0% !important;
+  }
+  .max-size-logo-prev-game {
+    max-width: 40px;
+    max-height: 57px;
+  }
+  .name-of-teams {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .bestof-prev-game {
+    margin: 0% !important;
+    width: 100%;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .point-A {
+    padding-right: 0%;
+  }
+  .point-B {
+    padding-left: 0%;
+  }
+  .text-in-card {
+    padding: 0%;
+    width: 100%;
+  }
+  .info-not-first-index {
+    padding: 5px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

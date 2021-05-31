@@ -7,9 +7,19 @@ import {
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { PlaySound } from "../../utility/PlaySound";
+import { Link } from "react-router-dom";
+import { TEAM, TOURNAMENT } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { evalColors, getMessage, evalImg, evalName } from "./Helper";
+import TeamRanking from "../TeamRanking/TeamRanking";
+import {
+  evalColors,
+  getMessage,
+  evalImg,
+  evalName,
+  getMessageLive,
+} from "./Helper";
 import ProgressiveImage from "react-progressive-image";
+import twitch from "../../Images/twitch.png";
 import loader from "../../Images/loader.gif";
 import Share from "../Share/Share";
 import Moment from "moment";
@@ -32,7 +42,18 @@ const MatchCardRow = ({ match }) => {
   const COLOR_TEAM_A = evalColors(opponents, 0);
   const COLOR_TEAM_B = evalColors(opponents, 1);
 
-  const MESSAGE = getMessage(opponents, bestOf, begin_at, league, serie);
+  const MESSAGE =
+    status === "running"
+      ? getMessageLive(
+          opponents,
+          bestOf,
+          league,
+          serie,
+          results,
+          official_stream_url,
+          stage
+        )
+      : getMessage(opponents, bestOf, begin_at, league, serie);
 
   return (
     <div
@@ -55,59 +76,60 @@ const MatchCardRow = ({ match }) => {
           </div>
 
           <div className="teams-info-container">
-            <div className="row-team-name-gamewin">
+            <div className="row-team">
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 0)}
                   placeholder={loader}
                 >
                   {(src) => (
-                    <img
-                      alt="a team"
-                      className="max-size-logo-prev-game"
-                      src={src}
-                    />
+                    <img alt="a team" className="team-logo" src={src} />
                   )}
                 </ProgressiveImage>
               </div>
-              <p
-                style={{
-                  backgroundColor: COLOR_TEAM_A.DarkVibrant,
-                  color: "white",
-                  fontSize: evalName(opponents, 0).length > 11 && "12px",
-                }}
-              >
+              
+
+              <Link
+                  to={evalName(opponents, 0) === "To be defined"? "#" : TEAM.replace(":teamid", opponents[0].opponent.id)}
+                  style={{
+                    backgroundColor: COLOR_TEAM_A.DarkVibrant,
+                    fontSize: evalName(opponents, 0).length > 11 && "12px",
+                  }}
+                >
                 {evalName(opponents, 0)}
-              </p>
+                <TeamRanking name={evalName(opponents, 0)}/>
+              </Link>
+
               {status === "running" && (
                 <p className="font-gilroy-bold">{results[0].score}</p>
               )}
             </div>
 
-            <div className="row-team-name-gamewin">
+            <div className="row-team">
+              
+
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 1)}
                   placeholder={loader}
                 >
                   {(src) => (
-                    <img
-                      alt="b team"
-                      className="max-size-logo-prev-game"
-                      src={src}
-                    />
+                    <img alt="b team" className="team-logo" src={src} />
                   )}
                 </ProgressiveImage>
               </div>
-              <p
+
+              <Link 
+                to={evalName(opponents, 1) === "To be defined"? "#" : TEAM.replace(":teamid", opponents[1].opponent.id)}
                 style={{
                   backgroundColor: COLOR_TEAM_B.DarkVibrant,
-                  color: "white",
                   fontSize: evalName(opponents, 1).length > 11 && "12px",
                 }}
               >
                 {evalName(opponents, 1)}
-              </p>
+                <TeamRanking name={evalName(opponents, 1)}/>
+              </Link>
+
               {status === "running" && (
                 <p className="font-gilroy-bold">{results[1].score}</p>
               )}
@@ -164,7 +186,7 @@ const MatchCardRow = ({ match }) => {
               </span>
             </div>
 
-            <div className="prevgame-share">
+            <div className="row-card-share">
               <Share Facebook={MESSAGE} Twitter={MESSAGE} Wapp={MESSAGE} />
             </div>
           </>
@@ -179,17 +201,12 @@ const MatchCardRow = ({ match }) => {
               <FontAwesomeIcon icon={faClock} />{" "}
             </span>
             <span className="text-align-end">
-              {Moment(begin_at).format("H:mm")} hs
+              Started at {Moment(begin_at).format("H:mm")} hs
             </span>
           </div>
 
           <div className="info-container">
-            <span
-              className="label-data-style"
-              style={{ color: COLOR_LEAGUE.DarkVibrant }}
-            >
-              <FontAwesomeIcon icon={faClock} />{" "}
-            </span>
+            <img className="twitch-logo" src={twitch} alt="twitch" />
             <a
               className="text-align-end"
               rel="noopener noreferrer"
@@ -199,8 +216,14 @@ const MatchCardRow = ({ match }) => {
                 official_stream_url !== null && PlaySound();
               }}
             >
-              {official_stream_url === null? "Playing (no stream available)" : "Playing"}
+              {official_stream_url === null
+                ? "Playing (no stream available)"
+                : official_stream_url}
             </a>
+          </div>
+
+          <div className="row-card-share">
+            <Share Facebook={MESSAGE} Twitter={MESSAGE} Wapp={MESSAGE} />
           </div>
         </>
       )}

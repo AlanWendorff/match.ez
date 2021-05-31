@@ -35,7 +35,6 @@ const TeamProfile = () => {
   const [prevMatch, guardarPrevMatch] = useState([]);
   const [matchesmod, guardarMatchesMod] = useState([]);
   const [matches, guardarMatches] = useState([]);
-  const [playerscore, setPlayerScore] = useState([]);
   const [roster, setRoster] = useState([]);
   const [crash, guardarStateCrash] = useState(false);
   const [noMatches, guardarNoMatches] = useState(false);
@@ -209,8 +208,6 @@ const TeamProfile = () => {
                 <HistoricMatchMapping
                   prevMatch={matchesmod}
                   teamid={teamid}
-                  setPlayerScore={setPlayerScore}
-                  playerscore={playerscore}
                 />
                 {matchesmod.length !== prevMatch.length && (
                   <div

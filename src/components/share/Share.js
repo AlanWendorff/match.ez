@@ -13,7 +13,7 @@ import './share.css';
 
 const Share = ({Facebook, Twitter, Wapp}) => {
     const [state, setState] = useState({display: 'none'});
-
+    
     return ( 
         <div className="share">
             <FontAwesomeIcon onClick={()=> {

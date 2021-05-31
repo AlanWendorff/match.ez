@@ -22,16 +22,14 @@ export const evalColors = (opponents, index) => {
 
 export const getMessage = (opponents, bestOf, begin_at, league, serie) => {
   const Message = 
-  `${opponents[0] === false ? "To be defined" : opponents[0].opponent.name} 
-  VS 
-  ${opponents[1] === false ? "To be defined" : opponents[1].opponent.name} 
-  |
-  ${bestOf} 
-  |
-  ${Moment(begin_at).format("Do")} ${Moment(begin_at).format(
-    "MMMM - H:mm"
-  )} hs ${league.name + " " + serie.full_name}
-  -> ${window.location.href}`;
+  `${opponents[0] === false ? "To be defined" : opponents[0].opponent.name} VS ${opponents[1] === false ? "To be defined" : opponents[1].opponent.name} | ${bestOf} | ${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs ${league.name + " " + serie.full_name} -> ${window.location.href}`;
+
+  return Message;
+};
+
+export const getMessageLive = (opponents, bestOf, league, serie, results, official_stream_url, stage) => {
+  const Message = 
+  `${opponents[0].opponent.name} ${results[0].score} - ${results[1].score} ${opponents[1].opponent.name} | ${bestOf} | ${league.name + " " + stage} -> ${official_stream_url}`;
 
   return Message;
 };

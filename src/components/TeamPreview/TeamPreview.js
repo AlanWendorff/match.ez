@@ -5,7 +5,8 @@ import { TeamRankingContext } from "../Context/TeamRankingContext";
 import { PLAYER_INFO } from "../../const/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
-import nopic from '../../Images/nopic.png';
+import loader from "../../Images/loader.gif";
+import nopic from "../../Images/nopic.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import unknown from "../../Images/unknown.png";
 import axios from "axios";
@@ -78,13 +79,16 @@ const TeamPreview = ({
               <span>Last Game</span>
               <div>
                 <div className="team">
-                  <img
+                  <ProgressiveImage
                     src={
                       !LASTMATCH.opponents[0].opponent.image_url
                         ? nopic
                         : LASTMATCH.opponents[0].opponent.image_url
                     }
-                  />
+                    placeholder={loader}
+                  >
+                    {(src) => <img src={src} alt="team A" />}
+                  </ProgressiveImage>
                   <span>{LASTMATCH.opponents[0].opponent.name}</span>
                 </div>
 
@@ -121,13 +125,16 @@ const TeamPreview = ({
                 </span>
 
                 <div className="team">
-                  <img
+                  <ProgressiveImage
                     src={
                       !LASTMATCH.opponents[1].opponent.image_url
                         ? nopic
                         : LASTMATCH.opponents[1].opponent.image_url
                     }
-                  />
+                    placeholder={loader}
+                  >
+                    {(src) => <img src={src} alt="team B" />}
+                  </ProgressiveImage>
                   <span>{LASTMATCH.opponents[1].opponent.name}</span>
                 </div>
               </div>
@@ -155,13 +162,13 @@ const TeamPreview = ({
                 Next Game{" "}
                 {NEXTMATCH.status === "running" && (
                   <span>
-                    Live<span className="dot-indicator"></span>
+                    <span>Live</span> <span className="dot-indicator"></span>
                   </span>
                 )}
               </span>
               <div>
                 <div className="team">
-                  <img
+                  <ProgressiveImage
                     src={
                       NEXTMATCH.opponents[0] !== false
                         ? !NEXTMATCH.opponents[0].opponent.image_url
@@ -169,7 +176,10 @@ const TeamPreview = ({
                           : NEXTMATCH.opponents[0].opponent.image_url
                         : toBeDefined
                     }
-                  />
+                    placeholder={loader}
+                  >
+                    {(src) => <img src={src} alt="team A Next Match" />}
+                  </ProgressiveImage>
                   <span>
                     {NEXTMATCH.opponents[0] !== false
                       ? NEXTMATCH.opponents[0].opponent.name
@@ -178,7 +188,7 @@ const TeamPreview = ({
                 </div>
                 <span>vs</span>
                 <div className="team">
-                  <img
+                  <ProgressiveImage
                     src={
                       NEXTMATCH.opponents[1] !== false
                         ? !NEXTMATCH.opponents[1].opponent.image_url
@@ -186,7 +196,11 @@ const TeamPreview = ({
                           : NEXTMATCH.opponents[1].opponent.image_url
                         : toBeDefined
                     }
-                  />
+                    placeholder={loader}
+                  >
+                    {(src) => <img src={src} alt="team B Next Match" />}
+                  </ProgressiveImage>
+
                   <span>
                     {NEXTMATCH.opponents[1] !== false
                       ? NEXTMATCH.opponents[1].opponent.name

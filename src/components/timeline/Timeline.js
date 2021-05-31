@@ -15,8 +15,9 @@ import { TIME_LINE } from "../../const/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Warning from "../Warning/Warning";
 import Moment from "moment";
-import nopic from '../../Images/nopic.png';
-import toBeDefined from "../../Images/toBeDefined.png";
+import loader from "../../Images/loader.gif";
+import ProgressiveImage from "react-progressive-image";
+import nopic from "../../Images/nopic.png";
 import "react-vertical-timeline-component/style.min.css";
 import axios from "axios";
 import "./timeline.css";
@@ -123,43 +124,24 @@ const Timeline = () => {
                         >
                           <div className="icon-container">
                             <div className="team-icon">
-                              <img
-                                className="team-logo-timeline"
-                                alt="team"
+                              <ProgressiveImage
                                 src={
                                   team.image_url === null
                                     ? nopic
                                     : team.image_url
                                 }
-                              />
+                                placeholder={loader}
+                              >
+                                {(src) => (
+                                  <img src={src} className="team-logo-timeline" alt="team" />
+                                )}
+                              </ProgressiveImage>
                             </div>
                           </div>
                         </Link>
                       ))
                     ) : (
-                      <div className="no-team-container">
-                        <div className="no-team">
-                          <img
-                            alt="no team"
-                            className="team-logo-timeline"
-                            src={toBeDefined}
-                          />
-                        </div>
-                        <div className="no-team">
-                          <img
-                            alt="no team"
-                            className="team-logo-timeline"
-                            src={toBeDefined}
-                          />
-                        </div>
-                        <div className="no-team">
-                          <img
-                            alt="no team"
-                            className="team-logo-timeline"
-                            src={toBeDefined}
-                          />
-                        </div>
-                      </div>
+                      <div className="no-team-container">Teams to be defined</div>
                     )}
                   </div>
                   <div className="mobile light-white">

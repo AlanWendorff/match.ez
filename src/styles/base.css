@@ -273,6 +273,7 @@ i.right {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
   }
   .font-size {
     font-size: 13px;

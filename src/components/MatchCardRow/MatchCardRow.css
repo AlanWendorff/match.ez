@@ -1,50 +1,148 @@
-.info-container {
-  padding: 5px 20px;
+.match-card-row-size > .sort-content {
+  margin: 0px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 10px 0;
+  padding: 0 15px;
 }
 
-.info-container > .text-align-end {
-  width: 85%;
+.row-team {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.match-card-row-size > .sort-content{
-    margin: 0px;
-    font-size: 30px;
-    cursor: pointer;
-    text-align: center;
-    height: 40px;
+.row-team > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  height: 30px;
+  padding: 0px 15px;
+}
+
+.teams-info-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.row-card-share {
+  margin-left: 18px;
+  margin-bottom: 15px;
+}
+
+.row-team a {
+  padding: 0px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  height: 30px;
+  color: white;
+}
+
+
+@media (min-width: 641px) {
+  .match-card-row-size {
+    width: 630px !important;
+  }
+  .teams-info-container {
+    height: 200px;
+  }
+  .match-card-row-size .team-logo {
+    max-width: 50px;
+    max-height: 70px;
+  }
+  .row-team {
+    height: 70px;
+  }
+  .row-team p {
+    font-size: 16px;
+  }
+  .row-team a {
+    font-size: 16px;
+  }
+  .header {
+    font-size: 16px;
+  }
+  .info-container {
+    padding: 5px 20px;
+    margin: 5px 0px;
+    font-size: 18px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+  .info-container > .text-align-end {
+    margin-left: 20px;
+  }
+  .match-card-row-size .twitch-logo {
+    width: 18px;
+  }
+  .match-card-row-size .mini-ranking {
+    font-size: 15px;
+    color: white;
+    margin-left: 10px;
+  }
 }
 
-.teams-info-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+@media screen and (max-width: 640px) {
+  .match-card-row-size {
+    width: 100% !important;
+  }
+  .teams-info-container {
     height: 150px;
-}
-
-.header {
+  }
+  .match-card-row-size .team-logo {
+    max-width: 40px;
+    max-height: 57px;
+  }
+  .row-team {
+    height: 57px;
+  }
+  .row-team a {
+    font-size: 14px;
+  }
+  .info-container {
+    font-size: 15px;
+    margin: 5px 0px;
+    padding: 5px 20px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0;
-    padding: 0 15px;
-}
+  }
+  .info-container svg {
+    font-size: 16px;
+  }
 
-@media (min-width: 641px) {
-    .match-card-row-size{
-        width: 630px !important;
-    }
-}
+  .info-container > .text-align-end {
+    width: 85%;
+  }
 
-@media screen and (max-width: 640px) {
-    .match-card-row-size{
-        width: 100% !important;
-    }
+  .match-card-row-size .twitch-logo {
+    width: 17px;
+  }
+  .match-card-row-size .mini-ranking {
+    font-size: 14px;
+    color: white;
+    margin-left: 10px;
+  }
 }

@@ -8,6 +8,7 @@
   transform: scale(1.02, 1.02);
   transition: box-shadow 0.05s ease-in-out;
 }
+
 .real-button:hover::after {
   opacity: 1;
 }
@@ -28,6 +29,29 @@
 .highlight-text:hover::after {
   width: 100%;
 }
+
+.highlight-text-both-ways:after {
+	content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-top: 10px;
+  opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+}
+
+.highlight-text-both-ways:hover:after {
+  opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
 .outline-shade-black {
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.418));
 }

@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   faCalendarDay,
   faSortDown,
@@ -23,12 +23,11 @@ import "./matchprevio.css";
 const HistoricMatchCard = ({
   match,
   teamId,
-  firstIndex,
-  setPlayerScore,
-  playerscore,
 }) => {
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState(false);
+  const [showscore, setShowScore] = useState(0);
+  const [playerscore, setPlayerScore] = useState([]);
   const {
     bestOf,
     league,
@@ -88,14 +87,11 @@ const HistoricMatchCard = ({
   }`;
 
   const playerScore = async () => {
-    const { teams } = playerscore;
-    if (teams === undefined) {
-      setLoading(true);
-      const { objPlayerScore } = await getPlayerScore(id);
-      if (objPlayerScore) {
-        setLoading(false);
-        setPlayerScore(objPlayerScore);
-      }
+    setLoading(true);
+    const { objPlayerScore } = await getPlayerScore(id);
+    if (objPlayerScore) {
+      setLoading(false);
+      setPlayerScore(objPlayerScore);
     }
   };
 
@@ -323,87 +319,51 @@ const HistoricMatchCard = ({
           </div>
         </div>
       </div>
-      <div
-        onClick={() => {
-          content ? setContent(false) : setContent(true);
-          id === firstIndex && playerScore();
-        }}
-        className="sort-content"
-      >
+      <div onClick={() => {content ? setContent(false) : setContent(true);}} className="sort-content">
         <FontAwesomeIcon icon={!content ? faSortDown : faSortUp} />
       </div>
-
+      
       {content && (
-        <Fragment>
-          {id === firstIndex ? (
-            <Fragment>
-              <PlayerScore
-                playerscore={playerscore}
-                opponents={opponents}
-                nopic={nopic}
-                loading={loading}
-                team0={opponents[0].opponent}
-                team1={opponents[1].opponent}
-              />
-              <p className="info-not-first-index">
-                <span
-                  className="label-data-style"
-                  style={{ color: palette.DarkVibrant }}
-                >
-                  <FontAwesomeIcon icon={faTrophy} />
-                </span>
-                <span className="text-align-end">
-                  {league.name + " " + serie.full_name}
-                </span>
-              </p>
-              <p className="info-not-first-index">
-                <span
-                  className="label-data-style"
-                  style={{ color: palette.DarkVibrant }}
-                >
-                  <FontAwesomeIcon icon={faCalendarDay} />{" "}
-                </span>
-                <span>
-                  {Moment(begin_at).format("Do")}{" "}
-                  {Moment(begin_at).format("MMMM - H:mm")} hs
-                </span>
-              </p>
-              <div className="prevgame-share">
-                <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
-              </div>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <div className="info-not-first-index">
-                <span
-                  className="label-data-style"
-                  style={{ color: palette.DarkVibrant }}
-                >
-                  <FontAwesomeIcon icon={faTrophy} />
-                </span>
-                <span className="text-align-end">
-                  {league.name + " " + serie.full_name}
-                </span>
-              </div>
-
-              <div className="info-not-first-index">
-                <span
-                  className="label-data-style"
-                  style={{ color: palette.DarkVibrant }}
-                >
-                  <FontAwesomeIcon icon={faCalendarDay} />{" "}
-                </span>
-                <span>
-                  {Moment(begin_at).format("Do")}{" "}
-                  {Moment(begin_at).format("MMMM - H:mm")} hs
-                </span>
-              </div>
-              <div className="prevgame-share">
-                <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
-              </div>
-            </Fragment>
-          )}
-        </Fragment>
+        <>  
+          {showscore === 0 ?
+            <div className="player-stats-btn highlight-text" onClick={()=> {playerScore(); setShowScore(1);}}>View Player Stats</div>
+            :
+            <PlayerScore
+              playerscore={playerscore}
+              opponents={opponents}
+              nopic={nopic}
+              loading={loading}
+              team0={opponents[0].opponent}
+              team1={opponents[1].opponent}
+            />
+          }
+          <p className="info-container">
+            <span
+              className="label-data-style"
+              style={{ color: palette.DarkVibrant }}
+            >
+              <FontAwesomeIcon icon={faTrophy} />
+            </span>
+            <span className="text-align-end">
+              {league.name + " " + serie.full_name}
+            </span>
+          </p>
+          <p className="info-container">
+            <span
+              className="label-data-style"
+              style={{ color: palette.DarkVibrant }}
+            >
+              <FontAwesomeIcon icon={faCalendarDay} />{" "}
+            </span>
+            <span className="text-align-end">
+              {Moment(begin_at).format("Do")}{" "}
+              {Moment(begin_at).format("MMMM - H:mm")} hs
+            </span>
+          </p>
+          <div className="row-card-share">
+            <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
+          </div>
+        </>
       )}
     </div>
   );

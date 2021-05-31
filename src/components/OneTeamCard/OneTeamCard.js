@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image";
 import Share from "../Share/Share";
 import Moment from "moment";
-import csgoLogoDefaultBlack from "../../Images/csgoLogoDefaultBlack.png";
+import nopic from "../../Images/nopic.png";
 import toBeDefined from "../../Images/toBeDefined.png";
 import "./tarjetaUpcomingMatch.css";
 
@@ -45,46 +45,30 @@ const OneTeamCard = ({ match, teamid }) => {
     if (opponents[index] !== false) {
       if (opponents[index].opponent.id !== parseInt(teamid)) {
         opponentLogo = !opponents[index].opponent.image_url
-          ? csgoLogoDefaultBlack
+          ? nopic
           : opponents[index].opponent.image_url;
         opponentName = opponents[index].opponent.name;
         opponentId = opponents[index].opponent.id;
+      }else{
+        ownName = opponents[index].opponent.name;
       }
     } else {
       opponentLogo = toBeDefined;
     }
   }
 
-  const profileOpponentArray = opponents.find(
-    (element) => element.opponent.id === parseInt(teamid)
-  );
-  ownName = profileOpponentArray && profileOpponentArray.opponent.name;
-
   if (diaUsuario === diaMatch) {
     hoy = "Today";
   }
 
-  const Facebook = `${
-    opponentName === undefined ? "To be defined" : opponentName
-  } VS ${ownName}
-    ${bestOf}
-    ${Moment(begin_at).format("Do")} ${Moment(begin_at).format(
-    "MMMM - H:mm"
-  )} hs 
-    ${league.name + " " + serie.full_name}
-    `;
-  const Twitter = `${
-    opponentName === undefined ? "To be defined" : opponentName
-  } VS ${ownName} | ${bestOf} | ${Moment(begin_at).format("Do")} ${Moment(
-    begin_at
-  ).format("MMMM - H:mm")} hs | ${league.name + " " + serie.full_name}`;
-  const Wapp = `${
-    opponentName === undefined ? "To be defined" : opponentName
-  } VS ${ownName} | ${bestOf} | ${Moment(begin_at).format("Do")} ${Moment(
-    begin_at
-  ).format("MMMM - H:mm")} hs | ${league.name + " " + serie.full_name} -> ${
-    window.location.href
-  }`;
+  const Facebook = 
+  `${opponentName === undefined ? "To be defined" : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs ${league.name + " " + serie.full_name}`;
+  
+  const Twitter = 
+  `${opponentName === undefined ? "To be defined" : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs | ${league.name + " " + serie.full_name}`;
+  
+  const Wapp = 
+  `${opponentName === undefined ? "To be defined" : opponentName} VS ${ownName} | ${bestOf} | ${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs | ${league.name + " " + serie.full_name} -> ${window.location.href}`;
 
   if (status === "running") {
     hoy = "Playing Now";
@@ -119,10 +103,10 @@ const OneTeamCard = ({ match, teamid }) => {
                     <ProgressiveImage
                       src={
                         opponents[0].opponent.image_url === null
-                          ? csgoLogoDefaultBlack
+                          ? nopic
                           : opponents[0].opponent.image_url
                       }
-                      placeholder={csgoLogoDefaultBlack}
+                      placeholder={nopic}
                     >
                       {(src) => (
                         <img
@@ -148,10 +132,10 @@ const OneTeamCard = ({ match, teamid }) => {
                     <ProgressiveImage
                       src={
                         opponents[1].opponent.image_url === null
-                          ? csgoLogoDefaultBlack
+                          ? nopic
                           : opponents[1].opponent.image_url
                       }
-                      placeholder={csgoLogoDefaultBlack}
+                      placeholder={nopic}
                     >
                       {(src) => (
                         <img
@@ -231,15 +215,13 @@ const OneTeamCard = ({ match, teamid }) => {
             >
               <ProgressiveImage
                 src={opponentLogo}
-                placeholder={csgoLogoDefaultBlack}
+                placeholder={nopic}
               >
                 {(src) => (
                   <img
-                    title={
-                      opponentName !== undefined && LOOKPROFILE + opponentName
-                    }
+                    title={opponentName !== undefined ? LOOKPROFILE + opponentName : "To be defined"}
                     alt="versus team"
-                    className="max-size-team-logo"
+                    className="team-logo"
                     src={src}
                   />
                 )}

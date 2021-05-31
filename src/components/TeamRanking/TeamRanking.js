@@ -12,7 +12,7 @@ const TeamRanking = ({ name }) => {
           ? `${rankedTeam.name} Top ${rankedTeam.position} of the World`
           : `This team is not ranked`
       }
-      className={`mini-ranking color-text-black font-size ${
+      className={`mini-ranking ${
         rankedTeam ? "font-gilroy-bold" : "font-gilroy"
       }`}
     >

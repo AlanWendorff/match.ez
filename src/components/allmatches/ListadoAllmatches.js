@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
-import TarjetaAllmatches from "./TarjetaAllmatches";
 import MatchCardRow from "../MatchCardRow/MatchCardRow";
-import LazyLoad from "react-lazyload";
+//import LazyLoad from "react-lazyload";
 
 const ListadoAllmatches = ({ matchesmod }) => {
   if (!matchesmod.length > 0) return null;
@@ -14,9 +13,10 @@ const ListadoAllmatches = ({ matchesmod }) => {
         })
         .map((match) => {
           return (
-            <LazyLoad offset={100} height={100} overflow key={match.id}>
+            /* <LazyLoad offset={50} height={50} overflow key={match.id}>
               <MatchCardRow match={match} />
-            </LazyLoad>
+            </LazyLoad> */
+            <MatchCardRow key={match.id} match={match} />
           );
         })}
     </Fragment>

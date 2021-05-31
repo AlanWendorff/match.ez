@@ -82,22 +82,18 @@
 }
 
 @media (min-width: 771px) {
-  .max-size-team-logo {
-    max-width: 150px !important;
-    max-height: 150px;
-  }
-  .team-logo {
-    max-width: 110px !important;
-    max-height: 187px;
-  }
-  .tamano-tarjeta {
-    width: 630px !important;
-    padding: 12px;
-  }
   .lienzo-logo {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .lienzo-logo > a > .team-logo {
+    max-width: 140px !important;
+    max-height: 130px;
+  }
+  .tamano-tarjeta {
+    width: 630px !important;
+    padding: 12px;
   }
   .lienzo-logo > a{
     height: 100%;
@@ -149,21 +145,20 @@
 }
 
 @media screen and (max-width: 770px) {
-  .team-logo {
-    max-width: 50px !important;
-    max-height: 100px;
-  }
-  .tamano-tarjeta {
-    /*width: 330px !important;*/
-    width: 330px !important;
-    display: flex;
-    flex-direction: column;
-    padding: 15px 15px 10px 15px !important;
-  }
   .lienzo-logo {
     max-width: 100% !important;
     display: flex !important;
     justify-content: center;
+  }
+  .lienzo-logo > a > .team-logo {
+    max-width: 200px !important;
+    max-height: 100px;
+  }
+  .tamano-tarjeta {
+    width: 330px !important;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 10px 15px !important;
   }
   .max-size-team-logo {
     max-width: 100px !important;

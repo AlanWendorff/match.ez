@@ -22,7 +22,7 @@ const AllMatches = () => {
         : allmatches.length;
     guardarMatchesMod(allmatches.slice(0, arrayLimit));
   };
-
+  
   useEffect(() => {
     guardarLoaderProgress({ width: "30%" });
     const config = {
@@ -31,6 +31,7 @@ const AllMatches = () => {
         "Access-Control-Allow-Origin": "*",
       },
     };
+
     axios.get(ALL_MATCHES, config).then(({ data }) => {
       if (data.length === 0) {
         guardarStateCrash(true);
@@ -43,8 +44,6 @@ const AllMatches = () => {
   }, []);
   const { width } = loaderprogress;
 
-
-  //
   return (
     <div className="allmatches background-color-4all">
       {allmatches.length !== 0 && crash !== true && width === "100%" && (
