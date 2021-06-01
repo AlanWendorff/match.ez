@@ -49,9 +49,9 @@ const PlayerScore = ({
     }
   }
 
-  if (loading === false) {
-    return teams ? (
-      teams.length > 0 ? (
+  if (teams) {
+    return (
+
         <div>
           <div>
             <table>
@@ -258,10 +258,8 @@ const PlayerScore = ({
             </table>
           </div>
         </div>
-      ) : (
-        <div>No player stadistics for this serie {":'("}</div>
-      )
-    ) : null;
+      
+    );
   } else {
     return (
       <div className="display-flex-justify-center width-100percent">

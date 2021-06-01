@@ -13,6 +13,7 @@ import {
   faVolumeUp,
   faListOl,
   faCompass,
+  faHistory,
 } from "@fortawesome/free-solid-svg-icons";
 import { NEWS, RANKING } from "../../routes/routes";
 import "./more.css";
@@ -58,6 +59,15 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
   const turnOnAnim = () => {
     setAnim(true);
     localStorage.setItem("animations", true);
+  };
+
+  const setOldCards = () => {
+    if ( JSON.parse(localStorage.getItem("old")) === false ) {
+      localStorage.setItem("old", true);
+    }else{
+      localStorage.setItem("old", false);
+    }
+    
   };
 
   const turnAroundIcon = () => {
@@ -202,6 +212,23 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                     icon={faFilm}
                   />
                   <span>{anim ? "Animations On" : "Animations Off"}</span>
+                </div>
+              </div>
+              <hr className="margin-left-100px" />
+            </>
+          )}
+
+          {hidecomponent && (
+            <>
+              <div
+                className="margin-bottom-15px margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                onClick={() => {
+                  setOldCards();
+                }}
+              >
+                <div>
+                  <FontAwesomeIcon icon={faHistory} />
+                  <span>Old Stuff</span>
                 </div>
               </div>
             </>

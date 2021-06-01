@@ -31,6 +31,7 @@ const HistoricMatchCard = ({
   const [showscore, setShowScore] = useState(0);
   const [playerscore, setPlayerScore] = useState([]);
   const {
+    detailed_stats,
     bestOf,
     league,
     serie,
@@ -93,7 +94,7 @@ const HistoricMatchCard = ({
     const gameScore = await getPlayerScore(id);
     gameScore.status !== 200 && history.push(ERROR);
     setLoading(false);
-    setPlayerScore(gameScore);
+    setPlayerScore(gameScore.data);
   };
 
   return (
@@ -116,101 +117,15 @@ const HistoricMatchCard = ({
             </p>
           </div>
 
-          <div className="prev-game-desktop">
-            <div className="team-column">
-              <Link to={TEAM.replace(":teamid", opponents[0].opponent.id)}>
-                <div
-                  className={
-                    results[0].score < results[1].score
-                      ? "match-loser-prevgame"
-                      : "match-winner-prevgame"
-                  }
-                >
-                  <ProgressiveImage
-                    src={
-                      opponents[0].opponent.image_url === null
-                        ? nopic
-                        : opponents[0].opponent.image_url
-                    }
-                    placeholder={loader}
-                  >
-                    {(src) => (
-                      <img
-                        title={LOOKPROFILE + opponents[0].opponent.name}
-                        alt="a team"
-                        className="max-size-logo-prev-game"
-                        src={src}
-                      />
-                    )}
-                  </ProgressiveImage>
-                </div>
-              </Link>
-
-              <p className="name-of-teams">{opponents[0].opponent.name}</p>
-            </div>
-
-            <div>
-              <div className="game-win font-gilroy-bold">
-                <p
-                  className={
-                    results[0].score < results[1].score
-                      ? "match-loser point-A"
-                      : "match-winner point-A"
-                  }
-                >
-                  {results[0].score}
-                </p>
-                <p>-</p>
-                <p
-                  className={
-                    results[0].score < results[1].score
-                      ? "match-winner point-B"
-                      : "match-loser point-B"
-                  }
-                >
-                  {results[1].score}
-                </p>
-              </div>
-
-              <p className="bestof-prev-game" style={{ color: palette.DarkMuted }}>
-                {bestOf}
-              </p>
-            </div>
-
-            <div className="team-column">
-              <Link to={TEAM.replace(":teamid", opponents[1].opponent.id)}>
-                <div
-                  className={
-                    results[0].score < results[1].score
-                      ? "match-winner-prevgame"
-                      : "match-loser-prevgame"
-                  }
-                >
-                  <ProgressiveImage
-                    src={
-                      opponents[1].opponent.image_url === null
-                        ? nopic
-                        : opponents[1].opponent.image_url
-                    }
-                    placeholder={loader}
-                  >
-                    {(src) => (
-                      <img
-                        title={LOOKPROFILE + opponents[1].opponent.name}
-                        alt="b team"
-                        className="max-size-logo-prev-game"
-                        src={src}
-                      />
-                    )}
-                  </ProgressiveImage>
-                </div>
-              </Link>
-              <p className="name-of-teams">{opponents[1].opponent.name}</p>
-            </div>
-          </div>
-
           <div className="prev-game-mobile">
-            <div className="row-team-name-gamewin">
+            <div className="row-team" 
+              onClick={() => {history.push(TEAM.replace(':teamid', opponents[0].opponent.id))}}
+              style={
+                {
+                  borderLeft: results[1].score < results[0].score && `5px solid ${opponents[0].opponent.colors.DarkVibrant}`,
+                  borderRight:  results[1].score < results[0].score && `5px solid ${opponents[0].opponent.colors.DarkVibrant}`
+                }
+                }>
               <div
                 className={
                   results[0].score < results[1].score
@@ -253,15 +168,21 @@ const HistoricMatchCard = ({
               <p
                 className={
                   results[0].score < results[1].score
-                    ? "match-loser point-A"
-                    : "match-winner point-A"
+                    ? "match-loser point-A font-gilroy-bold"
+                    : "match-winner point-A font-gilroy-bold"
                 }
               >
                 {results[0].score}
               </p>
             </div>
 
-            <div className="row-team-name-gamewin">
+            <div className="row-team" 
+              onClick={() => {history.push(TEAM.replace(':teamid', opponents[1].opponent.id))}}
+              style={
+                {
+                  borderLeft:  results[0].score < results[1].score && `5px solid ${opponents[1].opponent.colors.DarkVibrant}`,
+                  borderRight:  results[0].score < results[1].score && `5px solid ${opponents[1].opponent.colors.DarkVibrant}`
+                }} >
               <div
                 className={
                   results[0].score < results[1].score
@@ -304,8 +225,8 @@ const HistoricMatchCard = ({
               <p
                 className={
                   results[0].score < results[1].score
-                    ? "match-winner point-B"
-                    : "match-loser point-B"
+                    ? "match-winner point-B font-gilroy-bold"
+                    : "match-loser point-B font-gilroy-bold"
                 }
               >
                 {results[1].score}
@@ -323,21 +244,28 @@ const HistoricMatchCard = ({
       <div onClick={() => {content ? setContent(false) : setContent(true);}} className="sort-content">
         <FontAwesomeIcon icon={!content ? faSortDown : faSortUp} />
       </div>
-      
+     
       {content && (
         <>  
-          {showscore === 0 ?
-            <div className="player-stats-btn highlight-text" onClick={()=> {playerScore(); setShowScore(1);}}>View Player Stats</div>
-            :
-            <PlayerScore
-              playerscore={playerscore}
-              opponents={opponents}
-              nopic={nopic}
-              loading={loading}
-              team0={opponents[0].opponent}
-              team1={opponents[1].opponent}
-            />
+          {
+            detailed_stats === true ?
+              showscore === 0 ?
+                <div className="player-stats-btn highlight-text" onClick={()=> {playerScore(); setShowScore(1);}}>
+                  View Player Stats
+                </div>
+                :
+                <PlayerScore
+                  playerscore={playerscore}
+                  opponents={opponents}
+                  nopic={nopic}
+                  loading={loading}
+                  team0={opponents[0].opponent}
+                  team1={opponents[1].opponent}
+                />
+              :
+              <div className="no-stadistic">No player stadistics for this serie :'(</div>
           }
+          
           <p className="info-container">
             <span
               className="label-data-style"

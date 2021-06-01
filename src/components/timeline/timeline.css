@@ -74,7 +74,7 @@
         max-width: 50px;
         max-height: 50px;
     }
-    .team-icon:hover{
+    .teams-in-tournament > a:hover > .icon-container > .team-icon {
         width: 80px;
         height: 80px;
         bottom: 0px;
@@ -84,6 +84,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .vertical-timeline-element-icon:hover{
         filter: drop-shadow(0px 0px 5px rgb(255, 255, 255));
     }
@@ -91,6 +92,8 @@
         display: flex; 
         justify-content: center;
         align-items: center;
+        height: 100%;
+        width: 100%;
     }
     .mobile,
     .column-align > h5 { 
@@ -196,6 +199,8 @@
         display: flex; 
         justify-content: center;
         align-items: center;
+        height: 100%;
+        width: 100%;
     }
     
 }

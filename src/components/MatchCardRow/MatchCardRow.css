@@ -19,7 +19,6 @@
 }
 
 .row-team {
-  width: 100%;
   padding: 0 20px;
   display: flex;
   flex-direction: row;
@@ -59,6 +58,11 @@
 
 
 @media (min-width: 641px) {
+  .prev-game-mobile > .row-team:hover {
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    margin: 0 5px;
+  }
   .match-card-row-size {
     width: 630px !important;
   }
