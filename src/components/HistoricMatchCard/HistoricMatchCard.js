@@ -11,7 +11,6 @@ import { LOOKPROFILE } from "../../titlestag/titlestag";
 import { getPlayerScore } from "./getPlayerScore";
 import { useHistory } from "react-router";
 import { TEAM, ERROR } from "../../routes/routes";
-import { Link } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image";
 import PlayerScore from "../PlayerScore/PlayerScore";
 import Share from "../Share/Share";
@@ -119,6 +118,7 @@ const HistoricMatchCard = ({
 
           <div className="prev-game-mobile">
             <div className="row-team" 
+              title={LOOKPROFILE + opponents[0].opponent.name}
               onClick={() => {history.push(TEAM.replace(':teamid', opponents[0].opponent.id))}}
               style={
                 {
@@ -177,6 +177,7 @@ const HistoricMatchCard = ({
             </div>
 
             <div className="row-team" 
+              title={LOOKPROFILE + opponents[1].opponent.name}
               onClick={() => {history.push(TEAM.replace(':teamid', opponents[1].opponent.id))}}
               style={
                 {

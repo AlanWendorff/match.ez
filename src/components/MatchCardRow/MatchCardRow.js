@@ -8,7 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { PlaySound } from "../../utility/PlaySound";
 import { Link } from "react-router-dom";
-import { TEAM, TOURNAMENT } from "../../routes/routes";
+import { TEAM } from "../../routes/routes";
+import { LOOKPROFILE } from "../../titlestag/titlestag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TeamRanking from "../TeamRanking/TeamRanking";
 import {
@@ -55,6 +56,9 @@ const MatchCardRow = ({ match }) => {
         )
       : getMessage(opponents, bestOf, begin_at, league, serie);
 
+  const TEAM_NAME_A = evalName(opponents, 0);
+  const TEAM_NAME_B = evalName(opponents, 1);
+
   return (
     <div
       className={`noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster ${
@@ -76,7 +80,11 @@ const MatchCardRow = ({ match }) => {
           </div>
 
           <div className="teams-info-container">
-            <div className="row-team" style={{borderLeft:  `5px solid ${COLOR_TEAM_A.DarkVibrant}`}}>
+            <div 
+              className="row-team" 
+              title={LOOKPROFILE + TEAM_NAME_A} 
+              style={{borderLeft:  `5px solid ${COLOR_TEAM_A.DarkVibrant}`}}
+              >
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 0)}
@@ -90,14 +98,14 @@ const MatchCardRow = ({ match }) => {
               
 
               <Link
-                  to={evalName(opponents, 0) === "To be defined"? "#" : TEAM.replace(":teamid", opponents[0].opponent.id)}
+                  to={TEAM_NAME_A === "To be defined"? "#" : TEAM.replace(":teamid", opponents[0].opponent.id)}
                   style={{
                     backgroundColor: COLOR_TEAM_A.DarkVibrant,
-                    fontSize: evalName(opponents, 0).length > 11 && "12px",
+                    fontSize: TEAM_NAME_A.length > 11 && "12px",
                   }}
                 >
-                {evalName(opponents, 0)}
-                <TeamRanking name={evalName(opponents, 0)}/>
+                {TEAM_NAME_A}
+                <TeamRanking name={TEAM_NAME_A}/>
               </Link>
 
               {status === "running" && (
@@ -105,7 +113,10 @@ const MatchCardRow = ({ match }) => {
               )}
             </div>
 
-            <div className="row-team" style={{borderLeft:  `5px solid ${COLOR_TEAM_B.DarkVibrant}`}}>
+            <div 
+            className="row-team" 
+            title={LOOKPROFILE + TEAM_NAME_B} 
+            style={{borderLeft:  `5px solid ${COLOR_TEAM_B.DarkVibrant}`}}>
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 1)}
@@ -118,14 +129,14 @@ const MatchCardRow = ({ match }) => {
               </div>
 
               <Link 
-                to={evalName(opponents, 1) === "To be defined"? "#" : TEAM.replace(":teamid", opponents[1].opponent.id)}
+                to={TEAM_NAME_B === "To be defined"? "#" : TEAM.replace(":teamid", opponents[1].opponent.id)}
                 style={{
                   backgroundColor: COLOR_TEAM_B.DarkVibrant,
-                  fontSize: evalName(opponents, 1).length > 11 && "12px",
+                  fontSize: TEAM_NAME_B.length > 11 && "12px",
                 }}
               >
-                {evalName(opponents, 1)}
-                <TeamRanking name={evalName(opponents, 1)}/>
+                {TEAM_NAME_B}
+                <TeamRanking name={TEAM_NAME_B}/>
               </Link>
 
               {status === "running" && (
