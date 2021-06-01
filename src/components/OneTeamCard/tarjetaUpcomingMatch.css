@@ -87,8 +87,9 @@
     justify-content: center;
     align-items: center;
   }
-  .lienzo-logo > a > .team-logo {
-    max-width: 140px !important;
+  .lienzo-logo > a > .team-logo,
+  .team-canvas > .team-logo  {
+    max-width: 140px;
     max-height: 130px;
   }
   .tamano-tarjeta {
@@ -151,8 +152,12 @@
     justify-content: center;
   }
   .lienzo-logo > a > .team-logo {
-    max-width: 200px !important;
+    max-width: 200px;
     max-height: 100px;
+  }
+  .team-canvas > .team-logo {
+    max-width: 100px;
+    max-height: 60px;
   }
   .tamano-tarjeta {
     width: 330px !important;

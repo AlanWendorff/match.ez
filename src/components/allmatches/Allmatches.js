@@ -33,8 +33,8 @@ const AllMatches = () => {
 
     axios.get(ALL_MATCHES, config).then(({ data }) => {
       data.status !== 200 && history.push(ERROR);
-      guardarAllmatches(data); 
-      guardarMatchesMod(data.slice(0, 6));
+      guardarAllmatches(data.matches); 
+      guardarMatchesMod(data.matches.slice(0, 6));
     });
   }, []);
 

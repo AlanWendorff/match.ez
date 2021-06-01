@@ -35,7 +35,7 @@ const Timeline = () => {
     };
     axios.get(TIME_LINE, config).then(({ data }) => { 
       data.status !== 200 && history.push(ERROR); 
-      setTime(data);
+      setTime(data.timeline);
     });
   }, []);
 

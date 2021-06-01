@@ -21,9 +21,8 @@ const News = () => {
         },
       };
       const resNews = await axios(config);
-      const objNews = resNews.data;
       resNews.status !== 200 && history.push(ERROR);
-      setSetNews(objNews);
+      setSetNews(resNews.data);
     })();
   }, []);
 

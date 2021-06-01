@@ -90,12 +90,10 @@ const HistoricMatchCard = ({
 
   const playerScore = async () => {
     setLoading(true);
-    const { objPlayerScore, badFetch } = await getPlayerScore(id);
-    badFetch && history.push(ERROR);
-    if (objPlayerScore) {
-      setLoading(false);
-      setPlayerScore(objPlayerScore);
-    }
+    const gameScore = await getPlayerScore(id);
+    gameScore.status !== 200 && history.push(ERROR);
+    setLoading(false);
+    setPlayerScore(gameScore);
   };
 
   return (

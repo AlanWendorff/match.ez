@@ -116,8 +116,9 @@ const TeamProfile = () => {
           wl,
           imageTeam,
           colors,
+          status
         } = data;
-        data.status !== 200 && history.push(ERROR); 
+        status !== 200 && history.push(ERROR); 
         setRoster(roster);
         if (historicMatches && historicMatches.length !== 0) {
           guardarMatchesMod(historicMatches.slice(0, 6));
