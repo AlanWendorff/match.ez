@@ -76,7 +76,7 @@ const MatchCardRow = ({ match }) => {
           </div>
 
           <div className="teams-info-container">
-            <div className="row-team">
+            <div className="row-team" style={{borderLeft:  `5px solid ${COLOR_TEAM_A.DarkVibrant}`}}>
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 0)}
@@ -105,9 +105,7 @@ const MatchCardRow = ({ match }) => {
               )}
             </div>
 
-            <div className="row-team">
-              
-
+            <div className="row-team" style={{borderLeft:  `5px solid ${COLOR_TEAM_B.DarkVibrant}`}}>
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 1)}

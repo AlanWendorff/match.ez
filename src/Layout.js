@@ -7,6 +7,8 @@ import HltvRanking from "./components/HltvRanking/HltvRanking";
 import TeamProfile from "./components/TeamProfile/TeamProfile";
 import AllMatches from "./components/AllMatches/AllMatches";
 import Timeline from "./components/Timeline/Timeline";
+import NotFound from "./components/NotFound/NotFound";
+import Warning from "./components/Warning/Warning"
 import News from "./components/News/News";
 import Home from "./components/Home/Home";
 import More from "./components/More/More";
@@ -20,6 +22,7 @@ import {
   TEAM,
   RANKING,
   NEWS,
+  ERROR
 } from "./routes/routes";
 
 let deferredPrompt;
@@ -65,7 +68,9 @@ const Layout = () => {
               isinstalled={isinstalled}
             />
           </Route>
+          <Route exact path={ERROR} component={Warning} />
           <Route exact path={HOME} component={Home} />
+          <Route component={NotFound} />
         </Switch>
         <footer>
           <NavigationBar />

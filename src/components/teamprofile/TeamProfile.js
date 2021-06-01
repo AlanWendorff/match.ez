@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router";
 import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { HOME } from "../../routes/routes";
+import { ERROR } from "../../routes/routes";
 import { TEAM_INFO } from "../../const/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
@@ -22,21 +22,17 @@ const CircularTournaments = React.lazy(() =>
 const HistoricMatchMapping = React.lazy(() =>
   import("../HistoricMatchCard/HistoricMatchMapping")
 );
-const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const TeamProfile = () => {
   const { teamid } = useParams();
   const history = useHistory();
-  !teamid && history.push(HOME);
 
   const { palette, setPalette, setLogo } = useContext(PaletteContext);
-  const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
   const [stadistics, setStadistics] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
   const [matchesmod, guardarMatchesMod] = useState([]);
   const [matches, guardarMatches] = useState([]);
   const [roster, setRoster] = useState([]);
-  const [crash, guardarStateCrash] = useState(false);
   const [noMatches, guardarNoMatches] = useState(false);
   const [image_url, setImageTeam] = useState("");
   const [show, setShow] = useState();
@@ -100,9 +96,7 @@ const TeamProfile = () => {
 
   useEffect(() => {
     setPreview();
-    guardarLoaderProgress({ width: "0%" });
     guardarNoMatches(false);
-    guardarStateCrash(false);
 
     const config = {
       method: "get",
@@ -123,6 +117,7 @@ const TeamProfile = () => {
           imageTeam,
           colors,
         } = data;
+        data.status !== 200 && history.push(ERROR); 
         setRoster(roster);
         if (historicMatches && historicMatches.length !== 0) {
           guardarMatchesMod(historicMatches.slice(0, 6));
@@ -140,114 +135,90 @@ const TeamProfile = () => {
         }
         upcomingMatches.length !== 0 && guardarMatches(upcomingMatches);
         setStadistics({ winStrike, winRate, wl });
-        guardarLoaderProgress({ width: "100%" });
       })
-      .catch(() => {
-        guardarStateCrash(true);
-        guardarLoaderProgress({ width: "100%" });
+      .catch((error) => {
+        console.log(error);
       });
   }, [teamid]);
 
-  const { width } = loaderprogress;
-  if (!crash) {
-    if (width === "100%") {
-      return (
-        <div
-          className="parametros-container mosaico noselect"
-          style={{ backgroundColor: palette.DarkVibrant }}
-        >
-          <MobileHeader
-            color={palette}
-            img={image_url}
-            buttonstatus={buttonstatus}
-            setPreview={setPreview}
-            setVs={setVs}
-            setHistory={setHistory}
-            isProfile
-            setLadder
-          />
+  return image_url ? (
+    <div
+      className="parametros-container mosaico noselect"
+      style={{ backgroundColor: palette.DarkVibrant }}
+    >
+      <MobileHeader
+        color={palette}
+        img={image_url}
+        buttonstatus={buttonstatus}
+        setPreview={setPreview}
+        setVs={setVs}
+        setHistory={setHistory}
+        isProfile
+        setLadder
+      />
 
-          {show === "preview" && stadistics.winStrike !== undefined && (
-            <TeamPreview
-              img={image_url}
-              teamid={teamid}
-              color={palette}
-              matches={matches}
-              prevMatch={prevMatch}
-              setPreview={setPreview}
-              setVs={setVs}
-              setHistory={setHistory}
-              roster={roster}
-              winRate={stadistics.winRate}
-              winStrike={stadistics.winStrike}
-              wl={stadistics.wl}
-            />
-          )}
-          {show === "vs" && !matches.length > 0 && (
-            <Suspense fallback={<div></div>}>
-              <InfoCard noMatches={noMatches} />
-            </Suspense>
-          )}
-          {show === "vs" && matches.length > 0 && (
-            <Suspense fallback={<div></div>}>
-              <CircularTournaments
-                filterByTournament={filterByTournament}
-                matches={matches}
-              />
-              <OneTeamMapping matches={matches} teamid={teamid} />
-            </Suspense>
-          )}
-
-          {show === "history" && prevMatch !== "no-match" && (
-            <>
-              <Suspense fallback={<div></div>}>
-                <CircularTournaments
-                  filterByTournament={filterByTournament}
-                  prevMatch={prevMatch}
-                />
-                <HistoricMatchMapping
-                  prevMatch={matchesmod}
-                  teamid={teamid}
-                />
-                {matchesmod.length !== prevMatch.length && (
-                  <div
-                    onClick={() => {
-                      loadMoreItems();
-                    }}
-                    className="load-more"
-                  >
-                    <FontAwesomeIcon icon={faPlus} />
-                  </div>
-                )}
-              </Suspense>
-            </>
-          )}
-          {/* <Logo color={palette} img={image_url} /> */}
-        </div>
-      );
-    } else {
-      // RETURN APP LOADING
-      return (
-        <div
-          className="parametros-container noselect"
-          style={{ backgroundColor: "black" }}
-        >
-          <LoadScreen loaderprogress={loaderprogress} />
-        </div>
-      );
-    }
-  } else {
-    return (
-      <div
-        className="parametros-container noselect"
-        style={{ backgroundColor: "#040c1c" }}
-      >
+      {show === "preview" && stadistics.winStrike !== undefined && (
+        <TeamPreview
+          img={image_url}
+          teamid={teamid}
+          color={palette}
+          matches={matches}
+          prevMatch={prevMatch}
+          setPreview={setPreview}
+          setVs={setVs}
+          setHistory={setHistory}
+          roster={roster}
+          winRate={stadistics.winRate}
+          winStrike={stadistics.winStrike}
+          wl={stadistics.wl}
+        />
+      )}
+      {show === "vs" && !matches.length > 0 && (
         <Suspense fallback={<div></div>}>
-          <Warning />
+          <InfoCard noMatches={noMatches} />
         </Suspense>
-      </div>
-    );
-  }
+      )}
+      {show === "vs" && matches.length > 0 && (
+        <Suspense fallback={<div></div>}>
+          <CircularTournaments
+            filterByTournament={filterByTournament}
+            matches={matches}
+          />
+          <OneTeamMapping matches={matches} teamid={teamid} />
+        </Suspense>
+      )}
+
+      {show === "history" && prevMatch !== "no-match" && (
+        <>
+          <Suspense fallback={<div></div>}>
+            <CircularTournaments
+              filterByTournament={filterByTournament}
+              prevMatch={prevMatch}
+            />
+            <HistoricMatchMapping prevMatch={matchesmod} teamid={teamid} />
+            {matchesmod.length !== prevMatch.length && (
+              <div
+                onClick={() => {
+                  loadMoreItems();
+                }}
+                className="load-more"
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </div>
+            )}
+          </Suspense>
+        </>
+      )}
+      {/* <Logo color={palette} img={image_url} /> */}
+    </div>
+  ) : (
+    <div
+      className="parametros-container noselect"
+      style={{ backgroundColor: "black" }}
+    >
+      <LoadScreen />
+    </div>
+  );
 };
 
 export default TeamProfile;

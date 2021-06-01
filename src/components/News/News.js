@@ -1,40 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { NEWS } from "../../const/ApiEndpoints";
+import { useHistory } from "react-router";
+import { ERROR } from "../../routes/routes";
 import LoadScreen from "../Loader/LoadScreen";
-import Warning from "../Warning/Warning";
 import Moment from "moment";
 import axios from "axios";
 import "./news.css";
 
 const News = () => {
+  const history = useHistory();
   const [news, setSetNews] = useState([]);
-  const [badfetch, setBadfetch] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const url = NEWS;
-      try {
-        const config = {
-          method: "get",
-          url: url,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        };
-        const resNews = await axios(config);
-        const objNews = resNews.data;
-        if (resNews.status !== 200) {
-          setBadfetch(true);
-        } else {
-          setSetNews(objNews);
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      const config = {
+        method: "get",
+        url: NEWS,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      };
+      const resNews = await axios(config);
+      const objNews = resNews.data;
+      resNews.status !== 200 && history.push(ERROR);
+      setSetNews(objNews);
     })();
   }, []);
 
-  return !badfetch ? (
+  return (
     <div className="news-container font-gilroy background-color-4all">
       {news.length > 0 ? (
         news.map((n) => {
@@ -59,8 +52,11 @@ const News = () => {
                 <hr />
               </h2>
               <p>
-                {n.description} 
-                <a rel="noopener noreferrer" target="_blank" href={n.link}> Full story on hltv.org</a>
+                {n.description}
+                <a rel="noopener noreferrer" target="_blank" href={n.link}>
+                  {" "}
+                  Full story on hltv.org
+                </a>
               </p>
             </div>
           );
@@ -68,10 +64,6 @@ const News = () => {
       ) : (
         <LoadScreen />
       )}
-    </div>
-  ) : (
-    <div className="news-container font-gilroy background-color-4all">
-      <Warning />
     </div>
   );
 };

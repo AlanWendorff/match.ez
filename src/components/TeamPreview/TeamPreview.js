@@ -54,18 +54,13 @@ const TeamPreview = ({
         "X-Requested-With": "XMLHttpRequest",
       },
     };
-    try {
-      axios
-        .get(PLAYER_INFO.replace(":name", playerName), config)
-        .then(({ data }) => {
-          data.name.includes(LASTNAME)
-            ? setPlayerInfo(data)
-            : setPlayerInfo(false);
-        });
-    } catch (error) {
-      setPlayerInfo(false);
-      setIsOpen(false);
-    }
+    axios
+      .get(PLAYER_INFO.replace(":name", playerName), config)
+      .then(({ data }) => {
+        data.name.includes(LASTNAME)
+          ? setPlayerInfo(data)
+          : setPlayerInfo(false);
+      });
   };
 
   return (

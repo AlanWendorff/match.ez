@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext, Suspense } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router";
 import { PaletteContext } from "../Context/PaletteContext";
-import { HOME } from "../../routes/routes";
+import { ERROR } from "../../routes/routes";
 import { LEAGUE_INFO } from "../../const/ApiEndpoints";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
@@ -11,16 +11,12 @@ import LoadScreen from "../Loader/LoadScreen";
 import InfoCard from "../InfoCard/InfoCard";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
-const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const LeagueGames = () => {
   const { tournamentId } = useParams();
   const history = useHistory();
-  !tournamentId && history.push(HOME);
 
   const { palette, setPalette, setLogo } = useContext(PaletteContext);
-  const [loaderprogress, guardarLoaderProgress] = useState({ width: "0%" });
-  const [crash, guardarStateCrash] = useState(false);
   const [matchesHoy, guardarMatchesHoy] = useState([]);
   const [prevMatch, guardarPrevMatch] = useState([]);
   const [leaderboard, guardarLeaderboard] = useState([]);
@@ -75,6 +71,7 @@ const LeagueGames = () => {
     axios
       .get(LEAGUE_INFO.replace(":id", tournamentId), config)
       .then(({ data }) => {
+        data.status !== 200 && history.push(ERROR);
         const {
           historicMatches,
           upcomingMatches,
@@ -82,10 +79,8 @@ const LeagueGames = () => {
           imageLeague,
           colors,
         } = data;
-        upcomingMatches === undefined
-          ? guardarStateCrash(true)
-          : guardarMatchesHoy(upcomingMatches);
-        guardarLeaderboard(ladder);
+        upcomingMatches !== undefined && guardarMatchesHoy(upcomingMatches);
+        ladder !== undefined && guardarLeaderboard(ladder);
         if (historicMatches && historicMatches.length !== 0) {
           setPalette(colors);
           if (imageLeague === null) {
@@ -99,63 +94,43 @@ const LeagueGames = () => {
         } else {
           guardarPrevMatch("no-match");
         }
-        guardarLoaderProgress({ width: "100%" });
-        if (data.length === 0) {
-          guardarStateCrash(true);
-          guardarLoaderProgress({ width: "100%" });
-        }
       });
   }, []);
 
-  const { width } = loaderprogress;
-  if (width === "100%") {
-    return (
-      <div
-        className="parametros-container pattern-background"
-        style={{ backgroundColor: palette.DarkVibrant }}
-      >
-        {crash !== true && (
-          <MobileHeader
-            color={palette}
-            img={image_url}
-            buttonstatus={buttonstatus}
-            setVs={setVs}
-            setHistory={setHistory}
-            setLadder={setLadder}
-            setPreview
-            isTournament
-          />
-        )}
-        {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
-        {show === "vs" && matchesHoy !== undefined && (
-          <CompetitionMapping matchesHoy={matchesHoy} palette={palette} />
-        )}
-        {show === "vs" && matchesHoy.length === 0 && <InfoCard />}
-        {show === "history" && prevMatch !== "no-match" && (
-          <HistoricMatchMapping
-            prevMatch={prevMatch}
-            setShow={setShow}
-          />
-        )}
-        {/* crash !== true && <Logo color={palette} img={image_url} /> */}
+  return image_url ? (
+    <div
+      className="parametros-container pattern-background"
+      style={{ backgroundColor: palette.DarkVibrant }}
+    >
+      <MobileHeader
+        color={palette}
+        img={image_url}
+        buttonstatus={buttonstatus}
+        setVs={setVs}
+        setHistory={setHistory}
+        setLadder={setLadder}
+        setPreview
+        isTournament
+      />
 
-        {crash === true && (
-          <Suspense fallback={<div></div>}>
-            <Warning />
-          </Suspense>
-        )}
-      </div>
-    );
-  } else {
-    return (
-      <div
-        className="parametros-container pattern-background"
-        style={{ backgroundColor: "#000000" }}
-      >
-        <LoadScreen loaderprogress={loaderprogress} />
-      </div>
-    );
-  }
+      {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
+      {show === "vs" && matchesHoy !== undefined && (
+        <CompetitionMapping matchesHoy={matchesHoy} palette={palette} />
+      )}
+      {show === "vs" && matchesHoy.length === 0 && <InfoCard />}
+      {show === "history" && prevMatch !== "no-match" && (
+        <HistoricMatchMapping prevMatch={prevMatch} setShow={setShow} />
+      )}
+      {/* <Logo color={palette} img={image_url} /> */}
+    </div>
+  ) : (
+    <div
+      className="parametros-container pattern-background"
+      style={{ backgroundColor: "#000000" }}
+    >
+      <LoadScreen />
+    </div>
+  );
 };
 
 export default LeagueGames;

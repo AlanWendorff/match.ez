@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./warning.css";
 
-const Warning = () => {
+const NotFound = () => {
   return (
     <div className="warning font-gilroy background-color-4all">
       <div className="home-button-container">
-        <p>Something happened.</p>
-        <Link to="/" className="waves-effect waves-light btn red darken-4">
+        <p>Page Not Found :'(</p>
+        <Link to="/" className="waves-effect waves-light btn cyan">
           <i className="material-icons left">home</i>Home
         </Link>
       </div>
@@ -15,4 +14,4 @@ const Warning = () => {
   );
 };
 
-export default Warning;
+export default NotFound;

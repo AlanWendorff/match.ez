@@ -9,7 +9,8 @@ import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
 import { getPlayerScore } from "./getPlayerScore";
-import { TEAM } from "../../routes/routes";
+import { useHistory } from "react-router";
+import { TEAM, ERROR } from "../../routes/routes";
 import { Link } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image";
 import PlayerScore from "../PlayerScore/PlayerScore";
@@ -24,6 +25,7 @@ const HistoricMatchCard = ({
   match,
   teamId,
 }) => {
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState(false);
   const [showscore, setShowScore] = useState(0);
@@ -88,7 +90,8 @@ const HistoricMatchCard = ({
 
   const playerScore = async () => {
     setLoading(true);
-    const { objPlayerScore } = await getPlayerScore(id);
+    const { objPlayerScore, badFetch } = await getPlayerScore(id);
+    badFetch && history.push(ERROR);
     if (objPlayerScore) {
       setLoading(false);
       setPlayerScore(objPlayerScore);

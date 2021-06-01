@@ -1,20 +1,20 @@
-import React, { useContext, Suspense } from "react";
+import React, { useContext } from "react";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
 import LoadScreen from "../Loader/LoadScreen";
 import LazyLoad from "react-lazyload";
 import Team from "./Team";
 import "./hltvranking.css";
-const Warning = React.lazy(() => import("../Warning/Warning"));
 
 const HltvRanking = () => {
-  const { ranking, badfetch } = useContext(TeamRankingContext);
+  const { ranking } = useContext(TeamRankingContext);
 
-  return !badfetch ? (
+  return (
     <div className="ranking-container font-gilroy background-color-4all">
       {ranking.length > 0 ? (
         <div className="table-container">
           {ranking.map((team) => {
-            const { balance, name, points, position, roster, img, id, colors } = team;
+            const { balance, name, points, position, roster, img, id, colors } =
+              team;
             let balanceColor;
             balance.length > 1
               ? balance.includes("-")
@@ -42,10 +42,6 @@ const HltvRanking = () => {
       ) : (
         <LoadScreen />
       )}
-    </div>
-  ) : (
-    <div className="ranking-container font-gilroy background-color-4all">
-      <Suspense fallback={<div></div>}><Warning /></Suspense>
     </div>
   );
 };
