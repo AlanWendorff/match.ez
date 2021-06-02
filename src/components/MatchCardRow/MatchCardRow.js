@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  faBalanceScaleLeft,
   faCalendarDay,
   faClock,
   faSortDown,
@@ -10,6 +11,7 @@ import { PlaySound } from "../../utility/PlaySound";
 import { Link } from "react-router-dom";
 import { TEAM } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
+import { compareTeams } from "../../utility/compareTeams";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TeamRanking from "../TeamRanking/TeamRanking";
 import {
@@ -20,6 +22,7 @@ import {
   getMessageLive,
 } from "./Helper";
 import ProgressiveImage from "react-progressive-image";
+import MiniWinRate from "../MiniWinRate/MiniWinRate";
 import twitch from "../../Images/twitch.png";
 import loader from "../../Images/loader.gif";
 import Share from "../Share/Share";
@@ -28,6 +31,7 @@ import "./MatchCardRow.css";
 
 const MatchCardRow = ({ match }) => {
   const [content, setContent] = useState(false);
+  const [winrate, setWinrate] = useState({});
   const {
     bestOf,
     league,
@@ -59,6 +63,14 @@ const MatchCardRow = ({ match }) => {
   const TEAM_NAME_A = evalName(opponents, 0);
   const TEAM_NAME_B = evalName(opponents, 1);
 
+  const setWinRate = async () => {
+    const response = await compareTeams(
+      opponents[0].opponent.id,
+      opponents[1].opponent.id
+    );
+    setWinrate(response.data);
+  };
+
   return (
     <div
       className={`noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster ${
@@ -80,11 +92,11 @@ const MatchCardRow = ({ match }) => {
           </div>
 
           <div className="teams-info-container">
-            <div 
-              className="row-team" 
-              title={LOOKPROFILE + TEAM_NAME_A} 
-              style={{borderLeft:  `5px solid ${COLOR_TEAM_A.DarkVibrant}`}}
-              >
+            <div
+              className="row-team"
+              title={LOOKPROFILE + TEAM_NAME_A}
+              style={{ borderLeft: `5px solid ${COLOR_TEAM_A.DarkVibrant}` }}
+            >
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 0)}
@@ -95,17 +107,22 @@ const MatchCardRow = ({ match }) => {
                   )}
                 </ProgressiveImage>
               </div>
-              
+
+              <MiniWinRate/>
 
               <Link
-                  to={TEAM_NAME_A === "To be defined"? "#" : TEAM.replace(":teamid", opponents[0].opponent.id)}
-                  style={{
-                    backgroundColor: COLOR_TEAM_A.DarkVibrant,
-                    fontSize: TEAM_NAME_A.length > 11 && "12px",
-                  }}
-                >
+                to={
+                  TEAM_NAME_A === "To be defined"
+                    ? "#"
+                    : TEAM.replace(":teamid", opponents[0].opponent.id)
+                }
+                style={{
+                  backgroundColor: COLOR_TEAM_A.DarkVibrant,
+                  fontSize: TEAM_NAME_A.length > 11 && "12px",
+                }}
+              >
                 {TEAM_NAME_A}
-                <TeamRanking name={TEAM_NAME_A}/>
+                <TeamRanking name={TEAM_NAME_A} />
               </Link>
 
               {status === "running" && (
@@ -113,10 +130,11 @@ const MatchCardRow = ({ match }) => {
               )}
             </div>
 
-            <div 
-            className="row-team" 
-            title={LOOKPROFILE + TEAM_NAME_B} 
-            style={{borderLeft:  `5px solid ${COLOR_TEAM_B.DarkVibrant}`}}>
+            <div
+              className="row-team"
+              title={LOOKPROFILE + TEAM_NAME_B}
+              style={{ borderLeft: `5px solid ${COLOR_TEAM_B.DarkVibrant}` }}
+            >
               <div>
                 <ProgressiveImage
                   src={evalImg(opponents, 1)}
@@ -128,15 +146,21 @@ const MatchCardRow = ({ match }) => {
                 </ProgressiveImage>
               </div>
 
-              <Link 
-                to={TEAM_NAME_B === "To be defined"? "#" : TEAM.replace(":teamid", opponents[1].opponent.id)}
+              <MiniWinRate/>
+              
+              <Link
+                to={
+                  TEAM_NAME_B === "To be defined"
+                    ? "#"
+                    : TEAM.replace(":teamid", opponents[1].opponent.id)
+                }
                 style={{
                   backgroundColor: COLOR_TEAM_B.DarkVibrant,
                   fontSize: TEAM_NAME_B.length > 11 && "12px",
                 }}
               >
                 {TEAM_NAME_B}
-                <TeamRanking name={TEAM_NAME_B}/>
+                <TeamRanking name={TEAM_NAME_B} />
               </Link>
 
               {status === "running" && (
@@ -175,6 +199,21 @@ const MatchCardRow = ({ match }) => {
                 className="label-data-style"
                 style={{ color: COLOR_LEAGUE.DarkVibrant }}
               >
+                <FontAwesomeIcon icon={faBalanceScaleLeft} />
+              </span>
+              <span
+                onClick={() => setWinRate()}
+                className="text-align-end highlight-text"
+              >
+                Compare winrate
+              </span>
+            </div>
+
+            <div className="info-container">
+              <span
+                className="label-data-style"
+                style={{ color: COLOR_LEAGUE.DarkVibrant }}
+              >
                 <FontAwesomeIcon icon={faTrophy} />
               </span>
               <span className="text-align-end">
@@ -202,6 +241,20 @@ const MatchCardRow = ({ match }) => {
         )
       ) : (
         <>
+          <div className="info-container">
+            <span
+              className="label-data-style"
+              style={{ color: COLOR_LEAGUE.DarkVibrant }}
+            >
+              <FontAwesomeIcon icon={faBalanceScaleLeft} />
+            </span>
+            <span
+              onClick={() => setWinRate()}
+              className="text-align-end highlight-text"
+            >
+              Compare winrate
+            </span>
+          </div>
           <div className="info-container">
             <span
               className="label-data-style"

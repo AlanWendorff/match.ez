@@ -1,0 +1,23 @@
+.mini-ranking-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 155px;
+}
+.percentage-bar{
+    width: 100px;
+    border-radius: 10px;
+    height: 7px;
+    background-color: rgba(0, 0, 0, 0.11);
+    position: relative;
+    z-index: 50;
+}
+.percentage-bar > div{
+    transition: all 0.3s ease-out;
+    position: absolute;
+    border-radius: 10px;
+    height: 7px;
+    left: 0;
+    background-color: red;
+    z-index: 100;
+}

@@ -6,6 +6,8 @@ export const DATABASE_TOURNAMENTS = BACKEND_ENDPOINT + "/database/tournaments";
 
 export const DATABASE_SEARCH_TEAM = BACKEND_ENDPOINT + "/database/searchteam/:letters";
 
+export const COMPARE_WIN_RATE = BACKEND_ENDPOINT + "/api/compare/:ids";
+
 export const LEAGUE_INFO = BACKEND_ENDPOINT + "/api/tournamentmatches/:id";
 
 export const TEAM_INFO = BACKEND_ENDPOINT + "/api/teaminfo/:id";
