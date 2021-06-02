@@ -31,7 +31,8 @@ import "./MatchCardRow.css";
 
 const MatchCardRow = ({ match }) => {
   const [content, setContent] = useState(false);
-  const [winrate, setWinrate] = useState({});
+  const [winrate, setWinrate] = useState([]);
+  const [showwinrate, setShowWinrate] = useState(false);
   const {
     bestOf,
     league,
@@ -64,11 +65,12 @@ const MatchCardRow = ({ match }) => {
   const TEAM_NAME_B = evalName(opponents, 1);
 
   const setWinRate = async () => {
+    setShowWinrate(true);
     const response = await compareTeams(
       opponents[0].opponent.id,
       opponents[1].opponent.id
     );
-    setWinrate(response.data);
+    setWinrate([response.data.WIN_RATE_1, response.data.WIN_RATE_2]);
   };
 
   return (
@@ -106,9 +108,13 @@ const MatchCardRow = ({ match }) => {
                     <img alt="a team" className="team-logo" src={src} />
                   )}
                 </ProgressiveImage>
+                {showwinrate && (
+                  <MiniWinRate
+                    colors={COLOR_TEAM_A.DarkVibrant}
+                    winrate_api={winrate[0]}
+                  />
+                )}
               </div>
-
-              <MiniWinRate/>
 
               <Link
                 to={
@@ -144,10 +150,14 @@ const MatchCardRow = ({ match }) => {
                     <img alt="b team" className="team-logo" src={src} />
                   )}
                 </ProgressiveImage>
+                {showwinrate && (
+                  <MiniWinRate
+                    colors={COLOR_TEAM_B.DarkVibrant}
+                    winrate_api={winrate[1]}
+                  />
+                )}
               </div>
 
-              <MiniWinRate/>
-              
               <Link
                 to={
                   TEAM_NAME_B === "To be defined"

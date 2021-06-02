@@ -55,7 +55,11 @@
   height: 30px;
   color: white;
 }
-
+.row-team > div {
+  display: flex;
+  justify-content: space-between;
+  width: 225px 
+}
 
 @media (min-width: 641px) {
   .prev-game-mobile > .row-team:hover {

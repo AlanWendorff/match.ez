@@ -8,6 +8,7 @@ import CircularTournaments from "../CircularTournaments/CircularTournaments";
 import ListadoAllmatches from "./ListadoAllmatches";
 import LoadScreen from "../Loader/LoadScreen";
 import axios from "axios";
+import MiniWinRate from "../MiniWinRate/MiniWinRate";
 import "./allmatches.css";
 
 const AllMatches = () => {
@@ -44,6 +45,7 @@ const AllMatches = () => {
         <>
           <CircularTournaments matches={allmatches} />
           <ListadoAllmatches matchesmod={matchesmod} />
+          
           {matchesmod.length !== allmatches.length && (
             <div
               onClick={() => {

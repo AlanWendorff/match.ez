@@ -13,11 +13,19 @@
     z-index: 50;
 }
 .percentage-bar > div{
-    transition: all 0.3s ease-out;
+    transition: width .5s ease-out;
     position: absolute;
     border-radius: 10px;
     height: 7px;
     left: 0;
-    background-color: red;
     z-index: 100;
+}
+
+.loader-winrate{
+    margin: 5px 0;
+}
+
+.loader-winrate .small { 
+    width: 15px !important;
+    height: 15px !important;
 }
