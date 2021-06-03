@@ -201,7 +201,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
           {hidecomponent && (
             <>
               <div
-                className="margin-bottom-15px margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                className="margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                 onClick={() => {
                   !anim ? turnOnAnim() : turnOffAnim();
                 }}

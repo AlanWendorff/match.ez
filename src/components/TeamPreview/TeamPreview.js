@@ -241,60 +241,61 @@ const TeamPreview = ({
             } in the world`
           : `${prevMatch !== "no-match" && arrayTeam.opponent.name}`}
       </div>
-
-      <div className="team">
-        {roster.map((player) => {
-          const { nationality, name, first_name, last_name, image_url } =
-            player;
-          const FIRSTNAME = first_name !== null ? first_name : "";
-          const LASTNAME = last_name !== null ? last_name : "";
-          const NATIONALITY =
-            nationality !== null
-              ? `http://purecatamphetamine.github.io/country-flag-icons/3x2/${nationality}.svg`
-              : undefined;
-          return (
-            <div
-              className="player"
-              key={name}
-              onClick={() => {
-                setIsOpen(true);
-                getPlayerInfo(name, LASTNAME);
-              }}
-            >
-              <div>
-                <ProgressiveImage
-                  src={image_url === null ? unknown : image_url}
-                  placeholder={unknown}
+      {roster.length !== 0 && (
+        <div className="team">
+          {roster.map((player) => {
+            const { nationality, name, first_name, last_name, image_url } =
+              player;
+            const FIRSTNAME = first_name !== null ? first_name : "";
+            const LASTNAME = last_name !== null ? last_name : "";
+            const NATIONALITY =
+              nationality !== null
+                ? `http://purecatamphetamine.github.io/country-flag-icons/3x2/${nationality}.svg`
+                : undefined;
+            return (
+              <div
+                className="player"
+                key={name}
+                onClick={() => {
+                  setIsOpen(true);
+                  getPlayerInfo(name, LASTNAME);
+                }}
+              >
+                <div>
+                  <ProgressiveImage
+                    src={image_url === null ? unknown : image_url}
+                    placeholder={unknown}
+                  >
+                    {(src) => (
+                      <img
+                        title={first_name + " " + last_name}
+                        className="player-image"
+                        loading="lazy"
+                        src={src}
+                        alt={name}
+                      />
+                    )}
+                  </ProgressiveImage>
+                </div>
+                <img title={nationality} src={NATIONALITY} />
+                <span
+                  style={{ color: color.DarkVibrant }}
+                  title={first_name + " " + last_name}
+                  className="font-gilroy-bold"
                 >
-                  {(src) => (
-                    <img
-                      title={first_name + " " + last_name}
-                      className="player-image"
-                      loading="lazy"
-                      src={src}
-                      alt={name}
-                    />
-                  )}
-                </ProgressiveImage>
+                  {name}
+                </span>
+                <span
+                  style={{ color: color.DarkVibrant }}
+                  className="player-name-style"
+                >
+                  {FIRSTNAME + " " + LASTNAME}
+                </span>
               </div>
-              <img title={nationality} src={NATIONALITY} />
-              <span
-                style={{ color: color.DarkVibrant }}
-                title={first_name + " " + last_name}
-                className="font-gilroy-bold"
-              >
-                {name}
-              </span>
-              <span
-                style={{ color: color.DarkVibrant }}
-                className="player-name-style"
-              >
-                {FIRSTNAME + " " + LASTNAME}
-              </span>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

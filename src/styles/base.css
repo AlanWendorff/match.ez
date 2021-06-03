@@ -208,6 +208,11 @@ i.right {
   justify-content: space-between;
   align-items: center;
 }
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 
 .text-align-start {
   text-align: start;
@@ -238,7 +243,9 @@ i.right {
 .head-font {
   padding: 0px 10px;
 }
-
+.parametros-container {
+  background-color: black;
+}
 @media (min-width: 641px) {
   .parametros-container {
     height: calc(100vh - 50px);
@@ -259,9 +266,8 @@ i.right {
     font-size: 25px;
   }
   .load-more:hover {
-    border: 1px solid white;
-    border-radius: 100px;
-    transition: all 0.5s ease-out;
+    transform: scale(1.3);
+    transition: all 0.1s ease-out;
   }
 }
 

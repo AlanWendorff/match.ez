@@ -3,46 +3,41 @@ import "./tarjetaScore.css";
 
 const PlayerScore = ({
   playerscore,
-  csgoLogoDefaultBlack,
+  nopic,
   opponents,
-  loading,
-  team0,
-  team1,
+  colorTeamA,
+  colorTeamB,
 }) => {
   const { teams } = playerscore;
-  let TeamNameA, TeamLogoA, colorTeamA;
-  let TeamNameB, TeamLogoB, colorTeamB;
+  let TeamNameA, TeamLogoA;
+  let TeamNameB, TeamLogoB;
 
   if (teams && teams.length > 0) {
     for (let i = 0; i < opponents.length; i++) {
       if (playerscore.teams[0].name === opponents[0].opponent.name) {
         if (opponents[0].opponent.image_url === null) {
-          TeamLogoA = csgoLogoDefaultBlack;
+          TeamLogoA = nopic;
         } else {
           TeamLogoA = opponents[0].opponent.image_url;
         }
         if (opponents[1].opponent.image_url === null) {
-          TeamLogoB = csgoLogoDefaultBlack;
+          TeamLogoB = nopic;
         } else {
           TeamLogoB = opponents[1].opponent.image_url;
         }
-        colorTeamA = team0.colors;
-        colorTeamB = team1.colors;
         TeamNameA = opponents[0].opponent.name;
         TeamNameB = opponents[1].opponent.name;
       } else {
         if (opponents[1].opponent.image_url === null) {
-          TeamLogoA = csgoLogoDefaultBlack;
+          TeamLogoA = nopic;
         } else {
           TeamLogoA = opponents[1].opponent.image_url;
         }
         if (opponents[0].opponent.image_url === null) {
-          TeamLogoB = csgoLogoDefaultBlack;
+          TeamLogoB = nopic;
         } else {
           TeamLogoB = opponents[0].opponent.image_url;
         }
-        colorTeamA = team1.colors;
-        colorTeamB = team0.colors;
         TeamNameA = opponents[1].opponent.name;
         TeamNameB = opponents[0].opponent.name;
       }

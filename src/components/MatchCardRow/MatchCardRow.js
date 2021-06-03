@@ -94,12 +94,20 @@ const MatchCardRow = ({ match }) => {
           </div>
 
           <div className="teams-info-container">
-            <div
+            <Link
+              to={
+                TEAM_NAME_A === "To be defined"
+                  ? "#"
+                  : TEAM.replace(":teamid", opponents[0].opponent.id)
+              }
               className="row-team"
               title={LOOKPROFILE + TEAM_NAME_A}
-              style={{ borderLeft: `5px solid ${COLOR_TEAM_A.DarkVibrant}` }}
+              style={{
+                borderLeft: `5px solid ${COLOR_TEAM_A.DarkVibrant}`,
+                borderRight: `5px solid ${COLOR_TEAM_A.DarkVibrant}`,
+              }}
             >
-              <div>
+              <div className="space-between">
                 <ProgressiveImage
                   src={evalImg(opponents, 0)}
                   placeholder={loader}
@@ -116,32 +124,35 @@ const MatchCardRow = ({ match }) => {
                 )}
               </div>
 
-              <Link
-                to={
-                  TEAM_NAME_A === "To be defined"
-                    ? "#"
-                    : TEAM.replace(":teamid", opponents[0].opponent.id)
-                }
+              <span
                 style={{
                   backgroundColor: COLOR_TEAM_A.DarkVibrant,
                   fontSize: TEAM_NAME_A.length > 11 && "12px",
                 }}
+                className="background-color-4all"
               >
                 {TEAM_NAME_A}
-                <TeamRanking name={TEAM_NAME_A} />
-              </Link>
+              </span>
 
               {status === "running" && (
                 <p className="font-gilroy-bold">{results[0].score}</p>
               )}
-            </div>
+            </Link>
 
-            <div
+            <Link
+              to={
+                TEAM_NAME_B === "To be defined"
+                  ? "#"
+                  : TEAM.replace(":teamid", opponents[1].opponent.id)
+              }
               className="row-team"
               title={LOOKPROFILE + TEAM_NAME_B}
-              style={{ borderLeft: `5px solid ${COLOR_TEAM_B.DarkVibrant}` }}
+              style={{
+                borderLeft: `5px solid ${COLOR_TEAM_B.DarkVibrant}`,
+                borderRight: `5px solid ${COLOR_TEAM_B.DarkVibrant}`,
+              }}
             >
-              <div>
+              <div className="space-between">
                 <ProgressiveImage
                   src={evalImg(opponents, 1)}
                   placeholder={loader}
@@ -158,25 +169,20 @@ const MatchCardRow = ({ match }) => {
                 )}
               </div>
 
-              <Link
-                to={
-                  TEAM_NAME_B === "To be defined"
-                    ? "#"
-                    : TEAM.replace(":teamid", opponents[1].opponent.id)
-                }
+              <span
                 style={{
                   backgroundColor: COLOR_TEAM_B.DarkVibrant,
                   fontSize: TEAM_NAME_B.length > 11 && "12px",
                 }}
+                className="background-color-4all"
               >
                 {TEAM_NAME_B}
-                <TeamRanking name={TEAM_NAME_B} />
-              </Link>
+              </span>
 
               {status === "running" && (
                 <p className="font-gilroy-bold">{results[1].score}</p>
               )}
-            </div>
+            </Link>
 
             <div className="text-in-card">
               <p
@@ -204,21 +210,6 @@ const MatchCardRow = ({ match }) => {
       {status !== "running" ? (
         content && (
           <>
-            <div className="info-container">
-              <span
-                className="label-data-style"
-                style={{ color: COLOR_LEAGUE.DarkVibrant }}
-              >
-                <FontAwesomeIcon icon={faBalanceScaleLeft} />
-              </span>
-              <span
-                onClick={() => setWinRate()}
-                className="text-align-end highlight-text"
-              >
-                Compare winrate
-              </span>
-            </div>
-
             <div className="info-container">
               <span
                 className="label-data-style"
@@ -260,11 +251,12 @@ const MatchCardRow = ({ match }) => {
             </span>
             <span
               onClick={() => setWinRate()}
-              className="text-align-end highlight-text"
+              className="text-align-end highlight-text cursor-pointer"
             >
               Compare winrate
             </span>
           </div>
+
           <div className="info-container">
             <span
               className="label-data-style"

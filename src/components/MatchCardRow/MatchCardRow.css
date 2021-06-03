@@ -19,7 +19,6 @@
 }
 
 .row-team {
-  padding: 0 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,6 +32,7 @@
   border-radius: 100px;
   height: 30px;
   padding: 0px 15px;
+  color: black;
 }
 
 .teams-info-container {
@@ -46,7 +46,7 @@
   margin-bottom: 15px;
 }
 
-.row-team a {
+.row-team > span {
   padding: 0px 15px;
   display: flex;
   justify-content: center;
@@ -55,14 +55,15 @@
   height: 30px;
   color: white;
 }
-.row-team > div {
-  display: flex;
-  justify-content: space-between;
-  width: 225px 
-}
 
 @media (min-width: 641px) {
-  .prev-game-mobile > .row-team:hover {
+  .teams-info-container > .row-team > div {
+    width: 230px;
+  }
+  .row-team {
+    padding: 0 20px;
+  }
+  .row-team:hover {
     cursor: pointer;
     transition: all 0.1s ease-out;
     margin: 0 5px;
@@ -80,10 +81,8 @@
   .row-team {
     height: 70px;
   }
-  .row-team p {
-    font-size: 16px;
-  }
-  .row-team a {
+  .row-team > p,
+  .row-team > span {
     font-size: 16px;
   }
   .header {
@@ -112,6 +111,17 @@
 }
 
 @media screen and (max-width: 640px) {
+  .row-team > span {
+    padding: 0;
+    background-color: white !important;
+    color: black;
+  }
+  .teams-info-container > .row-team > div {
+    width: 190px;
+  }
+  .row-team {
+    padding: 0 5px;
+  }
   .match-card-row-size {
     width: 100% !important;
   }
@@ -119,13 +129,14 @@
     height: 150px;
   }
   .match-card-row-size .team-logo {
-    max-width: 40px;
-    max-height: 50px;
+    max-width: 35px;
+    max-height: 35px;
   }
   .row-team {
     height: 57px;
   }
-  .row-team a {
+  .row-team > p,
+  .row-team > span {
     font-size: 14px;
   }
   .info-container {

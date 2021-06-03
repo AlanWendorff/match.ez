@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { WINRATE } from "../../titlestag/titlestag"
 import "./miniwinrate.css";
 
 const MiniWinRate = ({colors, winrate_api}) => {
@@ -14,18 +15,19 @@ const MiniWinRate = ({colors, winrate_api}) => {
   }
 
   return (
-    <div className="mini-ranking-container">
+    <div className="mini-winrate-container" title={WINRATE}>
       {winrate_api !== undefined? (
         <>
           <div className="percentage-bar">
             <div
-              style={{ width: `${parseInt(winrate_api)}px`, backgroundColor: colors }}
+              style={{ width: `${parseInt(winrate)}px`, backgroundColor: colors }}
             ></div>
           </div>
           <span>{winrate} %</span>
         </>
       ) : (
-        <div className="loader-winrate display-flex-justify-center width-100percent">
+        <div className="loader-winrate space-between width-100percent">
+          <span>Analyzing 50 games</span>
           <div className="preloader-wrapper small active">
             <div className="spinner-layer spinner-red-only">
               <div className="circle-clipper left">

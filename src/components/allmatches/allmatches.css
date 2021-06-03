@@ -10,3 +10,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.allmatches .card {
+  margin: 25px 0 !important;
+}

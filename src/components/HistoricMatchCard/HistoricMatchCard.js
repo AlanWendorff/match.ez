@@ -46,30 +46,30 @@ const HistoricMatchCard = ({
   let colorTeamB;
   
   if (opponents[0] !== false) {
-    if (opponents[0].opponent.colors !== {}) {
+    if (opponents[0].opponent.colors.DarkVibrant !== undefined) {
       colorTeamA = opponents[0].opponent.colors;
     } else {
       colorTeamA = {
-        DarkVibrant: "#2d6da3",
+        DarkVibrant: "black",
       };
     }
   } else {
     colorTeamA = {
-      DarkVibrant: "#2d6da3",
+      DarkVibrant: "black",
     };
   }
 
   if (opponents[1] !== false) {
-    if (opponents[1].opponent.colors !== {}) {
+    if (opponents[1].opponent.colors.DarkVibrant !== undefined) {
       colorTeamB = opponents[1].opponent.colors;
     } else {
       colorTeamB = {
-        DarkVibrant: "#2d6da3",
+        DarkVibrant: "black",
       };
     }
   } else {
     colorTeamB = {
-      DarkVibrant: "#2d6da3",
+      DarkVibrant: "black",
     };
   }
 
@@ -106,12 +106,12 @@ const HistoricMatchCard = ({
       <div
         className="card-image"
         style={
-          teamId && { borderTop: `5px solid ${colorLeague.lightVibrant}` }
+          teamId && { borderTop: `5px solid ${colorLeague.LightVibrant}` }
         }
       >
         <div className="card-image prev-game-content cursor-default">
           <div className="prev-game-header-container">
-            <p className="prev-game-header" style={{ color: palette.DarkMuted }}>
+            <p className="prev-game-header" style={{ color: colorLeague.DarkVibrant }}>
               {stage}
             </p>
           </div>
@@ -260,8 +260,8 @@ const HistoricMatchCard = ({
                   opponents={opponents}
                   nopic={nopic}
                   loading={loading}
-                  team0={opponents[0].opponent}
-                  team1={opponents[1].opponent}
+                  colorTeamA={colorTeamA}
+                  colorTeamB={colorTeamB}
                 />
               :
               <div className="no-stadistic">No player stadistics for this serie :'(</div>
