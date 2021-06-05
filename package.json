@@ -1,58 +1,58 @@
 {
-  "name": "arg-matchez",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.13",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "animate.css": "^4.1.1",
-    "axios": "^0.21.1",
-    "firebase": "^7.23.0",
-    "font-awesome": "^4.7.0",
-    "howler": "^2.2.1",
-    "moment": "^2.27.0",
-    "react": "^16.13.1",
-    "react-debounce-input": "^3.2.3",
-    "react-dom": "^16.13.1",
-    "react-fontawesome": "^1.7.1",
-    "react-lazyload": "^3.1.0",
-    "react-modal": "^3.13.1",
-    "react-moment": "^0.9.7",
-    "react-progressive-image": "^0.6.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.2",
-    "react-share": "^4.4.0",
-    "react-twitch-embed-video": "^3.0.0",
-    "react-vertical-timeline-component": "^3.3.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prettier-format": "prettier --write src/**/*.{jsx,js,scss,html}"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "prettier": "2.3.1"
-  }
+    "name": "arg-matchez",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.1",
+        "@fortawesome/fontawesome-svg-core": "^1.2.32",
+        "@fortawesome/free-solid-svg-icons": "^5.15.1",
+        "@fortawesome/react-fontawesome": "^0.1.13",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "animate.css": "^4.1.1",
+        "axios": "^0.21.1",
+        "firebase": "^7.23.0",
+        "font-awesome": "^4.7.0",
+        "howler": "^2.2.1",
+        "moment": "^2.27.0",
+        "react": "^16.13.1",
+        "react-debounce-input": "^3.2.3",
+        "react-dom": "^16.13.1",
+        "react-fontawesome": "^1.7.1",
+        "react-lazyload": "^3.1.0",
+        "react-modal": "^3.13.1",
+        "react-moment": "^0.9.7",
+        "react-progressive-image": "^0.6.0",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "^4.0.2",
+        "react-share": "^4.4.0",
+        "react-twitch-embed-video": "^3.0.0",
+        "react-vertical-timeline-component": "^3.3.3"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "prettier-format": "prettier --write src/**/*.{jsx,js,css,html}"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "prettier": "2.3.1"
+    }
 }
