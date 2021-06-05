@@ -21,15 +21,17 @@
   zoom: 100%;
 }
 
+
+
 .background-color-4all {
-  background-color: #011324;
+  background-color: #0c0c0c;
 }
 
 .light-white {
   background-color: rgb(240, 240, 240);
 }
 .background-color-transparent {
-  background-color: #ffffff00;
+  background-color: #00000000;
 }
 
 .font-gilroy {
@@ -46,14 +48,7 @@
   justify-content: center;
   align-items: center;
 }
-/*.parametros-container{
-    min-width: 120vh;
-    min-height: 1000vh;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    
-} */
+
 .mosaico {
   background-repeat: repeat;
   background-size: 50px 50px;
@@ -243,18 +238,18 @@ i.right {
 .head-font {
   padding: 0px 10px;
 }
+
 .parametros-container {
+  height: calc(100vh - 50px);
+  padding-top: 50px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: black;
 }
+
 @media (min-width: 641px) {
-  .parametros-container {
-    height: calc(100vh - 50px);
-    padding-top: 50px;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   .font-size {
     font-size: 16px;
   }
@@ -273,12 +268,6 @@ i.right {
 
 @media screen and (max-width: 640px) {
   .parametros-container {
-    height: calc(100vh - 50px);
-    padding-top: 50px;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     overflow-x: hidden;
   }
   .font-size {

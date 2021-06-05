@@ -144,7 +144,7 @@ const TeamProfile = () => {
 
   return image_url ? (
     <div
-      className="parametros-container mosaico noselect"
+      className="parametros-container mosaico noselect background-color-4all"
       style={{ backgroundColor: palette.DarkVibrant }}
     >
       <MobileHeader
@@ -213,10 +213,7 @@ const TeamProfile = () => {
       {/* <Logo color={palette} img={image_url} /> */}
     </div>
   ) : (
-    <div
-      className="parametros-container noselect"
-      style={{ backgroundColor: "black" }}
-    >
+    <div className="parametros-container noselect">
       <LoadScreen />
     </div>
   );

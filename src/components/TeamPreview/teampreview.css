@@ -4,6 +4,20 @@
   flex-direction: column;
   align-items: center;
 }
+.preview-container > .team > .player {
+  border-radius: 7px;
+  height: 250px;
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  padding: 5px 0px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
 
 @media (min-width: 771px) {
   .preview-container > .team {
@@ -17,18 +31,7 @@
     justify-content: center;
     border-radius: 2px;
   }
-  .preview-container > .team > .player {
-    border-radius: 2px;
-    height: 250px;
-    width: 130px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    margin: 10px;
-    background-color: rgba(0, 0, 0, 0.089);
-    padding: 5px 0px;
-  }
+
   .preview-container > .team > .player:hover {
     -webkit-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.952);
     -moz-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.952);
@@ -87,15 +90,9 @@
     border-radius: 2px;
   }
   .preview-container > .team > .player {
-    border-radius: 2px;
     height: 250px;
     width: 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
     margin: 8px;
-    background-color: rgba(0, 0, 0, 0.185);
     padding: 5px 0px;
   }
   .preview-container > .team > .player > div {
@@ -132,7 +129,6 @@
   .place-in-world {
     width: 330px;
   }
-
 }
 
 .place-in-world {
@@ -171,7 +167,6 @@
   right: 0;
   color: red;
   width: 50px;
-
 }
 
 .preview-container > .little-info > .last-match > div,

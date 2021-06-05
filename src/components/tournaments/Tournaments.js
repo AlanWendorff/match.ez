@@ -1,7 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useHistory } from "react-router";
-import { ERROR } from "../../routes/routes";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import {
   examplesTournamentsNull,
@@ -16,7 +14,6 @@ import "./tournaments.css";
 import axios from "axios";
 
 const Tournaments = () => {
-  const history = useHistory();
   const { location } = useContext(LocationContext);
   const [examples, setExamples] = useState(examplesTournamentsNull);
   const [alltournaments, setAllTournaments] = useState([]);
@@ -44,7 +41,6 @@ const Tournaments = () => {
       },
     };
     axios(DATABASE_TOURNAMENTS, config).then(({ data }) => {
-      data.status !== 200 && history.push(ERROR);
       setTournaments(data);
       setAllTournaments(data);
       setMode("tournaments");

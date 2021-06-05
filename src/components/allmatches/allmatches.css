@@ -3,14 +3,11 @@
   overflow-x: hidden;
   width: 100%;
   height: calc(100vh - 50px);
-  /* background-image: url("../../Images/generic_team_pattern.png");
-  background-repeat: repeat;
-  background-size: 50px 50px; */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .allmatches .card {
-  margin: 25px 0 !important;
+  margin: 20px 0 !important;
 }

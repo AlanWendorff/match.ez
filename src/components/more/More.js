@@ -81,7 +81,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
 
   return (
     <div
-      className="options noselect"
+      className="options noselect background-color-4all"
       onContextMenu={(e) =>
         window.innerWidth > 1024 ? null : e.preventDefault()
       }

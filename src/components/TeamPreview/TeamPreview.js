@@ -33,16 +33,14 @@ const TeamPreview = ({
   const NEXTMATCH = matches[0];
   const LASTMATCH = prevMatch[0];
   const arrayTeam =
-    prevMatch !== "no-match" &&
+    LASTMATCH &&
     LASTMATCH.opponents.find(
       (element) => element.opponent.id === parseInt(teamid)
     );
-  const rankingTeam =
-    prevMatch !== "no-match" &&
-    ranking.find(
-      (element) =>
-        element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase()
-    );
+  const rankingTeam = ranking.find(
+    (element) =>
+      element.name.toLowerCase() === arrayTeam.opponent.name.toLowerCase()
+  );
 
   const getPlayerInfo = (playerName, LASTNAME) => {
     playerinfo.name !== playerName && setPlayerInfo([]);

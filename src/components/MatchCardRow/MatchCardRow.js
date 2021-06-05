@@ -65,6 +65,7 @@ const MatchCardRow = ({ match }) => {
   const TEAM_NAME_B = evalName(opponents, 1);
 
   const setWinRate = async () => {
+    console.log('compa');
     setShowWinrate(true);
     const response = await compareTeams(
       opponents[0].opponent.id,
@@ -103,40 +104,46 @@ const MatchCardRow = ({ match }) => {
               className="row-team"
               title={LOOKPROFILE + TEAM_NAME_A}
               style={{
-                borderLeft: `5px solid ${COLOR_TEAM_A.DarkVibrant}`,
-                borderRight: `5px solid ${COLOR_TEAM_A.DarkVibrant}`,
+                borderLeft: `3px solid ${COLOR_TEAM_A.DarkVibrant}`,
+                borderRight: `3px solid ${COLOR_TEAM_A.DarkVibrant}`,
               }}
             >
-              <div className="space-between">
-                <ProgressiveImage
-                  src={evalImg(opponents, 0)}
-                  placeholder={loader}
+              <div>
+                <div className="canvas-logo">
+                  <ProgressiveImage
+                    src={evalImg(opponents, 0)}
+                    placeholder={loader}
+                  >
+                    {(src) => (
+                      <img alt="a team" className="team-logo" src={src} />
+                    )}
+                  </ProgressiveImage>
+                </div>
+
+                <span
+                  style={{
+                    backgroundColor: COLOR_TEAM_A.DarkVibrant,
+                  }}
+                  className="background-color-4all"
                 >
-                  {(src) => (
-                    <img alt="a team" className="team-logo" src={src} />
-                  )}
-                </ProgressiveImage>
+                  {TEAM_NAME_A}
+                </span>
+              </div>
+
+              <div className="space-between">
                 {showwinrate && (
                   <MiniWinRate
                     colors={COLOR_TEAM_A.DarkVibrant}
                     winrate_api={winrate[0]}
                   />
                 )}
+
+                {status === "running" && (
+                  <p className="font-gilroy-bold color-text-black ">
+                    {results[0].score}
+                  </p>
+                )}
               </div>
-
-              <span
-                style={{
-                  backgroundColor: COLOR_TEAM_A.DarkVibrant,
-                  fontSize: TEAM_NAME_A.length > 11 && "12px",
-                }}
-                className="background-color-4all"
-              >
-                {TEAM_NAME_A}
-              </span>
-
-              {status === "running" && (
-                <p className="font-gilroy-bold">{results[0].score}</p>
-              )}
             </Link>
 
             <Link
@@ -148,40 +155,45 @@ const MatchCardRow = ({ match }) => {
               className="row-team"
               title={LOOKPROFILE + TEAM_NAME_B}
               style={{
-                borderLeft: `5px solid ${COLOR_TEAM_B.DarkVibrant}`,
-                borderRight: `5px solid ${COLOR_TEAM_B.DarkVibrant}`,
+                borderLeft: `3px solid ${COLOR_TEAM_B.DarkVibrant}`,
+                borderRight: `3px solid ${COLOR_TEAM_B.DarkVibrant}`,
               }}
             >
-              <div className="space-between">
-                <ProgressiveImage
-                  src={evalImg(opponents, 1)}
-                  placeholder={loader}
+              <div>
+                <div className="canvas-logo">
+                  <ProgressiveImage
+                    src={evalImg(opponents, 1)}
+                    placeholder={loader}
+                  >
+                    {(src) => (
+                      <img alt="b team" className="team-logo" src={src} />
+                    )}
+                  </ProgressiveImage>
+                </div>
+                <span
+                  style={{
+                    backgroundColor: COLOR_TEAM_B.DarkVibrant,
+                  }}
+                  className="background-color-4all"
                 >
-                  {(src) => (
-                    <img alt="b team" className="team-logo" src={src} />
-                  )}
-                </ProgressiveImage>
+                  {TEAM_NAME_B}
+                </span>
+              </div>
+
+              <div className="space-between">
                 {showwinrate && (
                   <MiniWinRate
                     colors={COLOR_TEAM_B.DarkVibrant}
                     winrate_api={winrate[1]}
                   />
                 )}
+
+                {status === "running" && (
+                  <p className="font-gilroy-bold color-text-black">
+                    {results[1].score}
+                  </p>
+                )}
               </div>
-
-              <span
-                style={{
-                  backgroundColor: COLOR_TEAM_B.DarkVibrant,
-                  fontSize: TEAM_NAME_B.length > 11 && "12px",
-                }}
-                className="background-color-4all"
-              >
-                {TEAM_NAME_B}
-              </span>
-
-              {status === "running" && (
-                <p className="font-gilroy-bold">{results[1].score}</p>
-              )}
             </Link>
 
             <div className="text-in-card">
@@ -250,10 +262,10 @@ const MatchCardRow = ({ match }) => {
               <FontAwesomeIcon icon={faBalanceScaleLeft} />
             </span>
             <span
-              onClick={() => setWinRate()}
+              onClick={() => !showwinrate && setWinRate()}
               className="text-align-end highlight-text cursor-pointer"
             >
-              Compare winrate
+              {showwinrate ? "Calculated" : "Compare winrate"}
             </span>
           </div>
 
