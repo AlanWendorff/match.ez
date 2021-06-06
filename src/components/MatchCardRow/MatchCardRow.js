@@ -65,7 +65,6 @@ const MatchCardRow = ({ match }) => {
   const TEAM_NAME_B = evalName(opponents, 1);
 
   const setWinRate = async () => {
-    console.log('compa');
     setShowWinrate(true);
     const response = await compareTeams(
       opponents[0].opponent.id,

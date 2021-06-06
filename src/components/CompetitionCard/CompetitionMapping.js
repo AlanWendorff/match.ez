@@ -1,24 +1,16 @@
 import React, { Fragment } from "react";
-import CompetitionCard from "./CompetitionCard";
-import LazyLoad from "react-lazyload";
+import MatchCardRow from "../MatchCardRow/MatchCardRow";
 
-const CompetitionMapping = ({ matchesHoy, palette }) => {
-  if (!matchesHoy.length > 0) return null;
-  return (
+const CompetitionMapping = ({ matchesHoy }) => (
     <Fragment>
-      {matchesHoy
-        .sort(function (a, b) {
-          return new Date(a.begin_at) - new Date(b.begin_at);
-        })
-        .map((match) => {
-          return (
-            <LazyLoad offset={100} height={100} overflow key={match.id}>
-              <CompetitionCard match={match} palette={palette} />
-            </LazyLoad>
-          );
-        })}
+        {matchesHoy
+            .sort(function (a, b) {
+                return new Date(a.begin_at) - new Date(b.begin_at);
+            })
+            .map((match) => (
+                <MatchCardRow key={match.id} match={match} />
+            ))}
     </Fragment>
-  );
-};
+);
 
 export default CompetitionMapping;

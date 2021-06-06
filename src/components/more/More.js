@@ -201,7 +201,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
           {hidecomponent && (
             <>
               <div
-                className="margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                className="margin-left-100px margin-bottom-15px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                 onClick={() => {
                   !anim ? turnOnAnim() : turnOffAnim();
                 }}
@@ -212,23 +212,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                     icon={faFilm}
                   />
                   <span>{anim ? "Animations On" : "Animations Off"}</span>
-                </div>
-              </div>
-              <hr className="margin-left-100px" />
-            </>
-          )}
-
-          {hidecomponent && (
-            <>
-              <div
-                className="margin-bottom-15px margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
-                onClick={() => {
-                  setOldCards();
-                }}
-              >
-                <div>
-                  <FontAwesomeIcon icon={faHistory} />
-                  <span>Old Stuff</span>
                 </div>
               </div>
             </>

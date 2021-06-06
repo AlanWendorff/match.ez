@@ -229,8 +229,10 @@ i.right {
 .load-more {
   font-family: "Gilroy-ExtraBold";
   margin: 15px;
-  color: white;
+  color: #d9ad43;
   cursor: pointer;
+  background-color: #00000034;
+  border-radius: 100px;
 }
 .load-more > svg {
   margin: 0px 15px;

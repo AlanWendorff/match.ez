@@ -115,7 +115,7 @@ const LeagueGames = () => {
 
       {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
       {show === "vs" && matchesHoy !== undefined && (
-        <CompetitionMapping matchesHoy={matchesHoy} palette={palette} />
+        <CompetitionMapping matchesHoy={matchesHoy} />
       )}
       {show === "vs" && matchesHoy.length === 0 && <InfoCard />}
       {show === "history" && prevMatch !== "no-match" && (

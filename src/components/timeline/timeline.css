@@ -70,8 +70,8 @@
     transition: all 0.1s ease-out;
   }
   .tournament-logo-timeline {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 45px;
+    max-height: 45px;
   }
   .teams-in-tournament > a:hover > .icon-container > .team-icon {
     width: 80px;

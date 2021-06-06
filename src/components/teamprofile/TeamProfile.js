@@ -82,6 +82,7 @@ const TeamProfile = () => {
     };
 
     useEffect(() => {
+        setImageTeam("");
         setPreview();
         guardarNoMatches(false);
 

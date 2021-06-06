@@ -5,24 +5,26 @@ const PlayerScore = ({
   playerscore,
   nopic,
   opponents,
-  colorTeamA,
-  colorTeamB,
 }) => {
   const { teams } = playerscore;
-  let TeamNameA, TeamLogoA;
-  let TeamNameB, TeamLogoB;
-
+  let TeamNameA, TeamLogoA, colorTeamA;
+  let TeamNameB, TeamLogoB, colorTeamB;
+  console.log(opponents);
   if (teams && teams.length > 0) {
     for (let i = 0; i < opponents.length; i++) {
       if (playerscore.teams[0].name === opponents[0].opponent.name) {
         if (opponents[0].opponent.image_url === null) {
           TeamLogoA = nopic;
+          colorTeamA = { DarkVibrant : "#455a64" };
         } else {
           TeamLogoA = opponents[0].opponent.image_url;
+          colorTeamA = opponents[0].opponent.colors;
         }
         if (opponents[1].opponent.image_url === null) {
           TeamLogoB = nopic;
+          colorTeamB = { DarkVibrant : "#455a64" };
         } else {
+          colorTeamB = opponents[1].opponent.colors;
           TeamLogoB = opponents[1].opponent.image_url;
         }
         TeamNameA = opponents[0].opponent.name;
@@ -30,12 +32,16 @@ const PlayerScore = ({
       } else {
         if (opponents[1].opponent.image_url === null) {
           TeamLogoA = nopic;
+          colorTeamA = { DarkVibrant : "#455a64" };
         } else {
+          colorTeamA = opponents[1].opponent.colors;
           TeamLogoA = opponents[1].opponent.image_url;
         }
         if (opponents[0].opponent.image_url === null) {
           TeamLogoB = nopic;
+          colorTeamB = { DarkVibrant : "#455a64" };
         } else {
+          colorTeamB = opponents[0].opponent.colors;
           TeamLogoB = opponents[0].opponent.image_url;
         }
         TeamNameA = opponents[1].opponent.name;
