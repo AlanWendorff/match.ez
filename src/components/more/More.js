@@ -140,7 +140,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
           {hidecomponent && (
             <>
               <div
-                className="margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                className="margin-left-30px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                 onClick={() => {
                   handleInstallClick();
                 }}
@@ -154,14 +154,14 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                   </span>
                 </div>
               </div>
-              <hr className="margin-left-100px" />
+              <hr className="margin-left-30px" />
             </>
           )}
 
           {hidecomponent && (
             <>
               <div
-                className="margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                className="margin-left-30px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                 onClick={() => {
                   getLocation();
                 }}
@@ -177,14 +177,14 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                   </span>
                 </div>
               </div>
-              <hr className="margin-left-100px" />
+              <hr className="margin-left-30px" />
             </>
           )}
 
           {hidecomponent && (
             <>
               <div
-                className="margin-left-100px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                className="margin-left-30px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                 onClick={() => {
                   !sound ? turnOnSound() : turnOffSound();
                 }}
@@ -194,14 +194,14 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                   <span>{sound ? "Sound On" : "Sound Off"}</span>
                 </div>
               </div>
-              <hr className="margin-left-100px" />
+              <hr className="margin-left-30px" />
             </>
           )}
 
           {hidecomponent && (
             <>
               <div
-                className="margin-left-100px margin-bottom-15px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                className="margin-left-30px margin-bottom-15px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                 onClick={() => {
                   !anim ? turnOnAnim() : turnOffAnim();
                 }}

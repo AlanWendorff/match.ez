@@ -99,7 +99,7 @@ const LeagueGames = () => {
 
   return image_url ? (
     <div
-      className="parametros-container pattern-background"
+      className="parametros-container"
       style={{ backgroundColor: palette.DarkVibrant }}
     >
       <MobileHeader
@@ -124,10 +124,7 @@ const LeagueGames = () => {
       {/* <Logo color={palette} img={image_url} /> */}
     </div>
   ) : (
-    <div
-      className="parametros-container pattern-background"
-      style={{ backgroundColor: "#000000" }}
-    >
+    <div className="parametros-container" >
       <LoadScreen />
     </div>
   );

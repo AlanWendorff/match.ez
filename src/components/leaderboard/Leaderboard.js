@@ -11,8 +11,8 @@ const Leaderboard = ({leaderboard}) => {
     return ( leaderboard && leaderboard.length > 0 &&
         <div className="ladder transition-effect">
             <div className="space-between width-100percent columns-ladder">
-                <span className="space-between font-gilroy" style={{width: '70px'}}><FontAwesomeIcon className="mr" icon={faUserFriends}/>Teams:</span>
-                <span className="space-between font-gilroy" style={{width: '115px'}}><FontAwesomeIcon className="mr" icon={faTrophy}/>Matches won:</span>
+                <span className="space-between font-gilroy" style={{width: '70px'}}><FontAwesomeIcon className="margin-right-2percent" icon={faUserFriends}/>Teams:</span>
+                <span className="space-between font-gilroy" style={{width: '115px'}}><FontAwesomeIcon className="margin-right-2percent" icon={faTrophy}/>Matches won:</span>
             </div>
             
             {leaderboard.map(team  => (

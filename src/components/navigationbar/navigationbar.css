@@ -39,9 +39,10 @@
     position: absolute;
     background-color: #d9ad43;
     color: white;
-    height: calc(100% + 3px);
+    height: calc(100% + 1px);
     width: 30px !important;
     left: 0;
+    bottom: 0;
 }
 
 @media (min-width: 641px) {
