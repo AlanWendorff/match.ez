@@ -1,4 +1,4 @@
-const BACKEND_ENDPOINT = process.env.REACT_APP_API_BASE_URL_SECONDARY;
+const BACKEND_ENDPOINT = process.env.REACT_APP_API_BASE_URL;
 //data.headers.x-rate-limit-used
 export const ALL_MATCHES = BACKEND_ENDPOINT + "/api/allmatches";
 

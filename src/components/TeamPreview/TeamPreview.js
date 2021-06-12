@@ -2,7 +2,7 @@ import React, { useContext, useState, Suspense, useEffect } from "react";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
-import { PLAYER_INFO } from "../../const/ApiEndpoints";
+import { PLAYER_INFO } from "../../routes/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
 import loader from "../../Images/loader.gif";

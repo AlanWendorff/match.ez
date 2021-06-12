@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NEWS } from "../../const/ApiEndpoints";
+import { NEWS } from "../../routes/ApiEndpoints";
 import { useHistory } from "react-router";
 import { ERROR } from "../../routes/routes";
 import LoadScreen from "../Loader/LoadScreen";

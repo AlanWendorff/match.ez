@@ -28,7 +28,7 @@ const NavigationBar = () => {
     return (
         <div className="menu-mobile" style={{paddingLeft: lastLocation !== HOME && "30px"}} onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>
             {lastLocation !== HOME && (
-                <Link className="back-btn" to={HOME}>
+                <Link className="back-btn" to={MORE}>
                     <FontAwesomeIcon icon={faChevronLeft} />
                 </Link>
             )}

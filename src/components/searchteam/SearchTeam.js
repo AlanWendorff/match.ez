@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Team from "./Team";
 import SaveInLS from "./SaveInLS";
 import axios from "axios";
-import { DATABASE_SEARCH_TEAM } from "../../const/ApiEndpoints";
+import { DATABASE_SEARCH_TEAM } from "../../routes/ApiEndpoints";
 import { DebounceInput } from 'react-debounce-input';
 import "./search.css";
 

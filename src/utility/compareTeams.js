@@ -1,4 +1,4 @@
-import { COMPARE_WIN_RATE } from "../const/ApiEndpoints";
+import { COMPARE_WIN_RATE } from "../routes/ApiEndpoints";
 import axios from "axios";
 
 export const compareTeams = async (ID_1, ID_2) => {

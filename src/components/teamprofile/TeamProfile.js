@@ -4,7 +4,7 @@ import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ERROR } from "../../routes/routes";
-import { TEAM_INFO } from "../../const/ApiEndpoints";
+import { TEAM_INFO } from "../../routes/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
 import LoadScreen from "../Loader/LoadScreen";

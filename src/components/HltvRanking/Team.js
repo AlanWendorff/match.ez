@@ -2,7 +2,7 @@ import React, { useState, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { TEAM, RANKING } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titlestag/titlestag";
-import { PLAYER_INFO } from "../../const/ApiEndpoints";
+import { PLAYER_INFO } from "../../routes/ApiEndpoints";
 import ProgressiveImage from "react-progressive-image";
 import loader from "../../Images/loader.gif";
 import nopic from "../../Images/nopic.png";

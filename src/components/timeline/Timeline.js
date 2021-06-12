@@ -12,7 +12,7 @@ import { TOURNAMENT, TEAM, ERROR } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import { TIME_LINE } from "../../const/ApiEndpoints";
+import { TIME_LINE } from "../../routes/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Moment from "moment";
 import loader from "../../Images/loader.gif";
