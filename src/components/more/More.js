@@ -14,13 +14,18 @@ import {
     faListOl,
     faCompass,
     faHistory,
+    faInfo,
+    faEnvelope,
+    faFileCode,
+    faCode,
 } from "@fortawesome/free-solid-svg-icons";
 import { NEWS, RANKING } from "../../routes/routes";
 import "./more.css";
 
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     const { getLocation, isallowed } = useContext(LocationContext);
-    const [hidecomponent, setHideComponent] = useState(false);
+    const [hidesettings, setHideSettings] = useState(false);
+    const [hideabout, setHideAbout] = useState(false);
     const [sound, setSound] = useState(true);
     const [anim, setAnim] = useState(true);
     const [turnaround, setTurnAround] = useState("");
@@ -60,16 +65,8 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
         localStorage.setItem("animations", true);
     };
 
-    const setOldCards = () => {
-        if (JSON.parse(localStorage.getItem("old")) === false) {
-            localStorage.setItem("old", true);
-        } else {
-            localStorage.setItem("old", false);
-        }
-    };
-
     const turnAroundIcon = () => {
-        hidecomponent ? setTurnAround("rotate-icon-right-side") : setTurnAround("rotate-icon-left-side");
+        setTurnAround(hidesettings ? "rotate-icon-right-side" : "rotate-icon-left-side");
         setTimeout(() => {
             setTurnAround("");
         }, 300);
@@ -102,26 +99,14 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                             <span>News</span>
                         </div>
                     </Link>
-                    <hr />
 
-                    <a
-                        className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        href="https://github.com/Kremowy"
-                    >
-                        <div>
-                            <FontAwesomeIcon icon={faCodeBranch} />
-                            <span>By KremoWy</span>
-                        </div>
-                    </a>
                     <hr />
 
                     <div
                         className="option animate__animated animate__fadeInRight animate__faster cursor-pointer settings"
                         onClick={() => {
                             turnAroundIcon();
-                            hidecomponent ? setHideComponent(false) : setHideComponent(true);
+                            setHideSettings(hidesettings ? false : true);
                         }}
                     >
                         <div>
@@ -129,12 +114,12 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                             <span>Settings</span>
                         </div>
                     </div>
-                    {hidecomponent && <hr />}
 
-                    {hidecomponent && (
+                    {hidesettings && (
                         <>
+                            <hr />
                             <div
-                                className="border-for-settings margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                                className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                                 onClick={() => {
                                     handleInstallClick();
                                 }}
@@ -147,13 +132,8 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 </div>
                             </div>
                             <hr className="margin-left-20px" />
-                        </>
-                    )}
-
-                    {hidecomponent && (
-                        <>
                             <div
-                                className="border-for-settings margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                                className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                                 onClick={() => {
                                     getLocation();
                                 }}
@@ -170,13 +150,8 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 </div>
                             </div>
                             <hr className="margin-left-20px" />
-                        </>
-                    )}
-
-                    {hidecomponent && (
-                        <>
                             <div
-                                className="border-for-settings margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                                className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                                 onClick={() => {
                                     !sound ? turnOnSound() : turnOffSound();
                                 }}
@@ -187,13 +162,8 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 </div>
                             </div>
                             <hr className="margin-left-20px" />
-                        </>
-                    )}
-
-                    {hidecomponent && (
-                        <>
                             <div
-                                className="border-for-settings margin-left-20px margin-bottom-15px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                                className="border-for-submenu-items margin-left-20px margin-bottom-15px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                                 onClick={() => {
                                     !anim ? turnOnAnim() : turnOffAnim();
                                 }}
@@ -205,10 +175,55 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                             </div>
                         </>
                     )}
+
+                    <hr />
+
+                    <div
+                        className="option animate__animated animate__fadeInRight animate__faster cursor-pointer settings"
+                        onClick={() => setHideAbout(hideabout ? false : true)}
+                    >
+                        <div>
+                            <FontAwesomeIcon icon={faInfo} />
+                            <span>About</span>
+                        </div>
+                    </div>
+
+                    {hideabout && (
+                        <>
+                            <hr /> 
+                            <a
+                                className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                href="https://github.com/Kremowy"
+                            >
+                                <div>
+                                    <FontAwesomeIcon icon={faCode} />
+                                    <span>By KremoWy</span>
+                                </div>
+                            </a>
+
+                            <hr /> 
+
+                            <a
+                                className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                href="https://github.com/Kremowy"
+                            >
+                                <div>
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                    <span>Contact me</span>
+                                </div>
+                            </a>
+                        </>
+                    )}
                 </div>
             </div>
 
-            <span className="animate__animated animate__fadeInUp animate__faster">All Rights Reserved. {new Date().getFullYear()}</span>
+            <span className="animate__animated animate__fadeInUp animate__faster">
+                All Rights Reserved. {new Date().getFullYear()}
+            </span>
         </div>
     );
 };
