@@ -2,7 +2,7 @@
   "name": "match.ez",
   "short_name": "match.ez",
   "description": "CS:GO Schedule",
-  "theme_color": "#f6f7f9",
+  "theme_color": "#d9ad43",
   "background_color": "#555555",
   "display": "standalone",
   "orientation": "portrait",
@@ -32,7 +32,6 @@
     }
   ],
   "icons": [
-
     {
       "src": "pwa/icon-42p.png",
       "sizes": "42x42",
@@ -58,8 +57,8 @@
       "purpose": "any"
     },
     {
-      "src": "pwa/icon-500p.png",
-      "sizes": "500x500",
+      "src": "pwa/icon-519p.png",
+      "sizes": "519x519",
       "type": "image/png",
       "purpose": "any"
     }
