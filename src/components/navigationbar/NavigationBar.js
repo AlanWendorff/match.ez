@@ -3,9 +3,9 @@ import {
     faCalendarAlt,
     faTrophy,
     faUserFriends,
-    faFistRaised,
     faBars,
     faChevronLeft,
+    faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import { HOME, TOURNAMENTS, MORE, TIMELINE, ALLMATCHES, NEWS, RANKING } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -74,7 +74,7 @@ const NavigationBar = () => {
                     style={{
                         color: pathname !== ALLMATCHES ? "white" : IN_ROUTE_COLOR,
                     }}
-                    icon={faFistRaised}
+                    icon={faPlay}
                 />
             </Link>
         </div>
