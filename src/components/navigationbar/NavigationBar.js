@@ -45,7 +45,7 @@ const NavigationBar = () => {
             onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}
         >
             {showbackbutton && (
-                <div className="back-btn" onClick={() => goBack()}>
+                <div className="back-btn cursor-pointer" onClick={() => goBack()}>
                     <FontAwesomeIcon icon={faChevronLeft} />
                 </div>
             )}
