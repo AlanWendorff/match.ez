@@ -7,30 +7,47 @@ import {
     faChevronLeft,
     faPlay,
 } from "@fortawesome/free-solid-svg-icons";
-import { HOME, TOURNAMENTS, MORE, TIMELINE, ALLMATCHES, NEWS, RANKING } from "../../routes/routes";
+import { HOME, TOURNAMENTS, MORE, TIMELINE, ALLMATCHES, NEWS, RANKING, ABOUT, CONTACT } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useHistory } from "react-router-dom";
 import "./navigationbar.css";
 
 const NavigationBar = () => {
     const { pathname } = useLocation();
-    const [lastLocation, setlastLocation] = useState(HOME);
+    const { goBack } = useHistory();
+    const [showbackbutton, setShowBackButton] = useState(false);
     const IN_ROUTE_COLOR = "#d9ad43";
 
     useEffect(() => {
-        if (pathname.includes(NEWS) || pathname.includes(RANKING)) {
-            setlastLocation(MORE);
-        } else {
-            setlastLocation(HOME);
+        switch (pathname) {
+            case NEWS:
+                setShowBackButton(true);
+                break;
+            case RANKING:
+                setShowBackButton(true);
+                break;
+            case ABOUT:
+                setShowBackButton(true);
+                break;
+            case CONTACT:
+                setShowBackButton(true);
+                break;
+            default:
+                setShowBackButton(false);
+                break;
         }
     }, [pathname]);
 
     return (
-        <div className="menu-mobile" style={{paddingLeft: lastLocation !== HOME && "30px"}} onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>
-            {lastLocation !== HOME && (
-                <Link className="back-btn" to={MORE}>
+        <div
+            className="menu-mobile"
+            style={{ paddingLeft: showbackbutton && "30px" }}
+            onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}
+        >
+            {showbackbutton && (
+                <div className="back-btn" onClick={() => goBack()}>
                     <FontAwesomeIcon icon={faChevronLeft} />
-                </Link>
+                </div>
             )}
 
             <Link to={HOME}>

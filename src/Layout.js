@@ -10,6 +10,8 @@ import AllMatches from "./components/AllMatches/AllMatches";
 import Timeline from "./components/Timeline/Timeline";
 import NotFound from "./components/NotFound/NotFound";
 import Warning from "./components/Warning/Warning";
+import Contact from "./components/Contact/Contact";
+import About from "./components/About/About";
 import News from "./components/News/News";
 import Home from "./components/Home/Home";
 import More from "./components/More/More";
@@ -20,11 +22,13 @@ import {
     TIMELINE,
     ALLMATCHES,
     MORE,
+    CONTACT,
     TOURNAMENT,
     TEAM,
     RANKING,
     NEWS,
     ERROR,
+    ABOUT,
 } from "./routes/routes";
 
 let deferredPrompt;
@@ -63,6 +67,8 @@ const Layout = () => {
                     <Route exact path={RANKING} component={HltvRanking} />
                     <Route exact path={TIMELINE} component={Timeline} />
                     <Route exact path={TEAM} component={TeamProfile} />
+                    <Route exact path={CONTACT} component={Contact} />
+                    <Route exact path={ABOUT} component={About} />
                     <Route exact path={NEWS} component={News} />
                     <Route exact path={MORE}>
                         <More

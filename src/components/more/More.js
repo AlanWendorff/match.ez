@@ -4,7 +4,6 @@ import { LocationContext } from "../Context/LocationContext";
 import { Link } from "react-router-dom";
 import {
     faCheck,
-    faCodeBranch,
     faCog,
     faDownload,
     faFilm,
@@ -13,13 +12,12 @@ import {
     faVolumeUp,
     faListOl,
     faCompass,
-    faHistory,
     faInfo,
     faEnvelope,
-    faFileCode,
     faCode,
+    faCubes,
 } from "@fortawesome/free-solid-svg-icons";
-import { NEWS, RANKING } from "../../routes/routes";
+import { NEWS, RANKING, ABOUT, CONTACT } from "../../routes/routes";
 import "./more.css";
 
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
@@ -29,6 +27,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     const [sound, setSound] = useState(true);
     const [anim, setAnim] = useState(true);
     const [turnaround, setTurnAround] = useState("");
+    const OPTION_STYLE = "option animate__animated animate__fadeInRight animate__faster cursor-pointer"
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("sounds")) === false) {
@@ -81,7 +80,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                 <div className="column-align width-100percent ">
                     <Link
                         to={RANKING}
-                        className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                        className={OPTION_STYLE}
                     >
                         <div>
                             <FontAwesomeIcon icon={faListOl} />
@@ -92,7 +91,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
 
                     <Link
                         to={NEWS}
-                        className="option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+                        className={OPTION_STYLE}
                     >
                         <div>
                             <FontAwesomeIcon icon={faNewspaper} />
@@ -205,17 +204,22 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
 
                             <hr /> 
 
-                            <a
-                                className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
-                                rel="noopener noreferrer"
-                                target="_blank"
-                                href="https://github.com/Kremowy"
-                            >
+                            <Link to={CONTACT} className={OPTION_STYLE + " border-for-submenu-items margin-left-20px"}>
                                 <div>
                                     <FontAwesomeIcon icon={faEnvelope} />
                                     <span>Contact me</span>
                                 </div>
-                            </a>
+                            </Link>
+
+                            <hr /> 
+
+                            <Link to={ABOUT} className={OPTION_STYLE + " border-for-submenu-items margin-left-20px"}>
+                                <div>
+                                    <FontAwesomeIcon icon={faCubes} />
+                                    <span>About the web</span>
+                                </div>
+                            </Link>
+                            
                         </>
                     )}
                 </div>

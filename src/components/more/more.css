@@ -65,7 +65,7 @@
     align-items: center;
   }
   .scroll {
-    padding-right: 45%;
+    padding: 0 20%;
   }
   .options > .scroll > .column-align > .option {
     width: 100%;
