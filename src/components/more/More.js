@@ -27,7 +27,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     const [sound, setSound] = useState(true);
     const [anim, setAnim] = useState(true);
     const [turnaround, setTurnAround] = useState("");
-    const OPTION_STYLE = "option animate__animated animate__fadeInRight animate__faster cursor-pointer"
+    const OPTION_STYLE = "option animate__animated animate__fadeInRight animate__faster cursor-pointer";
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("sounds")) === false) {
@@ -72,16 +72,10 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     };
 
     return (
-        <div
-            className="options noselect background-color-4all"
-            onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}
-        >
+        <div className="options noselect background-color-4all">
             <div className="scroll">
                 <div className="column-align width-100percent ">
-                    <Link
-                        to={RANKING}
-                        className={OPTION_STYLE}
-                    >
+                    <Link to={RANKING} className={OPTION_STYLE}>
                         <div>
                             <FontAwesomeIcon icon={faListOl} />
                             <span>World Ranking</span>
@@ -89,10 +83,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                     </Link>
                     <hr />
 
-                    <Link
-                        to={NEWS}
-                        className={OPTION_STYLE}
-                    >
+                    <Link to={NEWS} className={OPTION_STYLE}>
                         <div>
                             <FontAwesomeIcon icon={faNewspaper} />
                             <span>News</span>
@@ -189,7 +180,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
 
                     {hideabout && (
                         <>
-                            <hr /> 
+                            <hr />
                             <a
                                 className="border-for-submenu-items margin-left-20px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
                                 rel="noopener noreferrer"
@@ -202,7 +193,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 </div>
                             </a>
 
-                            <hr /> 
+                            <hr />
 
                             <Link to={CONTACT} className={OPTION_STYLE + " border-for-submenu-items margin-left-20px"}>
                                 <div>
@@ -211,7 +202,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 </div>
                             </Link>
 
-                            <hr /> 
+                            <hr />
 
                             <Link to={ABOUT} className={OPTION_STYLE + " border-for-submenu-items margin-left-20px"}>
                                 <div>
@@ -219,7 +210,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                     <span>About the web</span>
                                 </div>
                             </Link>
-                            
                         </>
                     )}
                 </div>

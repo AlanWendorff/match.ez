@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllTournaments from "./components/AllTournaments/AllTournaments";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
@@ -57,35 +57,37 @@ const Layout = () => {
     }, []);
 
     return (
-        <Fragment>
+        <>
             <Router>
-                <Switch>
-                    <Route exact path={ALL_TOURNAMENTS} component={AllTournaments} />
-                    <Route exact path={TOURNAMENTS} component={Tournaments} />
-                    <Route exact path={TOURNAMENT} component={LeagueGames} />
-                    <Route exact path={ALLMATCHES} component={AllMatches} />
-                    <Route exact path={RANKING} component={HltvRanking} />
-                    <Route exact path={TIMELINE} component={Timeline} />
-                    <Route exact path={TEAM} component={TeamProfile} />
-                    <Route exact path={CONTACT} component={Contact} />
-                    <Route exact path={ABOUT} component={About} />
-                    <Route exact path={NEWS} component={News} />
-                    <Route exact path={MORE}>
-                        <More
-                            handleInstallClick={handleInstallClick}
-                            setIsInstalled={setIsInstalled}
-                            isinstalled={isinstalled}
-                        />
-                    </Route>
-                    <Route exact path={ERROR} component={Warning} />
-                    <Route exact path={HOME} component={Home} />
-                    <Route component={NotFound} />
-                </Switch>
-                <footer>
+                <main onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>
+                    <Switch>
+                        <Route exact path={ALL_TOURNAMENTS} component={AllTournaments} />
+                        <Route exact path={TOURNAMENTS} component={Tournaments} />
+                        <Route exact path={TOURNAMENT} component={LeagueGames} />
+                        <Route exact path={ALLMATCHES} component={AllMatches} />
+                        <Route exact path={RANKING} component={HltvRanking} />
+                        <Route exact path={TIMELINE} component={Timeline} />
+                        <Route exact path={TEAM} component={TeamProfile} />
+                        <Route exact path={CONTACT} component={Contact} />
+                        <Route exact path={ABOUT} component={About} />
+                        <Route exact path={NEWS} component={News} />
+                        <Route exact path={MORE}>
+                            <More
+                                handleInstallClick={handleInstallClick}
+                                setIsInstalled={setIsInstalled}
+                                isinstalled={isinstalled}
+                            />
+                        </Route>
+                        <Route exact path={ERROR} component={Warning} />
+                        <Route exact path={HOME} component={Home} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </main>
+                <footer onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>
                     <NavigationBar />
                 </footer>
             </Router>
-        </Fragment>
+        </>
     );
 };
 

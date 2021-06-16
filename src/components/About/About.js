@@ -15,14 +15,14 @@ const About = () => (
                 <div className="tech-logo-canvas">
                     <img src={react} alt="Frontend" />
                 </div>
-                <span className="react-color animate__animated animate__fadeInUp animate__faster">ReactJs</span>
+                <span className="react-color animate__animated animate__fadeInUp animate__faster">ReactJS</span>
             </div>
 
             <div>
                 <div className="tech-logo-canvas">
                     <img src={node} alt="Backend" />
                 </div>
-                <span className="node-color animate__animated animate__fadeInUp animate__faster">NodeJs</span>
+                <span className="node-color animate__animated animate__fadeInUp animate__faster">NodeJS</span>
             </div>
 
             <div>
@@ -40,7 +40,43 @@ const About = () => (
             </div>
         </div>
 
-        <div className="about-item">
+        <div className="about-item animate__animated animate__fadeInLeft animate__faster">
+            <img src={panda} alt="api" />
+            <p>
+                logo de un lado
+                <br />
+                explicacion del otro lado
+                <br />
+                De donde salio la idea?
+                <br />
+                Como empezo la idea?
+                <br />
+                Porque empezo?
+                <br />
+                Como fue mutando la web?
+                <br />
+                Objetivo de la web?
+                <br />
+                Porque elegi tal tecnologia
+                <br />
+                seccion donde hablo sobre ella
+                <br />
+                Seccion citando a las librerias que uso
+                <br />
+                librerias separadas en backend y frontend c/ colores
+            </p>
+        </div>
+
+        <div className="about-item animate__animated animate__fadeInRight animate__faster">
+            <p>
+                logo de un lado
+                <br />
+                explicacion del otro lado
+            </p>
+            <img src={panda} alt="api" />
+        </div>
+
+        <div className="about-item animate__animated animate__fadeInLeft animate__faster">
             <img src={panda} alt="api" />
             <p>
                 logo de un lado

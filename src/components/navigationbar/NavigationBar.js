@@ -42,7 +42,6 @@ const NavigationBar = () => {
         <div
             className="menu-mobile"
             style={{ paddingLeft: showbackbutton && "30px" }}
-            onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}
         >
             {showbackbutton && (
                 <div className="back-btn cursor-pointer" onClick={() => goBack()}>

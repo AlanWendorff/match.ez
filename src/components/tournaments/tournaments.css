@@ -27,10 +27,10 @@
   }
   .tournament-size {
     background-color: rgba(150, 150, 150, 0.26);
-    padding: 0px 20px;
+    padding: 0 20px;
     height: 90px;
     width: 630px;
-    margin: 10px 0px;
+    margin: 10px 0;
   }
   .tournament-size :hover {
     cursor: pointer;
@@ -61,7 +61,7 @@
   }
   .tournament-name {
     border-radius: 100px;
-    padding: 2px 15px;
+    padding: 5px 15px;
     background-color: rgba(0, 0, 0, 0.452);
     font-weight: bold;
     font-size: 15px;
@@ -115,7 +115,7 @@
   .tournament-name {
     text-align: end;
     border-radius: 100px;
-    padding: 2px 15px;
+    padding: 5px 15px;
     background-color: rgba(0, 0, 0, 0.452);
     font-weight: bold;
     font-size: 10px;

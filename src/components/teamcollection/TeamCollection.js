@@ -5,6 +5,7 @@ import { examplesAmerica, examplesnotAmerica, examplesnull } from "./Teams";
 import ProgressiveImage from "react-progressive-image";
 import loader from '../../Images/loader.gif';
 import { TEAM } from "../../routes/routes";
+import { LOOKPROFILE } from "../../titlestag/titlestag";
 import "./teamcollection.css";
 
 const TeamCollection = ({ collection }) => {
@@ -31,7 +32,8 @@ const TeamCollection = ({ collection }) => {
               <Link
                 key={team.name}
                 to={TEAM.replace(":teamid", team.id)}
-                title={`Look the team profile of: ${team.name}`}
+                title={LOOKPROFILE + team.name}
+                style={{backgroundColor: team.colors.DarkMuted}}
               >
                 <div>
                   <div>
@@ -54,7 +56,8 @@ const TeamCollection = ({ collection }) => {
               <Link
                 key={team.name}
                 to={TEAM.replace(":teamid", team.id)}
-                title={`Look the team profile of: ${team.name}`}
+                title={LOOKPROFILE + team.name}
+                style={{backgroundColor: team.colors.DarkMuted}}
               >
                 <div>
                   <div>

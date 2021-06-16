@@ -5,7 +5,7 @@ const SaveInLS = ({collection, SaveOnLS, firstpin}) => {
         firstpin === true && SaveOnLS(); 
     }, [collection]);
 
-    return (<div></div>);
+    return <div></div>
 }
  
 export default SaveInLS;
