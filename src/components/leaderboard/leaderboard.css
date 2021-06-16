@@ -1,5 +1,5 @@
-@media (min-width: 771px) { 
-    .ladder{
+@media (min-width: 771px) {
+    .ladder {
         margin: 20px 0px;
         align-self: center;
         width: 630px;
@@ -10,8 +10,8 @@
         border-radius: 3px;
         transition: all 0.1s ease-out;
     }
-    
-    .ladder-teams-container{
+
+    .ladder-teams-container {
         width: 100%;
         padding: 10px;
         display: flex;
@@ -19,8 +19,8 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .ladder-team{
+
+    .ladder-team {
         width: 100%;
         height: 50px;
         margin: 5px 0px;
@@ -31,8 +31,8 @@
         background-color: #0000001c;
         border-radius: 3px;
     }
-    
-    .columns-ladder{
+
+    .columns-ladder {
         padding: 20px 45px 20px 100px;
         position: relative;
     }
@@ -43,18 +43,17 @@
         justify-content: flex-start;
         align-items: center;
     }
-    .ladder > .ladder-team > div > .mini-ranking  {
+    .ladder > .ladder-team > div > .mini-ranking {
         width: 37px;
         margin-right: 10px;
         color: black;
         font-size: 16px;
     }
-    .ladder > .ladder-team > div > img  {
+    .ladder > .ladder-team > div > img {
         margin-right: 20px;
     }
-    
-    
-    .cross-ladder{
+
+    .cross-ladder {
         position: absolute;
         top: 0px;
         right: 0px;
@@ -62,8 +61,8 @@
     }
 }
 
-@media screen and (max-width: 770px) {     
-    .ladder{
+@media screen and (max-width: 770px) {
+    .ladder {
         margin: 20px 0px;
         align-self: center;
         width: 330px;
@@ -74,7 +73,7 @@
         border-radius: 3px;
         transition: all 0.1s ease-out;
     }
-    .ladder-teams-container{
+    .ladder-teams-container {
         width: 100%;
         padding: 10px;
         display: flex;
@@ -82,13 +81,12 @@
         justify-content: center;
         align-items: center;
     }
-    
-    
-    .columns-ladder{
+
+    .columns-ladder {
         padding: 20px 25px 20px 30px;
         position: relative;
     }
-    .ladder-team{
+    .ladder-team {
         width: 100%;
         height: 50px;
         margin: 5px 0px;
@@ -104,17 +102,17 @@
         justify-content: flex-start;
         align-items: center;
     }
-    .ladder > .ladder-team > div > .mini-ranking  {
+    .ladder > .ladder-team > div > .mini-ranking {
         width: 37px;
         margin-right: 10px;
         color: black;
         font-size: 13px;
     }
-    .ladder > .ladder-team > div > img  {
+    .ladder > .ladder-team > div > img {
         margin-right: 20px;
     }
-    
-    .cross-ladder{
+
+    .cross-ladder {
         position: absolute;
         top: 0px;
         right: 0px;
@@ -125,7 +123,6 @@
     max-width: 30px;
     max-height: 40px;
 }
-.ladder-teams-container > .lazyload-wrapper{
+.ladder-teams-container > .lazyload-wrapper {
     width: 100% !important;
 }
-

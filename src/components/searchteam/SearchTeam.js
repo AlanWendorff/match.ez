@@ -30,7 +30,6 @@ const SearchTeam = ({ setCollection, collection }) => {
 
   const SaveOnLS = () => {
     setTimeout(() => {
-      console.log(collection);
       localStorage.setItem("collection", JSON.stringify(collection));
     }, 100);
   };
