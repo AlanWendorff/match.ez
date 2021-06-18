@@ -27,7 +27,7 @@
     justify-content: space-between;
 }
 
-.about-container > .about-item{
+.about-container > .about-item {
     margin: 100px 0;
     width: 630px;
     display: flex;
@@ -36,7 +36,7 @@
 }
 
 .about-container > .about-item > img,
-.about-container > .about-item > p{
+.about-container > .about-item > p {
     max-width: 250px;
 }
 
@@ -63,8 +63,7 @@
     justify-content: center;
 }
 
-
-.css-logo{
+.css-logo {
     max-height: 80px !important;
 }
 
@@ -83,3 +82,39 @@
 .firebase-color {
     background-color: #ffca28;
 }
+
+.about-item > .liquid-example {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+}
+
+.about-item > .liquid-example > img {
+    width: 100px;
+}
+
+.about-item > .liquid-example > img {
+    width: 100px;
+}
+
+
+.about-item > .liquid-example > span{
+    margin-bottom: 10px;
+}
+
+.about-item > .liquid-example > .colors-pallete {
+    margin: 20px 0 15px 0;
+    width: 100%;
+    display: flex; 
+    justify-content: space-between;
+}
+
+.about-item > .liquid-example > .colors-pallete > div{
+    width: 35px;
+    height: 35px;
+    background-color: red;
+}
+
+
+
