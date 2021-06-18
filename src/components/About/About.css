@@ -6,6 +6,7 @@
     width: 100%;
     overflow-x: hidden;
     height: calc(100vh - 50px);
+    scroll-behavior: smooth;
 }
 
 .about-container > h1 {
@@ -34,8 +35,9 @@
     justify-content: space-between;
 }
 
-.about-container > .about-item > img{
-    max-width: 300px;
+.about-container > .about-item > img,
+.about-container > .about-item > p{
+    max-width: 250px;
 }
 
 .about-container > .technologies > div {

@@ -67,6 +67,7 @@
     border-radius: 5px;
     border: 1px solid #d9ad43;
     padding: 10px;
+    outline-width: 0;
 }
 
 @media screen and (max-width: 1024px) {
