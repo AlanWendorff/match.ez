@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, lazy } from "react";
 import { useParams, useHistory } from "react-router";
 import { PaletteContext } from "../Context/PaletteContext";
 import { ERROR } from "../../routes/routes";
@@ -8,11 +8,12 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
 import MobileHeader from "../MobileHeader/MobileHeader";
-import Leaderboard from "../Leaderboard/Leaderboard";
 import LoadScreen from "../Loader/LoadScreen";
-import InfoCard from "../InfoCard/InfoCard";
 import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
 import axios from "axios";
+
+const Leaderboard = lazy(() => import("../Leaderboard/Leaderboard"));
+const InfoCard = lazy(() => import("../InfoCard/InfoCard"));
 
 const LeagueGames = () => {
     const { tournamentId } = useParams();

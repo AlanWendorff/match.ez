@@ -3,55 +3,203 @@ import react from "../../Images/about/reactjs.png";
 import node from "../../Images/about/nodejs.svg";
 import firebase from "../../Images/about/firebase.png";
 import css from "../../Images/about/css.svg";
-import panda from "../../Images/about/panda.jpg";
+/* import panda from "../../Images/about/panda.jpg";
 import demo from "../../Images/about/demo.png";
 import teams from "../../Images/about/teams.png";
-import matchezlogo from "../../Images/about/matchezlogo.png";
+import matchezlogo from "../../Images/about/matchezlogo.png"; */
 import "./About.css";
 
-const colors = {
+/* const colors = {
     DarkMuted: "#4d4c34",
     DarkVibrant: "#041424",
     LightMuted: "#bcbcc4",
     LightVibrant: "#dfda9a",
     Muted: "#9c9444",
     Vibrant: "#c4bc44",
-};
+}; */
 
 const About = () => (
     <div className="about-container font-gilroy">
-        <h1 className="font-gilroy-bold animate__animated animate__fadeIn" id="top">About</h1>
-        <h3 className="font-gilroy animate__animated animate__fadeIn">Technologies</h3>
+        <h1 className="font-gilroy-bold animate__animated animate__fadeIn" id="top">
+            Technologies
+        </h1>
+        <h5 className="font-gilroy animate__animated animate__fadeIn">
+            Technologies that were used for <br /> the development of the web.
+        </h5>
         <div className="technologies font-gilroy animate__animated animate__fadeInRight animate__faster">
-            <div>
+            <a href="https://es.reactjs.org/" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img src={react} alt="Frontend" />
                 </div>
                 <span className="react-color animate__animated animate__fadeInUp animate__faster">ReactJS</span>
-            </div>
+            </a>
 
-            <div>
+            <a href="https://nodejs.org/es/" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img src={node} alt="Backend" />
                 </div>
                 <span className="node-color animate__animated animate__fadeInUp animate__faster">NodeJS</span>
-            </div>
+            </a>
 
-            <div>
+            <a href="https://firebase.google.com/?hl=es" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img src={firebase} alt="Database" />
                 </div>
                 <span className="firebase-color animate__animated animate__fadeInUp animate__faster">Firebase</span>
-            </div>
+            </a>
 
-            <div>
+            <a href="https://developer.mozilla.org/es/docs/Web/CSS" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img className="css-logo" src={css} alt="Styles" />
                 </div>
                 <span className="css-color animate__animated animate__fadeInUp animate__faster">CSS</span>
+            </a>
+        </div>
+
+        <h2 className="font-gilroy-bold animate__animated animate__fadeIn">Packages :</h2>
+
+        <div className="about-item animate__animated animate__fadeInLeft animate__faster">
+            <div className="how-install-packages">
+                <img src={react} alt="ReactJS" />
+                <span className="font-gilroy-bold">ReactJS Modules</span>
+                <span>You can install dependencie using :</span>
+                <span className="font-gilroy-bold">
+                    npm i <span className="font-gilroy">package-name</span>
+                </span>
+                <span>or </span>
+                <span className="font-gilroy-bold">
+                    yarn add <span className="font-gilroy">package-name</span>
+                </span>
+            </div>
+
+            <div className="dependencies">
+                <a
+                    href="https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >
+                    font-awesome
+                </a>
+                <br />
+                <a href="https://animate.style/" rel="noopener noreferrer" target="_blank">
+                    animate.css
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/axios" rel="noopener noreferrer" target="_blank">
+                    axios
+                </a>
+                <br />
+                <a href="https://www.emailjs.com/docs/examples/reactjs/" rel="noopener noreferrer" target="_blank">
+                    emailjs-com
+                </a>
+                <br />
+                <a href="https://firebase.google.com/docs/web/setup?hl=es" rel="noopener noreferrer" target="_blank">
+                    firebase
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/howler" rel="noopener noreferrer" target="_blank">
+                    howler
+                </a>
+                <br />
+                <a href="npmjs.com/package/moment" rel="noopener noreferrer" target="_blank">
+                    moment
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/react-debounce-input" rel="noopener noreferrer" target="_blank">
+                    react-debounce-input
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/react-lazyload" rel="noopener noreferrer" target="_blank">
+                    react-lazyload
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/react-modal" rel="noopener noreferrer" target="_blank">
+                    react-modal
+                </a>
+                <br />
+                <a
+                    href="https://www.npmjs.com/package/react-progressive-image"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >
+                    react-progressive-image
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/react-share" rel="noopener noreferrer" target="_blank">
+                    react-share
+                </a>
+                <br />
+                <a
+                    href="https://www.npmjs.com/package/react-vertical-timeline-component"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                >
+                    react-vertical-timeline-component
+                </a>
             </div>
         </div>
 
+        <div className="about-item animate__animated animate__fadeInLeft animate__faster">
+            <div className="how-install-packages">
+                <img src={node} alt="NodeJS" />
+                <span className="font-gilroy-bold">NodeJS Modules</span>
+                <span>You can install dependencie using :</span>
+                <span className="font-gilroy-bold">
+                    npm i <span className="font-gilroy">package-name</span>
+                </span>
+                <span>or </span>
+                <span className="font-gilroy-bold">
+                    yarn add <span className="font-gilroy">package-name</span>
+                </span>
+            </div>
+            <div className="dependencies">
+                <a href="https://www.npmjs.com/package/axios" rel="noopener noreferrer" target="_blank">
+                    axios
+                </a>
+                <br />
+                <a href="https://firebase.google.com/docs/web/setup?hl=es" rel="noopener noreferrer" target="_blank">
+                    firebase
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/body-parser" rel="noopener noreferrer" target="_blank">
+                    body-parser
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/colorthief" rel="noopener noreferrer" target="_blank">
+                    colorthief
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/cors" rel="noopener noreferrer" target="_blank">
+                    cors
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/dotenv" rel="noopener noreferrer" target="_blank">
+                    dotenv
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/express" rel="noopener noreferrer" target="_blank">
+                    express
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/hltv" rel="noopener noreferrer" target="_blank">
+                    hltv
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/hltv-api" rel="noopener noreferrer" target="_blank">
+                    hltv-api
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/node-vibrant" rel="noopener noreferrer" target="_blank">
+                    node-vibrant
+                </a>
+                <br />
+                <a href="https://www.npmjs.com/package/tinycolor2" rel="noopener noreferrer" target="_blank">
+                    tinycolor2
+                </a>
+            </div>
+        </div>
+
+        {/* 
         <div className="about-item animate__animated animate__fadeInLeft animate__faster">
             <img src="https://cdn.pandascore.co/images/team/image/126709/9996.png" alt="9z" />
             <p>
@@ -168,7 +316,7 @@ const About = () => (
                 <br />
                 <a href="#top">Back to top</a>
             </p>
-        </div>
+        </div> */}
     </div>
 );
 

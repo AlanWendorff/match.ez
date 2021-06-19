@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Suspense } from "react";
+import React, { useEffect, useState, useContext, Suspense, lazy } from "react";
 import { useParams, useHistory } from "react-router";
 import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +12,10 @@ import nopic from "../../Images/nopic.png";
 import axios from "axios";
 import "../../styles/base.css";
 
-const OneTeamMapping = React.lazy(() => import("../OneTeamCard/OneTeamMapping"));
-const InfoCard = React.lazy(() => import("../InfoCard/InfoCard"));
-const CircularTournaments = React.lazy(() => import("../CircularTournaments/CircularTournaments"));
-const HistoricMatchMapping = React.lazy(() => import("../HistoricMatchCard/HistoricMatchMapping"));
+const OneTeamMapping = lazy(() => import("../OneTeamCard/OneTeamMapping"));
+const InfoCard = lazy(() => import("../InfoCard/InfoCard"));
+const CircularTournaments = lazy(() => import("../CircularTournaments/CircularTournaments"));
+const HistoricMatchMapping = lazy(() => import("../HistoricMatchCard/HistoricMatchMapping"));
 
 const TeamProfile = () => {
     const { teamid } = useParams();

@@ -7,19 +7,25 @@
     overflow-x: hidden;
     height: calc(100vh - 50px);
     scroll-behavior: smooth;
+    background-color: #edeef1;
+}
+
+.about-container .lazyload-wrapper {
+    width: 630px;
 }
 
 .about-container > h1 {
     font-size: 100px;
 }
 
-.about-container .tech-logo-canvas > img {
-    max-width: 100px;
-    max-height: 100px;
+.about-container > h5 {
+    font-size: 23px;
+    text-align: center;
+    line-height: 35px;
 }
 
 .about-container > .technologies {
-    margin-top: 20px;
+    margin: 30px 0;
     width: 630px;
     height: 150px;
     display: flex;
@@ -27,35 +33,23 @@
     justify-content: space-between;
 }
 
-.about-container > .about-item {
-    margin: 100px 0;
-    width: 630px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.about-container > .about-item > img,
-.about-container > .about-item > p {
-    max-width: 250px;
-}
-
-.about-container > .technologies > div {
+.about-container > .technologies > a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px;
+    height: 100%;
     justify-content: space-between;
 }
 
-.about-container > .technologies > div > span {
+.about-container > .technologies > a > span {
     margin-bottom: 10px;
     border-radius: 100px;
     padding: 5px 10px;
     text-align: center;
+    color: black;
 }
 
-.about-container > .technologies > div .tech-logo-canvas {
+.about-container > .technologies > a .tech-logo-canvas {
     width: 100%;
     height: 100px;
     display: flex;
@@ -63,9 +57,83 @@
     justify-content: center;
 }
 
+.about-container > .technologies > a .tech-logo-canvas > img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
 .css-logo {
     max-height: 80px !important;
 }
+
+.about-container > h2 {
+    margin-top: 90px;
+}
+
+.about-container .about-item {
+    margin: 70px 0;
+    width: 630px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.about-container .about-item > img,
+.about-container .about-item > p {
+    max-width: 270px;
+    font-size: 16px;
+}
+
+.about-item > .how-install-packages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+}
+
+.about-item > .dependencies {
+    width: 250px;
+}
+
+.about-item > .how-install-packages > img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.about-item > .liquid-example > img {
+    width: 100px;
+}
+
+.about-item > .liquid-example > img {
+    width: 100px;
+}
+
+.about-item > .liquid-example > span,
+.about-item > .how-install-packages > span {
+    margin-bottom: 10px;
+}
+
+/* .about-item > .liquid-example {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+} */
+
+/* 
+.about-item > .liquid-example > .colors-pallete {
+    margin: 20px 0 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-item > .liquid-example > .colors-pallete > div {
+    width: 35px;
+    height: 35px;
+    background-color: red;
+}
+ */
 
 .css-color {
     background-color: #33a9dc;
@@ -83,38 +151,77 @@
     background-color: #ffca28;
 }
 
-.about-item > .liquid-example {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 250px;
+@media screen and (max-width: 700px) {
+    .about-container .lazyload-wrapper {
+        width: 100%;
+    }
+
+    .about-container > h1 {
+        font-size: 45px;
+        margin: 30px 0;
+    }
+
+    .about-container > h5 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .about-container > .technologies {
+        width: 100%;
+        justify-content: space-evenly;
+        height: 130px;
+        margin: 20px 0;
+    }
+
+    .about-container > .technologies > a .tech-logo-canvas > img {
+        max-width: 70px;
+        max-height: 70px;
+    }
+
+    .css-logo {
+        max-height: 50px !important;
+    }
+
+    .about-container > .technologies > a > span {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .about-container > h2 {
+        margin-top: 15px;
+        font-size: 35px;
+        margin-bottom: 0;
+    }
+
+    .about-container .about-item {
+        margin: 30px 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-item > .how-install-packages {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    .about-item > .how-install-packages > img {
+        width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .about-item > .how-install-packages > span {
+        margin-bottom: 5px;
+    }
+
+    .about-item > .dependencies {
+        text-align: center;
+        width: 70%;
+        font-size: 14px;
+        line-height: 24px;
+    }
 }
-
-.about-item > .liquid-example > img {
-    width: 100px;
-}
-
-.about-item > .liquid-example > img {
-    width: 100px;
-}
-
-
-.about-item > .liquid-example > span{
-    margin-bottom: 10px;
-}
-
-.about-item > .liquid-example > .colors-pallete {
-    margin: 20px 0 15px 0;
-    width: 100%;
-    display: flex; 
-    justify-content: space-between;
-}
-
-.about-item > .liquid-example > .colors-pallete > div{
-    width: 35px;
-    height: 35px;
-    background-color: red;
-}
-
-
-

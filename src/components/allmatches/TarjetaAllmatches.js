@@ -99,7 +99,7 @@ const TarjetaAllmatches = ({ match }) => {
                                 <Link
                                     to={TOURNAMENT.replace(":tournamentId", tournament.league_id)}
                                     className="text-center head-font highlight-text"
-                                    style={{ color: `${colorLeague.DarkVibrant}` }}
+                                    style={{ color: colorLeague.DarkVibrant }}
                                 >
                                     {" "}
                                     {league.name + " " + serie.full_name}{" "}

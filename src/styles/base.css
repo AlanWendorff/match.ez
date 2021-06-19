@@ -41,7 +41,7 @@
   font-family: "Gilroy-ExtraBold";
 }
 
-.lazyload-wrapper {
+.parametros-container .lazyload-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;

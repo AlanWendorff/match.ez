@@ -1,21 +1,12 @@
-import React, { Fragment } from 'react';
-import OneTeamCard from './OneTeamCard';
-import LazyLoad from 'react-lazyload';
+import React, { Fragment } from "react";
+import OneTeamCard from "./OneTeamCard";
 
-const OneTeamMapping = ({matches, teamid}) => {
-    if (!matches.length > 0) return null;
-    return ( 
-        <Fragment> 
-            {matches.map(match => ( 
-                <LazyLoad offset={100} height={100} overflow key={match.id}>
-                    <OneTeamCard 
-                        match={match}
-                        teamid={teamid}
-                    />
-                </LazyLoad>
+const OneTeamMapping = ({ matches, teamid }) => (
+    <Fragment>
+        {matches.map((match) => (
+            <OneTeamCard match={match} teamid={teamid} key={match.id} />
         ))}
-        </Fragment> 
-     );
-}
- 
+    </Fragment>
+);
+
 export default OneTeamMapping;

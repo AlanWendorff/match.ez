@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllTournaments from "./components/AllTournaments/AllTournaments";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import LeagueGames from "./components/LeagueGames/LeagueGames";
 import Tournaments from "./components/Tournaments/Tournaments";
 import HltvRanking from "./components/HltvRanking/HltvRanking";
-import TeamProfile from "./components/TeamProfile/TeamProfile";
 import AllMatches from "./components/AllMatches/AllMatches";
 import Timeline from "./components/Timeline/Timeline";
-import NotFound from "./components/NotFound/NotFound";
-import Warning from "./components/Warning/Warning";
-import Contact from "./components/Contact/Contact";
-import About from "./components/About/About";
-import News from "./components/News/News";
 import Home from "./components/Home/Home";
 import More from "./components/More/More";
+import BlackScreen from "./components/Loader/BlackScreen";
 import {
     HOME,
     ALL_TOURNAMENTS,
@@ -30,6 +24,14 @@ import {
     ERROR,
     ABOUT,
 } from "./routes/routes";
+
+const LeagueGames = lazy(() => import("./components/LeagueGames/LeagueGames"));
+const TeamProfile = lazy(() => import("./components/TeamProfile/TeamProfile"));
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
+const Warning = lazy(() => import("./components/Warning/Warning"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
+const About = lazy(() => import("./components/About/About"));
+const News = lazy(() => import("./components/News/News"));
 
 let deferredPrompt;
 
@@ -49,6 +51,7 @@ const Layout = () => {
             });
         }
     };
+
     useEffect(() => {
         window.addEventListener("beforeinstallprompt", (e) => {
             e.preventDefault();
@@ -63,14 +66,9 @@ const Layout = () => {
                     <Switch>
                         <Route exact path={ALL_TOURNAMENTS} component={AllTournaments} />
                         <Route exact path={TOURNAMENTS} component={Tournaments} />
-                        <Route exact path={TOURNAMENT} component={LeagueGames} />
                         <Route exact path={ALLMATCHES} component={AllMatches} />
                         <Route exact path={RANKING} component={HltvRanking} />
                         <Route exact path={TIMELINE} component={Timeline} />
-                        <Route exact path={TEAM} component={TeamProfile} />
-                        <Route exact path={CONTACT} component={Contact} />
-                        <Route exact path={ABOUT} component={About} />
-                        <Route exact path={NEWS} component={News} />
                         <Route exact path={MORE}>
                             <More
                                 handleInstallClick={handleInstallClick}
@@ -78,8 +76,16 @@ const Layout = () => {
                                 isinstalled={isinstalled}
                             />
                         </Route>
-                        <Route exact path={ERROR} component={Warning} />
                         <Route exact path={HOME} component={Home} />
+
+                        <Suspense fallback={<BlackScreen />}>
+                            <Route exact path={TOURNAMENT} component={LeagueGames} />
+                            <Route exact path={TEAM} component={TeamProfile} />
+                            <Route exact path={ERROR} component={Warning} />
+                            <Route exact path={CONTACT} component={Contact} />
+                            <Route exact path={ABOUT} component={About} />
+                            <Route exact path={NEWS} component={News} />
+                        </Suspense>
                         <Route component={NotFound} />
                     </Switch>
                 </main>
