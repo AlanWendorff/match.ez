@@ -9,17 +9,32 @@ const AllTournaments = () => {
     const [alltournaments, setAllTournaments] = useState([]);
     const [filteredtournaments, setFilteredTournaments] = useState([]);
     const [showtournaments, setShowTournaments] = useState(true);
+    const [advice, setAdvice] = useState(false);
+    const [Input, setInput] = useState("");
 
     const FilterTournament = () => {
-        let input = document.getElementById("last_name").value.toLowerCase();
+        let input = document.getElementById("search_tournament").value.toLowerCase();
         let filteredTournaments = [];
         alltournaments.map((tournament) => {
             if (tournament.name.toLowerCase().includes(input) && input !== "") {
                 filteredTournaments.push(tournament);
             }
         });
-        filteredtournaments.length !== 0 && input === "" ? setShowTournaments(true) : setShowTournaments(true);
-        setFilteredTournaments(filteredTournaments);
+        if (filteredTournaments.length !== 0) {
+            setAdvice(false);
+            setShowTournaments(true);
+            setFilteredTournaments(filteredTournaments);
+        } else {
+            if (filteredTournaments.length === 0 && input === "") {
+                setFilteredTournaments(alltournaments);
+                setAdvice(false);
+                setShowTournaments(true);
+            } else {
+                setAdvice(true);
+                setShowTournaments(false);
+            }
+        }
+        setInput(input);
     };
 
     useEffect(() => {
@@ -34,10 +49,10 @@ const AllTournaments = () => {
             setAllTournaments(data);
         });
     }, []);
-    console.log(filteredtournaments.length, alltournaments.length);
+
     return (
         <div className="tournament-container font-gilroy background-color-4all">
-            {alltournaments.length === 0 ? (
+            {alltournaments.length === 0 && (
                 <div className="display-flex-justify-center height-100vh--50px width-100percent">
                     <div className="preloader-wrapper small active">
                         <div className="spinner-layer spinner-red-only">
@@ -53,21 +68,24 @@ const AllTournaments = () => {
                         </div>
                     </div>
                 </div>
-            ) : (
+            )}
+
+            {alltournaments.length !== 0 && (
                 <>
                     <SearchTournament FilterTournament={FilterTournament} tournaments={filteredtournaments} />
                     <div className="child-tournament">
-                        {showtournaments ? (
+                        {showtournaments &&
                             filteredtournaments.map((tournament) => (
                                 <Item tournament={tournament} key={tournament.id} />
-                            ))
-                        ) : (
+                            ))}
+
+                        {advice && (
                             <span
                                 className={`color-text-white font-bold animate__fadeInDown animate__faster ${
                                     JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
                                 }`}
                             >
-                                THERE ARE NO TOURNAMENTS THAT CONTAINS '{document.getElementById("last_name").value}'
+                                THERE ARE NO TOURNAMENTS THAT CONTAINS "{Input}"
                             </span>
                         )}
                     </div>
