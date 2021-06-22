@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import { ALL_TOURNAMENTS } from "../../routes/routes";
 import SearchTournament from "../SearchTournament/SearchTournament";
 import Item from "./Item";
-import "./tournaments.css";
+import "./Tournaments.css";
 
 const Tournaments = () => {
     const history = useHistory();

@@ -1,16 +1,16 @@
-import React, { useContext, useState, Suspense, useEffect } from "react";
+import React, { useContext, useState, Suspense } from "react";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TeamRankingContext } from "../Context/TeamRankingContext";
-import { PLAYER_INFO } from "../../routes/ApiEndpoints";
+import { PLAYER_INFO } from "../../constants/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
-import loader from "../../Images/loader.gif";
-import nopic from "../../Images/nopic.png";
-import toBeDefined from "../../Images/toBeDefined.png";
-import unknown from "../../Images/unknown.png";
+import loader from "../../assets/images/placeholder/loader.gif";
+import nopic from "../../assets/images/placeholder/nopic.png";
+import toBeDefined from "../../assets/images/placeholder/toBeDefined.png";
+import unknown from "../../assets/images/placeholder/unknown.png";
 import axios from "axios";
-import "./teampreview.css";
+import "./TeamPreview.css";
 
 const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
 
@@ -204,7 +204,7 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                 />
             </Suspense>
 
-            <div style={{ color: color.Vibrant }} className="place-in-world background-color-transparent">
+            <div style={{ color: color.DarkVibrant }} className="place-in-world background-color-transparent">
                 {rankingTeam
                     ? `${LASTMATCH && arrayTeam.opponent.name} #${rankingTeam.position} in the world`
                     : `${LASTMATCH && arrayTeam.opponent.name}`}

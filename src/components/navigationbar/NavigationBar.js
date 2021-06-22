@@ -10,7 +10,7 @@ import {
 import { HOME, TOURNAMENTS, MORE, TIMELINE, ALLMATCHES, NEWS, RANKING, ABOUT, CONTACT } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation, Link, useHistory } from "react-router-dom";
-import "./navigationbar.css";
+import "./NavigationBar.css";
 
 const NavigationBar = () => {
     const { pathname } = useLocation();

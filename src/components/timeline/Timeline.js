@@ -7,20 +7,20 @@ import {
   faCalendarDay,
   faMoneyCheckAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { LOOKMATCHES, LOOKPROFILE } from "../../titlestag/titlestag";
+import { LOOKMATCHES, LOOKPROFILE } from "../../titles/TitleTag";
 import { TOURNAMENT, TEAM, ERROR } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import { TIME_LINE } from "../../routes/ApiEndpoints";
+import { TIME_LINE } from "../../constants/ApiEndpoints";
 import LoadScreen from "../Loader/LoadScreen";
 import Moment from "moment";
-import loader from "../../Images/loader.gif";
+import loader from "../../assets/images/placeholder/loader.gif";
 import ProgressiveImage from "react-progressive-image";
-import nopic from "../../Images/nopic.png";
+import nopic from "../../assets/images/placeholder/nopic.png";
 import axios from "axios";
 import "react-vertical-timeline-component/style.min.css";
-import "./timeline.css";
+import "./Timeline.css";
 
 const Timeline = () => {
   const history = useHistory();

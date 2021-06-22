@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
-import { DATABASE_TOURNAMENTS } from "../../routes/ApiEndpoints";
+import React, { useState, useEffect } from "react";
+import { DATABASE_TOURNAMENTS } from "../../constants/ApiEndpoints";
 import SearchTournament from "../SearchTournament/SearchTournament";
 import axios from "axios";
 import Item from "../Tournaments/Item";
-import "../Tournaments/tournaments.css";
+import "../Tournaments/Tournaments.css";
 
 const AllTournaments = () => {
     const [alltournaments, setAllTournaments] = useState([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import "./tarjetaScore.css";
+import "./PlayerScore.css";
 
 const PlayerScore = ({
   playerscore,
@@ -9,7 +9,6 @@ const PlayerScore = ({
   const { teams } = playerscore;
   let TeamNameA, TeamLogoA, colorTeamA;
   let TeamNameB, TeamLogoB, colorTeamB;
-  console.log(opponents);
   if (teams && teams.length > 0) {
     for (let i = 0; i < opponents.length; i++) {
       if (playerscore.teams[0].name === opponents[0].opponent.name) {
@@ -67,7 +66,7 @@ const PlayerScore = ({
                       className="table-logo-size"
                       src={TeamLogoA}
                     />
-                    <span className="Team-name-score">{TeamNameA}</span>
+                    <span className="team-name-table">{TeamNameA}</span>
                   </div>
                 </th>
 
@@ -170,7 +169,7 @@ const PlayerScore = ({
                       className="table-logo-size"
                       src={TeamLogoB}
                     />
-                    <span className="Team-name-score">{TeamNameB}</span>
+                    <span className="team-name-table">{TeamNameB}</span>
                   </div>
                 </th>
                 <th

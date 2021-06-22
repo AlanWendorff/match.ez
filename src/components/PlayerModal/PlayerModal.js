@@ -2,11 +2,11 @@ import React from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-modal";
-import twitter from "../../Images/twitter.png";
-import instagram from "../../Images/insta.png";
-import twitch from "../../Images/twitch.png";
-import unknown from "../../Images/unknown.png";
-import "./playermodal.css";
+import twitter from "../../assets/images/socialmedia/twitter.png";
+import instagram from "../../assets/images/socialmedia/insta.png";
+import twitch from "../../assets/images/socialmedia/twitch.png";
+import unknown from "../../assets/images/placeholder/unknown.png";
+import "./PlayerModal.css";
 
 const PlayerModal = ({ playerinfo, color, setIsOpen, modalIsOpen, img }) => {
   Modal.setAppElement("html");

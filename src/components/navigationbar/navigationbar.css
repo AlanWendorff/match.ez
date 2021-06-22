@@ -1,25 +1,3 @@
-.loguito-container {
-    position: fixed;
-    bottom: 0;
-    z-index: 10;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.loguito {
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-}
-
-.loguito > img {
-    max-width: 40px;
-    max-height: 40px;
-}
-
 .menu-mobile {
     border-top: 1px solid rgba(255, 255, 255, 0.151);
     background-color: black;
@@ -45,66 +23,32 @@
     bottom: 0;
 }
 
-@media (min-width: 641px) {
-    .menu-mobile > a {
-        z-index: 100;
-        font-size: 20px;
-        width: 55px;
-        text-align: center;
-        cursor: pointer;
-    }
-
-    .menu-mobile > a > div {
-        width: 45px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-    }
-    .menu-mobile > div > div {
-        width: 45px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-    }
-    .menu-mobile > a > div > img {
-        width: 40px;
-    }
+.menu-mobile > a {
+    z-index: 100;
+    font-size: 20px;
+    width: 55px;
+    text-align: center;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 640px) {
-    .menu-mobile > a {
-        z-index: 100;
-        font-size: 20px;
-        width: 55px;
-        text-align: center;
-        cursor: pointer;
-    }
-
-    .menu-mobile > a > div {
-        width: 45px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-    }
-    .menu-mobile > div > div {
-        width: 45px;
-        height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100px;
-    }
-    .menu-mobile > a > div > img {
-        width: 40px;
-    }
+.menu-mobile > a > div {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
 }
 
-.loguito > img {
-    filter: drop-shadow(0px 0px 10px rgb(117, 117, 117));
+.menu-mobile > div > div {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+}
+
+.menu-mobile > a > div > img {
+    width: 40px;
 }

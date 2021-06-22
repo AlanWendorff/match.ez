@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LOOKPROFILE } from "../../titlestag/titlestag";
+import { LOOKPROFILE } from "../../titles/TitleTag";
 import { getPlayerScore } from "./getPlayerScore";
 import { useHistory } from "react-router";
 import { TEAM, ERROR } from "../../routes/routes";
@@ -15,10 +15,9 @@ import ProgressiveImage from "react-progressive-image";
 import PlayerScore from "../PlayerScore/PlayerScore";
 import Share from "../Share/Share";
 import Moment from "moment";
-import nopic from "../../Images/nopic.png";
-import loader from "../../Images/loader.gif";
-import "../CompetitionCard/tarjetaMatchesCompletos.css";
-import "./matchprevio.css";
+import nopic from "../../assets/images/placeholder/nopic.png";
+import loader from "../../assets/images/placeholder/loader.gif";
+import "./HistoricMatchCard.css";
 
 const HistoricMatchCard = ({
   match,
@@ -111,7 +110,7 @@ const HistoricMatchCard = ({
       >
         <div className="card-image prev-game-content cursor-default">
           <div className="prev-game-header-container">
-            <p className="prev-game-header" style={{ color: colorLeague.DarkVibrant }}>
+            <p className="prev-game-header text-align-center" style={{ color: colorLeague.DarkVibrant }}>
               {stage}
             </p>
           </div>

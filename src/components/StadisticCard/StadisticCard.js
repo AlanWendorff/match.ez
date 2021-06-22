@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { PaletteContext } from '../Context/PaletteContext'
-import './estadisticas.css';
+import './StadisticCard.css';
 
 const StadisticCard = ({winRate, winStrike, wl}) => {
     const { palette } = useContext(PaletteContext);

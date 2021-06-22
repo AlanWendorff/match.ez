@@ -10,15 +10,14 @@ import {
 import { PlaySound } from "../../utility/PlaySound";
 import { Link } from "react-router-dom";
 import { TEAM } from "../../routes/routes";
-import { LOOKPROFILE } from "../../titlestag/titlestag";
+import { LOOKPROFILE } from "../../titles/TitleTag";
 import { compareTeams } from "../../utility/compareTeams";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TeamRanking from "../TeamRanking/TeamRanking";
 import { evalColors, getMessage, evalImg, evalName, getMessageLive } from "./Helper";
 import ProgressiveImage from "react-progressive-image";
 import MiniWinRate from "../MiniWinRate/MiniWinRate";
-import twitch from "../../Images/twitch.png";
-import loader from "../../Images/loader.gif";
+import twitch from "../../assets/images/socialmedia/twitch.png";
+import loader from "../../assets/images/placeholder/loader.gif";
 import Share from "../Share/Share";
 import Moment from "moment";
 import "./MatchCardRow.css";
@@ -213,7 +212,7 @@ const MatchCardRow = ({ match }) => {
                                 official_stream_url !== null && PlaySound();
                             }}
                         >
-                            {official_stream_url === null ? "Playing (no stream available)" : official_stream_url}
+                            {official_stream_url === null ? "Playing (no stream available)" : official_stream_url.replace("https://www.", "")}
                         </a>
                     </div>
 

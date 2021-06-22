@@ -1,11 +1,11 @@
 import {Howl, Howler} from 'howler';
-import cmon from '../sounds/cmon.wav';
-import gj from '../sounds/gj.wav';
-import help from '../sounds/help.wav';
-import im_coming from '../sounds/im_coming.wav';
-import need_help from '../sounds/need_help.wav';
-import wecando from '../sounds/wecando.wav';
-import yes from '../sounds/yes.wav';
+import cmon from '../assets/sounds/cmon.wav';
+import gj from '../assets/sounds/gj.wav';
+import help from '../assets/sounds/help.wav';
+import im_coming from '../assets/sounds/im_coming.wav';
+import need_help from '../assets/sounds/need_help.wav';
+import wecando from '../assets/sounds/wecando.wav';
+import yes from '../assets/sounds/yes.wav';
 
 export const PlaySound = () => {
     const SOUNDCMON = new Howl({src: [cmon]});

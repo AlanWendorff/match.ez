@@ -2,14 +2,14 @@ import React, { useEffect, useState, useContext, lazy } from "react";
 import { useParams, useHistory } from "react-router";
 import { PaletteContext } from "../Context/PaletteContext";
 import { ERROR } from "../../routes/routes";
-import { LEAGUE_INFO } from "../../routes/ApiEndpoints";
+import { LEAGUE_INFO } from "../../constants/ApiEndpoints";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import LoadScreen from "../Loader/LoadScreen";
-import csgoLogoDefault from "../../Images/csgoLogoDefault.png";
+import nopic from "../../assets/images/placeholder/nopic.png";
 import axios from "axios";
 
 const Leaderboard = lazy(() => import("../Leaderboard/Leaderboard"));
@@ -85,7 +85,7 @@ const LeagueGames = () => {
             if (historicMatches && historicMatches.length !== 0) {
                 setPalette(colors);
                 if (imageLeague === null) {
-                    setImageLeague(csgoLogoDefault);
+                    setImageLeague(nopic);
                     setLogo("");
                 } else {
                     setLogo(setLogo);

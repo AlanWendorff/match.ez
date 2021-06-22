@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "./Layout";
+import Layout from "./components/Layout";
 import TeamRankingProvider from "./components/Context/TeamRankingContext";
 import PaletteProvider from "./components/Context/PaletteContext";
 import LocationProvider from "./components/Context/LocationContext";

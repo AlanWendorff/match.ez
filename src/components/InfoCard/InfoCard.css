@@ -1,0 +1,20 @@
+.info-card {
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.685);
+    color: white;
+    font-size: 25px;
+}
+
+.info-card > p {
+    margin: 0;
+    padding: 0 20%;
+    justify-content: space-between;
+    color: #ffffff;
+    font-size: 55px;
+    font-family: "Gilroy-ExtraBold";
+    filter: drop-shadow(3px 3px 15px #d9ad43);
+}

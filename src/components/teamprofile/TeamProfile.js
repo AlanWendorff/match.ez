@@ -4,13 +4,12 @@ import { PaletteContext } from "../Context/PaletteContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { ERROR } from "../../routes/routes";
-import { TEAM_INFO } from "../../routes/ApiEndpoints";
+import { TEAM_INFO } from "../../constants/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
 import LoadScreen from "../Loader/LoadScreen";
-import nopic from "../../Images/nopic.png";
+import nopic from "../../assets/images/placeholder/nopic.png";
 import axios from "axios";
-import "../../styles/base.css";
 
 const OneTeamMapping = lazy(() => import("../OneTeamCard/OneTeamMapping"));
 const InfoCard = lazy(() => import("../InfoCard/InfoCard"));

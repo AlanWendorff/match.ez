@@ -1,14 +1,14 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AllTournaments from "./components/AllTournaments/AllTournaments";
-import NavigationBar from "./components/NavigationBar/NavigationBar";
-import Tournaments from "./components/Tournaments/Tournaments";
-import HltvRanking from "./components/HltvRanking/HltvRanking";
-import AllMatches from "./components/AllMatches/AllMatches";
-import Timeline from "./components/Timeline/Timeline";
-import Home from "./components/Home/Home";
-import More from "./components/More/More";
-import BlackScreen from "./components/Loader/BlackScreen";
+import AllTournaments from "../AllTournaments/AllTournaments";
+import NavigationBar from "../NavigationBar/NavigationBar";
+import Tournaments from "../Tournaments/Tournaments";
+import HltvRanking from "../HltvRanking/HltvRanking";
+import AllMatches from "../AllMatches/AllMatches";
+import Timeline from "../Timeline/Timeline";
+import Home from "../Home/Home";
+import More from "../More/More";
+import BlackScreen from "../Loader/BlackScreen";
 import {
     HOME,
     ALL_TOURNAMENTS,
@@ -23,15 +23,15 @@ import {
     NEWS,
     ERROR,
     ABOUT,
-} from "./routes/routes";
+} from "../../routes/routes";
 
-const LeagueGames = lazy(() => import("./components/LeagueGames/LeagueGames"));
-const TeamProfile = lazy(() => import("./components/TeamProfile/TeamProfile"));
-const NotFound = lazy(() => import("./components/NotFound/NotFound"));
-const Warning = lazy(() => import("./components/Warning/Warning"));
-const Contact = lazy(() => import("./components/Contact/Contact"));
-const About = lazy(() => import("./components/About/About"));
-const News = lazy(() => import("./components/News/News"));
+const LeagueGames = lazy(() => import("../LeagueGames/LeagueGames"));
+const TeamProfile = lazy(() => import("../TeamProfile/TeamProfile"));
+const NotFound = lazy(() => import("../NotFound/NotFound"));
+const Warning = lazy(() => import("../Warning/Warning"));
+const Contact = lazy(() => import("../Contact/Contact"));
+const About = lazy(() => import("../About/About"));
+const News = lazy(() => import("../News/News"));
 
 let deferredPrompt;
 

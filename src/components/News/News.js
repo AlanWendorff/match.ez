@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NEWS } from "../../routes/ApiEndpoints";
+import { NEWS } from "../../constants/ApiEndpoints";
 import { useHistory } from "react-router";
 import { ERROR } from "../../routes/routes";
 import LoadScreen from "../Loader/LoadScreen";
 import Moment from "moment";
 import axios from "axios";
-import "./news.css";
+import "./News.css";
 
 const News = () => {
   const history = useHistory();

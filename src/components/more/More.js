@@ -18,7 +18,7 @@ import {
     faCubes,
 } from "@fortawesome/free-solid-svg-icons";
 import { NEWS, RANKING, ABOUT, CONTACT } from "../../routes/routes";
-import "./more.css";
+import "./More.css";
 
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     const { getLocation, isallowed } = useContext(LocationContext);
@@ -159,7 +159,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 }}
                             >
                                 <div>
-                                    <FontAwesomeIcon className={anim ? "move" : ""} icon={faFilm} />
+                                    <FontAwesomeIcon className={anim ? "shake-elem" : ""} icon={faFilm} />
                                     <span>{anim ? "Animations On" : "Animations Off"}</span>
                                 </div>
                             </div>

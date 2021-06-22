@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { HLTV_RANKING } from "../../routes/ApiEndpoints";
+import { HLTV_RANKING } from "../../constants/ApiEndpoints";
 import axios from "axios";
 export const TeamRankingContext = createContext();
 

@@ -1,0 +1,50 @@
+.zoom-element:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.highlight-text {
+  display: inline-block;
+}
+
+.highlight-text::after {
+  content: "";
+  width: 0px;
+  height: 1px;
+  display: block;
+  background: rgba(66, 66, 66, 0.521);
+  transition: 200ms;
+}
+
+.highlight-text:hover::after {
+  width: 100%;
+}
+
+.transition-effect {
+  transition: all 0.1s ease-out;
+}
+
+.rotate-icon-right-side {
+  transform: rotate(120deg);
+  transition: 0.3s;
+}
+
+.rotate-icon-left-side {
+  transform: rotate(-120deg);
+  transition: 0.3s;
+}
+
+.shake-elem {
+  animation: shake-elem 1s infinite;
+}
+
+@keyframes shake-elem {
+  0% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

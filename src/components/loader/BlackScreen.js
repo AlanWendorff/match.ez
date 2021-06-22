@@ -1,5 +1,5 @@
 import React from "react";
-import "./loader.css";
+import "./Loader.css";
 
 const BlackScreen = () => <div className="black-screen background-color-4all"></div>;
 

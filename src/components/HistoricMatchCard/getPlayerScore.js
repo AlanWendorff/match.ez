@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PLAYER_SCORE } from "../../routes/ApiEndpoints";
+import { PLAYER_SCORE } from "../../constants/ApiEndpoints";
 
 export const getPlayerScore = async (id) => {
   const url = PLAYER_SCORE.replace(":id", id);

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { LocationContext } from "../Context/LocationContext";
 import { examplesAmerica, examplesnotAmerica, examplesnull } from "./Teams";
 import ProgressiveImage from "react-progressive-image";
-import loader from '../../Images/loader.gif';
+import loader from '../../assets/images/placeholder/loader.gif';
 import { TEAM } from "../../routes/routes";
-import { LOOKPROFILE } from "../../titlestag/titlestag";
-import "./teamcollection.css";
+import { LOOKPROFILE } from "../../titles/TitleTag";
+import "./TeamCollection.css";
 
 const TeamCollection = ({ collection }) => {
   const [examples, setExamples] = useState(examplesnull);

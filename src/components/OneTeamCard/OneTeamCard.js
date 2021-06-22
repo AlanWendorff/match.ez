@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { LOOKPROFILE, LOOKMATCHES } from "../../titlestag/titlestag";
+import { LOOKPROFILE, LOOKMATCHES } from "../../titles/TitleTag";
 import { faClock, faCodeBranch, faTrophy, faMedal } from "@fortawesome/free-solid-svg-icons";
 import { PaletteContext } from "../Context/PaletteContext";
 import { TOURNAMENT, TEAM } from "../../routes/routes";
@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 import ProgressiveImage from "react-progressive-image";
 import Share from "../Share/Share";
 import Moment from "moment";
-import nopic from "../../Images/nopic.png";
-import toBeDefined from "../../Images/toBeDefined.png";
-import "./tarjetaUpcomingMatch.css";
+import nopic from "../../assets/images/placeholder/nopic.png";
+import toBeDefined from "../../assets/images/placeholder/toBeDefined.png";
+import "./OneTeamCard.css";
 
 const OneTeamCard = ({ match, teamid }) => {
     const { palette } = useContext(PaletteContext);
@@ -70,12 +70,12 @@ const OneTeamCard = ({ match, teamid }) => {
                     JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
                 }`}
             >
-                <div className="col s12 m7 posicion-tarjeta">
+                <div className="col s12 m7">
                     <div className="card-image">
-                        <div className="card-image container-info cursor-default padding-top-8">
+                        <div className="card-image container-info cursor-default">
                             <div className="live-league-container">
                                 <Link
-                                    className="text-center head-font highlight-text"
+                                    className="text-align-center mb-8 head-font highlight-text"
                                     style={{ color: `${colorLeague.DarkVibrant}` }}
                                     to={TOURNAMENT.replace(":tournamentId", tournament.league_id)}
                                     title={LOOKMATCHES + league.name}
@@ -87,7 +87,7 @@ const OneTeamCard = ({ match, teamid }) => {
 
                             <div className="live-container-puntos-logos-upcoming">
                                 <Link to={TEAM.replace(":teamid", opponents[0].opponent.id)}>
-                                    <div className="team-canvas">
+                                    <div className="logo-canvas">
                                         <ProgressiveImage
                                             src={
                                                 opponents[0].opponent.image_url === null
@@ -140,7 +140,7 @@ const OneTeamCard = ({ match, teamid }) => {
 
                             <div className="container-label">
                                 <p className="label-teams">{opponents[0].opponent.name}</p>
-                                <p className="modalidad-past-match">{bestOf}</p>
+                                <p className="modalidad">{bestOf}</p>
                                 <p className="label-teams">{opponents[1].opponent.name}</p>
                             </div>
 
@@ -161,7 +161,7 @@ const OneTeamCard = ({ match, teamid }) => {
                             </div>
 
                             <a
-                                className="card-action live-streaming-box-bottom-padding live-streaming-box-container"
+                                className="card-action live-streaming-box-container"
                                 rel="noopener noreferrer"
                                 target="_blank"
                                 href={official_stream_url}
@@ -169,7 +169,7 @@ const OneTeamCard = ({ match, teamid }) => {
                                     official_stream_url !== null && PlaySound();
                                 }}
                             >
-                                <span className="stream-font-color-LIVE font-gilroy">
+                                <span className="stream font-gilroy">
                                     {" "}
                                     {statusStream} <span className="dot-indicator"></span>
                                 </span>
@@ -187,8 +187,11 @@ const OneTeamCard = ({ match, teamid }) => {
                 }`}
             >
                 <div className="card horizontal tamano-tarjeta">
-                    <div className="card-image lienzo-logo">
-                        <Link to={opponentName !== undefined ? TEAM.replace(":teamid", opponentId) : "/"}>
+                    <Link
+                        className="card-image"
+                        to={opponentName !== undefined ? TEAM.replace(":teamid", opponentId) : "/"}
+                    >
+                        <div className="logo-canvas">
                             <ProgressiveImage src={opponentLogo} placeholder={nopic}>
                                 {(src) => (
                                     <img
@@ -201,9 +204,10 @@ const OneTeamCard = ({ match, teamid }) => {
                                     />
                                 )}
                             </ProgressiveImage>
-                            <span>{opponentName === undefined ? "To be defined" : opponentName}</span>
-                        </Link>
-                    </div>
+                        </div>
+
+                        <span>{opponentName === undefined ? "To be defined" : opponentName}</span>
+                    </Link>
 
                     <div className="card-stacked">
                         <div className="card-content">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { WINRATE } from "../../titlestag/titlestag"
-import "./miniwinrate.css";
+import { WINRATE } from "../../titles/TitleTag"
+import "./MiniWinRate.css";
 
 const MiniWinRate = ({colors, winrate_api}) => {
   const [winrate, setWinRate] = useState(0);

@@ -3,7 +3,7 @@ import { TeamRankingContext } from "../Context/TeamRankingContext";
 import LoadScreen from "../Loader/LoadScreen";
 import LazyLoad from "react-lazyload";
 import Team from "./Team";
-import "./hltvranking.css";
+import "./HltvRanking.css";
 
 const HltvRanking = () => {
   const { ranking } = useContext(TeamRankingContext);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faHistory } from '@fortawesome/free-solid-svg-icons';
-import './headermobile.css';
+import './MobileHeader.css';
 
 const HeaderMobile = ({color, buttonstatus, img, setVs, setHistory, setPreview, isProfile, isTournament, setLadder}) => (
     <div className="header-mobile" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${color.Vibrant} 100%)`}}>

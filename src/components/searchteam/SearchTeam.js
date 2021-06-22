@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Team from "./Team";
 import SaveInLS from "./SaveInLS";
 import axios from "axios";
-import { DATABASE_SEARCH_TEAM } from "../../routes/ApiEndpoints";
+import { DATABASE_SEARCH_TEAM } from "../../constants/ApiEndpoints";
 import { DebounceInput } from 'react-debounce-input';
-import "./search.css";
+import "./SearchTeam.css";
 
 const SearchTeam = ({ setCollection, collection }) => {
   const [teams, setTeams] = useState([]);

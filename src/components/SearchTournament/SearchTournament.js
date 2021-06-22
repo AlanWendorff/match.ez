@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { ALL_TOURNAMENTS } from "../../routes/routes";
-import "./searchtournament.css";
+import "./SearchTournament.css";
 
 const SearchTournament = ({FilterTournament, tournaments}) => {
   const history = useHistory();

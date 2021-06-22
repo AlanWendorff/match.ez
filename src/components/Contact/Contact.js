@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SERVICE_ID, USER_ID, TEMPLATE_ID } from "../../routes/emailkey";
+import { SERVICE_ID, USER_ID, TEMPLATE_ID } from "../../constants/EmailJs";
 import { init, send } from "emailjs-com";
 import "./Contact.css";
 init(USER_ID);

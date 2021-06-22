@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { TOURNAMENT } from '../../routes/routes';
-import { LOOKMATCHES } from '../../titlestag/titlestag';
-import "./circulartournaments.css";
+import { LOOKMATCHES } from '../../titles/TitleTag';
+import "./CirularTournaments.css";
 
 const CircularItem = ({ img, name, id, colors }) => {
   return (
@@ -25,7 +25,7 @@ const CircularItem = ({ img, name, id, colors }) => {
           backgroundColor: colors.LightVibrant,
         }}
       >
-        {name.length > 10 ? name.substr(0, 9) + "..." : name}
+        {name.length > 9 ? name.substr(0, 8) + "..." : name}
       </span>
     </Link>
   );

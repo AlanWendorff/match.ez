@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CircularItem from "./CircularItem";
-import "./circulartournaments.css";
+import "./CirularTournaments.css";
 
 const CircularTournaments = ({ matches, show, prevMatch }) => {
   const [tournaments, setTournaments] = useState([]);

@@ -1,6 +1,6 @@
 import Moment from "moment";
-import nopic from "../../Images/nopic.png";
-import TBD from "../../Images/toBeDefined.png";
+import nopic from "../../assets/images/placeholder/nopic.png";
+import TBD from "../../assets/images/placeholder/toBeDefined.png";
 
 export const evalColors = (opponents, index) => {
   let color;

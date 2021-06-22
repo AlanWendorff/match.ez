@@ -1,61 +1,60 @@
 .options > span {
-  bottom: 0;
-  position: absolute;
-  font-family: "Gilroy-Light";
-  font-size: 15px;
-  color: #ffffff;
-  margin-bottom: 10px;
-  text-align: center;
-  z-index: 100;
+    bottom: 0;
+    position: absolute;
+    font-family: "Gilroy-Light";
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+    z-index: 100;
 }
 
 .options > .scroll > .column-align > .option > a,
 .options > .scroll > .column-align > .option > div {
-  width: 100%;
-  display: flex;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 .options > .scroll > .column-align > .option > a > svg,
 .options > .scroll > .column-align > .option > div > svg {
-  color: white;
-  font-size: 20px;
-  width: 20px;
+    color: white;
+    font-size: 20px;
+    width: 20px;
 }
 .options > .scroll > .column-align > .option > a > span,
 .options > .scroll > .column-align > .option > div > span {
-  font-family: "Gilroy-Light";
-  font-size: 20px;
-  color: #ffffff;
-  margin-left: 20px;
-  text-align: center;
+    font-family: "Gilroy-Light";
+    font-size: 20px;
+    color: #ffffff;
+    margin-left: 20px;
+    text-align: center;
 }
 
 .options > .scroll > .column-align > .option > .rights > span {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .settings {
-  background-color: #d9ad43;
+    background-color: #d9ad43;
 }
 
 .border-for-submenu-items {
-  border-left: 5px solid #9b7849;
+    border-left: 5px solid #9b7849;
 }
 
 .scroll {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: calc(100vh - 102px);
-  overflow-y: scroll;
-  overflow-x: hidden;
-  width: 100%;
-  z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 102px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    z-index: 50;
 }
 
-@media (min-width: 641px) {
-  .options {
+.options {
     width: 100%;
     height: calc(100vh - 50px);
     padding: 10px 0px;
@@ -63,11 +62,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .scroll {
+}
+
+.scroll {
     padding: 0 20%;
-  }
-  .options > .scroll > .column-align > .option {
+}
+
+.options > .scroll > .column-align > .option {
     width: 100%;
     height: 60px;
     display: flex;
@@ -75,47 +76,24 @@
     align-items: center;
     padding: 0px 30px;
     transition: 0.25s;
-  }
+}
 
-  .options > .scroll > .column-align > .option:hover,
-  .options > .scroll > .column-align > .option:focus {
+.options > .scroll > .column-align > .option:hover,
+.options > .scroll > .column-align > .option:focus {
     box-shadow: inset 0 0 0 10em #ffffff2d;
-  }
+}
 
-  .options > .scroll > .column-align > hr {
+.options > .scroll > .column-align > hr {
     align-self: center;
     width: 90%;
     height: 1px;
     background-color: #ffffff33;
     border: 0px;
     margin: 15px 0px;
-  }
 }
 
 @media screen and (max-width: 640px) {
-  .options {
-    width: 100%;
-    height: calc(100vh - 50px);
-    padding: 10px 0px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .options > .scroll > .column-align > .option {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0px 30px;
-  }
-  .options > .scroll > .column-align > hr {
-    align-self: center;
-    width: 90%;
-    height: 1px;
-    background-color: #ffffff33;
-    border: 0px;
-    margin: 15px 0px;
-  }
+    .options > .scroll {
+        padding: 0;
+    }
 }

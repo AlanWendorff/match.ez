@@ -1,0 +1,25 @@
+.header-mobile{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.header-mobile > div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Gilroy-ExtraBold";
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.493);
+}
+
+.header-mobile > div > img {
+    max-width: 30px;
+    max-height: 40px;
+}

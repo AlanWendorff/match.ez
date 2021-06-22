@@ -4,8 +4,8 @@ import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { TEAM } from "../../routes/routes";
 import ProgressiveImage from "react-progressive-image";
-import nopic from "../../Images/nopic.png";
-import loader from "../../Images/loader.gif";
+import nopic from "../../assets/images/placeholder/nopic.png";
+import loader from "../../assets/images/placeholder/loader.gif";
 
 const Team = ({ team, setCollection, collection, setFirstPin }) => {
     const [teamsaved, setTeamSaved] = useState(false);

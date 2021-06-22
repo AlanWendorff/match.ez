@@ -23,13 +23,13 @@ function toDataURL(url, callback) {
 
 
 
-if (image_url !== csgoLogoDefault) {
+if (image_url !== nopic) {
     toDataURL(image_url, function (dataUrl) {
         guardarB64Logo(dataUrl);
     });
 } 
 
-if (image_url !== csgoLogoDefault) {
+if (image_url !== nopic) {
     backgroundStyle = {
         backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="1280"><image width="400" height="400" xlink:href="${b64Logo}" /></svg>')`,
         backgroundColor: `${palette.DarkVibrant}`,

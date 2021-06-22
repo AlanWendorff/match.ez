@@ -4,13 +4,14 @@
   overflow-x: hidden;
   width: 100%;
   height: calc(100vh - 50px);
-  background-image: url("../../Images/generic_team_pattern.png");
+  background-image: url("../../assets/images/csgo/generic_team_pattern.png");
   background-repeat: repeat;
   background-size: 50px 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .home-button-container {
   display: flex;
   flex-direction: column;

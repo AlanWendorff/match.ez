@@ -1,12 +1,12 @@
 import React from "react";
-import react from "../../Images/about/reactjs.png";
-import node from "../../Images/about/nodejs.svg";
-import firebase from "../../Images/about/firebase.png";
-import css from "../../Images/about/css.svg";
-/* import panda from "../../Images/about/panda.jpg";
-import demo from "../../Images/about/demo.png";
-import teams from "../../Images/about/teams.png";
-import matchezlogo from "../../Images/about/matchezlogo.png"; */
+import react from "../../assets/images/about/reactjs.png";
+import node from "../../assets/images/about/nodejs.svg";
+import firebase from "../../assets/images/about/firebase.png";
+import css from "../../assets/images/about/css.svg";
+/* import panda from "../../images/about/panda.jpg";
+import demo from "../../images/about/demo.png";
+import teams from "../../images/about/teams.png";
+import matchezlogo from "../../images/about/matchezlogo.png"; */
 import "./About.css";
 
 /* const colors = {

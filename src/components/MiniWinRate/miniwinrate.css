@@ -1,11 +1,12 @@
-.mini-winrate-container{
+.mini-winrate-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: black;
+    width: 160px;
 }
 
-.percentage-bar{
+.percentage-bar {
     width: 100px;
     border-radius: 10px;
     height: 7px;
@@ -13,8 +14,9 @@
     position: relative;
     z-index: 50;
 }
-.percentage-bar > div{
-    transition: width .5s ease-out;
+
+.percentage-bar > div {
+    transition: width 0.5s ease-out;
     position: absolute;
     border-radius: 10px;
     height: 7px;
@@ -22,29 +24,25 @@
     z-index: 100;
 }
 
-.loader-winrate{
+.loader-winrate {
     margin: 5px 0;
 }
 
-.loader-winrate .small { 
+.loader-winrate .small {
     width: 15px !important;
     height: 15px !important;
 }
 
-@media (min-width: 641px) { 
-    .mini-winrate-container{
-        width: 160px;
-    }
-}
-
-@media screen and (max-width: 640px) { 
-    .loader-winrate{
+@media screen and (max-width: 640px) {
+    .loader-winrate {
         margin-left: 50px;
     }
+
     .loader-winrate > span {
-        display:none;
+        display: none;
     }
-    .mini-winrate-container{
+
+    .mini-winrate-container {
         width: 140px;
         font-size: 13px;
     }

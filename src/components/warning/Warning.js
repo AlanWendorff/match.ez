@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./warning.css";
+import "./Warning.css";
 
 const Warning = () => {
   return (

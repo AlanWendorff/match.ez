@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
 import { ERROR } from "../../routes/routes";
-import { ALL_MATCHES } from "../../routes/ApiEndpoints";
+import { ALL_MATCHES } from "../../constants/ApiEndpoints";
 import CircularTournaments from "../CircularTournaments/CircularTournaments";
 import ListadoAllmatches from "./ListadoAllmatches";
 import LoadScreen from "../Loader/LoadScreen";
 import axios from "axios";
-import "./allmatches.css";
+import "./AllMatches.css";
 
 const AllMatches = () => {
   const history = useHistory();

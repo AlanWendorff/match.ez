@@ -1,59 +1,27 @@
-/*       MENU         */
-@media (min-width: 641px) {  
-    .home{
-        width: 100%;
-        /* background-image: url('../../Images/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px; */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow-y: scroll;
-        height: calc(100vh - 50px);
-    } 
-    .child-home{
-        width: 630px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .child-home > a{
-        padding: 10px 0px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-        color: black;
-        font-size: 20px;
-        letter-spacing: 2px;
-    }
+.home {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    height: calc(100vh - 50px);
+}
+
+.child-home {
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 640px) {
-    .child-home{
+    .home {
+        width: 100%;
+    }
+
+    .child-home {
         overflow-y: scroll;
         width: 100%;
         height: calc(100vh - 50px);
-        /* background-image: url('../../Images/generic_team_pattern.png');
-        background-repeat: repeat; 
-        background-size: 50px 50px; */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
-    .home{
-        width: 100%;
-    }
-    .child-home > a{
-        padding: 10px 0px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-        color: black;
-        font-size: 20px;
-        letter-spacing: 2px;
-    }
-    
 }
-  

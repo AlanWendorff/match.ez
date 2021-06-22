@@ -18,24 +18,20 @@
     border-radius: 3px;
     margin: 15px 0;
     padding: 15px;
+    width: 630px;
 }
 
-@media (min-width: 680px) {
-    .new {
-        width: 630px;
-    }
-    .new > h1 {
-        font-size: 25px;
-    }
-    .new > h2 {
-        font-size: 20px;
-    }
-    .new > h2 > hr {
-        width: 35%;
-    }
-    .new > p {
-        font-size: 20px;
-    }
+.new > h1 {
+    font-size: 25px;
+}
+.new > h2 {
+    font-size: 20px;
+}
+.new > h2 > hr {
+    width: 35%;
+}
+.new > p {
+    font-size: 20px;
 }
 
 @media screen and (max-width: 679px) {

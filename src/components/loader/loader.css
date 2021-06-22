@@ -1,27 +1,20 @@
 .spinner-color {
   border-color: #989898 !important;
 }
-.determinate-color {
-  background-color: #383838 !important;
-}
+
 .spinner-width {
   border-width: 4px !important;
 }
-.loader {
-  margin-top: 265px !important;
-  margin-bottom: 200% !important;
-  width: 40% !important;
-  align-self: center;
-}
+
 .spinner-loader {
-  margin-top: 0% !important;
+  margin-top: 0 !important;
   margin-bottom: 100px !important;
   align-self: center;
 }
 
 .loader-container {
   height: calc(100vh - 50px);
-  padding: 3% 3% 3% 3%;
+  padding: 3%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -29,19 +22,6 @@
   width: 50%;
   align-self: center;
 }
-
-/* SIMPLE SPINNER LOADER */
-
-.simple-spinner-width {
-  border-width: 7px !important;
-}
-.simple-spinner-loader {
-  align-self: center;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-}
-
 
 .black-screen {
   height: calc(100vh - 50px);
