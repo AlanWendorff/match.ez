@@ -63,15 +63,13 @@
     border-left: 1px solid rgba(0, 0, 0, 0.507);
 }
 .place-in-world {
+    
     width: 630px;
 }
 
 @media screen and (max-width: 770px) {
     .preview-container > .team {
         width: 330px;
-        height: 300px;
-        overflow-y: scroll;
-        justify-content: space-evenly;
     }
 
     .preview-container > .team > .player {
@@ -118,16 +116,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    -webkit-box-shadow: inset 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     align-items: center;
     margin-bottom: 15px;
     background-color: #f6f7f9;
     border-radius: 0 0 3px 3px;
-    -webkit-box-shadow: inset 0 0 14px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset 0 0 14px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0 0 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .preview-container > .little-info {

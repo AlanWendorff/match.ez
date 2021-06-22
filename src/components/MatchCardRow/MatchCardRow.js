@@ -13,7 +13,7 @@ import { TEAM } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titles/TitleTag";
 import { compareTeams } from "../../utility/compareTeams";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { evalColors, getMessage, evalImg, evalName, getMessageLive } from "./Helper";
+import { evalColors, getMessage, evalImg, evalName, getMessageLive, evalMaps } from "./Helper";
 import ProgressiveImage from "react-progressive-image";
 import MiniWinRate from "../MiniWinRate/MiniWinRate";
 import twitch from "../../assets/images/socialmedia/twitch.png";
@@ -137,8 +137,9 @@ const MatchCardRow = ({ match }) => {
                         </Link>
 
                         <div className="text-in-card">
-                            <p className="bestof-prev-game" style={{ color: COLOR_LEAGUE.DarkMuted }}>
+                            <p className="bestof-prev-game text-align-center" style={{ color: COLOR_LEAGUE.DarkMuted }}>
                                 {bestOf}
+                                {status === "running" && evalMaps(results)}
                                 {bestOf.includes("2") && " (match may end in a draw)"}
                             </p>
                         </div>

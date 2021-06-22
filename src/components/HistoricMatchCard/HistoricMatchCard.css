@@ -31,10 +31,6 @@
     justify-content: space-between;
 }
 
-.prev-game-desktop {
-    display: none;
-}
-
 .bestof-prev-game {
     margin: 0 !important;
     font-size: 16px;
@@ -118,10 +114,6 @@
     z-index: 90;
 }
 
-.tamano-tarjeta-previo {
-    width: 630px !important;
-}
-
 .container-info {
     padding: 0;
     display: flex;
@@ -158,10 +150,6 @@
     .match-loser {
         height: 57px;
         width: 40px;
-    }
-
-    .tamano-tarjeta-previo {
-        width: 330px !important;
     }
 
     .label-teams {
