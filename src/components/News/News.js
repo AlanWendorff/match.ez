@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { NEWS } from "../../constants/ApiEndpoints";
 import { useHistory } from "react-router";
 import { ERROR } from "../../routes/routes";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loader from "../Loader/Loader";
 import Moment from "moment";
 import axios from "axios";
@@ -49,11 +51,19 @@ const News = () => {
                             <hr />
                         </h2>
                         <p>
-                            {n.description}
-                            <a rel="noopener noreferrer" target="_blank" href={n.link}>
-                                {" "}
-                                Full story on hltv.org
-                            </a>
+                            {n.title.includes("Video") ? (
+                                <a className="play-btn" rel="noopener noreferrer" target="_blank" href={n.link}>
+                                    <FontAwesomeIcon icon={faPlay} />
+                                </a>
+                            ) : (
+                                <>
+                                    {n.description}
+                                    <a rel="noopener noreferrer" target="_blank" href={n.link}>
+                                        {" "}
+                                        Full story on hltv.org
+                                    </a>
+                                </>
+                            )}
                         </p>
                     </div>
                 );

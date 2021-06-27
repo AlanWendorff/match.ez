@@ -21,6 +21,11 @@
     width: 630px;
 }
 
+.new .play-btn {
+    font-size: 30px;
+    color: #9b7849;
+}
+
 .new > h1 {
     font-size: 25px;
 }
