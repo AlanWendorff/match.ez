@@ -4,7 +4,8 @@ import { TEAM, RANKING } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titles/TitleTag";
 import { PLAYER_INFO } from "../../constants/ApiEndpoints";
 import ProgressiveImage from "react-progressive-image";
-import loader from "../../assets/images/placeholder/loader.gif";
+import LoaderGif from "../../assets/images/placeholder/loader.gif";
+import Loader from "../Loader/Loader";
 import axios from "axios";
 import "./HltvRanking.css";
 
@@ -51,7 +52,7 @@ const Team = ({
       }`}
     >
       <div style={{ backgroundColor: colors.DarkVibrant }}>
-        <Suspense fallback={<div></div>}>
+        <Suspense fallback={<Loader transparent />}>
           <PlayerModal
             playerinfo={playerinfo}
             color={colors}
@@ -69,7 +70,7 @@ const Team = ({
           <div>
             <ProgressiveImage
               src={img !== undefined ? img : nopic}
-              placeholder={loader}
+              placeholder={LoaderGif}
             >
               {(src) => <img src={src} alt={name} />}
             </ProgressiveImage>

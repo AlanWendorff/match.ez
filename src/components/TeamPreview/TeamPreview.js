@@ -5,7 +5,8 @@ import { TeamRankingContext } from "../Context/TeamRankingContext";
 import { PLAYER_INFO } from "../../constants/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
-import loader from "../../assets/images/placeholder/loader.gif";
+import loaderGif from "../../assets/images/placeholder/loader.gif";
+import Loader from "../Loader/Loader";
 import nopic from "../../assets/images/placeholder/nopic.png";
 import toBeDefined from "../../assets/images/placeholder/toBeDefined.png";
 import unknown from "../../assets/images/placeholder/unknown.png";
@@ -57,7 +58,7 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                                                 ? nopic
                                                 : LASTMATCH.opponents[0].opponent.image_url
                                         }
-                                        placeholder={loader}
+                                        placeholder={loaderGif}
                                     >
                                         {(src) => <img src={src} alt="team A" />}
                                     </ProgressiveImage>
@@ -99,7 +100,7 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                                                 ? nopic
                                                 : LASTMATCH.opponents[1].opponent.image_url
                                         }
-                                        placeholder={loader}
+                                        placeholder={loaderGif}
                                     >
                                         {(src) => <img src={src} alt="team B" />}
                                     </ProgressiveImage>
@@ -144,7 +145,7 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                                                     : NEXTMATCH.opponents[0].opponent.image_url
                                                 : toBeDefined
                                         }
-                                        placeholder={loader}
+                                        placeholder={loaderGif}
                                     >
                                         {(src) => <img src={src} alt="team A Next Match" />}
                                     </ProgressiveImage>
@@ -164,7 +165,7 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                                                     : NEXTMATCH.opponents[1].opponent.image_url
                                                 : toBeDefined
                                         }
-                                        placeholder={loader}
+                                        placeholder={loaderGif}
                                     >
                                         {(src) => <img src={src} alt="team B Next Match" />}
                                     </ProgressiveImage>
@@ -194,7 +195,7 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                 </div>
             </div>
 
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<Loader transparent />}>
                 <PlayerModal
                     playerinfo={playerinfo}
                     color={color}

@@ -7,7 +7,7 @@ import { ERROR } from "../../routes/routes";
 import { TEAM_INFO } from "../../constants/ApiEndpoints";
 import MobileHeader from "../MobileHeader/MobileHeader";
 import TeamPreview from "../TeamPreview/TeamPreview";
-import LoadScreen from "../Loader/LoadScreen";
+import Loader from "../Loader/Loader";
 import nopic from "../../assets/images/placeholder/nopic.png";
 import axios from "axios";
 
@@ -152,12 +152,12 @@ const TeamProfile = () => {
                 />
             )}
             {show === "vs" && !matches.length > 0 && (
-                <Suspense fallback={<div></div>}>
+                <Suspense fallback={<Loader transparent />}>
                     <InfoCard noMatches={noMatches} />
                 </Suspense>
             )}
             {show === "vs" && matches.length > 0 && (
-                <Suspense fallback={<div></div>}>
+                <Suspense fallback={<Loader transparent />}>
                     <CircularTournaments filterByTournament={filterByTournament} matches={matches} />
                     <OneTeamMapping matches={matches} teamid={teamid} />
                 </Suspense>
@@ -165,7 +165,7 @@ const TeamProfile = () => {
 
             {show === "history" && prevMatch !== "no-match" && (
                 <>
-                    <Suspense fallback={<div></div>}>
+                    <Suspense fallback={<Loader transparent />}>
                         <CircularTournaments filterByTournament={filterByTournament} prevMatch={prevMatch} />
                         <HistoricMatchMapping prevMatch={matchesmod} teamid={teamid} />
                         {matchesmod.length !== prevMatch.length && (
@@ -181,12 +181,9 @@ const TeamProfile = () => {
                     </Suspense>
                 </>
             )}
-            {/* <Logo color={palette} img={image_url} /> */}
         </div>
     ) : (
-        <div className="parametros-container noselect">
-            <LoadScreen />
-        </div>
+        <Loader />
     );
 };
 

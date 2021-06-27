@@ -8,7 +8,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import HistoricMatchMapping from "../HistoricMatchCard/HistoricMatchMapping";
 import CompetitionMapping from "../CompetitionCard/CompetitionMapping";
 import MobileHeader from "../MobileHeader/MobileHeader";
-import LoadScreen from "../Loader/LoadScreen";
+import Loader from "../Loader/Loader";
 import nopic from "../../assets/images/placeholder/nopic.png";
 import axios from "axios";
 
@@ -132,13 +132,9 @@ const LeagueGames = () => {
                     )}
                 </>
             )}
-
-            {/* <Logo color={palette} img={image_url} /> */}
         </div>
     ) : (
-        <div className="parametros-container">
-            <LoadScreen />
-        </div>
+        <Loader />
     );
 };
 

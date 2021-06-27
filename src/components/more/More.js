@@ -17,7 +17,7 @@ import {
     faCode,
     faCubes,
 } from "@fortawesome/free-solid-svg-icons";
-import { NEWS, RANKING, ABOUT, CONTACT } from "../../routes/routes";
+import { NEWS, RANKING, ABOUT, CONTACT, WALLPAPER } from "../../routes/routes";
 import "./More.css";
 
 const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
@@ -89,8 +89,15 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                             <span>News</span>
                         </div>
                     </Link>
-
                     <hr />
+{/* 
+                    <Link to={WALLPAPER} className={OPTION_STYLE}>
+                        <div>
+                            <FontAwesomeIcon icon={faNewspaper} />
+                            <span>Create your wallpaper</span>
+                        </div>
+                    </Link>
+                    <hr /> */}
 
                     <div
                         className="option animate__animated animate__fadeInRight animate__faster cursor-pointer settings"

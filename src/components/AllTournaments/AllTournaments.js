@@ -3,6 +3,7 @@ import { DATABASE_TOURNAMENTS } from "../../constants/ApiEndpoints";
 import SearchTournament from "../SearchTournament/SearchTournament";
 import axios from "axios";
 import Item from "../Tournaments/Item";
+import Loader from "../Loader/Loader";
 import "../Tournaments/Tournaments.css";
 
 const AllTournaments = () => {
@@ -50,47 +51,25 @@ const AllTournaments = () => {
         });
     }, []);
 
-    return (
+    return alltournaments.length === 0 ? (
+        <Loader />
+    ) : (
         <div className="tournament-container font-gilroy background-color-4all">
-            {alltournaments.length === 0 && (
-                <div className="display-flex-justify-center height-100vh--50px width-100percent">
-                    <div className="preloader-wrapper small active">
-                        <div className="spinner-layer spinner-red-only">
-                            <div className="circle-clipper left">
-                                <div className="circle"></div>
-                            </div>
-                            <div className="gap-patch">
-                                <div className="circle"></div>
-                            </div>
-                            <div className="circle-clipper right">
-                                <div className="circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <SearchTournament FilterTournament={FilterTournament} tournaments={filteredtournaments} />
+            <div className="child-tournament">
+                {showtournaments &&
+                    filteredtournaments.map((tournament) => <Item tournament={tournament} key={tournament.id} />)}
 
-            {alltournaments.length !== 0 && (
-                <>
-                    <SearchTournament FilterTournament={FilterTournament} tournaments={filteredtournaments} />
-                    <div className="child-tournament">
-                        {showtournaments &&
-                            filteredtournaments.map((tournament) => (
-                                <Item tournament={tournament} key={tournament.id} />
-                            ))}
-
-                        {advice && (
-                            <span
-                                className={`color-text-white font-bold animate__fadeInDown animate__faster ${
-                                    JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
-                                }`}
-                            >
-                                THERE ARE NO TOURNAMENTS THAT CONTAINS "{Input}"
-                            </span>
-                        )}
-                    </div>
-                </>
-            )}
+                {advice && (
+                    <span
+                        className={`color-text-white font-bold animate__fadeInDown animate__faster ${
+                            JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
+                        }`}
+                    >
+                        THERE ARE NO TOURNAMENTS THAT CONTAINS "{Input}"
+                    </span>
+                )}
+            </div>
         </div>
     );
 };

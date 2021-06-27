@@ -1,14 +1,13 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AllTournaments from "../AllTournaments/AllTournaments";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import Tournaments from "../Tournaments/Tournaments";
 import HltvRanking from "../HltvRanking/HltvRanking";
 import AllMatches from "../AllMatches/AllMatches";
+import Loader from "../Loader/Loader";
 import Timeline from "../Timeline/Timeline";
 import Home from "../Home/Home";
 import More from "../More/More";
-import BlackScreen from "../Loader/BlackScreen";
 import {
     HOME,
     ALL_TOURNAMENTS,
@@ -25,6 +24,7 @@ import {
     ABOUT,
 } from "../../routes/routes";
 
+const AllTournaments = lazy(() => import("../AllTournaments/AllTournaments"));
 const LeagueGames = lazy(() => import("../LeagueGames/LeagueGames"));
 const TeamProfile = lazy(() => import("../TeamProfile/TeamProfile"));
 const NotFound = lazy(() => import("../NotFound/NotFound"));
@@ -62,9 +62,8 @@ const Layout = () => {
     return (
         <>
             <Router>
-                <main onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>
+                <main onContextMenu={(e) => window.innerWidth > 1024 ? null : e.preventDefault()}>
                     <Switch>
-                        <Route exact path={ALL_TOURNAMENTS} component={AllTournaments} />
                         <Route exact path={TOURNAMENTS} component={Tournaments} />
                         <Route exact path={ALLMATCHES} component={AllMatches} />
                         <Route exact path={RANKING} component={HltvRanking} />
@@ -78,7 +77,8 @@ const Layout = () => {
                         </Route>
                         <Route exact path={HOME} component={Home} />
 
-                        <Suspense fallback={<BlackScreen />}>
+                        <Suspense fallback={<Loader />}>
+                            <Route exact path={ALL_TOURNAMENTS} component={AllTournaments} />
                             <Route exact path={TOURNAMENT} component={LeagueGames} />
                             <Route exact path={TEAM} component={TeamProfile} />
                             <Route exact path={ERROR} component={Warning} />
