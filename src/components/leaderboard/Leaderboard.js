@@ -27,9 +27,7 @@ const Leaderboard = ({ leaderboard }) =>
 
             {leaderboard.map((team, index) => (
                 <div
-                    className={`ladder-team animate__fadeInDown animate__faster ${
-                        JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
-                    }`}
+                    className="ladder-team animate__fadeInDown animate__faster animate__animated"
                     key={team.name}
                 >
                     <div>

@@ -36,10 +36,7 @@ const SearchTeam = ({ setCollection, collection }) => {
 
   return (
     <div
-      className={`search-container animate__fadeInDown animate__faster ${
-        JSON.parse(localStorage.getItem("animations")) !== false &&
-        "animate__animated"
-      }`}
+      className="search-container"
     >
       <div title="Search Team" className="input-field col s6 search-bar">
         <i className="material-icons prefix">people_outline</i>

@@ -47,9 +47,7 @@ const MatchCardRow = ({ match }) => {
 
     return (
         <div
-            className={`noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster ${
-                JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
-            }`}
+            className="noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster animate__animated"
         >
             <div className="card-image">
                 <div className="card-image prev-game-content cursor-default">

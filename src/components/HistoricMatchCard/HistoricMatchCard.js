@@ -97,10 +97,7 @@ const HistoricMatchCard = ({
 
   return (
     <div
-      className={`noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__fadeInDown animate__faster ${
-        JSON.parse(localStorage.getItem("animations")) !== false &&
-        "animate__animated"
-      }`}
+      className="noselect card posicion-tarjeta size-prev-game font-gilroy transition-effect animate__fadeInDown animate__faster animate__animated"
     >
       <div
         className="card-image"

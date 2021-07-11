@@ -25,7 +25,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     const [hidesettings, setHideSettings] = useState(false);
     const [hideabout, setHideAbout] = useState(false);
     const [sound, setSound] = useState(true);
-    const [anim, setAnim] = useState(true);
     const [turnaround, setTurnAround] = useState("");
     const OPTION_STYLE = "option animate__animated animate__fadeInRight animate__faster cursor-pointer";
 
@@ -38,10 +37,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
         } else {
             setIsInstalled(false);
         }
-
-        if (JSON.parse(localStorage.getItem("animations")) === false) {
-            setAnim(false);
-        }
     }, []);
 
     const turnOffSound = () => {
@@ -52,16 +47,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     const turnOnSound = () => {
         setSound(true);
         localStorage.setItem("sounds", true);
-    };
-
-    const turnOffAnim = () => {
-        localStorage.setItem("animations", false);
-        setAnim(false);
-    };
-
-    const turnOnAnim = () => {
-        setAnim(true);
-        localStorage.setItem("animations", true);
     };
 
     const turnAroundIcon = () => {
@@ -156,18 +141,6 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                                 <div>
                                     <FontAwesomeIcon icon={!sound ? faVolumeMute : faVolumeUp} />
                                     <span>{sound ? "Sound On" : "Sound Off"}</span>
-                                </div>
-                            </div>
-                            <hr className="margin-left-20px" />
-                            <div
-                                className="border-for-submenu-items margin-left-20px margin-bottom-15px option animate__animated animate__fadeInRight animate__faster cursor-pointer"
-                                onClick={() => {
-                                    !anim ? turnOnAnim() : turnOffAnim();
-                                }}
-                            >
-                                <div>
-                                    <FontAwesomeIcon className={anim ? "shake-elem" : ""} icon={faFilm} />
-                                    <span>{anim ? "Animations On" : "Animations Off"}</span>
                                 </div>
                             </div>
                         </>

@@ -54,20 +54,16 @@ const AllTournaments = () => {
     return alltournaments.length === 0 ? (
         <Loader />
     ) : (
-        <div className="tournament-container font-gilroy background-color-4all">
+        <div className="tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
             <SearchTournament FilterTournament={FilterTournament} tournaments={filteredtournaments} />
             <div className="child-tournament">
                 {showtournaments &&
-                    filteredtournaments.map((tournament) => <Item tournament={tournament} key={tournament.id} />)}
+                    filteredtournaments.map(({ img, name, id, colors }) => (
+                        <Item image_url={img} colors={colors} name={name} key={id} />
+                    ))}
 
                 {advice && (
-                    <span
-                        className={`color-text-white font-bold animate__fadeInDown animate__faster ${
-                            JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
-                        }`}
-                    >
-                        THERE ARE NO TOURNAMENTS THAT CONTAINS "{Input}"
-                    </span>
+                    <span className="color-text-white font-bold">THERE ARE NO TOURNAMENTS THAT CONTAINS "{Input}"</span>
                 )}
             </div>
         </div>

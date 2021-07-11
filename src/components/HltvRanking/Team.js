@@ -46,10 +46,7 @@ const Team = ({
   return (
     <div
       key={name}
-      className={`animate__faster animate__fadeInUp ${
-        JSON.parse(localStorage.getItem("animations")) !== false &&
-        "animate__animated"
-      }`}
+      className="animate__faster animate__fadeInUp animate__animated"
     >
       <div style={{ backgroundColor: colors.DarkVibrant }}>
         <Suspense fallback={<Loader transparent />}>

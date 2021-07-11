@@ -81,23 +81,19 @@
 
 @media screen and (max-width: 770px) {
     .ladder {
-        width: 330px;
+        width: 100%;
     }
 
     .columns-ladder {
         padding: 20px 25px 20px 10px;
     }
 
+    .columns-ladder > div {
+        width: auto;
+    }
+
     .ladder-team {
         padding: 0px 30px 0px 10px;
-    }
-
-    .columns-ladder .teams {
-        width: 130px;
-    }
-
-    .columns-ladder > .matches-won {
-        width: 180px;
     }
 
     .ladder > .ladder-team > div > .mini-ranking {

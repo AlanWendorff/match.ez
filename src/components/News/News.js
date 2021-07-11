@@ -39,9 +39,7 @@ const News = () => {
                         : Moment(n.date).format("MMM, DD - YYYY");
                 return (
                     <div
-                        className={`new animate__faster animate__fadeInDown ${
-                            JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
-                        }`}
+                        className="new animate__faster animate__fadeInDown animate__animated"
                         key={n.title}
                     >
                         <h1>{n.title}</h1>

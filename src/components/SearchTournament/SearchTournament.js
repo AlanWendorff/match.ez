@@ -7,12 +7,9 @@ const SearchTournament = ({FilterTournament, tournaments}) => {
   const history = useHistory();
   return (
     <div
-      className={`search-container animate__fadeInDown animate__faster ${
-        JSON.parse(localStorage.getItem("animations")) !== false &&
-        "animate__animated"
-      }`}
+      className="search-container"
     >
-      <div title="Search Tournament" className="search-tournaments-input input-field col s6" onClick={()=> { tournaments.length === 0 && history.push(ALL_TOURNAMENTS); }} onChange={() => FilterTournament()}>
+      <div title="Search Tournament" className="search-tournaments-input input-field col s6" onClick={()=> { !tournaments && history.push(ALL_TOURNAMENTS); }} onChange={() => FilterTournament()}>
         <input id="search_tournament" type="text" className="validate" autoComplete="off"></input>
         <label className="color-text-black" htmlFor="search_tournament">Search Tournament:</label>
       </div>

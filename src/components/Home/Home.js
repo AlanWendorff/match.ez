@@ -15,7 +15,7 @@ const Home = () => {
 
     return (
         <div className="home font-gilroy background-color-4all">
-            <div className="child-home">
+            <div className="child-home animate__fadeInDown animate__faster animate__animated">
                 <SearchTeam setCollection={setCollection} collection={collection} />
                 <TeamCollection collection={collection} />
             </div>

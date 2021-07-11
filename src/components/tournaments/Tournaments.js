@@ -20,19 +20,17 @@ const Tournaments = () => {
     }, [location]);
 
     return (
-        <div className="tournament-container font-gilroy background-color-4all">
-            <SearchTournament tournaments={[]} />
+        <div className="tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
+            <SearchTournament/>
 
             <div className="child-tournament">
                 <span
-                    className={`color-text-white font-bold animate__fadeInDown animate__faster ${
-                        JSON.parse(localStorage.getItem("animations")) !== false && "animate__animated"
-                    }`}
+                    className="color-text-white font-bold"
                 >
                     TOURNAMENTS THAT MAY INTEREST YOU
                 </span>
-                {examples.map((tournament) => (
-                    <Item tournament={tournament} key={tournament.id} />
+                {examples.map(({img, name, id, colors}) => (
+                    <Item image_url={img} colors={colors} name={name} key={id} />
                 ))}
             </div>
             <div onClick={() => history.push(ALL_TOURNAMENTS)} className="load-more">
