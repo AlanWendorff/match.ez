@@ -16,7 +16,6 @@ const NavigationBar = () => {
     const { pathname } = useLocation();
     const { goBack } = useHistory();
     const [showbackbutton, setShowBackButton] = useState(false);
-    const IN_ROUTE_COLOR = "#d9ad43";
 
     useEffect(() => {
         switch (pathname) {
@@ -39,60 +38,34 @@ const NavigationBar = () => {
     }, [pathname]);
 
     return (
-        <div
-            className="menu-mobile"
-            style={{ paddingLeft: showbackbutton && "30px" }}
-        >
-            {showbackbutton && (
-                <div className="back-btn cursor-pointer" onClick={() => goBack()}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
-                </div>
-            )}
+        <div className="menu-container">
+            <div className="menu-mobile">
+                {showbackbutton && (
+                    <div className="back-btn cursor-pointer" onClick={() => goBack()}>
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                    </div>
+                )}
 
-            <Link to={HOME}>
-                <FontAwesomeIcon
-                    style={{
-                        color: pathname !== HOME ? "white" : IN_ROUTE_COLOR,
-                    }}
-                    icon={faUserFriends}
-                />
-            </Link>
+                <Link className={`${pathname === HOME ? "option-selected" : "option-disabled"}`} to={HOME}>
+                    <FontAwesomeIcon icon={faUserFriends} />
+                </Link>
 
-            <Link to={TOURNAMENTS}>
-                <FontAwesomeIcon
-                    style={{
-                        color: pathname !== TOURNAMENTS ? "white" : IN_ROUTE_COLOR,
-                    }}
-                    icon={faTrophy}
-                />
-            </Link>
+                <Link className={`${pathname === TOURNAMENTS ? "option-selected" : "option-disabled"}`} to={TOURNAMENTS}>
+                    <FontAwesomeIcon icon={faTrophy} />
+                </Link>
 
-            <Link to={MORE} style={{ zIndex: "5" }}>
-                <FontAwesomeIcon
-                    style={{
-                        color: pathname !== MORE ? "white" : IN_ROUTE_COLOR,
-                    }}
-                    icon={faBars}
-                />
-            </Link>
+                <Link className={`${pathname === MORE ? "option-selected" : "option-disabled"}`} to={MORE}>
+                    <FontAwesomeIcon icon={faBars} />
+                </Link>
 
-            <Link to={TIMELINE}>
-                <FontAwesomeIcon
-                    style={{
-                        color: pathname !== TIMELINE ? "white" : IN_ROUTE_COLOR,
-                    }}
-                    icon={faCalendarAlt}
-                />
-            </Link>
+                <Link className={`${pathname === TIMELINE ? "option-selected" : "option-disabled"}`} to={TIMELINE}>
+                    <FontAwesomeIcon icon={faCalendarAlt} />
+                </Link>
 
-            <Link to={ALLMATCHES}>
-                <FontAwesomeIcon
-                    style={{
-                        color: pathname !== ALLMATCHES ? "white" : IN_ROUTE_COLOR,
-                    }}
-                    icon={faPlay}
-                />
-            </Link>
+                <Link className={`${pathname === ALLMATCHES ? "option-selected" : "option-disabled"}`} to={ALLMATCHES}>
+                    <FontAwesomeIcon icon={faPlay} />
+                </Link>
+            </div>
         </div>
     );
 };

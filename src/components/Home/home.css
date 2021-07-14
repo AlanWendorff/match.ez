@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
-    height: calc(100vh - 50px);
 }
 
 .child-home {
@@ -22,6 +21,6 @@
     .child-home {
         overflow-y: scroll;
         width: 100%;
-        height: calc(100vh - 50px);
+        height: 100vh;
     }
 }

@@ -4,7 +4,6 @@
     align-items: center;
     flex-direction: column;
     overflow-y: scroll;
-    height: calc(100vh - 50px);
 }
 
 .new {

@@ -75,7 +75,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                         </div>
                     </Link>
                     <hr />
-{/* 
+                    {/* 
                     <Link to={WALLPAPER} className={OPTION_STYLE}>
                         <div>
                             <FontAwesomeIcon icon={faNewspaper} />
@@ -193,11 +193,10 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                         </>
                     )}
                 </div>
+                <span className="rights animate__animated animate__fadeInUp animate__faster">
+                    All Rights Reserved. {new Date().getFullYear()}
+                </span>
             </div>
-
-            <span className="animate__animated animate__fadeInUp animate__faster">
-                All Rights Reserved. {new Date().getFullYear()}
-            </span>
         </div>
     );
 };

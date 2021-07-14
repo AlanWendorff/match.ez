@@ -19,7 +19,7 @@ import "./About.css";
 }; */
 
 const About = () => (
-    <div className="about-container font-gilroy">
+    <div className="height-100vh-pad-bot-90p about-container font-gilroy">
         <h1 className="font-gilroy-bold animate__animated animate__fadeIn" id="top">
             Technologies
         </h1>

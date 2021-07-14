@@ -54,12 +54,12 @@ const AllTournaments = () => {
     return alltournaments.length === 0 ? (
         <Loader />
     ) : (
-        <div className="tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
+        <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
             <SearchTournament FilterTournament={FilterTournament} tournaments={filteredtournaments} />
             <div className="child-tournament">
                 {showtournaments &&
                     filteredtournaments.map(({ img, name, id, colors }) => (
-                        <Item image_url={img} colors={colors} name={name} key={id} />
+                        <Item image_url={img} colors={colors} id={id} name={name} key={id} />
                     ))}
 
                 {advice && (

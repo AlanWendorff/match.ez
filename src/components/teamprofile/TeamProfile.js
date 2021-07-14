@@ -122,7 +122,7 @@ const TeamProfile = () => {
 
     return image_url ? (
         <div
-            className="parametros-container noselect background-color-4all"
+            className="height-100vh-pad-bot-90p parametros-container noselect background-color-4all"
             style={{ backgroundColor: palette.DarkVibrant }}
         >
             <MobileHeader

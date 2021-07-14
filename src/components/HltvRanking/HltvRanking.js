@@ -9,7 +9,7 @@ const HltvRanking = () => {
     const { ranking } = useContext(TeamRankingContext);
 
     return ranking.length !== 0 ? (
-        <div className="ranking-container font-gilroy background-color-4all">
+        <div className="height-100vh-pad-bot-90p ranking-container font-gilroy background-color-4all">
             <div className="table-container">
                 {ranking.map((team) => {
                     const { balance, name, points, position, roster, img, id, colors } = team;

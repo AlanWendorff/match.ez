@@ -4,7 +4,7 @@ import "./Warning.css";
 
 const Warning = () => {
   return (
-    <div className="warning font-gilroy background-color-4all">
+    <div className="height-100vh-pad-bot-90p warning font-gilroy background-color-4all">
       <div className="home-button-container">
         <p>Something happened.</p>
         <Link to="/" className="waves-effect waves-light btn red darken-4">

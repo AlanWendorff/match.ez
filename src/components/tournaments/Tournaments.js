@@ -20,7 +20,7 @@ const Tournaments = () => {
     }, [location]);
 
     return (
-        <div className="tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
+        <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
             <SearchTournament/>
 
             <div className="child-tournament">
@@ -30,7 +30,7 @@ const Tournaments = () => {
                     TOURNAMENTS THAT MAY INTEREST YOU
                 </span>
                 {examples.map(({img, name, id, colors}) => (
-                    <Item image_url={img} colors={colors} name={name} key={id} />
+                    <Item image_url={img} colors={colors} name={name} id={id} key={id} />
                 ))}
             </div>
             <div onClick={() => history.push(ALL_TOURNAMENTS)} className="load-more">

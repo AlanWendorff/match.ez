@@ -100,7 +100,7 @@ const LeagueGames = () => {
     }, []);
 
     return image_url ? (
-        <div className="parametros-container" style={{ backgroundColor: palette.DarkVibrant }}>
+        <div className="height-100vh-pad-bot-90p parametros-container" style={{ backgroundColor: palette.DarkVibrant }}>
             <MobileHeader
                 color={palette}
                 img={image_url}

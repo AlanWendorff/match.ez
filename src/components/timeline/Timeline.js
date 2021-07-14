@@ -34,7 +34,7 @@ const Timeline = () => {
     }, []);
 
     return time.length !== 0 ? (
-        <div className="time-line-container font-gilroy background-color-4all">
+        <div className="height-100vh-pad-bot-90p time-line-container font-gilroy background-color-4all">
             <VerticalTimeline layout="1-column-left">
                 {time.map((tournament) => {
                     const { begin_at, league, serie, name, teams, prizepool, league_id, colors } = tournament;

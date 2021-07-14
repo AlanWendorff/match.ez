@@ -36,7 +36,7 @@ const AllMatches = () => {
     }, []);
 
     return allmatches.length !== 0 ? (
-        <div className="allmatches background-color-4all">
+        <div className="height-100vh-pad-bot-90p allmatches background-color-4all">
             {allmatches.length !== 0 && (
                 <>
                     <CircularTournaments matches={allmatches} />

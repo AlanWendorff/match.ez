@@ -29,7 +29,7 @@ const News = () => {
     }, []);
 
     return news.length !== 0 ? (
-        <div className="news-container font-gilroy background-color-4all">
+        <div className="height-100vh-pad-bot-90p news-container font-gilroy background-color-4all">
             {news.map((n) => {
                 const dayuser = new Date().getDate();
                 const day = Moment(n.time).format("DD");
