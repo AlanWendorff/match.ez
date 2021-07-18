@@ -11,17 +11,17 @@ const Item = ({image_url, name, id, colors}) => (
     <Link
         style={{ backgroundColor: colors.DarkVibrant }}
         to={TOURNAMENT.replace(":tournamentId", id)}
-        className="tournament-size z-depth-5"
+        className="tournament-card z-depth-5"
         title={`${LOOKMATCHES} ${name}`}
         key={id}
     >
-        <div className="tournament-flex">
+        <div>
             <div>
                 <ProgressiveImage src={image_url ? image_url : nopic} placeholder={loader}>
                     {(src) => <img className="tournament-logo-size" src={src} alt={name} />}
                 </ProgressiveImage>
             </div>
-            <span className="tournament-name">{name}</span>
+            <span>{name}</span>
         </div>
     </Link>
 );

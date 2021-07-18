@@ -12,14 +12,12 @@
 
 .teams-position > a {
     border-radius: 10px;
-    width: 100%;
     margin: 15px 0px;
     background-color: #d4d4d4;
     color: black;
     display: flex;
     align-items: center;
     font-family: "Gilroy-Light";
-    font-weight: bold;
 }
 
 .teams-position > a > div {
@@ -68,6 +66,7 @@
 
     .teams-position > a {
         width: calc(100% - 18px);
+        margin: 10px;
     }
 
     .teams-position > a > div {
