@@ -14,11 +14,9 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="height-100vh-pad-bot-90p home font-gilroy background-color-4all">
-            <div className="child-home animate__fadeInDown animate__faster animate__animated">
-                <SearchTeam setCollection={setCollection} collection={collection} />
-                <TeamCollection collection={collection} />
-            </div>
+        <div className="height-100vh-pad-bot-90p home font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
+            <SearchTeam setCollection={setCollection} collection={collection} />
+            <TeamCollection collection={collection} />
         </div>
     );
 };

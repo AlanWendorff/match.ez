@@ -10,7 +10,7 @@
 .menu-mobile {
     color: #f6f7f9;
     margin-bottom: 10px;
-    padding: 0 14px;
+    padding: 0 10px;
     width: 630px;
     height: 80px;
     display: flex;
@@ -54,6 +54,6 @@
 
 @media screen and (max-width: 640px) {
     .menu-mobile {
-        width: 98%;
+        width: calc(100%  - 18px);
     }
 }
