@@ -11,15 +11,24 @@
 }
 
 .teams-position > a {
+    border-radius: 10px;
     width: 100%;
     margin: 15px 0px;
     background-color: #d4d4d4;
     color: black;
     display: flex;
     align-items: center;
-    height: 75px;
     font-family: "Gilroy-Light";
     font-weight: bold;
+}
+
+.teams-position > a > div {
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .teams-position > a > div > div {
@@ -36,22 +45,13 @@
     font-size: 15px;
     letter-spacing: 2px;
     background-color: rgba(255, 255, 255, 0.801);
-    padding: 5px 10px;
+    padding: 3px 10px;
     border-radius: 100px;
 }
 
 .teams-position > a > div > div > img {
     max-width: 45px;
     max-height: 45px;
-}
-
-.teams-position > a > div {
-    padding: 0px 20px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .teams-position {
@@ -64,5 +64,13 @@
 @media screen and (max-width: 640px) {
     .collection-container {
         width: 100%;
+    }
+
+    .teams-position > a {
+        width: calc(100% - 18px);
+    }
+
+    .teams-position > a > div {
+        padding: 10px;
     }
 }

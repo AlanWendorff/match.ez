@@ -1,252 +1,258 @@
 .card .card-image img {
-  width: auto !important;
+    width: auto !important;
 }
 
 @font-face {
-  font-family: "Gilroy-Light";
-  src: local("Gilroy-Light"), url(../fonts/Gilroy-Light.otf) format("opentype");
+    font-family: "Gilroy-Light";
+    src: local("Gilroy-Light"), url(../fonts/Gilroy-Light.otf) format("opentype");
 }
 
 @font-face {
-  font-family: "Gilroy-ExtraBold";
-  src: local("Gilroy-ExtraBold"),
-    url(../fonts/Gilroy-ExtraBold.otf) format("opentype");
+    font-family: "Gilroy-ExtraBold";
+    src: local("Gilroy-ExtraBold"), url(../fonts/Gilroy-ExtraBold.otf) format("opentype");
 }
 
 .container-html {
-  height: 100% !important;
-  width: 100% !important;
-  padding: 0% !important;
-  margin: 0 !important;
-  zoom: 100%;
+    height: 100% !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0 !important;
+    zoom: 100%;
 }
 
 .background-color-4all {
-  background-color: #0c0c0c;
+    background-color: #0c0c0c;
 }
 
 .light-white {
-  background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240);
+}
+
+.background-color-yellow-theme {
+    background-color: #d9ad43;
+}
+
+.background-color-yellow-dark-theme {
+    background-color: #9b7749;
 }
 
 .background-color-transparent {
-  background-color: #00000000;
+    background-color: #00000000;
 }
 
 .font-gilroy {
-  font-family: "Gilroy-Light";
+    font-family: "Gilroy-Light";
 }
 
 .font-gilroy-bold {
-  font-family: "Gilroy-ExtraBold";
+    font-family: "Gilroy-ExtraBold";
 }
 
 .parametros-container .lazyload-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cursor-default {
-  cursor: default !important;
+    cursor: default !important;
 }
 
 .cursor-pointer {
-  cursor: pointer !important;
+    cursor: pointer !important;
 }
 
 .margin-right-2percent {
-  margin-right: 2% !important;
+    margin-right: 2% !important;
 }
 
 .mb-0 {
-  margin-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .mb-8 {
-  margin-bottom: 8px !important;
+    margin-bottom: 8px !important;
 }
 
 .mb-30px {
-  margin-bottom: 30px !important;
+    margin-bottom: 30px !important;
 }
 
-.mb-60px{
-  margin-bottom: 60px !important;
+.mb-60px {
+    margin-bottom: 60px !important;
 }
 
 .width-100percent {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .height-100vh--50px {
-  height: calc(100vh - 50px);
+    height: calc(100vh - 50px);
 }
 
 .text-align-center {
-  text-align: center;
+    text-align: center;
 }
 
 .color-text-red {
-  color: rgb(207, 0, 0) !important;
-  font-family: "Gilroy-ExtraBold !important";
+    color: rgb(207, 0, 0) !important;
+    font-family: "Gilroy-ExtraBold !important";
 }
 
 .color-text-green {
-  color: rgb(0, 180, 0) !important;
-  font-family: "Gilroy-ExtraBold !important";
+    color: rgb(0, 180, 0) !important;
+    font-family: "Gilroy-ExtraBold !important";
 }
 
 .color-text-black {
-  color: #000000 !important;
+    color: #000000 !important;
 }
 
 .color-text-white {
-  color: white !important;
+    color: white !important;
 }
 
 .letter-spacing {
-  letter-spacing: 1px;
+    letter-spacing: 1px;
 }
 
 .font-bold {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .font-size-18px {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 i.right {
-  margin-left: 0% !important;
+    margin-left: 0% !important;
 }
 
 .margin-bottom-15px {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .margin-left-20px {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
-
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
 .display-flex {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .display-flex-justify-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .column-align {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .space-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .space-evenly {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .text-align-start {
-  text-align: start;
+    text-align: start;
 }
 
 .text-align-end {
-  text-align: end;
+    text-align: end;
 }
 
 .turn-left-90 {
-  transform: rotate(250deg);
+    transform: rotate(250deg);
 }
 
 .pattern-background {
-  background-repeat: repeat;
-  background-size: 50px 50px;
+    background-repeat: repeat;
+    background-size: 50px 50px;
 }
 
 .load-more {
-  font-family: "Gilroy-ExtraBold";
-  margin: 15px;
-  color: #d9ad43;
-  cursor: pointer;
-  background-color: #00000034;
-  border-radius: 100px;
+    font-family: "Gilroy-ExtraBold";
+    margin: 15px;
+    color: #d9ad43;
+    cursor: pointer;
+    background-color: #00000034;
+    border-radius: 100px;
 }
 
 .load-more > svg {
-  margin: 0px 15px;
+    margin: 0px 15px;
 }
 
 .head-font {
-  padding: 0px 10px;
+    padding: 0px 10px;
 }
 
 .height-100vh-pad-bot-90p {
-  height: 100vh;
-  padding-bottom: 90px;
+    height: 100vh;
+    padding-bottom: 90px;
 }
 
 .parametros-container {
-  height: 100vh;
-  padding-top: 50px;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    height: 100vh;
+    padding-top: 50px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (min-width: 641px) {
-  .font-size {
-    font-size: 16px;
-  }
-  .size-team-logo {
-    max-width: 100px !important;
-    max-height: 150px;
-  }
-  .load-more {
-    font-size: 25px;
-  }
-  .load-more:hover {
-    transform: scale(1.05);
-    transition: all 0.1s ease-out;
-  }
+    .font-size {
+        font-size: 16px;
+    }
+    .size-team-logo {
+        max-width: 100px !important;
+        max-height: 150px;
+    }
+    .load-more {
+        font-size: 25px;
+    }
+    .load-more:hover {
+        transform: scale(1.05);
+        transition: all 0.1s ease-out;
+    }
 }
 
 @media screen and (max-width: 640px) {
-  .parametros-container {
-    overflow-x: hidden;
-  }
-  .font-size {
-    font-size: 13px;
-  }
-  .size-team-logo {
-    max-width: 70px !important;
-    max-height: 100px;
-  }
-  .load-more {
-    font-size: 22px;
-  }
+    .parametros-container {
+        overflow-x: hidden;
+    }
+    .font-size {
+        font-size: 13px;
+    }
+    .size-team-logo {
+        max-width: 70px !important;
+        max-height: 100px;
+    }
+    .load-more {
+        font-size: 22px;
+    }
 }

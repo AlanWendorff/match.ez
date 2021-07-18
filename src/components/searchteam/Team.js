@@ -25,7 +25,7 @@ const Team = ({ team, setCollection, collection, setFirstPin }) => {
                 <ProgressiveImage src={team.img === undefined ? nopic : team.img} placeholder={loader}>
                     {(src) => <img className="searched-team-img" src={src} alt={team.name} />}
                 </ProgressiveImage>
-                <span className="font-gilroy color-text-black">{team.name}</span>
+                <span className="font-gilroy">{team.name}</span>
             </Link>
 
             <div

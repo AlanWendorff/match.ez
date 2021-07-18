@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import {
     faCalendarAlt,
     faTrophy,
-    faUserFriends,
     faBars,
     faChevronLeft,
     faPlay,
+    faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { HOME, TOURNAMENTS, MORE, TIMELINE, ALLMATCHES, NEWS, RANKING, ABOUT, CONTACT } from "../../routes/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,7 +47,7 @@ const NavigationBar = () => {
                 )}
 
                 <Link className={`${pathname === HOME ? "option-selected" : "option-disabled"}`} to={HOME}>
-                    <FontAwesomeIcon icon={faUserFriends} />
+                    <FontAwesomeIcon icon={faUsers} />
                 </Link>
 
                 <Link className={`${pathname === TOURNAMENTS ? "option-selected" : "option-disabled"}`} to={TOURNAMENTS}>
