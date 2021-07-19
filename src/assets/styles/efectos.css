@@ -1,50 +1,175 @@
 .zoom-element:hover {
-  transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
 }
 
 .highlight-text {
-  display: inline-block;
+    display: inline-block;
 }
 
 .highlight-text::after {
-  content: "";
-  width: 0px;
-  height: 1px;
-  display: block;
-  background: rgba(66, 66, 66, 0.521);
-  transition: 200ms;
+    content: "";
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: rgba(66, 66, 66, 0.521);
+    transition: 200ms;
 }
 
 .highlight-text:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 .transition-effect {
-  transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
 }
 
 .rotate-icon-right-side {
-  transform: rotate(120deg);
-  transition: 0.3s;
+    transform: rotate(120deg);
+    transition: 0.3s;
 }
 
 .rotate-icon-left-side {
-  transform: rotate(-120deg);
-  transition: 0.3s;
+    transform: rotate(-120deg);
+    transition: 0.3s;
 }
 
 .shake-elem {
-  animation: shake-elem 1s infinite;
+    animation: shake-elem 1s infinite;
 }
 
 @keyframes shake-elem {
-  0% {
-    transform: rotate(0deg);
-  }
-  70% {
-    transform: rotate(-20deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    70% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.animate-slide-bottom-to-top {
+    animation: slide-bottom-to-top 0.5s both;
+}
+
+.animate-slide-top-to-bottom {
+    animation: slide-top-to-bottom 0.5s both;
+}
+
+.animate-slide-left-to-right {
+    animation: slide-left-to-right 0.5s both;
+}
+
+.animate-fade-in {
+    animation: opacity-in 0.5s both;
+}
+
+.animate-fade-in-right-to-left {
+    animation: fade-in-right-to-left 0.5s both;
+}
+
+.animate-fade-in-top-to-bottom {
+    animation: fade-in-top-to-bottom 0.5s both;
+}
+
+.animate-fade-in-left-to-right {
+    animation: fade-in-left-to-right 0.5s both;
+}
+
+.animate-fade-in-bottom-to-top {
+    animation: fade-in-bottom-to-top 0.5s both;
+}
+
+.animate-bounce-in {
+    animation: bounce-in 0.5s both;
+}
+
+@keyframes bounce-in {
+    20% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-top-to-bottom {
+    0% {
+        transform: translateY(-1000px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-left-to-right {
+    0% {
+        transform: translateX(1000px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-bottom-to-top {
+    0% {
+        transform: translateY(1000px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes opacity-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-right-to-left {
+    0% {
+        opacity: 0;
+        transform: translateX(1000px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-left-to-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-bottom-to-top {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-top-to-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

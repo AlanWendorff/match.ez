@@ -34,7 +34,7 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="height-100vh-pad-bot-90p background-color-4all contact-container">
+        <div id="contact" className="height-100vh-pad-bot-90p background-color-4all contact-container animate-fade-in">
             <h1 className="font-gilroy-bold">Contact</h1>
             <div className="form">
                 <div>

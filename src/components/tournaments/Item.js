@@ -17,7 +17,7 @@ const Item = ({image_url, name, id, colors}) => (
     >
         <div>
             <div>
-                <ProgressiveImage src={image_url ? image_url : nopic} placeholder={loader}>
+                <ProgressiveImage src={image_url ?? nopic} placeholder={loader}>
                     {(src) => <img className="tournament-logo-size" src={src} alt={name} />}
                 </ProgressiveImage>
             </div>

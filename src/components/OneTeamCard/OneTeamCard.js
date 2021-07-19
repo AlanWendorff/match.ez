@@ -67,7 +67,7 @@ const OneTeamCard = ({ match, teamid }) => {
     } else {
         return (
             <div
-                className="col s12 m7 posicion-tarjeta font-gilroy animate__fadeInDown animate__faster animate__animated"
+                className="col s12 m7 posicion-tarjeta font-gilroy animate-fade-in-top-to-bottom"
             >
                 <div className="card horizontal tamano-tarjeta-one-team">
                     <Link

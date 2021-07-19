@@ -39,7 +39,7 @@ const News = () => {
                         : Moment(n.date).format("MMM, DD - YYYY");
                 return (
                     <div
-                        className="new animate__faster animate__fadeInDown animate__animated"
+                        className="new animate__faster animate-fade-in-top-to-bottom"
                         key={n.title}
                     >
                         <h1>{n.title}</h1>

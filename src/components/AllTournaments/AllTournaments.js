@@ -54,7 +54,7 @@ const AllTournaments = () => {
     return alltournaments.length === 0 ? (
         <Loader />
     ) : (
-        <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
+        <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate-slide-top-to-bottom">
             <SearchBar handleChange={FilterTournament}/>
             <div className="child-tournament">
                 {showtournaments &&

@@ -76,7 +76,7 @@ const HistoricMatchCard = ({ match, teamId }) => {
     return (
         <div
             style={teamId && { borderTop: `5px solid ${colorLeague.LightVibrant}` }}
-            className="noselect card-historic-matches font-gilroy transition-effect animate__fadeInDown animate__faster animate__animated"
+            className="noselect card-historic-matches font-gilroy transition-effect animate-fade-in-top-to-bottom"
         >
             <div className="prev-game-content cursor-default">
                 <div className="prev-game-header-container">

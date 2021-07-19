@@ -20,45 +20,45 @@ import "./About.css";
 
 const About = () => (
     <div className="height-100vh-pad-bot-90p about-container font-gilroy">
-        <h1 className="font-gilroy-bold animate__animated animate__fadeIn" id="top">
+        <h1 className="font-gilroy-bold animate-fade-in" id="top">
             Technologies
         </h1>
-        <h5 className="font-gilroy animate__animated animate__fadeIn">
+        <h5 className="font-gilroy animate-fade-in">
             Technologies that were used for <br /> the development of the web.
         </h5>
-        <div className="technologies font-gilroy animate__animated animate__fadeInRight animate__faster">
+        <div className="technologies font-gilroy animate-fade-in-right-to-left">
             <a href="https://es.reactjs.org/" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img src={react} alt="Frontend" />
                 </div>
-                <span className="react-color animate__animated animate__fadeInUp animate__faster">ReactJS</span>
+                <span className="react-color animate-fade-in-bottom-to-top">ReactJS</span>
             </a>
 
             <a href="https://nodejs.org/es/" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img src={node} alt="Backend" />
                 </div>
-                <span className="node-color animate__animated animate__fadeInUp animate__faster">NodeJS</span>
+                <span className="node-color animate-fade-in-bottom-to-top">NodeJS</span>
             </a>
 
             <a href="https://firebase.google.com/?hl=es" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img src={firebase} alt="Database" />
                 </div>
-                <span className="firebase-color animate__animated animate__fadeInUp animate__faster">Firebase</span>
+                <span className="firebase-color animate-fade-in-bottom-to-top">Firebase</span>
             </a>
 
             <a href="https://developer.mozilla.org/es/docs/Web/CSS" rel="noopener noreferrer" target="_blank">
                 <div className="tech-logo-canvas">
                     <img className="css-logo" src={css} alt="Styles" />
                 </div>
-                <span className="css-color animate__animated animate__fadeInUp animate__faster">CSS</span>
+                <span className="css-color animate-fade-in-bottom-to-top">CSS</span>
             </a>
         </div>
 
-        <h2 className="font-gilroy-bold animate__animated animate__fadeIn">Packages :</h2>
+        <h2 className="font-gilroy-bold animate-fade-in">Packages :</h2>
 
-        <div className="about-item animate__animated animate__fadeInLeft animate__faster">
+        <div className="about-item animate-fade-in-left-to-right">
             <div className="how-install-packages">
                 <img src={react} alt="ReactJS" />
                 <span className="font-gilroy-bold">ReactJS Modules</span>
@@ -79,10 +79,6 @@ const About = () => (
                     target="_blank"
                 >
                     font-awesome
-                </a>
-                <br />
-                <a href="https://animate.style/" rel="noopener noreferrer" target="_blank">
-                    animate.css
                 </a>
                 <br />
                 <a href="https://www.npmjs.com/package/axios" rel="noopener noreferrer" target="_blank">
@@ -139,7 +135,7 @@ const About = () => (
             </div>
         </div>
 
-        <div className="about-item animate__animated animate__fadeInLeft animate__faster">
+        <div className="about-item animate-fade-in-left-to-right">
             <div className="how-install-packages">
                 <img src={node} alt="NodeJS" />
                 <span className="font-gilroy-bold">NodeJS Modules</span>

@@ -4,7 +4,7 @@ import ProgressiveImage from "react-progressive-image";
 import PlayerModal from "../PlayerModal/PlayerModal";
 import { TEAM, RANKING } from "../../routes/routes";
 import { LOOKPROFILE } from "../../titles/TitleTag";
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HltvRanking.css";
 import axios from "axios";
@@ -30,7 +30,7 @@ const Team = ({ balanceColor, id, img, balance, name, points, position, roster, 
         });
     };
     return (
-        <div key={name} className="animate__faster animate__fadeInUp animate__animated">
+        <div className="animate-fade-in-bottom-to-top">
             <div style={{ backgroundColor: colors.DarkVibrant }}>
                 <PlayerModal
                     playerinfo={playerinfo}

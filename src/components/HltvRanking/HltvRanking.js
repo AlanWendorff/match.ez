@@ -25,6 +25,7 @@ const HltvRanking = () => {
                                 colors={colors}
                                 balanceColor={balanceColor}
                                 id={id}
+                                key={id}
                                 img={img}
                                 balance={balance}
                                 name={name}

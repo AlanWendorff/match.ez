@@ -59,7 +59,7 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
     return (
         <div className="options noselect background-color-4all">
             <div className="scroll">
-                <div className="column-align align-enter width-100percent animate__animated animate__fadeInRight animate__faster">
+                <div className="column-align align-enter width-100percent animate-slide-left-to-right">
                     <Link to={RANKING} className={OPTION_STYLE}>
                         <div>
                             <FontAwesomeIcon icon={faListOl} />

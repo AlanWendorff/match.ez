@@ -27,7 +27,7 @@ const Leaderboard = ({ leaderboard }) =>
 
             {leaderboard.map((team, index) => (
                 <div
-                    className="ladder-team animate__fadeInDown animate__faster animate__animated"
+                    className="ladder-team animate-fade-in-top-to-bottom"
                     key={team.name}
                 >
                     <div>

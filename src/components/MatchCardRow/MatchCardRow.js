@@ -46,7 +46,7 @@ const MatchCardRow = ({ match }) => {
     };
 
     return (
-        <div className="noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster animate__animated">
+        <div className="noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate-fade-in-top-to-bottom">
             <div className="cursor-default main-info">
                 <div className="header" style={{ color: COLOR_LEAGUE.DarkVibrant }}>
                     <span className="text-align-start">{league.name}</span>
