@@ -11,7 +11,7 @@
 .stadistic-card-container {
     background-color: white;
     align-self: center;
-    border-radius: 3px;
+    border-radius: 20px;
     width: 630px;
     display: flex;
     flex-direction: column;
@@ -55,7 +55,7 @@
 
 @media screen and (max-width: 770px) {
     .stadistic-card-container {
-        width: 330px;
+        width: calc(100% - 18px);
     }
 
     .container-estadistica {

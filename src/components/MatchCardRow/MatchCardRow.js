@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { evalColors, getMessage, evalImg, evalName, getMessageLive, evalMaps } from "./Helper";
 import ProgressiveImage from "react-progressive-image";
 import MiniWinRate from "../MiniWinRate/MiniWinRate";
-import twitch from "../../assets/images/socialmedia/twitch.png";
+import twitch from "../../assets/images/socialmedia/twitch-brands.svg";
 import loader from "../../assets/images/placeholder/loader.gif";
 import Share from "../Share/Share";
 import Moment from "moment";

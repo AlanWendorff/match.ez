@@ -63,13 +63,12 @@
     border-left: 1px solid rgba(0, 0, 0, 0.507);
 }
 .place-in-world {
-    
     width: 630px;
 }
 
 @media screen and (max-width: 770px) {
     .preview-container > .team {
-        width: 330px;
+        width: calc(100% - 18px);
     }
 
     .preview-container > .team > .player {
@@ -96,13 +95,13 @@
     }
 
     .preview-container > .little-info {
-        width: 330px;
+        width: calc(100% - 18px);
         align-items: center;
         flex-direction: column;
     }
 
     .place-in-world {
-        width: 330px;
+        width: calc(100% - 18px);
     }
 
     .preview-container > .little-info > .next-match {
@@ -119,11 +118,11 @@
     align-items: center;
     margin-bottom: 15px;
     background-color: #f6f7f9;
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 20px 20px;
 }
 
 .preview-container > .little-info {
-    border-radius: 3px 3px 0 0;
+    border-radius: 20px 20px 0 0;
     background-color: #f6f7f9;
     display: flex;
 }

@@ -19,8 +19,9 @@ const PlayerModal = ({ playerinfo, color, setIsOpen, modalIsOpen, img }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      filter: `drop-shadow(0px 0px 1000px ${color.Vibrant})`,
+      filter: `drop-shadow(0px 0px 100px ${color.DarkVibrant})`,
       color: color.DarkVibrant,
+      border: `2px solid ${color.DarkVibrant}`
     },
   };
 

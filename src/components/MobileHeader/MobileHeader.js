@@ -4,7 +4,7 @@ import { faFire, faHistory } from '@fortawesome/free-solid-svg-icons';
 import './MobileHeader.css';
 
 const HeaderMobile = ({color, buttonstatus, img, setVs, setHistory, setPreview, isProfile, isTournament, setLadder}) => (
-    <div className="header-mobile" style={{backgroundImage: `linear-gradient(to right, #000000f0 0%, ${color.Vibrant} 100%)`}}>
+    <div className="header-mobile" style={{backgroundColor: color.DarkMuted}}>
         {isProfile&&
             <div className="waves-effect" onClick={()=> {setPreview();}} style={{backgroundColor: buttonstatus.preview === true ? '#ffffff4d' : ''}} >
                 <img src={img} />

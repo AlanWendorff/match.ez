@@ -6,14 +6,12 @@ import { PLAYER_INFO } from "../../constants/ApiEndpoints";
 import StadisticCard from "../StadisticCard/StadisticCard";
 import ProgressiveImage from "react-progressive-image";
 import loaderGif from "../../assets/images/placeholder/loader.gif";
-import Loader from "../Loader/Loader";
 import nopic from "../../assets/images/placeholder/nopic.png";
 import toBeDefined from "../../assets/images/placeholder/toBeDefined.png";
 import unknown from "../../assets/images/placeholder/unknown.png";
+import PlayerModal from "../PlayerModal/PlayerModal";
 import axios from "axios";
 import "./TeamPreview.css";
-
-const PlayerModal = React.lazy(() => import("../PlayerModal/PlayerModal"));
 
 const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, roster, winRate, winStrike, wl, img }) => {
     const { ranking } = useContext(TeamRankingContext);
@@ -195,15 +193,13 @@ const TeamPreview = ({ teamid, color, matches, prevMatch, setVs, setHistory, ros
                 </div>
             </div>
 
-            <Suspense fallback={<Loader transparent />}>
-                <PlayerModal
-                    playerinfo={playerinfo}
-                    color={color}
-                    setIsOpen={setIsOpen}
-                    modalIsOpen={modalIsOpen}
-                    img={img}
-                />
-            </Suspense>
+            <PlayerModal
+                playerinfo={playerinfo}
+                color={color}
+                setIsOpen={setIsOpen}
+                modalIsOpen={modalIsOpen}
+                img={img}
+            />
 
             <div style={{ color: color.DarkVibrant }} className="place-in-world background-color-transparent">
                 {rankingTeam
