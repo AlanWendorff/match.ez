@@ -63,7 +63,7 @@ const Timeline = () => {
                             <h3 className="vertical-timeline-element-title">{league.name}</h3>
                             <h5 className="vertical-timeline-element-subtitle">{serie.full_name}</h5>
 
-                            <div className="column-align mb-5px">
+                            <div className="column-align align-flex-start mb-5px">
                                 <h5 className="vertical-timeline-element-subtitle name-of-tournament tournament-data light-white">
                                     <FontAwesomeIcon icon={faCalendarDay} /> {date}
                                 </h5>

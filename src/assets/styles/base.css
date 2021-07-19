@@ -161,7 +161,14 @@ i.right {
 .column-align {
     display: flex;
     flex-direction: column;
+}
+
+.align-flex-start {
     align-items: flex-start;
+}
+
+.align-enter {
+    align-items: center;
 }
 
 .space-between {

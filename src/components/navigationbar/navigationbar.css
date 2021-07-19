@@ -40,10 +40,13 @@
     height: 50px;
     font-size: 23px;
     border-radius: 20px;
+    transition: font-size 0.1s ease-in-out;
 }
 
 .menu-mobile .option-disabled {
     color: #f6f7f9;
+    font-size: 20px;
+    transition: font-size 0.1s ease-in-out;
 }
 
 .menu-mobile .option-selected {
