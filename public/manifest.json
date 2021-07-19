@@ -8,29 +8,6 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
-  "shortcuts": [
-    {
-      "name": "View News",
-      "short_name": "News",
-      "description": "View the latest news of the CS:GO professional scene",
-      "url": "/news",
-      "icons": [{ "src": "pwa/news-icon.png", "sizes": "500x500" }]
-    },
-    {
-      "name": "View Top #30 World Ranking",
-      "short_name": "Top #30 World Ranking",
-      "description": "View the top #30 teams ranked in the world",
-      "url": "/ranking",
-      "icons": [{ "src": "pwa/ranking-icon.png", "sizes": "500x500" }]
-    },
-    {
-      "name": "View All the Matches",
-      "short_name": "All Matches",
-      "description": "View all the matches in the world",
-      "url": "/all-matches",
-      "icons": [{ "src": "pwa/matches-icon.png", "sizes": "500x500" }]
-    }
-  ],
   "icons": [
     {
       "src": "pwa/icon-42p.png",
@@ -57,8 +34,8 @@
       "purpose": "any"
     },
     {
-      "src": "pwa/icon-519p.png",
-      "sizes": "519x519",
+      "src": "pwa/icon-500p.png",
+      "sizes": "500x500",
       "type": "image/png",
       "purpose": "any"
     }
