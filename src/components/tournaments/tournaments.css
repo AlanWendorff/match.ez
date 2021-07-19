@@ -1,5 +1,5 @@
 .child-tournament > span {
-    margin: 30px 0 15px 0;
+    margin: 15px 0 15px 0;
     font-size: 17px;
     text-align: center;
 }
@@ -11,6 +11,7 @@
 }
 
 .child-tournament {
+    margin-top: 10px;
     width: 630px;
     display: flex;
     flex-direction: column;
@@ -66,6 +67,10 @@
 }
 
 @media screen and (max-width: 640px) {
+    .child-tournament > span {
+        margin-top: 10px;
+    }
+
     .tournament-card {
         margin: 10px;
         width: calc(100% - 18px);

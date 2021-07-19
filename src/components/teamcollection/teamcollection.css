@@ -64,6 +64,11 @@
 @media screen and (max-width: 640px) {
     .collection-container {
         width: 100%;
+        margin-top: 20px;
+    }
+
+    .collection-container > span {
+        margin-bottom: 10px;
     }
 
     .teams-position > a {
