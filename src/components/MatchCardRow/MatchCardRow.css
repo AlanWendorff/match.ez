@@ -1,3 +1,9 @@
+.match-card-row-size {
+    width: 630px !important;
+    border-radius: 20px;
+    height: auto !important;
+}
+
 .match-card-row-size > .sort-content {
     margin: 0px;
     font-size: 30px;
@@ -43,7 +49,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 200px;
+    height: 150px;
+}
+
+.match-card-row-size .bestof-prev-game {
+    margin: 0;
 }
 
 .row-card-share {
@@ -132,7 +142,7 @@
 
     .row-team {
         padding: 0 10px;
-        height: 57px;
+        height: 50px;
     }
     
     .row-team:hover {
@@ -140,10 +150,6 @@
     }
     .match-card-row-size {
         width: 100% !important;
-    }
-
-    .teams-info-container {
-        height: 150px;
     }
 
     .teams-info-container > .row-team > div > .canvas-logo {

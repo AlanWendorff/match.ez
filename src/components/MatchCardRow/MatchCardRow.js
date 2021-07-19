@@ -46,104 +46,87 @@ const MatchCardRow = ({ match }) => {
     };
 
     return (
-        <div
-            className="noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster animate__animated"
-        >
-            <div className="card-image">
-                <div className="card-image prev-game-content cursor-default">
-                    <div className="header" style={{ color: COLOR_LEAGUE.DarkVibrant }}>
-                        <span className="text-align-start">{league.name}</span>
-                        <span
-                            className={`text-align-end ${stage.toLowerCase().includes(" final") && "font-gilroy-bold"}`}
-                        >
-                            {stage}
-                        </span>
-                    </div>
+        <div className="noselect card posicion-tarjeta match-card-row-size font-gilroy transition-effect animate__fadeInDown animate__faster animate__animated">
+            <div className="cursor-default main-info">
+                <div className="header" style={{ color: COLOR_LEAGUE.DarkVibrant }}>
+                    <span className="text-align-start">{league.name}</span>
+                    <span className={`text-align-end ${stage.toLowerCase().includes(" final") && "font-gilroy-bold"}`}>
+                        {stage}
+                    </span>
+                </div>
 
-                    <div className="teams-info-container">
-                        <Link
-                            to={
-                                TEAM_NAME_A === "To be defined"
-                                    ? "#"
-                                    : TEAM.replace(":teamid", opponents[0].opponent.id)
-                            }
-                            className="row-team"
-                            title={LOOKPROFILE + TEAM_NAME_A}
-                            style={{
-                                borderLeft: `3px solid ${COLOR_TEAM_A.DarkVibrant}`,
-                                borderRight: `3px solid ${COLOR_TEAM_A.DarkVibrant}`,
-                            }}
-                        >
-                            <div>
-                                <div className="canvas-logo">
-                                    <ProgressiveImage src={evalImg(opponents, 0)} placeholder={loader}>
-                                        {(src) => <img alt="a team" className="team-logo" src={src} />}
-                                    </ProgressiveImage>
-                                </div>
-
-                                <span>{TEAM_NAME_A}</span>
+                <div className="teams-info-container">
+                    <Link
+                        to={TEAM_NAME_A === "To be defined" ? "#" : TEAM.replace(":teamid", opponents[0].opponent.id)}
+                        className="row-team"
+                        title={LOOKPROFILE + TEAM_NAME_A}
+                        style={{
+                            borderLeft: `3px solid ${COLOR_TEAM_A.DarkVibrant}`,
+                            borderRight: `3px solid ${COLOR_TEAM_A.DarkVibrant}`,
+                        }}
+                    >
+                        <div>
+                            <div className="canvas-logo">
+                                <ProgressiveImage src={evalImg(opponents, 0)} placeholder={loader}>
+                                    {(src) => <img alt="a team" className="team-logo" src={src} />}
+                                </ProgressiveImage>
                             </div>
 
-                            <div
-                                className="display-flex"
-                                style={{ justifyContent: showwinrate ? "space-between" : "center" }}
-                            >
-                                {showwinrate && (
-                                    <MiniWinRate colors={COLOR_TEAM_A.DarkVibrant} winrate_api={winrate[0]} />
-                                )}
-
-                                {status === "running" && (
-                                    <p className="font-gilroy-bold color-text-black ">{results[0].score}</p>
-                                )}
-                            </div>
-                        </Link>
-
-                        <Link
-                            to={
-                                TEAM_NAME_B === "To be defined"
-                                    ? "#"
-                                    : TEAM.replace(":teamid", opponents[1].opponent.id)
-                            }
-                            className="row-team"
-                            title={LOOKPROFILE + TEAM_NAME_B}
-                            style={{
-                                borderLeft: `3px solid ${COLOR_TEAM_B.DarkVibrant}`,
-                                borderRight: `3px solid ${COLOR_TEAM_B.DarkVibrant}`,
-                            }}
-                        >
-                            <div>
-                                <div className="canvas-logo">
-                                    <ProgressiveImage src={evalImg(opponents, 1)} placeholder={loader}>
-                                        {(src) => <img alt="b team" className="team-logo" src={src} />}
-                                    </ProgressiveImage>
-                                </div>
-                                <span>{TEAM_NAME_B}</span>
-                            </div>
-
-                            <div
-                                className="display-flex"
-                                style={{ justifyContent: showwinrate ? "space-between" : "center" }}
-                            >
-                                {showwinrate && (
-                                    <MiniWinRate colors={COLOR_TEAM_B.DarkVibrant} winrate_api={winrate[1]} />
-                                )}
-
-                                {status === "running" && (
-                                    <p className="font-gilroy-bold color-text-black">{results[1].score}</p>
-                                )}
-                            </div>
-                        </Link>
-
-                        <div className="text-in-card">
-                            <p className="bestof-prev-game text-align-center" style={{ color: COLOR_LEAGUE.DarkMuted }}>
-                                {bestOf}
-                                {status === "running" && evalMaps(results)}
-                                {bestOf.includes("2") && " (match may end in a draw)"}
-                            </p>
+                            <span>{TEAM_NAME_A}</span>
                         </div>
+
+                        <div
+                            className="display-flex"
+                            style={{ justifyContent: showwinrate ? "space-between" : "center" }}
+                        >
+                            {showwinrate && <MiniWinRate colors={COLOR_TEAM_A.DarkVibrant} winrate_api={winrate[0]} />}
+
+                            {status === "running" && (
+                                <p className="font-gilroy-bold color-text-black ">{results[0].score}</p>
+                            )}
+                        </div>
+                    </Link>
+
+                    <Link
+                        to={TEAM_NAME_B === "To be defined" ? "#" : TEAM.replace(":teamid", opponents[1].opponent.id)}
+                        className="row-team"
+                        title={LOOKPROFILE + TEAM_NAME_B}
+                        style={{
+                            borderLeft: `3px solid ${COLOR_TEAM_B.DarkVibrant}`,
+                            borderRight: `3px solid ${COLOR_TEAM_B.DarkVibrant}`,
+                        }}
+                    >
+                        <div>
+                            <div className="canvas-logo">
+                                <ProgressiveImage src={evalImg(opponents, 1)} placeholder={loader}>
+                                    {(src) => <img alt="b team" className="team-logo" src={src} />}
+                                </ProgressiveImage>
+                            </div>
+                            <span>{TEAM_NAME_B}</span>
+                        </div>
+
+                        <div
+                            className="display-flex"
+                            style={{ justifyContent: showwinrate ? "space-between" : "center" }}
+                        >
+                            {showwinrate && <MiniWinRate colors={COLOR_TEAM_B.DarkVibrant} winrate_api={winrate[1]} />}
+
+                            {status === "running" && (
+                                <p className="font-gilroy-bold color-text-black">{results[1].score}</p>
+                            )}
+                        </div>
+                    </Link>
+
+                    <div className="text-in-card">
+                        <p className="bestof-prev-game text-align-center" style={{ color: COLOR_LEAGUE.DarkMuted }}>
+                            {bestOf}
+                            {status === "running" && evalMaps(results)}
+                            {bestOf.includes("2") && " (match may end in a draw)"}
+                        </p>
                     </div>
                 </div>
             </div>
+
             {status !== "running" && (
                 <div
                     onClick={() => {
@@ -211,7 +194,9 @@ const MatchCardRow = ({ match }) => {
                                 official_stream_url !== null && PlaySound();
                             }}
                         >
-                            {official_stream_url === null ? "Playing (no stream available)" : official_stream_url.replace("https://www.", "")}
+                            {official_stream_url === null
+                                ? "Playing (no stream available)"
+                                : official_stream_url.replace("https://www.", "")}
                         </a>
                     </div>
 
