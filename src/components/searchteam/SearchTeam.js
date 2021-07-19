@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Team from "./Team";
-import SaveInLS from "./SaveInLS";
-import axios from "axios";
 import { DATABASE_SEARCH_TEAM } from "../../constants/ApiEndpoints";
-import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
+import React, { useState } from "react";
+import SaveInLS from "./SaveInLS";
+import Team from "./Team";
+import axios from "axios";
 import "./SearchTeam.css";
 
 const SearchTeam = ({ setCollection, collection }) => {
@@ -34,8 +34,8 @@ const SearchTeam = ({ setCollection, collection }) => {
     };
 
     return (
-        <div className="search-container">
-           {/*  <SearchBar handleDebounce={BuscarEquipos} debounce/> */}
+        <div className="search-team-container">
+            <SearchBar handleDebounce={BuscarEquipos} debounce/>
             <div className="list-of-teams-container" style={{ marginTop: teams.length > 0 && "10px" }}>
                 {teams.map((team) => (
                     <Team

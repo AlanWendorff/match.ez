@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
+import { examplesTournamentsNull, examplesTournamentsAmerica, examplesTournamentsRest } from "./TournamentsExamples";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { examplesTournamentsNull, examplesTournamentsAmerica, examplesTournamentsRest } from "./TournamentsExamples";
+import React, { useContext, useState, useEffect } from "react";
 import { LocationContext } from "../Context/LocationContext";
-import { useHistory } from "react-router";
 import { ALL_TOURNAMENTS } from "../../routes/routes";
-import SearchTournament from "../SearchTournament/SearchTournament";
-import Item from "./Item";
+import SearchBar from "../SearchBar/SearchBar";
+import { useHistory } from "react-router";
 import "./Tournaments.css";
+import Item from "./Item";
 
 const Tournaments = () => {
     const history = useHistory();
@@ -19,17 +19,15 @@ const Tournaments = () => {
         location === "rest" && setExamples(examplesTournamentsRest);
     }, [location]);
 
+    const goToAllTournaments = () => history.push(ALL_TOURNAMENTS);
+
     return (
         <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate__fadeInDown animate__faster animate__animated">
-            <SearchTournament/>
+            <SearchBar handleClick={goToAllTournaments} />
 
             <div className="child-tournament">
-                <span
-                    className="color-text-white font-bold"
-                >
-                    TOURNAMENTS THAT MAY INTEREST YOU
-                </span>
-                {examples.map(({img, name, id, colors}) => (
+                <span className="color-text-white font-bold">TOURNAMENTS THAT MAY INTEREST YOU</span>
+                {examples.map(({ img, name, id, colors }) => (
                     <Item image_url={img} colors={colors} name={name} id={id} key={id} />
                 ))}
             </div>
