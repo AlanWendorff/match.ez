@@ -13,6 +13,7 @@
 .teams-position > a {
     border-radius: 10px;
     margin: 15px 0px;
+    width : 100%;
     background-color: #d4d4d4;
     color: black;
     display: flex;
