@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    border-radius: 3px;
+    border-radius: 20px;
 }
 
 .ladder-teams-container {
@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 770px) {
     .ladder {
-        width: 100%;
+        width: calc(100% - 18px);
     }
 
     .columns-ladder {

@@ -2,7 +2,7 @@
     border-radius: 20px;
     width: 630px;
     background-color: #fff;
-    margin-bottom: 20px;
+    margin: 10px 0;
 }
 
 .card-historic-matches > .sort-content {
@@ -15,6 +15,7 @@
 
 .prev-game-header-container > p {
     margin-top: 5px;
+    padding: 0 20px;
 }
 
 .card-historic-matches > .sort-content > svg {

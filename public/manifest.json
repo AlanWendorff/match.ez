@@ -2,7 +2,7 @@
   "name": "match.ez",
   "short_name": "match.ez",
   "description": "CS:GO Schedule",
-  "theme_color": "#d9ad43",
+  "theme_color": "#474747",
   "background_color": "#0c0c0c",
   "display": "standalone",
   "orientation": "portrait",
