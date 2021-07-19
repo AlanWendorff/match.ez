@@ -11,7 +11,7 @@ import MobileHeader from "../MobileHeader/MobileHeader";
 import Loader from "../Loader/Loader";
 import nopic from "../../assets/images/placeholder/nopic.png";
 import axios from "axios";
-
+//const TeamsAliveInTournament = lazy(() => import("../TeamsAliveInTournament/TeamsAliveInTournament"));
 const Leaderboard = lazy(() => import("../Leaderboard/Leaderboard"));
 const InfoCard = lazy(() => import("../InfoCard/InfoCard"));
 
@@ -25,22 +25,31 @@ const LeagueGames = () => {
     const [leaderboard, guardarLeaderboard] = useState([]);
     const [matchesmod, guardarMatchesMod] = useState([]);
     const [image_url, setImageLeague] = useState("");
-    const [show, setShow] = useState("vs");
     const [buttonstatus, setButtonStatus] = useState({
-        preview: false,
+        teamsAlive: false,
         vs: true,
         history: false,
         ladder: false,
     });
+
+    const setTeamsAlive = () => {
+        window.scrollTo(0, 0);
+        setButtonStatus({
+            vs: false,
+            history: false,
+            ladder: false,
+            teamsAlive: true,
+        });
+    };
+
     const setHistory = () => {
         window.scrollTo(0, 0);
         setButtonStatus({
             vs: false,
             history: true,
             ladder: false,
-            preview: false,
+            teamsAlive: false,
         });
-        setShow("history");
     };
 
     const setLadder = () => {
@@ -49,9 +58,8 @@ const LeagueGames = () => {
             vs: false,
             history: false,
             ladder: true,
-            preview: false,
+            teamsAlive: false,
         });
-        setShow("ladder");
     };
 
     const setVs = () => {
@@ -60,9 +68,8 @@ const LeagueGames = () => {
             vs: true,
             history: false,
             ladder: false,
-            preview: false,
+            teamsAlive: false,
         });
-        setShow("vs");
     };
 
     const loadMoreItems = () => {
@@ -98,28 +105,24 @@ const LeagueGames = () => {
             }
         });
     }, []);
-
+    /* {buttonstatus.teamsAlive && <TeamsAliveInTournament />} */
     return image_url ? (
         <div className="height-100vh-pad-bot-90p parametros-container" style={{ backgroundColor: palette.DarkVibrant }}>
             <MobileHeader
                 color={palette}
                 img={image_url}
                 buttonstatus={buttonstatus}
-                setVs={setVs}
+                setTeamsAlive={setTeamsAlive}
                 setHistory={setHistory}
+                setVs={setVs}
                 setLadder={setLadder}
-                setPreview
-                isTournament
             />
-
-            {show === "ladder" && <Leaderboard leaderboard={leaderboard} />}
-            {show === "vs" && matchesHoy !== undefined && <CompetitionMapping matchesHoy={matchesHoy} />}
-
-            {show === "vs" && matchesHoy.length === 0 && <InfoCard />}
-
-            {show === "history" && prevMatch !== "no-match" && (
+            {buttonstatus.ladder && <Leaderboard leaderboard={leaderboard} />}
+            {buttonstatus.vs && matchesHoy !== undefined && <CompetitionMapping matchesHoy={matchesHoy} />}
+            {buttonstatus.vs && matchesHoy.length === 0 && <InfoCard />}
+            {buttonstatus.history && prevMatch !== "no-match" && (
                 <>
-                    <HistoricMatchMapping prevMatch={matchesmod} setShow={setShow} />
+                    <HistoricMatchMapping prevMatch={matchesmod} />
                     {matchesmod.length !== prevMatch.length && (
                         <div
                             onClick={() => {

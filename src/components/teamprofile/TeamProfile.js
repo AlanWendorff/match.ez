@@ -28,7 +28,6 @@ const TeamProfile = () => {
     const [roster, setRoster] = useState([]);
     const [noMatches, guardarNoMatches] = useState(false);
     const [image_url, setImageTeam] = useState("");
-    const [show, setShow] = useState();
     const [buttonstatus, setButtonStatus] = useState({
         preview: true,
         vs: false,
@@ -42,9 +41,9 @@ const TeamProfile = () => {
     };
 
     const filterByTournament = (name) => {
-        const arrmatches = show === "vs" ? matches : prevMatch;
+        const arrmatches = buttonstatus.vs ? matches : prevMatch;
         const matchesFiltered = arrmatches.filter((match) => match.league.name === name);
-        show === "vs" ? guardarMatches(matchesFiltered) : guardarPrevMatch(matchesFiltered);
+        buttonstatus.vs ? guardarMatches(matchesFiltered) : guardarPrevMatch(matchesFiltered);
     };
 
     const setHistory = () => {
@@ -55,7 +54,6 @@ const TeamProfile = () => {
             ladder: false,
             preview: false,
         });
-        setShow("history");
     };
 
     const setVs = () => {
@@ -66,7 +64,6 @@ const TeamProfile = () => {
             ladder: false,
             preview: false,
         });
-        setShow("vs");
     };
 
     const setPreview = () => {
@@ -77,7 +74,6 @@ const TeamProfile = () => {
             ladder: false,
             preview: true,
         });
-        setShow("preview");
     };
 
     useEffect(() => {
@@ -132,11 +128,9 @@ const TeamProfile = () => {
                 setPreview={setPreview}
                 setVs={setVs}
                 setHistory={setHistory}
-                isProfile
-                setLadder
             />
 
-            {show === "preview" && (
+            {buttonstatus.preview && (
                 <TeamPreview
                     img={image_url}
                     teamid={teamid}
@@ -151,19 +145,19 @@ const TeamProfile = () => {
                     wl={stadistics.wl}
                 />
             )}
-            {show === "vs" && !matches.length > 0 && (
+            {buttonstatus.vs && !matches.length > 0 && (
                 <Suspense fallback={<Loader transparent />}>
                     <InfoCard noMatches={noMatches} />
                 </Suspense>
             )}
-            {show === "vs" && matches.length > 0 && (
+            {buttonstatus.vs && matches.length > 0 && (
                 <Suspense fallback={<Loader transparent />}>
                     <CircularTournaments filterByTournament={filterByTournament} matches={matches} />
                     <OneTeamMapping matches={matches} teamid={teamid} />
                 </Suspense>
             )}
 
-            {show === "history" && prevMatch !== "no-match" && (
+            {buttonstatus.history && prevMatch !== "no-match" && (
                 <>
                     <Suspense fallback={<Loader transparent />}>
                         <CircularTournaments filterByTournament={filterByTournament} prevMatch={prevMatch} />

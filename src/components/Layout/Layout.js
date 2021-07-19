@@ -62,7 +62,10 @@ const Layout = () => {
     return (
         <>
             <Router>
-                <main onContextMenu={(e) => window.innerWidth > 1024 ? null : e.preventDefault()} className="background-color-4all">
+                <main
+                    onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}
+                    className="background-color-4all"
+                >
                     <Switch>
                         <Route exact path={TOURNAMENTS} component={Tournaments} />
                         <Route exact path={ALLMATCHES} component={AllMatches} />
@@ -85,8 +88,8 @@ const Layout = () => {
                             <Route exact path={CONTACT} component={Contact} />
                             <Route exact path={ABOUT} component={About} />
                             <Route exact path={NEWS} component={News} />
+                            <Route component={NotFound} />
                         </Suspense>
-                        <Route component={NotFound} />
                     </Switch>
                 </main>
                 <footer onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>

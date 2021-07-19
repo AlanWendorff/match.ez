@@ -16,7 +16,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .container-estadistica {

@@ -224,7 +224,7 @@ i.right {
 
 .parametros-container {
     height: 100vh;
-    padding-top: 50px;
+    padding-top: 65px;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
