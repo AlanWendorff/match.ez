@@ -41,7 +41,7 @@ const NavigationBar = () => {
         <div className="menu-container">
             <div className="menu-mobile">
                 {showbackbutton && (
-                    <div className="back-btn cursor-pointer" onClick={() => goBack()}>
+                    <div className="back-btn cursor-pointer animate-fade-in-left-to-right" onClick={() => goBack()}>
                         <FontAwesomeIcon icon={faChevronLeft} />
                     </div>
                 )}

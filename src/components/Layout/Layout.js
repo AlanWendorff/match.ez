@@ -4,8 +4,8 @@ import NavigationBar from "../NavigationBar/NavigationBar";
 import Tournaments from "../Tournaments/Tournaments";
 import HltvRanking from "../HltvRanking/HltvRanking";
 import AllMatches from "../AllMatches/AllMatches";
-import Loader from "../Loader/Loader";
 import Timeline from "../Timeline/Timeline";
+import Loader from "../Loader/Loader";
 import Home from "../Home/Home";
 import More from "../More/More";
 import {
@@ -27,7 +27,6 @@ import {
 const AllTournaments = lazy(() => import("../AllTournaments/AllTournaments"));
 const LeagueGames = lazy(() => import("../LeagueGames/LeagueGames"));
 const TeamProfile = lazy(() => import("../TeamProfile/TeamProfile"));
-const NotFound = lazy(() => import("../NotFound/NotFound"));
 const Warning = lazy(() => import("../Warning/Warning"));
 const Contact = lazy(() => import("../Contact/Contact"));
 const About = lazy(() => import("../About/About"));
@@ -79,7 +78,6 @@ const Layout = () => {
                             />
                         </Route>
                         <Route exact path={HOME} component={Home} />
-
                         <Suspense fallback={<Loader />}>
                             <Route exact path={ALL_TOURNAMENTS} component={AllTournaments} />
                             <Route exact path={TOURNAMENT} component={LeagueGames} />
@@ -88,8 +86,8 @@ const Layout = () => {
                             <Route exact path={CONTACT} component={Contact} />
                             <Route exact path={ABOUT} component={About} />
                             <Route exact path={NEWS} component={News} />
-                            <Route component={NotFound} />
                         </Suspense>
+                        
                     </Switch>
                 </main>
                 <footer onContextMenu={(e) => (window.innerWidth > 1024 ? null : e.preventDefault())}>
@@ -99,5 +97,4 @@ const Layout = () => {
         </>
     );
 };
-
 export default Layout;
