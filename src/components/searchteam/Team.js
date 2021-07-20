@@ -15,16 +15,20 @@ const Team = ({ team, setCollection, collection, setFirstPin }) => {
     }, [teamsaved]);
 
     return (
-        <div className="team-container" style={{ borderLeft: `5px solid ${team.colors.DarkMuted}` }}>
+        <div className="team-container">
             <Link
                 className="searched-team"
+                style={{ backgroundColor: team.colors.DarkMuted }}
                 to={TEAM.replace(":teamid", team.id)}
                 title={`Look the team profile of: ${team.name}`}
                 key={team.id}
             >
-                <ProgressiveImage src={team.img === undefined ? nopic : team.img} placeholder={loader}>
-                    {(src) => <img className="searched-team-img" src={src} alt={team.name} />}
-                </ProgressiveImage>
+                <div className="team-logo-canvas">
+                    <ProgressiveImage src={team.img === undefined ? nopic : team.img} placeholder={loader}>
+                        {(src) => <img className="searched-team-img" src={src} alt={team.name} />}
+                    </ProgressiveImage>
+                </div>
+
                 <span className="font-gilroy">{team.name}</span>
             </Link>
 
