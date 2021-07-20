@@ -121,12 +121,6 @@
     width: 18px;
 }
 
-.match-card-row-size .mini-ranking {
-    font-size: 15px;
-    color: white;
-    margin-left: 10px;
-}
-
 @media screen and (max-width: 640px) {
     .row-team > div > span {
         max-width: 100px;

@@ -66,98 +66,89 @@ const OneTeamCard = ({ match, teamid }) => {
         return <MatchCardRow match={match} />;
     } else {
         return (
-            <div
-                className="col s12 m7 posicion-tarjeta font-gilroy animate-fade-in-top-to-bottom"
-            >
-                <div className="card horizontal tamano-tarjeta-one-team">
-                    <Link
-                        className="card-image"
-                        to={opponentName !== undefined ? TEAM.replace(":teamid", opponentId) : "/"}
-                    >
-                        <div className="logo-canvas">
-                            <ProgressiveImage src={opponentLogo} placeholder={nopic}>
-                                {(src) => (
-                                    <img
-                                        title={
-                                            opponentName !== undefined ? LOOKPROFILE + opponentName : "To be defined"
-                                        }
-                                        alt="versus team"
-                                        className="team-logo"
-                                        src={src}
-                                    />
+            <div className="tamano-tarjeta-one-team font-gilroy animate-fade-in-top-to-bottom">
+                <Link
+                    to={opponentName !== undefined ? TEAM.replace(":teamid", opponentId) : "/"}
+                >
+                    <div className="logo-canvas">
+                        <ProgressiveImage src={opponentLogo} placeholder={nopic}>
+                            {(src) => (
+                                <img
+                                    title={opponentName !== undefined ? LOOKPROFILE + opponentName : "To be defined"}
+                                    alt="versus team"
+                                    className="team-logo"
+                                    src={src}
+                                />
+                            )}
+                        </ProgressiveImage>
+                    </div>
+
+                    <span className="text-align-center">
+                        {opponentName === undefined ? "To be defined" : opponentName}
+                    </span>
+                </Link>
+
+                <div className="card-stacked">
+                    <div className="card-content">
+                        <div className="display-flex cursor-default font-size text-align-start">
+                            <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
+                                <FontAwesomeIcon icon={faMedal} />
+                            </span>
+                            {league.name + " " + serie.full_name}
+                        </div>
+
+                        <div className="display-flex cursor-default font-size">
+                            <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
+                                <FontAwesomeIcon icon={faCodeBranch} />
+                            </span>
+                            {stage}
+                        </div>
+
+                        <div className="display-flex cursor-default font-size">
+                            <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
+                                <FontAwesomeIcon icon={faClock} />
+                            </span>
+                            <span style={{ color: hoy !== "" && colorLeague.DarkVibrant }}>
+                                {hoy === ""
+                                    ? `${Moment(begin_at).format("Do")} ${Moment(begin_at).format("MMMM - H:mm")} hs`
+                                    : `${hoy} ${Moment(begin_at).format("H:mm")} hs`}
+                            </span>
+                        </div>
+
+                        <div className="display-flex cursor-default font-size">
+                            <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
+                                {bestOf.includes("1") && <FontAwesomeIcon icon={faTrophy} />}
+                                {bestOf.includes("2") && (
+                                    <>
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                    </>
                                 )}
-                            </ProgressiveImage>
+                                {bestOf.includes("3") && (
+                                    <>
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                    </>
+                                )}
+                                {bestOf.includes("5") && (
+                                    <>
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                        <FontAwesomeIcon icon={faTrophy} />
+                                    </>
+                                )}
+                            </span>
+                            {bestOf}
+                            {bestOf.includes("2") && " (match may end in a draw)"}
                         </div>
+                        <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
+                    </div>
 
-                        <span className="text-align-center">
-                            {opponentName === undefined ? "To be defined" : opponentName}
-                        </span>
-                    </Link>
-
-                    <div className="card-stacked">
-                        <div className="card-content">
-                            <div className="display-flex cursor-default font-size text-align-start">
-                                <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
-                                    <FontAwesomeIcon icon={faMedal} />
-                                </span>
-                                {league.name + " " + serie.full_name}
-                            </div>
-
-                            <div className="display-flex cursor-default font-size">
-                                <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
-                                    <FontAwesomeIcon icon={faCodeBranch} />
-                                </span>
-                                {stage}
-                            </div>
-
-                            <div className="display-flex cursor-default font-size">
-                                <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
-                                    <FontAwesomeIcon icon={faClock} />
-                                </span>
-                                <span style={{ color: hoy !== "" && colorLeague.DarkVibrant }}>
-                                    {hoy === ""
-                                        ? `${Moment(begin_at).format("Do")} ${Moment(begin_at).format(
-                                              "MMMM - H:mm"
-                                          )} hs`
-                                        : `${hoy} ${Moment(begin_at).format("H:mm")} hs`}
-                                </span>
-                            </div>
-
-                            <div className="display-flex cursor-default font-size">
-                                <span className="text-align-start" style={{ color: colorLeague.DarkVibrant }}>
-                                    {bestOf.includes("1") && <FontAwesomeIcon icon={faTrophy} />}
-                                    {bestOf.includes("2") && (
-                                        <>
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                        </>
-                                    )}
-                                    {bestOf.includes("3") && (
-                                        <>
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                        </>
-                                    )}
-                                    {bestOf.includes("5") && (
-                                        <>
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                            <FontAwesomeIcon icon={faTrophy} />
-                                        </>
-                                    )}
-                                </span>
-                                {bestOf}
-                                {bestOf.includes("2") && " (match may end in a draw)"}
-                            </div>
-                            <Share Facebook={Facebook} Twitter={Twitter} Wapp={Wapp} />
-                        </div>
-
-                        <div
-                            className="card-action padding-streaming-box font-gilroy text-align-center"
-                            style={{ color: palette.DarkVibrant }}
-                        >
-                            {statusStream}
-                        </div>
+                    <div
+                        className="card-action padding-streaming-box font-gilroy text-align-center"
+                        style={{ color: palette.DarkVibrant }}
+                    >
+                        {statusStream}
                     </div>
                 </div>
             </div>
