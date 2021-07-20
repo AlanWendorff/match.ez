@@ -1,66 +1,86 @@
 {
-  "name": "match.ez",
-  "short_name": "match.ez",
-  "description": "CS:GO Schedule",
-  "theme_color": "#474747",
-  "background_color": "#0c0c0c",
-  "display": "standalone",
-  "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/",
-  "shortcuts": [
-    {
-      "name": "View News",
-      "short_name": "News",
-      "description": "View the latest news of the CS:GO professional scene",
-      "url": "/news",
-      "icons": [{ "src": "pwa/news-icon-258x175.png", "sizes": "258x175" }]
-    },
-    {
-      "name": "View Top #30 World Ranking",
-      "short_name": "Top #30 World Ranking",
-      "description": "View the top #30 teams ranked in the world",
-      "url": "/ranking",
-      "icons": [{ "src": "pwa/ranking-icon-430x299.png", "sizes": "430x299" }]
-    },
-    {
-      "name": "View All the Matches",
-      "short_name": "All Matches",
-      "description": "View all the matches in the world",
-      "url": "/all-matches",
-      "icons": [{ "src": "pwa/all-matches-428x464.png", "sizes": "428x464" }]
-    }
-  ],
-  "icons": [
-    {
-      "src": "pwa/icon-42p.png",
-      "sizes": "42x42",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon-92p.png",
-      "sizes": "92x92",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon-128p.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon-192p.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "pwa/icon-500p.png",
-      "sizes": "500x500",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ]
+    "name": "match.ez",
+    "short_name": "match.ez",
+    "description": "CS:GO Schedule",
+    "theme_color": "#474747",
+    "background_color": "#0c0c0c",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/",
+    "shortcuts": [
+        {
+            "name": "View News",
+            "short_name": "News",
+            "description": "View the latest news of the CS:GO professional scene",
+            "url": "/news",
+            "icons": [{ "src": "pwa/news-96p.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "View Top #30 World Ranking",
+            "short_name": "Top #30 World Ranking",
+            "description": "View the top #30 teams ranked in the world",
+            "url": "/ranking",
+            "icons": [{ "src": "pwa/ranking-96p.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "View All the Matches",
+            "short_name": "All Matches",
+            "description": "View all the matches in the world",
+            "url": "/all-matches",
+            "icons": [{ "src": "pwa/matches-96p.png", "sizes": "96x96" }]
+        }
+    ],
+    "icons": [
+        {
+            "src": "pwa/matches-96p.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "pwa/ranking-96p.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "pwa/news-96p.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+
+
+        {
+            "src": "pwa/icon-42p.png",
+            "sizes": "42x42",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "pwa/icon-92p.png",
+            "sizes": "92x92",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "pwa/icon-128p.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "pwa/icon-192p.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "pwa/icon-500p.png",
+            "sizes": "500x500",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ]
 }
