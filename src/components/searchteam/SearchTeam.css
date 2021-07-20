@@ -21,50 +21,47 @@
 }
 
 .team-container {
-    margin: 5px 0 15px 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row;
     width: 100%;
-    padding: 0 5px;
+    align-items: center;
+    padding-right: 15px;
+    margin: 10px 0;
     color: #f6f7f9;
 }
 
 .searched-team {
-    width: 90%;
+    width: 100%;
     height: 50px;
-    padding-right: 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #f6f7f9;
-    border-radius: 20px;
+}
+
+.save-container {
+    margin-left: 15px;
+    width: 60px;
+    height: 45px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #525355;
+    border-radius: 100px;
+    transition: background 0.5s;
 }
 
 .searched-team:hover {
-    padding-left: 30px;
-    transition: padding-left 0.2s;
-}
-
-.searched-team > .team-logo-canvas {
-    width: 80px;
-    height: 100%;
-    background-color: #ffffffcc;
+    background-color: #0000001c;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.searched-team-img {
-    max-width: 40px;
-    max-height: 40px;
 }
 
 .pin-team-container,
 .pin-team-container-saved {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,11 +90,39 @@
     background-color: rgba(255, 0, 0, 0.342);
 }
 
+.searched-team-img {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+/*=====================================*/
+
+
+
+/*=====================================*/
+
 @media screen and (max-width: 640px) {
     .list-of-teams-container {
         width: calc(100% - 18px);
     }
+
+    .team-container {
+        padding: 0px 10px;
+    }
+
     .searched-team:hover {
-        padding-left: 0;
+        height: 40px;
+        margin: 10px 0px;
+        padding: 0px 10px;
+    }
+
+    .pin-team-container:hover {
+        transition: background 0.5s;
+    }
+
+    .pin-team-container-saved:hover {
+        transform: rotate(90deg);
+        background-color: rgba(43, 255, 0, 0.384);
+        transition: background 0.5s;
     }
 }
