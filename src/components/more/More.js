@@ -74,6 +74,60 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                             <span>News</span>
                         </div>
                     </Link>
+
+                    <hr />
+
+                    <div
+                        className="option cursor-pointer settings"
+                        onClick={() => setHideAbout(hideabout ? false : true)}
+                    >
+                        <div>
+                            <FontAwesomeIcon icon={faInfo} />
+                            <span>About</span>
+                        </div>
+                    </div>
+
+                    {hideabout && (
+                        <>
+                            <hr />
+                            <a
+                                className="border-for-submenu-items margin-for-submenu-items option cursor-pointer"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                href="https://github.com/Kremowy"
+                            >
+                                <div>
+                                    <FontAwesomeIcon icon={faCode} />
+                                    <span>By KremoWy</span>
+                                </div>
+                            </a>
+
+                            <hr />
+
+                            <Link
+                                to={CONTACT}
+                                className={OPTION_STYLE + " border-for-submenu-items margin-for-submenu-items"}
+                            >
+                                <div>
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                    <span>Contact me</span>
+                                </div>
+                            </Link>
+
+                            <hr />
+
+                            <Link
+                                to={ABOUT}
+                                className={OPTION_STYLE + " border-for-submenu-items margin-for-submenu-items"}
+                            >
+                                <div>
+                                    <FontAwesomeIcon icon={faCubes} />
+                                    <span>About the web</span>
+                                </div>
+                            </Link>
+                        </>
+                    )}
+
                     <hr />
 
                     <div
@@ -137,57 +191,8 @@ const More = ({ handleInstallClick, isinstalled, setIsInstalled }) => {
                             </div>
                         </>
                     )}
-
-                    <hr />
-
-                    <div
-                        className="option cursor-pointer settings"
-                        onClick={() => setHideAbout(hideabout ? false : true)}
-                    >
-                        <div>
-                            <FontAwesomeIcon icon={faInfo} />
-                            <span>About</span>
-                        </div>
-                    </div>
-
-                    {hideabout && (
-                        <>
-                            <hr />
-                            <a
-                                className="border-for-submenu-items margin-for-submenu-items option cursor-pointer"
-                                rel="noopener noreferrer"
-                                target="_blank"
-                                href="https://github.com/Kremowy"
-                            >
-                                <div>
-                                    <FontAwesomeIcon icon={faCode} />
-                                    <span>By KremoWy</span>
-                                </div>
-                            </a>
-
-                            <hr />
-
-                            <Link to={CONTACT} className={OPTION_STYLE + " border-for-submenu-items margin-for-submenu-items"}>
-                                <div>
-                                    <FontAwesomeIcon icon={faEnvelope} />
-                                    <span>Contact me</span>
-                                </div>
-                            </Link>
-
-                            <hr />
-
-                            <Link to={ABOUT} className={OPTION_STYLE + " border-for-submenu-items margin-for-submenu-items"}>
-                                <div>
-                                    <FontAwesomeIcon icon={faCubes} />
-                                    <span>About the web</span>
-                                </div>
-                            </Link>
-                        </>
-                    )}
                 </div>
-                <span className="rights">
-                    All Rights Reserved. {new Date().getFullYear()}
-                </span>
+                <span className="rights">All Rights Reserved. {new Date().getFullYear()}</span>
             </div>
         </div>
     );
