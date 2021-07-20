@@ -35,20 +35,17 @@
         {
             "src": "pwa/matches-96p.png",
             "sizes": "96x96",
-            "type": "image/png",
-            "purpose": "maskable"
+            "type": "image/png"
         },
         {
             "src": "pwa/ranking-96p.png",
             "sizes": "96x96",
-            "type": "image/png",
-            "purpose": "maskable"
+            "type": "image/png"
         },
         {
             "src": "pwa/news-96p.png",
             "sizes": "96x96",
-            "type": "image/png",
-            "purpose": "maskable"
+            "type": "image/png"
         },
 
 
