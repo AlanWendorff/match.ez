@@ -13,7 +13,7 @@ div:hover > .circular-item > img {
 
 .circular-container {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .circular-container > div {

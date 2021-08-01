@@ -22,7 +22,7 @@ const Tournaments = () => {
     const goToAllTournaments = () => history.push(ALL_TOURNAMENTS);
 
     return (
-        <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate-slide-top-to-bottom">
+        <div className="height-100vh-pad-bot-90p tournament-container font-gilroy background-color-4all animate-fade-in-top-to-bottom">
             <SearchBar handleClick={goToAllTournaments} />
 
             <div className="child-tournament">
