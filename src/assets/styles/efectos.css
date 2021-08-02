@@ -25,12 +25,12 @@
 
 .rotate-icon-right-side {
     transform: rotate(120deg);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .rotate-icon-left-side {
     transform: rotate(-120deg);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .shake-elem {
@@ -50,39 +50,39 @@
 }
 
 .animate-slide-bottom-to-top {
-    animation: slide-bottom-to-top 0.4s both;
+    animation: slide-bottom-to-top 0.2s both;
 }
 
 .animate-slide-top-to-bottom {
-    animation: slide-top-to-bottom 0.4s both;
+    animation: slide-top-to-bottom 0.2s both;
 }
 
 .animate-slide-left-to-right {
-    animation: slide-left-to-right 0.4s both;
+    animation: slide-left-to-right 0.2s both;
 }
 
 .animate-fade-in {
-    animation: opacity-in 0.4s both;
+    animation: opacity-in 0.2s both;
 }
 
 .animate-fade-in-right-to-left {
-    animation: fade-in-right-to-left 0.4s both;
+    animation: fade-in-right-to-left 0.2s both;
 }
 
 .animate-fade-in-top-to-bottom {
-    animation: fade-in-top-to-bottom 0.4s both;
+    animation: fade-in-top-to-bottom 0.2s both;
 }
 
 .animate-fade-in-left-to-right {
-    animation: fade-in-left-to-right 0.4s both;
+    animation: fade-in-left-to-right 0.2s both;
 }
 
 .animate-fade-in-bottom-to-top {
-    animation: fade-in-bottom-to-top 0.4s both;
+    animation: fade-in-bottom-to-top 0.2s both;
 }
 
 .animate-bounce-in {
-    animation: bounce-in 0.4s both;
+    animation: bounce-in 0.2s both;
 }
 
 @keyframes bounce-in {
