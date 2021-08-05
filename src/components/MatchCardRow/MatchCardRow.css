@@ -15,6 +15,10 @@
     justify-content: center;
 }
 
+.main-info {
+    height: 205px;
+}
+
 .header {
     width: 100%;
     display: flex;
@@ -32,6 +36,7 @@
     align-items: center;
     height: 70px;
     padding: 0 20px;
+    margin-top: 15px;
 }
 
 .row-team > p {
@@ -53,7 +58,7 @@
 }
 
 .match-card-row-size .bestof-prev-game {
-    margin: 0;
+    margin-top: 10px;
 }
 
 .row-card-share {
@@ -91,7 +96,8 @@
 .row-team:hover {
     cursor: pointer;
     transition: all 0.1s ease-out;
-    margin: 0 5px;
+    margin-left:  5px;
+    margin-right:  5px;
 }
 
 .match-card-row-size {
@@ -125,7 +131,9 @@
     .row-team > div > span {
         max-width: 100px;
     }
-
+    .main-info {
+        height: auto;
+    }
     .header {
         font-size: 14px;
     }

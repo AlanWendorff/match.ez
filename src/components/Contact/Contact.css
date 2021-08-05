@@ -57,13 +57,13 @@
 }
 
 .contact-container input {
-    border-bottom: 1.5px solid #d9ad43 !important;
+    border-bottom: 1.5px solid #FABE2E !important;
 }
 
 .contact-container textarea {
     height: 200px;
     border-radius: 5px;
-    border: 1px solid #d9ad43;
+    border: 1px solid #FABE2E;
     padding: 10px;
     outline-width: 0;
 }

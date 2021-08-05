@@ -26,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #d9ad43;
+    background-color: #FABE2E;
     color: #f6f7f9;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .menu-mobile .option-selected {
-    background-color: #d9ad43;
+    background-color: #FABE2E;
     color: #474747;
 }
 

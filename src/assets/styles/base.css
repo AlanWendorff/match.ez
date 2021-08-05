@@ -29,7 +29,7 @@
 }
 
 .background-color-yellow-theme {
-    background-color: #d9ad43;
+    background-color: #FABE2E;
 }
 
 .background-color-yellow-dark-theme {
@@ -203,7 +203,7 @@ i.right {
 .load-more {
     font-family: "Gilroy-ExtraBold";
     margin: 15px;
-    color: #d9ad43;
+    color: #FABE2E;
     cursor: pointer;
     background-color: #00000034;
     border-radius: 100px;

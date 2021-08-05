@@ -88,7 +88,7 @@ const Contact = () => {
             <div
                 onClick={() => getInfo()}
                 className="send-btn"
-                style={{ backgroundColor: IsSended ? "green" : "#d9ad43" }}
+                style={{ backgroundColor: IsSended ? "green" : "#FABE2E" }}
             >
                 {IsSended ? "Sended" : "Send"}
             </div>
