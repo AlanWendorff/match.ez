@@ -172,7 +172,7 @@ const MatchCardRow = ({ match }) => {
                             onClick={() => !showwinrate && setWinRate()}
                             className="text-align-end highlight-text cursor-pointer"
                         >
-                            {showwinrate ? "30 games were analyzed" : "Compare winrate"}
+                            {showwinrate ? "50 games were analyzed" : "Compare winrate"}
                         </span>
                     </div>
 
