@@ -38,10 +38,6 @@
         margin-left: 50px;
     }
 
-    .loader-winrate > span {
-        display: none;
-    }
-
     .mini-winrate-container {
         width: 140px;
         font-size: 13px;

@@ -27,7 +27,6 @@ const MiniWinRate = ({colors, winrate_api}) => {
         </>
       ) : (
         <div className="loader-winrate space-between width-100percent">
-          <span>Analyzing 50 games</span>
           <div className="preloader-wrapper small active">
             <div className="spinner-layer spinner-red-only">
               <div className="circle-clipper left">
